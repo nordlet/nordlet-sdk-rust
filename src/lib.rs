@@ -5,7 +5,7 @@
 //! ## Getting Started
 //!
 //! ```rust
-//! use nordlet_api::prelude::*;
+//! use nordlet::prelude::*;
 //!
 //! #[tokio::main]
 //! async fn main() {

@@ -1,7 +1,7 @@
 # Nordlet Rust Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Nordlet%2FRust)
-[![crates.io shield](https://img.shields.io/crates/v/nordlet_api)](https://crates.io/crates/nordlet_api)
+[![crates.io shield](https://img.shields.io/crates/v/nordlet)](https://crates.io/crates/nordlet)
 
 The Nordlet Rust library provides convenient access to the Nordlet APIs from Rust.
 
@@ -26,13 +26,13 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-nordlet_api = "0.1.0"
+nordlet = "0.1.1"
 ```
 
 Or install via cargo:
 
 ```sh
-cargo add nordlet_api
+cargo add nordlet
 ```
 
 ## Reference
@@ -44,7 +44,7 @@ A full reference for this library is available [here](https://github.com/nordlet
 Instantiate and use the client with the following:
 
 ```rust
-use nordlet_api::prelude::*;
+use nordlet::prelude::*;
 
 #[tokio::main]
 async fn main() {
@@ -70,7 +70,7 @@ async fn main() {
 This SDK allows you to configure different environments for API requests.
 
 ```rust
-use nordlet_api::prelude::{*};
+use nordlet::prelude::{*};
 
 let config = ClientConfig {
     base_url: Environment::Production.url().to_string(),
@@ -102,7 +102,7 @@ match client.reference.post_v1_reference_exchange_rates_sync(None)?.await {
 The SDK exports all request types as Rust structs. Simply import them from the crate to access them:
 
 ```rust
-use nordlet_api::prelude::{*};
+use nordlet::prelude::{*};
 
 let request = PostV1ReferenceExchangeRatesSyncRequest {
     ...
