@@ -1,0 +1,155 @@
+pub use crate::prelude::*;
+
+/// Jurisdiction the company is registered in (immutable after creation)
+#[non_exhaustive]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub enum PostV1AccountCompaniesCreateRequestCountryCode {
+    At,
+    Be,
+    Bg,
+    Cy,
+    Cz,
+    De,
+    Dk,
+    Ee,
+    Es,
+    Fi,
+    Fr,
+    Gr,
+    Hr,
+    Hu,
+    Ie,
+    It,
+    Lt,
+    Lu,
+    Lv,
+    Mt,
+    Nl,
+    Pl,
+    Pt,
+    Ro,
+    Se,
+    Si,
+    Sk,
+    Is,
+    Li,
+    No,
+    /// This variant is used for forward compatibility.
+    /// If the server sends a value not recognized by the current SDK version,
+    /// it will be captured here with the raw string value.
+    __Unknown(String),
+}
+impl Serialize for PostV1AccountCompaniesCreateRequestCountryCode {
+    fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+        match self {
+            Self::At => serializer.serialize_str("AT"),
+            Self::Be => serializer.serialize_str("BE"),
+            Self::Bg => serializer.serialize_str("BG"),
+            Self::Cy => serializer.serialize_str("CY"),
+            Self::Cz => serializer.serialize_str("CZ"),
+            Self::De => serializer.serialize_str("DE"),
+            Self::Dk => serializer.serialize_str("DK"),
+            Self::Ee => serializer.serialize_str("EE"),
+            Self::Es => serializer.serialize_str("ES"),
+            Self::Fi => serializer.serialize_str("FI"),
+            Self::Fr => serializer.serialize_str("FR"),
+            Self::Gr => serializer.serialize_str("GR"),
+            Self::Hr => serializer.serialize_str("HR"),
+            Self::Hu => serializer.serialize_str("HU"),
+            Self::Ie => serializer.serialize_str("IE"),
+            Self::It => serializer.serialize_str("IT"),
+            Self::Lt => serializer.serialize_str("LT"),
+            Self::Lu => serializer.serialize_str("LU"),
+            Self::Lv => serializer.serialize_str("LV"),
+            Self::Mt => serializer.serialize_str("MT"),
+            Self::Nl => serializer.serialize_str("NL"),
+            Self::Pl => serializer.serialize_str("PL"),
+            Self::Pt => serializer.serialize_str("PT"),
+            Self::Ro => serializer.serialize_str("RO"),
+            Self::Se => serializer.serialize_str("SE"),
+            Self::Si => serializer.serialize_str("SI"),
+            Self::Sk => serializer.serialize_str("SK"),
+            Self::Is => serializer.serialize_str("IS"),
+            Self::Li => serializer.serialize_str("LI"),
+            Self::No => serializer.serialize_str("NO"),
+            Self::__Unknown(val) => serializer.serialize_str(val),
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for PostV1AccountCompaniesCreateRequestCountryCode {
+    fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+        let value = String::deserialize(deserializer)?;
+        match value.as_str() {
+            "AT" => Ok(Self::At),
+            "BE" => Ok(Self::Be),
+            "BG" => Ok(Self::Bg),
+            "CY" => Ok(Self::Cy),
+            "CZ" => Ok(Self::Cz),
+            "DE" => Ok(Self::De),
+            "DK" => Ok(Self::Dk),
+            "EE" => Ok(Self::Ee),
+            "ES" => Ok(Self::Es),
+            "FI" => Ok(Self::Fi),
+            "FR" => Ok(Self::Fr),
+            "GR" => Ok(Self::Gr),
+            "HR" => Ok(Self::Hr),
+            "HU" => Ok(Self::Hu),
+            "IE" => Ok(Self::Ie),
+            "IT" => Ok(Self::It),
+            "LT" => Ok(Self::Lt),
+            "LU" => Ok(Self::Lu),
+            "LV" => Ok(Self::Lv),
+            "MT" => Ok(Self::Mt),
+            "NL" => Ok(Self::Nl),
+            "PL" => Ok(Self::Pl),
+            "PT" => Ok(Self::Pt),
+            "RO" => Ok(Self::Ro),
+            "SE" => Ok(Self::Se),
+            "SI" => Ok(Self::Si),
+            "SK" => Ok(Self::Sk),
+            "IS" => Ok(Self::Is),
+            "LI" => Ok(Self::Li),
+            "NO" => Ok(Self::No),
+            _ => Ok(Self::__Unknown(value)),
+        }
+    }
+}
+
+impl fmt::Display for PostV1AccountCompaniesCreateRequestCountryCode {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::At => write!(f, "AT"),
+            Self::Be => write!(f, "BE"),
+            Self::Bg => write!(f, "BG"),
+            Self::Cy => write!(f, "CY"),
+            Self::Cz => write!(f, "CZ"),
+            Self::De => write!(f, "DE"),
+            Self::Dk => write!(f, "DK"),
+            Self::Ee => write!(f, "EE"),
+            Self::Es => write!(f, "ES"),
+            Self::Fi => write!(f, "FI"),
+            Self::Fr => write!(f, "FR"),
+            Self::Gr => write!(f, "GR"),
+            Self::Hr => write!(f, "HR"),
+            Self::Hu => write!(f, "HU"),
+            Self::Ie => write!(f, "IE"),
+            Self::It => write!(f, "IT"),
+            Self::Lt => write!(f, "LT"),
+            Self::Lu => write!(f, "LU"),
+            Self::Lv => write!(f, "LV"),
+            Self::Mt => write!(f, "MT"),
+            Self::Nl => write!(f, "NL"),
+            Self::Pl => write!(f, "PL"),
+            Self::Pt => write!(f, "PT"),
+            Self::Ro => write!(f, "RO"),
+            Self::Se => write!(f, "SE"),
+            Self::Si => write!(f, "SI"),
+            Self::Sk => write!(f, "SK"),
+            Self::Is => write!(f, "IS"),
+            Self::Li => write!(f, "LI"),
+            Self::No => write!(f, "NO"),
+            Self::__Unknown(val) => write!(f, "{}", val),
+        }
+    }
+}

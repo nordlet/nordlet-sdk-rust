@@ -1,0 +1,35 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct PostV1ReportsJobsGetRequest {
+    #[serde(default)]
+    pub id: String,
+}
+
+impl PostV1ReportsJobsGetRequest {
+    pub fn builder() -> PostV1ReportsJobsGetRequestBuilder {
+        <PostV1ReportsJobsGetRequestBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct PostV1ReportsJobsGetRequestBuilder {
+    id: Option<String>,
+}
+
+impl PostV1ReportsJobsGetRequestBuilder {
+    pub fn id(mut self, value: impl Into<String>) -> Self {
+        self.id = Some(value.into());
+        self
+    }
+
+    /// Consumes the builder and constructs a [`PostV1ReportsJobsGetRequest`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`id`](PostV1ReportsJobsGetRequestBuilder::id)
+    pub fn build(self) -> Result<PostV1ReportsJobsGetRequest, BuildError> {
+        Ok(PostV1ReportsJobsGetRequest {
+            id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+        })
+    }
+}
