@@ -15,6 +15,7 @@ pub struct PostV1ReferenceEuVatRatesListResponseRowsItem {
     #[serde(rename = "validTo")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub valid_to: Option<String>,
+    pub source: PostV1ReferenceEuVatRatesListResponseRowsItemSource,
 }
 
 impl PostV1ReferenceEuVatRatesListResponseRowsItem {
@@ -31,6 +32,7 @@ pub struct PostV1ReferenceEuVatRatesListResponseRowsItemBuilder {
     rate_percent: Option<String>,
     valid_from: Option<String>,
     valid_to: Option<String>,
+    source: Option<PostV1ReferenceEuVatRatesListResponseRowsItemSource>,
 }
 
 impl PostV1ReferenceEuVatRatesListResponseRowsItemBuilder {
@@ -62,11 +64,17 @@ impl PostV1ReferenceEuVatRatesListResponseRowsItemBuilder {
         self
     }
 
+    pub fn source(mut self, value: PostV1ReferenceEuVatRatesListResponseRowsItemSource) -> Self {
+        self.source = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1ReferenceEuVatRatesListResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`country_code`](PostV1ReferenceEuVatRatesListResponseRowsItemBuilder::country_code)
     /// - [`category`](PostV1ReferenceEuVatRatesListResponseRowsItemBuilder::category)
     /// - [`rate_percent`](PostV1ReferenceEuVatRatesListResponseRowsItemBuilder::rate_percent)
+    /// - [`source`](PostV1ReferenceEuVatRatesListResponseRowsItemBuilder::source)
     pub fn build(self) -> Result<PostV1ReferenceEuVatRatesListResponseRowsItem, BuildError> {
         Ok(PostV1ReferenceEuVatRatesListResponseRowsItem {
             country_code: self
@@ -80,6 +88,9 @@ impl PostV1ReferenceEuVatRatesListResponseRowsItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("rate_percent"))?,
             valid_from: self.valid_from,
             valid_to: self.valid_to,
+            source: self
+                .source
+                .ok_or_else(|| BuildError::missing_field("source"))?,
         })
     }
 }

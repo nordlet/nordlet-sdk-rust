@@ -11,6 +11,9 @@ pub struct PostV1AccountCompaniesProfileResponse {
     #[serde(rename = "vatCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_code: Option<String>,
+    #[serde(rename = "smeExemptionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sme_exemption_number: Option<String>,
     #[serde(rename = "isVatPayer")]
     #[serde(default)]
     pub is_vat_payer: bool,
@@ -59,6 +62,7 @@ pub struct PostV1AccountCompaniesProfileResponseBuilder {
     name: Option<String>,
     code: Option<String>,
     vat_code: Option<String>,
+    sme_exemption_number: Option<String>,
     is_vat_payer: Option<bool>,
     is_sandbox: Option<bool>,
     country_code: Option<String>,
@@ -92,6 +96,11 @@ impl PostV1AccountCompaniesProfileResponseBuilder {
 
     pub fn vat_code(mut self, value: impl Into<String>) -> Self {
         self.vat_code = Some(value.into());
+        self
+    }
+
+    pub fn sme_exemption_number(mut self, value: impl Into<String>) -> Self {
+        self.sme_exemption_number = Some(value.into());
         self
     }
 
@@ -176,6 +185,7 @@ impl PostV1AccountCompaniesProfileResponseBuilder {
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             code: self.code,
             vat_code: self.vat_code,
+            sme_exemption_number: self.sme_exemption_number,
             is_vat_payer: self
                 .is_vat_payer
                 .ok_or_else(|| BuildError::missing_field("is_vat_payer"))?,

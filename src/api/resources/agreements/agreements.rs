@@ -125,6 +125,38 @@ impl AgreementsClient {
             .await
     }
 
+    pub async fn post_v1_agreements_agreements_generate_invoice(
+        &self,
+        request: &PostV1AgreementsAgreementsGenerateInvoiceRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AgreementsAgreementsGenerateInvoiceResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/agreements/agreements/generate-invoice",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_agreements_agreements_billing_run(
+        &self,
+        request: &PostV1AgreementsAgreementsBillingRunRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AgreementsAgreementsBillingRunResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/agreements/agreements/billing/run",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_agreements_insurance_policies_create(
         &self,
         request: &PostV1AgreementsInsurancePoliciesCreateRequest,

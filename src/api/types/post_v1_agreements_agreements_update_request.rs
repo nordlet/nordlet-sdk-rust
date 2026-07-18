@@ -17,6 +17,9 @@ pub struct PostV1AgreementsAgreementsUpdateRequest {
     pub auto_renew: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
+    #[serde(rename = "billingPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub billing_period: Option<PostV1AgreementsAgreementsUpdateRequestBillingPeriod>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<PostV1AgreementsAgreementsUpdateRequestStatus>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -38,6 +41,7 @@ pub struct PostV1AgreementsAgreementsUpdateRequestBuilder {
     end_date: Option<String>,
     auto_renew: Option<bool>,
     value: Option<String>,
+    billing_period: Option<PostV1AgreementsAgreementsUpdateRequestBillingPeriod>,
     status: Option<PostV1AgreementsAgreementsUpdateRequestStatus>,
     notes: Option<String>,
 }
@@ -73,6 +77,14 @@ impl PostV1AgreementsAgreementsUpdateRequestBuilder {
         self
     }
 
+    pub fn billing_period(
+        mut self,
+        value: PostV1AgreementsAgreementsUpdateRequestBillingPeriod,
+    ) -> Self {
+        self.billing_period = Some(value);
+        self
+    }
+
     pub fn status(mut self, value: PostV1AgreementsAgreementsUpdateRequestStatus) -> Self {
         self.status = Some(value);
         self
@@ -94,6 +106,7 @@ impl PostV1AgreementsAgreementsUpdateRequestBuilder {
             end_date: self.end_date,
             auto_renew: self.auto_renew,
             value: self.value,
+            billing_period: self.billing_period,
             status: self.status,
             notes: self.notes,
         })

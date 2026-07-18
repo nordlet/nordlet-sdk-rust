@@ -11,6 +11,7 @@ pub enum PostV1SalesInvoicesGetResponseVatScheme {
     MarketplaceDeemed,
     Export,
     OutOfScope,
+    SmeExempt,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -27,6 +28,7 @@ impl Serialize for PostV1SalesInvoicesGetResponseVatScheme {
             Self::MarketplaceDeemed => serializer.serialize_str("marketplace_deemed"),
             Self::Export => serializer.serialize_str("export"),
             Self::OutOfScope => serializer.serialize_str("out_of_scope"),
+            Self::SmeExempt => serializer.serialize_str("sme_exempt"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -44,6 +46,7 @@ impl<'de> Deserialize<'de> for PostV1SalesInvoicesGetResponseVatScheme {
             "marketplace_deemed" => Ok(Self::MarketplaceDeemed),
             "export" => Ok(Self::Export),
             "out_of_scope" => Ok(Self::OutOfScope),
+            "sme_exempt" => Ok(Self::SmeExempt),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -60,6 +63,7 @@ impl fmt::Display for PostV1SalesInvoicesGetResponseVatScheme {
             Self::MarketplaceDeemed => write!(f, "marketplace_deemed"),
             Self::Export => write!(f, "export"),
             Self::OutOfScope => write!(f, "out_of_scope"),
+            Self::SmeExempt => write!(f, "sme_exempt"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

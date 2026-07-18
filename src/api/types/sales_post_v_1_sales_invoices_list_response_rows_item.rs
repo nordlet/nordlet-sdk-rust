@@ -47,6 +47,9 @@ pub struct PostV1SalesInvoicesListResponseRowsItem {
     #[serde(rename = "creditedInvoiceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credited_invoice_id: Option<String>,
+    #[serde(rename = "agreementId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub agreement_id: Option<String>,
     #[serde(rename = "vatScheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_scheme: Option<PostV1SalesInvoicesListResponseRowsItemVatScheme>,
@@ -93,6 +96,7 @@ pub struct PostV1SalesInvoicesListResponseRowsItemBuilder {
     journal_transaction_id: Option<String>,
     applied_to_invoice_id: Option<String>,
     credited_invoice_id: Option<String>,
+    agreement_id: Option<String>,
     vat_scheme: Option<PostV1SalesInvoicesListResponseRowsItemVatScheme>,
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
@@ -195,6 +199,11 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
         self
     }
 
+    pub fn agreement_id(mut self, value: impl Into<String>) -> Self {
+        self.agreement_id = Some(value.into());
+        self
+    }
+
     pub fn vat_scheme(mut self, value: PostV1SalesInvoicesListResponseRowsItemVatScheme) -> Self {
         self.vat_scheme = Some(value);
         self
@@ -278,6 +287,7 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
             journal_transaction_id: self.journal_transaction_id,
             applied_to_invoice_id: self.applied_to_invoice_id,
             credited_invoice_id: self.credited_invoice_id,
+            agreement_id: self.agreement_id,
             vat_scheme: self.vat_scheme,
             vat_country_code: self.vat_country_code,
             deemed_supplier: self

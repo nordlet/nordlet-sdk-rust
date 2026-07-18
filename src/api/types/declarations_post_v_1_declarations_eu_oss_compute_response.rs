@@ -19,6 +19,11 @@ pub struct PostV1DeclarationsEuOssComputeResponse {
     #[serde(default)]
     pub totals: PostV1DeclarationsEuOssComputeResponseTotals,
     #[serde(default)]
+    pub corrections: Vec<PostV1DeclarationsEuOssComputeResponseCorrectionsItem>,
+    #[serde(rename = "correctionsTotal")]
+    #[serde(default)]
+    pub corrections_total: PostV1DeclarationsEuOssComputeResponseCorrectionsTotal,
+    #[serde(default)]
     pub warnings: Vec<String>,
     #[serde(rename = "periodQuarter")]
     #[serde(default)]
@@ -40,6 +45,8 @@ pub struct PostV1DeclarationsEuOssComputeResponseBuilder {
     member_state_of_identification: Option<String>,
     rows: Option<Vec<PostV1DeclarationsEuOssComputeResponseRowsItem>>,
     totals: Option<PostV1DeclarationsEuOssComputeResponseTotals>,
+    corrections: Option<Vec<PostV1DeclarationsEuOssComputeResponseCorrectionsItem>>,
+    corrections_total: Option<PostV1DeclarationsEuOssComputeResponseCorrectionsTotal>,
     warnings: Option<Vec<String>>,
     period_quarter: Option<i64>,
 }
@@ -75,6 +82,22 @@ impl PostV1DeclarationsEuOssComputeResponseBuilder {
         self
     }
 
+    pub fn corrections(
+        mut self,
+        value: Vec<PostV1DeclarationsEuOssComputeResponseCorrectionsItem>,
+    ) -> Self {
+        self.corrections = Some(value);
+        self
+    }
+
+    pub fn corrections_total(
+        mut self,
+        value: PostV1DeclarationsEuOssComputeResponseCorrectionsTotal,
+    ) -> Self {
+        self.corrections_total = Some(value);
+        self
+    }
+
     pub fn warnings(mut self, value: Vec<String>) -> Self {
         self.warnings = Some(value);
         self
@@ -93,6 +116,8 @@ impl PostV1DeclarationsEuOssComputeResponseBuilder {
     /// - [`member_state_of_identification`](PostV1DeclarationsEuOssComputeResponseBuilder::member_state_of_identification)
     /// - [`rows`](PostV1DeclarationsEuOssComputeResponseBuilder::rows)
     /// - [`totals`](PostV1DeclarationsEuOssComputeResponseBuilder::totals)
+    /// - [`corrections`](PostV1DeclarationsEuOssComputeResponseBuilder::corrections)
+    /// - [`corrections_total`](PostV1DeclarationsEuOssComputeResponseBuilder::corrections_total)
     /// - [`warnings`](PostV1DeclarationsEuOssComputeResponseBuilder::warnings)
     /// - [`period_quarter`](PostV1DeclarationsEuOssComputeResponseBuilder::period_quarter)
     pub fn build(self) -> Result<PostV1DeclarationsEuOssComputeResponse, BuildError> {
@@ -113,6 +138,12 @@ impl PostV1DeclarationsEuOssComputeResponseBuilder {
             totals: self
                 .totals
                 .ok_or_else(|| BuildError::missing_field("totals"))?,
+            corrections: self
+                .corrections
+                .ok_or_else(|| BuildError::missing_field("corrections"))?,
+            corrections_total: self
+                .corrections_total
+                .ok_or_else(|| BuildError::missing_field("corrections_total"))?,
             warnings: self
                 .warnings
                 .ok_or_else(|| BuildError::missing_field("warnings"))?,

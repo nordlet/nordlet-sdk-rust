@@ -9,6 +9,9 @@ pub struct PostV1AccountCompaniesUpdateRequest {
     #[serde(rename = "vatCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_code: Option<String>,
+    #[serde(rename = "smeExemptionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sme_exemption_number: Option<String>,
     #[serde(rename = "isVatPayer")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_vat_payer: Option<bool>,
@@ -45,6 +48,7 @@ pub struct PostV1AccountCompaniesUpdateRequestBuilder {
     name: Option<String>,
     code: Option<String>,
     vat_code: Option<String>,
+    sme_exemption_number: Option<String>,
     is_vat_payer: Option<bool>,
     address: Option<PostV1AccountCompaniesUpdateRequestAddress>,
     email: Option<String>,
@@ -69,6 +73,11 @@ impl PostV1AccountCompaniesUpdateRequestBuilder {
 
     pub fn vat_code(mut self, value: impl Into<String>) -> Self {
         self.vat_code = Some(value.into());
+        self
+    }
+
+    pub fn sme_exemption_number(mut self, value: impl Into<String>) -> Self {
+        self.sme_exemption_number = Some(value.into());
         self
     }
 
@@ -123,6 +132,7 @@ impl PostV1AccountCompaniesUpdateRequestBuilder {
             name: self.name,
             code: self.code,
             vat_code: self.vat_code,
+            sme_exemption_number: self.sme_exemption_number,
             is_vat_payer: self.is_vat_payer,
             address: self.address,
             email: self.email,

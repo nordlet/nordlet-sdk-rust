@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct PostV1SalesInvoicesUpdateResponseLinesItem {
     #[serde(default)]
     pub id: String,
@@ -40,6 +40,27 @@ pub struct PostV1SalesInvoicesUpdateResponseLinesItem {
     #[serde(rename = "sortOrder")]
     #[serde(default)]
     pub sort_order: i64,
+    #[serde(rename = "recognitionMethod")]
+    pub recognition_method: PostV1SalesInvoicesUpdateResponseLinesItemRecognitionMethod,
+    #[serde(rename = "recognitionStartDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub recognition_start_date: Option<String>,
+    #[serde(rename = "recognitionEndDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub recognition_end_date: Option<String>,
+    #[serde(rename = "recognitionMilestones")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub recognition_milestones:
+        Option<Vec<PostV1SalesInvoicesUpdateResponseLinesItemRecognitionMilestonesItem>>,
+    #[serde(rename = "standaloneSellingPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub standalone_selling_price: Option<String>,
+    #[serde(rename = "allocatedNet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allocated_net: Option<String>,
+    #[serde(rename = "refundEstimatePercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub refund_estimate_percent: Option<String>,
 }
 
 impl PostV1SalesInvoicesUpdateResponseLinesItem {
@@ -65,6 +86,14 @@ pub struct PostV1SalesInvoicesUpdateResponseLinesItemBuilder {
     line_vat: Option<String>,
     line_gross: Option<String>,
     sort_order: Option<i64>,
+    recognition_method: Option<PostV1SalesInvoicesUpdateResponseLinesItemRecognitionMethod>,
+    recognition_start_date: Option<String>,
+    recognition_end_date: Option<String>,
+    recognition_milestones:
+        Option<Vec<PostV1SalesInvoicesUpdateResponseLinesItemRecognitionMilestonesItem>>,
+    standalone_selling_price: Option<String>,
+    allocated_net: Option<String>,
+    refund_estimate_percent: Option<String>,
 }
 
 impl PostV1SalesInvoicesUpdateResponseLinesItemBuilder {
@@ -138,6 +167,47 @@ impl PostV1SalesInvoicesUpdateResponseLinesItemBuilder {
         self
     }
 
+    pub fn recognition_method(
+        mut self,
+        value: PostV1SalesInvoicesUpdateResponseLinesItemRecognitionMethod,
+    ) -> Self {
+        self.recognition_method = Some(value);
+        self
+    }
+
+    pub fn recognition_start_date(mut self, value: impl Into<String>) -> Self {
+        self.recognition_start_date = Some(value.into());
+        self
+    }
+
+    pub fn recognition_end_date(mut self, value: impl Into<String>) -> Self {
+        self.recognition_end_date = Some(value.into());
+        self
+    }
+
+    pub fn recognition_milestones(
+        mut self,
+        value: Vec<PostV1SalesInvoicesUpdateResponseLinesItemRecognitionMilestonesItem>,
+    ) -> Self {
+        self.recognition_milestones = Some(value);
+        self
+    }
+
+    pub fn standalone_selling_price(mut self, value: impl Into<String>) -> Self {
+        self.standalone_selling_price = Some(value.into());
+        self
+    }
+
+    pub fn allocated_net(mut self, value: impl Into<String>) -> Self {
+        self.allocated_net = Some(value.into());
+        self
+    }
+
+    pub fn refund_estimate_percent(mut self, value: impl Into<String>) -> Self {
+        self.refund_estimate_percent = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1SalesInvoicesUpdateResponseLinesItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1SalesInvoicesUpdateResponseLinesItemBuilder::id)
@@ -149,6 +219,7 @@ impl PostV1SalesInvoicesUpdateResponseLinesItemBuilder {
     /// - [`line_vat`](PostV1SalesInvoicesUpdateResponseLinesItemBuilder::line_vat)
     /// - [`line_gross`](PostV1SalesInvoicesUpdateResponseLinesItemBuilder::line_gross)
     /// - [`sort_order`](PostV1SalesInvoicesUpdateResponseLinesItemBuilder::sort_order)
+    /// - [`recognition_method`](PostV1SalesInvoicesUpdateResponseLinesItemBuilder::recognition_method)
     pub fn build(self) -> Result<PostV1SalesInvoicesUpdateResponseLinesItem, BuildError> {
         Ok(PostV1SalesInvoicesUpdateResponseLinesItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -179,6 +250,15 @@ impl PostV1SalesInvoicesUpdateResponseLinesItemBuilder {
             sort_order: self
                 .sort_order
                 .ok_or_else(|| BuildError::missing_field("sort_order"))?,
+            recognition_method: self
+                .recognition_method
+                .ok_or_else(|| BuildError::missing_field("recognition_method"))?,
+            recognition_start_date: self.recognition_start_date,
+            recognition_end_date: self.recognition_end_date,
+            recognition_milestones: self.recognition_milestones,
+            standalone_selling_price: self.standalone_selling_price,
+            allocated_net: self.allocated_net,
+            refund_estimate_percent: self.refund_estimate_percent,
         })
     }
 }

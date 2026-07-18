@@ -26,6 +26,14 @@ pub struct PostV1SalesInvoicesCreateRequestLinesItem {
     #[serde(rename = "costCenterId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cost_center_id: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub recognition: Option<PostV1SalesInvoicesCreateRequestLinesItemRecognition>,
+    #[serde(rename = "standaloneSellingPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub standalone_selling_price: Option<String>,
+    #[serde(rename = "refundEstimatePercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub refund_estimate_percent: Option<String>,
 }
 
 impl PostV1SalesInvoicesCreateRequestLinesItem {
@@ -46,6 +54,9 @@ pub struct PostV1SalesInvoicesCreateRequestLinesItemBuilder {
     vat_rate_percent: Option<String>,
     vat_classifier_code: Option<String>,
     cost_center_id: Option<String>,
+    recognition: Option<PostV1SalesInvoicesCreateRequestLinesItemRecognition>,
+    standalone_selling_price: Option<String>,
+    refund_estimate_percent: Option<String>,
 }
 
 impl PostV1SalesInvoicesCreateRequestLinesItemBuilder {
@@ -94,6 +105,24 @@ impl PostV1SalesInvoicesCreateRequestLinesItemBuilder {
         self
     }
 
+    pub fn recognition(
+        mut self,
+        value: PostV1SalesInvoicesCreateRequestLinesItemRecognition,
+    ) -> Self {
+        self.recognition = Some(value);
+        self
+    }
+
+    pub fn standalone_selling_price(mut self, value: impl Into<String>) -> Self {
+        self.standalone_selling_price = Some(value.into());
+        self
+    }
+
+    pub fn refund_estimate_percent(mut self, value: impl Into<String>) -> Self {
+        self.refund_estimate_percent = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1SalesInvoicesCreateRequestLinesItem`].
     pub fn build(self) -> Result<PostV1SalesInvoicesCreateRequestLinesItem, BuildError> {
         Ok(PostV1SalesInvoicesCreateRequestLinesItem {
@@ -106,6 +135,9 @@ impl PostV1SalesInvoicesCreateRequestLinesItemBuilder {
             vat_rate_percent: self.vat_rate_percent,
             vat_classifier_code: self.vat_classifier_code,
             cost_center_id: self.cost_center_id,
+            recognition: self.recognition,
+            standalone_selling_price: self.standalone_selling_price,
+            refund_estimate_percent: self.refund_estimate_percent,
         })
     }
 }

@@ -25,6 +25,9 @@ pub struct PostV1AgreementsAgreementsUpdateResponse {
     pub auto_renew: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
+    #[serde(rename = "billingPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub billing_period: Option<PostV1AgreementsAgreementsUpdateResponseBillingPeriod>,
     #[serde(default)]
     pub currency: String,
     pub status: PostV1AgreementsAgreementsUpdateResponseStatus,
@@ -55,6 +58,7 @@ pub struct PostV1AgreementsAgreementsUpdateResponseBuilder {
     end_date: Option<String>,
     auto_renew: Option<bool>,
     value: Option<String>,
+    billing_period: Option<PostV1AgreementsAgreementsUpdateResponseBillingPeriod>,
     currency: Option<String>,
     status: Option<PostV1AgreementsAgreementsUpdateResponseStatus>,
     notes: Option<String>,
@@ -105,6 +109,14 @@ impl PostV1AgreementsAgreementsUpdateResponseBuilder {
 
     pub fn value(mut self, value: impl Into<String>) -> Self {
         self.value = Some(value.into());
+        self
+    }
+
+    pub fn billing_period(
+        mut self,
+        value: PostV1AgreementsAgreementsUpdateResponseBillingPeriod,
+    ) -> Self {
+        self.billing_period = Some(value);
         self
     }
 
@@ -163,6 +175,7 @@ impl PostV1AgreementsAgreementsUpdateResponseBuilder {
                 .auto_renew
                 .ok_or_else(|| BuildError::missing_field("auto_renew"))?,
             value: self.value,
+            billing_period: self.billing_period,
             currency: self
                 .currency
                 .ok_or_else(|| BuildError::missing_field("currency"))?,

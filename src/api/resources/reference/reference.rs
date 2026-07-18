@@ -205,6 +205,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Effective EU VAT rate mapping for this company: EC TEDB defaults, replaced per country by any company overrides. Verify the mapping fits the goods and services you sell before relying on it.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn post_v1_reference_eu_vat_rates_list(
         &self,
         request: &PostV1ReferenceEuVatRatesListRequest,
@@ -214,6 +223,31 @@ impl ReferenceClient {
             .execute_request(
                 Method::POST,
                 "v1/reference/eu-vat-rates/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Replace the VAT rate mapping this company uses for one EU country. Pass an empty rates array to drop the overrides and return to the TEDB defaults. Overrides feed rate suggestions (vat/resolve) and OSS/IOSS return rate classification.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_reference_eu_vat_rates_set_overrides(
+        &self,
+        request: &PostV1ReferenceEuVatRatesSetOverridesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReferenceEuVatRatesSetOverridesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reference/eu-vat-rates/set-overrides",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

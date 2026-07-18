@@ -857,6 +857,20 @@ async fn main() {
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Effective EU VAT rate mapping for this company: EC TEDB defaults, replaced per country by any company overrides. Verify the mapping fits the goods and services you sell before relying on it.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -908,6 +922,91 @@ async fn main() {
 <dd>
 
 **date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_eu_vat_rates_set_overrides</a>(request: PostV1ReferenceEuVatRatesSetOverridesRequest) -> Result&lt;PostV1ReferenceEuVatRatesSetOverridesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replace the VAT rate mapping this company uses for one EU country. Pass an empty rates array to drop the overrides and return to the TEDB defaults. Overrides feed rate suggestions (vat/resolve) and OSS/IOSS return rate classification.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reference
+        .post_v1reference_eu_vat_rates_set_overrides(
+            &PostV1ReferenceEuVatRatesSetOverridesRequest {
+                country_code: "countryCode".to_string(),
+                rates: vec![PostV1ReferenceEuVatRatesSetOverridesRequestRatesItem {
+                    category:
+                        PostV1ReferenceEuVatRatesSetOverridesRequestRatesItemCategory::Standard,
+                    rate_percent: "ratePercent".to_string(),
+                }],
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**country_code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**rates:** `Vec<PostV1ReferenceEuVatRatesSetOverridesRequestRatesItem>` 
     
 </dd>
 </dl>
@@ -6775,6 +6874,88 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_schedules_list</a>(request: PostV1SalesRecognitionSchedulesListRequest) -> Result&lt;PostV1SalesRecognitionSchedulesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_schedules_list(
+            &PostV1SalesRecognitionSchedulesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1SalesRecognitionSchedulesListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1SalesRecognitionSchedulesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_apply_advance</a>(request: PostV1SalesInvoicesApplyAdvanceRequest) -> Result&lt;PostV1SalesInvoicesApplyAdvanceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -7550,6 +7731,620 @@ async fn main() {
 <dd>
 
 **locale:** `Option<PostV1SalesActsPdfRequestLocale>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_compute</a>(request: PostV1SalesRecognitionComputeRequest) -> Result&lt;PostV1SalesRecognitionComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_compute(
+            &PostV1SalesRecognitionComputeRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_run</a>(request: PostV1SalesRecognitionRunRequest) -> Result&lt;PostV1SalesRecognitionRunResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_run(
+            &PostV1SalesRecognitionRunRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**posting_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**schedule_ids:** `Option<Vec<String>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_progress</a>(request: PostV1SalesRecognitionProgressRequest) -> Result&lt;PostV1SalesRecognitionProgressResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_progress(
+            &PostV1SalesRecognitionProgressRequest {
+                invoice_line_id: "invoiceLineId".to_string(),
+                percent_complete: "percentComplete".to_string(),
+                date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_line_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**percent_complete:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_modify</a>(request: PostV1SalesRecognitionModifyRequest) -> Result&lt;PostV1SalesRecognitionModifyResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Apply an IFRS 15 contract modification to a deferred invoice line. Prospective: cancel the pending schedule and respread the unrecognized remainder over the new terms. Cumulative catch-up (ratable only): recompute revenue as if the new terms applied from the start and post the difference immediately.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_modify(
+            &PostV1SalesRecognitionModifyRequest {
+                invoice_line_id: "invoiceLineId".to_string(),
+                approach: PostV1SalesRecognitionModifyRequestApproach::Prospective,
+                date: None,
+                new_end_date: None,
+                new_milestones: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_line_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**approach:** `PostV1SalesRecognitionModifyRequestApproach` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**new_end_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**new_milestones:** `Option<Vec<PostV1SalesRecognitionModifyRequestNewMilestonesItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_runs_list</a>(request: PostV1SalesRecognitionRunsListRequest) -> Result&lt;PostV1SalesRecognitionRunsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_runs_list(
+            &PostV1SalesRecognitionRunsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1SalesRecognitionRunsListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1SalesRecognitionRunsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_summary</a>(request: PostV1SalesRecognitionSummaryRequest) -> Result&lt;PostV1SalesRecognitionSummaryResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_recognition_summary(
+            &PostV1SalesRecognitionSummaryRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_refund_liability_list</a>(request: PostV1SalesRefundLiabilityListRequest) -> Result&lt;PostV1SalesRefundLiabilityListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_refund_liability_list(
+            &PostV1SalesRefundLiabilityListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1SalesRefundLiabilityListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1SalesRefundLiabilityListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_refund_liability_true_up</a>(request: PostV1SalesRefundLiabilityTrueUpRequest) -> Result&lt;PostV1SalesRefundLiabilityTrueUpResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_refund_liability_true_up(
+            &PostV1SalesRefundLiabilityTrueUpRequest {
+                invoice_id: "invoiceId".to_string(),
+                estimated_total: "estimatedTotal".to_string(),
+                date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**estimated_total:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
     
 </dd>
 </dl>
@@ -8922,6 +9717,418 @@ async fn main() {
 <dd>
 
 **month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_distance_sales_threshold_get</a>(request: PostV1DeclarationsEuDistanceSalesThresholdGetRequest) -> Result&lt;PostV1DeclarationsEuDistanceSalesThresholdGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_distance_sales_threshold_get(
+            &PostV1DeclarationsEuDistanceSalesThresholdGetRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_union_turnover_get</a>(request: PostV1DeclarationsEuUnionTurnoverGetRequest) -> Result&lt;PostV1DeclarationsEuUnionTurnoverGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_union_turnover_get(
+            &PostV1DeclarationsEuUnionTurnoverGetRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_sme_cross_border_report_compute</a>(request: PostV1DeclarationsEuSmeCrossBorderReportComputeRequest) -> Result&lt;PostV1DeclarationsEuSmeCrossBorderReportComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_sme_cross_border_report_compute(
+            &PostV1DeclarationsEuSmeCrossBorderReportComputeRequest {
+                year: 1000000,
+                quarter: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**quarter:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_sme_thresholds_list</a>(request: PostV1DeclarationsEuSmeThresholdsListRequest) -> Result&lt;PostV1DeclarationsEuSmeThresholdsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_sme_thresholds_list(
+            &PostV1DeclarationsEuSmeThresholdsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_sme_threshold_get</a>(request: PostV1DeclarationsEuSmeThresholdGetRequest) -> Result&lt;PostV1DeclarationsEuSmeThresholdGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_sme_threshold_get(
+            &PostV1DeclarationsEuSmeThresholdGetRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_vat_return_packs_list</a>(request: PostV1DeclarationsEuVatReturnPacksListRequest) -> Result&lt;PostV1DeclarationsEuVatReturnPacksListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_vat_return_packs_list(
+            &PostV1DeclarationsEuVatReturnPacksListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_vat_return_compute</a>(request: PostV1DeclarationsEuVatReturnComputeRequest) -> Result&lt;PostV1DeclarationsEuVatReturnComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_eu_vat_return_compute(
+            &PostV1DeclarationsEuVatReturnComputeRequest {
+                country_code: "countryCode".to_string(),
+                year: 1000000,
+                month: 1000000,
+                months: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**country_code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**months:** `Option<String>` 
     
 </dd>
 </dl>
@@ -14991,6 +16198,7 @@ async fn main() {
                 end_date: None,
                 auto_renew: None,
                 value: None,
+                billing_period: None,
                 currency: None,
                 status: None,
                 notes: None,
@@ -15071,6 +16279,14 @@ async fn main() {
 <dd>
 
 **value:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**billing_period:** `Option<PostV1AgreementsAgreementsCreateRequestBillingPeriod>` 
     
 </dd>
 </dl>
@@ -15204,6 +16420,7 @@ async fn main() {
                 end_date: None,
                 auto_renew: None,
                 value: None,
+                billing_period: None,
                 status: None,
                 notes: None,
             },
@@ -15266,6 +16483,14 @@ async fn main() {
 <dd>
 
 **value:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**billing_period:** `Option<Option<PostV1AgreementsAgreementsUpdateRequestBillingPeriod>>` 
     
 </dd>
 </dl>
@@ -15422,6 +16647,131 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1AgreementsAgreementsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_generate_invoice</a>(request: PostV1AgreementsAgreementsGenerateInvoiceRequest) -> Result&lt;PostV1AgreementsAgreementsGenerateInvoiceResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .agreements
+        .post_v1agreements_agreements_generate_invoice(
+            &PostV1AgreementsAgreementsGenerateInvoiceRequest {
+                id: "id".to_string(),
+                as_of_date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_billing_run</a>(request: PostV1AgreementsAgreementsBillingRunRequest) -> Result&lt;PostV1AgreementsAgreementsBillingRunResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .agreements
+        .post_v1agreements_agreements_billing_run(
+            &PostV1AgreementsAgreementsBillingRunRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
     
 </dd>
 </dl>
@@ -24581,6 +25931,7 @@ async fn main() {
                 name: "name".to_string(),
                 code: None,
                 vat_code: None,
+                sme_exemption_number: None,
                 is_vat_payer: None,
                 address: None,
                 email: None,
@@ -24627,6 +25978,14 @@ async fn main() {
 <dd>
 
 **vat_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sme_exemption_number:** `Option<String>` 
     
 </dd>
 </dl>
@@ -24882,6 +26241,14 @@ async fn main() {
 <dd>
 
 **vat_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sme_exemption_number:** `Option<String>` 
     
 </dd>
 </dl>

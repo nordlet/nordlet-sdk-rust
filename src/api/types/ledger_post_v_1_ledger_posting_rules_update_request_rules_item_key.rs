@@ -20,6 +20,9 @@ pub enum PostV1LedgerPostingRulesUpdateRequestRulesItemKey {
     SettlementsCommissionRevenue,
     SettlementsSellerPayable,
     SettlementsSuspense,
+    RevenueDeferredIncome,
+    RevenueContractAsset,
+    RevenueRefundLiability,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -47,6 +50,9 @@ impl Serialize for PostV1LedgerPostingRulesUpdateRequestRulesItemKey {
             }
             Self::SettlementsSellerPayable => serializer.serialize_str("settlements.sellerPayable"),
             Self::SettlementsSuspense => serializer.serialize_str("settlements.suspense"),
+            Self::RevenueDeferredIncome => serializer.serialize_str("revenue.deferredIncome"),
+            Self::RevenueContractAsset => serializer.serialize_str("revenue.contractAsset"),
+            Self::RevenueRefundLiability => serializer.serialize_str("revenue.refundLiability"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -73,6 +79,9 @@ impl<'de> Deserialize<'de> for PostV1LedgerPostingRulesUpdateRequestRulesItemKey
             "settlements.commissionRevenue" => Ok(Self::SettlementsCommissionRevenue),
             "settlements.sellerPayable" => Ok(Self::SettlementsSellerPayable),
             "settlements.suspense" => Ok(Self::SettlementsSuspense),
+            "revenue.deferredIncome" => Ok(Self::RevenueDeferredIncome),
+            "revenue.contractAsset" => Ok(Self::RevenueContractAsset),
+            "revenue.refundLiability" => Ok(Self::RevenueRefundLiability),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -98,6 +107,9 @@ impl fmt::Display for PostV1LedgerPostingRulesUpdateRequestRulesItemKey {
             Self::SettlementsCommissionRevenue => write!(f, "settlements.commissionRevenue"),
             Self::SettlementsSellerPayable => write!(f, "settlements.sellerPayable"),
             Self::SettlementsSuspense => write!(f, "settlements.suspense"),
+            Self::RevenueDeferredIncome => write!(f, "revenue.deferredIncome"),
+            Self::RevenueContractAsset => write!(f, "revenue.contractAsset"),
+            Self::RevenueRefundLiability => write!(f, "revenue.refundLiability"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

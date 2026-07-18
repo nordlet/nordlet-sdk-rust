@@ -189,6 +189,118 @@ impl DeclarationsClient {
             .await
     }
 
+    pub async fn post_v1_declarations_eu_distance_sales_threshold_get(
+        &self,
+        request: &PostV1DeclarationsEuDistanceSalesThresholdGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuDistanceSalesThresholdGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/distance-sales-threshold/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_declarations_eu_union_turnover_get(
+        &self,
+        request: &PostV1DeclarationsEuUnionTurnoverGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuUnionTurnoverGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/union-turnover/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_declarations_eu_sme_cross_border_report_compute(
+        &self,
+        request: &PostV1DeclarationsEuSmeCrossBorderReportComputeRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuSmeCrossBorderReportComputeResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/sme-cross-border-report/compute",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_declarations_eu_sme_thresholds_list(
+        &self,
+        request: &PostV1DeclarationsEuSmeThresholdsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuSmeThresholdsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/sme-thresholds/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_declarations_eu_sme_threshold_get(
+        &self,
+        request: &PostV1DeclarationsEuSmeThresholdGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuSmeThresholdGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/sme-threshold/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_declarations_eu_vat_return_packs_list(
+        &self,
+        request: &PostV1DeclarationsEuVatReturnPacksListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuVatReturnPacksListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/vat-return/packs/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_declarations_eu_vat_return_compute(
+        &self,
+        request: &PostV1DeclarationsEuVatReturnComputeRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsEuVatReturnComputeResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/vat-return/compute",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_declarations_configs_list(
         &self,
         request: &PostV1DeclarationsConfigsListRequest,
