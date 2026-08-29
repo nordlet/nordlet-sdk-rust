@@ -13,6 +13,12 @@ pub struct PostV1InventoryStockTakeRequestLinesItem {
     #[serde(rename = "unitCost")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_cost: Option<String>,
+    #[serde(rename = "lotNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_number: Option<String>,
+    #[serde(rename = "expiryDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expiry_date: Option<String>,
 }
 
 impl PostV1InventoryStockTakeRequestLinesItem {
@@ -28,6 +34,8 @@ pub struct PostV1InventoryStockTakeRequestLinesItemBuilder {
     barcode: Option<String>,
     counted_qty: Option<String>,
     unit_cost: Option<String>,
+    lot_number: Option<String>,
+    expiry_date: Option<String>,
 }
 
 impl PostV1InventoryStockTakeRequestLinesItemBuilder {
@@ -51,6 +59,16 @@ impl PostV1InventoryStockTakeRequestLinesItemBuilder {
         self
     }
 
+    pub fn lot_number(mut self, value: impl Into<String>) -> Self {
+        self.lot_number = Some(value.into());
+        self
+    }
+
+    pub fn expiry_date(mut self, value: impl Into<String>) -> Self {
+        self.expiry_date = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1InventoryStockTakeRequestLinesItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`counted_qty`](PostV1InventoryStockTakeRequestLinesItemBuilder::counted_qty)
@@ -62,6 +80,8 @@ impl PostV1InventoryStockTakeRequestLinesItemBuilder {
                 .counted_qty
                 .ok_or_else(|| BuildError::missing_field("counted_qty"))?,
             unit_cost: self.unit_cost,
+            lot_number: self.lot_number,
+            expiry_date: self.expiry_date,
         })
     }
 }

@@ -69,6 +69,9 @@ pub struct PostV1SalesInvoicesIssueResponse {
     pub updated_at: String,
     #[serde(default)]
     pub lines: Vec<PostV1SalesInvoicesIssueResponseLinesItem>,
+    #[serde(rename = "vatEvidence")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_evidence: Option<PostV1SalesInvoicesIssueResponseVatEvidence>,
 }
 
 impl PostV1SalesInvoicesIssueResponse {
@@ -106,6 +109,7 @@ pub struct PostV1SalesInvoicesIssueResponseBuilder {
     created_at: Option<String>,
     updated_at: Option<String>,
     lines: Option<Vec<PostV1SalesInvoicesIssueResponseLinesItem>>,
+    vat_evidence: Option<PostV1SalesInvoicesIssueResponseVatEvidence>,
 }
 
 impl PostV1SalesInvoicesIssueResponseBuilder {
@@ -239,6 +243,11 @@ impl PostV1SalesInvoicesIssueResponseBuilder {
         self
     }
 
+    pub fn vat_evidence(mut self, value: PostV1SalesInvoicesIssueResponseVatEvidence) -> Self {
+        self.vat_evidence = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1SalesInvoicesIssueResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1SalesInvoicesIssueResponseBuilder::id)
@@ -309,6 +318,7 @@ impl PostV1SalesInvoicesIssueResponseBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            vat_evidence: self.vat_evidence,
         })
     }
 }

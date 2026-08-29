@@ -5,6 +5,7 @@ pub struct PostV1CatalogItemsListResponseRowsItem {
     #[serde(default)]
     pub id: String,
     pub r#type: PostV1CatalogItemsListResponseRowsItemType,
+    pub tracking: PostV1CatalogItemsListResponseRowsItemTracking,
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -71,6 +72,7 @@ impl PostV1CatalogItemsListResponseRowsItem {
 pub struct PostV1CatalogItemsListResponseRowsItemBuilder {
     id: Option<String>,
     r#type: Option<PostV1CatalogItemsListResponseRowsItemType>,
+    tracking: Option<PostV1CatalogItemsListResponseRowsItemTracking>,
     name: Option<String>,
     code: Option<String>,
     barcode: Option<String>,
@@ -102,6 +104,11 @@ impl PostV1CatalogItemsListResponseRowsItemBuilder {
 
     pub fn r#type(mut self, value: PostV1CatalogItemsListResponseRowsItemType) -> Self {
         self.r#type = Some(value);
+        self
+    }
+
+    pub fn tracking(mut self, value: PostV1CatalogItemsListResponseRowsItemTracking) -> Self {
+        self.tracking = Some(value);
         self
     }
 
@@ -215,6 +222,7 @@ impl PostV1CatalogItemsListResponseRowsItemBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1CatalogItemsListResponseRowsItemBuilder::id)
     /// - [`r#type`](PostV1CatalogItemsListResponseRowsItemBuilder::r#type)
+    /// - [`tracking`](PostV1CatalogItemsListResponseRowsItemBuilder::tracking)
     /// - [`name`](PostV1CatalogItemsListResponseRowsItemBuilder::name)
     /// - [`unit`](PostV1CatalogItemsListResponseRowsItemBuilder::unit)
     /// - [`components`](PostV1CatalogItemsListResponseRowsItemBuilder::components)
@@ -226,6 +234,9 @@ impl PostV1CatalogItemsListResponseRowsItemBuilder {
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,
+            tracking: self
+                .tracking
+                .ok_or_else(|| BuildError::missing_field("tracking"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             code: self.code,
             barcode: self.barcode,

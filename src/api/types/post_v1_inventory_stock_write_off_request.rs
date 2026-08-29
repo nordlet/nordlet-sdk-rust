@@ -12,6 +12,9 @@ pub struct PostV1InventoryStockWriteOffRequest {
     pub date: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "lotNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_number: Option<String>,
     #[serde(rename = "expenseAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expense_account_code: Option<String>,
@@ -35,6 +38,7 @@ pub struct PostV1InventoryStockWriteOffRequestBuilder {
     item_id: Option<String>,
     date: Option<String>,
     quantity: Option<String>,
+    lot_number: Option<String>,
     expense_account_code: Option<String>,
     inventory_account_code: Option<String>,
     notes: Option<String>,
@@ -58,6 +62,11 @@ impl PostV1InventoryStockWriteOffRequestBuilder {
 
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
+        self
+    }
+
+    pub fn lot_number(mut self, value: impl Into<String>) -> Self {
+        self.lot_number = Some(value.into());
         self
     }
 
@@ -94,6 +103,7 @@ impl PostV1InventoryStockWriteOffRequestBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            lot_number: self.lot_number,
             expense_account_code: self.expense_account_code,
             inventory_account_code: self.inventory_account_code,
             notes: self.notes,

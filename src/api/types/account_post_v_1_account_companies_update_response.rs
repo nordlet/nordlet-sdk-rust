@@ -44,6 +44,9 @@ pub struct PostV1AccountCompaniesUpdateResponse {
     #[serde(rename = "peppolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub peppol_id: Option<String>,
+    #[serde(rename = "sepaCreditorId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sepa_creditor_id: Option<String>,
     #[serde(rename = "logoFileId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub logo_file_id: Option<String>,
@@ -75,6 +78,7 @@ pub struct PostV1AccountCompaniesUpdateResponseBuilder {
     iban: Option<String>,
     bank_name: Option<String>,
     peppol_id: Option<String>,
+    sepa_creditor_id: Option<String>,
     logo_file_id: Option<String>,
 }
 
@@ -164,6 +168,11 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
         self
     }
 
+    pub fn sepa_creditor_id(mut self, value: impl Into<String>) -> Self {
+        self.sepa_creditor_id = Some(value.into());
+        self
+    }
+
     pub fn logo_file_id(mut self, value: impl Into<String>) -> Self {
         self.logo_file_id = Some(value.into());
         self
@@ -210,6 +219,7 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
             iban: self.iban,
             bank_name: self.bank_name,
             peppol_id: self.peppol_id,
+            sepa_creditor_id: self.sepa_creditor_id,
             logo_file_id: self.logo_file_id,
         })
     }

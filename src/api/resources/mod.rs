@@ -7,16 +7,19 @@
 //! - **Catalog**
 //! - **Sales**
 //! - **Purchases**
+//! - **Capture**
 //! - **Declarations**
 //! - **Ledger**
 //! - **Assets**
 //! - **Hr**
+//! - **Fleet**
 //! - **Payroll**
 //! - **Agreements**
 //! - **Inventory**
 //! - **Production**
 //! - **Ecommerce**
 //! - **Cash**
+//! - **Projects**
 //! - **Transport**
 //! - **Pos**
 //! - **Audit**
@@ -26,6 +29,7 @@
 //! - **Reports**
 //! - **Consolidation**
 //! - **Public**
+//! - **Billing**
 //! - **Account**
 
 use crate::{ApiError, ClientConfig};
@@ -35,12 +39,15 @@ pub mod agreements;
 pub mod assets;
 pub mod audit;
 pub mod bank;
+pub mod billing;
+pub mod capture;
 pub mod cash;
 pub mod catalog;
 pub mod consolidation;
 pub mod declarations;
 pub mod ecommerce;
 pub mod files;
+pub mod fleet;
 pub mod hr;
 pub mod inventory;
 pub mod ledger;
@@ -48,6 +55,7 @@ pub mod partners;
 pub mod payroll;
 pub mod pos;
 pub mod production;
+pub mod projects;
 pub mod public;
 pub mod purchases;
 pub mod reference;
@@ -62,16 +70,19 @@ pub struct ApiClient {
     pub catalog: CatalogClient,
     pub sales: SalesClient,
     pub purchases: PurchasesClient,
+    pub capture: CaptureClient,
     pub declarations: DeclarationsClient,
     pub ledger: LedgerClient,
     pub assets: AssetsClient,
     pub hr: HrClient,
+    pub fleet: FleetClient,
     pub payroll: PayrollClient,
     pub agreements: AgreementsClient,
     pub inventory: InventoryClient,
     pub production: ProductionClient,
     pub ecommerce: EcommerceClient,
     pub cash: CashClient,
+    pub projects: ProjectsClient,
     pub transport: TransportClient,
     pub pos: PosClient,
     pub audit: AuditClient,
@@ -81,6 +92,7 @@ pub struct ApiClient {
     pub reports: ReportsClient,
     pub consolidation: ConsolidationClient,
     pub public: PublicClient,
+    pub billing: BillingClient,
     pub account: AccountClient,
 }
 
@@ -93,16 +105,19 @@ impl ApiClient {
             catalog: CatalogClient::new(config.clone())?,
             sales: SalesClient::new(config.clone())?,
             purchases: PurchasesClient::new(config.clone())?,
+            capture: CaptureClient::new(config.clone())?,
             declarations: DeclarationsClient::new(config.clone())?,
             ledger: LedgerClient::new(config.clone())?,
             assets: AssetsClient::new(config.clone())?,
             hr: HrClient::new(config.clone())?,
+            fleet: FleetClient::new(config.clone())?,
             payroll: PayrollClient::new(config.clone())?,
             agreements: AgreementsClient::new(config.clone())?,
             inventory: InventoryClient::new(config.clone())?,
             production: ProductionClient::new(config.clone())?,
             ecommerce: EcommerceClient::new(config.clone())?,
             cash: CashClient::new(config.clone())?,
+            projects: ProjectsClient::new(config.clone())?,
             transport: TransportClient::new(config.clone())?,
             pos: PosClient::new(config.clone())?,
             audit: AuditClient::new(config.clone())?,
@@ -112,6 +127,7 @@ impl ApiClient {
             reports: ReportsClient::new(config.clone())?,
             consolidation: ConsolidationClient::new(config.clone())?,
             public: PublicClient::new(config.clone())?,
+            billing: BillingClient::new(config.clone())?,
             account: AccountClient::new(config.clone())?,
         })
     }
@@ -122,12 +138,15 @@ pub use agreements::AgreementsClient;
 pub use assets::AssetsClient;
 pub use audit::AuditClient;
 pub use bank::BankClient;
+pub use billing::BillingClient;
+pub use capture::CaptureClient;
 pub use cash::CashClient;
 pub use catalog::CatalogClient;
 pub use consolidation::ConsolidationClient;
 pub use declarations::DeclarationsClient;
 pub use ecommerce::EcommerceClient;
 pub use files::FilesClient;
+pub use fleet::FleetClient;
 pub use hr::HrClient;
 pub use inventory::InventoryClient;
 pub use ledger::LedgerClient;
@@ -135,6 +154,7 @@ pub use partners::PartnersClient;
 pub use payroll::PayrollClient;
 pub use pos::PosClient;
 pub use production::ProductionClient;
+pub use projects::ProjectsClient;
 pub use public::PublicClient;
 pub use purchases::PurchasesClient;
 pub use reference::ReferenceClient;

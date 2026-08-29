@@ -28,6 +28,9 @@ pub struct PostV1PurchasesInvoicesCreateResponseLinesItem {
     #[serde(rename = "costCenterId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cost_center_id: Option<String>,
+    #[serde(rename = "projectId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub project_id: Option<String>,
     #[serde(rename = "accountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_code: Option<String>,
@@ -64,6 +67,7 @@ pub struct PostV1PurchasesInvoicesCreateResponseLinesItemBuilder {
     vat_rate_percent: Option<String>,
     vat_classifier_code: Option<String>,
     cost_center_id: Option<String>,
+    project_id: Option<String>,
     account_code: Option<String>,
     line_net: Option<String>,
     line_vat: Option<String>,
@@ -122,6 +126,11 @@ impl PostV1PurchasesInvoicesCreateResponseLinesItemBuilder {
         self
     }
 
+    pub fn project_id(mut self, value: impl Into<String>) -> Self {
+        self.project_id = Some(value.into());
+        self
+    }
+
     pub fn account_code(mut self, value: impl Into<String>) -> Self {
         self.account_code = Some(value.into());
         self
@@ -176,6 +185,7 @@ impl PostV1PurchasesInvoicesCreateResponseLinesItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("vat_rate_percent"))?,
             vat_classifier_code: self.vat_classifier_code,
             cost_center_id: self.cost_center_id,
+            project_id: self.project_id,
             account_code: self.account_code,
             line_net: self
                 .line_net

@@ -4,6 +4,8 @@ pub use crate::prelude::*;
 pub struct PostV1CatalogItemsCreateRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<PostV1CatalogItemsCreateRequestType>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tracking: Option<PostV1CatalogItemsCreateRequestTracking>,
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -62,6 +64,7 @@ impl PostV1CatalogItemsCreateRequest {
 #[non_exhaustive]
 pub struct PostV1CatalogItemsCreateRequestBuilder {
     r#type: Option<PostV1CatalogItemsCreateRequestType>,
+    tracking: Option<PostV1CatalogItemsCreateRequestTracking>,
     name: Option<String>,
     code: Option<String>,
     barcode: Option<String>,
@@ -85,6 +88,11 @@ pub struct PostV1CatalogItemsCreateRequestBuilder {
 impl PostV1CatalogItemsCreateRequestBuilder {
     pub fn r#type(mut self, value: PostV1CatalogItemsCreateRequestType) -> Self {
         self.r#type = Some(value);
+        self
+    }
+
+    pub fn tracking(mut self, value: PostV1CatalogItemsCreateRequestTracking) -> Self {
+        self.tracking = Some(value);
         self
     }
 
@@ -187,6 +195,7 @@ impl PostV1CatalogItemsCreateRequestBuilder {
     pub fn build(self) -> Result<PostV1CatalogItemsCreateRequest, BuildError> {
         Ok(PostV1CatalogItemsCreateRequest {
             r#type: self.r#type,
+            tracking: self.tracking,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             code: self.code,
             barcode: self.barcode,

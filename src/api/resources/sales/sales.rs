@@ -109,6 +109,56 @@ impl SalesClient {
             .await
     }
 
+    /// Render an issued invoice as the national e-invoicing payload for the company country: FatturaPA (IT), KSeF FA(3) (PL) or UBL CIUS-RO (RO). Review the warnings - data the invoice does not carry is flagged, never invented.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_sales_invoices_einvoice_xml(
+        &self,
+        request: &PostV1SalesInvoicesEinvoiceXmlRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesEinvoiceXmlResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/einvoice-xml",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Build the national e-invoicing payload and deliver it to the bridge endpoint configured for the country gateway in compliance settings. The bridge (an accredited intermediary or connector) handles the certified national channel - SdI accreditation, KSeF sessions or ANAF SPV OAuth.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_sales_invoices_einvoice_send(
+        &self,
+        request: &PostV1SalesInvoicesEinvoiceSendRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesEinvoiceSendResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/einvoice-send",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_sales_invoices_update(
         &self,
         request: &PostV1SalesInvoicesUpdateRequest,

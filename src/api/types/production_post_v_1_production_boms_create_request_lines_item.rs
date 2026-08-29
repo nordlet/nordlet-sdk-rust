@@ -7,6 +7,9 @@ pub struct PostV1ProductionBomsCreateRequestLinesItem {
     pub component_item_id: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "scrapPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scrap_percent: Option<String>,
 }
 
 impl PostV1ProductionBomsCreateRequestLinesItem {
@@ -20,6 +23,7 @@ impl PostV1ProductionBomsCreateRequestLinesItem {
 pub struct PostV1ProductionBomsCreateRequestLinesItemBuilder {
     component_item_id: Option<String>,
     quantity: Option<String>,
+    scrap_percent: Option<String>,
 }
 
 impl PostV1ProductionBomsCreateRequestLinesItemBuilder {
@@ -30,6 +34,11 @@ impl PostV1ProductionBomsCreateRequestLinesItemBuilder {
 
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
+        self
+    }
+
+    pub fn scrap_percent(mut self, value: impl Into<String>) -> Self {
+        self.scrap_percent = Some(value.into());
         self
     }
 
@@ -45,6 +54,7 @@ impl PostV1ProductionBomsCreateRequestLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            scrap_percent: self.scrap_percent,
         })
     }
 }

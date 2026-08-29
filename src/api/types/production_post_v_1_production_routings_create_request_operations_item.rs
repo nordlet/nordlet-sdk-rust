@@ -1,0 +1,99 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct PostV1ProductionRoutingsCreateRequestOperationsItem {
+    #[serde(default)]
+    pub sequence: i64,
+    #[serde(default)]
+    pub name: String,
+    #[serde(rename = "workCenterId")]
+    #[serde(default)]
+    pub work_center_id: String,
+    #[serde(rename = "setupMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub setup_minutes: Option<String>,
+    #[serde(rename = "runMinutesPerUnit")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub run_minutes_per_unit: Option<String>,
+    #[serde(rename = "qualityCheckName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub quality_check_name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub notes: Option<String>,
+}
+
+impl PostV1ProductionRoutingsCreateRequestOperationsItem {
+    pub fn builder() -> PostV1ProductionRoutingsCreateRequestOperationsItemBuilder {
+        <PostV1ProductionRoutingsCreateRequestOperationsItemBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct PostV1ProductionRoutingsCreateRequestOperationsItemBuilder {
+    sequence: Option<i64>,
+    name: Option<String>,
+    work_center_id: Option<String>,
+    setup_minutes: Option<String>,
+    run_minutes_per_unit: Option<String>,
+    quality_check_name: Option<String>,
+    notes: Option<String>,
+}
+
+impl PostV1ProductionRoutingsCreateRequestOperationsItemBuilder {
+    pub fn sequence(mut self, value: i64) -> Self {
+        self.sequence = Some(value);
+        self
+    }
+
+    pub fn name(mut self, value: impl Into<String>) -> Self {
+        self.name = Some(value.into());
+        self
+    }
+
+    pub fn work_center_id(mut self, value: impl Into<String>) -> Self {
+        self.work_center_id = Some(value.into());
+        self
+    }
+
+    pub fn setup_minutes(mut self, value: impl Into<String>) -> Self {
+        self.setup_minutes = Some(value.into());
+        self
+    }
+
+    pub fn run_minutes_per_unit(mut self, value: impl Into<String>) -> Self {
+        self.run_minutes_per_unit = Some(value.into());
+        self
+    }
+
+    pub fn quality_check_name(mut self, value: impl Into<String>) -> Self {
+        self.quality_check_name = Some(value.into());
+        self
+    }
+
+    pub fn notes(mut self, value: impl Into<String>) -> Self {
+        self.notes = Some(value.into());
+        self
+    }
+
+    /// Consumes the builder and constructs a [`PostV1ProductionRoutingsCreateRequestOperationsItem`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`sequence`](PostV1ProductionRoutingsCreateRequestOperationsItemBuilder::sequence)
+    /// - [`name`](PostV1ProductionRoutingsCreateRequestOperationsItemBuilder::name)
+    /// - [`work_center_id`](PostV1ProductionRoutingsCreateRequestOperationsItemBuilder::work_center_id)
+    pub fn build(self) -> Result<PostV1ProductionRoutingsCreateRequestOperationsItem, BuildError> {
+        Ok(PostV1ProductionRoutingsCreateRequestOperationsItem {
+            sequence: self
+                .sequence
+                .ok_or_else(|| BuildError::missing_field("sequence"))?,
+            name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            work_center_id: self
+                .work_center_id
+                .ok_or_else(|| BuildError::missing_field("work_center_id"))?,
+            setup_minutes: self.setup_minutes,
+            run_minutes_per_unit: self.run_minutes_per_unit,
+            quality_check_name: self.quality_check_name,
+            notes: self.notes,
+        })
+    }
+}

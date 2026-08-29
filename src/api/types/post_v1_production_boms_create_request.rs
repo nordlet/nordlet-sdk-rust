@@ -12,6 +12,9 @@ pub struct PostV1ProductionBomsCreateRequest {
     #[serde(rename = "outputQuantity")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub output_quantity: Option<String>,
+    #[serde(rename = "routingId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub routing_id: Option<String>,
     #[serde(default)]
     pub lines: Vec<PostV1ProductionBomsCreateRequestLinesItem>,
 }
@@ -29,6 +32,7 @@ pub struct PostV1ProductionBomsCreateRequestBuilder {
     name: Option<String>,
     finished_item_id: Option<String>,
     output_quantity: Option<String>,
+    routing_id: Option<String>,
     lines: Option<Vec<PostV1ProductionBomsCreateRequestLinesItem>>,
 }
 
@@ -53,6 +57,11 @@ impl PostV1ProductionBomsCreateRequestBuilder {
         self
     }
 
+    pub fn routing_id(mut self, value: impl Into<String>) -> Self {
+        self.routing_id = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<PostV1ProductionBomsCreateRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -72,6 +81,7 @@ impl PostV1ProductionBomsCreateRequestBuilder {
                 .finished_item_id
                 .ok_or_else(|| BuildError::missing_field("finished_item_id"))?,
             output_quantity: self.output_quantity,
+            routing_id: self.routing_id,
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,

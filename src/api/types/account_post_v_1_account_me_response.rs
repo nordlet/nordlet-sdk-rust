@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct PostV1AccountMeResponse {
     #[serde(default)]
     pub user: PostV1AccountMeResponseUser,
@@ -11,6 +11,7 @@ pub struct PostV1AccountMeResponse {
     pub active_company_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
+    pub billing: PostV1AccountMeResponseBilling,
     #[serde(default)]
     pub companies: Vec<PostV1AccountMeResponseCompaniesItem>,
 }
@@ -28,6 +29,7 @@ pub struct PostV1AccountMeResponseBuilder {
     locale: Option<String>,
     active_company_id: Option<String>,
     role: Option<String>,
+    billing: Option<PostV1AccountMeResponseBilling>,
     companies: Option<Vec<PostV1AccountMeResponseCompaniesItem>>,
 }
 
@@ -52,6 +54,11 @@ impl PostV1AccountMeResponseBuilder {
         self
     }
 
+    pub fn billing(mut self, value: PostV1AccountMeResponseBilling) -> Self {
+        self.billing = Some(value);
+        self
+    }
+
     pub fn companies(mut self, value: Vec<PostV1AccountMeResponseCompaniesItem>) -> Self {
         self.companies = Some(value);
         self
@@ -61,6 +68,7 @@ impl PostV1AccountMeResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`user`](PostV1AccountMeResponseBuilder::user)
     /// - [`locale`](PostV1AccountMeResponseBuilder::locale)
+    /// - [`billing`](PostV1AccountMeResponseBuilder::billing)
     /// - [`companies`](PostV1AccountMeResponseBuilder::companies)
     pub fn build(self) -> Result<PostV1AccountMeResponse, BuildError> {
         Ok(PostV1AccountMeResponse {
@@ -70,6 +78,9 @@ impl PostV1AccountMeResponseBuilder {
                 .ok_or_else(|| BuildError::missing_field("locale"))?,
             active_company_id: self.active_company_id,
             role: self.role,
+            billing: self
+                .billing
+                .ok_or_else(|| BuildError::missing_field("billing"))?,
             companies: self
                 .companies
                 .ok_or_else(|| BuildError::missing_field("companies"))?,

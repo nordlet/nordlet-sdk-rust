@@ -11,11 +11,26 @@ pub struct PostV1ProductionOrdersCompleteResponse {
     #[serde(rename = "warehouseId")]
     #[serde(default)]
     pub warehouse_id: String,
+    #[serde(rename = "routingId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub routing_id: Option<String>,
     #[serde(default)]
     pub quantity: String,
     #[serde(default)]
     pub date: String,
     pub status: PostV1ProductionOrdersCompleteResponseStatus,
+    #[serde(rename = "scrappedQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scrapped_quantity: Option<String>,
+    #[serde(rename = "materialCost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub material_cost: Option<String>,
+    #[serde(rename = "laborCost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub labor_cost: Option<String>,
+    #[serde(rename = "scrapCost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scrap_cost: Option<String>,
     #[serde(rename = "totalCost")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_cost: Option<String>,
@@ -42,9 +57,14 @@ pub struct PostV1ProductionOrdersCompleteResponseBuilder {
     r#type: Option<PostV1ProductionOrdersCompleteResponseType>,
     bom_id: Option<String>,
     warehouse_id: Option<String>,
+    routing_id: Option<String>,
     quantity: Option<String>,
     date: Option<String>,
     status: Option<PostV1ProductionOrdersCompleteResponseStatus>,
+    scrapped_quantity: Option<String>,
+    material_cost: Option<String>,
+    labor_cost: Option<String>,
+    scrap_cost: Option<String>,
     total_cost: Option<String>,
     journal_transaction_id: Option<String>,
     notes: Option<String>,
@@ -72,6 +92,11 @@ impl PostV1ProductionOrdersCompleteResponseBuilder {
         self
     }
 
+    pub fn routing_id(mut self, value: impl Into<String>) -> Self {
+        self.routing_id = Some(value.into());
+        self
+    }
+
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
         self
@@ -84,6 +109,26 @@ impl PostV1ProductionOrdersCompleteResponseBuilder {
 
     pub fn status(mut self, value: PostV1ProductionOrdersCompleteResponseStatus) -> Self {
         self.status = Some(value);
+        self
+    }
+
+    pub fn scrapped_quantity(mut self, value: impl Into<String>) -> Self {
+        self.scrapped_quantity = Some(value.into());
+        self
+    }
+
+    pub fn material_cost(mut self, value: impl Into<String>) -> Self {
+        self.material_cost = Some(value.into());
+        self
+    }
+
+    pub fn labor_cost(mut self, value: impl Into<String>) -> Self {
+        self.labor_cost = Some(value.into());
+        self
+    }
+
+    pub fn scrap_cost(mut self, value: impl Into<String>) -> Self {
+        self.scrap_cost = Some(value.into());
         self
     }
 
@@ -129,6 +174,7 @@ impl PostV1ProductionOrdersCompleteResponseBuilder {
             warehouse_id: self
                 .warehouse_id
                 .ok_or_else(|| BuildError::missing_field("warehouse_id"))?,
+            routing_id: self.routing_id,
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
@@ -136,6 +182,10 @@ impl PostV1ProductionOrdersCompleteResponseBuilder {
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
+            scrapped_quantity: self.scrapped_quantity,
+            material_cost: self.material_cost,
+            labor_cost: self.labor_cost,
+            scrap_cost: self.scrap_cost,
             total_cost: self.total_cost,
             journal_transaction_id: self.journal_transaction_id,
             notes: self.notes,

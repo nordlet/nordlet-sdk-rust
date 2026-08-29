@@ -29,6 +29,9 @@ pub struct PostV1AccountCompaniesCreateRequest {
     #[serde(rename = "peppolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub peppol_id: Option<String>,
+    #[serde(rename = "sepaCreditorId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sepa_creditor_id: Option<String>,
     #[serde(rename = "defaultInvoiceCurrency")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub default_invoice_currency: Option<String>,
@@ -62,6 +65,7 @@ pub struct PostV1AccountCompaniesCreateRequestBuilder {
     iban: Option<String>,
     bank_name: Option<String>,
     peppol_id: Option<String>,
+    sepa_creditor_id: Option<String>,
     default_invoice_currency: Option<String>,
     country_code: Option<PostV1AccountCompaniesCreateRequestCountryCode>,
     is_sandbox: Option<bool>,
@@ -123,6 +127,11 @@ impl PostV1AccountCompaniesCreateRequestBuilder {
         self
     }
 
+    pub fn sepa_creditor_id(mut self, value: impl Into<String>) -> Self {
+        self.sepa_creditor_id = Some(value.into());
+        self
+    }
+
     pub fn default_invoice_currency(mut self, value: impl Into<String>) -> Self {
         self.default_invoice_currency = Some(value.into());
         self
@@ -154,6 +163,7 @@ impl PostV1AccountCompaniesCreateRequestBuilder {
             iban: self.iban,
             bank_name: self.bank_name,
             peppol_id: self.peppol_id,
+            sepa_creditor_id: self.sepa_creditor_id,
             default_invoice_currency: self.default_invoice_currency,
             country_code: self.country_code,
             is_sandbox: self.is_sandbox,

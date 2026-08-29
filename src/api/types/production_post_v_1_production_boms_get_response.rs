@@ -14,6 +14,9 @@ pub struct PostV1ProductionBomsGetResponse {
     #[serde(rename = "outputQuantity")]
     #[serde(default)]
     pub output_quantity: String,
+    #[serde(rename = "routingId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub routing_id: Option<String>,
     #[serde(rename = "isActive")]
     #[serde(default)]
     pub is_active: bool,
@@ -35,6 +38,7 @@ pub struct PostV1ProductionBomsGetResponseBuilder {
     name: Option<String>,
     finished_item_id: Option<String>,
     output_quantity: Option<String>,
+    routing_id: Option<String>,
     is_active: Option<bool>,
     lines: Option<Vec<PostV1ProductionBomsGetResponseLinesItem>>,
 }
@@ -62,6 +66,11 @@ impl PostV1ProductionBomsGetResponseBuilder {
 
     pub fn output_quantity(mut self, value: impl Into<String>) -> Self {
         self.output_quantity = Some(value.into());
+        self
+    }
+
+    pub fn routing_id(mut self, value: impl Into<String>) -> Self {
+        self.routing_id = Some(value.into());
         self
     }
 
@@ -95,6 +104,7 @@ impl PostV1ProductionBomsGetResponseBuilder {
             output_quantity: self
                 .output_quantity
                 .ok_or_else(|| BuildError::missing_field("output_quantity"))?,
+            routing_id: self.routing_id,
             is_active: self
                 .is_active
                 .ok_or_else(|| BuildError::missing_field("is_active"))?,

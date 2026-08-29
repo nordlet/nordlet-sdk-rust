@@ -10,6 +10,9 @@ pub struct PostV1ProductionOrdersCreateRequest {
     #[serde(rename = "warehouseId")]
     #[serde(default)]
     pub warehouse_id: String,
+    #[serde(rename = "routingId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub routing_id: Option<String>,
     #[serde(default)]
     pub quantity: String,
     #[serde(default)]
@@ -30,6 +33,7 @@ pub struct PostV1ProductionOrdersCreateRequestBuilder {
     r#type: Option<PostV1ProductionOrdersCreateRequestType>,
     bom_id: Option<String>,
     warehouse_id: Option<String>,
+    routing_id: Option<String>,
     quantity: Option<String>,
     date: Option<String>,
     notes: Option<String>,
@@ -48,6 +52,11 @@ impl PostV1ProductionOrdersCreateRequestBuilder {
 
     pub fn warehouse_id(mut self, value: impl Into<String>) -> Self {
         self.warehouse_id = Some(value.into());
+        self
+    }
+
+    pub fn routing_id(mut self, value: impl Into<String>) -> Self {
+        self.routing_id = Some(value.into());
         self
     }
 
@@ -81,6 +90,7 @@ impl PostV1ProductionOrdersCreateRequestBuilder {
             warehouse_id: self
                 .warehouse_id
                 .ok_or_else(|| BuildError::missing_field("warehouse_id"))?,
+            routing_id: self.routing_id,
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,

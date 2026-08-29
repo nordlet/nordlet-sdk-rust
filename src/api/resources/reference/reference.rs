@@ -230,6 +230,56 @@ impl ReferenceClient {
             .await
     }
 
+    /// History of EU VAT rate imports from the EC TEDB VatRetrievalService: when rates were pulled, what changed, and whether the run succeeded. The initial seed run carries the built-in snapshot.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_reference_eu_vat_rates_imports_list(
+        &self,
+        request: &PostV1ReferenceEuVatRatesImportsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReferenceEuVatRatesImportsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reference/eu-vat-rates/imports/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Trigger an immediate pull of EU VAT rates from the EC TEDB VatRetrievalService. Rates are shared reference data: new rates open with today as their effective date, rates that disappeared are closed with a validity end date. Returns the finished import run.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_reference_eu_vat_rates_sync(
+        &self,
+        request: &PostV1ReferenceEuVatRatesSyncRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReferenceEuVatRatesSyncResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reference/eu-vat-rates/sync",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     /// Replace the VAT rate mapping this company uses for one EU country. Pass an empty rates array to drop the overrides and return to the TEDB defaults. Overrides feed rate suggestions (vat/resolve) and OSS/IOSS return rate classification.
     ///
     /// # Arguments

@@ -43,6 +43,9 @@ pub struct PostV1PurchasesInvoicesCreateResponse {
     #[serde(rename = "creditedInvoiceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credited_invoice_id: Option<String>,
+    #[serde(rename = "purchaseOrderId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub purchase_order_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(rename = "createdAt")]
@@ -80,6 +83,7 @@ pub struct PostV1PurchasesInvoicesCreateResponseBuilder {
     paid_amount: Option<String>,
     journal_transaction_id: Option<String>,
     credited_invoice_id: Option<String>,
+    purchase_order_id: Option<String>,
     notes: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
@@ -170,6 +174,11 @@ impl PostV1PurchasesInvoicesCreateResponseBuilder {
         self
     }
 
+    pub fn purchase_order_id(mut self, value: impl Into<String>) -> Self {
+        self.purchase_order_id = Some(value.into());
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -247,6 +256,7 @@ impl PostV1PurchasesInvoicesCreateResponseBuilder {
                 .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
             journal_transaction_id: self.journal_transaction_id,
             credited_invoice_id: self.credited_invoice_id,
+            purchase_order_id: self.purchase_order_id,
             notes: self.notes,
             created_at: self
                 .created_at

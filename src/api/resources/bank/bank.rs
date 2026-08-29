@@ -141,6 +141,102 @@ impl BankClient {
             .await
     }
 
+    pub async fn post_v1_bank_mandates_create(
+        &self,
+        request: &PostV1BankMandatesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMandatesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/mandates/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_mandates_update(
+        &self,
+        request: &PostV1BankMandatesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMandatesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/mandates/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_mandates_cancel(
+        &self,
+        request: &PostV1BankMandatesCancelRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMandatesCancelResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/mandates/cancel",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_mandates_get(
+        &self,
+        request: &PostV1BankMandatesGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMandatesGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/mandates/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_mandates_list(
+        &self,
+        request: &PostV1BankMandatesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMandatesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/mandates/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_direct_debits_export(
+        &self,
+        request: &PostV1BankDirectDebitsExportRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankDirectDebitsExportResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/direct-debits/export",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_bank_transactions_suggest_matches(
         &self,
         request: &PostV1BankTransactionsSuggestMatchesRequest,
@@ -230,6 +326,134 @@ impl BankClient {
             .execute_request(
                 Method::POST,
                 "v1/bank/settlements/post",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn list_the_psd2_banks_asps_ps_available_to_connect(
+        &self,
+        request: &PostV1BankFeedsBanksListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsBanksListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/banks/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn begin_bank_authorization_redirect_the_user_to_the_returned_url(
+        &self,
+        request: &PostV1BankFeedsConnectionsStartRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsConnectionsStartResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/connections/start",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn exchange_the_redirect_code_for_a_session_and_store_the_bank_accounts_it_exposes(
+        &self,
+        request: &PostV1BankFeedsConnectionsCompleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsConnectionsCompleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/connections/complete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_feeds_connections_get(
+        &self,
+        request: &PostV1BankFeedsConnectionsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsConnectionsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/connections/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_feeds_connections_list(
+        &self,
+        request: &PostV1BankFeedsConnectionsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsConnectionsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/connections/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn revoke_the_consent_at_the_bank_and_drop_the_stored_connection(
+        &self,
+        request: &PostV1BankFeedsConnectionsDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsConnectionsDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/connections/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn point_a_bank_feed_account_at_a_ledger_bank_account_so_its_transactions_can_be_synced(
+        &self,
+        request: &PostV1BankFeedsAccountsLinkRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsAccountsLinkResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/accounts/link",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn pull_new_transactions_from_the_bank_into_the_ledger_emits_bank_feed_synced(
+        &self,
+        request: &PostV1BankFeedsSyncRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsSyncResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/sync",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

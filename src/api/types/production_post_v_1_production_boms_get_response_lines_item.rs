@@ -9,6 +9,9 @@ pub struct PostV1ProductionBomsGetResponseLinesItem {
     pub component_item_id: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "scrapPercent")]
+    #[serde(default)]
+    pub scrap_percent: String,
 }
 
 impl PostV1ProductionBomsGetResponseLinesItem {
@@ -23,6 +26,7 @@ pub struct PostV1ProductionBomsGetResponseLinesItemBuilder {
     id: Option<String>,
     component_item_id: Option<String>,
     quantity: Option<String>,
+    scrap_percent: Option<String>,
 }
 
 impl PostV1ProductionBomsGetResponseLinesItemBuilder {
@@ -41,11 +45,17 @@ impl PostV1ProductionBomsGetResponseLinesItemBuilder {
         self
     }
 
+    pub fn scrap_percent(mut self, value: impl Into<String>) -> Self {
+        self.scrap_percent = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1ProductionBomsGetResponseLinesItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1ProductionBomsGetResponseLinesItemBuilder::id)
     /// - [`component_item_id`](PostV1ProductionBomsGetResponseLinesItemBuilder::component_item_id)
     /// - [`quantity`](PostV1ProductionBomsGetResponseLinesItemBuilder::quantity)
+    /// - [`scrap_percent`](PostV1ProductionBomsGetResponseLinesItemBuilder::scrap_percent)
     pub fn build(self) -> Result<PostV1ProductionBomsGetResponseLinesItem, BuildError> {
         Ok(PostV1ProductionBomsGetResponseLinesItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -55,6 +65,9 @@ impl PostV1ProductionBomsGetResponseLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            scrap_percent: self
+                .scrap_percent
+                .ok_or_else(|| BuildError::missing_field("scrap_percent"))?,
         })
     }
 }

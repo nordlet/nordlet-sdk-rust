@@ -16,6 +16,8 @@ pub struct PostV1PayrollRunsCreateResponseLinesItem {
     #[serde(default)]
     pub gross: String,
     #[serde(default)]
+    pub natura: String,
+    #[serde(default)]
     pub additions: Vec<PostV1PayrollRunsCreateResponseLinesItemAdditionsItem>,
     #[serde(default)]
     pub deductions: Vec<PostV1PayrollRunsCreateResponseLinesItemDeductionsItem>,
@@ -50,6 +52,7 @@ pub struct PostV1PayrollRunsCreateResponseLinesItemBuilder {
     contract_id: Option<String>,
     employee_name: Option<String>,
     gross: Option<String>,
+    natura: Option<String>,
     additions: Option<Vec<PostV1PayrollRunsCreateResponseLinesItemAdditionsItem>>,
     deductions: Option<Vec<PostV1PayrollRunsCreateResponseLinesItemDeductionsItem>>,
     taxable_base: Option<String>,
@@ -83,6 +86,11 @@ impl PostV1PayrollRunsCreateResponseLinesItemBuilder {
 
     pub fn gross(mut self, value: impl Into<String>) -> Self {
         self.gross = Some(value.into());
+        self
+    }
+
+    pub fn natura(mut self, value: impl Into<String>) -> Self {
+        self.natura = Some(value.into());
         self
     }
 
@@ -138,6 +146,7 @@ impl PostV1PayrollRunsCreateResponseLinesItemBuilder {
     /// - [`employee_id`](PostV1PayrollRunsCreateResponseLinesItemBuilder::employee_id)
     /// - [`employee_name`](PostV1PayrollRunsCreateResponseLinesItemBuilder::employee_name)
     /// - [`gross`](PostV1PayrollRunsCreateResponseLinesItemBuilder::gross)
+    /// - [`natura`](PostV1PayrollRunsCreateResponseLinesItemBuilder::natura)
     /// - [`additions`](PostV1PayrollRunsCreateResponseLinesItemBuilder::additions)
     /// - [`deductions`](PostV1PayrollRunsCreateResponseLinesItemBuilder::deductions)
     /// - [`taxable_base`](PostV1PayrollRunsCreateResponseLinesItemBuilder::taxable_base)
@@ -159,6 +168,9 @@ impl PostV1PayrollRunsCreateResponseLinesItemBuilder {
             gross: self
                 .gross
                 .ok_or_else(|| BuildError::missing_field("gross"))?,
+            natura: self
+                .natura
+                .ok_or_else(|| BuildError::missing_field("natura"))?,
             additions: self
                 .additions
                 .ok_or_else(|| BuildError::missing_field("additions"))?,

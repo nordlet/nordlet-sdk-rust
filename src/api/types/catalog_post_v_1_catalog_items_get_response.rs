@@ -5,6 +5,7 @@ pub struct PostV1CatalogItemsGetResponse {
     #[serde(default)]
     pub id: String,
     pub r#type: PostV1CatalogItemsGetResponseType,
+    pub tracking: PostV1CatalogItemsGetResponseTracking,
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -71,6 +72,7 @@ impl PostV1CatalogItemsGetResponse {
 pub struct PostV1CatalogItemsGetResponseBuilder {
     id: Option<String>,
     r#type: Option<PostV1CatalogItemsGetResponseType>,
+    tracking: Option<PostV1CatalogItemsGetResponseTracking>,
     name: Option<String>,
     code: Option<String>,
     barcode: Option<String>,
@@ -101,6 +103,11 @@ impl PostV1CatalogItemsGetResponseBuilder {
 
     pub fn r#type(mut self, value: PostV1CatalogItemsGetResponseType) -> Self {
         self.r#type = Some(value);
+        self
+    }
+
+    pub fn tracking(mut self, value: PostV1CatalogItemsGetResponseTracking) -> Self {
+        self.tracking = Some(value);
         self
     }
 
@@ -211,6 +218,7 @@ impl PostV1CatalogItemsGetResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1CatalogItemsGetResponseBuilder::id)
     /// - [`r#type`](PostV1CatalogItemsGetResponseBuilder::r#type)
+    /// - [`tracking`](PostV1CatalogItemsGetResponseBuilder::tracking)
     /// - [`name`](PostV1CatalogItemsGetResponseBuilder::name)
     /// - [`unit`](PostV1CatalogItemsGetResponseBuilder::unit)
     /// - [`components`](PostV1CatalogItemsGetResponseBuilder::components)
@@ -222,6 +230,9 @@ impl PostV1CatalogItemsGetResponseBuilder {
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,
+            tracking: self
+                .tracking
+                .ok_or_else(|| BuildError::missing_field("tracking"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             code: self.code,
             barcode: self.barcode,

@@ -26,6 +26,9 @@ pub struct PostV1ConsolidationReportResponse {
     pub members: Vec<PostV1ConsolidationReportResponseMembersItem>,
     #[serde(default)]
     pub eliminations: PostV1ConsolidationReportResponseEliminations,
+    #[serde(rename = "cashFlow")]
+    #[serde(default)]
+    pub cash_flow: PostV1ConsolidationReportResponseCashFlow,
     #[serde(rename = "intercompanyCandidates")]
     #[serde(default)]
     pub intercompany_candidates: Vec<PostV1ConsolidationReportResponseIntercompanyCandidatesItem>,
@@ -50,6 +53,7 @@ pub struct PostV1ConsolidationReportResponseBuilder {
     equity_method: Option<PostV1ConsolidationReportResponseEquityMethod>,
     members: Option<Vec<PostV1ConsolidationReportResponseMembersItem>>,
     eliminations: Option<PostV1ConsolidationReportResponseEliminations>,
+    cash_flow: Option<PostV1ConsolidationReportResponseCashFlow>,
     intercompany_candidates:
         Option<Vec<PostV1ConsolidationReportResponseIntercompanyCandidatesItem>>,
 }
@@ -111,6 +115,11 @@ impl PostV1ConsolidationReportResponseBuilder {
         self
     }
 
+    pub fn cash_flow(mut self, value: PostV1ConsolidationReportResponseCashFlow) -> Self {
+        self.cash_flow = Some(value);
+        self
+    }
+
     pub fn intercompany_candidates(
         mut self,
         value: Vec<PostV1ConsolidationReportResponseIntercompanyCandidatesItem>,
@@ -131,6 +140,7 @@ impl PostV1ConsolidationReportResponseBuilder {
     /// - [`equity_method`](PostV1ConsolidationReportResponseBuilder::equity_method)
     /// - [`members`](PostV1ConsolidationReportResponseBuilder::members)
     /// - [`eliminations`](PostV1ConsolidationReportResponseBuilder::eliminations)
+    /// - [`cash_flow`](PostV1ConsolidationReportResponseBuilder::cash_flow)
     /// - [`intercompany_candidates`](PostV1ConsolidationReportResponseBuilder::intercompany_candidates)
     pub fn build(self) -> Result<PostV1ConsolidationReportResponse, BuildError> {
         Ok(PostV1ConsolidationReportResponse {
@@ -164,6 +174,9 @@ impl PostV1ConsolidationReportResponseBuilder {
             eliminations: self
                 .eliminations
                 .ok_or_else(|| BuildError::missing_field("eliminations"))?,
+            cash_flow: self
+                .cash_flow
+                .ok_or_else(|| BuildError::missing_field("cash_flow"))?,
             intercompany_candidates: self
                 .intercompany_candidates
                 .ok_or_else(|| BuildError::missing_field("intercompany_candidates"))?,

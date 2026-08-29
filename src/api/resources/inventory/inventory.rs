@@ -172,4 +172,180 @@ impl InventoryClient {
             )
             .await
     }
+
+    pub async fn post_v1_inventory_lots_list(
+        &self,
+        request: &PostV1InventoryLotsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryLotsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/lots/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_lots_get(
+        &self,
+        request: &PostV1InventoryLotsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryLotsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/lots/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_lots_update(
+        &self,
+        request: &PostV1InventoryLotsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryLotsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/lots/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_landed_costs_create(
+        &self,
+        request: &PostV1InventoryLandedCostsCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryLandedCostsCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/landed-costs/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_landed_costs_get(
+        &self,
+        request: &PostV1InventoryLandedCostsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryLandedCostsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/landed-costs/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_landed_costs_list(
+        &self,
+        request: &PostV1InventoryLandedCostsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryLandedCostsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/landed-costs/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_reorder_rules_create(
+        &self,
+        request: &PostV1InventoryReorderRulesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryReorderRulesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/reorder-rules/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_reorder_rules_update(
+        &self,
+        request: &PostV1InventoryReorderRulesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryReorderRulesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/reorder-rules/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_reorder_rules_delete(
+        &self,
+        request: &PostV1InventoryReorderRulesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryReorderRulesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/reorder-rules/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_reorder_rules_list(
+        &self,
+        request: &PostV1InventoryReorderRulesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryReorderRulesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/reorder-rules/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_inventory_reorder_rules_check(
+        &self,
+        request: &PostV1InventoryReorderRulesCheckRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1InventoryReorderRulesCheckResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/reorder-rules/check",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
 }

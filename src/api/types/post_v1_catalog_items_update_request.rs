@@ -7,6 +7,8 @@ pub struct PostV1CatalogItemsUpdateRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<PostV1CatalogItemsUpdateRequestType>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub tracking: Option<PostV1CatalogItemsUpdateRequestTracking>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<String>,
@@ -65,6 +67,7 @@ impl PostV1CatalogItemsUpdateRequest {
 pub struct PostV1CatalogItemsUpdateRequestBuilder {
     id: Option<String>,
     r#type: Option<PostV1CatalogItemsUpdateRequestType>,
+    tracking: Option<PostV1CatalogItemsUpdateRequestTracking>,
     name: Option<String>,
     code: Option<String>,
     barcode: Option<String>,
@@ -93,6 +96,11 @@ impl PostV1CatalogItemsUpdateRequestBuilder {
 
     pub fn r#type(mut self, value: PostV1CatalogItemsUpdateRequestType) -> Self {
         self.r#type = Some(value);
+        self
+    }
+
+    pub fn tracking(mut self, value: PostV1CatalogItemsUpdateRequestTracking) -> Self {
+        self.tracking = Some(value);
         self
     }
 
@@ -196,6 +204,7 @@ impl PostV1CatalogItemsUpdateRequestBuilder {
         Ok(PostV1CatalogItemsUpdateRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             r#type: self.r#type,
+            tracking: self.tracking,
             name: self.name,
             code: self.code,
             barcode: self.barcode,

@@ -15,6 +15,12 @@ pub struct PostV1InventoryStockReceiveRequest {
     #[serde(rename = "unitCost")]
     #[serde(default)]
     pub unit_cost: String,
+    #[serde(rename = "lotNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_number: Option<String>,
+    #[serde(rename = "expiryDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expiry_date: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
@@ -33,6 +39,8 @@ pub struct PostV1InventoryStockReceiveRequestBuilder {
     date: Option<String>,
     quantity: Option<String>,
     unit_cost: Option<String>,
+    lot_number: Option<String>,
+    expiry_date: Option<String>,
     notes: Option<String>,
 }
 
@@ -59,6 +67,16 @@ impl PostV1InventoryStockReceiveRequestBuilder {
 
     pub fn unit_cost(mut self, value: impl Into<String>) -> Self {
         self.unit_cost = Some(value.into());
+        self
+    }
+
+    pub fn lot_number(mut self, value: impl Into<String>) -> Self {
+        self.lot_number = Some(value.into());
+        self
+    }
+
+    pub fn expiry_date(mut self, value: impl Into<String>) -> Self {
+        self.expiry_date = Some(value.into());
         self
     }
 
@@ -89,6 +107,8 @@ impl PostV1InventoryStockReceiveRequestBuilder {
             unit_cost: self
                 .unit_cost
                 .ok_or_else(|| BuildError::missing_field("unit_cost"))?,
+            lot_number: self.lot_number,
+            expiry_date: self.expiry_date,
             notes: self.notes,
         })
     }

@@ -5,6 +5,7 @@ pub struct PostV1CatalogItemsCreateResponse {
     #[serde(default)]
     pub id: String,
     pub r#type: PostV1CatalogItemsCreateResponseType,
+    pub tracking: PostV1CatalogItemsCreateResponseTracking,
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -71,6 +72,7 @@ impl PostV1CatalogItemsCreateResponse {
 pub struct PostV1CatalogItemsCreateResponseBuilder {
     id: Option<String>,
     r#type: Option<PostV1CatalogItemsCreateResponseType>,
+    tracking: Option<PostV1CatalogItemsCreateResponseTracking>,
     name: Option<String>,
     code: Option<String>,
     barcode: Option<String>,
@@ -102,6 +104,11 @@ impl PostV1CatalogItemsCreateResponseBuilder {
 
     pub fn r#type(mut self, value: PostV1CatalogItemsCreateResponseType) -> Self {
         self.r#type = Some(value);
+        self
+    }
+
+    pub fn tracking(mut self, value: PostV1CatalogItemsCreateResponseTracking) -> Self {
+        self.tracking = Some(value);
         self
     }
 
@@ -215,6 +222,7 @@ impl PostV1CatalogItemsCreateResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1CatalogItemsCreateResponseBuilder::id)
     /// - [`r#type`](PostV1CatalogItemsCreateResponseBuilder::r#type)
+    /// - [`tracking`](PostV1CatalogItemsCreateResponseBuilder::tracking)
     /// - [`name`](PostV1CatalogItemsCreateResponseBuilder::name)
     /// - [`unit`](PostV1CatalogItemsCreateResponseBuilder::unit)
     /// - [`components`](PostV1CatalogItemsCreateResponseBuilder::components)
@@ -226,6 +234,9 @@ impl PostV1CatalogItemsCreateResponseBuilder {
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,
+            tracking: self
+                .tracking
+                .ok_or_else(|| BuildError::missing_field("tracking"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             code: self.code,
             barcode: self.barcode,

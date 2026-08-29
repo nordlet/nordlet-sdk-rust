@@ -301,6 +301,31 @@ impl DeclarationsClient {
             .await
     }
 
+    /// Generate the Polish JPK_V7M(3) file (VAT declaration with evidence) for a month, per the MF schema in force since February 2026. Amounts must already be in PLN; rows are marked BFK until a KSeF integration supplies invoice numbers. Review the warnings before submitting via e-dokumenty.mf.gov.pl.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_declarations_pl_jpk_v7_m_generate(
+        &self,
+        request: &PostV1DeclarationsPlJpkV7MGenerateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DeclarationsPlJpkV7MGenerateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/pl/jpk-v7m/generate",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_declarations_configs_list(
         &self,
         request: &PostV1DeclarationsConfigsListRequest,

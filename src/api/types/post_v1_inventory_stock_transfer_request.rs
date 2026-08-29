@@ -15,6 +15,9 @@ pub struct PostV1InventoryStockTransferRequest {
     pub date: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "lotNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_number: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
@@ -33,6 +36,7 @@ pub struct PostV1InventoryStockTransferRequestBuilder {
     item_id: Option<String>,
     date: Option<String>,
     quantity: Option<String>,
+    lot_number: Option<String>,
     notes: Option<String>,
 }
 
@@ -59,6 +63,11 @@ impl PostV1InventoryStockTransferRequestBuilder {
 
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
+        self
+    }
+
+    pub fn lot_number(mut self, value: impl Into<String>) -> Self {
+        self.lot_number = Some(value.into());
         self
     }
 
@@ -89,6 +98,7 @@ impl PostV1InventoryStockTransferRequestBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            lot_number: self.lot_number,
             notes: self.notes,
         })
     }

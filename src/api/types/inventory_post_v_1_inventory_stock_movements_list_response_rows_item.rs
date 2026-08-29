@@ -10,6 +10,9 @@ pub struct PostV1InventoryStockMovementsListResponseRowsItem {
     #[serde(rename = "itemId")]
     #[serde(default)]
     pub item_id: String,
+    #[serde(rename = "lotId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_id: Option<String>,
     #[serde(default)]
     pub date: String,
     pub direction: PostV1InventoryStockMovementsListResponseRowsItemDirection,
@@ -49,6 +52,7 @@ pub struct PostV1InventoryStockMovementsListResponseRowsItemBuilder {
     id: Option<String>,
     warehouse_id: Option<String>,
     item_id: Option<String>,
+    lot_id: Option<String>,
     date: Option<String>,
     direction: Option<PostV1InventoryStockMovementsListResponseRowsItemDirection>,
     quantity: Option<String>,
@@ -74,6 +78,11 @@ impl PostV1InventoryStockMovementsListResponseRowsItemBuilder {
 
     pub fn item_id(mut self, value: impl Into<String>) -> Self {
         self.item_id = Some(value.into());
+        self
+    }
+
+    pub fn lot_id(mut self, value: impl Into<String>) -> Self {
+        self.lot_id = Some(value.into());
         self
     }
 
@@ -150,6 +159,7 @@ impl PostV1InventoryStockMovementsListResponseRowsItemBuilder {
             item_id: self
                 .item_id
                 .ok_or_else(|| BuildError::missing_field("item_id"))?,
+            lot_id: self.lot_id,
             date: self.date.ok_or_else(|| BuildError::missing_field("date"))?,
             direction: self
                 .direction

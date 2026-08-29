@@ -6,6 +6,9 @@ pub struct PostV1PayrollRunsCreateRequest {
     pub year: i64,
     #[serde(default)]
     pub month: i64,
+    #[serde(rename = "includeNatura")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub include_natura: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lines: Option<Vec<PostV1PayrollRunsCreateRequestLinesItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -23,6 +26,7 @@ impl PostV1PayrollRunsCreateRequest {
 pub struct PostV1PayrollRunsCreateRequestBuilder {
     year: Option<i64>,
     month: Option<i64>,
+    include_natura: Option<bool>,
     lines: Option<Vec<PostV1PayrollRunsCreateRequestLinesItem>>,
     notes: Option<String>,
 }
@@ -35,6 +39,11 @@ impl PostV1PayrollRunsCreateRequestBuilder {
 
     pub fn month(mut self, value: i64) -> Self {
         self.month = Some(value);
+        self
+    }
+
+    pub fn include_natura(mut self, value: bool) -> Self {
+        self.include_natura = Some(value);
         self
     }
 
@@ -58,6 +67,7 @@ impl PostV1PayrollRunsCreateRequestBuilder {
             month: self
                 .month
                 .ok_or_else(|| BuildError::missing_field("month"))?,
+            include_natura: self.include_natura,
             lines: self.lines,
             notes: self.notes,
         })

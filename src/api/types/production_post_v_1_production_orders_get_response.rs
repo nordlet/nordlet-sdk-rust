@@ -11,11 +11,26 @@ pub struct PostV1ProductionOrdersGetResponse {
     #[serde(rename = "warehouseId")]
     #[serde(default)]
     pub warehouse_id: String,
+    #[serde(rename = "routingId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub routing_id: Option<String>,
     #[serde(default)]
     pub quantity: String,
     #[serde(default)]
     pub date: String,
     pub status: PostV1ProductionOrdersGetResponseStatus,
+    #[serde(rename = "scrappedQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scrapped_quantity: Option<String>,
+    #[serde(rename = "materialCost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub material_cost: Option<String>,
+    #[serde(rename = "laborCost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub labor_cost: Option<String>,
+    #[serde(rename = "scrapCost")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scrap_cost: Option<String>,
     #[serde(rename = "totalCost")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_cost: Option<String>,
@@ -27,6 +42,11 @@ pub struct PostV1ProductionOrdersGetResponse {
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
+    #[serde(default)]
+    pub operations: Vec<PostV1ProductionOrdersGetResponseOperationsItem>,
+    #[serde(rename = "qualityChecks")]
+    #[serde(default)]
+    pub quality_checks: Vec<PostV1ProductionOrdersGetResponseQualityChecksItem>,
 }
 
 impl PostV1ProductionOrdersGetResponse {
@@ -42,13 +62,20 @@ pub struct PostV1ProductionOrdersGetResponseBuilder {
     r#type: Option<PostV1ProductionOrdersGetResponseType>,
     bom_id: Option<String>,
     warehouse_id: Option<String>,
+    routing_id: Option<String>,
     quantity: Option<String>,
     date: Option<String>,
     status: Option<PostV1ProductionOrdersGetResponseStatus>,
+    scrapped_quantity: Option<String>,
+    material_cost: Option<String>,
+    labor_cost: Option<String>,
+    scrap_cost: Option<String>,
     total_cost: Option<String>,
     journal_transaction_id: Option<String>,
     notes: Option<String>,
     created_at: Option<String>,
+    operations: Option<Vec<PostV1ProductionOrdersGetResponseOperationsItem>>,
+    quality_checks: Option<Vec<PostV1ProductionOrdersGetResponseQualityChecksItem>>,
 }
 
 impl PostV1ProductionOrdersGetResponseBuilder {
@@ -72,6 +99,11 @@ impl PostV1ProductionOrdersGetResponseBuilder {
         self
     }
 
+    pub fn routing_id(mut self, value: impl Into<String>) -> Self {
+        self.routing_id = Some(value.into());
+        self
+    }
+
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
         self
@@ -84,6 +116,26 @@ impl PostV1ProductionOrdersGetResponseBuilder {
 
     pub fn status(mut self, value: PostV1ProductionOrdersGetResponseStatus) -> Self {
         self.status = Some(value);
+        self
+    }
+
+    pub fn scrapped_quantity(mut self, value: impl Into<String>) -> Self {
+        self.scrapped_quantity = Some(value.into());
+        self
+    }
+
+    pub fn material_cost(mut self, value: impl Into<String>) -> Self {
+        self.material_cost = Some(value.into());
+        self
+    }
+
+    pub fn labor_cost(mut self, value: impl Into<String>) -> Self {
+        self.labor_cost = Some(value.into());
+        self
+    }
+
+    pub fn scrap_cost(mut self, value: impl Into<String>) -> Self {
+        self.scrap_cost = Some(value.into());
         self
     }
 
@@ -107,6 +159,22 @@ impl PostV1ProductionOrdersGetResponseBuilder {
         self
     }
 
+    pub fn operations(
+        mut self,
+        value: Vec<PostV1ProductionOrdersGetResponseOperationsItem>,
+    ) -> Self {
+        self.operations = Some(value);
+        self
+    }
+
+    pub fn quality_checks(
+        mut self,
+        value: Vec<PostV1ProductionOrdersGetResponseQualityChecksItem>,
+    ) -> Self {
+        self.quality_checks = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1ProductionOrdersGetResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1ProductionOrdersGetResponseBuilder::id)
@@ -117,6 +185,8 @@ impl PostV1ProductionOrdersGetResponseBuilder {
     /// - [`date`](PostV1ProductionOrdersGetResponseBuilder::date)
     /// - [`status`](PostV1ProductionOrdersGetResponseBuilder::status)
     /// - [`created_at`](PostV1ProductionOrdersGetResponseBuilder::created_at)
+    /// - [`operations`](PostV1ProductionOrdersGetResponseBuilder::operations)
+    /// - [`quality_checks`](PostV1ProductionOrdersGetResponseBuilder::quality_checks)
     pub fn build(self) -> Result<PostV1ProductionOrdersGetResponse, BuildError> {
         Ok(PostV1ProductionOrdersGetResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -129,6 +199,7 @@ impl PostV1ProductionOrdersGetResponseBuilder {
             warehouse_id: self
                 .warehouse_id
                 .ok_or_else(|| BuildError::missing_field("warehouse_id"))?,
+            routing_id: self.routing_id,
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
@@ -136,12 +207,22 @@ impl PostV1ProductionOrdersGetResponseBuilder {
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
+            scrapped_quantity: self.scrapped_quantity,
+            material_cost: self.material_cost,
+            labor_cost: self.labor_cost,
+            scrap_cost: self.scrap_cost,
             total_cost: self.total_cost,
             journal_transaction_id: self.journal_transaction_id,
             notes: self.notes,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,
+            operations: self
+                .operations
+                .ok_or_else(|| BuildError::missing_field("operations"))?,
+            quality_checks: self
+                .quality_checks
+                .ok_or_else(|| BuildError::missing_field("quality_checks"))?,
         })
     }
 }

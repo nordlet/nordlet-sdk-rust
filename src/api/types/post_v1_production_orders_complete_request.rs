@@ -4,6 +4,9 @@ pub use crate::prelude::*;
 pub struct PostV1ProductionOrdersCompleteRequest {
     #[serde(default)]
     pub id: String,
+    #[serde(rename = "scrappedQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub scrapped_quantity: Option<String>,
     #[serde(rename = "componentsAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub components_account_code: Option<String>,
@@ -22,6 +25,7 @@ impl PostV1ProductionOrdersCompleteRequest {
 #[non_exhaustive]
 pub struct PostV1ProductionOrdersCompleteRequestBuilder {
     id: Option<String>,
+    scrapped_quantity: Option<String>,
     components_account_code: Option<String>,
     finished_account_code: Option<String>,
 }
@@ -29,6 +33,11 @@ pub struct PostV1ProductionOrdersCompleteRequestBuilder {
 impl PostV1ProductionOrdersCompleteRequestBuilder {
     pub fn id(mut self, value: impl Into<String>) -> Self {
         self.id = Some(value.into());
+        self
+    }
+
+    pub fn scrapped_quantity(mut self, value: impl Into<String>) -> Self {
+        self.scrapped_quantity = Some(value.into());
         self
     }
 
@@ -48,6 +57,7 @@ impl PostV1ProductionOrdersCompleteRequestBuilder {
     pub fn build(self) -> Result<PostV1ProductionOrdersCompleteRequest, BuildError> {
         Ok(PostV1ProductionOrdersCompleteRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+            scrapped_quantity: self.scrapped_quantity,
             components_account_code: self.components_account_code,
             finished_account_code: self.finished_account_code,
         })

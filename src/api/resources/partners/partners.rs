@@ -221,6 +221,38 @@ impl PartnersClient {
             .await
     }
 
+    pub async fn post_v1_partners_vat_reviews_list(
+        &self,
+        request: &PostV1PartnersVatReviewsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PartnersVatReviewsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/vat-reviews/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_partners_vat_reviews_resolve(
+        &self,
+        request: &PostV1PartnersVatReviewsResolveRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PartnersVatReviewsResolveResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/vat-reviews/resolve",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_partners_create(
         &self,
         request: &PostV1PartnersCreateRequest,
