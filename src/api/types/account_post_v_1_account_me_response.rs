@@ -13,6 +13,8 @@ pub struct PostV1AccountMeResponse {
     pub role: Option<String>,
     pub billing: PostV1AccountMeResponseBilling,
     #[serde(default)]
+    pub consent: PostV1AccountMeResponseConsent,
+    #[serde(default)]
     pub companies: Vec<PostV1AccountMeResponseCompaniesItem>,
 }
 
@@ -30,6 +32,7 @@ pub struct PostV1AccountMeResponseBuilder {
     active_company_id: Option<String>,
     role: Option<String>,
     billing: Option<PostV1AccountMeResponseBilling>,
+    consent: Option<PostV1AccountMeResponseConsent>,
     companies: Option<Vec<PostV1AccountMeResponseCompaniesItem>>,
 }
 
@@ -59,6 +62,11 @@ impl PostV1AccountMeResponseBuilder {
         self
     }
 
+    pub fn consent(mut self, value: PostV1AccountMeResponseConsent) -> Self {
+        self.consent = Some(value);
+        self
+    }
+
     pub fn companies(mut self, value: Vec<PostV1AccountMeResponseCompaniesItem>) -> Self {
         self.companies = Some(value);
         self
@@ -69,6 +77,7 @@ impl PostV1AccountMeResponseBuilder {
     /// - [`user`](PostV1AccountMeResponseBuilder::user)
     /// - [`locale`](PostV1AccountMeResponseBuilder::locale)
     /// - [`billing`](PostV1AccountMeResponseBuilder::billing)
+    /// - [`consent`](PostV1AccountMeResponseBuilder::consent)
     /// - [`companies`](PostV1AccountMeResponseBuilder::companies)
     pub fn build(self) -> Result<PostV1AccountMeResponse, BuildError> {
         Ok(PostV1AccountMeResponse {
@@ -81,6 +90,9 @@ impl PostV1AccountMeResponseBuilder {
             billing: self
                 .billing
                 .ok_or_else(|| BuildError::missing_field("billing"))?,
+            consent: self
+                .consent
+                .ok_or_else(|| BuildError::missing_field("consent"))?,
             companies: self
                 .companies
                 .ok_or_else(|| BuildError::missing_field("companies"))?,

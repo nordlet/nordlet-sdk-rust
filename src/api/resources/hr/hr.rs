@@ -125,6 +125,47 @@ impl HrClient {
             .await
     }
 
+    pub async fn post_v1_hr_employees_delete(
+        &self,
+        request: &PostV1HrEmployeesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1HrEmployeesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/employees/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Replaces the name with a placeholder and removes personal code, birth date, contact details, address, bank account, social-insurance number, notes and sick-leave reasons. Payroll and contract rows stay linked to the record for the statutory retention period.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn blank_an_employees_personal_data_and_hide_the_record(
+        &self,
+        request: &PostV1HrEmployeesAnonymizeRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1HrEmployeesAnonymizeResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/employees/anonymize",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_hr_contracts_create(
         &self,
         request: &PostV1HrContractsCreateRequest,

@@ -3810,6 +3810,78 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">blank_a_partners_personal_data_and_hide_the_record</a>(request: PostV1PartnersAnonymizeRequest) -> Result&lt;PostV1PartnersAnonymizeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes birth date, self-employment certificate number, email, phone, address, notes, contacts, addresses and bank accounts, then hides the partner. The name, code and VAT number stay because issued invoices must keep identifying the counterparty for the statutory retention period.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .blank_a_partners_personal_data_and_hide_the_record(
+            &PostV1PartnersAnonymizeRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_list</a>(request: PostV1PartnersListRequest) -> Result&lt;PostV1PartnersListResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -16198,6 +16270,136 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1HrEmployeesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_delete</a>(request: PostV1HrEmployeesDeleteRequest) -> Result&lt;PostV1HrEmployeesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .post_v1hr_employees_delete(
+            &PostV1HrEmployeesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">blank_an_employees_personal_data_and_hide_the_record</a>(request: PostV1HrEmployeesAnonymizeRequest) -> Result&lt;PostV1HrEmployeesAnonymizeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replaces the name with a placeholder and removes personal code, birth date, contact details, address, bank account, social-insurance number, notes and sick-leave reasons. Payroll and contract rows stay linked to the record for the statutory retention period.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .blank_an_employees_personal_data_and_hide_the_record(
+            &PostV1HrEmployeesAnonymizeRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
     
 </dd>
 </dl>
@@ -33195,6 +33397,8 @@ async fn main() {
             &PostV1AccountLoginLinkRequestRequest {
                 email: "email".to_string(),
                 locale: None,
+                accept_terms: None,
+                accept_dpa: None,
             },
             None,
         )
@@ -33223,6 +33427,22 @@ async fn main() {
 <dd>
 
 **locale:** `Option<PostV1AccountLoginLinkRequestRequestLocale>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accept_terms:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accept_dpa:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -33810,6 +34030,8 @@ async fn main() {
                 token: "token".to_string(),
                 name: None,
                 locale: None,
+                accept_terms: None,
+                accept_dpa: None,
             },
             None,
         )
@@ -33846,6 +34068,22 @@ async fn main() {
 <dd>
 
 **locale:** `Option<PostV1AccountInvitesAcceptRequestLocale>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accept_terms:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accept_dpa:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -34693,6 +34931,457 @@ async fn main() {
 <dd>
 
 **id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_consent_accept</a>(request: PostV1AccountConsentAcceptRequest) -> Result&lt;PostV1AccountConsentAcceptResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_consent_accept(
+            &PostV1AccountConsentAcceptRequest {
+                accept_terms: true,
+                accept_dpa: true,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**accept_terms:** `bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accept_dpa:** `bool` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_profile_update</a>(request: PostV1AccountProfileUpdateRequest) -> Result&lt;PostV1AccountProfileUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_profile_update(
+            &PostV1AccountProfileUpdateRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_email_change_request</a>(request: PostV1AccountEmailChangeRequestRequest) -> Result&lt;PostV1AccountEmailChangeRequestResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_email_change_request(
+            &PostV1AccountEmailChangeRequestRequest {
+                new_email: "newEmail".to_string(),
+                locale: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**new_email:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**locale:** `Option<PostV1AccountEmailChangeRequestRequestLocale>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_sessions_list</a>(request: PostV1AccountSessionsListRequest) -> Result&lt;PostV1AccountSessionsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_sessions_list(
+            &PostV1AccountSessionsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_sessions_revoke</a>(request: PostV1AccountSessionsRevokeRequest) -> Result&lt;PostV1AccountSessionsRevokeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_sessions_revoke(
+            &PostV1AccountSessionsRevokeRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_sessions_revoke_others</a>(request: PostV1AccountSessionsRevokeOthersRequest) -> Result&lt;PostV1AccountSessionsRevokeOthersResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_sessions_revoke_others(
+            &PostV1AccountSessionsRevokeOthersRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">download_everything_nordlet_stores_about_the_signed_in_user</a>(request: PostV1AccountExportRequest) -> Result&lt;PostV1AccountExportResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .download_everything_nordlet_stores_about_the_signed_in_user(
+            &PostV1AccountExportRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">delete_the_signed_in_user_account</a>(request: PostV1AccountDeleteRequest) -> Result&lt;PostV1AccountDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes the user: sessions, sign-in links, memberships and pending invitations are deleted at once; the email and name are replaced by an anonymous placeholder immediately and the remaining row is removed after 30 days. Refused while the user still owns or pays for a company that is not deleted.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .delete_the_signed_in_user_account(
+            &PostV1AccountDeleteRequest {
+                confirm_email: "confirmEmail".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**confirm_email:** `String` 
     
 </dd>
 </dl>

@@ -380,4 +380,141 @@ impl AccountClient {
             )
             .await
     }
+
+    pub async fn post_v1_account_consent_accept(
+        &self,
+        request: &PostV1AccountConsentAcceptRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountConsentAcceptResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/consent/accept",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_profile_update(
+        &self,
+        request: &PostV1AccountProfileUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountProfileUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/profile/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_email_change_request(
+        &self,
+        request: &PostV1AccountEmailChangeRequestRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountEmailChangeRequestResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/email/change-request",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_sessions_list(
+        &self,
+        request: &PostV1AccountSessionsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountSessionsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/sessions/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_sessions_revoke(
+        &self,
+        request: &PostV1AccountSessionsRevokeRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountSessionsRevokeResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/sessions/revoke",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_sessions_revoke_others(
+        &self,
+        request: &PostV1AccountSessionsRevokeOthersRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountSessionsRevokeOthersResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/sessions/revoke-others",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn download_everything_nordlet_stores_about_the_signed_in_user(
+        &self,
+        request: &PostV1AccountExportRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountExportResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/export",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Removes the user: sessions, sign-in links, memberships and pending invitations are deleted at once; the email and name are replaced by an anonymous placeholder immediately and the remaining row is removed after 30 days. Refused while the user still owns or pays for a company that is not deleted.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn delete_the_signed_in_user_account(
+        &self,
+        request: &PostV1AccountDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
 }

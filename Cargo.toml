@@ -1,6 +1,6 @@
 [package]
 name = "nordlet"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 description = "Official Rust SDK for the Nordlet Accounting API"
 license = "MIT"

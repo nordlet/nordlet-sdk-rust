@@ -333,6 +333,31 @@ impl PartnersClient {
             .await
     }
 
+    /// Removes birth date, self-employment certificate number, email, phone, address, notes, contacts, addresses and bank accounts, then hides the partner. The name, code and VAT number stay because issued invoices must keep identifying the counterparty for the statutory retention period.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn blank_a_partners_personal_data_and_hide_the_record(
+        &self,
+        request: &PostV1PartnersAnonymizeRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PartnersAnonymizeResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/anonymize",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_partners_list(
         &self,
         request: &PostV1PartnersListRequest,
