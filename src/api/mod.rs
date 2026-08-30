@@ -15,8 +15,8 @@ pub use resources::{
     AccountClient, AgreementsClient, ApiClient, AssetsClient, AuditClient, BankClient,
     BillingClient, CaptureClient, CashClient, CatalogClient, ConsolidationClient,
     DeclarationsClient, EcommerceClient, FilesClient, FleetClient, HrClient, InventoryClient,
-    LedgerClient, PartnersClient, PayrollClient, PosClient, ProductionClient, ProjectsClient,
-    PublicClient, PurchasesClient, ReferenceClient, ReportsClient, SalesClient, TransportClient,
-    WebhooksClient,
+    LedgerClient, MigrationClient, PartnersClient, PayrollClient, PosClient, ProductionClient,
+    ProjectsClient, PublicClient, PurchasesClient, ReferenceClient, ReportsClient, SalesClient,
+    TransportClient, WebhooksClient,
 };
 pub use types::*;

@@ -10,6 +10,7 @@
 //! - **Capture**
 //! - **Declarations**
 //! - **Ledger**
+//! - **Migration**
 //! - **Assets**
 //! - **Hr**
 //! - **Fleet**
@@ -51,6 +52,7 @@ pub mod fleet;
 pub mod hr;
 pub mod inventory;
 pub mod ledger;
+pub mod migration;
 pub mod partners;
 pub mod payroll;
 pub mod pos;
@@ -73,6 +75,7 @@ pub struct ApiClient {
     pub capture: CaptureClient,
     pub declarations: DeclarationsClient,
     pub ledger: LedgerClient,
+    pub migration: MigrationClient,
     pub assets: AssetsClient,
     pub hr: HrClient,
     pub fleet: FleetClient,
@@ -108,6 +111,7 @@ impl ApiClient {
             capture: CaptureClient::new(config.clone())?,
             declarations: DeclarationsClient::new(config.clone())?,
             ledger: LedgerClient::new(config.clone())?,
+            migration: MigrationClient::new(config.clone())?,
             assets: AssetsClient::new(config.clone())?,
             hr: HrClient::new(config.clone())?,
             fleet: FleetClient::new(config.clone())?,
@@ -150,6 +154,7 @@ pub use fleet::FleetClient;
 pub use hr::HrClient;
 pub use inventory::InventoryClient;
 pub use ledger::LedgerClient;
+pub use migration::MigrationClient;
 pub use partners::PartnersClient;
 pub use payroll::PayrollClient;
 pub use pos::PosClient;

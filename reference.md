@@ -14385,6 +14385,349 @@ async fn main() {
 </dl>
 </details>
 
+## Migration
+<details><summary><code>client.migration.<a href="/src/api/resources/migration/client.rs">check_a_historical_books_package_without_writing_anything</a>(request: PostV1MigrationBooksValidateRequest) -> Result&lt;PostV1MigrationBooksValidateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Runs every check the import runs (accounts, partners, balances, open invoices, assets, stock) and returns the same summary and warnings, then rolls everything back. Nothing is stored.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .migration
+        .check_a_historical_books_package_without_writing_anything(
+            &PostV1MigrationBooksValidateRequest {
+                cutover_date: "cutoverDate".to_string(),
+                source: None,
+                accounts: None,
+                partners: None,
+                items: None,
+                opening_balances: None,
+                journal: None,
+                open_receivables: None,
+                open_payables: None,
+                asset_groups: None,
+                fixed_assets: None,
+                stock: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**cutover_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**source:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accounts:** `Option<Vec<PostV1MigrationBooksValidateRequestAccountsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partners:** `Option<Vec<PostV1MigrationBooksValidateRequestPartnersItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**items:** `Option<Vec<PostV1MigrationBooksValidateRequestItemsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**opening_balances:** `Option<PostV1MigrationBooksValidateRequestOpeningBalances>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**journal:** `Option<Vec<PostV1MigrationBooksValidateRequestJournalItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**open_receivables:** `Option<Vec<PostV1MigrationBooksValidateRequestOpenReceivablesItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**open_payables:** `Option<Vec<PostV1MigrationBooksValidateRequestOpenPayablesItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**asset_groups:** `Option<Vec<PostV1MigrationBooksValidateRequestAssetGroupsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fixed_assets:** `Option<Vec<PostV1MigrationBooksValidateRequestFixedAssetsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**stock:** `Option<Vec<PostV1MigrationBooksValidateRequestStockItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.migration.<a href="/src/api/resources/migration/client.rs">import_historical_books_from_a_previous_accounting_system</a>(request: PostV1MigrationBooksImportRequest) -> Result&lt;PostV1MigrationBooksImportResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Brings a company over from another system in one call: chart of accounts, partners, items, opening balances (or the full journal history), open customer and supplier invoices, fixed assets with their accumulated depreciation, and stock on hand. The whole package is written in one database transaction — if any row fails, nothing is stored.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .migration
+        .import_historical_books_from_a_previous_accounting_system(
+            &PostV1MigrationBooksImportRequest {
+                cutover_date: "cutoverDate".to_string(),
+                source: None,
+                accounts: None,
+                partners: None,
+                items: None,
+                opening_balances: None,
+                journal: None,
+                open_receivables: None,
+                open_payables: None,
+                asset_groups: None,
+                fixed_assets: None,
+                stock: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**cutover_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**source:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accounts:** `Option<Vec<PostV1MigrationBooksImportRequestAccountsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partners:** `Option<Vec<PostV1MigrationBooksImportRequestPartnersItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**items:** `Option<Vec<PostV1MigrationBooksImportRequestItemsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**opening_balances:** `Option<PostV1MigrationBooksImportRequestOpeningBalances>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**journal:** `Option<Vec<PostV1MigrationBooksImportRequestJournalItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**open_receivables:** `Option<Vec<PostV1MigrationBooksImportRequestOpenReceivablesItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**open_payables:** `Option<Vec<PostV1MigrationBooksImportRequestOpenPayablesItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**asset_groups:** `Option<Vec<PostV1MigrationBooksImportRequestAssetGroupsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fixed_assets:** `Option<Vec<PostV1MigrationBooksImportRequestFixedAssetsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**stock:** `Option<Vec<PostV1MigrationBooksImportRequestStockItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Assets
 <details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_groups_create</a>(request: PostV1AssetsGroupsCreateRequest) -> Result&lt;PostV1AssetsGroupsCreateResponse, ApiError&gt;</code></summary>
 <dl>
