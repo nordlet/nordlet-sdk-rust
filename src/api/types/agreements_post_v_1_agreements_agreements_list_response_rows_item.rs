@@ -7,9 +7,16 @@ pub struct PostV1AgreementsAgreementsListResponseRowsItem {
     #[serde(rename = "typeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_id: Option<String>,
+    pub kind: PostV1AgreementsAgreementsListResponseRowsItemKind,
     #[serde(rename = "partnerId")]
-    #[serde(default)]
-    pub partner_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_id: Option<String>,
+    #[serde(rename = "employeeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub employee_id: Option<String>,
+    #[serde(rename = "bankAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_id: Option<String>,
     #[serde(default)]
     pub number: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -33,6 +40,9 @@ pub struct PostV1AgreementsAgreementsListResponseRowsItem {
     pub status: PostV1AgreementsAgreementsListResponseRowsItemStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -49,7 +59,10 @@ impl PostV1AgreementsAgreementsListResponseRowsItem {
 pub struct PostV1AgreementsAgreementsListResponseRowsItemBuilder {
     id: Option<String>,
     type_id: Option<String>,
+    kind: Option<PostV1AgreementsAgreementsListResponseRowsItemKind>,
     partner_id: Option<String>,
+    employee_id: Option<String>,
+    bank_account_id: Option<String>,
     number: Option<String>,
     name: Option<String>,
     start_date: Option<String>,
@@ -60,6 +73,7 @@ pub struct PostV1AgreementsAgreementsListResponseRowsItemBuilder {
     currency: Option<String>,
     status: Option<PostV1AgreementsAgreementsListResponseRowsItemStatus>,
     notes: Option<String>,
+    document_ref: Option<String>,
     created_at: Option<String>,
 }
 
@@ -74,8 +88,23 @@ impl PostV1AgreementsAgreementsListResponseRowsItemBuilder {
         self
     }
 
+    pub fn kind(mut self, value: PostV1AgreementsAgreementsListResponseRowsItemKind) -> Self {
+        self.kind = Some(value);
+        self
+    }
+
     pub fn partner_id(mut self, value: impl Into<String>) -> Self {
         self.partner_id = Some(value.into());
+        self
+    }
+
+    pub fn employee_id(mut self, value: impl Into<String>) -> Self {
+        self.employee_id = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_id(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_id = Some(value.into());
         self
     }
 
@@ -132,6 +161,11 @@ impl PostV1AgreementsAgreementsListResponseRowsItemBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -140,7 +174,7 @@ impl PostV1AgreementsAgreementsListResponseRowsItemBuilder {
     /// Consumes the builder and constructs a [`PostV1AgreementsAgreementsListResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1AgreementsAgreementsListResponseRowsItemBuilder::id)
-    /// - [`partner_id`](PostV1AgreementsAgreementsListResponseRowsItemBuilder::partner_id)
+    /// - [`kind`](PostV1AgreementsAgreementsListResponseRowsItemBuilder::kind)
     /// - [`number`](PostV1AgreementsAgreementsListResponseRowsItemBuilder::number)
     /// - [`start_date`](PostV1AgreementsAgreementsListResponseRowsItemBuilder::start_date)
     /// - [`auto_renew`](PostV1AgreementsAgreementsListResponseRowsItemBuilder::auto_renew)
@@ -151,9 +185,10 @@ impl PostV1AgreementsAgreementsListResponseRowsItemBuilder {
         Ok(PostV1AgreementsAgreementsListResponseRowsItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             type_id: self.type_id,
-            partner_id: self
-                .partner_id
-                .ok_or_else(|| BuildError::missing_field("partner_id"))?,
+            kind: self.kind.ok_or_else(|| BuildError::missing_field("kind"))?,
+            partner_id: self.partner_id,
+            employee_id: self.employee_id,
+            bank_account_id: self.bank_account_id,
             number: self
                 .number
                 .ok_or_else(|| BuildError::missing_field("number"))?,
@@ -174,6 +209,7 @@ impl PostV1AgreementsAgreementsListResponseRowsItemBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             notes: self.notes,
+            document_ref: self.document_ref,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

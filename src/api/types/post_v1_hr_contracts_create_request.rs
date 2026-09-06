@@ -14,9 +14,12 @@ pub struct PostV1HrContractsCreateRequest {
     #[serde(rename = "scheduleId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_id: Option<String>,
+    #[serde(rename = "agreementId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub agreement_id: Option<String>,
     #[serde(rename = "contractNo")]
-    #[serde(default)]
-    pub contract_no: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contract_no: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#type: Option<PostV1HrContractsCreateRequestType>,
     #[serde(rename = "startDate")]
@@ -31,9 +34,9 @@ pub struct PostV1HrContractsCreateRequest {
     #[serde(rename = "salaryType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub salary_type: Option<PostV1HrContractsCreateRequestSalaryType>,
-    #[serde(rename = "workHoursPerWeek")]
+    #[serde(rename = "workHours")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub work_hours_per_week: Option<String>,
+    pub work_hours: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
@@ -51,13 +54,14 @@ pub struct PostV1HrContractsCreateRequestBuilder {
     position_id: Option<String>,
     department_id: Option<String>,
     schedule_id: Option<String>,
+    agreement_id: Option<String>,
     contract_no: Option<String>,
     r#type: Option<PostV1HrContractsCreateRequestType>,
     start_date: Option<String>,
     end_date: Option<String>,
     base_salary: Option<String>,
     salary_type: Option<PostV1HrContractsCreateRequestSalaryType>,
-    work_hours_per_week: Option<String>,
+    work_hours: Option<String>,
     notes: Option<String>,
 }
 
@@ -79,6 +83,11 @@ impl PostV1HrContractsCreateRequestBuilder {
 
     pub fn schedule_id(mut self, value: impl Into<String>) -> Self {
         self.schedule_id = Some(value.into());
+        self
+    }
+
+    pub fn agreement_id(mut self, value: impl Into<String>) -> Self {
+        self.agreement_id = Some(value.into());
         self
     }
 
@@ -112,8 +121,8 @@ impl PostV1HrContractsCreateRequestBuilder {
         self
     }
 
-    pub fn work_hours_per_week(mut self, value: impl Into<String>) -> Self {
-        self.work_hours_per_week = Some(value.into());
+    pub fn work_hours(mut self, value: impl Into<String>) -> Self {
+        self.work_hours = Some(value.into());
         self
     }
 
@@ -125,7 +134,6 @@ impl PostV1HrContractsCreateRequestBuilder {
     /// Consumes the builder and constructs a [`PostV1HrContractsCreateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`employee_id`](PostV1HrContractsCreateRequestBuilder::employee_id)
-    /// - [`contract_no`](PostV1HrContractsCreateRequestBuilder::contract_no)
     /// - [`start_date`](PostV1HrContractsCreateRequestBuilder::start_date)
     /// - [`base_salary`](PostV1HrContractsCreateRequestBuilder::base_salary)
     pub fn build(self) -> Result<PostV1HrContractsCreateRequest, BuildError> {
@@ -136,9 +144,8 @@ impl PostV1HrContractsCreateRequestBuilder {
             position_id: self.position_id,
             department_id: self.department_id,
             schedule_id: self.schedule_id,
-            contract_no: self
-                .contract_no
-                .ok_or_else(|| BuildError::missing_field("contract_no"))?,
+            agreement_id: self.agreement_id,
+            contract_no: self.contract_no,
             r#type: self.r#type,
             start_date: self
                 .start_date
@@ -148,7 +155,7 @@ impl PostV1HrContractsCreateRequestBuilder {
                 .base_salary
                 .ok_or_else(|| BuildError::missing_field("base_salary"))?,
             salary_type: self.salary_type,
-            work_hours_per_week: self.work_hours_per_week,
+            work_hours: self.work_hours,
             notes: self.notes,
         })
     }

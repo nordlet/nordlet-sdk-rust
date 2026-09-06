@@ -33,6 +33,8 @@ pub struct PostV1FleetVehiclesCreateRequest {
     pub insurance_due: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub documents: Option<Vec<PostV1FleetVehiclesCreateRequestDocumentsItem>>,
 }
 
 impl PostV1FleetVehiclesCreateRequest {
@@ -56,6 +58,7 @@ pub struct PostV1FleetVehiclesCreateRequestBuilder {
     technical_inspection_due: Option<String>,
     insurance_due: Option<String>,
     notes: Option<String>,
+    documents: Option<Vec<PostV1FleetVehiclesCreateRequestDocumentsItem>>,
 }
 
 impl PostV1FleetVehiclesCreateRequestBuilder {
@@ -119,6 +122,11 @@ impl PostV1FleetVehiclesCreateRequestBuilder {
         self
     }
 
+    pub fn documents(mut self, value: Vec<PostV1FleetVehiclesCreateRequestDocumentsItem>) -> Self {
+        self.documents = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1FleetVehiclesCreateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`plate_number`](PostV1FleetVehiclesCreateRequestBuilder::plate_number)
@@ -142,6 +150,7 @@ impl PostV1FleetVehiclesCreateRequestBuilder {
             technical_inspection_due: self.technical_inspection_due,
             insurance_due: self.insurance_due,
             notes: self.notes,
+            documents: self.documents,
         })
     }
 }

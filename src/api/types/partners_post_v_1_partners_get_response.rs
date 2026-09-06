@@ -56,6 +56,9 @@ pub struct PostV1PartnersGetResponse {
     pub address: Option<PostV1PartnersGetResponseAddress>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -94,6 +97,7 @@ pub struct PostV1PartnersGetResponseBuilder {
     vat_validated_at: Option<String>,
     address: Option<PostV1PartnersGetResponseAddress>,
     notes: Option<String>,
+    document_ref: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -204,6 +208,11 @@ impl PostV1PartnersGetResponseBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -252,6 +261,7 @@ impl PostV1PartnersGetResponseBuilder {
             vat_validated_at: self.vat_validated_at,
             address: self.address,
             notes: self.notes,
+            document_ref: self.document_ref,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

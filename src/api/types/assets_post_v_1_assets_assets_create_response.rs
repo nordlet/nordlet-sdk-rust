@@ -44,6 +44,8 @@ pub struct PostV1AssetsAssetsCreateResponse {
     pub status: PostV1AssetsAssetsCreateResponseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub documents: Option<Vec<PostV1AssetsAssetsCreateResponseDocumentsItem>>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -74,6 +76,7 @@ pub struct PostV1AssetsAssetsCreateResponseBuilder {
     total_life_months: Option<i64>,
     status: Option<PostV1AssetsAssetsCreateResponseStatus>,
     notes: Option<String>,
+    documents: Option<Vec<PostV1AssetsAssetsCreateResponseDocumentsItem>>,
     created_at: Option<String>,
 }
 
@@ -158,6 +161,11 @@ impl PostV1AssetsAssetsCreateResponseBuilder {
         self
     }
 
+    pub fn documents(mut self, value: Vec<PostV1AssetsAssetsCreateResponseDocumentsItem>) -> Self {
+        self.documents = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -223,6 +231,7 @@ impl PostV1AssetsAssetsCreateResponseBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             notes: self.notes,
+            documents: self.documents,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

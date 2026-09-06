@@ -5,8 +5,8 @@ pub struct PostV1FilesUploadRequest {
     #[serde(default)]
     pub entity: String,
     #[serde(rename = "entityId")]
-    #[serde(default)]
-    pub entity_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub entity_id: Option<String>,
     #[serde(rename = "fileName")]
     #[serde(default)]
     pub file_name: String,
@@ -63,7 +63,6 @@ impl PostV1FilesUploadRequestBuilder {
     /// Consumes the builder and constructs a [`PostV1FilesUploadRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`entity`](PostV1FilesUploadRequestBuilder::entity)
-    /// - [`entity_id`](PostV1FilesUploadRequestBuilder::entity_id)
     /// - [`file_name`](PostV1FilesUploadRequestBuilder::file_name)
     /// - [`mime_type`](PostV1FilesUploadRequestBuilder::mime_type)
     /// - [`content`](PostV1FilesUploadRequestBuilder::content)
@@ -72,9 +71,7 @@ impl PostV1FilesUploadRequestBuilder {
             entity: self
                 .entity
                 .ok_or_else(|| BuildError::missing_field("entity"))?,
-            entity_id: self
-                .entity_id
-                .ok_or_else(|| BuildError::missing_field("entity_id"))?,
+            entity_id: self.entity_id,
             file_name: self
                 .file_name
                 .ok_or_else(|| BuildError::missing_field("file_name"))?,

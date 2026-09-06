@@ -8,6 +8,8 @@ pub struct PostV1AgreementsAgreementsUpdateRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub kind: Option<PostV1AgreementsAgreementsUpdateRequestKind>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
     #[serde(rename = "endDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -24,6 +26,9 @@ pub struct PostV1AgreementsAgreementsUpdateRequest {
     pub status: Option<PostV1AgreementsAgreementsUpdateRequestStatus>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
 }
 
 impl PostV1AgreementsAgreementsUpdateRequest {
@@ -37,6 +42,7 @@ impl PostV1AgreementsAgreementsUpdateRequest {
 pub struct PostV1AgreementsAgreementsUpdateRequestBuilder {
     id: Option<String>,
     type_id: Option<String>,
+    kind: Option<PostV1AgreementsAgreementsUpdateRequestKind>,
     name: Option<String>,
     end_date: Option<String>,
     auto_renew: Option<bool>,
@@ -44,6 +50,7 @@ pub struct PostV1AgreementsAgreementsUpdateRequestBuilder {
     billing_period: Option<PostV1AgreementsAgreementsUpdateRequestBillingPeriod>,
     status: Option<PostV1AgreementsAgreementsUpdateRequestStatus>,
     notes: Option<String>,
+    document_ref: Option<String>,
 }
 
 impl PostV1AgreementsAgreementsUpdateRequestBuilder {
@@ -54,6 +61,11 @@ impl PostV1AgreementsAgreementsUpdateRequestBuilder {
 
     pub fn type_id(mut self, value: impl Into<String>) -> Self {
         self.type_id = Some(value.into());
+        self
+    }
+
+    pub fn kind(mut self, value: PostV1AgreementsAgreementsUpdateRequestKind) -> Self {
+        self.kind = Some(value);
         self
     }
 
@@ -95,6 +107,11 @@ impl PostV1AgreementsAgreementsUpdateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1AgreementsAgreementsUpdateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1AgreementsAgreementsUpdateRequestBuilder::id)
@@ -102,6 +119,7 @@ impl PostV1AgreementsAgreementsUpdateRequestBuilder {
         Ok(PostV1AgreementsAgreementsUpdateRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             type_id: self.type_id,
+            kind: self.kind,
             name: self.name,
             end_date: self.end_date,
             auto_renew: self.auto_renew,
@@ -109,6 +127,7 @@ impl PostV1AgreementsAgreementsUpdateRequestBuilder {
             billing_period: self.billing_period,
             status: self.status,
             notes: self.notes,
+            document_ref: self.document_ref,
         })
     }
 }

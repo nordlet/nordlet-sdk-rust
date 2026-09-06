@@ -7,8 +7,8 @@ pub struct PostV1FilesGetResponse {
     #[serde(default)]
     pub entity: String,
     #[serde(rename = "entityId")]
-    #[serde(default)]
-    pub entity_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub entity_id: Option<String>,
     #[serde(rename = "fileName")]
     #[serde(default)]
     pub file_name: String,
@@ -20,6 +20,9 @@ pub struct PostV1FilesGetResponse {
     pub size_bytes: i64,
     #[serde(default)]
     pub sha256: String,
+    #[serde(rename = "storageKey")]
+    #[serde(default)]
+    pub storage_key: String,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -43,6 +46,7 @@ pub struct PostV1FilesGetResponseBuilder {
     mime_type: Option<String>,
     size_bytes: Option<i64>,
     sha256: Option<String>,
+    storage_key: Option<String>,
     created_at: Option<String>,
     content: Option<String>,
 }
@@ -83,6 +87,11 @@ impl PostV1FilesGetResponseBuilder {
         self
     }
 
+    pub fn storage_key(mut self, value: impl Into<String>) -> Self {
+        self.storage_key = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -97,11 +106,11 @@ impl PostV1FilesGetResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1FilesGetResponseBuilder::id)
     /// - [`entity`](PostV1FilesGetResponseBuilder::entity)
-    /// - [`entity_id`](PostV1FilesGetResponseBuilder::entity_id)
     /// - [`file_name`](PostV1FilesGetResponseBuilder::file_name)
     /// - [`mime_type`](PostV1FilesGetResponseBuilder::mime_type)
     /// - [`size_bytes`](PostV1FilesGetResponseBuilder::size_bytes)
     /// - [`sha256`](PostV1FilesGetResponseBuilder::sha256)
+    /// - [`storage_key`](PostV1FilesGetResponseBuilder::storage_key)
     /// - [`created_at`](PostV1FilesGetResponseBuilder::created_at)
     /// - [`content`](PostV1FilesGetResponseBuilder::content)
     pub fn build(self) -> Result<PostV1FilesGetResponse, BuildError> {
@@ -110,9 +119,7 @@ impl PostV1FilesGetResponseBuilder {
             entity: self
                 .entity
                 .ok_or_else(|| BuildError::missing_field("entity"))?,
-            entity_id: self
-                .entity_id
-                .ok_or_else(|| BuildError::missing_field("entity_id"))?,
+            entity_id: self.entity_id,
             file_name: self
                 .file_name
                 .ok_or_else(|| BuildError::missing_field("file_name"))?,
@@ -125,6 +132,9 @@ impl PostV1FilesGetResponseBuilder {
             sha256: self
                 .sha256
                 .ok_or_else(|| BuildError::missing_field("sha256"))?,
+            storage_key: self
+                .storage_key
+                .ok_or_else(|| BuildError::missing_field("storage_key"))?,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

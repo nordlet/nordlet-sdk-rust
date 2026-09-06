@@ -14,6 +14,9 @@ pub struct PostV1LedgerJournalTransactionsCreateResponse {
     #[serde(rename = "documentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document_id: Option<String>,
+    #[serde(rename = "partnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_id: Option<String>,
     pub status: PostV1LedgerJournalTransactionsCreateResponseStatus,
     #[serde(rename = "createdAt")]
     #[serde(default)]
@@ -37,6 +40,7 @@ pub struct PostV1LedgerJournalTransactionsCreateResponseBuilder {
     description: Option<String>,
     document_type: Option<String>,
     document_id: Option<String>,
+    partner_id: Option<String>,
     status: Option<PostV1LedgerJournalTransactionsCreateResponseStatus>,
     created_at: Option<String>,
     posted_at: Option<String>,
@@ -68,6 +72,11 @@ impl PostV1LedgerJournalTransactionsCreateResponseBuilder {
         self
     }
 
+    pub fn partner_id(mut self, value: impl Into<String>) -> Self {
+        self.partner_id = Some(value.into());
+        self
+    }
+
     pub fn status(mut self, value: PostV1LedgerJournalTransactionsCreateResponseStatus) -> Self {
         self.status = Some(value);
         self
@@ -96,6 +105,7 @@ impl PostV1LedgerJournalTransactionsCreateResponseBuilder {
             description: self.description,
             document_type: self.document_type,
             document_id: self.document_id,
+            partner_id: self.partner_id,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

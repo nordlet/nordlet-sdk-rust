@@ -44,6 +44,8 @@ pub struct PostV1HrEmployeesUpdateRequest {
     pub pension_accumulation: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attributes: Option<Vec<PostV1HrEmployeesUpdateRequestAttributesItem>>,
     #[serde(default)]
     pub id: String,
     #[serde(rename = "terminationDate")]
@@ -78,6 +80,7 @@ pub struct PostV1HrEmployeesUpdateRequestBuilder {
     npd_override: Option<String>,
     pension_accumulation: Option<bool>,
     notes: Option<String>,
+    attributes: Option<Vec<PostV1HrEmployeesUpdateRequestAttributesItem>>,
     id: Option<String>,
     termination_date: Option<String>,
     status: Option<PostV1HrEmployeesUpdateRequestStatus>,
@@ -164,6 +167,11 @@ impl PostV1HrEmployeesUpdateRequestBuilder {
         self
     }
 
+    pub fn attributes(mut self, value: Vec<PostV1HrEmployeesUpdateRequestAttributesItem>) -> Self {
+        self.attributes = Some(value);
+        self
+    }
+
     pub fn id(mut self, value: impl Into<String>) -> Self {
         self.id = Some(value.into());
         self
@@ -200,6 +208,7 @@ impl PostV1HrEmployeesUpdateRequestBuilder {
             npd_override: self.npd_override,
             pension_accumulation: self.pension_accumulation,
             notes: self.notes,
+            attributes: self.attributes,
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             termination_date: self.termination_date,
             status: self.status,

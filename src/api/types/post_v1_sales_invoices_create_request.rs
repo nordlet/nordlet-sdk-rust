@@ -29,6 +29,9 @@ pub struct PostV1SalesInvoicesCreateRequest {
     pub deemed_supplier: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(default)]
     pub lines: Vec<PostV1SalesInvoicesCreateRequestLinesItem>,
 }
@@ -52,6 +55,7 @@ pub struct PostV1SalesInvoicesCreateRequestBuilder {
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
     notes: Option<String>,
+    document_ref: Option<String>,
     lines: Option<Vec<PostV1SalesInvoicesCreateRequestLinesItem>>,
 }
 
@@ -106,6 +110,11 @@ impl PostV1SalesInvoicesCreateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<PostV1SalesInvoicesCreateRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -129,6 +138,7 @@ impl PostV1SalesInvoicesCreateRequestBuilder {
             vat_country_code: self.vat_country_code,
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,
+            document_ref: self.document_ref,
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,

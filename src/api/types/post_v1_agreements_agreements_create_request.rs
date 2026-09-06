@@ -5,9 +5,17 @@ pub struct PostV1AgreementsAgreementsCreateRequest {
     #[serde(rename = "typeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_id: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub kind: Option<PostV1AgreementsAgreementsCreateRequestKind>,
     #[serde(rename = "partnerId")]
-    #[serde(default)]
-    pub partner_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_id: Option<String>,
+    #[serde(rename = "employeeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub employee_id: Option<String>,
+    #[serde(rename = "bankAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_id: Option<String>,
     #[serde(default)]
     pub number: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -32,6 +40,9 @@ pub struct PostV1AgreementsAgreementsCreateRequest {
     pub status: Option<PostV1AgreementsAgreementsCreateRequestStatus>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub items: Option<Vec<PostV1AgreementsAgreementsCreateRequestItemsItem>>,
 }
@@ -46,7 +57,10 @@ impl PostV1AgreementsAgreementsCreateRequest {
 #[non_exhaustive]
 pub struct PostV1AgreementsAgreementsCreateRequestBuilder {
     type_id: Option<String>,
+    kind: Option<PostV1AgreementsAgreementsCreateRequestKind>,
     partner_id: Option<String>,
+    employee_id: Option<String>,
+    bank_account_id: Option<String>,
     number: Option<String>,
     name: Option<String>,
     start_date: Option<String>,
@@ -57,6 +71,7 @@ pub struct PostV1AgreementsAgreementsCreateRequestBuilder {
     currency: Option<String>,
     status: Option<PostV1AgreementsAgreementsCreateRequestStatus>,
     notes: Option<String>,
+    document_ref: Option<String>,
     items: Option<Vec<PostV1AgreementsAgreementsCreateRequestItemsItem>>,
 }
 
@@ -66,8 +81,23 @@ impl PostV1AgreementsAgreementsCreateRequestBuilder {
         self
     }
 
+    pub fn kind(mut self, value: PostV1AgreementsAgreementsCreateRequestKind) -> Self {
+        self.kind = Some(value);
+        self
+    }
+
     pub fn partner_id(mut self, value: impl Into<String>) -> Self {
         self.partner_id = Some(value.into());
+        self
+    }
+
+    pub fn employee_id(mut self, value: impl Into<String>) -> Self {
+        self.employee_id = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_id(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_id = Some(value.into());
         self
     }
 
@@ -124,6 +154,11 @@ impl PostV1AgreementsAgreementsCreateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn items(mut self, value: Vec<PostV1AgreementsAgreementsCreateRequestItemsItem>) -> Self {
         self.items = Some(value);
         self
@@ -131,15 +166,15 @@ impl PostV1AgreementsAgreementsCreateRequestBuilder {
 
     /// Consumes the builder and constructs a [`PostV1AgreementsAgreementsCreateRequest`].
     /// This method will fail if any of the following fields are not set:
-    /// - [`partner_id`](PostV1AgreementsAgreementsCreateRequestBuilder::partner_id)
     /// - [`number`](PostV1AgreementsAgreementsCreateRequestBuilder::number)
     /// - [`start_date`](PostV1AgreementsAgreementsCreateRequestBuilder::start_date)
     pub fn build(self) -> Result<PostV1AgreementsAgreementsCreateRequest, BuildError> {
         Ok(PostV1AgreementsAgreementsCreateRequest {
             type_id: self.type_id,
-            partner_id: self
-                .partner_id
-                .ok_or_else(|| BuildError::missing_field("partner_id"))?,
+            kind: self.kind,
+            partner_id: self.partner_id,
+            employee_id: self.employee_id,
+            bank_account_id: self.bank_account_id,
             number: self
                 .number
                 .ok_or_else(|| BuildError::missing_field("number"))?,
@@ -154,6 +189,7 @@ impl PostV1AgreementsAgreementsCreateRequestBuilder {
             currency: self.currency,
             status: self.status,
             notes: self.notes,
+            document_ref: self.document_ref,
             items: self.items,
         })
     }

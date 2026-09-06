@@ -7,8 +7,8 @@ pub struct PostV1FilesUploadResponse {
     #[serde(default)]
     pub entity: String,
     #[serde(rename = "entityId")]
-    #[serde(default)]
-    pub entity_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub entity_id: Option<String>,
     #[serde(rename = "fileName")]
     #[serde(default)]
     pub file_name: String,
@@ -20,6 +20,9 @@ pub struct PostV1FilesUploadResponse {
     pub size_bytes: i64,
     #[serde(default)]
     pub sha256: String,
+    #[serde(rename = "storageKey")]
+    #[serde(default)]
+    pub storage_key: String,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -41,6 +44,7 @@ pub struct PostV1FilesUploadResponseBuilder {
     mime_type: Option<String>,
     size_bytes: Option<i64>,
     sha256: Option<String>,
+    storage_key: Option<String>,
     created_at: Option<String>,
 }
 
@@ -80,6 +84,11 @@ impl PostV1FilesUploadResponseBuilder {
         self
     }
 
+    pub fn storage_key(mut self, value: impl Into<String>) -> Self {
+        self.storage_key = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -89,11 +98,11 @@ impl PostV1FilesUploadResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1FilesUploadResponseBuilder::id)
     /// - [`entity`](PostV1FilesUploadResponseBuilder::entity)
-    /// - [`entity_id`](PostV1FilesUploadResponseBuilder::entity_id)
     /// - [`file_name`](PostV1FilesUploadResponseBuilder::file_name)
     /// - [`mime_type`](PostV1FilesUploadResponseBuilder::mime_type)
     /// - [`size_bytes`](PostV1FilesUploadResponseBuilder::size_bytes)
     /// - [`sha256`](PostV1FilesUploadResponseBuilder::sha256)
+    /// - [`storage_key`](PostV1FilesUploadResponseBuilder::storage_key)
     /// - [`created_at`](PostV1FilesUploadResponseBuilder::created_at)
     pub fn build(self) -> Result<PostV1FilesUploadResponse, BuildError> {
         Ok(PostV1FilesUploadResponse {
@@ -101,9 +110,7 @@ impl PostV1FilesUploadResponseBuilder {
             entity: self
                 .entity
                 .ok_or_else(|| BuildError::missing_field("entity"))?,
-            entity_id: self
-                .entity_id
-                .ok_or_else(|| BuildError::missing_field("entity_id"))?,
+            entity_id: self.entity_id,
             file_name: self
                 .file_name
                 .ok_or_else(|| BuildError::missing_field("file_name"))?,
@@ -116,6 +123,9 @@ impl PostV1FilesUploadResponseBuilder {
             sha256: self
                 .sha256
                 .ok_or_else(|| BuildError::missing_field("sha256"))?,
+            storage_key: self
+                .storage_key
+                .ok_or_else(|| BuildError::missing_field("storage_key"))?,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

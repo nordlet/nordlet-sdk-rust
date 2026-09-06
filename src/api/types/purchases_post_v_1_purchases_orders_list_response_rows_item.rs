@@ -39,6 +39,9 @@ pub struct PostV1PurchasesOrdersListResponseRowsItem {
     pub approved_at: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -70,6 +73,7 @@ pub struct PostV1PurchasesOrdersListResponseRowsItemBuilder {
     approved_by: Option<String>,
     approved_at: Option<String>,
     notes: Option<String>,
+    document_ref: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -145,6 +149,11 @@ impl PostV1PurchasesOrdersListResponseRowsItemBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -200,6 +209,7 @@ impl PostV1PurchasesOrdersListResponseRowsItemBuilder {
             approved_by: self.approved_by,
             approved_at: self.approved_at,
             notes: self.notes,
+            document_ref: self.document_ref,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

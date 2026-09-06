@@ -50,6 +50,8 @@ pub struct PostV1HrEmployeesUpdateResponse {
     pub status: PostV1HrEmployeesUpdateResponseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attributes: Option<Vec<PostV1HrEmployeesUpdateResponseAttributesItem>>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -83,6 +85,7 @@ pub struct PostV1HrEmployeesUpdateResponseBuilder {
     pension_accumulation: Option<bool>,
     status: Option<PostV1HrEmployeesUpdateResponseStatus>,
     notes: Option<String>,
+    attributes: Option<Vec<PostV1HrEmployeesUpdateResponseAttributesItem>>,
     created_at: Option<String>,
 }
 
@@ -182,6 +185,11 @@ impl PostV1HrEmployeesUpdateResponseBuilder {
         self
     }
 
+    pub fn attributes(mut self, value: Vec<PostV1HrEmployeesUpdateResponseAttributesItem>) -> Self {
+        self.attributes = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -227,6 +235,7 @@ impl PostV1HrEmployeesUpdateResponseBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             notes: self.notes,
+            attributes: self.attributes,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

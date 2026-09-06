@@ -5,6 +5,9 @@ pub struct PostV1BankStatementsImportRequest {
     #[serde(rename = "bankAccountId")]
     #[serde(default)]
     pub bank_account_id: String,
+    #[serde(rename = "templateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub template_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub format: Option<PostV1BankStatementsImportRequestFormat>,
     #[serde(default)]
@@ -21,6 +24,7 @@ impl PostV1BankStatementsImportRequest {
 #[non_exhaustive]
 pub struct PostV1BankStatementsImportRequestBuilder {
     bank_account_id: Option<String>,
+    template_id: Option<String>,
     format: Option<PostV1BankStatementsImportRequestFormat>,
     content: Option<String>,
 }
@@ -28,6 +32,11 @@ pub struct PostV1BankStatementsImportRequestBuilder {
 impl PostV1BankStatementsImportRequestBuilder {
     pub fn bank_account_id(mut self, value: impl Into<String>) -> Self {
         self.bank_account_id = Some(value.into());
+        self
+    }
+
+    pub fn template_id(mut self, value: impl Into<String>) -> Self {
+        self.template_id = Some(value.into());
         self
     }
 
@@ -50,6 +59,7 @@ impl PostV1BankStatementsImportRequestBuilder {
             bank_account_id: self
                 .bank_account_id
                 .ok_or_else(|| BuildError::missing_field("bank_account_id"))?,
+            template_id: self.template_id,
             format: self.format,
             content: self
                 .content

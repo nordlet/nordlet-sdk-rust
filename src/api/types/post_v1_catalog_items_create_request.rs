@@ -48,6 +48,9 @@ pub struct PostV1CatalogItemsCreateRequest {
     pub group_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<HashMap<String, String>>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub translations: Option<HashMap<String, PostV1CatalogItemsCreateRequestTranslationsValue>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -81,6 +84,7 @@ pub struct PostV1CatalogItemsCreateRequestBuilder {
     description: Option<String>,
     group_id: Option<String>,
     attributes: Option<HashMap<String, String>>,
+    document_ref: Option<String>,
     translations: Option<HashMap<String, PostV1CatalogItemsCreateRequestTranslationsValue>>,
     components: Option<Vec<PostV1CatalogItemsCreateRequestComponentsItem>>,
 }
@@ -176,6 +180,11 @@ impl PostV1CatalogItemsCreateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn translations(
         mut self,
         value: HashMap<String, PostV1CatalogItemsCreateRequestTranslationsValue>,
@@ -212,6 +221,7 @@ impl PostV1CatalogItemsCreateRequestBuilder {
             description: self.description,
             group_id: self.group_id,
             attributes: self.attributes,
+            document_ref: self.document_ref,
             translations: self.translations,
             components: self.components,
         })

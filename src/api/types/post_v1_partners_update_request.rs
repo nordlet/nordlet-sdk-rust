@@ -51,6 +51,9 @@ pub struct PostV1PartnersUpdateRequest {
     pub address: Option<PostV1PartnersUpdateRequestAddress>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
 }
 
 impl PostV1PartnersUpdateRequest {
@@ -81,6 +84,7 @@ pub struct PostV1PartnersUpdateRequestBuilder {
     status_id: Option<String>,
     address: Option<PostV1PartnersUpdateRequestAddress>,
     notes: Option<String>,
+    document_ref: Option<String>,
 }
 
 impl PostV1PartnersUpdateRequestBuilder {
@@ -179,6 +183,11 @@ impl PostV1PartnersUpdateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1PartnersUpdateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1PartnersUpdateRequestBuilder::id)
@@ -203,6 +212,7 @@ impl PostV1PartnersUpdateRequestBuilder {
             status_id: self.status_id,
             address: self.address,
             notes: self.notes,
+            document_ref: self.document_ref,
         })
     }
 }

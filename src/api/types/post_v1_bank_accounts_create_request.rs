@@ -11,6 +11,9 @@ pub struct PostV1BankAccountsCreateRequest {
     #[serde(rename = "accountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_code: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
 }
 
 impl PostV1BankAccountsCreateRequest {
@@ -26,6 +29,7 @@ pub struct PostV1BankAccountsCreateRequestBuilder {
     iban: Option<String>,
     currency: Option<String>,
     account_code: Option<String>,
+    document_ref: Option<String>,
 }
 
 impl PostV1BankAccountsCreateRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1BankAccountsCreateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1BankAccountsCreateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`name`](PostV1BankAccountsCreateRequestBuilder::name)
@@ -58,6 +67,7 @@ impl PostV1BankAccountsCreateRequestBuilder {
             iban: self.iban,
             currency: self.currency,
             account_code: self.account_code,
+            document_ref: self.document_ref,
         })
     }
 }

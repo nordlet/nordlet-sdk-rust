@@ -44,6 +44,8 @@ pub struct PostV1HrEmployeesCreateRequest {
     pub pension_accumulation: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attributes: Option<Vec<PostV1HrEmployeesCreateRequestAttributesItem>>,
 }
 
 impl PostV1HrEmployeesCreateRequest {
@@ -71,6 +73,7 @@ pub struct PostV1HrEmployeesCreateRequestBuilder {
     npd_override: Option<String>,
     pension_accumulation: Option<bool>,
     notes: Option<String>,
+    attributes: Option<Vec<PostV1HrEmployeesCreateRequestAttributesItem>>,
 }
 
 impl PostV1HrEmployeesCreateRequestBuilder {
@@ -154,6 +157,11 @@ impl PostV1HrEmployeesCreateRequestBuilder {
         self
     }
 
+    pub fn attributes(mut self, value: Vec<PostV1HrEmployeesCreateRequestAttributesItem>) -> Self {
+        self.attributes = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1HrEmployeesCreateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`first_name`](PostV1HrEmployeesCreateRequestBuilder::first_name)
@@ -180,6 +188,7 @@ impl PostV1HrEmployeesCreateRequestBuilder {
             npd_override: self.npd_override,
             pension_accumulation: self.pension_accumulation,
             notes: self.notes,
+            attributes: self.attributes,
         })
     }
 }

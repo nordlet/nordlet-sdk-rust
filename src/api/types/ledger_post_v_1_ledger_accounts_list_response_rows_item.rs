@@ -8,6 +8,8 @@ pub struct PostV1LedgerAccountsListResponseRowsItem {
     pub code: String,
     #[serde(default)]
     pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub translations: Option<PostV1LedgerAccountsListResponseRowsItemTranslations>,
     pub r#type: PostV1LedgerAccountsListResponseRowsItemType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -32,6 +34,7 @@ pub struct PostV1LedgerAccountsListResponseRowsItemBuilder {
     id: Option<String>,
     code: Option<String>,
     name: Option<String>,
+    translations: Option<PostV1LedgerAccountsListResponseRowsItemTranslations>,
     r#type: Option<PostV1LedgerAccountsListResponseRowsItemType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -51,6 +54,14 @@ impl PostV1LedgerAccountsListResponseRowsItemBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn translations(
+        mut self,
+        value: PostV1LedgerAccountsListResponseRowsItemTranslations,
+    ) -> Self {
+        self.translations = Some(value);
         self
     }
 
@@ -87,6 +98,7 @@ impl PostV1LedgerAccountsListResponseRowsItemBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            translations: self.translations,
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,

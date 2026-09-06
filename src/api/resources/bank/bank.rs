@@ -125,6 +125,22 @@ impl BankClient {
             .await
     }
 
+    pub async fn post_v1_bank_transactions_record(
+        &self,
+        request: &PostV1BankTransactionsRecordRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankTransactionsRecordResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/transactions/record",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_bank_payments_export(
         &self,
         request: &PostV1BankPaymentsExportRequest,
@@ -134,6 +150,86 @@ impl BankClient {
             .execute_request(
                 Method::POST,
                 "v1/bank/payments/export",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn create_a_bank_import_template_fields_default_to_the_types_standard_field_list(
+        &self,
+        request: &PostV1BankImportTemplatesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankImportTemplatesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/import-templates/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_import_templates_update(
+        &self,
+        request: &PostV1BankImportTemplatesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankImportTemplatesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/import-templates/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_import_templates_delete(
+        &self,
+        request: &PostV1BankImportTemplatesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankImportTemplatesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/import-templates/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_import_templates_get(
+        &self,
+        request: &PostV1BankImportTemplatesGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankImportTemplatesGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/import-templates/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_import_templates_list(
+        &self,
+        request: &PostV1BankImportTemplatesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankImportTemplatesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/import-templates/list",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,
@@ -438,6 +534,22 @@ impl BankClient {
             .execute_request(
                 Method::POST,
                 "v1/bank/feeds/accounts/link",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn choose_the_import_template_applied_on_sync_and_how_often_the_account_is_synced_automatically(
+        &self,
+        request: &PostV1BankFeedsAccountsConfigureRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankFeedsAccountsConfigureResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/feeds/accounts/configure",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

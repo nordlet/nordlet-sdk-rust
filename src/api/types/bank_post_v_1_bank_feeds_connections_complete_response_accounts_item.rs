@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct PostV1BankFeedsConnectionsCompleteResponseAccountsItem {
     #[serde(default)]
     pub id: String,
@@ -10,6 +10,11 @@ pub struct PostV1BankFeedsConnectionsCompleteResponseAccountsItem {
     #[serde(rename = "bankAccountId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_account_id: Option<String>,
+    #[serde(rename = "importTemplateId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub import_template_id: Option<String>,
+    #[serde(rename = "syncSchedule")]
+    pub sync_schedule: PostV1BankFeedsConnectionsCompleteResponseAccountsItemSyncSchedule,
     #[serde(rename = "externalId")]
     #[serde(default)]
     pub external_id: String,
@@ -41,6 +46,8 @@ pub struct PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder {
     id: Option<String>,
     connection_id: Option<String>,
     bank_account_id: Option<String>,
+    import_template_id: Option<String>,
+    sync_schedule: Option<PostV1BankFeedsConnectionsCompleteResponseAccountsItemSyncSchedule>,
     external_id: Option<String>,
     iban: Option<String>,
     currency: Option<String>,
@@ -63,6 +70,19 @@ impl PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder {
 
     pub fn bank_account_id(mut self, value: impl Into<String>) -> Self {
         self.bank_account_id = Some(value.into());
+        self
+    }
+
+    pub fn import_template_id(mut self, value: impl Into<String>) -> Self {
+        self.import_template_id = Some(value.into());
+        self
+    }
+
+    pub fn sync_schedule(
+        mut self,
+        value: PostV1BankFeedsConnectionsCompleteResponseAccountsItemSyncSchedule,
+    ) -> Self {
+        self.sync_schedule = Some(value);
         self
     }
 
@@ -105,6 +125,7 @@ impl PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder::id)
     /// - [`connection_id`](PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder::connection_id)
+    /// - [`sync_schedule`](PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder::sync_schedule)
     /// - [`external_id`](PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder::external_id)
     /// - [`currency`](PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder::currency)
     pub fn build(
@@ -116,6 +137,10 @@ impl PostV1BankFeedsConnectionsCompleteResponseAccountsItemBuilder {
                 .connection_id
                 .ok_or_else(|| BuildError::missing_field("connection_id"))?,
             bank_account_id: self.bank_account_id,
+            import_template_id: self.import_template_id,
+            sync_schedule: self
+                .sync_schedule
+                .ok_or_else(|| BuildError::missing_field("sync_schedule"))?,
             external_id: self
                 .external_id
                 .ok_or_else(|| BuildError::missing_field("external_id"))?,

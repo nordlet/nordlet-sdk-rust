@@ -49,6 +49,9 @@ pub struct PostV1PartnersFindOrCreateRequest {
     pub address: Option<PostV1PartnersFindOrCreateRequestAddress>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
 }
 
 impl PostV1PartnersFindOrCreateRequest {
@@ -78,6 +81,7 @@ pub struct PostV1PartnersFindOrCreateRequestBuilder {
     status_id: Option<String>,
     address: Option<PostV1PartnersFindOrCreateRequestAddress>,
     notes: Option<String>,
+    document_ref: Option<String>,
 }
 
 impl PostV1PartnersFindOrCreateRequestBuilder {
@@ -171,6 +175,11 @@ impl PostV1PartnersFindOrCreateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1PartnersFindOrCreateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`name`](PostV1PartnersFindOrCreateRequestBuilder::name)
@@ -194,6 +203,7 @@ impl PostV1PartnersFindOrCreateRequestBuilder {
             status_id: self.status_id,
             address: self.address,
             notes: self.notes,
+            document_ref: self.document_ref,
         })
     }
 }

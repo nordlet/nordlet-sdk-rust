@@ -48,6 +48,9 @@ pub struct PostV1CatalogItemsUpdateResponse {
     pub group_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub attributes: Option<HashMap<String, Option<String>>>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub translations:
         Option<HashMap<String, Option<PostV1CatalogItemsUpdateResponseTranslationsValue>>>,
@@ -89,6 +92,7 @@ pub struct PostV1CatalogItemsUpdateResponseBuilder {
     description: Option<String>,
     group_id: Option<String>,
     attributes: Option<HashMap<String, Option<String>>>,
+    document_ref: Option<String>,
     translations:
         Option<HashMap<String, Option<PostV1CatalogItemsUpdateResponseTranslationsValue>>>,
     components: Option<Vec<PostV1CatalogItemsUpdateResponseComponentsItem>>,
@@ -192,6 +196,11 @@ impl PostV1CatalogItemsUpdateResponseBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn translations(
         mut self,
         value: HashMap<String, Option<PostV1CatalogItemsUpdateResponseTranslationsValue>>,
@@ -253,6 +262,7 @@ impl PostV1CatalogItemsUpdateResponseBuilder {
             description: self.description,
             group_id: self.group_id,
             attributes: self.attributes,
+            document_ref: self.document_ref,
             translations: self.translations,
             components: self
                 .components

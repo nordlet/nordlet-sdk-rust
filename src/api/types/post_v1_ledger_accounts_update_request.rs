@@ -6,6 +6,8 @@ pub struct PostV1LedgerAccountsUpdateRequest {
     pub id: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub translations: Option<PostV1LedgerAccountsUpdateRequestTranslations>,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub parent_id: Option<String>,
@@ -25,6 +27,7 @@ impl PostV1LedgerAccountsUpdateRequest {
 pub struct PostV1LedgerAccountsUpdateRequestBuilder {
     id: Option<String>,
     name: Option<String>,
+    translations: Option<PostV1LedgerAccountsUpdateRequestTranslations>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
 }
@@ -37,6 +40,11 @@ impl PostV1LedgerAccountsUpdateRequestBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn translations(mut self, value: PostV1LedgerAccountsUpdateRequestTranslations) -> Self {
+        self.translations = Some(value);
         self
     }
 
@@ -57,6 +65,7 @@ impl PostV1LedgerAccountsUpdateRequestBuilder {
         Ok(PostV1LedgerAccountsUpdateRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             name: self.name,
+            translations: self.translations,
             parent_id: self.parent_id,
             is_postable: self.is_postable,
         })

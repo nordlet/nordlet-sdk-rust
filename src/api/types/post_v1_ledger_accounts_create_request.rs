@@ -6,6 +6,8 @@ pub struct PostV1LedgerAccountsCreateRequest {
     pub code: String,
     #[serde(default)]
     pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub translations: Option<PostV1LedgerAccountsCreateRequestTranslations>,
     pub r#type: PostV1LedgerAccountsCreateRequestType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -26,6 +28,7 @@ impl PostV1LedgerAccountsCreateRequest {
 pub struct PostV1LedgerAccountsCreateRequestBuilder {
     code: Option<String>,
     name: Option<String>,
+    translations: Option<PostV1LedgerAccountsCreateRequestTranslations>,
     r#type: Option<PostV1LedgerAccountsCreateRequestType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -39,6 +42,11 @@ impl PostV1LedgerAccountsCreateRequestBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn translations(mut self, value: PostV1LedgerAccountsCreateRequestTranslations) -> Self {
+        self.translations = Some(value);
         self
     }
 
@@ -66,6 +74,7 @@ impl PostV1LedgerAccountsCreateRequestBuilder {
         Ok(PostV1LedgerAccountsCreateRequest {
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            translations: self.translations,
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,

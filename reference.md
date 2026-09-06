@@ -933,135 +933,6 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_eu_vat_rates_imports_list</a>(request: PostV1ReferenceEuVatRatesImportsListRequest) -> Result&lt;PostV1ReferenceEuVatRatesImportsListResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-History of EU VAT rate imports from the EC TEDB VatRetrievalService: when rates were pulled, what changed, and whether the run succeeded. The initial seed run carries the built-in snapshot.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .reference
-        .post_v1reference_eu_vat_rates_imports_list(
-            &PostV1ReferenceEuVatRatesImportsListRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**limit:** `Option<String>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_eu_vat_rates_sync</a>(request: PostV1ReferenceEuVatRatesSyncRequest) -> Result&lt;PostV1ReferenceEuVatRatesSyncResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Trigger an immediate pull of EU VAT rates from the EC TEDB VatRetrievalService. Rates are shared reference data: new rates open with today as their effective date, rates that disappeared are closed with a validity end date. Returns the finished import run.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .reference
-        .post_v1reference_eu_vat_rates_sync(
-            &PostV1ReferenceEuVatRatesSyncRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_eu_vat_rates_set_overrides</a>(request: PostV1ReferenceEuVatRatesSetOverridesRequest) -> Result&lt;PostV1ReferenceEuVatRatesSetOverridesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -3096,6 +2967,7 @@ async fn main() {
                 status_id: None,
                 address: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -3255,6 +3127,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -3307,6 +3187,7 @@ async fn main() {
                 status_id: None,
                 address: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -3466,6 +3347,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -3577,6 +3466,7 @@ async fn main() {
                 status_id: None,
                 address: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -3741,6 +3631,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -4973,6 +4871,7 @@ async fn main() {
                 description: None,
                 group_id: None,
                 attributes: None,
+                document_ref: None,
                 translations: None,
                 components: None,
             },
@@ -5138,6 +5037,14 @@ async fn main() {
 <dl>
 <dd>
 
+**document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **translations:** `Option<std::collections::HashMap<String, PostV1CatalogItemsCreateRequestTranslationsValue>>` 
     
 </dd>
@@ -5261,6 +5168,7 @@ async fn main() {
                 description: None,
                 group_id: None,
                 attributes: None,
+                document_ref: None,
                 translations: None,
                 components: None,
             },
@@ -5427,6 +5335,14 @@ async fn main() {
 <dd>
 
 **attributes:** `Option<std::collections::HashMap<String, String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -6541,6 +6457,7 @@ async fn main() {
                 vat_country_code: None,
                 deemed_supplier: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -6633,6 +6550,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -8916,6 +8841,7 @@ async fn main() {
                 credited_invoice_id: None,
                 purchase_order_id: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -9000,6 +8926,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -9459,6 +9393,7 @@ async fn main() {
                 warehouse_id: None,
                 currency: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -9527,6 +9462,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -12808,6 +12751,7 @@ async fn main() {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 r#type: PostV1LedgerAccountsCreateRequestType::Asset,
+                translations: None,
                 parent_id: None,
                 is_postable: None,
             },
@@ -12838,6 +12782,14 @@ async fn main() {
 <dd>
 
 **name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**translations:** `Option<PostV1LedgerAccountsCreateRequestTranslations>` 
     
 </dd>
 </dl>
@@ -12901,6 +12853,7 @@ async fn main() {
             &PostV1LedgerAccountsUpdateRequest {
                 id: "id".to_string(),
                 name: None,
+                translations: None,
                 parent_id: None,
                 is_postable: None,
             },
@@ -12931,6 +12884,14 @@ async fn main() {
 <dd>
 
 **name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**translations:** `Option<Option<PostV1LedgerAccountsUpdateRequestTranslations>>` 
     
 </dd>
 </dl>
@@ -15021,6 +14982,7 @@ async fn main() {
                 salvage_value: None,
                 useful_life_months: None,
                 notes: None,
+                documents: None,
             },
             None,
         )
@@ -15105,6 +15067,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documents:** `Option<Vec<PostV1AssetsAssetsCreateRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -15770,6 +15740,7 @@ async fn main() {
                 npd_override: None,
                 pension_accumulation: None,
                 notes: None,
+                attributes: None,
             },
             None,
         )
@@ -15913,6 +15884,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**attributes:** `Option<Vec<PostV1HrEmployeesCreateRequestAttributesItem>>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -15964,6 +15943,7 @@ async fn main() {
                 npd_override: None,
                 pension_accumulation: None,
                 notes: None,
+                attributes: None,
                 termination_date: None,
                 status: None,
             },
@@ -16106,6 +16086,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**attributes:** `Option<Vec<PostV1HrEmployeesUpdateRequestAttributesItem>>` 
     
 </dd>
 </dl>
@@ -16438,16 +16426,17 @@ async fn main() {
         .post_v1hr_contracts_create(
             &PostV1HrContractsCreateRequest {
                 employee_id: "employeeId".to_string(),
-                contract_no: "contractNo".to_string(),
                 start_date: "startDate".to_string(),
                 base_salary: "baseSalary".to_string(),
                 position_id: None,
                 department_id: None,
                 schedule_id: None,
+                agreement_id: None,
+                contract_no: None,
                 r#type: None,
                 end_date: None,
                 salary_type: None,
-                work_hours_per_week: None,
+                work_hours: None,
                 notes: None,
             },
             None,
@@ -16500,7 +16489,15 @@ async fn main() {
 <dl>
 <dd>
 
-**contract_no:** `String` 
+**agreement_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contract_no:** `Option<String>` 
     
 </dd>
 </dl>
@@ -16548,7 +16545,7 @@ async fn main() {
 <dl>
 <dd>
 
-**work_hours_per_week:** `Option<String>` 
+**work_hours:** `Option<String>` 
     
 </dd>
 </dl>
@@ -17916,6 +17913,7 @@ async fn main() {
                 technical_inspection_due: None,
                 insurance_due: None,
                 notes: None,
+                documents: None,
             },
             None,
         )
@@ -18024,6 +18022,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documents:** `Option<Vec<PostV1FleetVehiclesCreateRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -19667,10 +19673,13 @@ async fn main() {
         .agreements
         .post_v1agreements_agreements_create(
             &PostV1AgreementsAgreementsCreateRequest {
-                partner_id: "partnerId".to_string(),
                 number: "number".to_string(),
                 start_date: "startDate".to_string(),
                 type_id: None,
+                kind: None,
+                partner_id: None,
+                employee_id: None,
+                bank_account_id: None,
                 name: None,
                 end_date: None,
                 auto_renew: None,
@@ -19679,6 +19688,7 @@ async fn main() {
                 currency: None,
                 status: None,
                 notes: None,
+                document_ref: None,
                 items: None,
             },
             None,
@@ -19707,7 +19717,31 @@ async fn main() {
 <dl>
 <dd>
 
-**partner_id:** `String` 
+**kind:** `Option<PostV1AgreementsAgreementsCreateRequestKind>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partner_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**employee_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**bank_account_id:** `Option<String>` 
     
 </dd>
 </dl>
@@ -19788,6 +19822,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -19893,6 +19935,7 @@ async fn main() {
             &PostV1AgreementsAgreementsUpdateRequest {
                 id: "id".to_string(),
                 type_id: None,
+                kind: None,
                 name: None,
                 end_date: None,
                 auto_renew: None,
@@ -19900,6 +19943,7 @@ async fn main() {
                 billing_period: None,
                 status: None,
                 notes: None,
+                document_ref: None,
             },
             None,
         )
@@ -19928,6 +19972,14 @@ async fn main() {
 <dd>
 
 **type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `Option<PostV1AgreementsAgreementsUpdateRequestKind>` 
     
 </dd>
 </dl>
@@ -19984,6 +20036,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -27761,6 +27821,7 @@ async fn main() {
                 iban: None,
                 currency: None,
                 account_code: None,
+                document_ref: None,
             },
             None,
         )
@@ -27805,6 +27866,14 @@ async fn main() {
 <dd>
 
 **account_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_ref:** `Option<String>` 
     
 </dd>
 </dl>
@@ -28091,6 +28160,7 @@ async fn main() {
             &PostV1BankStatementsImportRequest {
                 bank_account_id: "bankAccountId".to_string(),
                 content: "content".to_string(),
+                template_id: None,
                 format: None,
             },
             None,
@@ -28112,6 +28182,14 @@ async fn main() {
 <dd>
 
 **bank_account_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**template_id:** `Option<String>` 
     
 </dd>
 </dl>
@@ -28297,6 +28375,109 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_transactions_record</a>(request: PostV1BankTransactionsRecordRequest) -> Result&lt;PostV1BankTransactionsRecordResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_transactions_record(
+            &PostV1BankTransactionsRecordRequest {
+                bank_account_id: "bankAccountId".to_string(),
+                date: "date".to_string(),
+                amount: "amount".to_string(),
+                document_type: PostV1BankTransactionsRecordRequestDocumentType::SaleInvoice,
+                document_id: "documentId".to_string(),
+                description: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**bank_account_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_type:** `PostV1BankTransactionsRecordRequestDocumentType` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_payments_export</a>(request: PostV1BankPaymentsExportRequest) -> Result&lt;PostV1BankPaymentsExportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -28362,6 +28543,473 @@ async fn main() {
 <dd>
 
 **execution_date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">create_a_bank_import_template_fields_default_to_the_types_standard_field_list</a>(request: PostV1BankImportTemplatesCreateRequest) -> Result&lt;PostV1BankImportTemplatesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .create_a_bank_import_template_fields_default_to_the_types_standard_field_list(
+            &PostV1BankImportTemplatesCreateRequest {
+                name: "name".to_string(),
+                r#type: PostV1BankImportTemplatesCreateRequestType::Stripe,
+                fields: None,
+                meta_fields: None,
+                invoice_meta_field: None,
+                invoice_vat_rate_percent: None,
+                company_meta_field: None,
+                invoice_item_id: None,
+                advance_invoices: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type_:** `PostV1BankImportTemplatesCreateRequestType` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fields:** `Option<Vec<PostV1BankImportTemplatesCreateRequestFieldsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**meta_fields:** `Option<Vec<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_meta_field:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_vat_rate_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**company_meta_field:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_item_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advance_invoices:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_update</a>(request: PostV1BankImportTemplatesUpdateRequest) -> Result&lt;PostV1BankImportTemplatesUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_import_templates_update(
+            &PostV1BankImportTemplatesUpdateRequest {
+                id: "id".to_string(),
+                name: None,
+                r#type: None,
+                fields: None,
+                meta_fields: None,
+                invoice_meta_field: None,
+                invoice_vat_rate_percent: None,
+                company_meta_field: None,
+                invoice_item_id: None,
+                advance_invoices: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type_:** `Option<PostV1BankImportTemplatesUpdateRequestType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fields:** `Option<Vec<PostV1BankImportTemplatesUpdateRequestFieldsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**meta_fields:** `Option<Vec<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_meta_field:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_vat_rate_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**company_meta_field:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_item_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advance_invoices:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_delete</a>(request: PostV1BankImportTemplatesDeleteRequest) -> Result&lt;PostV1BankImportTemplatesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_import_templates_delete(
+            &PostV1BankImportTemplatesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_get</a>(request: PostV1BankImportTemplatesGetRequest) -> Result&lt;PostV1BankImportTemplatesGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_import_templates_get(
+            &PostV1BankImportTemplatesGetRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_list</a>(request: PostV1BankImportTemplatesListRequest) -> Result&lt;PostV1BankImportTemplatesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_import_templates_list(
+            &PostV1BankImportTemplatesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1BankImportTemplatesListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1BankImportTemplatesListRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -29799,6 +30447,76 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">choose_the_import_template_applied_on_sync_and_how_often_the_account_is_synced_automatically</a>(request: PostV1BankFeedsAccountsConfigureRequest) -> Result&lt;PostV1BankFeedsAccountsConfigureResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client.bank.choose_the_import_template_applied_on_sync_and_how_often_the_account_is_synced_automatically(&PostV1BankFeedsAccountsConfigureRequest {
+        id: "id".to_string(),
+        import_template_id: None,
+        sync_schedule: None
+    }, None).await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**import_template_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sync_schedule:** `Option<PostV1BankFeedsAccountsConfigureRequestSyncSchedule>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">pull_new_transactions_from_the_bank_into_the_ledger_emits_bank_feed_synced</a>(request: PostV1BankFeedsSyncRequest) -> Result&lt;PostV1BankFeedsSyncResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -29912,10 +30630,10 @@ async fn main() {
         .post_v1files_upload(
             &PostV1FilesUploadRequest {
                 entity: "entity".to_string(),
-                entity_id: "entityId".to_string(),
                 file_name: "fileName".to_string(),
                 mime_type: "mimeType".to_string(),
                 content: "content".to_string(),
+                entity_id: None,
             },
             None,
         )
@@ -29943,7 +30661,7 @@ async fn main() {
 <dl>
 <dd>
 
-**entity_id:** `String` 
+**entity_id:** `Option<String>` 
     
 </dd>
 </dl>

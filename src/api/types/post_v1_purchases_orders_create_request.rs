@@ -21,6 +21,9 @@ pub struct PostV1PurchasesOrdersCreateRequest {
     pub currency: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
     #[serde(default)]
     pub lines: Vec<PostV1PurchasesOrdersCreateRequestLinesItem>,
 }
@@ -41,6 +44,7 @@ pub struct PostV1PurchasesOrdersCreateRequestBuilder {
     warehouse_id: Option<String>,
     currency: Option<String>,
     notes: Option<String>,
+    document_ref: Option<String>,
     lines: Option<Vec<PostV1PurchasesOrdersCreateRequestLinesItem>>,
 }
 
@@ -80,6 +84,11 @@ impl PostV1PurchasesOrdersCreateRequestBuilder {
         self
     }
 
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<PostV1PurchasesOrdersCreateRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -103,6 +112,7 @@ impl PostV1PurchasesOrdersCreateRequestBuilder {
             warehouse_id: self.warehouse_id,
             currency: self.currency,
             notes: self.notes,
+            document_ref: self.document_ref,
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,

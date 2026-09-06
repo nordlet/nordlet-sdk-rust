@@ -36,6 +36,8 @@ pub struct PostV1FleetVehiclesGetResponse {
     pub status: PostV1FleetVehiclesGetResponseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub documents: Option<Vec<PostV1FleetVehiclesGetResponseDocumentsItem>>,
     #[serde(rename = "currentAssignment")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub current_assignment: Option<PostV1FleetVehiclesGetResponseCurrentAssignment>,
@@ -67,6 +69,7 @@ pub struct PostV1FleetVehiclesGetResponseBuilder {
     insurance_due: Option<String>,
     status: Option<PostV1FleetVehiclesGetResponseStatus>,
     notes: Option<String>,
+    documents: Option<Vec<PostV1FleetVehiclesGetResponseDocumentsItem>>,
     current_assignment: Option<PostV1FleetVehiclesGetResponseCurrentAssignment>,
     created_at: Option<String>,
 }
@@ -142,6 +145,11 @@ impl PostV1FleetVehiclesGetResponseBuilder {
         self
     }
 
+    pub fn documents(mut self, value: Vec<PostV1FleetVehiclesGetResponseDocumentsItem>) -> Self {
+        self.documents = Some(value);
+        self
+    }
+
     pub fn current_assignment(
         mut self,
         value: PostV1FleetVehiclesGetResponseCurrentAssignment,
@@ -188,6 +196,7 @@ impl PostV1FleetVehiclesGetResponseBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             notes: self.notes,
+            documents: self.documents,
             current_assignment: self.current_assignment,
             created_at: self
                 .created_at

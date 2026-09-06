@@ -16,6 +16,9 @@ pub struct PostV1HrContractsCreateResponse {
     #[serde(rename = "scheduleId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub schedule_id: Option<String>,
+    #[serde(rename = "agreementId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub agreement_id: Option<String>,
     #[serde(rename = "contractNo")]
     #[serde(default)]
     pub contract_no: String,
@@ -34,9 +37,11 @@ pub struct PostV1HrContractsCreateResponse {
     pub base_salary: String,
     #[serde(rename = "salaryType")]
     pub salary_type: PostV1HrContractsCreateResponseSalaryType,
-    #[serde(rename = "workHoursPerWeek")]
+    #[serde(rename = "workHours")]
     #[serde(default)]
-    pub work_hours_per_week: String,
+    pub work_hours: String,
+    #[serde(rename = "workHoursUnit")]
+    pub work_hours_unit: PostV1HrContractsCreateResponseWorkHoursUnit,
     pub status: PostV1HrContractsCreateResponseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
@@ -59,6 +64,7 @@ pub struct PostV1HrContractsCreateResponseBuilder {
     position_id: Option<String>,
     department_id: Option<String>,
     schedule_id: Option<String>,
+    agreement_id: Option<String>,
     contract_no: Option<String>,
     r#type: Option<PostV1HrContractsCreateResponseType>,
     start_date: Option<String>,
@@ -66,7 +72,8 @@ pub struct PostV1HrContractsCreateResponseBuilder {
     end_reason: Option<String>,
     base_salary: Option<String>,
     salary_type: Option<PostV1HrContractsCreateResponseSalaryType>,
-    work_hours_per_week: Option<String>,
+    work_hours: Option<String>,
+    work_hours_unit: Option<PostV1HrContractsCreateResponseWorkHoursUnit>,
     status: Option<PostV1HrContractsCreateResponseStatus>,
     notes: Option<String>,
     created_at: Option<String>,
@@ -95,6 +102,11 @@ impl PostV1HrContractsCreateResponseBuilder {
 
     pub fn schedule_id(mut self, value: impl Into<String>) -> Self {
         self.schedule_id = Some(value.into());
+        self
+    }
+
+    pub fn agreement_id(mut self, value: impl Into<String>) -> Self {
+        self.agreement_id = Some(value.into());
         self
     }
 
@@ -133,8 +145,13 @@ impl PostV1HrContractsCreateResponseBuilder {
         self
     }
 
-    pub fn work_hours_per_week(mut self, value: impl Into<String>) -> Self {
-        self.work_hours_per_week = Some(value.into());
+    pub fn work_hours(mut self, value: impl Into<String>) -> Self {
+        self.work_hours = Some(value.into());
+        self
+    }
+
+    pub fn work_hours_unit(mut self, value: PostV1HrContractsCreateResponseWorkHoursUnit) -> Self {
+        self.work_hours_unit = Some(value);
         self
     }
 
@@ -162,7 +179,8 @@ impl PostV1HrContractsCreateResponseBuilder {
     /// - [`start_date`](PostV1HrContractsCreateResponseBuilder::start_date)
     /// - [`base_salary`](PostV1HrContractsCreateResponseBuilder::base_salary)
     /// - [`salary_type`](PostV1HrContractsCreateResponseBuilder::salary_type)
-    /// - [`work_hours_per_week`](PostV1HrContractsCreateResponseBuilder::work_hours_per_week)
+    /// - [`work_hours`](PostV1HrContractsCreateResponseBuilder::work_hours)
+    /// - [`work_hours_unit`](PostV1HrContractsCreateResponseBuilder::work_hours_unit)
     /// - [`status`](PostV1HrContractsCreateResponseBuilder::status)
     /// - [`created_at`](PostV1HrContractsCreateResponseBuilder::created_at)
     pub fn build(self) -> Result<PostV1HrContractsCreateResponse, BuildError> {
@@ -174,6 +192,7 @@ impl PostV1HrContractsCreateResponseBuilder {
             position_id: self.position_id,
             department_id: self.department_id,
             schedule_id: self.schedule_id,
+            agreement_id: self.agreement_id,
             contract_no: self
                 .contract_no
                 .ok_or_else(|| BuildError::missing_field("contract_no"))?,
@@ -191,9 +210,12 @@ impl PostV1HrContractsCreateResponseBuilder {
             salary_type: self
                 .salary_type
                 .ok_or_else(|| BuildError::missing_field("salary_type"))?,
-            work_hours_per_week: self
-                .work_hours_per_week
-                .ok_or_else(|| BuildError::missing_field("work_hours_per_week"))?,
+            work_hours: self
+                .work_hours
+                .ok_or_else(|| BuildError::missing_field("work_hours"))?,
+            work_hours_unit: self
+                .work_hours_unit
+                .ok_or_else(|| BuildError::missing_field("work_hours_unit"))?,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

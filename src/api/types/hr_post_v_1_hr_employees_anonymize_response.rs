@@ -50,6 +50,8 @@ pub struct PostV1HrEmployeesAnonymizeResponse {
     pub status: PostV1HrEmployeesAnonymizeResponseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attributes: Option<Vec<PostV1HrEmployeesAnonymizeResponseAttributesItem>>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -83,6 +85,7 @@ pub struct PostV1HrEmployeesAnonymizeResponseBuilder {
     pension_accumulation: Option<bool>,
     status: Option<PostV1HrEmployeesAnonymizeResponseStatus>,
     notes: Option<String>,
+    attributes: Option<Vec<PostV1HrEmployeesAnonymizeResponseAttributesItem>>,
     created_at: Option<String>,
 }
 
@@ -182,6 +185,14 @@ impl PostV1HrEmployeesAnonymizeResponseBuilder {
         self
     }
 
+    pub fn attributes(
+        mut self,
+        value: Vec<PostV1HrEmployeesAnonymizeResponseAttributesItem>,
+    ) -> Self {
+        self.attributes = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -227,6 +238,7 @@ impl PostV1HrEmployeesAnonymizeResponseBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             notes: self.notes,
+            attributes: self.attributes,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

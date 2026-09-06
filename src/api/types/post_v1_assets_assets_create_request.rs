@@ -26,6 +26,8 @@ pub struct PostV1AssetsAssetsCreateRequest {
     pub useful_life_months: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub documents: Option<Vec<PostV1AssetsAssetsCreateRequestDocumentsItem>>,
 }
 
 impl PostV1AssetsAssetsCreateRequest {
@@ -46,6 +48,7 @@ pub struct PostV1AssetsAssetsCreateRequestBuilder {
     salvage_value: Option<String>,
     useful_life_months: Option<i64>,
     notes: Option<String>,
+    documents: Option<Vec<PostV1AssetsAssetsCreateRequestDocumentsItem>>,
 }
 
 impl PostV1AssetsAssetsCreateRequestBuilder {
@@ -94,6 +97,11 @@ impl PostV1AssetsAssetsCreateRequestBuilder {
         self
     }
 
+    pub fn documents(mut self, value: Vec<PostV1AssetsAssetsCreateRequestDocumentsItem>) -> Self {
+        self.documents = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1AssetsAssetsCreateRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`group_id`](PostV1AssetsAssetsCreateRequestBuilder::group_id)
@@ -118,6 +126,7 @@ impl PostV1AssetsAssetsCreateRequestBuilder {
             salvage_value: self.salvage_value,
             useful_life_months: self.useful_life_months,
             notes: self.notes,
+            documents: self.documents,
         })
     }
 }
