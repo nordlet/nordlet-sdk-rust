@@ -46,6 +46,9 @@ pub struct PostV1CaptureDocumentsConfirmResponseInvoice {
     #[serde(rename = "purchaseOrderId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub purchase_order_id: Option<String>,
+    #[serde(rename = "operationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub operation_type_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(rename = "documentRef")]
@@ -87,6 +90,7 @@ pub struct PostV1CaptureDocumentsConfirmResponseInvoiceBuilder {
     journal_transaction_id: Option<String>,
     credited_invoice_id: Option<String>,
     purchase_order_id: Option<String>,
+    operation_type_id: Option<String>,
     notes: Option<String>,
     document_ref: Option<String>,
     created_at: Option<String>,
@@ -183,6 +187,11 @@ impl PostV1CaptureDocumentsConfirmResponseInvoiceBuilder {
         self
     }
 
+    pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.operation_type_id = Some(value.into());
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -269,6 +278,7 @@ impl PostV1CaptureDocumentsConfirmResponseInvoiceBuilder {
             journal_transaction_id: self.journal_transaction_id,
             credited_invoice_id: self.credited_invoice_id,
             purchase_order_id: self.purchase_order_id,
+            operation_type_id: self.operation_type_id,
             notes: self.notes,
             document_ref: self.document_ref,
             created_at: self

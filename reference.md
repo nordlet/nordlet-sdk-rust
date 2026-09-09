@@ -132,6 +132,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -290,6 +298,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -408,6 +424,173 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_counties_list</a>(request: PostV1ReferenceLtCountiesListRequest) -> Result&lt;PostV1ReferenceLtCountiesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reference
+        .post_v1reference_lt_counties_list(
+            &PostV1ReferenceLtCountiesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_municipalities_list</a>(request: PostV1ReferenceLtMunicipalitiesListRequest) -> Result&lt;PostV1ReferenceLtMunicipalitiesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reference
+        .post_v1reference_lt_municipalities_list(
+            &PostV1ReferenceLtMunicipalitiesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**county_code:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_cities_list</a>(request: PostV1ReferenceLtCitiesListRequest) -> Result&lt;PostV1ReferenceLtCitiesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reference
+        .post_v1reference_lt_cities_list(
+            &PostV1ReferenceLtCitiesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**municipality_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**q:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_banks_list</a>(request: PostV1ReferenceBanksListRequest) -> Result&lt;PostV1ReferenceBanksListResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -479,6 +662,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ReferenceBanksListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -701,6 +892,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -780,6 +979,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ReferenceVatClassifiersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -1222,6 +1429,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -1467,6 +1682,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -1631,6 +1854,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ReferenceSeriesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -1999,6 +2230,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -2342,6 +2581,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1PartnersContactsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -2691,6 +2938,205 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_files_list</a>(request: PostV1PartnersFilesListRequest) -> Result&lt;PostV1PartnersFilesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1partners_files_list(
+            &PostV1PartnersFilesListRequest {
+                partner_id: "partnerId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**partner_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">reminders_the_overnight_debt_reminder_job_would_send_today_for_this_company</a>(request: PostV1PartnersDebtRemindersPreviewRequest) -> Result&lt;PostV1PartnersDebtRemindersPreviewResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .reminders_the_overnight_debt_reminder_job_would_send_today_for_this_company(
+            &PostV1PartnersDebtRemindersPreviewRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_debt_reminders_list</a>(request: PostV1PartnersDebtRemindersListRequest) -> Result&lt;PostV1PartnersDebtRemindersListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1partners_debt_reminders_list(
+            &PostV1PartnersDebtRemindersListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1PartnersDebtRemindersListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1PartnersDebtRemindersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -2839,6 +3285,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -2966,8 +3420,25 @@ async fn main() {
                 group_id: None,
                 status_id: None,
                 address: None,
+                correspondence_address: None,
                 notes: None,
                 document_ref: None,
+                short_name: None,
+                website: None,
+                fax: None,
+                eori_code: None,
+                other_code: None,
+                foreign_tax_number: None,
+                auto_debt_reminder: None,
+                late_interest_percent: None,
+                first_call_date: None,
+                last_call_date: None,
+                next_call_date: None,
+                rating: None,
+                is_employee: None,
+                is_group_member: None,
+                is_active: None,
+                legal_country_class: None,
             },
             None,
         )
@@ -3123,6 +3594,14 @@ async fn main() {
 <dl>
 <dd>
 
+**correspondence_address:** `Option<PostV1PartnersCreateRequestCorrespondenceAddress>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **notes:** `Option<String>` 
     
 </dd>
@@ -3132,6 +3611,134 @@ async fn main() {
 <dd>
 
 **document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**short_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**website:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fax:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**eori_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**other_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**foreign_tax_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auto_debt_reminder:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**late_interest_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**first_call_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**last_call_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**next_call_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**rating:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_employee:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_group_member:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**legal_country_class:** `Option<PostV1PartnersCreateRequestLegalCountryClass>` 
     
 </dd>
 </dl>
@@ -3186,8 +3793,25 @@ async fn main() {
                 group_id: None,
                 status_id: None,
                 address: None,
+                correspondence_address: None,
                 notes: None,
                 document_ref: None,
+                short_name: None,
+                website: None,
+                fax: None,
+                eori_code: None,
+                other_code: None,
+                foreign_tax_number: None,
+                auto_debt_reminder: None,
+                late_interest_percent: None,
+                first_call_date: None,
+                last_call_date: None,
+                next_call_date: None,
+                rating: None,
+                is_employee: None,
+                is_group_member: None,
+                is_active: None,
+                legal_country_class: None,
             },
             None,
         )
@@ -3343,6 +3967,14 @@ async fn main() {
 <dl>
 <dd>
 
+**correspondence_address:** `Option<PostV1PartnersFindOrCreateRequestCorrespondenceAddress>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **notes:** `Option<String>` 
     
 </dd>
@@ -3352,6 +3984,134 @@ async fn main() {
 <dd>
 
 **document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**short_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**website:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fax:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**eori_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**other_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**foreign_tax_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auto_debt_reminder:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**late_interest_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**first_call_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**last_call_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**next_call_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**rating:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_employee:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_group_member:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**legal_country_class:** `Option<PostV1PartnersFindOrCreateRequestLegalCountryClass>` 
     
 </dd>
 </dl>
@@ -3465,8 +4225,25 @@ async fn main() {
                 group_id: None,
                 status_id: None,
                 address: None,
+                correspondence_address: None,
                 notes: None,
                 document_ref: None,
+                short_name: None,
+                website: None,
+                fax: None,
+                eori_code: None,
+                other_code: None,
+                foreign_tax_number: None,
+                auto_debt_reminder: None,
+                late_interest_percent: None,
+                first_call_date: None,
+                last_call_date: None,
+                next_call_date: None,
+                rating: None,
+                is_employee: None,
+                is_group_member: None,
+                is_active: None,
+                legal_country_class: None,
             },
             None,
         )
@@ -3510,7 +4287,7 @@ async fn main() {
 <dl>
 <dd>
 
-**code:** `Option<String>` 
+**code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3518,7 +4295,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_code:** `Option<String>` 
+**vat_code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3526,7 +4303,7 @@ async fn main() {
 <dl>
 <dd>
 
-**peppol_id:** `Option<String>` 
+**peppol_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3534,7 +4311,7 @@ async fn main() {
 <dl>
 <dd>
 
-**email:** `Option<String>` 
+**email:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3542,7 +4319,7 @@ async fn main() {
 <dl>
 <dd>
 
-**phone:** `Option<String>` 
+**phone:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3550,7 +4327,7 @@ async fn main() {
 <dl>
 <dd>
 
-**self_employment_cert_no:** `Option<String>` 
+**self_employment_cert_no:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3558,7 +4335,7 @@ async fn main() {
 <dl>
 <dd>
 
-**birth_date:** `Option<String>` 
+**birth_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3582,7 +4359,7 @@ async fn main() {
 <dl>
 <dd>
 
-**payment_term_days:** `Option<String>` 
+**payment_term_days:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3590,7 +4367,7 @@ async fn main() {
 <dl>
 <dd>
 
-**credit_limit:** `Option<String>` 
+**credit_limit:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3598,7 +4375,7 @@ async fn main() {
 <dl>
 <dd>
 
-**price_list_id:** `Option<String>` 
+**price_list_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3606,7 +4383,7 @@ async fn main() {
 <dl>
 <dd>
 
-**group_id:** `Option<String>` 
+**group_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3614,7 +4391,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status_id:** `Option<String>` 
+**status_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3622,7 +4399,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1PartnersUpdateRequestAddress>` 
+**address:** `Option<Option<PostV1PartnersUpdateRequestAddress>>` 
     
 </dd>
 </dl>
@@ -3630,7 +4407,15 @@ async fn main() {
 <dl>
 <dd>
 
-**notes:** `Option<String>` 
+**correspondence_address:** `Option<Option<PostV1PartnersUpdateRequestCorrespondenceAddress>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -3639,6 +4424,134 @@ async fn main() {
 <dd>
 
 **document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**short_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**website:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fax:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**eori_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**other_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**foreign_tax_number:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auto_debt_reminder:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**late_interest_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**first_call_date:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**last_call_date:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**next_call_date:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**rating:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_employee:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_group_member:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**legal_country_class:** `Option<Option<PostV1PartnersUpdateRequestLegalCountryClass>>` 
     
 </dd>
 </dl>
@@ -3851,6 +4764,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1PartnersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -4751,6 +5672,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -4826,6 +5755,1189 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_create</a>(request: PostV1LeadsCreateRequest) -> Result&lt;PostV1LeadsCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_create(
+            &PostV1LeadsCreateRequest {
+                name: "name".to_string(),
+                contact_name: None,
+                email: None,
+                phone: None,
+                website: None,
+                country_code: None,
+                source_id: None,
+                status: None,
+                estimated_value: None,
+                currency: None,
+                description: None,
+                assigned_user_id: None,
+                documents: None,
+                notes: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contact_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**email:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**phone:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**website:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**source_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**status:** `Option<PostV1LeadsCreateRequestStatus>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**estimated_value:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**currency:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**assigned_user_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documents:** `Option<Vec<PostV1LeadsCreateRequestDocumentsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<Vec<String>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_get</a>(request: PostV1LeadsGetRequest) -> Result&lt;PostV1LeadsGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_get(
+            &PostV1LeadsGetRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_update</a>(request: PostV1LeadsUpdateRequest) -> Result&lt;PostV1LeadsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_update(
+            &PostV1LeadsUpdateRequest {
+                id: "id".to_string(),
+                name: None,
+                contact_name: None,
+                email: None,
+                phone: None,
+                website: None,
+                country_code: None,
+                source_id: None,
+                status: None,
+                estimated_value: None,
+                currency: None,
+                description: None,
+                assigned_user_id: None,
+                documents: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**contact_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**email:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**phone:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**website:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**country_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**source_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**status:** `Option<PostV1LeadsUpdateRequestStatus>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**estimated_value:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**currency:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**assigned_user_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documents:** `Option<Vec<PostV1LeadsUpdateRequestDocumentsItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_delete</a>(request: PostV1LeadsDeleteRequest) -> Result&lt;PostV1LeadsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_delete(
+            &PostV1LeadsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_list</a>(request: PostV1LeadsListRequest) -> Result&lt;PostV1LeadsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_list(
+            &PostV1LeadsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1LeadsListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1LeadsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_notes_create</a>(request: PostV1LeadsNotesCreateRequest) -> Result&lt;PostV1LeadsNotesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_notes_create(
+            &PostV1LeadsNotesCreateRequest {
+                lead_id: "leadId".to_string(),
+                body: "body".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**lead_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**body:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_notes_delete</a>(request: PostV1LeadsNotesDeleteRequest) -> Result&lt;PostV1LeadsNotesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_notes_delete(
+            &PostV1LeadsNotesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_notes_list</a>(request: PostV1LeadsNotesListRequest) -> Result&lt;PostV1LeadsNotesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_notes_list(
+            &PostV1LeadsNotesListRequest {
+                lead_id: "leadId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**lead_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_files_list</a>(request: PostV1LeadsFilesListRequest) -> Result&lt;PostV1LeadsFilesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_files_list(
+            &PostV1LeadsFilesListRequest {
+                lead_id: "leadId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**lead_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_create</a>(request: PostV1LeadsSourcesCreateRequest) -> Result&lt;PostV1LeadsSourcesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_sources_create(
+            &PostV1LeadsSourcesCreateRequest {
+                name: "name".to_string(),
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_update</a>(request: PostV1LeadsSourcesUpdateRequest) -> Result&lt;PostV1LeadsSourcesUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_sources_update(
+            &PostV1LeadsSourcesUpdateRequest {
+                id: "id".to_string(),
+                name: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_delete</a>(request: PostV1LeadsSourcesDeleteRequest) -> Result&lt;PostV1LeadsSourcesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_sources_delete(
+            &PostV1LeadsSourcesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_list</a>(request: PostV1LeadsSourcesListRequest) -> Result&lt;PostV1LeadsSourcesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_sources_list(
+            &PostV1LeadsSourcesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_options</a>(request: PostV1LeadsSourcesOptionsRequest) -> Result&lt;PostV1LeadsSourcesOptionsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_sources_options(
+            &PostV1LeadsSourcesOptionsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_convert</a>(request: PostV1LeadsConvertRequest) -> Result&lt;PostV1LeadsConvertResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a customer partner from the lead, move the lead files to the partner, copy the lead notes into the partner notes and mark the lead as converted.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .post_v1leads_convert(
+            &PostV1LeadsConvertRequest {
+                id: "id".to_string(),
+                partner_type: None,
+                code: None,
+                vat_code: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partner_type:** `Option<PostV1LeadsConvertRequestPartnerType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_code:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Catalog
 <details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_create</a>(request: PostV1CatalogItemsCreateRequest) -> Result&lt;PostV1CatalogItemsCreateResponse, ApiError&gt;</code></summary>
 <dl>
@@ -4874,6 +6986,33 @@ async fn main() {
                 document_ref: None,
                 translations: None,
                 components: None,
+                kind_id: None,
+                sale_account_code: None,
+                purchase_account_code: None,
+                expense_account_code: None,
+                manufacturer: None,
+                gross_mass_kg: None,
+                min_quantity: None,
+                cost_price: None,
+                is_free_price: None,
+                external_id: None,
+                is_returnable: None,
+                comment_required: None,
+                price_from: None,
+                price_to: None,
+                min_price: None,
+                discount_percent: None,
+                max_discount_percent: None,
+                loyalty_points: None,
+                department: None,
+                age_restriction: None,
+                package_quantity: None,
+                tara_code: None,
+                certificate_number: None,
+                certificate_date: None,
+                valid_from: None,
+                valid_to: None,
+                pos_flags: None,
             },
             None,
         )
@@ -5057,6 +7196,222 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**kind_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sale_account_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**purchase_account_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expense_account_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**manufacturer:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**gross_mass_kg:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**min_quantity:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cost_price:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_free_price:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**external_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_returnable:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**comment_required:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**price_from:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**price_to:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**min_price:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discount_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**max_discount_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**loyalty_points:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**department:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**age_restriction:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**package_quantity:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tara_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**certificate_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**certificate_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**valid_from:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**valid_to:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pos_flags:** `Option<std::collections::HashMap<String, bool>>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -5171,6 +7526,33 @@ async fn main() {
                 document_ref: None,
                 translations: None,
                 components: None,
+                kind_id: None,
+                sale_account_code: None,
+                purchase_account_code: None,
+                expense_account_code: None,
+                manufacturer: None,
+                gross_mass_kg: None,
+                min_quantity: None,
+                cost_price: None,
+                is_free_price: None,
+                external_id: None,
+                is_returnable: None,
+                comment_required: None,
+                price_from: None,
+                price_to: None,
+                min_price: None,
+                discount_percent: None,
+                max_discount_percent: None,
+                loyalty_points: None,
+                department: None,
+                age_restriction: None,
+                package_quantity: None,
+                tara_code: None,
+                certificate_number: None,
+                certificate_date: None,
+                valid_from: None,
+                valid_to: None,
+                pos_flags: None,
             },
             None,
         )
@@ -5222,7 +7604,7 @@ async fn main() {
 <dl>
 <dd>
 
-**code:** `Option<String>` 
+**code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5230,7 +7612,7 @@ async fn main() {
 <dl>
 <dd>
 
-**barcode:** `Option<String>` 
+**barcode:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5246,7 +7628,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_classifier_code:** `Option<String>` 
+**vat_classifier_code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5254,7 +7636,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_rate_percent:** `Option<String>` 
+**vat_rate_percent:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5262,7 +7644,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sale_price_excl_vat:** `Option<String>` 
+**sale_price_excl_vat:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5270,7 +7652,7 @@ async fn main() {
 <dl>
 <dd>
 
-**purchase_price_excl_vat:** `Option<String>` 
+**purchase_price_excl_vat:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5278,7 +7660,7 @@ async fn main() {
 <dl>
 <dd>
 
-**cn_code:** `Option<String>` 
+**cn_code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5286,7 +7668,7 @@ async fn main() {
 <dl>
 <dd>
 
-**origin_country:** `Option<String>` 
+**origin_country:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5294,7 +7676,7 @@ async fn main() {
 <dl>
 <dd>
 
-**net_mass_kg:** `Option<String>` 
+**net_mass_kg:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5302,7 +7684,7 @@ async fn main() {
 <dl>
 <dd>
 
-**supplementary_unit:** `Option<String>` 
+**supplementary_unit:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5310,7 +7692,7 @@ async fn main() {
 <dl>
 <dd>
 
-**supplementary_qty_per_unit:** `Option<String>` 
+**supplementary_qty_per_unit:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5318,7 +7700,7 @@ async fn main() {
 <dl>
 <dd>
 
-**description:** `Option<String>` 
+**description:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5326,7 +7708,7 @@ async fn main() {
 <dl>
 <dd>
 
-**group_id:** `Option<String>` 
+**group_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -5334,7 +7716,7 @@ async fn main() {
 <dl>
 <dd>
 
-**attributes:** `Option<std::collections::HashMap<String, String>>` 
+**attributes:** `Option<Option<std::collections::HashMap<String, Option<String>>>>` 
     
 </dd>
 </dl>
@@ -5350,7 +7732,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<std::collections::HashMap<String, PostV1CatalogItemsUpdateRequestTranslationsValue>>` 
+**translations:** `Option<Option<std::collections::HashMap<String, Option<PostV1CatalogItemsUpdateRequestTranslationsValue>>>>` 
     
 </dd>
 </dl>
@@ -5359,6 +7741,222 @@ async fn main() {
 <dd>
 
 **components:** `Option<Vec<PostV1CatalogItemsUpdateRequestComponentsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sale_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**purchase_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expense_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**manufacturer:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**gross_mass_kg:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**min_quantity:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cost_price:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_free_price:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**external_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_returnable:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**comment_required:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**price_from:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**price_to:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**min_price:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discount_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**max_discount_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**loyalty_points:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**department:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**age_restriction:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**package_quantity:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tara_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**certificate_number:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**certificate_date:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**valid_from:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**valid_to:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pos_flags:** `Option<Option<std::collections::HashMap<String, Option<bool>>>>` 
     
 </dd>
 </dl>
@@ -5499,6 +8097,690 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1CatalogItemsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_files_list</a>(request: PostV1CatalogItemsFilesListRequest) -> Result&lt;PostV1CatalogItemsFilesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_items_files_list(
+            &PostV1CatalogItemsFilesListRequest {
+                item_id: "itemId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**item_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_create</a>(request: PostV1CatalogItemsKindsCreateRequest) -> Result&lt;PostV1CatalogItemsKindsCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_items_kinds_create(
+            &PostV1CatalogItemsKindsCreateRequest {
+                code: "code".to_string(),
+                name: "name".to_string(),
+                saft_type: None,
+                quantity_accounting: None,
+                sort_order: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**saft_type:** `Option<PostV1CatalogItemsKindsCreateRequestSaftType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**quantity_accounting:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort_order:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_update</a>(request: PostV1CatalogItemsKindsUpdateRequest) -> Result&lt;PostV1CatalogItemsKindsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_items_kinds_update(
+            &PostV1CatalogItemsKindsUpdateRequest {
+                id: "id".to_string(),
+                code: None,
+                name: None,
+                saft_type: None,
+                quantity_accounting: None,
+                sort_order: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**saft_type:** `Option<PostV1CatalogItemsKindsUpdateRequestSaftType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**quantity_accounting:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort_order:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_delete</a>(request: PostV1CatalogItemsKindsDeleteRequest) -> Result&lt;PostV1CatalogItemsKindsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_items_kinds_delete(
+            &PostV1CatalogItemsKindsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_list</a>(request: PostV1CatalogItemsKindsListRequest) -> Result&lt;PostV1CatalogItemsKindsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_items_kinds_list(
+            &PostV1CatalogItemsKindsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_create</a>(request: PostV1CatalogUnitsCreateRequest) -> Result&lt;PostV1CatalogUnitsCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_units_create(
+            &PostV1CatalogUnitsCreateRequest {
+                code: "code".to_string(),
+                name: "name".to_string(),
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_update</a>(request: PostV1CatalogUnitsUpdateRequest) -> Result&lt;PostV1CatalogUnitsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_units_update(
+            &PostV1CatalogUnitsUpdateRequest {
+                id: "id".to_string(),
+                code: None,
+                name: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_delete</a>(request: PostV1CatalogUnitsDeleteRequest) -> Result&lt;PostV1CatalogUnitsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_units_delete(
+            &PostV1CatalogUnitsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_list</a>(request: PostV1CatalogUnitsListRequest) -> Result&lt;PostV1CatalogUnitsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_units_list(
+            &PostV1CatalogUnitsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_options</a>(request: PostV1CatalogUnitsOptionsRequest) -> Result&lt;PostV1CatalogUnitsOptionsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .catalog
+        .post_v1catalog_units_options(
+            &PostV1CatalogUnitsOptionsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**locale:** `Option<PostV1CatalogUnitsOptionsRequestLocale>` 
     
 </dd>
 </dl>
@@ -6458,6 +9740,15 @@ async fn main() {
                 deemed_supplier: None,
                 notes: None,
                 document_ref: None,
+                operation_type_id: None,
+                document_series_id: None,
+                series_label: None,
+                order_number: None,
+                issued_by_name: None,
+                issued_by_title: None,
+                received_by_name: None,
+                received_by_title: None,
+                discount_percent: None,
             },
             None,
         )
@@ -6558,6 +9849,78 @@ async fn main() {
 <dd>
 
 **document_ref:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_series_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**series_label:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**order_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_title:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_title:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discount_percent:** `Option<String>` 
     
 </dd>
 </dl>
@@ -7073,6 +10436,15 @@ async fn main() {
                 vat_country_code: None,
                 deemed_supplier: None,
                 notes: None,
+                operation_type_id: None,
+                document_series_id: None,
+                series_label: None,
+                discount_percent: None,
+                order_number: None,
+                issued_by_name: None,
+                issued_by_title: None,
+                received_by_name: None,
+                received_by_title: None,
                 lines: None,
             },
             None,
@@ -7158,6 +10530,78 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_series_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**series_label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discount_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**order_number:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_title:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_title:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -7320,6 +10764,281 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_lock</a>(request: PostV1SalesInvoicesLockRequest) -> Result&lt;PostV1SalesInvoicesLockResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_invoices_lock(
+            &PostV1SalesInvoicesLockRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_unlock</a>(request: PostV1SalesInvoicesUnlockRequest) -> Result&lt;PostV1SalesInvoicesUnlockResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_invoices_unlock(
+            &PostV1SalesInvoicesUnlockRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_payment_link</a>(request: PostV1SalesInvoicesPaymentLinkRequest) -> Result&lt;PostV1SalesInvoicesPaymentLinkResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_invoices_payment_link(
+            &PostV1SalesInvoicesPaymentLinkRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_payment_settings_get</a>(request: PostV1SalesInvoicesPaymentSettingsGetRequest) -> Result&lt;PostV1SalesInvoicesPaymentSettingsGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_invoices_payment_settings_get(
+            &PostV1SalesInvoicesPaymentSettingsGetRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_payment_settings_update</a>(request: PostV1SalesInvoicesPaymentSettingsUpdateRequest) -> Result&lt;PostV1SalesInvoicesPaymentSettingsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_invoices_payment_settings_update(
+            &PostV1SalesInvoicesPaymentSettingsUpdateRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**payment_link_template:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_schedules_list</a>(request: PostV1SalesRecognitionSchedulesListRequest) -> Result&lt;PostV1SalesRecognitionSchedulesListResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -7391,6 +11110,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1SalesRecognitionSchedulesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -7549,6 +11276,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1SalesInvoicesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -8113,6 +11848,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -8177,6 +11920,1280 @@ async fn main() {
 <dd>
 
 **locale:** `Option<PostV1SalesActsPdfRequestLocale>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_create</a>(request: PostV1OperationTypesCreateRequest) -> Result&lt;PostV1OperationTypesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1operation_types_create(
+            &PostV1OperationTypesCreateRequest {
+                code: "code".to_string(),
+                name: "name".to_string(),
+                invoice_type: None,
+                payer_partner_id: None,
+                debit_account_code: None,
+                credit_account_code: None,
+                vat_account_code: None,
+                expense_account_code: None,
+                advance_account_code: None,
+                income_account_code: None,
+                is_purchase: None,
+                is_sale: None,
+                is_write_off: None,
+                is_internal_movement: None,
+                is_purchase_return: None,
+                is_sales_return: None,
+                is_consignment: None,
+                is_production: None,
+                is_asset_in: None,
+                is_asset_out: None,
+                is_cash_register_sale: None,
+                include_in_vat_register: None,
+                include_in_saft: None,
+                is_active: None,
+                sort_order: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_type:** `Option<Option<PostV1OperationTypesCreateRequestInvoiceType>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payer_partner_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**debit_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**credit_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expense_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advance_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**income_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_purchase:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_sale:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_write_off:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_internal_movement:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_purchase_return:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_sales_return:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_consignment:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_production:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_asset_in:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_asset_out:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_cash_register_sale:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include_in_vat_register:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include_in_saft:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort_order:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_update</a>(request: PostV1OperationTypesUpdateRequest) -> Result&lt;PostV1OperationTypesUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1operation_types_update(
+            &PostV1OperationTypesUpdateRequest {
+                id: "id".to_string(),
+                code: None,
+                name: None,
+                invoice_type: None,
+                payer_partner_id: None,
+                debit_account_code: None,
+                credit_account_code: None,
+                vat_account_code: None,
+                expense_account_code: None,
+                advance_account_code: None,
+                income_account_code: None,
+                is_purchase: None,
+                is_sale: None,
+                is_write_off: None,
+                is_internal_movement: None,
+                is_purchase_return: None,
+                is_sales_return: None,
+                is_consignment: None,
+                is_production: None,
+                is_asset_in: None,
+                is_asset_out: None,
+                is_cash_register_sale: None,
+                include_in_vat_register: None,
+                include_in_saft: None,
+                is_active: None,
+                sort_order: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**invoice_type:** `Option<Option<PostV1OperationTypesUpdateRequestInvoiceType>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payer_partner_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**debit_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**credit_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expense_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**advance_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**income_account_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_purchase:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_sale:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_write_off:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_internal_movement:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_purchase_return:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_sales_return:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_consignment:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_production:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_asset_in:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_asset_out:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_cash_register_sale:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include_in_vat_register:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include_in_saft:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort_order:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_get</a>(request: PostV1OperationTypesGetRequest) -> Result&lt;PostV1OperationTypesGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1operation_types_get(
+            &PostV1OperationTypesGetRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_delete</a>(request: PostV1OperationTypesDeleteRequest) -> Result&lt;PostV1OperationTypesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1operation_types_delete(
+            &PostV1OperationTypesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_list</a>(request: PostV1OperationTypesListRequest) -> Result&lt;PostV1OperationTypesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1operation_types_list(
+            &PostV1OperationTypesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1OperationTypesListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1OperationTypesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_create</a>(request: PostV1DocumentSeriesCreateRequest) -> Result&lt;PostV1DocumentSeriesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1document_series_create(
+            &PostV1DocumentSeriesCreateRequest {
+                prefix: "prefix".to_string(),
+                document_type: None,
+                name: None,
+                label: None,
+                operation_type_id: None,
+                number_length: None,
+                next_number: None,
+                warehouse_id: None,
+                print_series: None,
+                is_default: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**document_type:** `Option<PostV1DocumentSeriesCreateRequestDocumentType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**prefix:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**number_length:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**next_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**warehouse_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**print_series:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_default:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_update</a>(request: PostV1DocumentSeriesUpdateRequest) -> Result&lt;PostV1DocumentSeriesUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1document_series_update(
+            &PostV1DocumentSeriesUpdateRequest {
+                id: "id".to_string(),
+                document_type: None,
+                prefix: None,
+                name: None,
+                label: None,
+                operation_type_id: None,
+                number_length: None,
+                next_number: None,
+                warehouse_id: None,
+                print_series: None,
+                is_default: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_type:** `Option<PostV1DocumentSeriesUpdateRequestDocumentType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**prefix:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**number_length:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**next_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**warehouse_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**print_series:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_default:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_get</a>(request: PostV1DocumentSeriesGetRequest) -> Result&lt;PostV1DocumentSeriesGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1document_series_get(
+            &PostV1DocumentSeriesGetRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_delete</a>(request: PostV1DocumentSeriesDeleteRequest) -> Result&lt;PostV1DocumentSeriesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1document_series_delete(
+            &PostV1DocumentSeriesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_list</a>(request: PostV1DocumentSeriesListRequest) -> Result&lt;PostV1DocumentSeriesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1document_series_list(
+            &PostV1DocumentSeriesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PostV1DocumentSeriesListRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PostV1DocumentSeriesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -8578,6 +13595,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -8718,6 +13743,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -8840,6 +13873,7 @@ async fn main() {
                 currency: None,
                 credited_invoice_id: None,
                 purchase_order_id: None,
+                operation_type_id: None,
                 notes: None,
                 document_ref: None,
             },
@@ -8918,6 +13952,14 @@ async fn main() {
 <dd>
 
 **purchase_order_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<String>` 
     
 </dd>
 </dl>
@@ -9044,6 +14086,7 @@ async fn main() {
                 due_date: None,
                 currency: None,
                 purchase_order_id: None,
+                operation_type_id: None,
                 notes: None,
                 lines: None,
             },
@@ -9114,6 +14157,14 @@ async fn main() {
 <dd>
 
 **purchase_order_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -9346,6 +14397,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1PurchasesInvoicesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -9739,6 +14798,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1PurchasesOrdersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -10373,6 +15440,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -10449,6 +15524,280 @@ async fn main() {
 </details>
 
 ## Capture
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_settings_get</a>(request: PostV1CaptureSettingsGetRequest) -> Result&lt;PostV1CaptureSettingsGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .capture
+        .post_v1capture_settings_get(
+            &PostV1CaptureSettingsGetRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_settings_update</a>(request: PostV1CaptureSettingsUpdateRequest) -> Result&lt;PostV1CaptureSettingsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .capture
+        .post_v1capture_settings_update(
+            &PostV1CaptureSettingsUpdateRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**intake_enabled:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**capture_auto_extract:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_settings_regenerate_intake</a>(request: PostV1CaptureSettingsRegenerateIntakeRequest) -> Result&lt;PostV1CaptureSettingsRegenerateIntakeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .capture
+        .post_v1capture_settings_regenerate_intake(
+            &PostV1CaptureSettingsRegenerateIntakeRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">receive_an_inbound_email_with_supplier_documents_attached_postmark_style_or_generic_json</a>(request: PostV1CaptureInboundEmailRequest) -> Result&lt;PostV1CaptureInboundEmailResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .capture
+        .receive_an_inbound_email_with_supplier_documents_attached_postmark_style_or_generic_json(
+            &PostV1CaptureInboundEmailRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**postmark_to:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_full:** `Option<Vec<PostV1CaptureInboundEmailRequestToFullItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**postmark_from:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**postmark_subject:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**postmark_attachments:** `Option<Vec<PostV1CaptureInboundEmailRequestAttachmentsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to:** `Option<PostV1CaptureInboundEmailRequestTo>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**from:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**subject:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**attachments:** `Option<Vec<PostV1CaptureInboundEmailRequestAttachmentsItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">read_a_vendor_bill_or_receipt_and_return_an_editable_purchase_invoice_draft</a>(request: PostV1CaptureDocumentsUploadRequest) -> Result&lt;PostV1CaptureDocumentsUploadResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -10712,6 +16061,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1CaptureDocumentsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -12631,6 +17988,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -12711,6 +18076,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1LedgerAccountsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -13036,6 +18409,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -13249,6 +18630,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1LedgerJournalTransactionsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -13492,6 +18881,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1LedgerCostCentersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -13775,6 +19172,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1LedgerCostCenterGroupsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -14270,6 +19675,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1LedgerOwnersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -14939,6 +20352,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -15215,6 +20636,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1AssetsAssetsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -15687,6 +21116,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1HrPositionsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -16261,6 +21698,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -16715,6 +22160,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -17057,6 +22510,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1HrIncapacityCertificatesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -17439,6 +22900,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1HrEmployeesRecordsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -18348,6 +23817,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -18606,6 +24083,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1FleetAssignmentsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -19243,6 +24728,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -19636,6 +25129,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1AgreementsTypesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -20187,6 +25688,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -20515,6 +26024,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -20831,6 +26348,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1InventoryWarehousesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -21433,6 +26958,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -21512,6 +27045,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1InventoryLotsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -21901,6 +27442,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -22235,6 +27784,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1InventoryReorderRulesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -22588,6 +28145,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -22815,6 +28380,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ProductionRoutingsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -23146,6 +28719,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -23390,6 +28971,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ProductionBomsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -23806,6 +29395,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -24028,6 +29625,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ProductionOrdersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -24313,6 +29918,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1EcommerceOrdersListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -24954,6 +30567,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -25383,6 +31004,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -25735,6 +31364,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1ProjectsTimeEntriesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -26639,6 +32276,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -26925,6 +32570,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1PosDevicesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -27257,6 +32910,384 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Calendar
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_list</a>(request: PostV1CalendarListRequest) -> Result&lt;PostV1CalendarListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .post_v1calendar_list(
+            &PostV1CalendarListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**from:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include_done:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_get</a>(request: PostV1CalendarGetRequest) -> Result&lt;PostV1CalendarGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .post_v1calendar_get(
+            &PostV1CalendarGetRequest {
+                key: "key".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**key:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_create</a>(request: PostV1CalendarCreateRequest) -> Result&lt;PostV1CalendarCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .post_v1calendar_create(
+            &PostV1CalendarCreateRequest {
+                title: "title".to_string(),
+                due_date: "dueDate".to_string(),
+                notes: None,
+                done: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**title:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**due_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**done:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_update</a>(request: PostV1CalendarUpdateRequest) -> Result&lt;PostV1CalendarUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .post_v1calendar_update(
+            &PostV1CalendarUpdateRequest {
+                key: "key".to_string(),
+                title: None,
+                due_date: None,
+                notes: None,
+                done: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**key:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**title:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**due_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**done:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_delete</a>(request: PostV1CalendarDeleteRequest) -> Result&lt;PostV1CalendarDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .post_v1calendar_delete(
+            &PostV1CalendarDeleteRequest {
+                key: "key".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**key:** `String` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -27337,6 +33368,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1AuditListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -27496,6 +33535,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1WebhooksSubscriptionsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -27721,6 +33768,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1WebhooksDeliveriesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -27959,6 +34014,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -28162,6 +34225,7 @@ async fn main() {
                 content: "content".to_string(),
                 template_id: None,
                 format: None,
+                transfers_csv: None,
             },
             None,
         )
@@ -28206,6 +34270,14 @@ async fn main() {
 <dd>
 
 **content:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**transfers_csv:** `Option<String>` — Stripe transfers export (plain CSV or base64) used to post lender payouts and commissions
     
 </dd>
 </dl>
@@ -28288,6 +34360,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1BankTransactionsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -28589,6 +34669,12 @@ async fn main() {
                 company_meta_field: None,
                 invoice_item_id: None,
                 advance_invoices: None,
+                authorization_operation_type_id: None,
+                payout_operation_type_id: None,
+                commission_operation_type_id: None,
+                lender_meta_field: None,
+                partial_refund_label: None,
+                full_refund_label: None,
             },
             None,
         )
@@ -28676,6 +34762,54 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**authorization_operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payout_operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commission_operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lender_meta_field:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partial_refund_label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**full_refund_label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -28720,6 +34854,12 @@ async fn main() {
                 company_meta_field: None,
                 invoice_item_id: None,
                 advance_invoices: None,
+                authorization_operation_type_id: None,
+                payout_operation_type_id: None,
+                commission_operation_type_id: None,
+                lender_meta_field: None,
+                partial_refund_label: None,
+                full_refund_label: None,
             },
             None,
         )
@@ -28804,6 +34944,54 @@ async fn main() {
 <dd>
 
 **advance_invoices:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**authorization_operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payout_operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commission_operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lender_meta_field:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partial_refund_label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**full_refund_label:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -29011,6 +35199,348 @@ async fn main() {
 
 **filter:** `Option<Vec<PostV1BankImportTemplatesListRequestFilterItem>>` 
     
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_create</a>(request: PostV1BankMatchRulesCreateRequest) -> Result&lt;PostV1BankMatchRulesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_match_rules_create(
+            &PostV1BankMatchRulesCreateRequest {
+                name: "name".to_string(),
+                pattern: "pattern".to_string(),
+                provider: None,
+                payout_id_prefix: None,
+                bank_account_id: None,
+                date_window_days: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**provider:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pattern:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payout_id_prefix:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**bank_account_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_window_days:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_update</a>(request: PostV1BankMatchRulesUpdateRequest) -> Result&lt;PostV1BankMatchRulesUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_match_rules_update(
+            &PostV1BankMatchRulesUpdateRequest {
+                id: "id".to_string(),
+                name: None,
+                provider: None,
+                pattern: None,
+                payout_id_prefix: None,
+                bank_account_id: None,
+                date_window_days: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**provider:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pattern:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payout_id_prefix:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**bank_account_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_window_days:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_delete</a>(request: PostV1BankMatchRulesDeleteRequest) -> Result&lt;PostV1BankMatchRulesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_match_rules_delete(
+            &PostV1BankMatchRulesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_list</a>(request: PostV1BankMatchRulesListRequest) -> Result&lt;PostV1BankMatchRulesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_match_rules_list(
+            &PostV1BankMatchRulesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
 </dd>
 </dl>
 </dd>
@@ -29426,6 +35956,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -29727,6 +36265,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -29849,6 +36395,159 @@ async fn main() {
 <dd>
 
 **invoice_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_link</a>(request: PostV1BankSettlementsLinkRequest) -> Result&lt;PostV1BankSettlementsLinkResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Attach the incoming bank-statement line that carries this payout to the settlement batch.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_settlements_link(
+            &PostV1BankSettlementsLinkRequest {
+                id: "id".to_string(),
+                bank_transaction_id: "bankTransactionId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**bank_transaction_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_unlink</a>(request: PostV1BankSettlementsUnlinkRequest) -> Result&lt;PostV1BankSettlementsUnlinkResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Detach the bank-statement line from the settlement batch and return the line to unmatched.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .post_v1bank_settlements_unlink(
+            &PostV1BankSettlementsUnlinkRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
     
 </dd>
 </dl>
@@ -30293,6 +36992,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1BankFeedsConnectionsListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -30826,6 +37533,14 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<PostV1FilesListRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -32754,6 +39469,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -33792,6 +40515,59 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.public.<a href="/src/api/resources/public/client.rs">get_v1_public_pay_token</a>(token: String) -> Result&lt;(), ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .public
+        .get_v1public_pay_token(&"token".to_string(), None)
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**token:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Billing
 <details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_account_get</a>(request: PostV1BillingAccountGetRequest) -> Result&lt;PostV1BillingAccountGetResponse, ApiError&gt;</code></summary>
 <dl>
@@ -33961,6 +40737,64 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_portal_create</a>(request: PostV1BillingPortalCreateRequest) -> Result&lt;PostV1BillingPortalCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .post_v1billing_portal_create(
+            &PostV1BillingPortalCreateRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**locale:** `Option<PostV1BillingPortalCreateRequestLocale>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_transactions_list</a>(request: PostV1BillingTransactionsListRequest) -> Result&lt;PostV1BillingTransactionsListResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -34117,6 +40951,7 @@ async fn main() {
                 locale: None,
                 accept_terms: None,
                 accept_dpa: None,
+                referral_code: None,
             },
             None,
         )
@@ -34161,6 +40996,14 @@ async fn main() {
 <dd>
 
 **accept_dpa:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**referral_code:** `Option<String>` 
     
 </dd>
 </dl>
@@ -36101,6 +42944,226 @@ async fn main() {
 
 **confirm_email:** `String` 
     
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_referral_get</a>(request: PostV1AccountReferralGetRequest) -> Result&lt;PostV1AccountReferralGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_referral_get(
+            &PostV1AccountReferralGetRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_table_settings_get</a>(request: PostV1AccountTableSettingsGetRequest) -> Result&lt;PostV1AccountTableSettingsGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_table_settings_get(
+            &PostV1AccountTableSettingsGetRequest {
+                table_key: "tableKey".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**table_key:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_table_settings_set</a>(request: PostV1AccountTableSettingsSetRequest) -> Result&lt;PostV1AccountTableSettingsSetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_table_settings_set(
+            &PostV1AccountTableSettingsSetRequest {
+                table_key: "tableKey".to_string(),
+                columns: None,
+                page_size: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**table_key:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**columns:** `Option<Option<Vec<String>>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<Option<f64>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_table_settings_list</a>(request: PostV1AccountTableSettingsListRequest) -> Result&lt;PostV1AccountTableSettingsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_table_settings_list(
+            &PostV1AccountTableSettingsListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
 </dd>
 </dl>
 </dd>

@@ -30,6 +30,9 @@ pub struct PostV1BankSettlementsGetResponse {
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
+    #[serde(rename = "bankTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_transaction_id: Option<String>,
     #[serde(rename = "lineCount")]
     #[serde(default)]
     pub line_count: i64,
@@ -69,6 +72,7 @@ pub struct PostV1BankSettlementsGetResponseBuilder {
     net_total: Option<String>,
     status: Option<PostV1BankSettlementsGetResponseStatus>,
     journal_transaction_id: Option<String>,
+    bank_transaction_id: Option<String>,
     line_count: Option<i64>,
     matched_count: Option<i64>,
     unmatched_count: Option<i64>,
@@ -130,6 +134,11 @@ impl PostV1BankSettlementsGetResponseBuilder {
 
     pub fn journal_transaction_id(mut self, value: impl Into<String>) -> Self {
         self.journal_transaction_id = Some(value.into());
+        self
+    }
+
+    pub fn bank_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.bank_transaction_id = Some(value.into());
         self
     }
 
@@ -209,6 +218,7 @@ impl PostV1BankSettlementsGetResponseBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             journal_transaction_id: self.journal_transaction_id,
+            bank_transaction_id: self.bank_transaction_id,
             line_count: self
                 .line_count
                 .ok_or_else(|| BuildError::missing_field("line_count"))?,

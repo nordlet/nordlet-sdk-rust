@@ -61,6 +61,22 @@ impl BillingClient {
             .await
     }
 
+    pub async fn post_v1_billing_portal_create(
+        &self,
+        request: &PostV1BillingPortalCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BillingPortalCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/portal/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_billing_transactions_list(
         &self,
         request: &PostV1BillingTransactionsListRequest,

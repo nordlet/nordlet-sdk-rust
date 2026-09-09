@@ -12,6 +12,10 @@ pub struct PostV1BankStatementsImportRequest {
     pub format: Option<PostV1BankStatementsImportRequestFormat>,
     #[serde(default)]
     pub content: String,
+    /// Stripe transfers export (plain CSV or base64) used to post lender payouts and commissions
+    #[serde(rename = "transfersCsv")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub transfers_csv: Option<String>,
 }
 
 impl PostV1BankStatementsImportRequest {
@@ -27,6 +31,7 @@ pub struct PostV1BankStatementsImportRequestBuilder {
     template_id: Option<String>,
     format: Option<PostV1BankStatementsImportRequestFormat>,
     content: Option<String>,
+    transfers_csv: Option<String>,
 }
 
 impl PostV1BankStatementsImportRequestBuilder {
@@ -50,6 +55,11 @@ impl PostV1BankStatementsImportRequestBuilder {
         self
     }
 
+    pub fn transfers_csv(mut self, value: impl Into<String>) -> Self {
+        self.transfers_csv = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1BankStatementsImportRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`bank_account_id`](PostV1BankStatementsImportRequestBuilder::bank_account_id)
@@ -64,6 +74,7 @@ impl PostV1BankStatementsImportRequestBuilder {
             content: self
                 .content
                 .ok_or_else(|| BuildError::missing_field("content"))?,
+            transfers_csv: self.transfers_csv,
         })
     }
 }

@@ -12,6 +12,9 @@ pub struct PostV1AccountMeResponse {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
     pub billing: PostV1AccountMeResponseBilling,
+    #[serde(rename = "referralPoints")]
+    #[serde(default)]
+    pub referral_points: i64,
     #[serde(default)]
     pub consent: PostV1AccountMeResponseConsent,
     #[serde(default)]
@@ -32,6 +35,7 @@ pub struct PostV1AccountMeResponseBuilder {
     active_company_id: Option<String>,
     role: Option<String>,
     billing: Option<PostV1AccountMeResponseBilling>,
+    referral_points: Option<i64>,
     consent: Option<PostV1AccountMeResponseConsent>,
     companies: Option<Vec<PostV1AccountMeResponseCompaniesItem>>,
 }
@@ -62,6 +66,11 @@ impl PostV1AccountMeResponseBuilder {
         self
     }
 
+    pub fn referral_points(mut self, value: i64) -> Self {
+        self.referral_points = Some(value);
+        self
+    }
+
     pub fn consent(mut self, value: PostV1AccountMeResponseConsent) -> Self {
         self.consent = Some(value);
         self
@@ -77,6 +86,7 @@ impl PostV1AccountMeResponseBuilder {
     /// - [`user`](PostV1AccountMeResponseBuilder::user)
     /// - [`locale`](PostV1AccountMeResponseBuilder::locale)
     /// - [`billing`](PostV1AccountMeResponseBuilder::billing)
+    /// - [`referral_points`](PostV1AccountMeResponseBuilder::referral_points)
     /// - [`consent`](PostV1AccountMeResponseBuilder::consent)
     /// - [`companies`](PostV1AccountMeResponseBuilder::companies)
     pub fn build(self) -> Result<PostV1AccountMeResponse, BuildError> {
@@ -90,6 +100,9 @@ impl PostV1AccountMeResponseBuilder {
             billing: self
                 .billing
                 .ok_or_else(|| BuildError::missing_field("billing"))?,
+            referral_points: self
+                .referral_points
+                .ok_or_else(|| BuildError::missing_field("referral_points"))?,
             consent: self
                 .consent
                 .ok_or_else(|| BuildError::missing_field("consent"))?,

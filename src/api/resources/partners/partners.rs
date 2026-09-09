@@ -205,6 +205,54 @@ impl PartnersClient {
             .await
     }
 
+    pub async fn post_v1_partners_files_list(
+        &self,
+        request: &PostV1PartnersFilesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PartnersFilesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/files/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn reminders_the_overnight_debt_reminder_job_would_send_today_for_this_company(
+        &self,
+        request: &PostV1PartnersDebtRemindersPreviewRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PartnersDebtRemindersPreviewResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/debt-reminders/preview",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_partners_debt_reminders_list(
+        &self,
+        request: &PostV1PartnersDebtRemindersListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PartnersDebtRemindersListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/debt-reminders/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_partners_validate_vat(
         &self,
         request: &PostV1PartnersValidateVatRequest,
@@ -575,6 +623,255 @@ impl PartnersClient {
             .execute_request(
                 Method::POST,
                 "v1/partners/credit-check",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_create(
+        &self,
+        request: &PostV1LeadsCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_get(
+        &self,
+        request: &PostV1LeadsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_update(
+        &self,
+        request: &PostV1LeadsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_delete(
+        &self,
+        request: &PostV1LeadsDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_list(
+        &self,
+        request: &PostV1LeadsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_notes_create(
+        &self,
+        request: &PostV1LeadsNotesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsNotesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/notes/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_notes_delete(
+        &self,
+        request: &PostV1LeadsNotesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsNotesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/notes/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_notes_list(
+        &self,
+        request: &PostV1LeadsNotesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsNotesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/notes/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_files_list(
+        &self,
+        request: &PostV1LeadsFilesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsFilesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/files/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_sources_create(
+        &self,
+        request: &PostV1LeadsSourcesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsSourcesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/sources/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_sources_update(
+        &self,
+        request: &PostV1LeadsSourcesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsSourcesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/sources/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_sources_delete(
+        &self,
+        request: &PostV1LeadsSourcesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsSourcesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/sources/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_sources_list(
+        &self,
+        request: &PostV1LeadsSourcesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsSourcesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/sources/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_leads_sources_options(
+        &self,
+        request: &PostV1LeadsSourcesOptionsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsSourcesOptionsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/sources/options",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Create a customer partner from the lead, move the lead files to the partner, copy the lead notes into the partner notes and mark the lead as converted.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_leads_convert(
+        &self,
+        request: &PostV1LeadsConvertRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1LeadsConvertResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/convert",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

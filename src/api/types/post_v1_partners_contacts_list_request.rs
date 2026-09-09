@@ -11,6 +11,9 @@ pub struct PostV1PartnersContactsListRequest {
     pub sort: Option<Vec<PostV1PartnersContactsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1PartnersContactsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1PartnersContactsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1PartnersContactsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1PartnersContactsListRequestSortItem>>,
     filter: Option<Vec<PostV1PartnersContactsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1PartnersContactsListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1PartnersContactsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1PartnersContactsListRequest`].
     pub fn build(self) -> Result<PostV1PartnersContactsListRequest, BuildError> {
         Ok(PostV1PartnersContactsListRequest {
@@ -56,6 +65,7 @@ impl PostV1PartnersContactsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

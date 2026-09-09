@@ -11,6 +11,9 @@ pub struct PostV1ReferenceVatClassifiersListRequest {
     pub sort: Option<Vec<PostV1ReferenceVatClassifiersListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1ReferenceVatClassifiersListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1ReferenceVatClassifiersListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1ReferenceVatClassifiersListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1ReferenceVatClassifiersListRequestSortItem>>,
     filter: Option<Vec<PostV1ReferenceVatClassifiersListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1ReferenceVatClassifiersListRequestBuilder {
@@ -52,6 +56,11 @@ impl PostV1ReferenceVatClassifiersListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1ReferenceVatClassifiersListRequest`].
     pub fn build(self) -> Result<PostV1ReferenceVatClassifiersListRequest, BuildError> {
         Ok(PostV1ReferenceVatClassifiersListRequest {
@@ -59,6 +68,7 @@ impl PostV1ReferenceVatClassifiersListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

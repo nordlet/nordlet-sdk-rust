@@ -93,6 +93,166 @@ impl CatalogClient {
             .await
     }
 
+    pub async fn post_v1_catalog_items_files_list(
+        &self,
+        request: &PostV1CatalogItemsFilesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogItemsFilesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/files/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_items_kinds_create(
+        &self,
+        request: &PostV1CatalogItemsKindsCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogItemsKindsCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/kinds/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_items_kinds_update(
+        &self,
+        request: &PostV1CatalogItemsKindsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogItemsKindsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/kinds/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_items_kinds_delete(
+        &self,
+        request: &PostV1CatalogItemsKindsDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogItemsKindsDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/kinds/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_items_kinds_list(
+        &self,
+        request: &PostV1CatalogItemsKindsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogItemsKindsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/kinds/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_units_create(
+        &self,
+        request: &PostV1CatalogUnitsCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogUnitsCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/units/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_units_update(
+        &self,
+        request: &PostV1CatalogUnitsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogUnitsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/units/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_units_delete(
+        &self,
+        request: &PostV1CatalogUnitsDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogUnitsDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/units/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_units_list(
+        &self,
+        request: &PostV1CatalogUnitsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogUnitsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/units/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_catalog_units_options(
+        &self,
+        request: &PostV1CatalogUnitsOptionsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CatalogUnitsOptionsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/units/options",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_catalog_item_groups_create(
         &self,
         request: &PostV1CatalogItemGroupsCreateRequest,

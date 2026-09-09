@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 pub struct PostV1SalesRefundLiabilityListResponse {
     #[serde(default)]
     pub rows: Vec<PostV1SalesRefundLiabilityListResponseRowsItem>,
@@ -11,6 +11,8 @@ pub struct PostV1SalesRefundLiabilityListResponse {
     pub page_size: i64,
     #[serde(default)]
     pub total: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<HashMap<String, String>>,
 }
 
 impl PostV1SalesRefundLiabilityListResponse {
@@ -26,6 +28,7 @@ pub struct PostV1SalesRefundLiabilityListResponseBuilder {
     page: Option<i64>,
     page_size: Option<i64>,
     total: Option<i64>,
+    totals: Option<HashMap<String, String>>,
 }
 
 impl PostV1SalesRefundLiabilityListResponseBuilder {
@@ -49,6 +52,11 @@ impl PostV1SalesRefundLiabilityListResponseBuilder {
         self
     }
 
+    pub fn totals(mut self, value: HashMap<String, String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1SalesRefundLiabilityListResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`rows`](PostV1SalesRefundLiabilityListResponseBuilder::rows)
@@ -65,6 +73,7 @@ impl PostV1SalesRefundLiabilityListResponseBuilder {
             total: self
                 .total
                 .ok_or_else(|| BuildError::missing_field("total"))?,
+            totals: self.totals,
         })
     }
 }

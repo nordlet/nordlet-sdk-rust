@@ -11,6 +11,9 @@ pub struct PostV1ReferenceExchangeRatesOverridesListRequest {
     pub sort: Option<Vec<PostV1ReferenceExchangeRatesOverridesListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1ReferenceExchangeRatesOverridesListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1ReferenceExchangeRatesOverridesListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1ReferenceExchangeRatesOverridesListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1ReferenceExchangeRatesOverridesListRequestSortItem>>,
     filter: Option<Vec<PostV1ReferenceExchangeRatesOverridesListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1ReferenceExchangeRatesOverridesListRequestBuilder {
@@ -55,6 +59,11 @@ impl PostV1ReferenceExchangeRatesOverridesListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1ReferenceExchangeRatesOverridesListRequest`].
     pub fn build(self) -> Result<PostV1ReferenceExchangeRatesOverridesListRequest, BuildError> {
         Ok(PostV1ReferenceExchangeRatesOverridesListRequest {
@@ -62,6 +71,7 @@ impl PostV1ReferenceExchangeRatesOverridesListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

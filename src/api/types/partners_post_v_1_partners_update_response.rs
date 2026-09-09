@@ -54,11 +54,59 @@ pub struct PostV1PartnersUpdateResponse {
     pub vat_validated_at: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<PostV1PartnersUpdateResponseAddress>,
+    #[serde(rename = "correspondenceAddress")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub correspondence_address: Option<PostV1PartnersUpdateResponseCorrespondenceAddress>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(rename = "documentRef")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document_ref: Option<String>,
+    #[serde(rename = "shortName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub short_name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub website: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fax: Option<String>,
+    #[serde(rename = "eoriCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eori_code: Option<String>,
+    #[serde(rename = "otherCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub other_code: Option<String>,
+    #[serde(rename = "foreignTaxNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub foreign_tax_number: Option<String>,
+    #[serde(rename = "autoDebtReminder")]
+    #[serde(default)]
+    pub auto_debt_reminder: bool,
+    #[serde(rename = "lateInterestPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub late_interest_percent: Option<String>,
+    #[serde(rename = "firstCallDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub first_call_date: Option<String>,
+    #[serde(rename = "lastCallDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_call_date: Option<String>,
+    #[serde(rename = "nextCallDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub next_call_date: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rating: Option<i64>,
+    #[serde(rename = "isEmployee")]
+    #[serde(default)]
+    pub is_employee: bool,
+    #[serde(rename = "isGroupMember")]
+    #[serde(default)]
+    pub is_group_member: bool,
+    #[serde(rename = "isActive")]
+    #[serde(default)]
+    pub is_active: bool,
+    #[serde(rename = "legalCountryClass")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub legal_country_class: Option<PostV1PartnersUpdateResponseLegalCountryClass>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -96,8 +144,25 @@ pub struct PostV1PartnersUpdateResponseBuilder {
     vat_valid: Option<bool>,
     vat_validated_at: Option<String>,
     address: Option<PostV1PartnersUpdateResponseAddress>,
+    correspondence_address: Option<PostV1PartnersUpdateResponseCorrespondenceAddress>,
     notes: Option<String>,
     document_ref: Option<String>,
+    short_name: Option<String>,
+    website: Option<String>,
+    fax: Option<String>,
+    eori_code: Option<String>,
+    other_code: Option<String>,
+    foreign_tax_number: Option<String>,
+    auto_debt_reminder: Option<bool>,
+    late_interest_percent: Option<String>,
+    first_call_date: Option<String>,
+    last_call_date: Option<String>,
+    next_call_date: Option<String>,
+    rating: Option<i64>,
+    is_employee: Option<bool>,
+    is_group_member: Option<bool>,
+    is_active: Option<bool>,
+    legal_country_class: Option<PostV1PartnersUpdateResponseLegalCountryClass>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -203,6 +268,14 @@ impl PostV1PartnersUpdateResponseBuilder {
         self
     }
 
+    pub fn correspondence_address(
+        mut self,
+        value: PostV1PartnersUpdateResponseCorrespondenceAddress,
+    ) -> Self {
+        self.correspondence_address = Some(value);
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -210,6 +283,89 @@ impl PostV1PartnersUpdateResponseBuilder {
 
     pub fn document_ref(mut self, value: impl Into<String>) -> Self {
         self.document_ref = Some(value.into());
+        self
+    }
+
+    pub fn short_name(mut self, value: impl Into<String>) -> Self {
+        self.short_name = Some(value.into());
+        self
+    }
+
+    pub fn website(mut self, value: impl Into<String>) -> Self {
+        self.website = Some(value.into());
+        self
+    }
+
+    pub fn fax(mut self, value: impl Into<String>) -> Self {
+        self.fax = Some(value.into());
+        self
+    }
+
+    pub fn eori_code(mut self, value: impl Into<String>) -> Self {
+        self.eori_code = Some(value.into());
+        self
+    }
+
+    pub fn other_code(mut self, value: impl Into<String>) -> Self {
+        self.other_code = Some(value.into());
+        self
+    }
+
+    pub fn foreign_tax_number(mut self, value: impl Into<String>) -> Self {
+        self.foreign_tax_number = Some(value.into());
+        self
+    }
+
+    pub fn auto_debt_reminder(mut self, value: bool) -> Self {
+        self.auto_debt_reminder = Some(value);
+        self
+    }
+
+    pub fn late_interest_percent(mut self, value: impl Into<String>) -> Self {
+        self.late_interest_percent = Some(value.into());
+        self
+    }
+
+    pub fn first_call_date(mut self, value: impl Into<String>) -> Self {
+        self.first_call_date = Some(value.into());
+        self
+    }
+
+    pub fn last_call_date(mut self, value: impl Into<String>) -> Self {
+        self.last_call_date = Some(value.into());
+        self
+    }
+
+    pub fn next_call_date(mut self, value: impl Into<String>) -> Self {
+        self.next_call_date = Some(value.into());
+        self
+    }
+
+    pub fn rating(mut self, value: i64) -> Self {
+        self.rating = Some(value);
+        self
+    }
+
+    pub fn is_employee(mut self, value: bool) -> Self {
+        self.is_employee = Some(value);
+        self
+    }
+
+    pub fn is_group_member(mut self, value: bool) -> Self {
+        self.is_group_member = Some(value);
+        self
+    }
+
+    pub fn is_active(mut self, value: bool) -> Self {
+        self.is_active = Some(value);
+        self
+    }
+
+    pub fn legal_country_class(
+        mut self,
+        value: PostV1PartnersUpdateResponseLegalCountryClass,
+    ) -> Self {
+        self.legal_country_class = Some(value);
         self
     }
 
@@ -230,6 +386,10 @@ impl PostV1PartnersUpdateResponseBuilder {
     /// - [`name`](PostV1PartnersUpdateResponseBuilder::name)
     /// - [`is_customer`](PostV1PartnersUpdateResponseBuilder::is_customer)
     /// - [`is_supplier`](PostV1PartnersUpdateResponseBuilder::is_supplier)
+    /// - [`auto_debt_reminder`](PostV1PartnersUpdateResponseBuilder::auto_debt_reminder)
+    /// - [`is_employee`](PostV1PartnersUpdateResponseBuilder::is_employee)
+    /// - [`is_group_member`](PostV1PartnersUpdateResponseBuilder::is_group_member)
+    /// - [`is_active`](PostV1PartnersUpdateResponseBuilder::is_active)
     /// - [`created_at`](PostV1PartnersUpdateResponseBuilder::created_at)
     /// - [`updated_at`](PostV1PartnersUpdateResponseBuilder::updated_at)
     pub fn build(self) -> Result<PostV1PartnersUpdateResponse, BuildError> {
@@ -260,8 +420,33 @@ impl PostV1PartnersUpdateResponseBuilder {
             vat_valid: self.vat_valid,
             vat_validated_at: self.vat_validated_at,
             address: self.address,
+            correspondence_address: self.correspondence_address,
             notes: self.notes,
             document_ref: self.document_ref,
+            short_name: self.short_name,
+            website: self.website,
+            fax: self.fax,
+            eori_code: self.eori_code,
+            other_code: self.other_code,
+            foreign_tax_number: self.foreign_tax_number,
+            auto_debt_reminder: self
+                .auto_debt_reminder
+                .ok_or_else(|| BuildError::missing_field("auto_debt_reminder"))?,
+            late_interest_percent: self.late_interest_percent,
+            first_call_date: self.first_call_date,
+            last_call_date: self.last_call_date,
+            next_call_date: self.next_call_date,
+            rating: self.rating,
+            is_employee: self
+                .is_employee
+                .ok_or_else(|| BuildError::missing_field("is_employee"))?,
+            is_group_member: self
+                .is_group_member
+                .ok_or_else(|| BuildError::missing_field("is_group_member"))?,
+            is_active: self
+                .is_active
+                .ok_or_else(|| BuildError::missing_field("is_active"))?,
+            legal_country_class: self.legal_country_class,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

@@ -64,6 +64,42 @@ pub struct PostV1SalesInvoicesIssueResponse {
     #[serde(rename = "documentRef")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document_ref: Option<String>,
+    #[serde(rename = "operationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub operation_type_id: Option<String>,
+    #[serde(rename = "documentSeriesId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_series_id: Option<String>,
+    #[serde(rename = "seriesLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub series_label: Option<String>,
+    #[serde(rename = "discountPercent")]
+    #[serde(default)]
+    pub discount_percent: String,
+    #[serde(rename = "orderNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub order_number: Option<String>,
+    #[serde(rename = "issuedByName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issued_by_name: Option<String>,
+    #[serde(rename = "issuedByTitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issued_by_title: Option<String>,
+    #[serde(rename = "receivedByName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub received_by_name: Option<String>,
+    #[serde(rename = "receivedByTitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub received_by_title: Option<String>,
+    #[serde(rename = "lockedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locked_at: Option<String>,
+    #[serde(rename = "lockedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locked_by: Option<String>,
+    #[serde(rename = "payToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_token: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -110,6 +146,18 @@ pub struct PostV1SalesInvoicesIssueResponseBuilder {
     deemed_supplier: Option<bool>,
     notes: Option<String>,
     document_ref: Option<String>,
+    operation_type_id: Option<String>,
+    document_series_id: Option<String>,
+    series_label: Option<String>,
+    discount_percent: Option<String>,
+    order_number: Option<String>,
+    issued_by_name: Option<String>,
+    issued_by_title: Option<String>,
+    received_by_name: Option<String>,
+    received_by_title: Option<String>,
+    locked_at: Option<String>,
+    locked_by: Option<String>,
+    pay_token: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
     lines: Option<Vec<PostV1SalesInvoicesIssueResponseLinesItem>>,
@@ -237,6 +285,66 @@ impl PostV1SalesInvoicesIssueResponseBuilder {
         self
     }
 
+    pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn document_series_id(mut self, value: impl Into<String>) -> Self {
+        self.document_series_id = Some(value.into());
+        self
+    }
+
+    pub fn series_label(mut self, value: impl Into<String>) -> Self {
+        self.series_label = Some(value.into());
+        self
+    }
+
+    pub fn discount_percent(mut self, value: impl Into<String>) -> Self {
+        self.discount_percent = Some(value.into());
+        self
+    }
+
+    pub fn order_number(mut self, value: impl Into<String>) -> Self {
+        self.order_number = Some(value.into());
+        self
+    }
+
+    pub fn issued_by_name(mut self, value: impl Into<String>) -> Self {
+        self.issued_by_name = Some(value.into());
+        self
+    }
+
+    pub fn issued_by_title(mut self, value: impl Into<String>) -> Self {
+        self.issued_by_title = Some(value.into());
+        self
+    }
+
+    pub fn received_by_name(mut self, value: impl Into<String>) -> Self {
+        self.received_by_name = Some(value.into());
+        self
+    }
+
+    pub fn received_by_title(mut self, value: impl Into<String>) -> Self {
+        self.received_by_title = Some(value.into());
+        self
+    }
+
+    pub fn locked_at(mut self, value: impl Into<String>) -> Self {
+        self.locked_at = Some(value.into());
+        self
+    }
+
+    pub fn locked_by(mut self, value: impl Into<String>) -> Self {
+        self.locked_by = Some(value.into());
+        self
+    }
+
+    pub fn pay_token(mut self, value: impl Into<String>) -> Self {
+        self.pay_token = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -270,6 +378,7 @@ impl PostV1SalesInvoicesIssueResponseBuilder {
     /// - [`gross_total`](PostV1SalesInvoicesIssueResponseBuilder::gross_total)
     /// - [`paid_amount`](PostV1SalesInvoicesIssueResponseBuilder::paid_amount)
     /// - [`deemed_supplier`](PostV1SalesInvoicesIssueResponseBuilder::deemed_supplier)
+    /// - [`discount_percent`](PostV1SalesInvoicesIssueResponseBuilder::discount_percent)
     /// - [`created_at`](PostV1SalesInvoicesIssueResponseBuilder::created_at)
     /// - [`updated_at`](PostV1SalesInvoicesIssueResponseBuilder::updated_at)
     /// - [`lines`](PostV1SalesInvoicesIssueResponseBuilder::lines)
@@ -319,6 +428,20 @@ impl PostV1SalesInvoicesIssueResponseBuilder {
                 .ok_or_else(|| BuildError::missing_field("deemed_supplier"))?,
             notes: self.notes,
             document_ref: self.document_ref,
+            operation_type_id: self.operation_type_id,
+            document_series_id: self.document_series_id,
+            series_label: self.series_label,
+            discount_percent: self
+                .discount_percent
+                .ok_or_else(|| BuildError::missing_field("discount_percent"))?,
+            order_number: self.order_number,
+            issued_by_name: self.issued_by_name,
+            issued_by_title: self.issued_by_title,
+            received_by_name: self.received_by_name,
+            received_by_title: self.received_by_title,
+            locked_at: self.locked_at,
+            locked_by: self.locked_by,
+            pay_token: self.pay_token,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

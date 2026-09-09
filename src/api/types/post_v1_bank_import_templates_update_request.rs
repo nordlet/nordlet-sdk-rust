@@ -26,6 +26,24 @@ pub struct PostV1BankImportTemplatesUpdateRequest {
     #[serde(rename = "advanceInvoices")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub advance_invoices: Option<bool>,
+    #[serde(rename = "authorizationOperationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub authorization_operation_type_id: Option<String>,
+    #[serde(rename = "payoutOperationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payout_operation_type_id: Option<String>,
+    #[serde(rename = "commissionOperationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub commission_operation_type_id: Option<String>,
+    #[serde(rename = "lenderMetaField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lender_meta_field: Option<String>,
+    #[serde(rename = "partialRefundLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partial_refund_label: Option<String>,
+    #[serde(rename = "fullRefundLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub full_refund_label: Option<String>,
     #[serde(default)]
     pub id: String,
 }
@@ -48,6 +66,12 @@ pub struct PostV1BankImportTemplatesUpdateRequestBuilder {
     company_meta_field: Option<String>,
     invoice_item_id: Option<String>,
     advance_invoices: Option<bool>,
+    authorization_operation_type_id: Option<String>,
+    payout_operation_type_id: Option<String>,
+    commission_operation_type_id: Option<String>,
+    lender_meta_field: Option<String>,
+    partial_refund_label: Option<String>,
+    full_refund_label: Option<String>,
     id: Option<String>,
 }
 
@@ -97,6 +121,36 @@ impl PostV1BankImportTemplatesUpdateRequestBuilder {
         self
     }
 
+    pub fn authorization_operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.authorization_operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn payout_operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.payout_operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn commission_operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.commission_operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn lender_meta_field(mut self, value: impl Into<String>) -> Self {
+        self.lender_meta_field = Some(value.into());
+        self
+    }
+
+    pub fn partial_refund_label(mut self, value: impl Into<String>) -> Self {
+        self.partial_refund_label = Some(value.into());
+        self
+    }
+
+    pub fn full_refund_label(mut self, value: impl Into<String>) -> Self {
+        self.full_refund_label = Some(value.into());
+        self
+    }
+
     pub fn id(mut self, value: impl Into<String>) -> Self {
         self.id = Some(value.into());
         self
@@ -116,6 +170,12 @@ impl PostV1BankImportTemplatesUpdateRequestBuilder {
             company_meta_field: self.company_meta_field,
             invoice_item_id: self.invoice_item_id,
             advance_invoices: self.advance_invoices,
+            authorization_operation_type_id: self.authorization_operation_type_id,
+            payout_operation_type_id: self.payout_operation_type_id,
+            commission_operation_type_id: self.commission_operation_type_id,
+            lender_meta_field: self.lender_meta_field,
+            partial_refund_label: self.partial_refund_label,
+            full_refund_label: self.full_refund_label,
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
         })
     }

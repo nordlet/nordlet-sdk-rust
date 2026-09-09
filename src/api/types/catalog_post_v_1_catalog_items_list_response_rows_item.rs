@@ -56,6 +56,85 @@ pub struct PostV1CatalogItemsListResponseRowsItem {
         Option<HashMap<String, Option<PostV1CatalogItemsListResponseRowsItemTranslationsValue>>>,
     #[serde(default)]
     pub components: Vec<PostV1CatalogItemsListResponseRowsItemComponentsItem>,
+    #[serde(rename = "kindId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub kind_id: Option<String>,
+    #[serde(rename = "saleAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sale_account_code: Option<String>,
+    #[serde(rename = "purchaseAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub purchase_account_code: Option<String>,
+    #[serde(rename = "expenseAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expense_account_code: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub manufacturer: Option<String>,
+    #[serde(rename = "grossMassKg")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub gross_mass_kg: Option<String>,
+    #[serde(rename = "minQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min_quantity: Option<String>,
+    #[serde(rename = "costPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cost_price: Option<String>,
+    #[serde(rename = "isFreePrice")]
+    #[serde(default)]
+    pub is_free_price: bool,
+    #[serde(rename = "externalId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub external_id: Option<String>,
+    #[serde(rename = "isReturnable")]
+    #[serde(default)]
+    pub is_returnable: bool,
+    #[serde(rename = "commentRequired")]
+    #[serde(default)]
+    pub comment_required: bool,
+    #[serde(rename = "priceFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub price_from: Option<String>,
+    #[serde(rename = "priceTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub price_to: Option<String>,
+    #[serde(rename = "minPrice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub min_price: Option<String>,
+    #[serde(rename = "discountPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub discount_percent: Option<String>,
+    #[serde(rename = "maxDiscountPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_discount_percent: Option<String>,
+    #[serde(rename = "loyaltyPoints")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub loyalty_points: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub department: Option<String>,
+    #[serde(rename = "ageRestriction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub age_restriction: Option<i64>,
+    #[serde(rename = "packageQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub package_quantity: Option<String>,
+    #[serde(rename = "taraCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tara_code: Option<String>,
+    #[serde(rename = "certificateNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub certificate_number: Option<String>,
+    #[serde(rename = "certificateDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub certificate_date: Option<String>,
+    #[serde(rename = "validFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub valid_from: Option<String>,
+    #[serde(rename = "validTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub valid_to: Option<String>,
+    #[serde(rename = "posFlags")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pos_flags: Option<HashMap<String, Option<bool>>>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -96,6 +175,33 @@ pub struct PostV1CatalogItemsListResponseRowsItemBuilder {
     translations:
         Option<HashMap<String, Option<PostV1CatalogItemsListResponseRowsItemTranslationsValue>>>,
     components: Option<Vec<PostV1CatalogItemsListResponseRowsItemComponentsItem>>,
+    kind_id: Option<String>,
+    sale_account_code: Option<String>,
+    purchase_account_code: Option<String>,
+    expense_account_code: Option<String>,
+    manufacturer: Option<String>,
+    gross_mass_kg: Option<String>,
+    min_quantity: Option<String>,
+    cost_price: Option<String>,
+    is_free_price: Option<bool>,
+    external_id: Option<String>,
+    is_returnable: Option<bool>,
+    comment_required: Option<bool>,
+    price_from: Option<String>,
+    price_to: Option<String>,
+    min_price: Option<String>,
+    discount_percent: Option<String>,
+    max_discount_percent: Option<String>,
+    loyalty_points: Option<i64>,
+    department: Option<String>,
+    age_restriction: Option<i64>,
+    package_quantity: Option<String>,
+    tara_code: Option<String>,
+    certificate_number: Option<String>,
+    certificate_date: Option<String>,
+    valid_from: Option<String>,
+    valid_to: Option<String>,
+    pos_flags: Option<HashMap<String, Option<bool>>>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -217,6 +323,141 @@ impl PostV1CatalogItemsListResponseRowsItemBuilder {
         self
     }
 
+    pub fn kind_id(mut self, value: impl Into<String>) -> Self {
+        self.kind_id = Some(value.into());
+        self
+    }
+
+    pub fn sale_account_code(mut self, value: impl Into<String>) -> Self {
+        self.sale_account_code = Some(value.into());
+        self
+    }
+
+    pub fn purchase_account_code(mut self, value: impl Into<String>) -> Self {
+        self.purchase_account_code = Some(value.into());
+        self
+    }
+
+    pub fn expense_account_code(mut self, value: impl Into<String>) -> Self {
+        self.expense_account_code = Some(value.into());
+        self
+    }
+
+    pub fn manufacturer(mut self, value: impl Into<String>) -> Self {
+        self.manufacturer = Some(value.into());
+        self
+    }
+
+    pub fn gross_mass_kg(mut self, value: impl Into<String>) -> Self {
+        self.gross_mass_kg = Some(value.into());
+        self
+    }
+
+    pub fn min_quantity(mut self, value: impl Into<String>) -> Self {
+        self.min_quantity = Some(value.into());
+        self
+    }
+
+    pub fn cost_price(mut self, value: impl Into<String>) -> Self {
+        self.cost_price = Some(value.into());
+        self
+    }
+
+    pub fn is_free_price(mut self, value: bool) -> Self {
+        self.is_free_price = Some(value);
+        self
+    }
+
+    pub fn external_id(mut self, value: impl Into<String>) -> Self {
+        self.external_id = Some(value.into());
+        self
+    }
+
+    pub fn is_returnable(mut self, value: bool) -> Self {
+        self.is_returnable = Some(value);
+        self
+    }
+
+    pub fn comment_required(mut self, value: bool) -> Self {
+        self.comment_required = Some(value);
+        self
+    }
+
+    pub fn price_from(mut self, value: impl Into<String>) -> Self {
+        self.price_from = Some(value.into());
+        self
+    }
+
+    pub fn price_to(mut self, value: impl Into<String>) -> Self {
+        self.price_to = Some(value.into());
+        self
+    }
+
+    pub fn min_price(mut self, value: impl Into<String>) -> Self {
+        self.min_price = Some(value.into());
+        self
+    }
+
+    pub fn discount_percent(mut self, value: impl Into<String>) -> Self {
+        self.discount_percent = Some(value.into());
+        self
+    }
+
+    pub fn max_discount_percent(mut self, value: impl Into<String>) -> Self {
+        self.max_discount_percent = Some(value.into());
+        self
+    }
+
+    pub fn loyalty_points(mut self, value: i64) -> Self {
+        self.loyalty_points = Some(value);
+        self
+    }
+
+    pub fn department(mut self, value: impl Into<String>) -> Self {
+        self.department = Some(value.into());
+        self
+    }
+
+    pub fn age_restriction(mut self, value: i64) -> Self {
+        self.age_restriction = Some(value);
+        self
+    }
+
+    pub fn package_quantity(mut self, value: impl Into<String>) -> Self {
+        self.package_quantity = Some(value.into());
+        self
+    }
+
+    pub fn tara_code(mut self, value: impl Into<String>) -> Self {
+        self.tara_code = Some(value.into());
+        self
+    }
+
+    pub fn certificate_number(mut self, value: impl Into<String>) -> Self {
+        self.certificate_number = Some(value.into());
+        self
+    }
+
+    pub fn certificate_date(mut self, value: impl Into<String>) -> Self {
+        self.certificate_date = Some(value.into());
+        self
+    }
+
+    pub fn valid_from(mut self, value: impl Into<String>) -> Self {
+        self.valid_from = Some(value.into());
+        self
+    }
+
+    pub fn valid_to(mut self, value: impl Into<String>) -> Self {
+        self.valid_to = Some(value.into());
+        self
+    }
+
+    pub fn pos_flags(mut self, value: HashMap<String, Option<bool>>) -> Self {
+        self.pos_flags = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -235,6 +476,9 @@ impl PostV1CatalogItemsListResponseRowsItemBuilder {
     /// - [`name`](PostV1CatalogItemsListResponseRowsItemBuilder::name)
     /// - [`unit`](PostV1CatalogItemsListResponseRowsItemBuilder::unit)
     /// - [`components`](PostV1CatalogItemsListResponseRowsItemBuilder::components)
+    /// - [`is_free_price`](PostV1CatalogItemsListResponseRowsItemBuilder::is_free_price)
+    /// - [`is_returnable`](PostV1CatalogItemsListResponseRowsItemBuilder::is_returnable)
+    /// - [`comment_required`](PostV1CatalogItemsListResponseRowsItemBuilder::comment_required)
     /// - [`created_at`](PostV1CatalogItemsListResponseRowsItemBuilder::created_at)
     /// - [`updated_at`](PostV1CatalogItemsListResponseRowsItemBuilder::updated_at)
     pub fn build(self) -> Result<PostV1CatalogItemsListResponseRowsItem, BuildError> {
@@ -267,6 +511,39 @@ impl PostV1CatalogItemsListResponseRowsItemBuilder {
             components: self
                 .components
                 .ok_or_else(|| BuildError::missing_field("components"))?,
+            kind_id: self.kind_id,
+            sale_account_code: self.sale_account_code,
+            purchase_account_code: self.purchase_account_code,
+            expense_account_code: self.expense_account_code,
+            manufacturer: self.manufacturer,
+            gross_mass_kg: self.gross_mass_kg,
+            min_quantity: self.min_quantity,
+            cost_price: self.cost_price,
+            is_free_price: self
+                .is_free_price
+                .ok_or_else(|| BuildError::missing_field("is_free_price"))?,
+            external_id: self.external_id,
+            is_returnable: self
+                .is_returnable
+                .ok_or_else(|| BuildError::missing_field("is_returnable"))?,
+            comment_required: self
+                .comment_required
+                .ok_or_else(|| BuildError::missing_field("comment_required"))?,
+            price_from: self.price_from,
+            price_to: self.price_to,
+            min_price: self.min_price,
+            discount_percent: self.discount_percent,
+            max_discount_percent: self.max_discount_percent,
+            loyalty_points: self.loyalty_points,
+            department: self.department,
+            age_restriction: self.age_restriction,
+            package_quantity: self.package_quantity,
+            tara_code: self.tara_code,
+            certificate_number: self.certificate_number,
+            certificate_date: self.certificate_date,
+            valid_from: self.valid_from,
+            valid_to: self.valid_to,
+            pos_flags: self.pos_flags,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

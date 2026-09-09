@@ -12,6 +12,9 @@ pub struct PostV1AccountLoginLinkRequestRequest {
     #[serde(rename = "acceptDpa")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub accept_dpa: Option<bool>,
+    #[serde(rename = "referralCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub referral_code: Option<String>,
 }
 
 impl PostV1AccountLoginLinkRequestRequest {
@@ -27,6 +30,7 @@ pub struct PostV1AccountLoginLinkRequestRequestBuilder {
     locale: Option<PostV1AccountLoginLinkRequestRequestLocale>,
     accept_terms: Option<bool>,
     accept_dpa: Option<bool>,
+    referral_code: Option<String>,
 }
 
 impl PostV1AccountLoginLinkRequestRequestBuilder {
@@ -50,6 +54,11 @@ impl PostV1AccountLoginLinkRequestRequestBuilder {
         self
     }
 
+    pub fn referral_code(mut self, value: impl Into<String>) -> Self {
+        self.referral_code = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1AccountLoginLinkRequestRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`email`](PostV1AccountLoginLinkRequestRequestBuilder::email)
@@ -61,6 +70,7 @@ impl PostV1AccountLoginLinkRequestRequestBuilder {
             locale: self.locale,
             accept_terms: self.accept_terms,
             accept_dpa: self.accept_dpa,
+            referral_code: self.referral_code,
         })
     }
 }

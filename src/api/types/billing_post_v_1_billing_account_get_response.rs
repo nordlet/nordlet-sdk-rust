@@ -19,6 +19,12 @@ pub struct PostV1BillingAccountGetResponse {
     #[serde(rename = "paymentsConfigured")]
     #[serde(default)]
     pub payments_configured: bool,
+    #[serde(rename = "hasPaymentAccount")]
+    #[serde(default)]
+    pub has_payment_account: bool,
+    #[serde(rename = "hasSubscription")]
+    #[serde(default)]
+    pub has_subscription: bool,
     #[serde(rename = "monthToDate")]
     #[serde(default)]
     pub month_to_date: PostV1BillingAccountGetResponseMonthToDate,
@@ -48,6 +54,8 @@ pub struct PostV1BillingAccountGetResponseBuilder {
     first_top_up_at: Option<String>,
     last_charged_date: Option<String>,
     payments_configured: Option<bool>,
+    has_payment_account: Option<bool>,
+    has_subscription: Option<bool>,
     month_to_date: Option<PostV1BillingAccountGetResponseMonthToDate>,
     plans: Option<HashMap<String, PostV1BillingAccountGetResponsePlansValue>>,
     top_up: Option<PostV1BillingAccountGetResponseTopUp>,
@@ -90,6 +98,16 @@ impl PostV1BillingAccountGetResponseBuilder {
         self
     }
 
+    pub fn has_payment_account(mut self, value: bool) -> Self {
+        self.has_payment_account = Some(value);
+        self
+    }
+
+    pub fn has_subscription(mut self, value: bool) -> Self {
+        self.has_subscription = Some(value);
+        self
+    }
+
     pub fn month_to_date(mut self, value: PostV1BillingAccountGetResponseMonthToDate) -> Self {
         self.month_to_date = Some(value);
         self
@@ -119,6 +137,8 @@ impl PostV1BillingAccountGetResponseBuilder {
     /// - [`status`](PostV1BillingAccountGetResponseBuilder::status)
     /// - [`balance_cents`](PostV1BillingAccountGetResponseBuilder::balance_cents)
     /// - [`payments_configured`](PostV1BillingAccountGetResponseBuilder::payments_configured)
+    /// - [`has_payment_account`](PostV1BillingAccountGetResponseBuilder::has_payment_account)
+    /// - [`has_subscription`](PostV1BillingAccountGetResponseBuilder::has_subscription)
     /// - [`month_to_date`](PostV1BillingAccountGetResponseBuilder::month_to_date)
     /// - [`plans`](PostV1BillingAccountGetResponseBuilder::plans)
     /// - [`top_up`](PostV1BillingAccountGetResponseBuilder::top_up)
@@ -138,6 +158,12 @@ impl PostV1BillingAccountGetResponseBuilder {
             payments_configured: self
                 .payments_configured
                 .ok_or_else(|| BuildError::missing_field("payments_configured"))?,
+            has_payment_account: self
+                .has_payment_account
+                .ok_or_else(|| BuildError::missing_field("has_payment_account"))?,
+            has_subscription: self
+                .has_subscription
+                .ok_or_else(|| BuildError::missing_field("has_subscription"))?,
             month_to_date: self
                 .month_to_date
                 .ok_or_else(|| BuildError::missing_field("month_to_date"))?,

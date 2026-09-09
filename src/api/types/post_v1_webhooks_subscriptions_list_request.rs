@@ -11,6 +11,9 @@ pub struct PostV1WebhooksSubscriptionsListRequest {
     pub sort: Option<Vec<PostV1WebhooksSubscriptionsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1WebhooksSubscriptionsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1WebhooksSubscriptionsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1WebhooksSubscriptionsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1WebhooksSubscriptionsListRequestSortItem>>,
     filter: Option<Vec<PostV1WebhooksSubscriptionsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1WebhooksSubscriptionsListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1WebhooksSubscriptionsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1WebhooksSubscriptionsListRequest`].
     pub fn build(self) -> Result<PostV1WebhooksSubscriptionsListRequest, BuildError> {
         Ok(PostV1WebhooksSubscriptionsListRequest {
@@ -56,6 +65,7 @@ impl PostV1WebhooksSubscriptionsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

@@ -27,6 +27,24 @@ pub struct PostV1BankImportTemplatesCreateResponse {
     #[serde(rename = "advanceInvoices")]
     #[serde(default)]
     pub advance_invoices: bool,
+    #[serde(rename = "authorizationOperationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub authorization_operation_type_id: Option<String>,
+    #[serde(rename = "payoutOperationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payout_operation_type_id: Option<String>,
+    #[serde(rename = "commissionOperationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub commission_operation_type_id: Option<String>,
+    #[serde(rename = "lenderMetaField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lender_meta_field: Option<String>,
+    #[serde(rename = "partialRefundLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partial_refund_label: Option<String>,
+    #[serde(rename = "fullRefundLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub full_refund_label: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -54,6 +72,12 @@ pub struct PostV1BankImportTemplatesCreateResponseBuilder {
     company_meta_field: Option<String>,
     invoice_item_id: Option<String>,
     advance_invoices: Option<bool>,
+    authorization_operation_type_id: Option<String>,
+    payout_operation_type_id: Option<String>,
+    commission_operation_type_id: Option<String>,
+    lender_meta_field: Option<String>,
+    partial_refund_label: Option<String>,
+    full_refund_label: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -109,6 +133,36 @@ impl PostV1BankImportTemplatesCreateResponseBuilder {
         self
     }
 
+    pub fn authorization_operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.authorization_operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn payout_operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.payout_operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn commission_operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.commission_operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn lender_meta_field(mut self, value: impl Into<String>) -> Self {
+        self.lender_meta_field = Some(value.into());
+        self
+    }
+
+    pub fn partial_refund_label(mut self, value: impl Into<String>) -> Self {
+        self.partial_refund_label = Some(value.into());
+        self
+    }
+
+    pub fn full_refund_label(mut self, value: impl Into<String>) -> Self {
+        self.full_refund_label = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -149,6 +203,12 @@ impl PostV1BankImportTemplatesCreateResponseBuilder {
             advance_invoices: self
                 .advance_invoices
                 .ok_or_else(|| BuildError::missing_field("advance_invoices"))?,
+            authorization_operation_type_id: self.authorization_operation_type_id,
+            payout_operation_type_id: self.payout_operation_type_id,
+            commission_operation_type_id: self.commission_operation_type_id,
+            lender_meta_field: self.lender_meta_field,
+            partial_refund_label: self.partial_refund_label,
+            full_refund_label: self.full_refund_label,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

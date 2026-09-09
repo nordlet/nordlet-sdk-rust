@@ -13,6 +13,70 @@ impl CaptureClient {
         })
     }
 
+    pub async fn post_v1_capture_settings_get(
+        &self,
+        request: &PostV1CaptureSettingsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CaptureSettingsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/capture/settings/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_capture_settings_update(
+        &self,
+        request: &PostV1CaptureSettingsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CaptureSettingsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/capture/settings/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_capture_settings_regenerate_intake(
+        &self,
+        request: &PostV1CaptureSettingsRegenerateIntakeRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CaptureSettingsRegenerateIntakeResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/capture/settings/regenerate-intake",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn receive_an_inbound_email_with_supplier_documents_attached_postmark_style_or_generic_json(
+        &self,
+        request: &PostV1CaptureInboundEmailRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1CaptureInboundEmailResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/capture/inbound-email",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn read_a_vendor_bill_or_receipt_and_return_an_editable_purchase_invoice_draft(
         &self,
         request: &PostV1CaptureDocumentsUploadRequest,

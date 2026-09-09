@@ -207,6 +207,86 @@ impl SalesClient {
             .await
     }
 
+    pub async fn post_v1_sales_invoices_lock(
+        &self,
+        request: &PostV1SalesInvoicesLockRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesLockResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/lock",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_sales_invoices_unlock(
+        &self,
+        request: &PostV1SalesInvoicesUnlockRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesUnlockResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/unlock",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_sales_invoices_payment_link(
+        &self,
+        request: &PostV1SalesInvoicesPaymentLinkRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesPaymentLinkResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/payment-link",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_sales_invoices_payment_settings_get(
+        &self,
+        request: &PostV1SalesInvoicesPaymentSettingsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesPaymentSettingsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/payment-settings/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_sales_invoices_payment_settings_update(
+        &self,
+        request: &PostV1SalesInvoicesPaymentSettingsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1SalesInvoicesPaymentSettingsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoices/payment-settings/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_sales_recognition_schedules_list(
         &self,
         request: &PostV1SalesRecognitionSchedulesListRequest,
@@ -360,6 +440,166 @@ impl SalesClient {
             .execute_request(
                 Method::POST,
                 "v1/sales/acts/pdf",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_operation_types_create(
+        &self,
+        request: &PostV1OperationTypesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1OperationTypesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/operation-types/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_operation_types_update(
+        &self,
+        request: &PostV1OperationTypesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1OperationTypesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/operation-types/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_operation_types_get(
+        &self,
+        request: &PostV1OperationTypesGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1OperationTypesGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/operation-types/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_operation_types_delete(
+        &self,
+        request: &PostV1OperationTypesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1OperationTypesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/operation-types/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_operation_types_list(
+        &self,
+        request: &PostV1OperationTypesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1OperationTypesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/operation-types/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_document_series_create(
+        &self,
+        request: &PostV1DocumentSeriesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DocumentSeriesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/document-series/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_document_series_update(
+        &self,
+        request: &PostV1DocumentSeriesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DocumentSeriesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/document-series/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_document_series_get(
+        &self,
+        request: &PostV1DocumentSeriesGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DocumentSeriesGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/document-series/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_document_series_delete(
+        &self,
+        request: &PostV1DocumentSeriesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DocumentSeriesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/document-series/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_document_series_list(
+        &self,
+        request: &PostV1DocumentSeriesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1DocumentSeriesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/document-series/list",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

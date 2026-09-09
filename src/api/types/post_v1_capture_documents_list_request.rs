@@ -11,6 +11,9 @@ pub struct PostV1CaptureDocumentsListRequest {
     pub sort: Option<Vec<PostV1CaptureDocumentsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1CaptureDocumentsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1CaptureDocumentsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1CaptureDocumentsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1CaptureDocumentsListRequestSortItem>>,
     filter: Option<Vec<PostV1CaptureDocumentsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1CaptureDocumentsListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1CaptureDocumentsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1CaptureDocumentsListRequest`].
     pub fn build(self) -> Result<PostV1CaptureDocumentsListRequest, BuildError> {
         Ok(PostV1CaptureDocumentsListRequest {
@@ -56,6 +65,7 @@ impl PostV1CaptureDocumentsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

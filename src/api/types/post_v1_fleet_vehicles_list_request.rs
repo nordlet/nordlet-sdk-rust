@@ -11,6 +11,9 @@ pub struct PostV1FleetVehiclesListRequest {
     pub sort: Option<Vec<PostV1FleetVehiclesListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1FleetVehiclesListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1FleetVehiclesListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1FleetVehiclesListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1FleetVehiclesListRequestSortItem>>,
     filter: Option<Vec<PostV1FleetVehiclesListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1FleetVehiclesListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1FleetVehiclesListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1FleetVehiclesListRequest`].
     pub fn build(self) -> Result<PostV1FleetVehiclesListRequest, BuildError> {
         Ok(PostV1FleetVehiclesListRequest {
@@ -56,6 +65,7 @@ impl PostV1FleetVehiclesListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

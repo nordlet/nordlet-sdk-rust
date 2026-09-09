@@ -1,0 +1,457 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+pub struct PostV1SalesInvoicesUnlockResponse {
+    #[serde(default)]
+    pub id: String,
+    #[serde(rename = "partnerId")]
+    #[serde(default)]
+    pub partner_id: String,
+    pub r#type: PostV1SalesInvoicesUnlockResponseType,
+    pub status: PostV1SalesInvoicesUnlockResponseStatus,
+    #[serde(rename = "paymentStatus")]
+    pub payment_status: PostV1SalesInvoicesUnlockResponsePaymentStatus,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub series: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub number: Option<i64>,
+    #[serde(rename = "fullNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub full_number: Option<String>,
+    #[serde(rename = "issueDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issue_date: Option<String>,
+    #[serde(rename = "dueDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub due_date: Option<String>,
+    #[serde(default)]
+    pub currency: String,
+    #[serde(rename = "netTotal")]
+    #[serde(default)]
+    pub net_total: String,
+    #[serde(rename = "vatTotal")]
+    #[serde(default)]
+    pub vat_total: String,
+    #[serde(rename = "grossTotal")]
+    #[serde(default)]
+    pub gross_total: String,
+    #[serde(rename = "paidAmount")]
+    #[serde(default)]
+    pub paid_amount: String,
+    #[serde(rename = "journalTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub journal_transaction_id: Option<String>,
+    #[serde(rename = "appliedToInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub applied_to_invoice_id: Option<String>,
+    #[serde(rename = "creditedInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub credited_invoice_id: Option<String>,
+    #[serde(rename = "agreementId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub agreement_id: Option<String>,
+    #[serde(rename = "vatScheme")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_scheme: Option<PostV1SalesInvoicesUnlockResponseVatScheme>,
+    #[serde(rename = "vatCountryCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_country_code: Option<String>,
+    #[serde(rename = "deemedSupplier")]
+    #[serde(default)]
+    pub deemed_supplier: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub notes: Option<String>,
+    #[serde(rename = "documentRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_ref: Option<String>,
+    #[serde(rename = "operationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub operation_type_id: Option<String>,
+    #[serde(rename = "documentSeriesId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_series_id: Option<String>,
+    #[serde(rename = "seriesLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub series_label: Option<String>,
+    #[serde(rename = "discountPercent")]
+    #[serde(default)]
+    pub discount_percent: String,
+    #[serde(rename = "orderNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub order_number: Option<String>,
+    #[serde(rename = "issuedByName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issued_by_name: Option<String>,
+    #[serde(rename = "issuedByTitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issued_by_title: Option<String>,
+    #[serde(rename = "receivedByName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub received_by_name: Option<String>,
+    #[serde(rename = "receivedByTitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub received_by_title: Option<String>,
+    #[serde(rename = "lockedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locked_at: Option<String>,
+    #[serde(rename = "lockedBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locked_by: Option<String>,
+    #[serde(rename = "payToken")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_token: Option<String>,
+    #[serde(rename = "createdAt")]
+    #[serde(default)]
+    pub created_at: String,
+    #[serde(rename = "updatedAt")]
+    #[serde(default)]
+    pub updated_at: String,
+    #[serde(default)]
+    pub lines: Vec<PostV1SalesInvoicesUnlockResponseLinesItem>,
+    #[serde(rename = "vatEvidence")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_evidence: Option<PostV1SalesInvoicesUnlockResponseVatEvidence>,
+}
+
+impl PostV1SalesInvoicesUnlockResponse {
+    pub fn builder() -> PostV1SalesInvoicesUnlockResponseBuilder {
+        <PostV1SalesInvoicesUnlockResponseBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct PostV1SalesInvoicesUnlockResponseBuilder {
+    id: Option<String>,
+    partner_id: Option<String>,
+    r#type: Option<PostV1SalesInvoicesUnlockResponseType>,
+    status: Option<PostV1SalesInvoicesUnlockResponseStatus>,
+    payment_status: Option<PostV1SalesInvoicesUnlockResponsePaymentStatus>,
+    series: Option<String>,
+    number: Option<i64>,
+    full_number: Option<String>,
+    issue_date: Option<String>,
+    due_date: Option<String>,
+    currency: Option<String>,
+    net_total: Option<String>,
+    vat_total: Option<String>,
+    gross_total: Option<String>,
+    paid_amount: Option<String>,
+    journal_transaction_id: Option<String>,
+    applied_to_invoice_id: Option<String>,
+    credited_invoice_id: Option<String>,
+    agreement_id: Option<String>,
+    vat_scheme: Option<PostV1SalesInvoicesUnlockResponseVatScheme>,
+    vat_country_code: Option<String>,
+    deemed_supplier: Option<bool>,
+    notes: Option<String>,
+    document_ref: Option<String>,
+    operation_type_id: Option<String>,
+    document_series_id: Option<String>,
+    series_label: Option<String>,
+    discount_percent: Option<String>,
+    order_number: Option<String>,
+    issued_by_name: Option<String>,
+    issued_by_title: Option<String>,
+    received_by_name: Option<String>,
+    received_by_title: Option<String>,
+    locked_at: Option<String>,
+    locked_by: Option<String>,
+    pay_token: Option<String>,
+    created_at: Option<String>,
+    updated_at: Option<String>,
+    lines: Option<Vec<PostV1SalesInvoicesUnlockResponseLinesItem>>,
+    vat_evidence: Option<PostV1SalesInvoicesUnlockResponseVatEvidence>,
+}
+
+impl PostV1SalesInvoicesUnlockResponseBuilder {
+    pub fn id(mut self, value: impl Into<String>) -> Self {
+        self.id = Some(value.into());
+        self
+    }
+
+    pub fn partner_id(mut self, value: impl Into<String>) -> Self {
+        self.partner_id = Some(value.into());
+        self
+    }
+
+    pub fn r#type(mut self, value: PostV1SalesInvoicesUnlockResponseType) -> Self {
+        self.r#type = Some(value);
+        self
+    }
+
+    pub fn status(mut self, value: PostV1SalesInvoicesUnlockResponseStatus) -> Self {
+        self.status = Some(value);
+        self
+    }
+
+    pub fn payment_status(mut self, value: PostV1SalesInvoicesUnlockResponsePaymentStatus) -> Self {
+        self.payment_status = Some(value);
+        self
+    }
+
+    pub fn series(mut self, value: impl Into<String>) -> Self {
+        self.series = Some(value.into());
+        self
+    }
+
+    pub fn number(mut self, value: i64) -> Self {
+        self.number = Some(value);
+        self
+    }
+
+    pub fn full_number(mut self, value: impl Into<String>) -> Self {
+        self.full_number = Some(value.into());
+        self
+    }
+
+    pub fn issue_date(mut self, value: impl Into<String>) -> Self {
+        self.issue_date = Some(value.into());
+        self
+    }
+
+    pub fn due_date(mut self, value: impl Into<String>) -> Self {
+        self.due_date = Some(value.into());
+        self
+    }
+
+    pub fn currency(mut self, value: impl Into<String>) -> Self {
+        self.currency = Some(value.into());
+        self
+    }
+
+    pub fn net_total(mut self, value: impl Into<String>) -> Self {
+        self.net_total = Some(value.into());
+        self
+    }
+
+    pub fn vat_total(mut self, value: impl Into<String>) -> Self {
+        self.vat_total = Some(value.into());
+        self
+    }
+
+    pub fn gross_total(mut self, value: impl Into<String>) -> Self {
+        self.gross_total = Some(value.into());
+        self
+    }
+
+    pub fn paid_amount(mut self, value: impl Into<String>) -> Self {
+        self.paid_amount = Some(value.into());
+        self
+    }
+
+    pub fn journal_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.journal_transaction_id = Some(value.into());
+        self
+    }
+
+    pub fn applied_to_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.applied_to_invoice_id = Some(value.into());
+        self
+    }
+
+    pub fn credited_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.credited_invoice_id = Some(value.into());
+        self
+    }
+
+    pub fn agreement_id(mut self, value: impl Into<String>) -> Self {
+        self.agreement_id = Some(value.into());
+        self
+    }
+
+    pub fn vat_scheme(mut self, value: PostV1SalesInvoicesUnlockResponseVatScheme) -> Self {
+        self.vat_scheme = Some(value);
+        self
+    }
+
+    pub fn vat_country_code(mut self, value: impl Into<String>) -> Self {
+        self.vat_country_code = Some(value.into());
+        self
+    }
+
+    pub fn deemed_supplier(mut self, value: bool) -> Self {
+        self.deemed_supplier = Some(value);
+        self
+    }
+
+    pub fn notes(mut self, value: impl Into<String>) -> Self {
+        self.notes = Some(value.into());
+        self
+    }
+
+    pub fn document_ref(mut self, value: impl Into<String>) -> Self {
+        self.document_ref = Some(value.into());
+        self
+    }
+
+    pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn document_series_id(mut self, value: impl Into<String>) -> Self {
+        self.document_series_id = Some(value.into());
+        self
+    }
+
+    pub fn series_label(mut self, value: impl Into<String>) -> Self {
+        self.series_label = Some(value.into());
+        self
+    }
+
+    pub fn discount_percent(mut self, value: impl Into<String>) -> Self {
+        self.discount_percent = Some(value.into());
+        self
+    }
+
+    pub fn order_number(mut self, value: impl Into<String>) -> Self {
+        self.order_number = Some(value.into());
+        self
+    }
+
+    pub fn issued_by_name(mut self, value: impl Into<String>) -> Self {
+        self.issued_by_name = Some(value.into());
+        self
+    }
+
+    pub fn issued_by_title(mut self, value: impl Into<String>) -> Self {
+        self.issued_by_title = Some(value.into());
+        self
+    }
+
+    pub fn received_by_name(mut self, value: impl Into<String>) -> Self {
+        self.received_by_name = Some(value.into());
+        self
+    }
+
+    pub fn received_by_title(mut self, value: impl Into<String>) -> Self {
+        self.received_by_title = Some(value.into());
+        self
+    }
+
+    pub fn locked_at(mut self, value: impl Into<String>) -> Self {
+        self.locked_at = Some(value.into());
+        self
+    }
+
+    pub fn locked_by(mut self, value: impl Into<String>) -> Self {
+        self.locked_by = Some(value.into());
+        self
+    }
+
+    pub fn pay_token(mut self, value: impl Into<String>) -> Self {
+        self.pay_token = Some(value.into());
+        self
+    }
+
+    pub fn created_at(mut self, value: impl Into<String>) -> Self {
+        self.created_at = Some(value.into());
+        self
+    }
+
+    pub fn updated_at(mut self, value: impl Into<String>) -> Self {
+        self.updated_at = Some(value.into());
+        self
+    }
+
+    pub fn lines(mut self, value: Vec<PostV1SalesInvoicesUnlockResponseLinesItem>) -> Self {
+        self.lines = Some(value);
+        self
+    }
+
+    pub fn vat_evidence(mut self, value: PostV1SalesInvoicesUnlockResponseVatEvidence) -> Self {
+        self.vat_evidence = Some(value);
+        self
+    }
+
+    /// Consumes the builder and constructs a [`PostV1SalesInvoicesUnlockResponse`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`id`](PostV1SalesInvoicesUnlockResponseBuilder::id)
+    /// - [`partner_id`](PostV1SalesInvoicesUnlockResponseBuilder::partner_id)
+    /// - [`r#type`](PostV1SalesInvoicesUnlockResponseBuilder::r#type)
+    /// - [`status`](PostV1SalesInvoicesUnlockResponseBuilder::status)
+    /// - [`payment_status`](PostV1SalesInvoicesUnlockResponseBuilder::payment_status)
+    /// - [`currency`](PostV1SalesInvoicesUnlockResponseBuilder::currency)
+    /// - [`net_total`](PostV1SalesInvoicesUnlockResponseBuilder::net_total)
+    /// - [`vat_total`](PostV1SalesInvoicesUnlockResponseBuilder::vat_total)
+    /// - [`gross_total`](PostV1SalesInvoicesUnlockResponseBuilder::gross_total)
+    /// - [`paid_amount`](PostV1SalesInvoicesUnlockResponseBuilder::paid_amount)
+    /// - [`deemed_supplier`](PostV1SalesInvoicesUnlockResponseBuilder::deemed_supplier)
+    /// - [`discount_percent`](PostV1SalesInvoicesUnlockResponseBuilder::discount_percent)
+    /// - [`created_at`](PostV1SalesInvoicesUnlockResponseBuilder::created_at)
+    /// - [`updated_at`](PostV1SalesInvoicesUnlockResponseBuilder::updated_at)
+    /// - [`lines`](PostV1SalesInvoicesUnlockResponseBuilder::lines)
+    pub fn build(self) -> Result<PostV1SalesInvoicesUnlockResponse, BuildError> {
+        Ok(PostV1SalesInvoicesUnlockResponse {
+            id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+            partner_id: self
+                .partner_id
+                .ok_or_else(|| BuildError::missing_field("partner_id"))?,
+            r#type: self
+                .r#type
+                .ok_or_else(|| BuildError::missing_field("r#type"))?,
+            status: self
+                .status
+                .ok_or_else(|| BuildError::missing_field("status"))?,
+            payment_status: self
+                .payment_status
+                .ok_or_else(|| BuildError::missing_field("payment_status"))?,
+            series: self.series,
+            number: self.number,
+            full_number: self.full_number,
+            issue_date: self.issue_date,
+            due_date: self.due_date,
+            currency: self
+                .currency
+                .ok_or_else(|| BuildError::missing_field("currency"))?,
+            net_total: self
+                .net_total
+                .ok_or_else(|| BuildError::missing_field("net_total"))?,
+            vat_total: self
+                .vat_total
+                .ok_or_else(|| BuildError::missing_field("vat_total"))?,
+            gross_total: self
+                .gross_total
+                .ok_or_else(|| BuildError::missing_field("gross_total"))?,
+            paid_amount: self
+                .paid_amount
+                .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
+            journal_transaction_id: self.journal_transaction_id,
+            applied_to_invoice_id: self.applied_to_invoice_id,
+            credited_invoice_id: self.credited_invoice_id,
+            agreement_id: self.agreement_id,
+            vat_scheme: self.vat_scheme,
+            vat_country_code: self.vat_country_code,
+            deemed_supplier: self
+                .deemed_supplier
+                .ok_or_else(|| BuildError::missing_field("deemed_supplier"))?,
+            notes: self.notes,
+            document_ref: self.document_ref,
+            operation_type_id: self.operation_type_id,
+            document_series_id: self.document_series_id,
+            series_label: self.series_label,
+            discount_percent: self
+                .discount_percent
+                .ok_or_else(|| BuildError::missing_field("discount_percent"))?,
+            order_number: self.order_number,
+            issued_by_name: self.issued_by_name,
+            issued_by_title: self.issued_by_title,
+            received_by_name: self.received_by_name,
+            received_by_title: self.received_by_title,
+            locked_at: self.locked_at,
+            locked_by: self.locked_by,
+            pay_token: self.pay_token,
+            created_at: self
+                .created_at
+                .ok_or_else(|| BuildError::missing_field("created_at"))?,
+            updated_at: self
+                .updated_at
+                .ok_or_else(|| BuildError::missing_field("updated_at"))?,
+            lines: self
+                .lines
+                .ok_or_else(|| BuildError::missing_field("lines"))?,
+            vat_evidence: self.vat_evidence,
+        })
+    }
+}

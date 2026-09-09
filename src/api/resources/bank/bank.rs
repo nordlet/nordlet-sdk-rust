@@ -237,6 +237,70 @@ impl BankClient {
             .await
     }
 
+    pub async fn post_v1_bank_match_rules_create(
+        &self,
+        request: &PostV1BankMatchRulesCreateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMatchRulesCreateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/match-rules/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_match_rules_update(
+        &self,
+        request: &PostV1BankMatchRulesUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMatchRulesUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/match-rules/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_match_rules_delete(
+        &self,
+        request: &PostV1BankMatchRulesDeleteRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMatchRulesDeleteResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/match-rules/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_bank_match_rules_list(
+        &self,
+        request: &PostV1BankMatchRulesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankMatchRulesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/match-rules/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_bank_mandates_create(
         &self,
         request: &PostV1BankMandatesCreateRequest,
@@ -406,6 +470,56 @@ impl BankClient {
             .execute_request(
                 Method::POST,
                 "v1/bank/settlements/match",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Attach the incoming bank-statement line that carries this payout to the settlement batch.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_bank_settlements_link(
+        &self,
+        request: &PostV1BankSettlementsLinkRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankSettlementsLinkResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/settlements/link",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Detach the bank-statement line from the settlement batch and return the line to unmatched.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_bank_settlements_unlink(
+        &self,
+        request: &PostV1BankSettlementsUnlinkRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankSettlementsUnlinkResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/settlements/unlink",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

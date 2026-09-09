@@ -11,6 +11,9 @@ pub struct PostV1PartnersVatReviewsListRequest {
     pub sort: Option<Vec<PostV1PartnersVatReviewsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1PartnersVatReviewsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1PartnersVatReviewsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1PartnersVatReviewsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1PartnersVatReviewsListRequestSortItem>>,
     filter: Option<Vec<PostV1PartnersVatReviewsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1PartnersVatReviewsListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1PartnersVatReviewsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1PartnersVatReviewsListRequest`].
     pub fn build(self) -> Result<PostV1PartnersVatReviewsListRequest, BuildError> {
         Ok(PostV1PartnersVatReviewsListRequest {
@@ -56,6 +65,7 @@ impl PostV1PartnersVatReviewsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

@@ -11,6 +11,9 @@ pub struct PostV1DeclarationsSubmissionsListRequest {
     pub sort: Option<Vec<PostV1DeclarationsSubmissionsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1DeclarationsSubmissionsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1DeclarationsSubmissionsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1DeclarationsSubmissionsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1DeclarationsSubmissionsListRequestSortItem>>,
     filter: Option<Vec<PostV1DeclarationsSubmissionsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1DeclarationsSubmissionsListRequestBuilder {
@@ -52,6 +56,11 @@ impl PostV1DeclarationsSubmissionsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1DeclarationsSubmissionsListRequest`].
     pub fn build(self) -> Result<PostV1DeclarationsSubmissionsListRequest, BuildError> {
         Ok(PostV1DeclarationsSubmissionsListRequest {
@@ -59,6 +68,7 @@ impl PostV1DeclarationsSubmissionsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

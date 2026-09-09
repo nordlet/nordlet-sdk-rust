@@ -20,6 +20,15 @@ pub struct PostV1BankStatementsImportResponse {
     #[serde(rename = "creditNotesCreated")]
     #[serde(default)]
     pub credit_notes_created: i64,
+    #[serde(rename = "authorizationsRecorded")]
+    #[serde(default)]
+    pub authorizations_recorded: i64,
+    #[serde(rename = "payoutsPosted")]
+    #[serde(default)]
+    pub payouts_posted: i64,
+    #[serde(rename = "commissionsPosted")]
+    #[serde(default)]
+    pub commissions_posted: i64,
     #[serde(rename = "paymentsMatched")]
     #[serde(default)]
     pub payments_matched: i64,
@@ -45,6 +54,9 @@ pub struct PostV1BankStatementsImportResponseBuilder {
     invoices_created: Option<i64>,
     invoices_linked: Option<i64>,
     credit_notes_created: Option<i64>,
+    authorizations_recorded: Option<i64>,
+    payouts_posted: Option<i64>,
+    commissions_posted: Option<i64>,
     payments_matched: Option<i64>,
     warnings: Option<Vec<String>>,
     statements: Option<Vec<PostV1BankStatementsImportResponseStatementsItem>>,
@@ -86,6 +98,21 @@ impl PostV1BankStatementsImportResponseBuilder {
         self
     }
 
+    pub fn authorizations_recorded(mut self, value: i64) -> Self {
+        self.authorizations_recorded = Some(value);
+        self
+    }
+
+    pub fn payouts_posted(mut self, value: i64) -> Self {
+        self.payouts_posted = Some(value);
+        self
+    }
+
+    pub fn commissions_posted(mut self, value: i64) -> Self {
+        self.commissions_posted = Some(value);
+        self
+    }
+
     pub fn payments_matched(mut self, value: i64) -> Self {
         self.payments_matched = Some(value);
         self
@@ -113,6 +140,9 @@ impl PostV1BankStatementsImportResponseBuilder {
     /// - [`invoices_created`](PostV1BankStatementsImportResponseBuilder::invoices_created)
     /// - [`invoices_linked`](PostV1BankStatementsImportResponseBuilder::invoices_linked)
     /// - [`credit_notes_created`](PostV1BankStatementsImportResponseBuilder::credit_notes_created)
+    /// - [`authorizations_recorded`](PostV1BankStatementsImportResponseBuilder::authorizations_recorded)
+    /// - [`payouts_posted`](PostV1BankStatementsImportResponseBuilder::payouts_posted)
+    /// - [`commissions_posted`](PostV1BankStatementsImportResponseBuilder::commissions_posted)
     /// - [`payments_matched`](PostV1BankStatementsImportResponseBuilder::payments_matched)
     /// - [`warnings`](PostV1BankStatementsImportResponseBuilder::warnings)
     /// - [`statements`](PostV1BankStatementsImportResponseBuilder::statements)
@@ -139,6 +169,15 @@ impl PostV1BankStatementsImportResponseBuilder {
             credit_notes_created: self
                 .credit_notes_created
                 .ok_or_else(|| BuildError::missing_field("credit_notes_created"))?,
+            authorizations_recorded: self
+                .authorizations_recorded
+                .ok_or_else(|| BuildError::missing_field("authorizations_recorded"))?,
+            payouts_posted: self
+                .payouts_posted
+                .ok_or_else(|| BuildError::missing_field("payouts_posted"))?,
+            commissions_posted: self
+                .commissions_posted
+                .ok_or_else(|| BuildError::missing_field("commissions_posted"))?,
             payments_matched: self
                 .payments_matched
                 .ok_or_else(|| BuildError::missing_field("payments_matched"))?,

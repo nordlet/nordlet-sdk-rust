@@ -11,6 +11,9 @@ pub struct PostV1BankFeedsConnectionsListRequest {
     pub sort: Option<Vec<PostV1BankFeedsConnectionsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1BankFeedsConnectionsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1BankFeedsConnectionsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1BankFeedsConnectionsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1BankFeedsConnectionsListRequestSortItem>>,
     filter: Option<Vec<PostV1BankFeedsConnectionsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1BankFeedsConnectionsListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1BankFeedsConnectionsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1BankFeedsConnectionsListRequest`].
     pub fn build(self) -> Result<PostV1BankFeedsConnectionsListRequest, BuildError> {
         Ok(PostV1BankFeedsConnectionsListRequest {
@@ -56,6 +65,7 @@ impl PostV1BankFeedsConnectionsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

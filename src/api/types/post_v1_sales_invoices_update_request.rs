@@ -26,6 +26,33 @@ pub struct PostV1SalesInvoicesUpdateRequest {
     pub deemed_supplier: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "operationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub operation_type_id: Option<String>,
+    #[serde(rename = "documentSeriesId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_series_id: Option<String>,
+    #[serde(rename = "seriesLabel")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub series_label: Option<String>,
+    #[serde(rename = "discountPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub discount_percent: Option<String>,
+    #[serde(rename = "orderNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub order_number: Option<String>,
+    #[serde(rename = "issuedByName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issued_by_name: Option<String>,
+    #[serde(rename = "issuedByTitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub issued_by_title: Option<String>,
+    #[serde(rename = "receivedByName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub received_by_name: Option<String>,
+    #[serde(rename = "receivedByTitle")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub received_by_title: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lines: Option<Vec<PostV1SalesInvoicesUpdateRequestLinesItem>>,
 }
@@ -48,6 +75,15 @@ pub struct PostV1SalesInvoicesUpdateRequestBuilder {
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
     notes: Option<String>,
+    operation_type_id: Option<String>,
+    document_series_id: Option<String>,
+    series_label: Option<String>,
+    discount_percent: Option<String>,
+    order_number: Option<String>,
+    issued_by_name: Option<String>,
+    issued_by_title: Option<String>,
+    received_by_name: Option<String>,
+    received_by_title: Option<String>,
     lines: Option<Vec<PostV1SalesInvoicesUpdateRequestLinesItem>>,
 }
 
@@ -97,6 +133,51 @@ impl PostV1SalesInvoicesUpdateRequestBuilder {
         self
     }
 
+    pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.operation_type_id = Some(value.into());
+        self
+    }
+
+    pub fn document_series_id(mut self, value: impl Into<String>) -> Self {
+        self.document_series_id = Some(value.into());
+        self
+    }
+
+    pub fn series_label(mut self, value: impl Into<String>) -> Self {
+        self.series_label = Some(value.into());
+        self
+    }
+
+    pub fn discount_percent(mut self, value: impl Into<String>) -> Self {
+        self.discount_percent = Some(value.into());
+        self
+    }
+
+    pub fn order_number(mut self, value: impl Into<String>) -> Self {
+        self.order_number = Some(value.into());
+        self
+    }
+
+    pub fn issued_by_name(mut self, value: impl Into<String>) -> Self {
+        self.issued_by_name = Some(value.into());
+        self
+    }
+
+    pub fn issued_by_title(mut self, value: impl Into<String>) -> Self {
+        self.issued_by_title = Some(value.into());
+        self
+    }
+
+    pub fn received_by_name(mut self, value: impl Into<String>) -> Self {
+        self.received_by_name = Some(value.into());
+        self
+    }
+
+    pub fn received_by_title(mut self, value: impl Into<String>) -> Self {
+        self.received_by_title = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<PostV1SalesInvoicesUpdateRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -116,6 +197,15 @@ impl PostV1SalesInvoicesUpdateRequestBuilder {
             vat_country_code: self.vat_country_code,
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,
+            operation_type_id: self.operation_type_id,
+            document_series_id: self.document_series_id,
+            series_label: self.series_label,
+            discount_percent: self.discount_percent,
+            order_number: self.order_number,
+            issued_by_name: self.issued_by_name,
+            issued_by_title: self.issued_by_title,
+            received_by_name: self.received_by_name,
+            received_by_title: self.received_by_title,
             lines: self.lines,
         })
     }

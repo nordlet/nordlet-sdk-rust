@@ -11,6 +11,9 @@ pub struct PostV1BankAccountsListRequest {
     pub sort: Option<Vec<PostV1BankAccountsListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1BankAccountsListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1BankAccountsListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1BankAccountsListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1BankAccountsListRequestSortItem>>,
     filter: Option<Vec<PostV1BankAccountsListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1BankAccountsListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1BankAccountsListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1BankAccountsListRequest`].
     pub fn build(self) -> Result<PostV1BankAccountsListRequest, BuildError> {
         Ok(PostV1BankAccountsListRequest {
@@ -56,6 +65,7 @@ impl PostV1BankAccountsListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

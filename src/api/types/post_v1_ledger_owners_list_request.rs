@@ -11,6 +11,9 @@ pub struct PostV1LedgerOwnersListRequest {
     pub sort: Option<Vec<PostV1LedgerOwnersListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1LedgerOwnersListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1LedgerOwnersListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1LedgerOwnersListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1LedgerOwnersListRequestSortItem>>,
     filter: Option<Vec<PostV1LedgerOwnersListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1LedgerOwnersListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1LedgerOwnersListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1LedgerOwnersListRequest`].
     pub fn build(self) -> Result<PostV1LedgerOwnersListRequest, BuildError> {
         Ok(PostV1LedgerOwnersListRequest {
@@ -56,6 +65,7 @@ impl PostV1LedgerOwnersListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

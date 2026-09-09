@@ -109,6 +109,54 @@ impl ReferenceClient {
             .await
     }
 
+    pub async fn post_v1_reference_lt_counties_list(
+        &self,
+        request: &PostV1ReferenceLtCountiesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReferenceLtCountiesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reference/lt/counties/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_reference_lt_municipalities_list(
+        &self,
+        request: &PostV1ReferenceLtMunicipalitiesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReferenceLtMunicipalitiesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reference/lt/municipalities/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_reference_lt_cities_list(
+        &self,
+        request: &PostV1ReferenceLtCitiesListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReferenceLtCitiesListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reference/lt/cities/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_reference_banks_list(
         &self,
         request: &PostV1ReferenceBanksListRequest,

@@ -21,6 +21,9 @@ pub struct PostV1PurchasesInvoicesUpdateRequest {
     #[serde(rename = "purchaseOrderId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub purchase_order_id: Option<String>,
+    #[serde(rename = "operationTypeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub operation_type_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -43,6 +46,7 @@ pub struct PostV1PurchasesInvoicesUpdateRequestBuilder {
     due_date: Option<String>,
     currency: Option<String>,
     purchase_order_id: Option<String>,
+    operation_type_id: Option<String>,
     notes: Option<String>,
     lines: Option<Vec<PostV1PurchasesInvoicesUpdateRequestLinesItem>>,
 }
@@ -83,6 +87,11 @@ impl PostV1PurchasesInvoicesUpdateRequestBuilder {
         self
     }
 
+    pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
+        self.operation_type_id = Some(value.into());
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -105,6 +114,7 @@ impl PostV1PurchasesInvoicesUpdateRequestBuilder {
             due_date: self.due_date,
             currency: self.currency,
             purchase_order_id: self.purchase_order_id,
+            operation_type_id: self.operation_type_id,
             notes: self.notes,
             lines: self.lines,
         })

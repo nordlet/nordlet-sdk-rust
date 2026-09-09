@@ -23,6 +23,7 @@
 //! - **Projects**
 //! - **Transport**
 //! - **Pos**
+//! - **Calendar**
 //! - **Audit**
 //! - **Webhooks**
 //! - **Bank**
@@ -41,6 +42,7 @@ pub mod assets;
 pub mod audit;
 pub mod bank;
 pub mod billing;
+pub mod calendar;
 pub mod capture;
 pub mod cash;
 pub mod catalog;
@@ -88,6 +90,7 @@ pub struct ApiClient {
     pub projects: ProjectsClient,
     pub transport: TransportClient,
     pub pos: PosClient,
+    pub calendar: CalendarClient,
     pub audit: AuditClient,
     pub webhooks: WebhooksClient,
     pub bank: BankClient,
@@ -124,6 +127,7 @@ impl ApiClient {
             projects: ProjectsClient::new(config.clone())?,
             transport: TransportClient::new(config.clone())?,
             pos: PosClient::new(config.clone())?,
+            calendar: CalendarClient::new(config.clone())?,
             audit: AuditClient::new(config.clone())?,
             webhooks: WebhooksClient::new(config.clone())?,
             bank: BankClient::new(config.clone())?,
@@ -143,6 +147,7 @@ pub use assets::AssetsClient;
 pub use audit::AuditClient;
 pub use bank::BankClient;
 pub use billing::BillingClient;
+pub use calendar::CalendarClient;
 pub use capture::CaptureClient;
 pub use cash::CashClient;
 pub use catalog::CatalogClient;

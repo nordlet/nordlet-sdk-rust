@@ -517,4 +517,68 @@ impl AccountClient {
             )
             .await
     }
+
+    pub async fn post_v1_account_referral_get(
+        &self,
+        request: &PostV1AccountReferralGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountReferralGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/referral/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_table_settings_get(
+        &self,
+        request: &PostV1AccountTableSettingsGetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountTableSettingsGetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/table-settings/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_table_settings_set(
+        &self,
+        request: &PostV1AccountTableSettingsSetRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountTableSettingsSetResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/table-settings/set",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_table_settings_list(
+        &self,
+        request: &PostV1AccountTableSettingsListRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountTableSettingsListResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/table-settings/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
 }

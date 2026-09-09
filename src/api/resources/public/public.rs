@@ -28,4 +28,20 @@ impl PublicClient {
             )
             .await
     }
+
+    pub async fn get_v1_public_pay_token(
+        &self,
+        token: &str,
+        options: Option<RequestOptions>,
+    ) -> Result<(), ApiError> {
+        self.http_client
+            .execute_request(
+                Method::GET,
+                &format!("v1/public/pay/{}", token),
+                None,
+                None,
+                options,
+            )
+            .await
+    }
 }

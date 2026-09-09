@@ -11,6 +11,9 @@ pub struct PostV1ProjectsTimeEntriesListRequest {
     pub sort: Option<Vec<PostV1ProjectsTimeEntriesListRequestSortItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filter: Option<Vec<PostV1ProjectsTimeEntriesListRequestFilterItem>>,
+    /// Numeric fields to sum over every row matching the filter (not only the current page)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals: Option<Vec<String>>,
 }
 
 impl PostV1ProjectsTimeEntriesListRequest {
@@ -26,6 +29,7 @@ pub struct PostV1ProjectsTimeEntriesListRequestBuilder {
     page_size: Option<i64>,
     sort: Option<Vec<PostV1ProjectsTimeEntriesListRequestSortItem>>,
     filter: Option<Vec<PostV1ProjectsTimeEntriesListRequestFilterItem>>,
+    totals: Option<Vec<String>>,
 }
 
 impl PostV1ProjectsTimeEntriesListRequestBuilder {
@@ -49,6 +53,11 @@ impl PostV1ProjectsTimeEntriesListRequestBuilder {
         self
     }
 
+    pub fn totals(mut self, value: Vec<String>) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1ProjectsTimeEntriesListRequest`].
     pub fn build(self) -> Result<PostV1ProjectsTimeEntriesListRequest, BuildError> {
         Ok(PostV1ProjectsTimeEntriesListRequest {
@@ -56,6 +65,7 @@ impl PostV1ProjectsTimeEntriesListRequestBuilder {
             page_size: self.page_size,
             sort: self.sort,
             filter: self.filter,
+            totals: self.totals,
         })
     }
 }

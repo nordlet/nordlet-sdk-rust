@@ -6,6 +6,10 @@ pub struct PostV1PartnersCreateResponseAddress {
     pub street: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub municipality: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub county: Option<String>,
     #[serde(rename = "postalCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub postal_code: Option<String>,
@@ -25,6 +29,8 @@ impl PostV1PartnersCreateResponseAddress {
 pub struct PostV1PartnersCreateResponseAddressBuilder {
     street: Option<String>,
     city: Option<String>,
+    municipality: Option<String>,
+    county: Option<String>,
     postal_code: Option<String>,
     country_code: Option<String>,
 }
@@ -37,6 +43,16 @@ impl PostV1PartnersCreateResponseAddressBuilder {
 
     pub fn city(mut self, value: impl Into<String>) -> Self {
         self.city = Some(value.into());
+        self
+    }
+
+    pub fn municipality(mut self, value: impl Into<String>) -> Self {
+        self.municipality = Some(value.into());
+        self
+    }
+
+    pub fn county(mut self, value: impl Into<String>) -> Self {
+        self.county = Some(value.into());
         self
     }
 
@@ -55,6 +71,8 @@ impl PostV1PartnersCreateResponseAddressBuilder {
         Ok(PostV1PartnersCreateResponseAddress {
             street: self.street,
             city: self.city,
+            municipality: self.municipality,
+            county: self.county,
             postal_code: self.postal_code,
             country_code: self.country_code,
         })
