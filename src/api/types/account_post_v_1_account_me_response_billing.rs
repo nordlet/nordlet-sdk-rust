@@ -11,6 +11,15 @@ pub struct PostV1AccountMeResponseBilling {
     #[serde(rename = "trialEndsAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trial_ends_at: Option<String>,
+    #[serde(rename = "payerUserId")]
+    #[serde(default)]
+    pub payer_user_id: String,
+    #[serde(rename = "payerEmail")]
+    #[serde(default)]
+    pub payer_email: String,
+    #[serde(rename = "isPayer")]
+    #[serde(default)]
+    pub is_payer: bool,
 }
 
 impl PostV1AccountMeResponseBilling {
@@ -26,6 +35,9 @@ pub struct PostV1AccountMeResponseBillingBuilder {
     plan: Option<String>,
     balance_cents: Option<i64>,
     trial_ends_at: Option<String>,
+    payer_user_id: Option<String>,
+    payer_email: Option<String>,
+    is_payer: Option<bool>,
 }
 
 impl PostV1AccountMeResponseBillingBuilder {
@@ -49,11 +61,29 @@ impl PostV1AccountMeResponseBillingBuilder {
         self
     }
 
+    pub fn payer_user_id(mut self, value: impl Into<String>) -> Self {
+        self.payer_user_id = Some(value.into());
+        self
+    }
+
+    pub fn payer_email(mut self, value: impl Into<String>) -> Self {
+        self.payer_email = Some(value.into());
+        self
+    }
+
+    pub fn is_payer(mut self, value: bool) -> Self {
+        self.is_payer = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1AccountMeResponseBilling`].
     /// This method will fail if any of the following fields are not set:
     /// - [`status`](PostV1AccountMeResponseBillingBuilder::status)
     /// - [`plan`](PostV1AccountMeResponseBillingBuilder::plan)
     /// - [`balance_cents`](PostV1AccountMeResponseBillingBuilder::balance_cents)
+    /// - [`payer_user_id`](PostV1AccountMeResponseBillingBuilder::payer_user_id)
+    /// - [`payer_email`](PostV1AccountMeResponseBillingBuilder::payer_email)
+    /// - [`is_payer`](PostV1AccountMeResponseBillingBuilder::is_payer)
     pub fn build(self) -> Result<PostV1AccountMeResponseBilling, BuildError> {
         Ok(PostV1AccountMeResponseBilling {
             status: self
@@ -64,6 +94,15 @@ impl PostV1AccountMeResponseBillingBuilder {
                 .balance_cents
                 .ok_or_else(|| BuildError::missing_field("balance_cents"))?,
             trial_ends_at: self.trial_ends_at,
+            payer_user_id: self
+                .payer_user_id
+                .ok_or_else(|| BuildError::missing_field("payer_user_id"))?,
+            payer_email: self
+                .payer_email
+                .ok_or_else(|| BuildError::missing_field("payer_email"))?,
+            is_payer: self
+                .is_payer
+                .ok_or_else(|| BuildError::missing_field("is_payer"))?,
         })
     }
 }

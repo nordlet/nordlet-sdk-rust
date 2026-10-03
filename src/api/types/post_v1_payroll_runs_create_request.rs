@@ -9,6 +9,9 @@ pub struct PostV1PayrollRunsCreateRequest {
     #[serde(rename = "includeNatura")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub include_natura: Option<bool>,
+    #[serde(rename = "grossOverrides")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub gross_overrides: Option<Vec<PostV1PayrollRunsCreateRequestGrossOverridesItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lines: Option<Vec<PostV1PayrollRunsCreateRequestLinesItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -27,6 +30,7 @@ pub struct PostV1PayrollRunsCreateRequestBuilder {
     year: Option<i64>,
     month: Option<i64>,
     include_natura: Option<bool>,
+    gross_overrides: Option<Vec<PostV1PayrollRunsCreateRequestGrossOverridesItem>>,
     lines: Option<Vec<PostV1PayrollRunsCreateRequestLinesItem>>,
     notes: Option<String>,
 }
@@ -44,6 +48,14 @@ impl PostV1PayrollRunsCreateRequestBuilder {
 
     pub fn include_natura(mut self, value: bool) -> Self {
         self.include_natura = Some(value);
+        self
+    }
+
+    pub fn gross_overrides(
+        mut self,
+        value: Vec<PostV1PayrollRunsCreateRequestGrossOverridesItem>,
+    ) -> Self {
+        self.gross_overrides = Some(value);
         self
     }
 
@@ -68,6 +80,7 @@ impl PostV1PayrollRunsCreateRequestBuilder {
                 .month
                 .ok_or_else(|| BuildError::missing_field("month"))?,
             include_natura: self.include_natura,
+            gross_overrides: self.gross_overrides,
             lines: self.lines,
             notes: self.notes,
         })

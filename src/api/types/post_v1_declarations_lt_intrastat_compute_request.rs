@@ -16,6 +16,18 @@ pub struct PostV1DeclarationsLtIntrastatComputeRequest {
     #[serde(rename = "transportMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transport_mode: Option<PostV1DeclarationsLtIntrastatComputeRequestTransportMode>,
+    #[serde(rename = "regionCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub region_code: Option<String>,
+    #[serde(rename = "statisticalValueRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub statistical_value_required: Option<bool>,
+    #[serde(rename = "preparationTimeHours")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub preparation_time_hours: Option<i64>,
+    #[serde(rename = "preparationTimeMinutes")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub preparation_time_minutes: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub persist: Option<bool>,
 }
@@ -35,6 +47,10 @@ pub struct PostV1DeclarationsLtIntrastatComputeRequestBuilder {
     transaction_nature: Option<String>,
     delivery_terms: Option<String>,
     transport_mode: Option<PostV1DeclarationsLtIntrastatComputeRequestTransportMode>,
+    region_code: Option<String>,
+    statistical_value_required: Option<bool>,
+    preparation_time_hours: Option<i64>,
+    preparation_time_minutes: Option<i64>,
     persist: Option<bool>,
 }
 
@@ -72,6 +88,26 @@ impl PostV1DeclarationsLtIntrastatComputeRequestBuilder {
         self
     }
 
+    pub fn region_code(mut self, value: impl Into<String>) -> Self {
+        self.region_code = Some(value.into());
+        self
+    }
+
+    pub fn statistical_value_required(mut self, value: bool) -> Self {
+        self.statistical_value_required = Some(value);
+        self
+    }
+
+    pub fn preparation_time_hours(mut self, value: i64) -> Self {
+        self.preparation_time_hours = Some(value);
+        self
+    }
+
+    pub fn preparation_time_minutes(mut self, value: i64) -> Self {
+        self.preparation_time_minutes = Some(value);
+        self
+    }
+
     pub fn persist(mut self, value: bool) -> Self {
         self.persist = Some(value);
         self
@@ -92,6 +128,10 @@ impl PostV1DeclarationsLtIntrastatComputeRequestBuilder {
             transaction_nature: self.transaction_nature,
             delivery_terms: self.delivery_terms,
             transport_mode: self.transport_mode,
+            region_code: self.region_code,
+            statistical_value_required: self.statistical_value_required,
+            preparation_time_hours: self.preparation_time_hours,
+            preparation_time_minutes: self.preparation_time_minutes,
             persist: self.persist,
         })
     }

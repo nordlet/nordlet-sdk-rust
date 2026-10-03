@@ -1,0 +1,77 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItem {
+    #[serde(default)]
+    pub name: String,
+    #[serde(rename = "countryCode")]
+    #[serde(default)]
+    pub country_code: String,
+    #[serde(rename = "sharePercent")]
+    #[serde(default)]
+    pub share_percent: String,
+    #[serde(default)]
+    pub dividends: String,
+}
+
+impl PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItem {
+    pub fn builder() -> PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder {
+        <PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder {
+    name: Option<String>,
+    country_code: Option<String>,
+    share_percent: Option<String>,
+    dividends: Option<String>,
+}
+
+impl PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder {
+    pub fn name(mut self, value: impl Into<String>) -> Self {
+        self.name = Some(value.into());
+        self
+    }
+
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
+        self
+    }
+
+    pub fn share_percent(mut self, value: impl Into<String>) -> Self {
+        self.share_percent = Some(value.into());
+        self
+    }
+
+    pub fn dividends(mut self, value: impl Into<String>) -> Self {
+        self.dividends = Some(value.into());
+        self
+    }
+
+    /// Consumes the builder and constructs a [`PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItem`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`name`](PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder::name)
+    /// - [`country_code`](PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder::country_code)
+    /// - [`share_percent`](PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder::share_percent)
+    /// - [`dividends`](PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItemBuilder::dividends)
+    pub fn build(
+        self,
+    ) -> Result<PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItem, BuildError> {
+        Ok(
+            PostV1DeclarationsDeReturnFactsGetResponseFactsParticipationsItem {
+                name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+                country_code: self
+                    .country_code
+                    .ok_or_else(|| BuildError::missing_field("country_code"))?,
+                share_percent: self
+                    .share_percent
+                    .ok_or_else(|| BuildError::missing_field("share_percent"))?,
+                dividends: self
+                    .dividends
+                    .ok_or_else(|| BuildError::missing_field("dividends"))?,
+            },
+        )
+    }
+}

@@ -237,6 +237,81 @@ impl ReportsClient {
             .await
     }
 
+    /// Export the ledger of one financial year as an SIE file (the Swedish standard accounting interchange format, specification 4B). The file carries the chart of accounts, the opening and closing balance of every balance sheet account and the turnover of every result account for the year and the year before it, and, when asked for, every posted voucher of the year with its lines. Cost centres travel as dimension 1 and projects as dimension 6. Services that build a Swedish annual report read this file.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_reports_sie(
+        &self,
+        request: &PostV1ReportsSieRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReportsSieResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reports/sie",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Export the posted ledger of a period as a DATEV Buchungsstapel file (DATEV format, category 21, version 700). Every transaction becomes one or more bookings of an amount between an account and a contra account; a transaction with more than two lines is split into pairs whose totals match it. The file is semicolon separated and written in the Windows-1252 character set DATEV expects.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_reports_datev(
+        &self,
+        request: &PostV1ReportsDatevRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReportsDatevResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reports/datev",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Export the posted ledger of a period as a French FEC file (fichier des écritures comptables, order of 29 July 2013). One line per journal entry line, with the eighteen fields the order names, in their order, after a header line. Tab separated, UTF-8, comma as the decimal separator.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_reports_fec(
+        &self,
+        request: &PostV1ReportsFecRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1ReportsFecResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/reports/fec",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_reports_eu_purchases(
         &self,
         request: &PostV1ReportsEuPurchasesRequest,

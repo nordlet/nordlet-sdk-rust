@@ -7,6 +7,9 @@ pub struct PostV1SalesInvoicesUpdateRequest {
     #[serde(rename = "partnerId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub partner_id: Option<String>,
+    #[serde(rename = "agreementId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub agreement_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(rename = "issueDate")]
@@ -18,6 +21,18 @@ pub struct PostV1SalesInvoicesUpdateRequest {
     #[serde(rename = "vatScheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_scheme: Option<PostV1SalesInvoicesUpdateRequestVatScheme>,
+    #[serde(rename = "intrastatTransportMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_transport_mode: Option<String>,
+    #[serde(rename = "intrastatDeliveryTerms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_delivery_terms: Option<String>,
+    #[serde(rename = "intrastatRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_region: Option<String>,
+    #[serde(rename = "intrastatNatureOfTransaction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_nature_of_transaction: Option<String>,
     #[serde(rename = "vatCountryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_country_code: Option<String>,
@@ -68,10 +83,15 @@ impl PostV1SalesInvoicesUpdateRequest {
 pub struct PostV1SalesInvoicesUpdateRequestBuilder {
     id: Option<String>,
     partner_id: Option<String>,
+    agreement_id: Option<String>,
     currency: Option<String>,
     issue_date: Option<String>,
     due_date: Option<String>,
     vat_scheme: Option<PostV1SalesInvoicesUpdateRequestVatScheme>,
+    intrastat_transport_mode: Option<String>,
+    intrastat_delivery_terms: Option<String>,
+    intrastat_region: Option<String>,
+    intrastat_nature_of_transaction: Option<String>,
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
     notes: Option<String>,
@@ -98,6 +118,11 @@ impl PostV1SalesInvoicesUpdateRequestBuilder {
         self
     }
 
+    pub fn agreement_id(mut self, value: impl Into<String>) -> Self {
+        self.agreement_id = Some(value.into());
+        self
+    }
+
     pub fn currency(mut self, value: impl Into<String>) -> Self {
         self.currency = Some(value.into());
         self
@@ -115,6 +140,26 @@ impl PostV1SalesInvoicesUpdateRequestBuilder {
 
     pub fn vat_scheme(mut self, value: PostV1SalesInvoicesUpdateRequestVatScheme) -> Self {
         self.vat_scheme = Some(value);
+        self
+    }
+
+    pub fn intrastat_transport_mode(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_transport_mode = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_delivery_terms(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_delivery_terms = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_region(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_region = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_nature_of_transaction(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_nature_of_transaction = Some(value.into());
         self
     }
 
@@ -190,10 +235,15 @@ impl PostV1SalesInvoicesUpdateRequestBuilder {
         Ok(PostV1SalesInvoicesUpdateRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             partner_id: self.partner_id,
+            agreement_id: self.agreement_id,
             currency: self.currency,
             issue_date: self.issue_date,
             due_date: self.due_date,
             vat_scheme: self.vat_scheme,
+            intrastat_transport_mode: self.intrastat_transport_mode,
+            intrastat_delivery_terms: self.intrastat_delivery_terms,
+            intrastat_region: self.intrastat_region,
+            intrastat_nature_of_transaction: self.intrastat_nature_of_transaction,
             vat_country_code: self.vat_country_code,
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,

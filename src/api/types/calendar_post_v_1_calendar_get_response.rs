@@ -23,6 +23,16 @@ pub struct PostV1CalendarGetResponse {
     pub done: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub href: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub submission: Option<PostV1CalendarGetResponseSubmission>,
+    #[serde(rename = "canSubmit")]
+    #[serde(default)]
+    pub can_submit: bool,
+    #[serde(rename = "canDownload")]
+    #[serde(default)]
+    pub can_download: bool,
+    #[serde(default)]
+    pub automated: bool,
 }
 
 impl PostV1CalendarGetResponse {
@@ -44,6 +54,10 @@ pub struct PostV1CalendarGetResponseBuilder {
     notes: Option<String>,
     done: Option<bool>,
     href: Option<String>,
+    submission: Option<PostV1CalendarGetResponseSubmission>,
+    can_submit: Option<bool>,
+    can_download: Option<bool>,
+    automated: Option<bool>,
 }
 
 impl PostV1CalendarGetResponseBuilder {
@@ -97,6 +111,26 @@ impl PostV1CalendarGetResponseBuilder {
         self
     }
 
+    pub fn submission(mut self, value: PostV1CalendarGetResponseSubmission) -> Self {
+        self.submission = Some(value);
+        self
+    }
+
+    pub fn can_submit(mut self, value: bool) -> Self {
+        self.can_submit = Some(value);
+        self
+    }
+
+    pub fn can_download(mut self, value: bool) -> Self {
+        self.can_download = Some(value);
+        self
+    }
+
+    pub fn automated(mut self, value: bool) -> Self {
+        self.automated = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1CalendarGetResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`key`](PostV1CalendarGetResponseBuilder::key)
@@ -104,6 +138,9 @@ impl PostV1CalendarGetResponseBuilder {
     /// - [`title`](PostV1CalendarGetResponseBuilder::title)
     /// - [`due_date`](PostV1CalendarGetResponseBuilder::due_date)
     /// - [`done`](PostV1CalendarGetResponseBuilder::done)
+    /// - [`can_submit`](PostV1CalendarGetResponseBuilder::can_submit)
+    /// - [`can_download`](PostV1CalendarGetResponseBuilder::can_download)
+    /// - [`automated`](PostV1CalendarGetResponseBuilder::automated)
     pub fn build(self) -> Result<PostV1CalendarGetResponse, BuildError> {
         Ok(PostV1CalendarGetResponse {
             key: self.key.ok_or_else(|| BuildError::missing_field("key"))?,
@@ -120,6 +157,16 @@ impl PostV1CalendarGetResponseBuilder {
             notes: self.notes,
             done: self.done.ok_or_else(|| BuildError::missing_field("done"))?,
             href: self.href,
+            submission: self.submission,
+            can_submit: self
+                .can_submit
+                .ok_or_else(|| BuildError::missing_field("can_submit"))?,
+            can_download: self
+                .can_download
+                .ok_or_else(|| BuildError::missing_field("can_download"))?,
+            automated: self
+                .automated
+                .ok_or_else(|| BuildError::missing_field("automated"))?,
         })
     }
 }

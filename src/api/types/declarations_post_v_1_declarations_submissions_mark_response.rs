@@ -26,6 +26,51 @@ pub struct PostV1DeclarationsSubmissionsMarkResponse {
     pub external_ref: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
+    #[serde(rename = "ruleKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rule_key: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub period: Option<String>,
+    #[serde(rename = "documentKey")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_key: Option<String>,
+    #[serde(default)]
+    pub origin: String,
+    #[serde(rename = "transportSystem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub transport_system: Option<String>,
+    #[serde(rename = "submittedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub submitted_at: Option<String>,
+    #[serde(rename = "acceptedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub accepted_at: Option<String>,
+    #[serde(rename = "rejectedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rejected_at: Option<String>,
+    #[serde(rename = "checkedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub checked_at: Option<String>,
+    #[serde(rename = "nextCheckAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub next_check_at: Option<String>,
+    #[serde(default)]
+    pub attempts: i64,
+    #[serde(rename = "deliveryError")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub delivery_error: Option<String>,
+    #[serde(rename = "sentSha256")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sent_sha256: Option<String>,
+    #[serde(rename = "certificateFingerprint")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub certificate_fingerprint: Option<String>,
+    #[serde(rename = "submittedByActorType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub submitted_by_actor_type: Option<String>,
+    #[serde(rename = "submittedByActorId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub submitted_by_actor_id: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -53,6 +98,22 @@ pub struct PostV1DeclarationsSubmissionsMarkResponseBuilder {
     file_id: Option<String>,
     external_ref: Option<String>,
     message: Option<String>,
+    rule_key: Option<String>,
+    period: Option<String>,
+    document_key: Option<String>,
+    origin: Option<String>,
+    transport_system: Option<String>,
+    submitted_at: Option<String>,
+    accepted_at: Option<String>,
+    rejected_at: Option<String>,
+    checked_at: Option<String>,
+    next_check_at: Option<String>,
+    attempts: Option<i64>,
+    delivery_error: Option<String>,
+    sent_sha256: Option<String>,
+    certificate_fingerprint: Option<String>,
+    submitted_by_actor_type: Option<String>,
+    submitted_by_actor_id: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -108,6 +169,86 @@ impl PostV1DeclarationsSubmissionsMarkResponseBuilder {
         self
     }
 
+    pub fn rule_key(mut self, value: impl Into<String>) -> Self {
+        self.rule_key = Some(value.into());
+        self
+    }
+
+    pub fn period(mut self, value: impl Into<String>) -> Self {
+        self.period = Some(value.into());
+        self
+    }
+
+    pub fn document_key(mut self, value: impl Into<String>) -> Self {
+        self.document_key = Some(value.into());
+        self
+    }
+
+    pub fn origin(mut self, value: impl Into<String>) -> Self {
+        self.origin = Some(value.into());
+        self
+    }
+
+    pub fn transport_system(mut self, value: impl Into<String>) -> Self {
+        self.transport_system = Some(value.into());
+        self
+    }
+
+    pub fn submitted_at(mut self, value: impl Into<String>) -> Self {
+        self.submitted_at = Some(value.into());
+        self
+    }
+
+    pub fn accepted_at(mut self, value: impl Into<String>) -> Self {
+        self.accepted_at = Some(value.into());
+        self
+    }
+
+    pub fn rejected_at(mut self, value: impl Into<String>) -> Self {
+        self.rejected_at = Some(value.into());
+        self
+    }
+
+    pub fn checked_at(mut self, value: impl Into<String>) -> Self {
+        self.checked_at = Some(value.into());
+        self
+    }
+
+    pub fn next_check_at(mut self, value: impl Into<String>) -> Self {
+        self.next_check_at = Some(value.into());
+        self
+    }
+
+    pub fn attempts(mut self, value: i64) -> Self {
+        self.attempts = Some(value);
+        self
+    }
+
+    pub fn delivery_error(mut self, value: impl Into<String>) -> Self {
+        self.delivery_error = Some(value.into());
+        self
+    }
+
+    pub fn sent_sha256(mut self, value: impl Into<String>) -> Self {
+        self.sent_sha256 = Some(value.into());
+        self
+    }
+
+    pub fn certificate_fingerprint(mut self, value: impl Into<String>) -> Self {
+        self.certificate_fingerprint = Some(value.into());
+        self
+    }
+
+    pub fn submitted_by_actor_type(mut self, value: impl Into<String>) -> Self {
+        self.submitted_by_actor_type = Some(value.into());
+        self
+    }
+
+    pub fn submitted_by_actor_id(mut self, value: impl Into<String>) -> Self {
+        self.submitted_by_actor_id = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -125,6 +266,8 @@ impl PostV1DeclarationsSubmissionsMarkResponseBuilder {
     /// - [`period_year`](PostV1DeclarationsSubmissionsMarkResponseBuilder::period_year)
     /// - [`status`](PostV1DeclarationsSubmissionsMarkResponseBuilder::status)
     /// - [`file_name`](PostV1DeclarationsSubmissionsMarkResponseBuilder::file_name)
+    /// - [`origin`](PostV1DeclarationsSubmissionsMarkResponseBuilder::origin)
+    /// - [`attempts`](PostV1DeclarationsSubmissionsMarkResponseBuilder::attempts)
     /// - [`created_at`](PostV1DeclarationsSubmissionsMarkResponseBuilder::created_at)
     /// - [`updated_at`](PostV1DeclarationsSubmissionsMarkResponseBuilder::updated_at)
     pub fn build(self) -> Result<PostV1DeclarationsSubmissionsMarkResponse, BuildError> {
@@ -147,6 +290,26 @@ impl PostV1DeclarationsSubmissionsMarkResponseBuilder {
             file_id: self.file_id,
             external_ref: self.external_ref,
             message: self.message,
+            rule_key: self.rule_key,
+            period: self.period,
+            document_key: self.document_key,
+            origin: self
+                .origin
+                .ok_or_else(|| BuildError::missing_field("origin"))?,
+            transport_system: self.transport_system,
+            submitted_at: self.submitted_at,
+            accepted_at: self.accepted_at,
+            rejected_at: self.rejected_at,
+            checked_at: self.checked_at,
+            next_check_at: self.next_check_at,
+            attempts: self
+                .attempts
+                .ok_or_else(|| BuildError::missing_field("attempts"))?,
+            delivery_error: self.delivery_error,
+            sent_sha256: self.sent_sha256,
+            certificate_fingerprint: self.certificate_fingerprint,
+            submitted_by_actor_type: self.submitted_by_actor_type,
+            submitted_by_actor_id: self.submitted_by_actor_id,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

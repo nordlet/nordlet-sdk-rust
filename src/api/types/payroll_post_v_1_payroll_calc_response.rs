@@ -2,16 +2,23 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct PostV1PayrollCalcResponse {
+    #[serde(rename = "countryCode")]
     #[serde(default)]
-    pub npd: String,
+    pub country_code: String,
+    #[serde(rename = "taxAllowance")]
     #[serde(default)]
-    pub gpm: String,
-    #[serde(rename = "sodraEmployee")]
+    pub tax_allowance: String,
+    #[serde(rename = "incomeTax")]
     #[serde(default)]
-    pub sodra_employee: String,
-    #[serde(rename = "sodraEmployer")]
+    pub income_tax: String,
+    #[serde(rename = "employeeContributions")]
     #[serde(default)]
-    pub sodra_employer: String,
+    pub employee_contributions: String,
+    #[serde(rename = "employerContributions")]
+    #[serde(default)]
+    pub employer_contributions: String,
+    #[serde(default)]
+    pub components: Vec<PostV1PayrollCalcResponseComponentsItem>,
     #[serde(default)]
     pub net: String,
 }
@@ -25,31 +32,43 @@ impl PostV1PayrollCalcResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct PostV1PayrollCalcResponseBuilder {
-    npd: Option<String>,
-    gpm: Option<String>,
-    sodra_employee: Option<String>,
-    sodra_employer: Option<String>,
+    country_code: Option<String>,
+    tax_allowance: Option<String>,
+    income_tax: Option<String>,
+    employee_contributions: Option<String>,
+    employer_contributions: Option<String>,
+    components: Option<Vec<PostV1PayrollCalcResponseComponentsItem>>,
     net: Option<String>,
 }
 
 impl PostV1PayrollCalcResponseBuilder {
-    pub fn npd(mut self, value: impl Into<String>) -> Self {
-        self.npd = Some(value.into());
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
         self
     }
 
-    pub fn gpm(mut self, value: impl Into<String>) -> Self {
-        self.gpm = Some(value.into());
+    pub fn tax_allowance(mut self, value: impl Into<String>) -> Self {
+        self.tax_allowance = Some(value.into());
         self
     }
 
-    pub fn sodra_employee(mut self, value: impl Into<String>) -> Self {
-        self.sodra_employee = Some(value.into());
+    pub fn income_tax(mut self, value: impl Into<String>) -> Self {
+        self.income_tax = Some(value.into());
         self
     }
 
-    pub fn sodra_employer(mut self, value: impl Into<String>) -> Self {
-        self.sodra_employer = Some(value.into());
+    pub fn employee_contributions(mut self, value: impl Into<String>) -> Self {
+        self.employee_contributions = Some(value.into());
+        self
+    }
+
+    pub fn employer_contributions(mut self, value: impl Into<String>) -> Self {
+        self.employer_contributions = Some(value.into());
+        self
+    }
+
+    pub fn components(mut self, value: Vec<PostV1PayrollCalcResponseComponentsItem>) -> Self {
+        self.components = Some(value);
         self
     }
 
@@ -60,21 +79,33 @@ impl PostV1PayrollCalcResponseBuilder {
 
     /// Consumes the builder and constructs a [`PostV1PayrollCalcResponse`].
     /// This method will fail if any of the following fields are not set:
-    /// - [`npd`](PostV1PayrollCalcResponseBuilder::npd)
-    /// - [`gpm`](PostV1PayrollCalcResponseBuilder::gpm)
-    /// - [`sodra_employee`](PostV1PayrollCalcResponseBuilder::sodra_employee)
-    /// - [`sodra_employer`](PostV1PayrollCalcResponseBuilder::sodra_employer)
+    /// - [`country_code`](PostV1PayrollCalcResponseBuilder::country_code)
+    /// - [`tax_allowance`](PostV1PayrollCalcResponseBuilder::tax_allowance)
+    /// - [`income_tax`](PostV1PayrollCalcResponseBuilder::income_tax)
+    /// - [`employee_contributions`](PostV1PayrollCalcResponseBuilder::employee_contributions)
+    /// - [`employer_contributions`](PostV1PayrollCalcResponseBuilder::employer_contributions)
+    /// - [`components`](PostV1PayrollCalcResponseBuilder::components)
     /// - [`net`](PostV1PayrollCalcResponseBuilder::net)
     pub fn build(self) -> Result<PostV1PayrollCalcResponse, BuildError> {
         Ok(PostV1PayrollCalcResponse {
-            npd: self.npd.ok_or_else(|| BuildError::missing_field("npd"))?,
-            gpm: self.gpm.ok_or_else(|| BuildError::missing_field("gpm"))?,
-            sodra_employee: self
-                .sodra_employee
-                .ok_or_else(|| BuildError::missing_field("sodra_employee"))?,
-            sodra_employer: self
-                .sodra_employer
-                .ok_or_else(|| BuildError::missing_field("sodra_employer"))?,
+            country_code: self
+                .country_code
+                .ok_or_else(|| BuildError::missing_field("country_code"))?,
+            tax_allowance: self
+                .tax_allowance
+                .ok_or_else(|| BuildError::missing_field("tax_allowance"))?,
+            income_tax: self
+                .income_tax
+                .ok_or_else(|| BuildError::missing_field("income_tax"))?,
+            employee_contributions: self
+                .employee_contributions
+                .ok_or_else(|| BuildError::missing_field("employee_contributions"))?,
+            employer_contributions: self
+                .employer_contributions
+                .ok_or_else(|| BuildError::missing_field("employer_contributions"))?,
+            components: self
+                .components
+                .ok_or_else(|| BuildError::missing_field("components"))?,
             net: self.net.ok_or_else(|| BuildError::missing_field("net"))?,
         })
     }

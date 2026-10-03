@@ -25,6 +25,12 @@ pub struct PostV1BankSettlementsMatchResponse {
     #[serde(rename = "chargeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub charge_id: Option<String>,
+    #[serde(rename = "commissionPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub commission_percent: Option<String>,
+    #[serde(rename = "commissionAmount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub commission_amount: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reference: Option<String>,
     #[serde(rename = "matchedInvoiceId")]
@@ -53,6 +59,8 @@ pub struct PostV1BankSettlementsMatchResponseBuilder {
     description: Option<String>,
     source_id: Option<String>,
     charge_id: Option<String>,
+    commission_percent: Option<String>,
+    commission_amount: Option<String>,
     reference: Option<String>,
     matched_invoice_id: Option<String>,
     match_status: Option<PostV1BankSettlementsMatchResponseMatchStatus>,
@@ -109,6 +117,16 @@ impl PostV1BankSettlementsMatchResponseBuilder {
         self
     }
 
+    pub fn commission_percent(mut self, value: impl Into<String>) -> Self {
+        self.commission_percent = Some(value.into());
+        self
+    }
+
+    pub fn commission_amount(mut self, value: impl Into<String>) -> Self {
+        self.commission_amount = Some(value.into());
+        self
+    }
+
     pub fn reference(mut self, value: impl Into<String>) -> Self {
         self.reference = Some(value.into());
         self
@@ -152,6 +170,8 @@ impl PostV1BankSettlementsMatchResponseBuilder {
             description: self.description,
             source_id: self.source_id,
             charge_id: self.charge_id,
+            commission_percent: self.commission_percent,
+            commission_amount: self.commission_amount,
             reference: self.reference,
             matched_invoice_id: self.matched_invoice_id,
             match_status: self

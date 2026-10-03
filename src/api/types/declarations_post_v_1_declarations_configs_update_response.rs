@@ -14,6 +14,9 @@ pub struct PostV1DeclarationsConfigsUpdateResponse {
     pub endpoints: Option<Vec<PostV1DeclarationsConfigsUpdateResponseEndpointsItem>>,
     #[serde(default)]
     pub values: HashMap<String, String>,
+    #[serde(rename = "acceptsCertificate")]
+    #[serde(default)]
+    pub accepts_certificate: bool,
 }
 
 impl PostV1DeclarationsConfigsUpdateResponse {
@@ -31,6 +34,7 @@ pub struct PostV1DeclarationsConfigsUpdateResponseBuilder {
     fields: Option<Vec<PostV1DeclarationsConfigsUpdateResponseFieldsItem>>,
     endpoints: Option<Vec<PostV1DeclarationsConfigsUpdateResponseEndpointsItem>>,
     values: Option<HashMap<String, String>>,
+    accepts_certificate: Option<bool>,
 }
 
 impl PostV1DeclarationsConfigsUpdateResponseBuilder {
@@ -67,6 +71,11 @@ impl PostV1DeclarationsConfigsUpdateResponseBuilder {
         self
     }
 
+    pub fn accepts_certificate(mut self, value: bool) -> Self {
+        self.accepts_certificate = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1DeclarationsConfigsUpdateResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`system`](PostV1DeclarationsConfigsUpdateResponseBuilder::system)
@@ -74,6 +83,7 @@ impl PostV1DeclarationsConfigsUpdateResponseBuilder {
     /// - [`title`](PostV1DeclarationsConfigsUpdateResponseBuilder::title)
     /// - [`fields`](PostV1DeclarationsConfigsUpdateResponseBuilder::fields)
     /// - [`values`](PostV1DeclarationsConfigsUpdateResponseBuilder::values)
+    /// - [`accepts_certificate`](PostV1DeclarationsConfigsUpdateResponseBuilder::accepts_certificate)
     pub fn build(self) -> Result<PostV1DeclarationsConfigsUpdateResponse, BuildError> {
         Ok(PostV1DeclarationsConfigsUpdateResponse {
             system: self
@@ -92,6 +102,9 @@ impl PostV1DeclarationsConfigsUpdateResponseBuilder {
             values: self
                 .values
                 .ok_or_else(|| BuildError::missing_field("values"))?,
+            accepts_certificate: self
+                .accepts_certificate
+                .ok_or_else(|| BuildError::missing_field("accepts_certificate"))?,
         })
     }
 }

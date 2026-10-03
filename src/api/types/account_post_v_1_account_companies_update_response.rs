@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct PostV1AccountCompaniesUpdateResponse {
     #[serde(default)]
     pub id: String,
@@ -23,6 +23,14 @@ pub struct PostV1AccountCompaniesUpdateResponse {
     #[serde(rename = "countryCode")]
     #[serde(default)]
     pub country_code: String,
+    /// Chart of accounts template the company was seeded with
+    #[serde(rename = "chartTemplate")]
+    #[serde(default)]
+    pub chart_template: String,
+    /// Chart of accounts template of the company country
+    #[serde(rename = "countryChartTemplate")]
+    #[serde(default)]
+    pub country_chart_template: String,
     #[serde(rename = "baseCurrency")]
     #[serde(default)]
     pub base_currency: String,
@@ -50,6 +58,45 @@ pub struct PostV1AccountCompaniesUpdateResponse {
     #[serde(rename = "logoFileId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub logo_file_id: Option<String>,
+    #[serde(rename = "legalForm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub legal_form: Option<String>,
+    #[serde(rename = "registryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub registry_name: Option<String>,
+    #[serde(rename = "incorporatedOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub incorporated_on: Option<String>,
+    #[serde(rename = "shareCapital")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub share_capital: Option<String>,
+    #[serde(rename = "accountsKeptBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub accounts_kept_by: Option<PostV1AccountCompaniesUpdateResponseAccountsKeptBy>,
+    #[serde(rename = "vatPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_period: Option<PostV1AccountCompaniesUpdateResponseVatPeriod>,
+    #[serde(rename = "fiscalYearEndMonth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_end_month: Option<i64>,
+    #[serde(rename = "timeZone")]
+    #[serde(default)]
+    pub time_zone: String,
+    #[serde(rename = "filingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filing_options: Option<HashMap<String, Option<String>>>,
+    #[serde(rename = "bookkeeperName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bookkeeper_name: Option<String>,
+    #[serde(rename = "auditorName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auditor_name: Option<String>,
+    #[serde(rename = "auditorRegistrationNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auditor_registration_number: Option<String>,
+    #[serde(rename = "auditRequired")]
+    #[serde(default)]
+    pub audit_required: bool,
 }
 
 impl PostV1AccountCompaniesUpdateResponse {
@@ -69,6 +116,8 @@ pub struct PostV1AccountCompaniesUpdateResponseBuilder {
     is_vat_payer: Option<bool>,
     is_sandbox: Option<bool>,
     country_code: Option<String>,
+    chart_template: Option<String>,
+    country_chart_template: Option<String>,
     base_currency: Option<String>,
     default_invoice_currency: Option<String>,
     status: Option<PostV1AccountCompaniesUpdateResponseStatus>,
@@ -80,6 +129,19 @@ pub struct PostV1AccountCompaniesUpdateResponseBuilder {
     peppol_id: Option<String>,
     sepa_creditor_id: Option<String>,
     logo_file_id: Option<String>,
+    legal_form: Option<String>,
+    registry_name: Option<String>,
+    incorporated_on: Option<String>,
+    share_capital: Option<String>,
+    accounts_kept_by: Option<PostV1AccountCompaniesUpdateResponseAccountsKeptBy>,
+    vat_period: Option<PostV1AccountCompaniesUpdateResponseVatPeriod>,
+    fiscal_year_end_month: Option<i64>,
+    time_zone: Option<String>,
+    filing_options: Option<HashMap<String, Option<String>>>,
+    bookkeeper_name: Option<String>,
+    auditor_name: Option<String>,
+    auditor_registration_number: Option<String>,
+    audit_required: Option<bool>,
 }
 
 impl PostV1AccountCompaniesUpdateResponseBuilder {
@@ -120,6 +182,16 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
 
     pub fn country_code(mut self, value: impl Into<String>) -> Self {
         self.country_code = Some(value.into());
+        self
+    }
+
+    pub fn chart_template(mut self, value: impl Into<String>) -> Self {
+        self.chart_template = Some(value.into());
+        self
+    }
+
+    pub fn country_chart_template(mut self, value: impl Into<String>) -> Self {
+        self.country_chart_template = Some(value.into());
         self
     }
 
@@ -178,6 +250,74 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
         self
     }
 
+    pub fn legal_form(mut self, value: impl Into<String>) -> Self {
+        self.legal_form = Some(value.into());
+        self
+    }
+
+    pub fn registry_name(mut self, value: impl Into<String>) -> Self {
+        self.registry_name = Some(value.into());
+        self
+    }
+
+    pub fn incorporated_on(mut self, value: impl Into<String>) -> Self {
+        self.incorporated_on = Some(value.into());
+        self
+    }
+
+    pub fn share_capital(mut self, value: impl Into<String>) -> Self {
+        self.share_capital = Some(value.into());
+        self
+    }
+
+    pub fn accounts_kept_by(
+        mut self,
+        value: PostV1AccountCompaniesUpdateResponseAccountsKeptBy,
+    ) -> Self {
+        self.accounts_kept_by = Some(value);
+        self
+    }
+
+    pub fn vat_period(mut self, value: PostV1AccountCompaniesUpdateResponseVatPeriod) -> Self {
+        self.vat_period = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_end_month(mut self, value: i64) -> Self {
+        self.fiscal_year_end_month = Some(value);
+        self
+    }
+
+    pub fn time_zone(mut self, value: impl Into<String>) -> Self {
+        self.time_zone = Some(value.into());
+        self
+    }
+
+    pub fn filing_options(mut self, value: HashMap<String, Option<String>>) -> Self {
+        self.filing_options = Some(value);
+        self
+    }
+
+    pub fn bookkeeper_name(mut self, value: impl Into<String>) -> Self {
+        self.bookkeeper_name = Some(value.into());
+        self
+    }
+
+    pub fn auditor_name(mut self, value: impl Into<String>) -> Self {
+        self.auditor_name = Some(value.into());
+        self
+    }
+
+    pub fn auditor_registration_number(mut self, value: impl Into<String>) -> Self {
+        self.auditor_registration_number = Some(value.into());
+        self
+    }
+
+    pub fn audit_required(mut self, value: bool) -> Self {
+        self.audit_required = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1AccountCompaniesUpdateResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1AccountCompaniesUpdateResponseBuilder::id)
@@ -185,9 +325,13 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
     /// - [`is_vat_payer`](PostV1AccountCompaniesUpdateResponseBuilder::is_vat_payer)
     /// - [`is_sandbox`](PostV1AccountCompaniesUpdateResponseBuilder::is_sandbox)
     /// - [`country_code`](PostV1AccountCompaniesUpdateResponseBuilder::country_code)
+    /// - [`chart_template`](PostV1AccountCompaniesUpdateResponseBuilder::chart_template)
+    /// - [`country_chart_template`](PostV1AccountCompaniesUpdateResponseBuilder::country_chart_template)
     /// - [`base_currency`](PostV1AccountCompaniesUpdateResponseBuilder::base_currency)
     /// - [`default_invoice_currency`](PostV1AccountCompaniesUpdateResponseBuilder::default_invoice_currency)
     /// - [`status`](PostV1AccountCompaniesUpdateResponseBuilder::status)
+    /// - [`time_zone`](PostV1AccountCompaniesUpdateResponseBuilder::time_zone)
+    /// - [`audit_required`](PostV1AccountCompaniesUpdateResponseBuilder::audit_required)
     pub fn build(self) -> Result<PostV1AccountCompaniesUpdateResponse, BuildError> {
         Ok(PostV1AccountCompaniesUpdateResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -204,6 +348,12 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
             country_code: self
                 .country_code
                 .ok_or_else(|| BuildError::missing_field("country_code"))?,
+            chart_template: self
+                .chart_template
+                .ok_or_else(|| BuildError::missing_field("chart_template"))?,
+            country_chart_template: self
+                .country_chart_template
+                .ok_or_else(|| BuildError::missing_field("country_chart_template"))?,
             base_currency: self
                 .base_currency
                 .ok_or_else(|| BuildError::missing_field("base_currency"))?,
@@ -221,6 +371,23 @@ impl PostV1AccountCompaniesUpdateResponseBuilder {
             peppol_id: self.peppol_id,
             sepa_creditor_id: self.sepa_creditor_id,
             logo_file_id: self.logo_file_id,
+            legal_form: self.legal_form,
+            registry_name: self.registry_name,
+            incorporated_on: self.incorporated_on,
+            share_capital: self.share_capital,
+            accounts_kept_by: self.accounts_kept_by,
+            vat_period: self.vat_period,
+            fiscal_year_end_month: self.fiscal_year_end_month,
+            time_zone: self
+                .time_zone
+                .ok_or_else(|| BuildError::missing_field("time_zone"))?,
+            filing_options: self.filing_options,
+            bookkeeper_name: self.bookkeeper_name,
+            auditor_name: self.auditor_name,
+            auditor_registration_number: self.auditor_registration_number,
+            audit_required: self
+                .audit_required
+                .ok_or_else(|| BuildError::missing_field("audit_required"))?,
         })
     }
 }

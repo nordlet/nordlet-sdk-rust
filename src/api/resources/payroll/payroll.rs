@@ -77,7 +77,7 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_calc(
+    pub async fn calculate_one_employee_payment_under_the_rules_of_the_company_country(
         &self,
         request: &PostV1PayrollCalcRequest,
         options: Option<RequestOptions>,
@@ -134,6 +134,31 @@ impl PayrollClient {
             .execute_request(
                 Method::POST,
                 "v1/payroll/runs/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// The days and hours worked, the days on the register and the average hourly earnings that some countries report per employment. The Czech monthly employer report asks for all four. They can be set while the run is a draft.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn record_the_time_a_person_worked_in_a_payroll_line(
+        &self,
+        request: &PostV1PayrollLinesAttendanceRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1PayrollLinesAttendanceResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/payroll/lines/attendance",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

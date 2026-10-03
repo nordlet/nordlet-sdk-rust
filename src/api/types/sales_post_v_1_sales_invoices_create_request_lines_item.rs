@@ -31,6 +31,9 @@ pub struct PostV1SalesInvoicesCreateRequestLinesItem {
     pub project_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub recognition: Option<PostV1SalesInvoicesCreateRequestLinesItemRecognition>,
+    #[serde(rename = "vatExemptionBasis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_exemption_basis: Option<String>,
     #[serde(rename = "standaloneSellingPrice")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub standalone_selling_price: Option<String>,
@@ -59,6 +62,7 @@ pub struct PostV1SalesInvoicesCreateRequestLinesItemBuilder {
     cost_center_id: Option<String>,
     project_id: Option<String>,
     recognition: Option<PostV1SalesInvoicesCreateRequestLinesItemRecognition>,
+    vat_exemption_basis: Option<String>,
     standalone_selling_price: Option<String>,
     refund_estimate_percent: Option<String>,
 }
@@ -122,6 +126,11 @@ impl PostV1SalesInvoicesCreateRequestLinesItemBuilder {
         self
     }
 
+    pub fn vat_exemption_basis(mut self, value: impl Into<String>) -> Self {
+        self.vat_exemption_basis = Some(value.into());
+        self
+    }
+
     pub fn standalone_selling_price(mut self, value: impl Into<String>) -> Self {
         self.standalone_selling_price = Some(value.into());
         self
@@ -146,6 +155,7 @@ impl PostV1SalesInvoicesCreateRequestLinesItemBuilder {
             cost_center_id: self.cost_center_id,
             project_id: self.project_id,
             recognition: self.recognition,
+            vat_exemption_basis: self.vat_exemption_basis,
             standalone_selling_price: self.standalone_selling_price,
             refund_estimate_percent: self.refund_estimate_percent,
         })

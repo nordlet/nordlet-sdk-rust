@@ -18,8 +18,6 @@ pub struct PostV1TransportWaybillsUpdateRequest {
     pub dispatch_at: Option<DateTime<FixedOffset>>,
     #[serde(rename = "estimatedArrivalAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    #[serde(default)]
-    #[serde(with = "crate::core::flexible_datetime::offset::option")]
     pub estimated_arrival_at: Option<DateTime<FixedOffset>>,
     #[serde(rename = "vehiclePlate")]
     #[serde(skip_serializing_if = "Option::is_none")]

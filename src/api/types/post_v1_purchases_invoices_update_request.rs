@@ -26,6 +26,21 @@ pub struct PostV1PurchasesInvoicesUpdateRequest {
     pub operation_type_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "intrastatTransportMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_transport_mode: Option<String>,
+    #[serde(rename = "intrastatDeliveryTerms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_delivery_terms: Option<String>,
+    #[serde(rename = "intrastatRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_region: Option<String>,
+    #[serde(rename = "intrastatNatureOfTransaction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_nature_of_transaction: Option<String>,
+    #[serde(rename = "einvoiceNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_number: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lines: Option<Vec<PostV1PurchasesInvoicesUpdateRequestLinesItem>>,
 }
@@ -48,6 +63,11 @@ pub struct PostV1PurchasesInvoicesUpdateRequestBuilder {
     purchase_order_id: Option<String>,
     operation_type_id: Option<String>,
     notes: Option<String>,
+    intrastat_transport_mode: Option<String>,
+    intrastat_delivery_terms: Option<String>,
+    intrastat_region: Option<String>,
+    intrastat_nature_of_transaction: Option<String>,
+    einvoice_number: Option<String>,
     lines: Option<Vec<PostV1PurchasesInvoicesUpdateRequestLinesItem>>,
 }
 
@@ -97,6 +117,31 @@ impl PostV1PurchasesInvoicesUpdateRequestBuilder {
         self
     }
 
+    pub fn intrastat_transport_mode(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_transport_mode = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_delivery_terms(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_delivery_terms = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_region(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_region = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_nature_of_transaction(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_nature_of_transaction = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_number(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_number = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<PostV1PurchasesInvoicesUpdateRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -116,6 +161,11 @@ impl PostV1PurchasesInvoicesUpdateRequestBuilder {
             purchase_order_id: self.purchase_order_id,
             operation_type_id: self.operation_type_id,
             notes: self.notes,
+            intrastat_transport_mode: self.intrastat_transport_mode,
+            intrastat_delivery_terms: self.intrastat_delivery_terms,
+            intrastat_region: self.intrastat_region,
+            intrastat_nature_of_transaction: self.intrastat_nature_of_transaction,
+            einvoice_number: self.einvoice_number,
             lines: self.lines,
         })
     }

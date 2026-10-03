@@ -25,6 +25,12 @@ pub struct PostV1BillingAccountGetResponse {
     #[serde(rename = "hasSubscription")]
     #[serde(default)]
     pub has_subscription: bool,
+    #[serde(rename = "paymentFailedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payment_failed_at: Option<String>,
+    #[serde(rename = "paymentFailedInvoiceUrl")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payment_failed_invoice_url: Option<String>,
     #[serde(rename = "monthToDate")]
     #[serde(default)]
     pub month_to_date: PostV1BillingAccountGetResponseMonthToDate,
@@ -56,6 +62,8 @@ pub struct PostV1BillingAccountGetResponseBuilder {
     payments_configured: Option<bool>,
     has_payment_account: Option<bool>,
     has_subscription: Option<bool>,
+    payment_failed_at: Option<String>,
+    payment_failed_invoice_url: Option<String>,
     month_to_date: Option<PostV1BillingAccountGetResponseMonthToDate>,
     plans: Option<HashMap<String, PostV1BillingAccountGetResponsePlansValue>>,
     top_up: Option<PostV1BillingAccountGetResponseTopUp>,
@@ -105,6 +113,16 @@ impl PostV1BillingAccountGetResponseBuilder {
 
     pub fn has_subscription(mut self, value: bool) -> Self {
         self.has_subscription = Some(value);
+        self
+    }
+
+    pub fn payment_failed_at(mut self, value: impl Into<String>) -> Self {
+        self.payment_failed_at = Some(value.into());
+        self
+    }
+
+    pub fn payment_failed_invoice_url(mut self, value: impl Into<String>) -> Self {
+        self.payment_failed_invoice_url = Some(value.into());
         self
     }
 
@@ -164,6 +182,8 @@ impl PostV1BillingAccountGetResponseBuilder {
             has_subscription: self
                 .has_subscription
                 .ok_or_else(|| BuildError::missing_field("has_subscription"))?,
+            payment_failed_at: self.payment_failed_at,
+            payment_failed_invoice_url: self.payment_failed_invoice_url,
             month_to_date: self
                 .month_to_date
                 .ok_or_else(|| BuildError::missing_field("month_to_date"))?,

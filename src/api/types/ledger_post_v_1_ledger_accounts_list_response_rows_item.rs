@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct PostV1LedgerAccountsListResponseRowsItem {
     #[serde(default)]
     pub id: String,
@@ -9,7 +9,8 @@ pub struct PostV1LedgerAccountsListResponseRowsItem {
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub translations: Option<PostV1LedgerAccountsListResponseRowsItemTranslations>,
+    pub translations:
+        Option<HashMap<String, Option<PostV1LedgerAccountsListResponseRowsItemTranslationsValue>>>,
     pub r#type: PostV1LedgerAccountsListResponseRowsItemType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -34,7 +35,8 @@ pub struct PostV1LedgerAccountsListResponseRowsItemBuilder {
     id: Option<String>,
     code: Option<String>,
     name: Option<String>,
-    translations: Option<PostV1LedgerAccountsListResponseRowsItemTranslations>,
+    translations:
+        Option<HashMap<String, Option<PostV1LedgerAccountsListResponseRowsItemTranslationsValue>>>,
     r#type: Option<PostV1LedgerAccountsListResponseRowsItemType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -59,7 +61,7 @@ impl PostV1LedgerAccountsListResponseRowsItemBuilder {
 
     pub fn translations(
         mut self,
-        value: PostV1LedgerAccountsListResponseRowsItemTranslations,
+        value: HashMap<String, Option<PostV1LedgerAccountsListResponseRowsItemTranslationsValue>>,
     ) -> Self {
         self.translations = Some(value);
         self

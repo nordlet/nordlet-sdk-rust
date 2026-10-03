@@ -61,6 +61,47 @@ impl AssetsClient {
             .await
     }
 
+    pub async fn post_v1_assets_assets_update(
+        &self,
+        request: &PostV1AssetsAssetsUpdateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AssetsAssetsUpdateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/assets/assets/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Record the input VAT facts of a capital good that the annual VAT return needs for the adjustment of the deduction over the adjustment period (Article 187 of the VAT Directive, § 15a UStG): the input VAT on the acquisition, the date of first use, the share of use for deductible turnover at first use, whether it is land or a building (ten-year period instead of five), and every later year in which the share changed or the good was sold or withdrawn. Allowed also after depreciation has been posted.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn post_v1_assets_assets_input_vat(
+        &self,
+        request: &PostV1AssetsAssetsInputVatRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AssetsAssetsInputVatResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/assets/assets/input-vat",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_assets_assets_get(
         &self,
         request: &PostV1AssetsAssetsGetRequest,

@@ -19,6 +19,9 @@ pub struct PostV1PayrollRunsApproveRequest {
     #[serde(rename = "sodraAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sodra_account_code: Option<String>,
+    #[serde(rename = "employerSocialAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub employer_social_account_code: Option<String>,
     #[serde(rename = "deductionAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deduction_account_code: Option<String>,
@@ -39,6 +42,7 @@ pub struct PostV1PayrollRunsApproveRequestBuilder {
     payable_account_code: Option<String>,
     gpm_account_code: Option<String>,
     sodra_account_code: Option<String>,
+    employer_social_account_code: Option<String>,
     deduction_account_code: Option<String>,
 }
 
@@ -73,6 +77,11 @@ impl PostV1PayrollRunsApproveRequestBuilder {
         self
     }
 
+    pub fn employer_social_account_code(mut self, value: impl Into<String>) -> Self {
+        self.employer_social_account_code = Some(value.into());
+        self
+    }
+
     pub fn deduction_account_code(mut self, value: impl Into<String>) -> Self {
         self.deduction_account_code = Some(value.into());
         self
@@ -89,6 +98,7 @@ impl PostV1PayrollRunsApproveRequestBuilder {
             payable_account_code: self.payable_account_code,
             gpm_account_code: self.gpm_account_code,
             sodra_account_code: self.sodra_account_code,
+            employer_social_account_code: self.employer_social_account_code,
             deduction_account_code: self.deduction_account_code,
         })
     }

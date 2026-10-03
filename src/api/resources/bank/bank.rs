@@ -477,6 +477,31 @@ impl BankClient {
             .await
     }
 
+    /// A line with its own rate or amount is split with that value when the batch is posted. A line without one falls back to the commissionPercent given to the posting call, and without that the amount goes to the suspense account. Send both fields as null to clear the line back to the fallback.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn set_what_the_marketplace_keeps_from_one_settlement_line_as_a_rate_or_as_an_amount(
+        &self,
+        request: &PostV1BankSettlementsCommissionRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1BankSettlementsCommissionResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/settlements/commission",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     /// Attach the incoming bank-statement line that carries this payout to the settlement batch.
     ///
     /// # Arguments

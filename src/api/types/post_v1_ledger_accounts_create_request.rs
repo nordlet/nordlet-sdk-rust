@@ -1,13 +1,13 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct PostV1LedgerAccountsCreateRequest {
     #[serde(default)]
     pub code: String,
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub translations: Option<PostV1LedgerAccountsCreateRequestTranslations>,
+    pub translations: Option<HashMap<String, PostV1LedgerAccountsCreateRequestTranslationsValue>>,
     pub r#type: PostV1LedgerAccountsCreateRequestType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -28,7 +28,7 @@ impl PostV1LedgerAccountsCreateRequest {
 pub struct PostV1LedgerAccountsCreateRequestBuilder {
     code: Option<String>,
     name: Option<String>,
-    translations: Option<PostV1LedgerAccountsCreateRequestTranslations>,
+    translations: Option<HashMap<String, PostV1LedgerAccountsCreateRequestTranslationsValue>>,
     r#type: Option<PostV1LedgerAccountsCreateRequestType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -45,7 +45,10 @@ impl PostV1LedgerAccountsCreateRequestBuilder {
         self
     }
 
-    pub fn translations(mut self, value: PostV1LedgerAccountsCreateRequestTranslations) -> Self {
+    pub fn translations(
+        mut self,
+        value: HashMap<String, PostV1LedgerAccountsCreateRequestTranslationsValue>,
+    ) -> Self {
         self.translations = Some(value);
         self
     }

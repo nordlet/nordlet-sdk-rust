@@ -8,22 +8,28 @@ pub struct PostV1PayrollRunsListResponseRowsItem {
     pub year: i64,
     #[serde(default)]
     pub month: i64,
+    #[serde(rename = "countryCode")]
+    #[serde(default)]
+    pub country_code: String,
     pub status: PostV1PayrollRunsListResponseRowsItemStatus,
     #[serde(rename = "grossTotal")]
     #[serde(default)]
     pub gross_total: String,
-    #[serde(rename = "npdTotal")]
+    #[serde(rename = "taxAllowanceTotal")]
     #[serde(default)]
-    pub npd_total: String,
-    #[serde(rename = "gpmTotal")]
+    pub tax_allowance_total: String,
+    #[serde(rename = "incomeTaxTotal")]
     #[serde(default)]
-    pub gpm_total: String,
-    #[serde(rename = "sodraEmployeeTotal")]
+    pub income_tax_total: String,
+    #[serde(rename = "employeeContributionsTotal")]
     #[serde(default)]
-    pub sodra_employee_total: String,
-    #[serde(rename = "sodraEmployerTotal")]
+    pub employee_contributions_total: String,
+    #[serde(rename = "employerContributionsTotal")]
     #[serde(default)]
-    pub sodra_employer_total: String,
+    pub employer_contributions_total: String,
+    #[serde(rename = "componentTotals")]
+    #[serde(default)]
+    pub component_totals: Vec<PostV1PayrollRunsListResponseRowsItemComponentTotalsItem>,
     #[serde(rename = "netTotal")]
     #[serde(default)]
     pub net_total: String,
@@ -52,12 +58,14 @@ pub struct PostV1PayrollRunsListResponseRowsItemBuilder {
     id: Option<String>,
     year: Option<i64>,
     month: Option<i64>,
+    country_code: Option<String>,
     status: Option<PostV1PayrollRunsListResponseRowsItemStatus>,
     gross_total: Option<String>,
-    npd_total: Option<String>,
-    gpm_total: Option<String>,
-    sodra_employee_total: Option<String>,
-    sodra_employer_total: Option<String>,
+    tax_allowance_total: Option<String>,
+    income_tax_total: Option<String>,
+    employee_contributions_total: Option<String>,
+    employer_contributions_total: Option<String>,
+    component_totals: Option<Vec<PostV1PayrollRunsListResponseRowsItemComponentTotalsItem>>,
     net_total: Option<String>,
     journal_transaction_id: Option<String>,
     notes: Option<String>,
@@ -81,6 +89,11 @@ impl PostV1PayrollRunsListResponseRowsItemBuilder {
         self
     }
 
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
+        self
+    }
+
     pub fn status(mut self, value: PostV1PayrollRunsListResponseRowsItemStatus) -> Self {
         self.status = Some(value);
         self
@@ -91,23 +104,31 @@ impl PostV1PayrollRunsListResponseRowsItemBuilder {
         self
     }
 
-    pub fn npd_total(mut self, value: impl Into<String>) -> Self {
-        self.npd_total = Some(value.into());
+    pub fn tax_allowance_total(mut self, value: impl Into<String>) -> Self {
+        self.tax_allowance_total = Some(value.into());
         self
     }
 
-    pub fn gpm_total(mut self, value: impl Into<String>) -> Self {
-        self.gpm_total = Some(value.into());
+    pub fn income_tax_total(mut self, value: impl Into<String>) -> Self {
+        self.income_tax_total = Some(value.into());
         self
     }
 
-    pub fn sodra_employee_total(mut self, value: impl Into<String>) -> Self {
-        self.sodra_employee_total = Some(value.into());
+    pub fn employee_contributions_total(mut self, value: impl Into<String>) -> Self {
+        self.employee_contributions_total = Some(value.into());
         self
     }
 
-    pub fn sodra_employer_total(mut self, value: impl Into<String>) -> Self {
-        self.sodra_employer_total = Some(value.into());
+    pub fn employer_contributions_total(mut self, value: impl Into<String>) -> Self {
+        self.employer_contributions_total = Some(value.into());
+        self
+    }
+
+    pub fn component_totals(
+        mut self,
+        value: Vec<PostV1PayrollRunsListResponseRowsItemComponentTotalsItem>,
+    ) -> Self {
+        self.component_totals = Some(value);
         self
     }
 
@@ -141,12 +162,14 @@ impl PostV1PayrollRunsListResponseRowsItemBuilder {
     /// - [`id`](PostV1PayrollRunsListResponseRowsItemBuilder::id)
     /// - [`year`](PostV1PayrollRunsListResponseRowsItemBuilder::year)
     /// - [`month`](PostV1PayrollRunsListResponseRowsItemBuilder::month)
+    /// - [`country_code`](PostV1PayrollRunsListResponseRowsItemBuilder::country_code)
     /// - [`status`](PostV1PayrollRunsListResponseRowsItemBuilder::status)
     /// - [`gross_total`](PostV1PayrollRunsListResponseRowsItemBuilder::gross_total)
-    /// - [`npd_total`](PostV1PayrollRunsListResponseRowsItemBuilder::npd_total)
-    /// - [`gpm_total`](PostV1PayrollRunsListResponseRowsItemBuilder::gpm_total)
-    /// - [`sodra_employee_total`](PostV1PayrollRunsListResponseRowsItemBuilder::sodra_employee_total)
-    /// - [`sodra_employer_total`](PostV1PayrollRunsListResponseRowsItemBuilder::sodra_employer_total)
+    /// - [`tax_allowance_total`](PostV1PayrollRunsListResponseRowsItemBuilder::tax_allowance_total)
+    /// - [`income_tax_total`](PostV1PayrollRunsListResponseRowsItemBuilder::income_tax_total)
+    /// - [`employee_contributions_total`](PostV1PayrollRunsListResponseRowsItemBuilder::employee_contributions_total)
+    /// - [`employer_contributions_total`](PostV1PayrollRunsListResponseRowsItemBuilder::employer_contributions_total)
+    /// - [`component_totals`](PostV1PayrollRunsListResponseRowsItemBuilder::component_totals)
     /// - [`net_total`](PostV1PayrollRunsListResponseRowsItemBuilder::net_total)
     /// - [`created_at`](PostV1PayrollRunsListResponseRowsItemBuilder::created_at)
     pub fn build(self) -> Result<PostV1PayrollRunsListResponseRowsItem, BuildError> {
@@ -156,24 +179,30 @@ impl PostV1PayrollRunsListResponseRowsItemBuilder {
             month: self
                 .month
                 .ok_or_else(|| BuildError::missing_field("month"))?,
+            country_code: self
+                .country_code
+                .ok_or_else(|| BuildError::missing_field("country_code"))?,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             gross_total: self
                 .gross_total
                 .ok_or_else(|| BuildError::missing_field("gross_total"))?,
-            npd_total: self
-                .npd_total
-                .ok_or_else(|| BuildError::missing_field("npd_total"))?,
-            gpm_total: self
-                .gpm_total
-                .ok_or_else(|| BuildError::missing_field("gpm_total"))?,
-            sodra_employee_total: self
-                .sodra_employee_total
-                .ok_or_else(|| BuildError::missing_field("sodra_employee_total"))?,
-            sodra_employer_total: self
-                .sodra_employer_total
-                .ok_or_else(|| BuildError::missing_field("sodra_employer_total"))?,
+            tax_allowance_total: self
+                .tax_allowance_total
+                .ok_or_else(|| BuildError::missing_field("tax_allowance_total"))?,
+            income_tax_total: self
+                .income_tax_total
+                .ok_or_else(|| BuildError::missing_field("income_tax_total"))?,
+            employee_contributions_total: self
+                .employee_contributions_total
+                .ok_or_else(|| BuildError::missing_field("employee_contributions_total"))?,
+            employer_contributions_total: self
+                .employer_contributions_total
+                .ok_or_else(|| BuildError::missing_field("employer_contributions_total"))?,
+            component_totals: self
+                .component_totals
+                .ok_or_else(|| BuildError::missing_field("component_totals"))?,
             net_total: self
                 .net_total
                 .ok_or_else(|| BuildError::missing_field("net_total"))?,

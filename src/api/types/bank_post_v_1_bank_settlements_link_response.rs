@@ -26,6 +26,9 @@ pub struct PostV1BankSettlementsLinkResponse {
     #[serde(rename = "netTotal")]
     #[serde(default)]
     pub net_total: String,
+    #[serde(rename = "fxRate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fx_rate: Option<String>,
     pub status: PostV1BankSettlementsLinkResponseStatus,
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -68,6 +71,7 @@ pub struct PostV1BankSettlementsLinkResponseBuilder {
     gross_total: Option<String>,
     fee_total: Option<String>,
     net_total: Option<String>,
+    fx_rate: Option<String>,
     status: Option<PostV1BankSettlementsLinkResponseStatus>,
     journal_transaction_id: Option<String>,
     bank_transaction_id: Option<String>,
@@ -121,6 +125,11 @@ impl PostV1BankSettlementsLinkResponseBuilder {
 
     pub fn net_total(mut self, value: impl Into<String>) -> Self {
         self.net_total = Some(value.into());
+        self
+    }
+
+    pub fn fx_rate(mut self, value: impl Into<String>) -> Self {
+        self.fx_rate = Some(value.into());
         self
     }
 
@@ -205,6 +214,7 @@ impl PostV1BankSettlementsLinkResponseBuilder {
             net_total: self
                 .net_total
                 .ok_or_else(|| BuildError::missing_field("net_total"))?,
+            fx_rate: self.fx_rate,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

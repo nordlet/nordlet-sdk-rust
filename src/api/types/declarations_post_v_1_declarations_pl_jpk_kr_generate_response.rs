@@ -1,0 +1,134 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct PostV1DeclarationsPlJpkKrGenerateResponse {
+    #[serde(rename = "fileName")]
+    #[serde(default)]
+    pub file_name: String,
+    #[serde(default)]
+    pub xml: String,
+    #[serde(rename = "periodStart")]
+    #[serde(default)]
+    pub period_start: String,
+    #[serde(rename = "periodEnd")]
+    #[serde(default)]
+    pub period_end: String,
+    #[serde(default)]
+    pub warnings: Vec<String>,
+    #[serde(default)]
+    pub notes: Vec<String>,
+    #[serde(default)]
+    pub source: String,
+    #[serde(default)]
+    pub counts: PostV1DeclarationsPlJpkKrGenerateResponseCounts,
+    #[serde(default)]
+    pub totals: PostV1DeclarationsPlJpkKrGenerateResponseTotals,
+}
+
+impl PostV1DeclarationsPlJpkKrGenerateResponse {
+    pub fn builder() -> PostV1DeclarationsPlJpkKrGenerateResponseBuilder {
+        <PostV1DeclarationsPlJpkKrGenerateResponseBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct PostV1DeclarationsPlJpkKrGenerateResponseBuilder {
+    file_name: Option<String>,
+    xml: Option<String>,
+    period_start: Option<String>,
+    period_end: Option<String>,
+    warnings: Option<Vec<String>>,
+    notes: Option<Vec<String>>,
+    source: Option<String>,
+    counts: Option<PostV1DeclarationsPlJpkKrGenerateResponseCounts>,
+    totals: Option<PostV1DeclarationsPlJpkKrGenerateResponseTotals>,
+}
+
+impl PostV1DeclarationsPlJpkKrGenerateResponseBuilder {
+    pub fn file_name(mut self, value: impl Into<String>) -> Self {
+        self.file_name = Some(value.into());
+        self
+    }
+
+    pub fn xml(mut self, value: impl Into<String>) -> Self {
+        self.xml = Some(value.into());
+        self
+    }
+
+    pub fn period_start(mut self, value: impl Into<String>) -> Self {
+        self.period_start = Some(value.into());
+        self
+    }
+
+    pub fn period_end(mut self, value: impl Into<String>) -> Self {
+        self.period_end = Some(value.into());
+        self
+    }
+
+    pub fn warnings(mut self, value: Vec<String>) -> Self {
+        self.warnings = Some(value);
+        self
+    }
+
+    pub fn notes(mut self, value: Vec<String>) -> Self {
+        self.notes = Some(value);
+        self
+    }
+
+    pub fn source(mut self, value: impl Into<String>) -> Self {
+        self.source = Some(value.into());
+        self
+    }
+
+    pub fn counts(mut self, value: PostV1DeclarationsPlJpkKrGenerateResponseCounts) -> Self {
+        self.counts = Some(value);
+        self
+    }
+
+    pub fn totals(mut self, value: PostV1DeclarationsPlJpkKrGenerateResponseTotals) -> Self {
+        self.totals = Some(value);
+        self
+    }
+
+    /// Consumes the builder and constructs a [`PostV1DeclarationsPlJpkKrGenerateResponse`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`file_name`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::file_name)
+    /// - [`xml`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::xml)
+    /// - [`period_start`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::period_start)
+    /// - [`period_end`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::period_end)
+    /// - [`warnings`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::warnings)
+    /// - [`notes`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::notes)
+    /// - [`source`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::source)
+    /// - [`counts`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::counts)
+    /// - [`totals`](PostV1DeclarationsPlJpkKrGenerateResponseBuilder::totals)
+    pub fn build(self) -> Result<PostV1DeclarationsPlJpkKrGenerateResponse, BuildError> {
+        Ok(PostV1DeclarationsPlJpkKrGenerateResponse {
+            file_name: self
+                .file_name
+                .ok_or_else(|| BuildError::missing_field("file_name"))?,
+            xml: self.xml.ok_or_else(|| BuildError::missing_field("xml"))?,
+            period_start: self
+                .period_start
+                .ok_or_else(|| BuildError::missing_field("period_start"))?,
+            period_end: self
+                .period_end
+                .ok_or_else(|| BuildError::missing_field("period_end"))?,
+            warnings: self
+                .warnings
+                .ok_or_else(|| BuildError::missing_field("warnings"))?,
+            notes: self
+                .notes
+                .ok_or_else(|| BuildError::missing_field("notes"))?,
+            source: self
+                .source
+                .ok_or_else(|| BuildError::missing_field("source"))?,
+            counts: self
+                .counts
+                .ok_or_else(|| BuildError::missing_field("counts"))?,
+            totals: self
+                .totals
+                .ok_or_else(|| BuildError::missing_field("totals"))?,
+        })
+    }
+}

@@ -12,6 +12,8 @@ pub struct PostV1AccountReferralGetResponse {
     #[serde(default)]
     pub referred_count: i64,
     #[serde(default)]
+    pub rates: PostV1AccountReferralGetResponseRates,
+    #[serde(default)]
     pub history: Vec<PostV1AccountReferralGetResponseHistoryItem>,
 }
 
@@ -28,6 +30,7 @@ pub struct PostV1AccountReferralGetResponseBuilder {
     link: Option<String>,
     points: Option<i64>,
     referred_count: Option<i64>,
+    rates: Option<PostV1AccountReferralGetResponseRates>,
     history: Option<Vec<PostV1AccountReferralGetResponseHistoryItem>>,
 }
 
@@ -52,6 +55,11 @@ impl PostV1AccountReferralGetResponseBuilder {
         self
     }
 
+    pub fn rates(mut self, value: PostV1AccountReferralGetResponseRates) -> Self {
+        self.rates = Some(value);
+        self
+    }
+
     pub fn history(mut self, value: Vec<PostV1AccountReferralGetResponseHistoryItem>) -> Self {
         self.history = Some(value);
         self
@@ -63,6 +71,7 @@ impl PostV1AccountReferralGetResponseBuilder {
     /// - [`link`](PostV1AccountReferralGetResponseBuilder::link)
     /// - [`points`](PostV1AccountReferralGetResponseBuilder::points)
     /// - [`referred_count`](PostV1AccountReferralGetResponseBuilder::referred_count)
+    /// - [`rates`](PostV1AccountReferralGetResponseBuilder::rates)
     /// - [`history`](PostV1AccountReferralGetResponseBuilder::history)
     pub fn build(self) -> Result<PostV1AccountReferralGetResponse, BuildError> {
         Ok(PostV1AccountReferralGetResponse {
@@ -74,6 +83,9 @@ impl PostV1AccountReferralGetResponseBuilder {
             referred_count: self
                 .referred_count
                 .ok_or_else(|| BuildError::missing_field("referred_count"))?,
+            rates: self
+                .rates
+                .ok_or_else(|| BuildError::missing_field("rates"))?,
             history: self
                 .history
                 .ok_or_else(|| BuildError::missing_field("history"))?,

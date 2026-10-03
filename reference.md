@@ -9735,7 +9735,12 @@ async fn main() {
                 issue_date: None,
                 due_date: None,
                 credited_invoice_id: None,
+                agreement_id: None,
                 vat_scheme: None,
+                intrastat_transport_mode: None,
+                intrastat_delivery_terms: None,
+                intrastat_region: None,
+                intrastat_nature_of_transaction: None,
                 vat_country_code: None,
                 deemed_supplier: None,
                 notes: None,
@@ -9816,7 +9821,47 @@ async fn main() {
 <dl>
 <dd>
 
+**agreement_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **vat_scheme:** `Option<PostV1SalesInvoicesCreateRequestVatScheme>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_transport_mode:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_delivery_terms:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_region:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_nature_of_transaction:** `Option<String>` 
     
 </dd>
 </dl>
@@ -10341,7 +10386,7 @@ async fn main() {
 <dl>
 <dd>
 
-Build the national e-invoicing payload and deliver it to the bridge endpoint configured for the country gateway in compliance settings. The bridge (an accredited intermediary or connector) handles the certified national channel - SdI accreditation, KSeF sessions or ANAF SPV OAuth.
+Build the national e-invoicing payload and deliver it over the transport configured for the country gateway in compliance settings. With transport=direct the request talks to the tax authority itself - SdICoop over 2-way TLS for Italy, a KSeF session for Poland, ANAF SPV OAuth for Romania - and returns the national number as soon as the channel assigns one. With transport=bridge the payload goes to the configured bridge endpoint (an accredited intermediary or connector) instead.
 </dd>
 </dl>
 </dd>
@@ -10369,6 +10414,78 @@ async fn main() {
         .sales
         .post_v1sales_invoices_einvoice_send(
             &PostV1SalesInvoicesEinvoiceSendRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_einvoice_status</a>(request: PostV1SalesInvoicesEinvoiceStatusRequest) -> Result&lt;PostV1SalesInvoicesEinvoiceStatusResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Ask the national e-invoicing channel what happened to an invoice that was already sent, and store the answer. Italy, Poland and Romania return the outcome only on request - none of them calls back - so this is the way the national number and any rejection reason reach the invoice.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .post_v1sales_invoices_einvoice_status(
+            &PostV1SalesInvoicesEinvoiceStatusRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10429,10 +10546,15 @@ async fn main() {
             &PostV1SalesInvoicesUpdateRequest {
                 id: "id".to_string(),
                 partner_id: None,
+                agreement_id: None,
                 currency: None,
                 issue_date: None,
                 due_date: None,
                 vat_scheme: None,
+                intrastat_transport_mode: None,
+                intrastat_delivery_terms: None,
+                intrastat_region: None,
+                intrastat_nature_of_transaction: None,
                 vat_country_code: None,
                 deemed_supplier: None,
                 notes: None,
@@ -10481,6 +10603,14 @@ async fn main() {
 <dl>
 <dd>
 
+**agreement_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **currency:** `Option<String>` 
     
 </dd>
@@ -10489,7 +10619,7 @@ async fn main() {
 <dl>
 <dd>
 
-**issue_date:** `Option<String>` 
+**issue_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -10497,7 +10627,7 @@ async fn main() {
 <dl>
 <dd>
 
-**due_date:** `Option<String>` 
+**due_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -10506,6 +10636,38 @@ async fn main() {
 <dd>
 
 **vat_scheme:** `Option<Option<PostV1SalesInvoicesUpdateRequestVatScheme>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_transport_mode:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_delivery_terms:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_region:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_nature_of_transaction:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -12727,6 +12889,8 @@ async fn main() {
                 operation_type_id: None,
                 number_length: None,
                 next_number: None,
+                allocated_from: None,
+                allocated_to: None,
                 warehouse_id: None,
                 print_series: None,
                 is_default: None,
@@ -12806,6 +12970,22 @@ async fn main() {
 <dl>
 <dd>
 
+**allocated_from:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**allocated_to:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **warehouse_id:** `Option<Option<String>>` 
     
 </dd>
@@ -12876,6 +13056,8 @@ async fn main() {
                 operation_type_id: None,
                 number_length: None,
                 next_number: None,
+                allocated_from: None,
+                allocated_to: None,
                 warehouse_id: None,
                 print_series: None,
                 is_default: None,
@@ -12956,6 +13138,22 @@ async fn main() {
 <dd>
 
 **next_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**allocated_from:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**allocated_to:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -13875,6 +14073,11 @@ async fn main() {
                 purchase_order_id: None,
                 operation_type_id: None,
                 notes: None,
+                intrastat_transport_mode: None,
+                intrastat_delivery_terms: None,
+                intrastat_region: None,
+                intrastat_nature_of_transaction: None,
+                einvoice_number: None,
                 document_ref: None,
             },
             None,
@@ -13968,6 +14171,46 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_transport_mode:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_delivery_terms:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_region:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_nature_of_transaction:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**einvoice_number:** `Option<String>` 
     
 </dd>
 </dl>
@@ -14088,6 +14331,11 @@ async fn main() {
                 purchase_order_id: None,
                 operation_type_id: None,
                 notes: None,
+                intrastat_transport_mode: None,
+                intrastat_delivery_terms: None,
+                intrastat_region: None,
+                intrastat_nature_of_transaction: None,
+                einvoice_number: None,
                 lines: None,
             },
             None,
@@ -14140,7 +14388,7 @@ async fn main() {
 <dl>
 <dd>
 
-**due_date:** `Option<String>` 
+**due_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -14173,6 +14421,46 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_transport_mode:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_delivery_terms:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_region:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_nature_of_transaction:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**einvoice_number:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -16303,6 +16591,10 @@ async fn main() {
                 transaction_nature: None,
                 delivery_terms: None,
                 transport_mode: None,
+                region_code: None,
+                statistical_value_required: None,
+                preparation_time_hours: None,
+                preparation_time_minutes: None,
                 persist: None,
             },
             None,
@@ -16364,6 +16656,38 @@ async fn main() {
 <dd>
 
 **transport_mode:** `Option<PostV1DeclarationsLtIntrastatComputeRequestTransportMode>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**region_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**statistical_value_required:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**preparation_time_hours:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**preparation_time_minutes:** `Option<String>` 
     
 </dd>
 </dl>
@@ -16969,6 +17293,334 @@ async fn main() {
 <dd>
 
 **persist:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_ivaz_amend</a>(request: PostV1DeclarationsLtIvazAmendRequest) -> Result&lt;PostV1DeclarationsLtIvazAmendResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_ivaz_amend(
+            &PostV1DeclarationsLtIvazAmendRequest {
+                waybill_ids: vec!["waybillIds".to_string()],
+                persist: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**waybill_ids:** `Vec<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**persist:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_ivaz_cancel</a>(request: PostV1DeclarationsLtIvazCancelRequest) -> Result&lt;PostV1DeclarationsLtIvazCancelResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_ivaz_cancel(
+            &PostV1DeclarationsLtIvazCancelRequest {
+                entries: vec![PostV1DeclarationsLtIvazCancelRequestEntriesItem {
+                    waybill_id: "waybillId".to_string(),
+                    reason: PostV1DeclarationsLtIvazCancelRequestEntriesItemReason::One,
+                    additional_info: None,
+                }],
+                persist: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**entries:** `Vec<PostV1DeclarationsLtIvazCancelRequestEntriesItem>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**persist:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_fr0564_compute</a>(request: PostV1DeclarationsLtFr0564ComputeRequest) -> Result&lt;PostV1DeclarationsLtFr0564ComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_fr0564compute(
+            &PostV1DeclarationsLtFr0564ComputeRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_gpm312_compute</a>(request: PostV1DeclarationsLtGpm312ComputeRequest) -> Result&lt;PostV1DeclarationsLtGpm312ComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_gpm312compute(
+            &PostV1DeclarationsLtGpm312ComputeRequest {
+                year: 1000000,
+                payout_timing: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payout_timing:** `Option<PostV1DeclarationsLtGpm312ComputeRequestPayoutTiming>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_pln204_compute</a>(request: PostV1DeclarationsLtPln204ComputeRequest) -> Result&lt;PostV1DeclarationsLtPln204ComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_pln204compute(
+            &PostV1DeclarationsLtPln204ComputeRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
     
 </dd>
 </dl>
@@ -17634,6 +18286,4510 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_vat_ue_generate</a>(request: PostV1DeclarationsPlVatUeGenerateRequest) -> Result&lt;PostV1DeclarationsPlVatUeGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the rows of the Polish recapitulative statement VAT-UE for a month: section C intra-Community supplies of goods, section D intra-Community acquisitions, section E services taxed where the customer is established. Amounts are full złoty per counterparty. The VAT-UE(5) file itself goes out from the EU sales list deadline in the calendar.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_vat_ue_generate(
+            &PostV1DeclarationsPlVatUeGenerateRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_intrastat_generate</a>(request: PostV1DeclarationsPlIntrastatGenerateRequest) -> Result&lt;PostV1DeclarationsPlIntrastatGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the rows of the Polish INTRASTAT declaration for a month, arrivals or dispatches, grouped by CN code, partner country, country of origin, partner VAT number, nature of transaction, transport and delivery terms. Values are whole złoty converted at the invoice rate; credit notes with goods lines are returns (code 21). Goods without a CN code are left out and named in the warnings. The IST message itself goes out from the Intrastat deadline in the calendar.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_intrastat_generate(
+            &PostV1DeclarationsPlIntrastatGenerateRequest {
+                year: 1000000,
+                month: 1000000,
+                flow: PostV1DeclarationsPlIntrastatGenerateRequestFlow::Arrivals,
+                transaction_nature: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**flow:** `PostV1DeclarationsPlIntrastatGenerateRequestFlow` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**transaction_nature:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_ksef_received_list</a>(request: PostV1DeclarationsPlKsefReceivedListRequest) -> Result&lt;PostV1DeclarationsPlKsefReceivedListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List the invoices KSeF holds for this company as the buyer, for a window of acquisition timestamps. Each row carries the KSeF number and, when the document number matches a registered purchase invoice, the invoice it belongs to.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_ksef_received_list(
+            &PostV1DeclarationsPlKsefReceivedListRequest {
+                from: DateTime::parse_from_rfc3339("2024-01-15T09:30:00Z").unwrap(),
+                to: DateTime::parse_from_rfc3339("2024-01-15T09:30:00Z").unwrap(),
+                page_size: None,
+                page_offset: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**from:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_offset:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_ksef_received_fetch</a>(request: PostV1DeclarationsPlKsefReceivedFetchRequest) -> Result&lt;PostV1DeclarationsPlKsefReceivedFetchResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Read one invoice out of KSeF by its national number. With a purchase invoice given, the KSeF number is written onto that invoice, which is what makes the purchase row of JPK_V7M carry NrKSeF instead of the BFK marker.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_ksef_received_fetch(
+            &PostV1DeclarationsPlKsefReceivedFetchRequest {
+                ksef_number: "ksefNumber".to_string(),
+                purchase_invoice_id: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**ksef_number:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**purchase_invoice_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_ksef_receipt</a>(request: PostV1DeclarationsPlKsefReceiptRequest) -> Result&lt;PostV1DeclarationsPlKsefReceiptResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The UPO for a KSeF session. KSeF issues one receipt per session rather than per invoice, so the session reference number from the send is what identifies it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_ksef_receipt(
+            &PostV1DeclarationsPlKsefReceiptRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**session_reference_number:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_adjustments_recorded_for_a_tax_year</a>(request: PostV1DeclarationsTaxAdjustmentsListRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The differences between the accounting result and the taxable profit: non-deductible expenses, income added to or left out of the tax base, extra deductible expenses, donations, losses carried forward, reliefs and tax credits. The annual corporate income tax return is built from them.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .tax_adjustments_recorded_for_a_tax_year(
+            &PostV1DeclarationsTaxAdjustmentsListRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_a_tax_adjustment_for_a_tax_year</a>(request: PostV1DeclarationsTaxAdjustmentsCreateRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .record_a_tax_adjustment_for_a_tax_year(
+            &PostV1DeclarationsTaxAdjustmentsCreateRequest {
+                year: 1000000,
+                kind: PostV1DeclarationsTaxAdjustmentsCreateRequestKind::NonDeductible,
+                amount: "amount".to_string(),
+                description: "description".to_string(),
+                code: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `PostV1DeclarationsTaxAdjustmentsCreateRequestKind` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_tax_adjustment</a>(request: PostV1DeclarationsTaxAdjustmentsUpdateRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .change_a_recorded_tax_adjustment(
+            &PostV1DeclarationsTaxAdjustmentsUpdateRequest {
+                id: "id".to_string(),
+                kind: None,
+                code: None,
+                amount: None,
+                description: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `Option<PostV1DeclarationsTaxAdjustmentsUpdateRequestKind>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_tax_adjustment</a>(request: PostV1DeclarationsTaxAdjustmentsDeleteRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .remove_a_recorded_tax_adjustment(
+            &PostV1DeclarationsTaxAdjustmentsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">payments_already_made_towards_a_tax_of_a_year</a>(request: PostV1DeclarationsTaxPaymentsListRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+What the company has paid the administration towards a tax before the return is filed: payments on account, tax withheld at source by others, a final settlement, and a refund received. Returns report these on their own lines, so the amount they ask for is the balance.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .payments_already_made_towards_a_tax_of_a_year(
+            &PostV1DeclarationsTaxPaymentsListRequest {
+                tax: PostV1DeclarationsTaxPaymentsListRequestTax::CorporateIncomeTax,
+                year: 1000000,
+                month: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**tax:** `PostV1DeclarationsTaxPaymentsListRequestTax` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_a_payment_made_towards_a_tax</a>(request: PostV1DeclarationsTaxPaymentsCreateRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .record_a_payment_made_towards_a_tax(
+            &PostV1DeclarationsTaxPaymentsCreateRequest {
+                tax: PostV1DeclarationsTaxPaymentsCreateRequestTax::CorporateIncomeTax,
+                year: 1000000,
+                kind: PostV1DeclarationsTaxPaymentsCreateRequestKind::Advance,
+                amount: "amount".to_string(),
+                paid_on: "paidOn".to_string(),
+                description: "description".to_string(),
+                month: None,
+                reference: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**tax:** `PostV1DeclarationsTaxPaymentsCreateRequestTax` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `PostV1DeclarationsTaxPaymentsCreateRequestKind` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paid_on:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**reference:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_tax_payment</a>(request: PostV1DeclarationsTaxPaymentsUpdateRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .change_a_recorded_tax_payment(
+            &PostV1DeclarationsTaxPaymentsUpdateRequest {
+                id: "id".to_string(),
+                kind: None,
+                amount: None,
+                paid_on: None,
+                reference: None,
+                description: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `Option<PostV1DeclarationsTaxPaymentsUpdateRequestKind>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**paid_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**reference:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_tax_payment</a>(request: PostV1DeclarationsTaxPaymentsDeleteRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .remove_a_recorded_tax_payment(
+            &PostV1DeclarationsTaxPaymentsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">adoption_and_signing_facts_of_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsGetRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Whether the general meeting adopted the annual accounts and on which date, the date the accounts were prepared, and which directors signed them. The annual accounts filed with the trade register are built from these facts.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .adoption_and_signing_facts_of_the_annual_accounts_of_a_year(
+            &PostV1DeclarationsAnnualAccountsGetRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_the_adoption_and_preparation_of_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsSetRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .record_the_adoption_and_preparation_of_the_annual_accounts_of_a_year(
+            &PostV1DeclarationsAnnualAccountsSetRequest {
+                year: 1000000,
+                adopted: true,
+                date_of_preparation: "dateOfPreparation".to_string(),
+                adoption_date: None,
+                audited: None,
+                audit_report_qualified: None,
+                auditor_not_elected: None,
+                notes_text: None,
+                management_report_text: None,
+                auditor_report_text: None,
+                auditor_report_date: None,
+                result_to_reserves: None,
+                result_to_loss_compensation: None,
+                result_to_remainder: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**adopted:** `bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**adoption_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_of_preparation:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**audited:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**audit_report_qualified:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_not_elected:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes_text:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**management_report_text:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_report_text:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_report_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**result_to_reserves:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**result_to_loss_compensation:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**result_to_remainder:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_whether_a_director_signed_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsSignaturesCreateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSignaturesCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client.declarations.record_whether_a_director_signed_the_annual_accounts_of_a_year(&PostV1DeclarationsAnnualAccountsSignaturesCreateRequest {
+        year: 1000000,
+        director_name: "directorName".to_string(),
+        director_type: PostV1DeclarationsAnnualAccountsSignaturesCreateRequestDirectorType::ManagingCurrent,
+        signed: true,
+        signed_on: None,
+        signed_at: None,
+        reason_not_signed: None
+    }, None).await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**director_name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**director_type:** `PostV1DeclarationsAnnualAccountsSignaturesCreateRequestDirectorType` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signed:** `bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signed_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signed_at:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**reason_not_signed:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_director_signature</a>(request: PostV1DeclarationsAnnualAccountsSignaturesUpdateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSignaturesUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client.declarations.change_a_recorded_director_signature(&PostV1DeclarationsAnnualAccountsSignaturesUpdateRequest {
+        id: "id".to_string(),
+        director_name: "directorName".to_string(),
+        director_type: PostV1DeclarationsAnnualAccountsSignaturesUpdateRequestDirectorType::ManagingCurrent,
+        signed: true,
+        signed_on: None,
+        signed_at: None,
+        reason_not_signed: None
+    }, None).await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**director_name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**director_type:** `PostV1DeclarationsAnnualAccountsSignaturesUpdateRequestDirectorType` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signed:** `bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signed_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signed_at:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**reason_not_signed:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_director_signature</a>(request: PostV1DeclarationsAnnualAccountsSignaturesDeleteRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSignaturesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .remove_a_recorded_director_signature(
+            &PostV1DeclarationsAnnualAccountsSignaturesDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_a_decision_to_distribute_profit_a_dividend_an_interim_dividend_or_a_payment_treated_as_one</a>(request: PostV1DeclarationsAnnualAccountsDistributionsCreateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsDistributionsCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client.declarations.record_a_decision_to_distribute_profit_a_dividend_an_interim_dividend_or_a_payment_treated_as_one(&PostV1DeclarationsAnnualAccountsDistributionsCreateRequest {
+        year: 1000000,
+        decided_on: "decidedOn".to_string(),
+        kind: PostV1DeclarationsAnnualAccountsDistributionsCreateRequestKind::Dividend,
+        amount: "amount".to_string(),
+        description: None
+    }, None).await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**decided_on:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `PostV1DeclarationsAnnualAccountsDistributionsCreateRequestKind` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_profit_distribution</a>(request: PostV1DeclarationsAnnualAccountsDistributionsUpdateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsDistributionsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .change_a_recorded_profit_distribution(
+            &PostV1DeclarationsAnnualAccountsDistributionsUpdateRequest {
+                id: "id".to_string(),
+                decided_on: "decidedOn".to_string(),
+                kind: PostV1DeclarationsAnnualAccountsDistributionsUpdateRequestKind::Dividend,
+                amount: "amount".to_string(),
+                description: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**decided_on:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `PostV1DeclarationsAnnualAccountsDistributionsUpdateRequestKind` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_profit_distribution</a>(request: PostV1DeclarationsAnnualAccountsDistributionsDeleteRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsDistributionsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .remove_a_recorded_profit_distribution(
+            &PostV1DeclarationsAnnualAccountsDistributionsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">attach_an_uploaded_document_to_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsAttachmentsAddRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsAttachmentsAddResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Links a file uploaded through files/upload (its storageKey) to the annual accounts of the year as the notes, the management report, the auditor statement, the profit appropriation resolution, the approval certificate, the general data sheet, the full report as a pdf, or another document. Deposits that must carry these documents take them from here.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .attach_an_uploaded_document_to_the_annual_accounts_of_a_year(
+            &PostV1DeclarationsAnnualAccountsAttachmentsAddRequest {
+                year: 1000000,
+                kind: PostV1DeclarationsAnnualAccountsAttachmentsAddRequestKind::FullReport,
+                r#ref: "ref".to_string(),
+                name: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**kind:** `PostV1DeclarationsAnnualAccountsAttachmentsAddRequestKind` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**ref_:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_document_attached_to_the_annual_accounts_and_delete_its_file</a>(request: PostV1DeclarationsAnnualAccountsAttachmentsDeleteRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsAttachmentsDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .remove_a_document_attached_to_the_annual_accounts_and_delete_its_file(
+            &PostV1DeclarationsAnnualAccountsAttachmentsDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_cy_td4_generate</a>(request: PostV1DeclarationsCyTd4GenerateRequest) -> Result&lt;PostV1DeclarationsCyTd4GenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Compute the company income tax return TD4 of a tax year from the ledger and the recorded tax adjustments: the accounting profit, the add-backs, deductions, capital allowances and losses brought forward, the chargeable income, the corporation tax at the rate of the year and the double tax relief, as the fields the company keys into TAXISnet or Tax For All. The Tax Department publishes no upload layout for the TD4; the XML is a working file.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_cy_td4generate(
+            &PostV1DeclarationsCyTd4GenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_cy_he32_generate</a>(request: PostV1DeclarationsCyHe32GenerateRequest) -> Result&lt;PostV1DeclarationsCyHe32GenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the annual return HE32 of a year: the figures the Registrar’s e-filing screens ask for (company number, registered office, made-up-to date, share capital, register of members, directors and secretary, annual general meeting date, the accounts summary), the working file, and the printed form HE32(I) filled in as a PDF for signing and for keying into the Registrar’s system, which takes the return only through its own screens.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_cy_he32generate(
+            &PostV1DeclarationsCyHe32GenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_returns_generate</a>(request: PostV1DeclarationsDeReturnsGenerateRequest) -> Result&lt;PostV1DeclarationsDeReturnsGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build one of the German returns that ELSTER accepts only through a licensed ERiC transmission (E-Bilanz, Körperschaftsteuer, Gewerbesteuer with its Zerlegungserklärung, annual VAT return, Lohnsteuer-Anmeldung, Lohnsteuerbescheinigung) for the company to send through its own ELSTER-capable program. The period is the year, or YYYY-MM for the monthly Lohnsteuer-Anmeldung.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_de_returns_generate(
+            &PostV1DeclarationsDeReturnsGenerateRequest {
+                rule_key: PostV1DeclarationsDeReturnsGenerateRequestRuleKey::DeEBilanz,
+                period: "period".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**rule_key:** `PostV1DeclarationsDeReturnsGenerateRequestRuleKey` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**period:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_return_facts_get</a>(request: PostV1DeclarationsDeReturnFactsGetRequest) -> Result&lt;PostV1DeclarationsDeReturnFactsGetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The facts of one year that the German annual returns (Körperschaftsteuer, Gewerbesteuer, Umsatzsteuererklärung) need and the ledger does not hold: changes of shareholders, contracts with shareholders, the tax contribution account, loss carry-back, the donation carry-forward, the business premises with the municipalities for the apportionment of the trade tax, the land values or property tax and the participations for the trade tax additions and reductions, the foreign income per country for the Anlage AESt, the date of leaving the small-business scheme and the Anlage UN answers of a company seated abroad. A key that is absent has not been answered.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_de_return_facts_get(
+            &PostV1DeclarationsDeReturnFactsGetRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_return_facts_set</a>(request: PostV1DeclarationsDeReturnFactsSetRequest) -> Result&lt;PostV1DeclarationsDeReturnFactsSetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replace the facts of one year for the German annual returns. The returns built afterwards read them; a key left out stays unanswered.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_de_return_facts_set(
+            &PostV1DeclarationsDeReturnFactsSetRequest {
+                year: 1000000,
+                facts: PostV1DeclarationsDeReturnFactsSetRequestFacts {
+                    ..Default::default()
+                },
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**facts:** `PostV1DeclarationsDeReturnFactsSetRequestFacts` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_deuev_generate</a>(request: PostV1DeclarationsDeDeuevGenerateRequest) -> Result&lt;PostV1DeclarationsDeDeuevGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the DEÜV notifications of a month (Anmeldung for every start, Abmeldung for every leaving, in December the Jahresmeldung for everyone employed on 31 December) as DSME records with the DBME, DBNA, DBGB and DBAN blocks of Anlage 4 in force from 2026, from the approved payroll runs and the employee record, for the company's own transmission channel.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_de_deuev_generate(
+            &PostV1DeclarationsDeDeuevGenerateRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_beitragsnachweis_generate</a>(request: PostV1DeclarationsDeBeitragsnachweisGenerateRequest) -> Result&lt;PostV1DeclarationsDeBeitragsnachweisGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the monthly contribution statement to the health insurers (Beitragsnachweis) from the payroll run: one fixed-length record BW02 per insurer, in the record layout in force from 2026, ready for the company's own transmission channel.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_de_beitragsnachweis_generate(
+            &PostV1DeclarationsDeBeitragsnachweisGenerateRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_dk_selskabsskat_generate</a>(request: PostV1DeclarationsDkSelskabsskatGenerateRequest) -> Result&lt;PostV1DeclarationsDkSelskabsskatGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Compute the oplysningsskema for selskaber (selskabsselvangivelsen) of an income year from the ledger and the recorded tax adjustments: accounting result before tax, tax adjustments, losses carried forward, taxable income, the 22 % corporation tax, reliefs and the balance, as the rubrikker the company keys into TastSelv Selskabsskat (DIAS). Skatteforvaltningen publishes no file format for the return; the XML is a working file.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_dk_selskabsskat_generate(
+            &PostV1DeclarationsDkSelskabsskatGenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ee_employment_register_send</a>(request: PostV1DeclarationsEeEmploymentRegisterSendRequest) -> Result&lt;PostV1DeclarationsEeEmploymentRegisterSendResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send one employment register (töötamise register) entry for an employment contract to e-MTA over X-tee: the start of work, or its end with the reason recorded on the contract.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_ee_employment_register_send(
+            &PostV1DeclarationsEeEmploymentRegisterSendRequest {
+                contract_id: "contractId".to_string(),
+                event: PostV1DeclarationsEeEmploymentRegisterSendRequestEvent::Start,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**contract_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**event:** `PostV1DeclarationsEeEmploymentRegisterSendRequestEvent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_es_verifactu_declaracion_responsable</a>(request: PostV1DeclarationsEsVerifactuDeclaracionResponsableRequest) -> Result&lt;PostV1DeclarationsEsVerifactuDeclaracionResponsableResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Nordlet's declaración responsable for its VERI*FACTU invoicing system (Orden HAC/1177/2024, art. 15), as a PDF and as plain text.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_es_verifactu_declaracion_responsable(
+            &PostV1DeclarationsEsVerifactuDeclaracionResponsableRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ie_ct1_generate</a>(request: PostV1DeclarationsIeCt1GenerateRequest) -> Result&lt;PostV1DeclarationsIeCt1GenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the Form CT1 of an accounting year as the ROS version 26 XML and the accompanying financial statements as inline XBRL on the FRS 102 Irish Extension 2026 taxonomy Revenue accepts, both from the ledger, the recorded tax adjustments, the annual accounts record and the officers, for upload through the company’s own ROS account. Says whether the company is above the iXBRL deferral limits (balance sheet total €4.4 million, turnover €8.8 million, 50 employees).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_ie_ct1generate(
+            &PostV1DeclarationsIeCt1GenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ie_b1_generate</a>(request: PostV1DeclarationsIeB1GenerateRequest) -> Result&lt;PostV1DeclarationsIeB1GenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the working paper for the Form B1 annual return of a financial year — company details, registered office, directors and secretary from Settings → Officers, the members from Settings → Shareholders, the issued share capital and the figures of the financial statements — in the order the CORE screens ask for them. The CRO publishes no file format for the B1, so it is keyed into CORE.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_ie_b1generate(
+            &PostV1DeclarationsIeB1GenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_it_sdi_purchase_send</a>(request: PostV1DeclarationsItSdiPurchaseSendRequest) -> Result&lt;PostV1DeclarationsItSdiPurchaseSendResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the TD16-TD19 integration document for a registered purchase invoice and send it to the Sistema di Interscambio. Since July 2022 a purchase from a supplier established abroad is reported this way instead of the esterometro. The Italian VAT rate to self-assess is a judgement about the supply: pass vatRatePercent unless the purchase lines already carry it, otherwise the request is refused rather than guessed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_it_sdi_purchase_send(
+            &PostV1DeclarationsItSdiPurchaseSendRequest {
+                purchase_invoice_id: "purchaseInvoiceId".to_string(),
+                vat_rate_percent: None,
+                tipo_documento: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**purchase_invoice_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_rate_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tipo_documento:** `Option<PostV1DeclarationsItSdiPurchaseSendRequestTipoDocumento>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_it_sdi_purchase_preview</a>(request: PostV1DeclarationsItSdiPurchasePreviewRequest) -> Result&lt;PostV1DeclarationsItSdiPurchasePreviewResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Render the TD16-TD19 integration document for a registered purchase invoice without sending it, so the rate and the document type can be checked first.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_it_sdi_purchase_preview(
+            &PostV1DeclarationsItSdiPurchasePreviewRequest {
+                purchase_invoice_id: "purchaseInvoiceId".to_string(),
+                vat_rate_percent: None,
+                tipo_documento: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**purchase_invoice_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_rate_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tipo_documento:** `Option<PostV1DeclarationsItSdiPurchasePreviewRequestTipoDocumento>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_saft_send</a>(request: PostV1DeclarationsLtSaftSendRequest) -> Result&lt;PostV1DeclarationsLtSaftSendResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload the SAF-T file to i.SAF-T over the iSAFTUploaderService web service and start its processing. The submission itself is confirmed separately, because after confirmation the file can no longer be corrected.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_saft_send(
+            &PostV1DeclarationsLtSaftSendRequest {
+                from_date: "fromDate".to_string(),
+                to_date: "toDate".to_string(),
+                data_type: None,
+                confirm: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**from_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**data_type:** `Option<PostV1DeclarationsLtSaftSendRequestDataType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**confirm:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_sd_ffdata</a>(request: PostV1DeclarationsLtSdFfdataRequest) -> Result&lt;PostV1DeclarationsLtSdFfdataResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Render the Sodra 1-SD or 2-SD notice for the contracts starting or ending in the range as an .ffdata document for EDAS.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_sd_ffdata(
+            &PostV1DeclarationsLtSdFfdataRequest {
+                r#type: PostV1DeclarationsLtSdFfdataRequestType::OneSd,
+                from_date: "fromDate".to_string(),
+                to_date: "toDate".to_string(),
+                manager_full_name: None,
+                preparator_details: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**type_:** `PostV1DeclarationsLtSdFfdataRequestType` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**from_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**manager_full_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**preparator_details:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_pln204_ffdata</a>(request: PostV1DeclarationsLtPln204FfdataRequest) -> Result&lt;PostV1DeclarationsLtPln204FfdataResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Render the annual corporate income tax return PLN204 as an .ffdata document, including the PLN204S and PLN204Z annexes, from the ledger and the tax adjustments recorded for that year.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_lt_pln204ffdata(
+            &PostV1DeclarationsLtPln204FfdataRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_mt_company_tax_generate</a>(request: PostV1DeclarationsMtCompanyTaxGenerateRequest) -> Result&lt;PostV1DeclarationsMtCompanyTaxGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Compute the company income tax return and self-assessment of a year of assessment from the ledger and the recorded tax adjustments: the accounting profit before tax, the add-backs and deductions, the approved donations, capital allowances and losses carried forward, the chargeable income, the 35 % charge, the relief against the tax and the allocation of the distributable profit to the five tax accounts. The Malta Tax and Customs Administration issues the return as a personalised spreadsheet to the registered tax practitioner and publishes no layout, so the XML is a working file and the figures are keyed into that spreadsheet.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_mt_company_tax_generate(
+            &PostV1DeclarationsMtCompanyTaxGenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_mt_annual_return_generate</a>(request: PostV1DeclarationsMtAnnualReturnGenerateRequest) -> Result&lt;PostV1DeclarationsMtAnnualReturnGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the annual return of a year: the company number, registered office and made-up-to date, the share capital, the register of members, the directors and the company secretary and the accounts summary, as the figures the Malta Business Registry asks for on its own screens, plus the printed Annual Return Form of the Seventh Schedule filled in as a PDF for signing.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_mt_annual_return_generate(
+            &PostV1DeclarationsMtAnnualReturnGenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_fa_generate</a>(request: PostV1DeclarationsPlJpkFaGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkFaGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate JPK_FA(4), the on-demand structure with every sales invoice issued in a period, its VAT bases per rate and one row per invoice line. Filed only when the tax office asks for it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_jpk_fa_generate(
+            &PostV1DeclarationsPlJpkFaGenerateRequest {
+                date_from: "dateFrom".to_string(),
+                date_to: "dateTo".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**date_from:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_to:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_kr_generate</a>(request: PostV1DeclarationsPlJpkKrGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkKrGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate JPK_KR(1), the on-demand structure with the chart of accounts and its opening balances and turnover, the journal and the double entries behind it. Filed only when the tax office asks for it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_jpk_kr_generate(
+            &PostV1DeclarationsPlJpkKrGenerateRequest {
+                date_from: "dateFrom".to_string(),
+                date_to: "dateTo".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**date_from:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_to:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_mag_generate</a>(request: PostV1DeclarationsPlJpkMagGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkMagGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate JPK_MAG(2), the on-demand structure with the warehouse documents of one warehouse: goods received from outside (PZ) or internally (PW) and issued to a customer (WZ) or internally (RW). Filed only when the tax office asks for it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_jpk_mag_generate(
+            &PostV1DeclarationsPlJpkMagGenerateRequest {
+                date_from: "dateFrom".to_string(),
+                date_to: "dateTo".to_string(),
+                warehouse_id: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**date_from:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date_to:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**warehouse_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_pit11_generate</a>(request: PostV1DeclarationsPlPit11GenerateRequest) -> Result&lt;PostV1DeclarationsPlPit11GenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate PIT-11(29) for every person on the payroll of one year: the pay, the deductible costs, the advance withheld and the social and health contributions taken off it. One document per person, because that is how the form is filed.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_pit11generate(
+            &PostV1DeclarationsPlPit11GenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_cit8_generate</a>(request: PostV1DeclarationsPlCit8GenerateRequest) -> Result&lt;PostV1DeclarationsPlCit8GenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate CIT-8(34), the annual corporate income tax return, from the ledger of the year and the recorded tax adjustments. The tax office code and the small-taxpayer setting come from the e-Deklaracje compliance settings, the seat address from the JPK gateway settings. Names the annexes the figures would need, which are not produced.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_cit8generate(
+            &PostV1DeclarationsPlCit8GenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_zus_dra_compute</a>(request: PostV1DeclarationsPlZusDraComputeRequest) -> Result&lt;PostV1DeclarationsPlZusDraComputeResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Compute the monthly ZUS DRA settlement from the payroll run of one month: the pension, disability, sickness, accident and health insurance contributions and the Labour Fund, Solidarity Fund and guaranteed benefits fund charges, each split between the insured person and the payer. The amounts are carried into Płatnik or ePłatnik by hand.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_zus_dra_compute(
+            &PostV1DeclarationsPlZusDraComputeRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_zus_dra_kedu</a>(request: PostV1DeclarationsPlZusDraKeduRequest) -> Result&lt;PostV1DeclarationsPlZusDraKeduResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the KEDU file for one month: the ZUS DRA settlement and one ZUS RCA report per person on the payroll, in the schema kedu_5_4 that Płatnik and ePłatnik import. The payer REGON, short name and declaration deadline code come from the ZUS compliance settings; the insurance title code and working time of each person from the employee record.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_zus_dra_kedu(
+            &PostV1DeclarationsPlZusDraKeduRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_zus_dra_pdf</a>(request: PostV1DeclarationsPlZusDraPdfRequest) -> Result&lt;PostV1DeclarationsPlZusDraPdfResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Fill the published ZUS DRA form for one month and return it as a PDF. The amounts, the payer identity and the deadline code are the same ones the KEDU file carries; blocks the payroll does not hold (paid benefits, bridging pensions, income declaration of a self-paying person) stay empty.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_pl_zus_dra_pdf(
+            &PostV1DeclarationsPlZusDraPdfRequest {
+                year: 1000000,
+                month: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**month:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ro_etransport_build</a>(request: PostV1DeclarationsRoEtransportBuildRequest) -> Result&lt;PostV1DeclarationsRoEtransportBuildResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the RO e-Transport declaration for an issued waybill: goods with their tariff codes and masses, the commercial partner, the route and the vehicle. The XML follows the ANAF eTransport v2 schema and is kept as a file on the waybill. Anything listed in blockers has to be filled in before /etransport/send will accept it.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_ro_etransport_build(
+            &PostV1DeclarationsRoEtransportBuildRequest {
+                waybill_id: "waybillId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**waybill_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ro_etransport_submit</a>(request: PostV1DeclarationsRoEtransportSubmitRequest) -> Result&lt;PostV1DeclarationsRoEtransportSubmitResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Hand the RO e-Transport declaration for an issued waybill to ANAF under the SPV OAuth token in compliance settings, and return the upload index the UIT is read back with. Answers 422 while any field the ANAF validator requires is still missing.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_ro_etransport_submit(
+            &PostV1DeclarationsRoEtransportSubmitRequest {
+                waybill_id: "waybillId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**waybill_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ro_etransport_status</a>(request: PostV1DeclarationsRoEtransportStatusRequest) -> Result&lt;PostV1DeclarationsRoEtransportStatusResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Read the outcome of an e-Transport declaration from ANAF by its upload index, under the SPV OAuth token in compliance settings. Returns the UIT code once the declaration validates.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_ro_etransport_status(
+            &PostV1DeclarationsRoEtransportStatusRequest {
+                reference: "reference".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**reference:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_li_lohndeklaration_generate</a>(request: PostV1DeclarationsLiLohndeklarationGenerateRequest) -> Result&lt;PostV1DeclarationsLiLohndeklarationGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the annual wage declaration (Lohndeklaration) to the AHV-IV-FAK from the approved payroll runs of the year as the CSV that AHVeasy imports under Lohndeklaration → CSV-Import der Lohndaten: one row per employee with the 18 columns of the AHVeasy template, the AHV-liable wage and the ALV wage.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_li_lohndeklaration_generate(
+            &PostV1DeclarationsLiLohndeklarationGenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_li_lohnlisten_generate</a>(request: PostV1DeclarationsLiLohnlistenGenerateRequest) -> Result&lt;PostV1DeclarationsLiLohnlistenGenerateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Build the annual wage list (Lohnliste) of a Liechtenstein employer from the approved payroll runs of the year as the XLSX file the tax administration's eLohnausweis / eLohnlisten application imports: one row per employee with PEID, name, birth date, address, gross wage, wage tax withheld and the settlement period.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_li_lohnlisten_generate(
+            &PostV1DeclarationsLiLohnlistenGenerateRequest { year: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**year:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_configs_list</a>(request: PostV1DeclarationsConfigsListRequest) -> Result&lt;PostV1DeclarationsConfigsListResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -17733,6 +22889,369 @@ async fn main() {
 <dd>
 
 **config:** `std::collections::HashMap<String, String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">store_the_certificate_or_private_key_a_filing_system_authenticates_with</a>(request: PostV1DeclarationsCertificatesUploadRequest) -> Result&lt;PostV1DeclarationsCertificatesUploadResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .store_the_certificate_or_private_key_a_filing_system_authenticates_with(
+            &PostV1DeclarationsCertificatesUploadRequest {
+                system: "system".to_string(),
+                file_name: "fileName".to_string(),
+                content: "content".to_string(),
+                passphrase: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**system:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**file_name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**content:** `String` — Base64-encoded PEM or PKCS#12 file
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**passphrase:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_certificates_list</a>(request: PostV1DeclarationsCertificatesListRequest) -> Result&lt;PostV1DeclarationsCertificatesListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_certificates_list(
+            &PostV1DeclarationsCertificatesListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_certificates_delete</a>(request: PostV1DeclarationsCertificatesDeleteRequest) -> Result&lt;PostV1DeclarationsCertificatesDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_certificates_delete(
+            &PostV1DeclarationsCertificatesDeleteRequest {
+                system: "system".to_string(),
+                field_key: PostV1DeclarationsCertificatesDeleteRequestFieldKey::Certificate,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**system:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**field_key:** `PostV1DeclarationsCertificatesDeleteRequestFieldKey` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">which_deadlines_nordlet_can_file_by_itself_for_this_company_and_which_are_switched_on</a>(request: PostV1DeclarationsAutomationListRequest) -> Result&lt;PostV1DeclarationsAutomationListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .which_deadlines_nordlet_can_file_by_itself_for_this_company_and_which_are_switched_on(
+            &PostV1DeclarationsAutomationListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_automation_update</a>(request: PostV1DeclarationsAutomationUpdateRequest) -> Result&lt;PostV1DeclarationsAutomationUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .post_v1declarations_automation_update(
+            &PostV1DeclarationsAutomationUpdateRequest {
+                rule_key: "ruleKey".to_string(),
+                enabled: true,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**rule_key:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**enabled:** `bool` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">send_a_filing_whose_delivery_failed_once_more_with_the_bytes_that_were_generated</a>(request: PostV1DeclarationsSubmissionsRetryRequest) -> Result&lt;PostV1DeclarationsSubmissionsRetryResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .declarations
+        .send_a_filing_whose_delivery_failed_once_more_with_the_bytes_that_were_generated(
+            &PostV1DeclarationsSubmissionsRetryRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
     
 </dd>
 </dl>
@@ -18162,7 +23681,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<PostV1LedgerAccountsCreateRequestTranslations>` 
+**translations:** `Option<std::collections::HashMap<String, PostV1LedgerAccountsCreateRequestTranslationsValue>>` 
     
 </dd>
 </dl>
@@ -18264,7 +23783,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<Option<PostV1LedgerAccountsUpdateRequestTranslations>>` 
+**translations:** `Option<Option<std::collections::HashMap<String, Option<PostV1LedgerAccountsUpdateRequestTranslationsValue>>>>` 
     
 </dd>
 </dl>
@@ -18318,6 +23837,63 @@ async fn main() {
         .ledger
         .post_v1ledger_accounts_apply_template(
             &PostV1LedgerAccountsApplyTemplateRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">move_a_company_that_has_posted_nothing_yet_to_the_chart_of_accounts_of_its_country</a>(request: PostV1LedgerAccountsSwitchChartRequest) -> Result&lt;PostV1LedgerAccountsSwitchChartResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replaces the seeded chart with the chart template of the company country (the Romanian general chart for a company registered in Romania, the Lithuanian standard chart otherwise) and switches the posting defaults with it. Answers 409 when the company already uses that chart, has journal entries, holds accounts created by hand, or has settings that name an account the new chart does not have.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .move_a_company_that_has_posted_nothing_yet_to_the_chart_of_accounts_of_its_country(
+            &PostV1LedgerAccountsSwitchChartRequest {
                 ..Default::default()
             },
             None,
@@ -19328,6 +24904,10 @@ async fn main() {
                 shares_amount: None,
                 shares_type: None,
                 shares_acquisition_date: None,
+                withholding_tax_percent: None,
+                partner_liability: None,
+                special_balance_required: None,
+                supplementary_balance_required: None,
                 address: None,
             },
             None,
@@ -19404,6 +24984,38 @@ async fn main() {
 <dl>
 <dd>
 
+**withholding_tax_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partner_liability:** `Option<Option<PostV1LedgerOwnersCreateRequestPartnerLiability>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**special_balance_required:** `Option<Option<bool>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**supplementary_balance_required:** `Option<Option<bool>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **address:** `Option<PostV1LedgerOwnersCreateRequestAddress>` 
     
 </dd>
@@ -19450,6 +25062,10 @@ async fn main() {
                 shares_amount: None,
                 shares_type: None,
                 shares_acquisition_date: None,
+                withholding_tax_percent: None,
+                partner_liability: None,
+                special_balance_required: None,
+                supplementary_balance_required: None,
                 address: None,
             },
             None,
@@ -19527,6 +25143,38 @@ async fn main() {
 <dd>
 
 **shares_acquisition_date:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**withholding_tax_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partner_liability:** `Option<Option<PostV1LedgerOwnersUpdateRequestPartnerLiability>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**special_balance_required:** `Option<Option<bool>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**supplementary_balance_required:** `Option<Option<bool>>` 
     
 </dd>
 </dl>
@@ -19820,6 +25468,595 @@ async fn main() {
 <dd>
 
 **entries:** `Vec<PostV1LedgerJournalTransactionsCreateRequestEntriesItem>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">national_statement_layouts_available_to_the_company</a>(request: PostV1LedgerStatementRowsSchemesRequest) -> Result&lt;PostV1LedgerStatementRowsSchemesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The rows or codes of each return or registry deposit of the company country that are filled from account balances. Accounts fall into a row by the layout defaults for the standard chart of accounts unless mapped under Settings → Statement rows.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .national_statement_layouts_available_to_the_company(
+            &PostV1LedgerStatementRowsSchemesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_placed_on_the_rows_of_a_statement_layout_with_the_row_totals_of_a_period</a>(request: PostV1LedgerStatementRowsListRequest) -> Result&lt;PostV1LedgerStatementRowsListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .accounts_placed_on_the_rows_of_a_statement_layout_with_the_row_totals_of_a_period(
+            &PostV1LedgerStatementRowsListRequest {
+                scheme: "scheme".to_string(),
+                from_date: None,
+                to_date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**scheme:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**from_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">map_an_account_or_an_account_code_prefix_to_a_row_of_a_statement_layout</a>(request: PostV1LedgerStatementRowsSetRequest) -> Result&lt;PostV1LedgerStatementRowsSetResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A mapping on a code prefix covers every account whose code starts with it; the longest matching prefix wins. An empty rowCode removes the mapping so the layout default applies again.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .map_an_account_or_an_account_code_prefix_to_a_row_of_a_statement_layout(
+            &PostV1LedgerStatementRowsSetRequest {
+                scheme: "scheme".to_string(),
+                account_code: "accountCode".to_string(),
+                row_code: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**scheme:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**account_code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**row_code:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">officers_of_the_company</a>(request: PostV1OfficersListRequest) -> Result&lt;PostV1OfficersListResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Directors, board members, the company secretary, representatives and liquidators, with their personal identifier, appointment and resignation dates and whether they sign the annual accounts. Annual returns and registry deposits are built from this register.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .officers_of_the_company(
+            &PostV1OfficersListRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">record_an_officer_of_the_company</a>(request: PostV1OfficersCreateRequest) -> Result&lt;PostV1OfficersCreateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .record_an_officer_of_the_company(
+            &PostV1OfficersCreateRequest {
+                name: "name".to_string(),
+                role: PostV1OfficersCreateRequestRole::Director,
+                personal_code: None,
+                birth_date: None,
+                appointed_on: None,
+                power_notary: None,
+                resigned_on: None,
+                signs_accounts: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**role:** `PostV1OfficersCreateRequestRole` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**personal_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**birth_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**appointed_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**power_notary:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**resigned_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signs_accounts:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">change_a_recorded_officer</a>(request: PostV1OfficersUpdateRequest) -> Result&lt;PostV1OfficersUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .change_a_recorded_officer(
+            &PostV1OfficersUpdateRequest {
+                id: "id".to_string(),
+                name: "name".to_string(),
+                role: PostV1OfficersUpdateRequestRole::Director,
+                personal_code: None,
+                birth_date: None,
+                appointed_on: None,
+                power_notary: None,
+                resigned_on: None,
+                signs_accounts: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**role:** `PostV1OfficersUpdateRequestRole` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**personal_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**birth_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**appointed_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**power_notary:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**resigned_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**signs_accounts:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">remove_a_recorded_officer</a>(request: PostV1OfficersDeleteRequest) -> Result&lt;PostV1OfficersDeleteResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .ledger
+        .remove_a_recorded_officer(
+            &PostV1OfficersDeleteRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
     
 </dd>
 </dl>
@@ -20507,6 +26744,269 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_update</a>(request: PostV1AssetsAssetsUpdateRequest) -> Result&lt;PostV1AssetsAssetsUpdateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .assets
+        .post_v1assets_assets_update(
+            &PostV1AssetsAssetsUpdateRequest {
+                id: "id".to_string(),
+                group_id: None,
+                code: None,
+                name: None,
+                acquisition_date: None,
+                depreciation_start_date: None,
+                acquisition_cost: None,
+                salvage_value: None,
+                useful_life_months: None,
+                notes: None,
+                documents: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**group_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**acquisition_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**depreciation_start_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**acquisition_cost:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**salvage_value:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**useful_life_months:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**documents:** `Option<Vec<PostV1AssetsAssetsUpdateRequestDocumentsItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_input_vat</a>(request: PostV1AssetsAssetsInputVatRequest) -> Result&lt;PostV1AssetsAssetsInputVatResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Record the input VAT facts of a capital good that the annual VAT return needs for the adjustment of the deduction over the adjustment period (Article 187 of the VAT Directive, § 15a UStG): the input VAT on the acquisition, the date of first use, the share of use for deductible turnover at first use, whether it is land or a building (ten-year period instead of five), and every later year in which the share changed or the good was sold or withdrawn. Allowed also after depreciation has been posted.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client.assets.post_v1assets_assets_input_vat(&PostV1AssetsAssetsInputVatRequest {
+        id: "id".to_string(),
+        input_vat_real_estate: true,
+        input_vat_use_changes: vec![PostV1AssetsAssetsInputVatRequestInputVatUseChangesItem {
+            year: 1000000,
+            percent: "percent".to_string(),
+            reason: PostV1AssetsAssetsInputVatRequestInputVatUseChangesItemReason::UseChange
+        }],
+        input_vat_amount: None,
+        input_vat_first_use_date: None,
+        input_vat_deductible_percent: None
+    }, None).await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**input_vat_amount:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**input_vat_first_use_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**input_vat_deductible_percent:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**input_vat_real_estate:** `bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**input_vat_use_changes:** `Vec<PostV1AssetsAssetsInputVatRequestInputVatUseChangesItem>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_get</a>(request: PostV1AssetsAssetsGetRequest) -> Result&lt;PostV1AssetsAssetsGetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -21173,9 +27673,10 @@ async fn main() {
                 social_insurance_no: None,
                 social_insurance_start: None,
                 hire_date: None,
-                apply_npd: None,
-                npd_override: None,
+                apply_allowance: None,
+                allowance_override: None,
                 pension_accumulation: None,
+                payroll_options: None,
                 notes: None,
                 attributes: None,
             },
@@ -21293,7 +27794,7 @@ async fn main() {
 <dl>
 <dd>
 
-**apply_npd:** `Option<bool>` 
+**apply_allowance:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -21301,7 +27802,7 @@ async fn main() {
 <dl>
 <dd>
 
-**npd_override:** `Option<Option<String>>` 
+**allowance_override:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21310,6 +27811,14 @@ async fn main() {
 <dd>
 
 **pension_accumulation:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payroll_options:** `Option<std::collections::HashMap<String, String>>` 
     
 </dd>
 </dl>
@@ -21376,9 +27885,10 @@ async fn main() {
                 social_insurance_no: None,
                 social_insurance_start: None,
                 hire_date: None,
-                apply_npd: None,
-                npd_override: None,
+                apply_allowance: None,
+                allowance_override: None,
                 pension_accumulation: None,
+                payroll_options: None,
                 notes: None,
                 attributes: None,
                 termination_date: None,
@@ -21402,7 +27912,7 @@ async fn main() {
 <dl>
 <dd>
 
-**code:** `Option<String>` 
+**code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21426,7 +27936,7 @@ async fn main() {
 <dl>
 <dd>
 
-**personal_code:** `Option<String>` 
+**personal_code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21434,7 +27944,7 @@ async fn main() {
 <dl>
 <dd>
 
-**birth_date:** `Option<String>` 
+**birth_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21442,7 +27952,7 @@ async fn main() {
 <dl>
 <dd>
 
-**email:** `Option<String>` 
+**email:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21450,7 +27960,7 @@ async fn main() {
 <dl>
 <dd>
 
-**phone:** `Option<String>` 
+**phone:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21458,7 +27968,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1HrEmployeesUpdateRequestAddress>` 
+**address:** `Option<Option<PostV1HrEmployeesUpdateRequestAddress>>` 
     
 </dd>
 </dl>
@@ -21466,7 +27976,7 @@ async fn main() {
 <dl>
 <dd>
 
-**iban:** `Option<String>` 
+**iban:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21474,7 +27984,7 @@ async fn main() {
 <dl>
 <dd>
 
-**social_insurance_no:** `Option<String>` 
+**social_insurance_no:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21482,7 +27992,7 @@ async fn main() {
 <dl>
 <dd>
 
-**social_insurance_start:** `Option<String>` 
+**social_insurance_start:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21490,7 +28000,7 @@ async fn main() {
 <dl>
 <dd>
 
-**hire_date:** `Option<String>` 
+**hire_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21498,7 +28008,7 @@ async fn main() {
 <dl>
 <dd>
 
-**apply_npd:** `Option<bool>` 
+**apply_allowance:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -21506,7 +28016,7 @@ async fn main() {
 <dl>
 <dd>
 
-**npd_override:** `Option<Option<String>>` 
+**allowance_override:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21522,7 +28032,15 @@ async fn main() {
 <dl>
 <dd>
 
-**notes:** `Option<String>` 
+**payroll_options:** `Option<std::collections::HashMap<String, String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21546,7 +28064,7 @@ async fn main() {
 <dl>
 <dd>
 
-**termination_date:** `Option<String>` 
+**termination_date:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -21614,6 +28132,63 @@ async fn main() {
 
 **id:** `String` 
     
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">extra_employee_details_the_country_of_the_company_asks_for</a>(request: PostV1HrEmployeesFieldsRequest) -> Result&lt;PostV1HrEmployeesFieldsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Attributes a filing of the company country needs about a person that the shared employee record does not carry, such as the sex and place of birth an Italian income certificate asks for. Their values are kept in the payrollOptions of the employee.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .extra_employee_details_the_country_of_the_company_asks_for(
+            &PostV1HrEmployeesFieldsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
 </dd>
 </dl>
 </dd>
@@ -24399,7 +30974,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_calc</a>(request: PostV1PayrollCalcRequest) -> Result&lt;PostV1PayrollCalcResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">calculate_one_employee_payment_under_the_rules_of_the_company_country</a>(request: PostV1PayrollCalcRequest) -> Result&lt;PostV1PayrollCalcResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24423,14 +30998,16 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_calc(
+        .calculate_one_employee_payment_under_the_rules_of_the_company_country(
             &PostV1PayrollCalcRequest {
                 taxable_base: "taxableBase".to_string(),
                 date: "date".to_string(),
-                apply_npd: None,
-                npd_override: None,
+                apply_allowance: None,
+                allowance_override: None,
                 pension_accumulation: None,
                 fixed_term: None,
+                benefit_in_kind: None,
+                options: None,
             },
             None,
         )
@@ -24466,7 +31043,7 @@ async fn main() {
 <dl>
 <dd>
 
-**apply_npd:** `Option<bool>` 
+**apply_allowance:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -24474,7 +31051,7 @@ async fn main() {
 <dl>
 <dd>
 
-**npd_override:** `Option<String>` 
+**allowance_override:** `Option<String>` 
     
 </dd>
 </dl>
@@ -24491,6 +31068,22 @@ async fn main() {
 <dd>
 
 **fixed_term:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**benefit_in_kind:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**options:** `Option<std::collections::HashMap<String, String>>` 
     
 </dd>
 </dl>
@@ -24531,6 +31124,7 @@ async fn main() {
                 year: 1000000,
                 month: 1000000,
                 include_natura: None,
+                gross_overrides: None,
                 lines: None,
                 notes: None,
             },
@@ -24569,6 +31163,14 @@ async fn main() {
 <dd>
 
 **include_natura:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**gross_overrides:** `Option<Vec<PostV1PayrollRunsCreateRequestGrossOverridesItem>>` 
     
 </dd>
 </dl>
@@ -24744,6 +31346,114 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">record_the_time_a_person_worked_in_a_payroll_line</a>(request: PostV1PayrollLinesAttendanceRequest) -> Result&lt;PostV1PayrollLinesAttendanceResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The days and hours worked, the days on the register and the average hourly earnings that some countries report per employment. The Czech monthly employer report asks for all four. They can be set while the run is a draft.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .payroll
+        .record_the_time_a_person_worked_in_a_payroll_line(
+            &PostV1PayrollLinesAttendanceRequest {
+                id: "id".to_string(),
+                days_worked: None,
+                hours_worked: None,
+                registered_days: None,
+                average_hourly_earnings: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**days_worked:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**hours_worked:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**registered_days:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**average_hourly_earnings:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_runs_approve</a>(request: PostV1PayrollRunsApproveRequest) -> Result&lt;PostV1PayrollRunsApproveResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -24776,6 +31486,7 @@ async fn main() {
                 payable_account_code: None,
                 gpm_account_code: None,
                 sodra_account_code: None,
+                employer_social_account_code: None,
                 deduction_account_code: None,
             },
             None,
@@ -24837,6 +31548,14 @@ async fn main() {
 <dd>
 
 **sodra_account_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**employer_social_account_code:** `Option<String>` 
     
 </dd>
 </dl>
@@ -31888,7 +38607,7 @@ async fn main() {
 <dl>
 <dd>
 
-**transporter_partner_id:** `Option<String>` 
+**transporter_partner_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31912,7 +38631,7 @@ async fn main() {
 <dl>
 <dd>
 
-**estimated_arrival_at:** `Option<String>` 
+**estimated_arrival_at:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31920,7 +38639,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vehicle_plate:** `Option<String>` 
+**vehicle_plate:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31928,7 +38647,7 @@ async fn main() {
 <dl>
 <dd>
 
-**trailer_plate:** `Option<String>` 
+**trailer_plate:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31936,7 +38655,7 @@ async fn main() {
 <dl>
 <dd>
 
-**driver_name:** `Option<String>` 
+**driver_name:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31944,7 +38663,7 @@ async fn main() {
 <dl>
 <dd>
 
-**driver_surname:** `Option<String>` 
+**driver_surname:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31952,7 +38671,7 @@ async fn main() {
 <dl>
 <dd>
 
-**load_warehouse_id:** `Option<String>` 
+**load_warehouse_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31976,7 +38695,7 @@ async fn main() {
 <dl>
 <dd>
 
-**value_eur:** `Option<String>` 
+**value_eur:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31984,7 +38703,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sale_invoice_id:** `Option<String>` 
+**sale_invoice_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -31992,7 +38711,7 @@ async fn main() {
 <dl>
 <dd>
 
-**notes:** `Option<String>` 
+**notes:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -33027,6 +39746,136 @@ async fn main() {
         .calendar
         .post_v1calendar_get(
             &PostV1CalendarGetRequest {
+                key: "key".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**key:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">generate_the_filing_for_a_deadline_and_send_it_to_the_administration</a>(request: PostV1CalendarSubmitRequest) -> Result&lt;PostV1CalendarSubmitResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .generate_the_filing_for_a_deadline_and_send_it_to_the_administration(
+            &PostV1CalendarSubmitRequest {
+                key: "key".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**key:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">generate_the_file_of_a_deadline_for_the_company_to_send_itself</a>(request: PostV1CalendarDownloadRequest) -> Result&lt;PostV1CalendarDownloadResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Builds the file of a deadline whose format Nordlet produces but whose administration takes it only through the company's own account or program. Nothing is sent and no filing is recorded.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .calendar
+        .generate_the_file_of_a_deadline_for_the_company_to_send_itself(
+            &PostV1CalendarDownloadRequest {
                 key: "key".to_string(),
             },
             None,
@@ -36406,6 +43255,96 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">set_what_the_marketplace_keeps_from_one_settlement_line_as_a_rate_or_as_an_amount</a>(request: PostV1BankSettlementsCommissionRequest) -> Result&lt;PostV1BankSettlementsCommissionResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+A line with its own rate or amount is split with that value when the batch is posted. A line without one falls back to the commissionPercent given to the posting call, and without that the amount goes to the suspense account. Send both fields as null to clear the line back to the fallback.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .set_what_the_marketplace_keeps_from_one_settlement_line_as_a_rate_or_as_an_amount(
+            &PostV1BankSettlementsCommissionRequest {
+                line_id: "lineId".to_string(),
+                commission_percent: None,
+                commission_amount: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**line_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commission_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**commission_amount:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_link</a>(request: PostV1BankSettlementsLinkRequest) -> Result&lt;PostV1BankSettlementsLinkResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -38544,6 +45483,276 @@ async fn main() {
 <dd>
 
 **warehouse_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_sie</a>(request: PostV1ReportsSieRequest) -> Result&lt;PostV1ReportsSieResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Export the ledger of one financial year as an SIE file (the Swedish standard accounting interchange format, specification 4B). The file carries the chart of accounts, the opening and closing balance of every balance sheet account and the turnover of every result account for the year and the year before it, and, when asked for, every posted voucher of the year with its lines. Cost centres travel as dimension 1 and projects as dimension 6. Services that build a Swedish annual report read this file.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reports
+        .post_v1reports_sie(
+            &PostV1ReportsSieRequest {
+                from_date: "fromDate".to_string(),
+                to_date: "toDate".to_string(),
+                include_transactions: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**from_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**include_transactions:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_datev</a>(request: PostV1ReportsDatevRequest) -> Result&lt;PostV1ReportsDatevResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Export the posted ledger of a period as a DATEV Buchungsstapel file (DATEV format, category 21, version 700). Every transaction becomes one or more bookings of an amount between an account and a contra account; a transaction with more than two lines is split into pairs whose totals match it. The file is semicolon separated and written in the Windows-1252 character set DATEV expects.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reports
+        .post_v1reports_datev(
+            &PostV1ReportsDatevRequest {
+                from_date: "fromDate".to_string(),
+                to_date: "toDate".to_string(),
+                consultant_number: None,
+                client_number: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**from_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**consultant_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**client_number:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_fec</a>(request: PostV1ReportsFecRequest) -> Result&lt;PostV1ReportsFecResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Export the posted ledger of a period as a French FEC file (fichier des écritures comptables, order of 29 July 2013). One line per journal entry line, with the eighteen fields the order names, in their order, after a header line. Tab separated, UTF-8, comma as the decimal separator.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reports
+        .post_v1reports_fec(
+            &PostV1ReportsFecRequest {
+                from_date: "fromDate".to_string(),
+                to_date: "toDate".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**from_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**to_date:** `String` 
     
 </dd>
 </dl>
@@ -41269,6 +48478,73 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_members_transfer_ownership</a>(request: PostV1AccountMembersTransferOwnershipRequest) -> Result&lt;PostV1AccountMembersTransferOwnershipResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_members_transfer_ownership(
+            &PostV1AccountMembersTransferOwnershipRequest {
+                user_id: "userId".to_string(),
+                move_payer: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**user_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**move_payer:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_members_remove</a>(request: PostV1AccountMembersRemoveRequest) -> Result&lt;PostV1AccountMembersRemoveResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -41682,7 +48958,7 @@ async fn main() {
         .account
         .post_v1account_locale_set(
             &PostV1AccountLocaleSetRequest {
-                locale: PostV1AccountLocaleSetRequestLocale::Lt,
+                locale: PostV1AccountLocaleSetRequestLocale::En,
             },
             None,
         )
@@ -41745,6 +49021,10 @@ async fn main() {
                 vat_code: None,
                 sme_exemption_number: None,
                 is_vat_payer: None,
+                vat_period: None,
+                fiscal_year_end_month: None,
+                time_zone: None,
+                filing_options: None,
                 address: None,
                 email: None,
                 phone: None,
@@ -41753,6 +49033,15 @@ async fn main() {
                 peppol_id: None,
                 sepa_creditor_id: None,
                 default_invoice_currency: None,
+                legal_form: None,
+                registry_name: None,
+                incorporated_on: None,
+                share_capital: None,
+                accounts_kept_by: None,
+                bookkeeper_name: None,
+                auditor_name: None,
+                auditor_registration_number: None,
+                audit_required: None,
                 country_code: None,
                 is_sandbox: None,
             },
@@ -41807,6 +49096,38 @@ async fn main() {
 <dd>
 
 **is_vat_payer:** `Option<bool>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_period:** `Option<PostV1AccountCompaniesCreateRequestVatPeriod>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fiscal_year_end_month:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_zone:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filing_options:** `Option<std::collections::HashMap<String, String>>` 
     
 </dd>
 </dl>
@@ -41871,6 +49192,78 @@ async fn main() {
 <dd>
 
 **default_invoice_currency:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**legal_form:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**registry_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**incorporated_on:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**share_capital:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accounts_kept_by:** `Option<PostV1AccountCompaniesCreateRequestAccountsKeptBy>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**bookkeeper_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_registration_number:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**audit_required:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -42053,7 +49446,7 @@ async fn main() {
 <dl>
 <dd>
 
-**code:** `Option<String>` 
+**code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42061,7 +49454,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_code:** `Option<String>` 
+**vat_code:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42069,7 +49462,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sme_exemption_number:** `Option<String>` 
+**sme_exemption_number:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42085,6 +49478,38 @@ async fn main() {
 <dl>
 <dd>
 
+**vat_period:** `Option<Option<PostV1AccountCompaniesUpdateRequestVatPeriod>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**fiscal_year_end_month:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**time_zone:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filing_options:** `Option<Option<std::collections::HashMap<String, Option<String>>>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **address:** `Option<PostV1AccountCompaniesUpdateRequestAddress>` 
     
 </dd>
@@ -42093,7 +49518,7 @@ async fn main() {
 <dl>
 <dd>
 
-**email:** `Option<String>` 
+**email:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42101,7 +49526,7 @@ async fn main() {
 <dl>
 <dd>
 
-**phone:** `Option<String>` 
+**phone:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42109,7 +49534,7 @@ async fn main() {
 <dl>
 <dd>
 
-**iban:** `Option<String>` 
+**iban:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42117,7 +49542,7 @@ async fn main() {
 <dl>
 <dd>
 
-**bank_name:** `Option<String>` 
+**bank_name:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42125,7 +49550,7 @@ async fn main() {
 <dl>
 <dd>
 
-**peppol_id:** `Option<String>` 
+**peppol_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42133,7 +49558,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sepa_creditor_id:** `Option<String>` 
+**sepa_creditor_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -42142,6 +49567,78 @@ async fn main() {
 <dd>
 
 **default_invoice_currency:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**legal_form:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**registry_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**incorporated_on:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**share_capital:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accounts_kept_by:** `Option<Option<PostV1AccountCompaniesUpdateRequestAccountsKeptBy>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**bookkeeper_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**auditor_registration_number:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**audit_required:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -42363,6 +49860,7 @@ async fn main() {
             &PostV1AccountAPIKeysCreateRequest {
                 name: "name".to_string(),
                 scopes: None,
+                expires_in_days: None,
             },
             None,
         )
@@ -42391,6 +49889,14 @@ async fn main() {
 <dd>
 
 **scopes:** `Option<Vec<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expires_in_days:** `Option<String>` 
     
 </dd>
 </dl>
@@ -42435,6 +49941,76 @@ async fn main() {
         .await;
 }
 ```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">issue_a_replacement_for_an_api_key_and_set_the_old_one_to_stop_working_after_a_short_overlap</a>(request: PostV1AccountApiKeysRotateRequest) -> Result&lt;PostV1AccountApiKeysRotateResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client.account.issue_a_replacement_for_an_api_key_and_set_the_old_one_to_stop_working_after_a_short_overlap(&PostV1AccountAPIKeysRotateRequest {
+        id: "id".to_string(),
+        overlap_hours: None,
+        expires_in_days: None
+    }, None).await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**overlap_hours:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**expires_in_days:** `Option<String>` 
+    
 </dd>
 </dl>
 </dd>
@@ -42987,6 +50563,62 @@ async fn main() {
         .await;
 }
 ```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_referral_convert</a>(request: PostV1AccountReferralConvertRequest) -> Result&lt;PostV1AccountReferralConvertResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .account
+        .post_v1account_referral_convert(
+            &PostV1AccountReferralConvertRequest { points: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**points:** `String` 
+    
 </dd>
 </dl>
 </dd>

@@ -109,6 +109,22 @@ impl AccountClient {
             .await
     }
 
+    pub async fn post_v1_account_members_transfer_ownership(
+        &self,
+        request: &PostV1AccountMembersTransferOwnershipRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountMembersTransferOwnershipResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/members/transfer-ownership",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_account_members_remove(
         &self,
         request: &PostV1AccountMembersRemoveRequest,
@@ -365,6 +381,22 @@ impl AccountClient {
             .await
     }
 
+    pub async fn issue_a_replacement_for_an_api_key_and_set_the_old_one_to_stop_working_after_a_short_overlap(
+        &self,
+        request: &PostV1AccountApiKeysRotateRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountApiKeysRotateResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/api-keys/rotate",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_account_api_keys_revoke(
         &self,
         request: &PostV1AccountApiKeysRevokeRequest,
@@ -527,6 +559,22 @@ impl AccountClient {
             .execute_request(
                 Method::POST,
                 "v1/account/referral/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn post_v1_account_referral_convert(
+        &self,
+        request: &PostV1AccountReferralConvertRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1AccountReferralConvertResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/account/referral/convert",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

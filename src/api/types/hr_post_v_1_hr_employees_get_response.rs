@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct PostV1HrEmployeesGetResponse {
     #[serde(default)]
     pub id: String,
@@ -38,15 +38,18 @@ pub struct PostV1HrEmployeesGetResponse {
     #[serde(rename = "terminationDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub termination_date: Option<String>,
-    #[serde(rename = "applyNpd")]
+    #[serde(rename = "applyAllowance")]
     #[serde(default)]
-    pub apply_npd: bool,
-    #[serde(rename = "npdOverride")]
+    pub apply_allowance: bool,
+    #[serde(rename = "allowanceOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub npd_override: Option<String>,
+    pub allowance_override: Option<String>,
     #[serde(rename = "pensionAccumulation")]
     #[serde(default)]
     pub pension_accumulation: bool,
+    #[serde(rename = "payrollOptions")]
+    #[serde(default)]
+    pub payroll_options: HashMap<String, String>,
     pub status: PostV1HrEmployeesGetResponseStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
@@ -80,9 +83,10 @@ pub struct PostV1HrEmployeesGetResponseBuilder {
     social_insurance_start: Option<String>,
     hire_date: Option<String>,
     termination_date: Option<String>,
-    apply_npd: Option<bool>,
-    npd_override: Option<String>,
+    apply_allowance: Option<bool>,
+    allowance_override: Option<String>,
     pension_accumulation: Option<bool>,
+    payroll_options: Option<HashMap<String, String>>,
     status: Option<PostV1HrEmployeesGetResponseStatus>,
     notes: Option<String>,
     attributes: Option<Vec<PostV1HrEmployeesGetResponseAttributesItem>>,
@@ -160,18 +164,23 @@ impl PostV1HrEmployeesGetResponseBuilder {
         self
     }
 
-    pub fn apply_npd(mut self, value: bool) -> Self {
-        self.apply_npd = Some(value);
+    pub fn apply_allowance(mut self, value: bool) -> Self {
+        self.apply_allowance = Some(value);
         self
     }
 
-    pub fn npd_override(mut self, value: impl Into<String>) -> Self {
-        self.npd_override = Some(value.into());
+    pub fn allowance_override(mut self, value: impl Into<String>) -> Self {
+        self.allowance_override = Some(value.into());
         self
     }
 
     pub fn pension_accumulation(mut self, value: bool) -> Self {
         self.pension_accumulation = Some(value);
+        self
+    }
+
+    pub fn payroll_options(mut self, value: HashMap<String, String>) -> Self {
+        self.payroll_options = Some(value);
         self
     }
 
@@ -200,8 +209,9 @@ impl PostV1HrEmployeesGetResponseBuilder {
     /// - [`id`](PostV1HrEmployeesGetResponseBuilder::id)
     /// - [`first_name`](PostV1HrEmployeesGetResponseBuilder::first_name)
     /// - [`last_name`](PostV1HrEmployeesGetResponseBuilder::last_name)
-    /// - [`apply_npd`](PostV1HrEmployeesGetResponseBuilder::apply_npd)
+    /// - [`apply_allowance`](PostV1HrEmployeesGetResponseBuilder::apply_allowance)
     /// - [`pension_accumulation`](PostV1HrEmployeesGetResponseBuilder::pension_accumulation)
+    /// - [`payroll_options`](PostV1HrEmployeesGetResponseBuilder::payroll_options)
     /// - [`status`](PostV1HrEmployeesGetResponseBuilder::status)
     /// - [`created_at`](PostV1HrEmployeesGetResponseBuilder::created_at)
     pub fn build(self) -> Result<PostV1HrEmployeesGetResponse, BuildError> {
@@ -224,13 +234,16 @@ impl PostV1HrEmployeesGetResponseBuilder {
             social_insurance_start: self.social_insurance_start,
             hire_date: self.hire_date,
             termination_date: self.termination_date,
-            apply_npd: self
-                .apply_npd
-                .ok_or_else(|| BuildError::missing_field("apply_npd"))?,
-            npd_override: self.npd_override,
+            apply_allowance: self
+                .apply_allowance
+                .ok_or_else(|| BuildError::missing_field("apply_allowance"))?,
+            allowance_override: self.allowance_override,
             pension_accumulation: self
                 .pension_accumulation
                 .ok_or_else(|| BuildError::missing_field("pension_accumulation"))?,
+            payroll_options: self
+                .payroll_options
+                .ok_or_else(|| BuildError::missing_field("payroll_options"))?,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

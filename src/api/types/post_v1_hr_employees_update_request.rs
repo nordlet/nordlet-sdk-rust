@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 pub struct PostV1HrEmployeesUpdateRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub code: Option<String>,
@@ -33,15 +33,18 @@ pub struct PostV1HrEmployeesUpdateRequest {
     #[serde(rename = "hireDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub hire_date: Option<String>,
-    #[serde(rename = "applyNpd")]
+    #[serde(rename = "applyAllowance")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub apply_npd: Option<bool>,
-    #[serde(rename = "npdOverride")]
+    pub apply_allowance: Option<bool>,
+    #[serde(rename = "allowanceOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub npd_override: Option<String>,
+    pub allowance_override: Option<String>,
     #[serde(rename = "pensionAccumulation")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pension_accumulation: Option<bool>,
+    #[serde(rename = "payrollOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payroll_options: Option<HashMap<String, String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -76,9 +79,10 @@ pub struct PostV1HrEmployeesUpdateRequestBuilder {
     social_insurance_no: Option<String>,
     social_insurance_start: Option<String>,
     hire_date: Option<String>,
-    apply_npd: Option<bool>,
-    npd_override: Option<String>,
+    apply_allowance: Option<bool>,
+    allowance_override: Option<String>,
     pension_accumulation: Option<bool>,
+    payroll_options: Option<HashMap<String, String>>,
     notes: Option<String>,
     attributes: Option<Vec<PostV1HrEmployeesUpdateRequestAttributesItem>>,
     id: Option<String>,
@@ -147,18 +151,23 @@ impl PostV1HrEmployeesUpdateRequestBuilder {
         self
     }
 
-    pub fn apply_npd(mut self, value: bool) -> Self {
-        self.apply_npd = Some(value);
+    pub fn apply_allowance(mut self, value: bool) -> Self {
+        self.apply_allowance = Some(value);
         self
     }
 
-    pub fn npd_override(mut self, value: impl Into<String>) -> Self {
-        self.npd_override = Some(value.into());
+    pub fn allowance_override(mut self, value: impl Into<String>) -> Self {
+        self.allowance_override = Some(value.into());
         self
     }
 
     pub fn pension_accumulation(mut self, value: bool) -> Self {
         self.pension_accumulation = Some(value);
+        self
+    }
+
+    pub fn payroll_options(mut self, value: HashMap<String, String>) -> Self {
+        self.payroll_options = Some(value);
         self
     }
 
@@ -204,9 +213,10 @@ impl PostV1HrEmployeesUpdateRequestBuilder {
             social_insurance_no: self.social_insurance_no,
             social_insurance_start: self.social_insurance_start,
             hire_date: self.hire_date,
-            apply_npd: self.apply_npd,
-            npd_override: self.npd_override,
+            apply_allowance: self.apply_allowance,
+            allowance_override: self.allowance_override,
             pension_accumulation: self.pension_accumulation,
+            payroll_options: self.payroll_options,
             notes: self.notes,
             attributes: self.attributes,
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,

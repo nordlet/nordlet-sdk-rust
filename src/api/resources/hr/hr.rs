@@ -109,6 +109,31 @@ impl HrClient {
             .await
     }
 
+    /// Attributes a filing of the company country needs about a person that the shared employee record does not carry, such as the sex and place of birth an Italian income certificate asks for. Their values are kept in the payrollOptions of the employee.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn extra_employee_details_the_country_of_the_company_asks_for(
+        &self,
+        request: &PostV1HrEmployeesFieldsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PostV1HrEmployeesFieldsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/employees/fields",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn post_v1_hr_employees_list(
         &self,
         request: &PostV1HrEmployeesListRequest,

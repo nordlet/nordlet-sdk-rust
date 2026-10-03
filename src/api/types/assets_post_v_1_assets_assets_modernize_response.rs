@@ -46,6 +46,21 @@ pub struct PostV1AssetsAssetsModernizeResponse {
     pub notes: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub documents: Option<Vec<PostV1AssetsAssetsModernizeResponseDocumentsItem>>,
+    #[serde(rename = "inputVatAmount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub input_vat_amount: Option<String>,
+    #[serde(rename = "inputVatFirstUseDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub input_vat_first_use_date: Option<String>,
+    #[serde(rename = "inputVatDeductiblePercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub input_vat_deductible_percent: Option<String>,
+    #[serde(rename = "inputVatRealEstate")]
+    #[serde(default)]
+    pub input_vat_real_estate: bool,
+    #[serde(rename = "inputVatUseChanges")]
+    #[serde(default)]
+    pub input_vat_use_changes: Vec<PostV1AssetsAssetsModernizeResponseInputVatUseChangesItem>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -77,6 +92,11 @@ pub struct PostV1AssetsAssetsModernizeResponseBuilder {
     status: Option<PostV1AssetsAssetsModernizeResponseStatus>,
     notes: Option<String>,
     documents: Option<Vec<PostV1AssetsAssetsModernizeResponseDocumentsItem>>,
+    input_vat_amount: Option<String>,
+    input_vat_first_use_date: Option<String>,
+    input_vat_deductible_percent: Option<String>,
+    input_vat_real_estate: Option<bool>,
+    input_vat_use_changes: Option<Vec<PostV1AssetsAssetsModernizeResponseInputVatUseChangesItem>>,
     created_at: Option<String>,
 }
 
@@ -169,6 +189,34 @@ impl PostV1AssetsAssetsModernizeResponseBuilder {
         self
     }
 
+    pub fn input_vat_amount(mut self, value: impl Into<String>) -> Self {
+        self.input_vat_amount = Some(value.into());
+        self
+    }
+
+    pub fn input_vat_first_use_date(mut self, value: impl Into<String>) -> Self {
+        self.input_vat_first_use_date = Some(value.into());
+        self
+    }
+
+    pub fn input_vat_deductible_percent(mut self, value: impl Into<String>) -> Self {
+        self.input_vat_deductible_percent = Some(value.into());
+        self
+    }
+
+    pub fn input_vat_real_estate(mut self, value: bool) -> Self {
+        self.input_vat_real_estate = Some(value);
+        self
+    }
+
+    pub fn input_vat_use_changes(
+        mut self,
+        value: Vec<PostV1AssetsAssetsModernizeResponseInputVatUseChangesItem>,
+    ) -> Self {
+        self.input_vat_use_changes = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -191,6 +239,8 @@ impl PostV1AssetsAssetsModernizeResponseBuilder {
     /// - [`depreciated_months`](PostV1AssetsAssetsModernizeResponseBuilder::depreciated_months)
     /// - [`total_life_months`](PostV1AssetsAssetsModernizeResponseBuilder::total_life_months)
     /// - [`status`](PostV1AssetsAssetsModernizeResponseBuilder::status)
+    /// - [`input_vat_real_estate`](PostV1AssetsAssetsModernizeResponseBuilder::input_vat_real_estate)
+    /// - [`input_vat_use_changes`](PostV1AssetsAssetsModernizeResponseBuilder::input_vat_use_changes)
     /// - [`created_at`](PostV1AssetsAssetsModernizeResponseBuilder::created_at)
     pub fn build(self) -> Result<PostV1AssetsAssetsModernizeResponse, BuildError> {
         Ok(PostV1AssetsAssetsModernizeResponse {
@@ -235,6 +285,15 @@ impl PostV1AssetsAssetsModernizeResponseBuilder {
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             notes: self.notes,
             documents: self.documents,
+            input_vat_amount: self.input_vat_amount,
+            input_vat_first_use_date: self.input_vat_first_use_date,
+            input_vat_deductible_percent: self.input_vat_deductible_percent,
+            input_vat_real_estate: self
+                .input_vat_real_estate
+                .ok_or_else(|| BuildError::missing_field("input_vat_real_estate"))?,
+            input_vat_use_changes: self
+                .input_vat_use_changes
+                .ok_or_else(|| BuildError::missing_field("input_vat_use_changes"))?,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

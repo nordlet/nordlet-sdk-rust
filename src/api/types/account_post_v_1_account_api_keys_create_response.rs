@@ -10,6 +10,9 @@ pub struct PostV1AccountApiKeysCreateResponse {
     pub scopes: Vec<String>,
     #[serde(default)]
     pub key: String,
+    #[serde(rename = "expiresAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expires_at: Option<String>,
 }
 
 impl PostV1AccountApiKeysCreateResponse {
@@ -25,6 +28,7 @@ pub struct PostV1AccountApiKeysCreateResponseBuilder {
     name: Option<String>,
     scopes: Option<Vec<String>>,
     key: Option<String>,
+    expires_at: Option<String>,
 }
 
 impl PostV1AccountApiKeysCreateResponseBuilder {
@@ -48,6 +52,11 @@ impl PostV1AccountApiKeysCreateResponseBuilder {
         self
     }
 
+    pub fn expires_at(mut self, value: impl Into<String>) -> Self {
+        self.expires_at = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1AccountApiKeysCreateResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PostV1AccountApiKeysCreateResponseBuilder::id)
@@ -62,6 +71,7 @@ impl PostV1AccountApiKeysCreateResponseBuilder {
                 .scopes
                 .ok_or_else(|| BuildError::missing_field("scopes"))?,
             key: self.key.ok_or_else(|| BuildError::missing_field("key"))?,
+            expires_at: self.expires_at,
         })
     }
 }

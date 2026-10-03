@@ -9,6 +9,9 @@ pub struct PostV1AccountMeResponse {
     #[serde(rename = "activeCompanyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub active_company_id: Option<String>,
+    #[serde(rename = "timeZone")]
+    #[serde(default)]
+    pub time_zone: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub role: Option<String>,
     pub billing: PostV1AccountMeResponseBilling,
@@ -33,6 +36,7 @@ pub struct PostV1AccountMeResponseBuilder {
     user: Option<PostV1AccountMeResponseUser>,
     locale: Option<String>,
     active_company_id: Option<String>,
+    time_zone: Option<String>,
     role: Option<String>,
     billing: Option<PostV1AccountMeResponseBilling>,
     referral_points: Option<i64>,
@@ -53,6 +57,11 @@ impl PostV1AccountMeResponseBuilder {
 
     pub fn active_company_id(mut self, value: impl Into<String>) -> Self {
         self.active_company_id = Some(value.into());
+        self
+    }
+
+    pub fn time_zone(mut self, value: impl Into<String>) -> Self {
+        self.time_zone = Some(value.into());
         self
     }
 
@@ -85,6 +94,7 @@ impl PostV1AccountMeResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`user`](PostV1AccountMeResponseBuilder::user)
     /// - [`locale`](PostV1AccountMeResponseBuilder::locale)
+    /// - [`time_zone`](PostV1AccountMeResponseBuilder::time_zone)
     /// - [`billing`](PostV1AccountMeResponseBuilder::billing)
     /// - [`referral_points`](PostV1AccountMeResponseBuilder::referral_points)
     /// - [`consent`](PostV1AccountMeResponseBuilder::consent)
@@ -96,6 +106,9 @@ impl PostV1AccountMeResponseBuilder {
                 .locale
                 .ok_or_else(|| BuildError::missing_field("locale"))?,
             active_company_id: self.active_company_id,
+            time_zone: self
+                .time_zone
+                .ok_or_else(|| BuildError::missing_field("time_zone"))?,
             role: self.role,
             billing: self
                 .billing

@@ -22,6 +22,12 @@ pub struct PostV1DocumentSeriesUpdateRequest {
     #[serde(rename = "nextNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub next_number: Option<i64>,
+    #[serde(rename = "allocatedFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allocated_from: Option<i64>,
+    #[serde(rename = "allocatedTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allocated_to: Option<i64>,
     #[serde(rename = "warehouseId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub warehouse_id: Option<String>,
@@ -53,6 +59,8 @@ pub struct PostV1DocumentSeriesUpdateRequestBuilder {
     operation_type_id: Option<String>,
     number_length: Option<i64>,
     next_number: Option<i64>,
+    allocated_from: Option<i64>,
+    allocated_to: Option<i64>,
     warehouse_id: Option<String>,
     print_series: Option<bool>,
     is_default: Option<bool>,
@@ -100,6 +108,16 @@ impl PostV1DocumentSeriesUpdateRequestBuilder {
         self
     }
 
+    pub fn allocated_from(mut self, value: i64) -> Self {
+        self.allocated_from = Some(value);
+        self
+    }
+
+    pub fn allocated_to(mut self, value: i64) -> Self {
+        self.allocated_to = Some(value);
+        self
+    }
+
     pub fn warehouse_id(mut self, value: impl Into<String>) -> Self {
         self.warehouse_id = Some(value.into());
         self
@@ -133,6 +151,8 @@ impl PostV1DocumentSeriesUpdateRequestBuilder {
             operation_type_id: self.operation_type_id,
             number_length: self.number_length,
             next_number: self.next_number,
+            allocated_from: self.allocated_from,
+            allocated_to: self.allocated_to,
             warehouse_id: self.warehouse_id,
             print_series: self.print_series,
             is_default: self.is_default,

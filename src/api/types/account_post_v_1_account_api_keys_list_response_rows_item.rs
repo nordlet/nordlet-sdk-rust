@@ -11,6 +11,12 @@ pub struct PostV1AccountApiKeysListResponseRowsItem {
     #[serde(rename = "lastUsedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_used_at: Option<String>,
+    #[serde(rename = "expiresAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expires_at: Option<String>,
+    #[serde(rename = "replacedByKeyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub replaced_by_key_id: Option<String>,
     #[serde(rename = "revokedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub revoked_at: Option<String>,
@@ -32,6 +38,8 @@ pub struct PostV1AccountApiKeysListResponseRowsItemBuilder {
     name: Option<String>,
     scopes: Option<Vec<String>>,
     last_used_at: Option<String>,
+    expires_at: Option<String>,
+    replaced_by_key_id: Option<String>,
     revoked_at: Option<String>,
     created_at: Option<String>,
 }
@@ -54,6 +62,16 @@ impl PostV1AccountApiKeysListResponseRowsItemBuilder {
 
     pub fn last_used_at(mut self, value: impl Into<String>) -> Self {
         self.last_used_at = Some(value.into());
+        self
+    }
+
+    pub fn expires_at(mut self, value: impl Into<String>) -> Self {
+        self.expires_at = Some(value.into());
+        self
+    }
+
+    pub fn replaced_by_key_id(mut self, value: impl Into<String>) -> Self {
+        self.replaced_by_key_id = Some(value.into());
         self
     }
 
@@ -81,6 +99,8 @@ impl PostV1AccountApiKeysListResponseRowsItemBuilder {
                 .scopes
                 .ok_or_else(|| BuildError::missing_field("scopes"))?,
             last_used_at: self.last_used_at,
+            expires_at: self.expires_at,
+            replaced_by_key_id: self.replaced_by_key_id,
             revoked_at: self.revoked_at,
             created_at: self
                 .created_at

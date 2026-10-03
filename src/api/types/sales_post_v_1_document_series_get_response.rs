@@ -22,6 +22,12 @@ pub struct PostV1DocumentSeriesGetResponse {
     #[serde(rename = "nextNumber")]
     #[serde(default)]
     pub next_number: i64,
+    #[serde(rename = "allocatedFrom")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allocated_from: Option<i64>,
+    #[serde(rename = "allocatedTo")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub allocated_to: Option<i64>,
     #[serde(rename = "warehouseId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub warehouse_id: Option<String>,
@@ -59,6 +65,8 @@ pub struct PostV1DocumentSeriesGetResponseBuilder {
     operation_type_id: Option<String>,
     number_length: Option<i64>,
     next_number: Option<i64>,
+    allocated_from: Option<i64>,
+    allocated_to: Option<i64>,
     warehouse_id: Option<String>,
     print_series: Option<bool>,
     is_default: Option<bool>,
@@ -105,6 +113,16 @@ impl PostV1DocumentSeriesGetResponseBuilder {
 
     pub fn next_number(mut self, value: i64) -> Self {
         self.next_number = Some(value);
+        self
+    }
+
+    pub fn allocated_from(mut self, value: i64) -> Self {
+        self.allocated_from = Some(value);
+        self
+    }
+
+    pub fn allocated_to(mut self, value: i64) -> Self {
+        self.allocated_to = Some(value);
         self
     }
 
@@ -168,6 +186,8 @@ impl PostV1DocumentSeriesGetResponseBuilder {
             next_number: self
                 .next_number
                 .ok_or_else(|| BuildError::missing_field("next_number"))?,
+            allocated_from: self.allocated_from,
+            allocated_to: self.allocated_to,
             warehouse_id: self.warehouse_id,
             print_series: self
                 .print_series

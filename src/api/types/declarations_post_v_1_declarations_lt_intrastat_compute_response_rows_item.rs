@@ -19,6 +19,9 @@ pub struct PostV1DeclarationsLtIntrastatComputeResponseRowsItem {
     #[serde(rename = "transportMode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transport_mode: Option<String>,
+    #[serde(rename = "regionCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub region_code: Option<String>,
     #[serde(default)]
     pub country: String,
     #[serde(rename = "originCountry")]
@@ -59,6 +62,7 @@ pub struct PostV1DeclarationsLtIntrastatComputeResponseRowsItemBuilder {
     transaction_nature: Option<String>,
     delivery_terms: Option<String>,
     transport_mode: Option<String>,
+    region_code: Option<String>,
     country: Option<String>,
     origin_country: Option<String>,
     partner_vat: Option<String>,
@@ -97,6 +101,11 @@ impl PostV1DeclarationsLtIntrastatComputeResponseRowsItemBuilder {
 
     pub fn transport_mode(mut self, value: impl Into<String>) -> Self {
         self.transport_mode = Some(value.into());
+        self
+    }
+
+    pub fn region_code(mut self, value: impl Into<String>) -> Self {
+        self.region_code = Some(value.into());
         self
     }
 
@@ -163,6 +172,7 @@ impl PostV1DeclarationsLtIntrastatComputeResponseRowsItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("transaction_nature"))?,
             delivery_terms: self.delivery_terms,
             transport_mode: self.transport_mode,
+            region_code: self.region_code,
             country: self
                 .country
                 .ok_or_else(|| BuildError::missing_field("country"))?,

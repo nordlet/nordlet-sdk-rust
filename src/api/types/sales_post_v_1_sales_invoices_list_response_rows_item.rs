@@ -26,6 +26,9 @@ pub struct PostV1SalesInvoicesListResponseRowsItem {
     pub due_date: Option<String>,
     #[serde(default)]
     pub currency: String,
+    #[serde(rename = "fxRate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fx_rate: Option<String>,
     #[serde(rename = "netTotal")]
     #[serde(default)]
     pub net_total: String,
@@ -53,6 +56,18 @@ pub struct PostV1SalesInvoicesListResponseRowsItem {
     #[serde(rename = "vatScheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_scheme: Option<PostV1SalesInvoicesListResponseRowsItemVatScheme>,
+    #[serde(rename = "intrastatTransportMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_transport_mode: Option<String>,
+    #[serde(rename = "intrastatDeliveryTerms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_delivery_terms: Option<String>,
+    #[serde(rename = "intrastatRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_region: Option<String>,
+    #[serde(rename = "intrastatNatureOfTransaction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_nature_of_transaction: Option<String>,
     #[serde(rename = "vatCountryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_country_code: Option<String>,
@@ -100,6 +115,30 @@ pub struct PostV1SalesInvoicesListResponseRowsItem {
     #[serde(rename = "payToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pay_token: Option<String>,
+    #[serde(rename = "einvoiceSystem")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_system: Option<String>,
+    #[serde(rename = "einvoiceTransport")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_transport: Option<String>,
+    #[serde(rename = "einvoiceMessageId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_message_id: Option<String>,
+    #[serde(rename = "einvoiceNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_number: Option<String>,
+    #[serde(rename = "einvoiceStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_status: Option<String>,
+    #[serde(rename = "einvoiceDetail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_detail: Option<String>,
+    #[serde(rename = "einvoiceSentAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_sent_at: Option<String>,
+    #[serde(rename = "einvoiceCheckedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub einvoice_checked_at: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     pub created_at: String,
@@ -128,6 +167,7 @@ pub struct PostV1SalesInvoicesListResponseRowsItemBuilder {
     issue_date: Option<String>,
     due_date: Option<String>,
     currency: Option<String>,
+    fx_rate: Option<String>,
     net_total: Option<String>,
     vat_total: Option<String>,
     gross_total: Option<String>,
@@ -137,6 +177,10 @@ pub struct PostV1SalesInvoicesListResponseRowsItemBuilder {
     credited_invoice_id: Option<String>,
     agreement_id: Option<String>,
     vat_scheme: Option<PostV1SalesInvoicesListResponseRowsItemVatScheme>,
+    intrastat_transport_mode: Option<String>,
+    intrastat_delivery_terms: Option<String>,
+    intrastat_region: Option<String>,
+    intrastat_nature_of_transaction: Option<String>,
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
     notes: Option<String>,
@@ -153,6 +197,14 @@ pub struct PostV1SalesInvoicesListResponseRowsItemBuilder {
     locked_at: Option<String>,
     locked_by: Option<String>,
     pay_token: Option<String>,
+    einvoice_system: Option<String>,
+    einvoice_transport: Option<String>,
+    einvoice_message_id: Option<String>,
+    einvoice_number: Option<String>,
+    einvoice_status: Option<String>,
+    einvoice_detail: Option<String>,
+    einvoice_sent_at: Option<String>,
+    einvoice_checked_at: Option<String>,
     created_at: Option<String>,
     updated_at: Option<String>,
 }
@@ -216,6 +268,11 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
         self
     }
 
+    pub fn fx_rate(mut self, value: impl Into<String>) -> Self {
+        self.fx_rate = Some(value.into());
+        self
+    }
+
     pub fn net_total(mut self, value: impl Into<String>) -> Self {
         self.net_total = Some(value.into());
         self
@@ -258,6 +315,26 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
 
     pub fn vat_scheme(mut self, value: PostV1SalesInvoicesListResponseRowsItemVatScheme) -> Self {
         self.vat_scheme = Some(value);
+        self
+    }
+
+    pub fn intrastat_transport_mode(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_transport_mode = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_delivery_terms(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_delivery_terms = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_region(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_region = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_nature_of_transaction(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_nature_of_transaction = Some(value.into());
         self
     }
 
@@ -341,6 +418,46 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
         self
     }
 
+    pub fn einvoice_system(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_system = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_transport(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_transport = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_message_id(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_message_id = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_number(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_number = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_status(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_status = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_detail(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_detail = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_sent_at(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_sent_at = Some(value.into());
+        self
+    }
+
+    pub fn einvoice_checked_at(mut self, value: impl Into<String>) -> Self {
+        self.einvoice_checked_at = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: impl Into<String>) -> Self {
         self.created_at = Some(value.into());
         self
@@ -390,6 +507,7 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
             currency: self
                 .currency
                 .ok_or_else(|| BuildError::missing_field("currency"))?,
+            fx_rate: self.fx_rate,
             net_total: self
                 .net_total
                 .ok_or_else(|| BuildError::missing_field("net_total"))?,
@@ -407,6 +525,10 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
             credited_invoice_id: self.credited_invoice_id,
             agreement_id: self.agreement_id,
             vat_scheme: self.vat_scheme,
+            intrastat_transport_mode: self.intrastat_transport_mode,
+            intrastat_delivery_terms: self.intrastat_delivery_terms,
+            intrastat_region: self.intrastat_region,
+            intrastat_nature_of_transaction: self.intrastat_nature_of_transaction,
             vat_country_code: self.vat_country_code,
             deemed_supplier: self
                 .deemed_supplier
@@ -427,6 +549,14 @@ impl PostV1SalesInvoicesListResponseRowsItemBuilder {
             locked_at: self.locked_at,
             locked_by: self.locked_by,
             pay_token: self.pay_token,
+            einvoice_system: self.einvoice_system,
+            einvoice_transport: self.einvoice_transport,
+            einvoice_message_id: self.einvoice_message_id,
+            einvoice_number: self.einvoice_number,
+            einvoice_status: self.einvoice_status,
+            einvoice_detail: self.einvoice_detail,
+            einvoice_sent_at: self.einvoice_sent_at,
+            einvoice_checked_at: self.einvoice_checked_at,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

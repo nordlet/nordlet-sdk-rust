@@ -18,9 +18,24 @@ pub struct PostV1SalesInvoicesCreateRequest {
     #[serde(rename = "creditedInvoiceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credited_invoice_id: Option<String>,
+    #[serde(rename = "agreementId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub agreement_id: Option<String>,
     #[serde(rename = "vatScheme")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_scheme: Option<PostV1SalesInvoicesCreateRequestVatScheme>,
+    #[serde(rename = "intrastatTransportMode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_transport_mode: Option<String>,
+    #[serde(rename = "intrastatDeliveryTerms")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_delivery_terms: Option<String>,
+    #[serde(rename = "intrastatRegion")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_region: Option<String>,
+    #[serde(rename = "intrastatNatureOfTransaction")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub intrastat_nature_of_transaction: Option<String>,
     #[serde(rename = "vatCountryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_country_code: Option<String>,
@@ -78,7 +93,12 @@ pub struct PostV1SalesInvoicesCreateRequestBuilder {
     issue_date: Option<String>,
     due_date: Option<String>,
     credited_invoice_id: Option<String>,
+    agreement_id: Option<String>,
     vat_scheme: Option<PostV1SalesInvoicesCreateRequestVatScheme>,
+    intrastat_transport_mode: Option<String>,
+    intrastat_delivery_terms: Option<String>,
+    intrastat_region: Option<String>,
+    intrastat_nature_of_transaction: Option<String>,
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
     notes: Option<String>,
@@ -126,8 +146,33 @@ impl PostV1SalesInvoicesCreateRequestBuilder {
         self
     }
 
+    pub fn agreement_id(mut self, value: impl Into<String>) -> Self {
+        self.agreement_id = Some(value.into());
+        self
+    }
+
     pub fn vat_scheme(mut self, value: PostV1SalesInvoicesCreateRequestVatScheme) -> Self {
         self.vat_scheme = Some(value);
+        self
+    }
+
+    pub fn intrastat_transport_mode(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_transport_mode = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_delivery_terms(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_delivery_terms = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_region(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_region = Some(value.into());
+        self
+    }
+
+    pub fn intrastat_nature_of_transaction(mut self, value: impl Into<String>) -> Self {
+        self.intrastat_nature_of_transaction = Some(value.into());
         self
     }
 
@@ -215,7 +260,12 @@ impl PostV1SalesInvoicesCreateRequestBuilder {
             issue_date: self.issue_date,
             due_date: self.due_date,
             credited_invoice_id: self.credited_invoice_id,
+            agreement_id: self.agreement_id,
             vat_scheme: self.vat_scheme,
+            intrastat_transport_mode: self.intrastat_transport_mode,
+            intrastat_delivery_terms: self.intrastat_delivery_terms,
+            intrastat_region: self.intrastat_region,
+            intrastat_nature_of_transaction: self.intrastat_nature_of_transaction,
             vat_country_code: self.vat_country_code,
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,

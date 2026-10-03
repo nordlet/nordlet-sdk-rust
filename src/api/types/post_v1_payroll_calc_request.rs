@@ -1,24 +1,29 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 pub struct PostV1PayrollCalcRequest {
     #[serde(rename = "taxableBase")]
     #[serde(default)]
     pub taxable_base: String,
     #[serde(default)]
     pub date: String,
-    #[serde(rename = "applyNpd")]
+    #[serde(rename = "applyAllowance")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub apply_npd: Option<bool>,
-    #[serde(rename = "npdOverride")]
+    pub apply_allowance: Option<bool>,
+    #[serde(rename = "allowanceOverride")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub npd_override: Option<String>,
+    pub allowance_override: Option<String>,
     #[serde(rename = "pensionAccumulation")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pension_accumulation: Option<bool>,
     #[serde(rename = "fixedTerm")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub fixed_term: Option<bool>,
+    #[serde(rename = "benefitInKind")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub benefit_in_kind: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub options: Option<HashMap<String, String>>,
 }
 
 impl PostV1PayrollCalcRequest {
@@ -32,10 +37,12 @@ impl PostV1PayrollCalcRequest {
 pub struct PostV1PayrollCalcRequestBuilder {
     taxable_base: Option<String>,
     date: Option<String>,
-    apply_npd: Option<bool>,
-    npd_override: Option<String>,
+    apply_allowance: Option<bool>,
+    allowance_override: Option<String>,
     pension_accumulation: Option<bool>,
     fixed_term: Option<bool>,
+    benefit_in_kind: Option<String>,
+    options: Option<HashMap<String, String>>,
 }
 
 impl PostV1PayrollCalcRequestBuilder {
@@ -49,13 +56,13 @@ impl PostV1PayrollCalcRequestBuilder {
         self
     }
 
-    pub fn apply_npd(mut self, value: bool) -> Self {
-        self.apply_npd = Some(value);
+    pub fn apply_allowance(mut self, value: bool) -> Self {
+        self.apply_allowance = Some(value);
         self
     }
 
-    pub fn npd_override(mut self, value: impl Into<String>) -> Self {
-        self.npd_override = Some(value.into());
+    pub fn allowance_override(mut self, value: impl Into<String>) -> Self {
+        self.allowance_override = Some(value.into());
         self
     }
 
@@ -69,6 +76,16 @@ impl PostV1PayrollCalcRequestBuilder {
         self
     }
 
+    pub fn benefit_in_kind(mut self, value: impl Into<String>) -> Self {
+        self.benefit_in_kind = Some(value.into());
+        self
+    }
+
+    pub fn options(mut self, value: HashMap<String, String>) -> Self {
+        self.options = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PostV1PayrollCalcRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`taxable_base`](PostV1PayrollCalcRequestBuilder::taxable_base)
@@ -79,10 +96,12 @@ impl PostV1PayrollCalcRequestBuilder {
                 .taxable_base
                 .ok_or_else(|| BuildError::missing_field("taxable_base"))?,
             date: self.date.ok_or_else(|| BuildError::missing_field("date"))?,
-            apply_npd: self.apply_npd,
-            npd_override: self.npd_override,
+            apply_allowance: self.apply_allowance,
+            allowance_override: self.allowance_override,
             pension_accumulation: self.pension_accumulation,
             fixed_term: self.fixed_term,
+            benefit_in_kind: self.benefit_in_kind,
+            options: self.options,
         })
     }
 }

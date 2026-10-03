@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct PostV1SalesInvoicesEinvoiceSendResponse {
     #[serde(default)]
     pub sent: bool,
@@ -8,9 +8,16 @@ pub struct PostV1SalesInvoicesEinvoiceSendResponse {
     pub system: String,
     #[serde(default)]
     pub format: String,
+    pub transport: PostV1SalesInvoicesEinvoiceSendResponseTransport,
     #[serde(rename = "messageId")]
     #[serde(default)]
     pub message_id: String,
+    #[serde(rename = "nationalNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub national_number: Option<String>,
+    pub status: PostV1SalesInvoicesEinvoiceSendResponseStatus,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub detail: Option<String>,
     #[serde(rename = "fileId")]
     #[serde(default)]
     pub file_id: String,
@@ -30,7 +37,11 @@ pub struct PostV1SalesInvoicesEinvoiceSendResponseBuilder {
     sent: Option<bool>,
     system: Option<String>,
     format: Option<String>,
+    transport: Option<PostV1SalesInvoicesEinvoiceSendResponseTransport>,
     message_id: Option<String>,
+    national_number: Option<String>,
+    status: Option<PostV1SalesInvoicesEinvoiceSendResponseStatus>,
+    detail: Option<String>,
     file_id: Option<String>,
     warnings: Option<Vec<String>>,
 }
@@ -51,8 +62,28 @@ impl PostV1SalesInvoicesEinvoiceSendResponseBuilder {
         self
     }
 
+    pub fn transport(mut self, value: PostV1SalesInvoicesEinvoiceSendResponseTransport) -> Self {
+        self.transport = Some(value);
+        self
+    }
+
     pub fn message_id(mut self, value: impl Into<String>) -> Self {
         self.message_id = Some(value.into());
+        self
+    }
+
+    pub fn national_number(mut self, value: impl Into<String>) -> Self {
+        self.national_number = Some(value.into());
+        self
+    }
+
+    pub fn status(mut self, value: PostV1SalesInvoicesEinvoiceSendResponseStatus) -> Self {
+        self.status = Some(value);
+        self
+    }
+
+    pub fn detail(mut self, value: impl Into<String>) -> Self {
+        self.detail = Some(value.into());
         self
     }
 
@@ -71,7 +102,9 @@ impl PostV1SalesInvoicesEinvoiceSendResponseBuilder {
     /// - [`sent`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::sent)
     /// - [`system`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::system)
     /// - [`format`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::format)
+    /// - [`transport`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::transport)
     /// - [`message_id`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::message_id)
+    /// - [`status`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::status)
     /// - [`file_id`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::file_id)
     /// - [`warnings`](PostV1SalesInvoicesEinvoiceSendResponseBuilder::warnings)
     pub fn build(self) -> Result<PostV1SalesInvoicesEinvoiceSendResponse, BuildError> {
@@ -83,9 +116,17 @@ impl PostV1SalesInvoicesEinvoiceSendResponseBuilder {
             format: self
                 .format
                 .ok_or_else(|| BuildError::missing_field("format"))?,
+            transport: self
+                .transport
+                .ok_or_else(|| BuildError::missing_field("transport"))?,
             message_id: self
                 .message_id
                 .ok_or_else(|| BuildError::missing_field("message_id"))?,
+            national_number: self.national_number,
+            status: self
+                .status
+                .ok_or_else(|| BuildError::missing_field("status"))?,
+            detail: self.detail,
             file_id: self
                 .file_id
                 .ok_or_else(|| BuildError::missing_field("file_id"))?,

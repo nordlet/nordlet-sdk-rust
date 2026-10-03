@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 pub struct PostV1ReferenceCountriesListResponseRowsItem {
     #[serde(default)]
     pub code: String,
@@ -11,7 +11,7 @@ pub struct PostV1ReferenceCountriesListResponseRowsItem {
     #[serde(default)]
     pub is_eea: bool,
     #[serde(default)]
-    pub names: PostV1ReferenceCountriesListResponseRowsItemNames,
+    pub names: HashMap<String, String>,
 }
 
 impl PostV1ReferenceCountriesListResponseRowsItem {
@@ -26,7 +26,7 @@ pub struct PostV1ReferenceCountriesListResponseRowsItemBuilder {
     code: Option<String>,
     is_eu: Option<bool>,
     is_eea: Option<bool>,
-    names: Option<PostV1ReferenceCountriesListResponseRowsItemNames>,
+    names: Option<HashMap<String, String>>,
 }
 
 impl PostV1ReferenceCountriesListResponseRowsItemBuilder {
@@ -45,7 +45,7 @@ impl PostV1ReferenceCountriesListResponseRowsItemBuilder {
         self
     }
 
-    pub fn names(mut self, value: PostV1ReferenceCountriesListResponseRowsItemNames) -> Self {
+    pub fn names(mut self, value: HashMap<String, String>) -> Self {
         self.names = Some(value);
         self
     }

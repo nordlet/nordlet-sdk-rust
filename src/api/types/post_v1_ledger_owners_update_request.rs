@@ -23,6 +23,18 @@ pub struct PostV1LedgerOwnersUpdateRequest {
     #[serde(rename = "sharesAcquisitionDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub shares_acquisition_date: Option<String>,
+    #[serde(rename = "withholdingTaxPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub withholding_tax_percent: Option<String>,
+    #[serde(rename = "partnerLiability")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_liability: Option<PostV1LedgerOwnersUpdateRequestPartnerLiability>,
+    #[serde(rename = "specialBalanceRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub special_balance_required: Option<bool>,
+    #[serde(rename = "supplementaryBalanceRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub supplementary_balance_required: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<PostV1LedgerOwnersUpdateRequestAddress>,
 }
@@ -44,6 +56,10 @@ pub struct PostV1LedgerOwnersUpdateRequestBuilder {
     shares_amount: Option<String>,
     shares_type: Option<PostV1LedgerOwnersUpdateRequestSharesType>,
     shares_acquisition_date: Option<String>,
+    withholding_tax_percent: Option<String>,
+    partner_liability: Option<PostV1LedgerOwnersUpdateRequestPartnerLiability>,
+    special_balance_required: Option<bool>,
+    supplementary_balance_required: Option<bool>,
     address: Option<PostV1LedgerOwnersUpdateRequestAddress>,
 }
 
@@ -88,6 +104,29 @@ impl PostV1LedgerOwnersUpdateRequestBuilder {
         self
     }
 
+    pub fn withholding_tax_percent(mut self, value: impl Into<String>) -> Self {
+        self.withholding_tax_percent = Some(value.into());
+        self
+    }
+
+    pub fn partner_liability(
+        mut self,
+        value: PostV1LedgerOwnersUpdateRequestPartnerLiability,
+    ) -> Self {
+        self.partner_liability = Some(value);
+        self
+    }
+
+    pub fn special_balance_required(mut self, value: bool) -> Self {
+        self.special_balance_required = Some(value);
+        self
+    }
+
+    pub fn supplementary_balance_required(mut self, value: bool) -> Self {
+        self.supplementary_balance_required = Some(value);
+        self
+    }
+
     pub fn address(mut self, value: PostV1LedgerOwnersUpdateRequestAddress) -> Self {
         self.address = Some(value);
         self
@@ -106,6 +145,10 @@ impl PostV1LedgerOwnersUpdateRequestBuilder {
             shares_amount: self.shares_amount,
             shares_type: self.shares_type,
             shares_acquisition_date: self.shares_acquisition_date,
+            withholding_tax_percent: self.withholding_tax_percent,
+            partner_liability: self.partner_liability,
+            special_balance_required: self.special_balance_required,
+            supplementary_balance_required: self.supplementary_balance_required,
             address: self.address,
         })
     }
