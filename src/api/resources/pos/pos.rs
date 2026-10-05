@@ -13,11 +13,11 @@ impl PosClient {
         })
     }
 
-    pub async fn post_v1_pos_devices_create(
+    pub async fn devices_create(
         &self,
-        request: &PostV1PosDevicesCreateRequest,
+        request: &DevicesCreatePosRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PosDevicesCreateResponse, ApiError> {
+    ) -> Result<DevicesCreatePosResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl PosClient {
             .await
     }
 
-    pub async fn post_v1_pos_devices_update(
+    pub async fn devices_update(
         &self,
-        request: &PostV1PosDevicesUpdateRequest,
+        request: &DevicesUpdatePosRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PosDevicesUpdateResponse, ApiError> {
+    ) -> Result<DevicesUpdatePosResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl PosClient {
             .await
     }
 
-    pub async fn post_v1_pos_devices_list(
+    pub async fn devices_list(
         &self,
-        request: &PostV1PosDevicesListRequest,
+        request: &DevicesListPosRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PosDevicesListResponse, ApiError> {
+    ) -> Result<DevicesListPosResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl PosClient {
             .await
     }
 
-    pub async fn post_v1_pos_reports_create(
+    pub async fn reports_create(
         &self,
-        request: &PostV1PosReportsCreateRequest,
+        request: &ReportsCreatePosRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PosReportsCreateResponse, ApiError> {
+    ) -> Result<ReportsCreatePosResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl PosClient {
             .await
     }
 
-    pub async fn post_v1_pos_reports_get(
+    pub async fn reports_get(
         &self,
-        request: &PostV1PosReportsGetRequest,
+        request: &ReportsGetPosRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PosReportsGetResponse, ApiError> {
+    ) -> Result<ReportsGetPosResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl PosClient {
             .await
     }
 
-    pub async fn post_v1_pos_reports_list(
+    pub async fn reports_list(
         &self,
-        request: &PostV1PosReportsListRequest,
+        request: &ReportsListPosRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PosReportsListResponse, ApiError> {
+    ) -> Result<ReportsListPosResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

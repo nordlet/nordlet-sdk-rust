@@ -13,11 +13,11 @@ impl BankClient {
         })
     }
 
-    pub async fn post_v1_bank_accounts_create(
+    pub async fn accounts_create(
         &self,
-        request: &PostV1BankAccountsCreateRequest,
+        request: &AccountsCreateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankAccountsCreateResponse, ApiError> {
+    ) -> Result<AccountsCreateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_accounts_list(
+    pub async fn accounts_list(
         &self,
-        request: &PostV1BankAccountsListRequest,
+        request: &AccountsListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankAccountsListResponse, ApiError> {
+    ) -> Result<AccountsListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_accounts_update(
+    pub async fn accounts_update(
         &self,
-        request: &PostV1BankAccountsUpdateRequest,
+        request: &AccountsUpdateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankAccountsUpdateResponse, ApiError> {
+    ) -> Result<AccountsUpdateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_transactions_import(
+    pub async fn transactions_import(
         &self,
-        request: &PostV1BankTransactionsImportRequest,
+        request: &TransactionsImportBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankTransactionsImportResponse, ApiError> {
+    ) -> Result<TransactionsImportBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_statements_import(
+    pub async fn statements_import(
         &self,
-        request: &PostV1BankStatementsImportRequest,
+        request: &StatementsImportBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankStatementsImportResponse, ApiError> {
+    ) -> Result<StatementsImportBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_transactions_list(
+    pub async fn transactions_list(
         &self,
-        request: &PostV1BankTransactionsListRequest,
+        request: &TransactionsListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankTransactionsListResponse, ApiError> {
+    ) -> Result<TransactionsListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_transactions_match(
+    pub async fn transactions_match(
         &self,
-        request: &PostV1BankTransactionsMatchRequest,
+        request: &TransactionsMatchBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankTransactionsMatchResponse, ApiError> {
+    ) -> Result<TransactionsMatchBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,36 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_transactions_record(
+    /// Undo a match. A payment matched to an invoice, or a line posted by an import template, gets a reversing journal transaction dated date (default: today) and the invoice paid amount and payment status are restored; a line linked to a payment-provider settlement is only unlinked. The line returns to status new.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn transactions_unmatch(
         &self,
-        request: &PostV1BankTransactionsRecordRequest,
+        request: &TransactionsUnmatchBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankTransactionsRecordResponse, ApiError> {
+    ) -> Result<TransactionsUnmatchBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/transactions/unmatch",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn transactions_record(
+        &self,
+        request: &TransactionsRecordBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TransactionsRecordBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +166,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_payments_export(
+    pub async fn payments_export(
         &self,
-        request: &PostV1BankPaymentsExportRequest,
+        request: &PaymentsExportBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankPaymentsExportResponse, ApiError> {
+    ) -> Result<PaymentsExportBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +182,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn create_a_bank_import_template_fields_default_to_the_types_standard_field_list(
+    pub async fn import_templates_create(
         &self,
-        request: &PostV1BankImportTemplatesCreateRequest,
+        request: &ImportTemplatesCreateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankImportTemplatesCreateResponse, ApiError> {
+    ) -> Result<ImportTemplatesCreateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +198,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_import_templates_update(
+    pub async fn import_templates_update(
         &self,
-        request: &PostV1BankImportTemplatesUpdateRequest,
+        request: &ImportTemplatesUpdateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankImportTemplatesUpdateResponse, ApiError> {
+    ) -> Result<ImportTemplatesUpdateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +214,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_import_templates_delete(
+    pub async fn import_templates_delete(
         &self,
-        request: &PostV1BankImportTemplatesDeleteRequest,
+        request: &ImportTemplatesDeleteBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankImportTemplatesDeleteResponse, ApiError> {
+    ) -> Result<ImportTemplatesDeleteBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +230,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_import_templates_get(
+    pub async fn import_templates_get(
         &self,
-        request: &PostV1BankImportTemplatesGetRequest,
+        request: &ImportTemplatesGetBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankImportTemplatesGetResponse, ApiError> {
+    ) -> Result<ImportTemplatesGetBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +246,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_import_templates_list(
+    pub async fn import_templates_list(
         &self,
-        request: &PostV1BankImportTemplatesListRequest,
+        request: &ImportTemplatesListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankImportTemplatesListResponse, ApiError> {
+    ) -> Result<ImportTemplatesListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +262,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_match_rules_create(
+    pub async fn match_rules_create(
         &self,
-        request: &PostV1BankMatchRulesCreateRequest,
+        request: &MatchRulesCreateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMatchRulesCreateResponse, ApiError> {
+    ) -> Result<MatchRulesCreateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +278,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_match_rules_update(
+    pub async fn match_rules_update(
         &self,
-        request: &PostV1BankMatchRulesUpdateRequest,
+        request: &MatchRulesUpdateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMatchRulesUpdateResponse, ApiError> {
+    ) -> Result<MatchRulesUpdateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +294,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_match_rules_delete(
+    pub async fn match_rules_delete(
         &self,
-        request: &PostV1BankMatchRulesDeleteRequest,
+        request: &MatchRulesDeleteBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMatchRulesDeleteResponse, ApiError> {
+    ) -> Result<MatchRulesDeleteBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +310,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_match_rules_list(
+    pub async fn match_rules_list(
         &self,
-        request: &PostV1BankMatchRulesListRequest,
+        request: &MatchRulesListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMatchRulesListResponse, ApiError> {
+    ) -> Result<MatchRulesListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +326,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_mandates_create(
+    pub async fn mandates_create(
         &self,
-        request: &PostV1BankMandatesCreateRequest,
+        request: &MandatesCreateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMandatesCreateResponse, ApiError> {
+    ) -> Result<MandatesCreateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +342,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_mandates_update(
+    pub async fn mandates_update(
         &self,
-        request: &PostV1BankMandatesUpdateRequest,
+        request: &MandatesUpdateBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMandatesUpdateResponse, ApiError> {
+    ) -> Result<MandatesUpdateBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +358,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_mandates_cancel(
+    pub async fn mandates_cancel(
         &self,
-        request: &PostV1BankMandatesCancelRequest,
+        request: &MandatesCancelBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMandatesCancelResponse, ApiError> {
+    ) -> Result<MandatesCancelBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -349,11 +374,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_mandates_get(
+    pub async fn mandates_get(
         &self,
-        request: &PostV1BankMandatesGetRequest,
+        request: &MandatesGetBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMandatesGetResponse, ApiError> {
+    ) -> Result<MandatesGetBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -365,11 +390,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_mandates_list(
+    pub async fn mandates_list(
         &self,
-        request: &PostV1BankMandatesListRequest,
+        request: &MandatesListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankMandatesListResponse, ApiError> {
+    ) -> Result<MandatesListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -381,11 +406,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_direct_debits_export(
+    pub async fn direct_debits_export(
         &self,
-        request: &PostV1BankDirectDebitsExportRequest,
+        request: &DirectDebitsExportBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankDirectDebitsExportResponse, ApiError> {
+    ) -> Result<DirectDebitsExportBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -397,11 +422,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_transactions_suggest_matches(
+    pub async fn transactions_suggest_matches(
         &self,
-        request: &PostV1BankTransactionsSuggestMatchesRequest,
+        request: &TransactionsSuggestMatchesBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankTransactionsSuggestMatchesResponse, ApiError> {
+    ) -> Result<TransactionsSuggestMatchesBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -413,11 +438,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_settlements_import(
+    pub async fn settlements_import(
         &self,
-        request: &PostV1BankSettlementsImportRequest,
+        request: &SettlementsImportBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsImportResponse, ApiError> {
+    ) -> Result<SettlementsImportBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -429,11 +454,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_settlements_list(
+    pub async fn settlements_list(
         &self,
-        request: &PostV1BankSettlementsListRequest,
+        request: &SettlementsListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsListResponse, ApiError> {
+    ) -> Result<SettlementsListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -445,11 +470,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_settlements_get(
+    pub async fn settlements_get(
         &self,
-        request: &PostV1BankSettlementsGetRequest,
+        request: &SettlementsGetBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsGetResponse, ApiError> {
+    ) -> Result<SettlementsGetBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -461,11 +486,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_settlements_match(
+    pub async fn settlements_match(
         &self,
-        request: &PostV1BankSettlementsMatchRequest,
+        request: &SettlementsMatchBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsMatchResponse, ApiError> {
+    ) -> Result<SettlementsMatchBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -486,11 +511,11 @@ impl BankClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn set_what_the_marketplace_keeps_from_one_settlement_line_as_a_rate_or_as_an_amount(
+    pub async fn settlements_commission(
         &self,
-        request: &PostV1BankSettlementsCommissionRequest,
+        request: &SettlementsCommissionBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsCommissionResponse, ApiError> {
+    ) -> Result<SettlementsCommissionBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -511,11 +536,11 @@ impl BankClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_bank_settlements_link(
+    pub async fn settlements_link(
         &self,
-        request: &PostV1BankSettlementsLinkRequest,
+        request: &SettlementsLinkBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsLinkResponse, ApiError> {
+    ) -> Result<SettlementsLinkBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -536,11 +561,11 @@ impl BankClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_bank_settlements_unlink(
+    pub async fn settlements_unlink(
         &self,
-        request: &PostV1BankSettlementsUnlinkRequest,
+        request: &SettlementsUnlinkBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsUnlinkResponse, ApiError> {
+    ) -> Result<SettlementsUnlinkBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -552,11 +577,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_settlements_post(
+    pub async fn settlements_post(
         &self,
-        request: &PostV1BankSettlementsPostRequest,
+        request: &SettlementsPostBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankSettlementsPostResponse, ApiError> {
+    ) -> Result<SettlementsPostBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -568,11 +593,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn list_the_psd2_banks_asps_ps_available_to_connect(
+    pub async fn feeds_banks_list(
         &self,
-        request: &PostV1BankFeedsBanksListRequest,
+        request: &FeedsBanksListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsBanksListResponse, ApiError> {
+    ) -> Result<FeedsBanksListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -584,11 +609,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn begin_bank_authorization_redirect_the_user_to_the_returned_url(
+    pub async fn feeds_connections_start(
         &self,
-        request: &PostV1BankFeedsConnectionsStartRequest,
+        request: &FeedsConnectionsStartBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsConnectionsStartResponse, ApiError> {
+    ) -> Result<FeedsConnectionsStartBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -600,11 +625,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn exchange_the_redirect_code_for_a_session_and_store_the_bank_accounts_it_exposes(
+    pub async fn feeds_connections_complete(
         &self,
-        request: &PostV1BankFeedsConnectionsCompleteRequest,
+        request: &FeedsConnectionsCompleteBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsConnectionsCompleteResponse, ApiError> {
+    ) -> Result<FeedsConnectionsCompleteBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -616,11 +641,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_feeds_connections_get(
+    pub async fn feeds_connections_get(
         &self,
-        request: &PostV1BankFeedsConnectionsGetRequest,
+        request: &FeedsConnectionsGetBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsConnectionsGetResponse, ApiError> {
+    ) -> Result<FeedsConnectionsGetBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -632,11 +657,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn post_v1_bank_feeds_connections_list(
+    pub async fn feeds_connections_list(
         &self,
-        request: &PostV1BankFeedsConnectionsListRequest,
+        request: &FeedsConnectionsListBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsConnectionsListResponse, ApiError> {
+    ) -> Result<FeedsConnectionsListBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -648,11 +673,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn revoke_the_consent_at_the_bank_and_drop_the_stored_connection(
+    pub async fn feeds_connections_delete(
         &self,
-        request: &PostV1BankFeedsConnectionsDeleteRequest,
+        request: &FeedsConnectionsDeleteBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsConnectionsDeleteResponse, ApiError> {
+    ) -> Result<FeedsConnectionsDeleteBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -664,11 +689,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn point_a_bank_feed_account_at_a_ledger_bank_account_so_its_transactions_can_be_synced(
+    pub async fn feeds_accounts_link(
         &self,
-        request: &PostV1BankFeedsAccountsLinkRequest,
+        request: &FeedsAccountsLinkBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsAccountsLinkResponse, ApiError> {
+    ) -> Result<FeedsAccountsLinkBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -680,11 +705,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn choose_the_import_template_applied_on_sync_and_how_often_the_account_is_synced_automatically(
+    pub async fn feeds_accounts_configure(
         &self,
-        request: &PostV1BankFeedsAccountsConfigureRequest,
+        request: &FeedsAccountsConfigureBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsAccountsConfigureResponse, ApiError> {
+    ) -> Result<FeedsAccountsConfigureBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -696,11 +721,11 @@ impl BankClient {
             .await
     }
 
-    pub async fn pull_new_transactions_from_the_bank_into_the_ledger_emits_bank_feed_synced(
+    pub async fn feeds_sync(
         &self,
-        request: &PostV1BankFeedsSyncRequest,
+        request: &FeedsSyncBankRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BankFeedsSyncResponse, ApiError> {
+    ) -> Result<FeedsSyncBankResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

@@ -13,11 +13,11 @@ impl AuditClient {
         })
     }
 
-    pub async fn post_v1_audit_list(
+    pub async fn list(
         &self,
-        request: &PostV1AuditListRequest,
+        request: &ListAuditRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AuditListResponse, ApiError> {
+    ) -> Result<ListAuditResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

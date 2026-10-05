@@ -13,11 +13,11 @@ impl TransportClient {
         })
     }
 
-    pub async fn post_v1_transport_waybills_create(
+    pub async fn waybills_create(
         &self,
-        request: &PostV1TransportWaybillsCreateRequest,
+        request: &WaybillsCreateTransportRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1TransportWaybillsCreateResponse, ApiError> {
+    ) -> Result<WaybillsCreateTransportResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl TransportClient {
             .await
     }
 
-    pub async fn post_v1_transport_waybills_update(
+    pub async fn waybills_update(
         &self,
-        request: &PostV1TransportWaybillsUpdateRequest,
+        request: &WaybillsUpdateTransportRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1TransportWaybillsUpdateResponse, ApiError> {
+    ) -> Result<WaybillsUpdateTransportResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl TransportClient {
             .await
     }
 
-    pub async fn post_v1_transport_waybills_issue(
+    pub async fn waybills_issue(
         &self,
-        request: &PostV1TransportWaybillsIssueRequest,
+        request: &WaybillsIssueTransportRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1TransportWaybillsIssueResponse, ApiError> {
+    ) -> Result<WaybillsIssueTransportResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl TransportClient {
             .await
     }
 
-    pub async fn post_v1_transport_waybills_cancel(
+    pub async fn waybills_cancel(
         &self,
-        request: &PostV1TransportWaybillsCancelRequest,
+        request: &WaybillsCancelTransportRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1TransportWaybillsCancelResponse, ApiError> {
+    ) -> Result<WaybillsCancelTransportResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl TransportClient {
             .await
     }
 
-    pub async fn post_v1_transport_waybills_get(
+    pub async fn waybills_get(
         &self,
-        request: &PostV1TransportWaybillsGetRequest,
+        request: &WaybillsGetTransportRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1TransportWaybillsGetResponse, ApiError> {
+    ) -> Result<WaybillsGetTransportResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl TransportClient {
             .await
     }
 
-    pub async fn post_v1_transport_waybills_list(
+    pub async fn waybills_list(
         &self,
-        request: &PostV1TransportWaybillsListRequest,
+        request: &WaybillsListTransportRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1TransportWaybillsListResponse, ApiError> {
+    ) -> Result<WaybillsListTransportResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

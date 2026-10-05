@@ -13,11 +13,11 @@ impl LedgerClient {
         })
     }
 
-    pub async fn post_v1_ledger_accounts_list(
+    pub async fn accounts_list(
         &self,
-        request: &PostV1LedgerAccountsListRequest,
+        request: &AccountsListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerAccountsListResponse, ApiError> {
+    ) -> Result<AccountsListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_accounts_create(
+    pub async fn accounts_create(
         &self,
-        request: &PostV1LedgerAccountsCreateRequest,
+        request: &AccountsCreateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerAccountsCreateResponse, ApiError> {
+    ) -> Result<AccountsCreateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_accounts_update(
+    pub async fn accounts_update(
         &self,
-        request: &PostV1LedgerAccountsUpdateRequest,
+        request: &AccountsUpdateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerAccountsUpdateResponse, ApiError> {
+    ) -> Result<AccountsUpdateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_accounts_apply_template(
+    pub async fn accounts_apply_template(
         &self,
-        request: &PostV1LedgerAccountsApplyTemplateRequest,
+        request: &AccountsApplyTemplateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerAccountsApplyTemplateResponse, ApiError> {
+    ) -> Result<AccountsApplyTemplateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -86,11 +86,11 @@ impl LedgerClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn move_a_company_that_has_posted_nothing_yet_to_the_chart_of_accounts_of_its_country(
+    pub async fn accounts_switch_chart(
         &self,
-        request: &PostV1LedgerAccountsSwitchChartRequest,
+        request: &AccountsSwitchChartLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerAccountsSwitchChartResponse, ApiError> {
+    ) -> Result<AccountsSwitchChartLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -102,11 +102,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_periods_list(
+    pub async fn periods_list(
         &self,
-        request: &PostV1LedgerPeriodsListRequest,
+        request: &PeriodsListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerPeriodsListResponse, ApiError> {
+    ) -> Result<PeriodsListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -118,11 +118,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_periods_lock(
+    pub async fn periods_lock(
         &self,
-        request: &PostV1LedgerPeriodsLockRequest,
+        request: &PeriodsLockLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerPeriodsLockResponse, ApiError> {
+    ) -> Result<PeriodsLockLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -134,11 +134,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_periods_unlock(
+    pub async fn periods_unlock(
         &self,
-        request: &PostV1LedgerPeriodsUnlockRequest,
+        request: &PeriodsUnlockLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerPeriodsUnlockResponse, ApiError> {
+    ) -> Result<PeriodsUnlockLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -150,11 +150,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_journal_transactions_list(
+    pub async fn journal_transactions_list(
         &self,
-        request: &PostV1LedgerJournalTransactionsListRequest,
+        request: &JournalTransactionsListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerJournalTransactionsListResponse, ApiError> {
+    ) -> Result<JournalTransactionsListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -166,11 +166,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_centers_create(
+    pub async fn cost_centers_create(
         &self,
-        request: &PostV1LedgerCostCentersCreateRequest,
+        request: &CostCentersCreateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCentersCreateResponse, ApiError> {
+    ) -> Result<CostCentersCreateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -182,11 +182,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_centers_update(
+    pub async fn cost_centers_update(
         &self,
-        request: &PostV1LedgerCostCentersUpdateRequest,
+        request: &CostCentersUpdateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCentersUpdateResponse, ApiError> {
+    ) -> Result<CostCentersUpdateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -198,11 +198,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_centers_list(
+    pub async fn cost_centers_list(
         &self,
-        request: &PostV1LedgerCostCentersListRequest,
+        request: &CostCentersListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCentersListResponse, ApiError> {
+    ) -> Result<CostCentersListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -214,11 +214,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_center_groups_create(
+    pub async fn cost_center_groups_create(
         &self,
-        request: &PostV1LedgerCostCenterGroupsCreateRequest,
+        request: &CostCenterGroupsCreateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCenterGroupsCreateResponse, ApiError> {
+    ) -> Result<CostCenterGroupsCreateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -230,11 +230,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_center_groups_update(
+    pub async fn cost_center_groups_update(
         &self,
-        request: &PostV1LedgerCostCenterGroupsUpdateRequest,
+        request: &CostCenterGroupsUpdateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCenterGroupsUpdateResponse, ApiError> {
+    ) -> Result<CostCenterGroupsUpdateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -246,11 +246,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_center_groups_delete(
+    pub async fn cost_center_groups_delete(
         &self,
-        request: &PostV1LedgerCostCenterGroupsDeleteRequest,
+        request: &CostCenterGroupsDeleteLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCenterGroupsDeleteResponse, ApiError> {
+    ) -> Result<CostCenterGroupsDeleteLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -262,11 +262,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_cost_center_groups_list(
+    pub async fn cost_center_groups_list(
         &self,
-        request: &PostV1LedgerCostCenterGroupsListRequest,
+        request: &CostCenterGroupsListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerCostCenterGroupsListResponse, ApiError> {
+    ) -> Result<CostCenterGroupsListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -278,11 +278,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_posting_rules_list(
+    pub async fn posting_rules_list(
         &self,
-        request: &PostV1LedgerPostingRulesListRequest,
+        request: &PostingRulesListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerPostingRulesListResponse, ApiError> {
+    ) -> Result<PostingRulesListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -294,11 +294,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_posting_rules_update(
+    pub async fn posting_rules_update(
         &self,
-        request: &PostV1LedgerPostingRulesUpdateRequest,
+        request: &PostingRulesUpdateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerPostingRulesUpdateResponse, ApiError> {
+    ) -> Result<PostingRulesUpdateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -310,11 +310,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_owners_create(
+    pub async fn owners_create(
         &self,
-        request: &PostV1LedgerOwnersCreateRequest,
+        request: &OwnersCreateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerOwnersCreateResponse, ApiError> {
+    ) -> Result<OwnersCreateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -326,11 +326,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_owners_update(
+    pub async fn owners_update(
         &self,
-        request: &PostV1LedgerOwnersUpdateRequest,
+        request: &OwnersUpdateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerOwnersUpdateResponse, ApiError> {
+    ) -> Result<OwnersUpdateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -342,11 +342,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_owners_delete(
+    pub async fn owners_delete(
         &self,
-        request: &PostV1LedgerOwnersDeleteRequest,
+        request: &OwnersDeleteLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerOwnersDeleteResponse, ApiError> {
+    ) -> Result<OwnersDeleteLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -358,11 +358,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_owners_list(
+    pub async fn owners_list(
         &self,
-        request: &PostV1LedgerOwnersListRequest,
+        request: &OwnersListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerOwnersListResponse, ApiError> {
+    ) -> Result<OwnersListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -374,11 +374,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_journal_transactions_get(
+    pub async fn journal_transactions_get(
         &self,
-        request: &PostV1LedgerJournalTransactionsGetRequest,
+        request: &JournalTransactionsGetLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerJournalTransactionsGetResponse, ApiError> {
+    ) -> Result<JournalTransactionsGetLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -390,11 +390,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn post_v1_ledger_journal_transactions_create(
+    pub async fn journal_transactions_create(
         &self,
-        request: &PostV1LedgerJournalTransactionsCreateRequest,
+        request: &JournalTransactionsCreateLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerJournalTransactionsCreateResponse, ApiError> {
+    ) -> Result<JournalTransactionsCreateLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -415,11 +415,11 @@ impl LedgerClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn national_statement_layouts_available_to_the_company(
+    pub async fn statement_rows_schemes(
         &self,
-        request: &PostV1LedgerStatementRowsSchemesRequest,
+        request: &StatementRowsSchemesLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerStatementRowsSchemesResponse, ApiError> {
+    ) -> Result<StatementRowsSchemesLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -431,11 +431,11 @@ impl LedgerClient {
             .await
     }
 
-    pub async fn accounts_placed_on_the_rows_of_a_statement_layout_with_the_row_totals_of_a_period(
+    pub async fn statement_rows_list(
         &self,
-        request: &PostV1LedgerStatementRowsListRequest,
+        request: &StatementRowsListLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerStatementRowsListResponse, ApiError> {
+    ) -> Result<StatementRowsListLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -456,88 +456,15 @@ impl LedgerClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn map_an_account_or_an_account_code_prefix_to_a_row_of_a_statement_layout(
+    pub async fn statement_rows_set(
         &self,
-        request: &PostV1LedgerStatementRowsSetRequest,
+        request: &StatementRowsSetLedgerRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1LedgerStatementRowsSetResponse, ApiError> {
+    ) -> Result<StatementRowsSetLedgerResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
                 "v1/ledger/statement-rows/set",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    /// Directors, board members, the company secretary, representatives and liquidators, with their personal identifier, appointment and resignation dates and whether they sign the annual accounts. Annual returns and registry deposits are built from this register.
-    ///
-    /// # Arguments
-    ///
-    /// * `options` - Additional request options such as headers, timeout, etc.
-    ///
-    /// # Returns
-    ///
-    /// JSON response from the API
-    pub async fn officers_of_the_company(
-        &self,
-        request: &PostV1OfficersListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OfficersListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/officers/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn record_an_officer_of_the_company(
-        &self,
-        request: &PostV1OfficersCreateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OfficersCreateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/officers/create",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn change_a_recorded_officer(
-        &self,
-        request: &PostV1OfficersUpdateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OfficersUpdateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/officers/update",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn remove_a_recorded_officer(
-        &self,
-        request: &PostV1OfficersDeleteRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OfficersDeleteResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/officers/delete",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

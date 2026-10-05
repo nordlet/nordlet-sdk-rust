@@ -16,8 +16,8 @@
 //!     let client = ApiClient::new(config).expect("Failed to build client");
 //!     client
 //!         .reference
-//!         .post_v1reference_exchange_rates_sync(
-//!             &PostV1ReferenceExchangeRatesSyncRequest {
+//!         .exchange_rates_sync(
+//!             &ExchangeRatesSyncReferenceRequest {
 //!                 ..Default::default()
 //!             },
 //!             None,

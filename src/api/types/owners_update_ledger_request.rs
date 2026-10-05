@@ -1,0 +1,152 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct OwnersUpdateLedgerRequest {
+    #[serde(default)]
+    pub id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub code: Option<String>,
+    #[serde(rename = "equityAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub equity_account_code: Option<String>,
+    #[serde(rename = "sharesQuantity")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub shares_quantity: Option<String>,
+    #[serde(rename = "sharesAmount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub shares_amount: Option<String>,
+    #[serde(rename = "sharesType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub shares_type: Option<OwnersUpdateLedgerRequestSharesType>,
+    #[serde(rename = "sharesAcquisitionDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub shares_acquisition_date: Option<NaiveDate>,
+    #[serde(rename = "withholdingTaxPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub withholding_tax_percent: Option<String>,
+    #[serde(rename = "partnerLiability")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_liability: Option<OwnersUpdateLedgerRequestPartnerLiability>,
+    #[serde(rename = "specialBalanceRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub special_balance_required: Option<bool>,
+    #[serde(rename = "supplementaryBalanceRequired")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub supplementary_balance_required: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub address: Option<OwnersUpdateLedgerRequestAddress>,
+}
+
+impl OwnersUpdateLedgerRequest {
+    pub fn builder() -> OwnersUpdateLedgerRequestBuilder {
+        <OwnersUpdateLedgerRequestBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct OwnersUpdateLedgerRequestBuilder {
+    id: Option<String>,
+    name: Option<String>,
+    code: Option<String>,
+    equity_account_code: Option<String>,
+    shares_quantity: Option<String>,
+    shares_amount: Option<String>,
+    shares_type: Option<OwnersUpdateLedgerRequestSharesType>,
+    shares_acquisition_date: Option<NaiveDate>,
+    withholding_tax_percent: Option<String>,
+    partner_liability: Option<OwnersUpdateLedgerRequestPartnerLiability>,
+    special_balance_required: Option<bool>,
+    supplementary_balance_required: Option<bool>,
+    address: Option<OwnersUpdateLedgerRequestAddress>,
+}
+
+impl OwnersUpdateLedgerRequestBuilder {
+    pub fn id(mut self, value: impl Into<String>) -> Self {
+        self.id = Some(value.into());
+        self
+    }
+
+    pub fn name(mut self, value: impl Into<String>) -> Self {
+        self.name = Some(value.into());
+        self
+    }
+
+    pub fn code(mut self, value: impl Into<String>) -> Self {
+        self.code = Some(value.into());
+        self
+    }
+
+    pub fn equity_account_code(mut self, value: impl Into<String>) -> Self {
+        self.equity_account_code = Some(value.into());
+        self
+    }
+
+    pub fn shares_quantity(mut self, value: impl Into<String>) -> Self {
+        self.shares_quantity = Some(value.into());
+        self
+    }
+
+    pub fn shares_amount(mut self, value: impl Into<String>) -> Self {
+        self.shares_amount = Some(value.into());
+        self
+    }
+
+    pub fn shares_type(mut self, value: OwnersUpdateLedgerRequestSharesType) -> Self {
+        self.shares_type = Some(value);
+        self
+    }
+
+    pub fn shares_acquisition_date(mut self, value: NaiveDate) -> Self {
+        self.shares_acquisition_date = Some(value);
+        self
+    }
+
+    pub fn withholding_tax_percent(mut self, value: impl Into<String>) -> Self {
+        self.withholding_tax_percent = Some(value.into());
+        self
+    }
+
+    pub fn partner_liability(mut self, value: OwnersUpdateLedgerRequestPartnerLiability) -> Self {
+        self.partner_liability = Some(value);
+        self
+    }
+
+    pub fn special_balance_required(mut self, value: bool) -> Self {
+        self.special_balance_required = Some(value);
+        self
+    }
+
+    pub fn supplementary_balance_required(mut self, value: bool) -> Self {
+        self.supplementary_balance_required = Some(value);
+        self
+    }
+
+    pub fn address(mut self, value: OwnersUpdateLedgerRequestAddress) -> Self {
+        self.address = Some(value);
+        self
+    }
+
+    /// Consumes the builder and constructs a [`OwnersUpdateLedgerRequest`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`id`](OwnersUpdateLedgerRequestBuilder::id)
+    pub fn build(self) -> Result<OwnersUpdateLedgerRequest, BuildError> {
+        Ok(OwnersUpdateLedgerRequest {
+            id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+            name: self.name,
+            code: self.code,
+            equity_account_code: self.equity_account_code,
+            shares_quantity: self.shares_quantity,
+            shares_amount: self.shares_amount,
+            shares_type: self.shares_type,
+            shares_acquisition_date: self.shares_acquisition_date,
+            withholding_tax_percent: self.withholding_tax_percent,
+            partner_liability: self.partner_liability,
+            special_balance_required: self.special_balance_required,
+            supplementary_balance_required: self.supplementary_balance_required,
+            address: self.address,
+        })
+    }
+}

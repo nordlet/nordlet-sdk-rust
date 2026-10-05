@@ -13,11 +13,11 @@ impl AssetsClient {
         })
     }
 
-    pub async fn post_v1_assets_groups_create(
+    pub async fn groups_create(
         &self,
-        request: &PostV1AssetsGroupsCreateRequest,
+        request: &GroupsCreateAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsGroupsCreateResponse, ApiError> {
+    ) -> Result<GroupsCreateAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_groups_list(
+    pub async fn groups_list(
         &self,
-        request: &PostV1AssetsGroupsListRequest,
+        request: &GroupsListAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsGroupsListResponse, ApiError> {
+    ) -> Result<GroupsListAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_assets_create(
+    pub async fn assets_create(
         &self,
-        request: &PostV1AssetsAssetsCreateRequest,
+        request: &AssetsCreateAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsAssetsCreateResponse, ApiError> {
+    ) -> Result<AssetsCreateAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_assets_update(
+    pub async fn assets_update(
         &self,
-        request: &PostV1AssetsAssetsUpdateRequest,
+        request: &AssetsUpdateAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsAssetsUpdateResponse, ApiError> {
+    ) -> Result<AssetsUpdateAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -86,11 +86,11 @@ impl AssetsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_assets_assets_input_vat(
+    pub async fn assets_input_vat(
         &self,
-        request: &PostV1AssetsAssetsInputVatRequest,
+        request: &AssetsInputVatAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsAssetsInputVatResponse, ApiError> {
+    ) -> Result<AssetsInputVatAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -102,11 +102,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_assets_get(
+    pub async fn assets_get(
         &self,
-        request: &PostV1AssetsAssetsGetRequest,
+        request: &AssetsGetAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsAssetsGetResponse, ApiError> {
+    ) -> Result<AssetsGetAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -118,11 +118,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_assets_list(
+    pub async fn assets_list(
         &self,
-        request: &PostV1AssetsAssetsListRequest,
+        request: &AssetsListAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsAssetsListResponse, ApiError> {
+    ) -> Result<AssetsListAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -134,11 +134,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_assets_modernize(
+    pub async fn assets_modernize(
         &self,
-        request: &PostV1AssetsAssetsModernizeRequest,
+        request: &AssetsModernizeAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsAssetsModernizeResponse, ApiError> {
+    ) -> Result<AssetsModernizeAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -150,11 +150,36 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_depreciation_preview(
+    /// Dispose of a fixed asset (sold, scrapped or written off). Removes its cost and accumulated depreciation, books the net book value as a disposal loss and the proceeds as a disposal gain (posting rules assets.disposalLoss, assets.disposalGain, assets.disposalProceeds), and stops its depreciation. Depreciation must be posted for every month before the disposal month.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn assets_dispose(
         &self,
-        request: &PostV1AssetsDepreciationPreviewRequest,
+        request: &AssetsDisposeAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsDepreciationPreviewResponse, ApiError> {
+    ) -> Result<AssetsDisposeAssetsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/assets/assets/dispose",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn depreciation_preview(
+        &self,
+        request: &DepreciationPreviewAssetsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<DepreciationPreviewAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -166,11 +191,11 @@ impl AssetsClient {
             .await
     }
 
-    pub async fn post_v1_assets_depreciation_post(
+    pub async fn depreciation_post(
         &self,
-        request: &PostV1AssetsDepreciationPostRequest,
+        request: &DepreciationPostAssetsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AssetsDepreciationPostResponse, ApiError> {
+    ) -> Result<DepreciationPostAssetsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

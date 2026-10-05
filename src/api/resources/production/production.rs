@@ -13,11 +13,11 @@ impl ProductionClient {
         })
     }
 
-    pub async fn post_v1_production_work_centers_create(
+    pub async fn work_centers_create(
         &self,
-        request: &PostV1ProductionWorkCentersCreateRequest,
+        request: &WorkCentersCreateProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionWorkCentersCreateResponse, ApiError> {
+    ) -> Result<WorkCentersCreateProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_work_centers_update(
+    pub async fn work_centers_update(
         &self,
-        request: &PostV1ProductionWorkCentersUpdateRequest,
+        request: &WorkCentersUpdateProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionWorkCentersUpdateResponse, ApiError> {
+    ) -> Result<WorkCentersUpdateProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_work_centers_list(
+    pub async fn work_centers_list(
         &self,
-        request: &PostV1ProductionWorkCentersListRequest,
+        request: &WorkCentersListProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionWorkCentersListResponse, ApiError> {
+    ) -> Result<WorkCentersListProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_routings_create(
+    pub async fn routings_create(
         &self,
-        request: &PostV1ProductionRoutingsCreateRequest,
+        request: &RoutingsCreateProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionRoutingsCreateResponse, ApiError> {
+    ) -> Result<RoutingsCreateProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_routings_get(
+    pub async fn routings_get(
         &self,
-        request: &PostV1ProductionRoutingsGetRequest,
+        request: &RoutingsGetProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionRoutingsGetResponse, ApiError> {
+    ) -> Result<RoutingsGetProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_routings_list(
+    pub async fn routings_list(
         &self,
-        request: &PostV1ProductionRoutingsListRequest,
+        request: &RoutingsListProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionRoutingsListResponse, ApiError> {
+    ) -> Result<RoutingsListProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_maintenance_create(
+    pub async fn maintenance_create(
         &self,
-        request: &PostV1ProductionMaintenanceCreateRequest,
+        request: &MaintenanceCreateProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionMaintenanceCreateResponse, ApiError> {
+    ) -> Result<MaintenanceCreateProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_maintenance_complete(
+    pub async fn maintenance_complete(
         &self,
-        request: &PostV1ProductionMaintenanceCompleteRequest,
+        request: &MaintenanceCompleteProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionMaintenanceCompleteResponse, ApiError> {
+    ) -> Result<MaintenanceCompleteProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_maintenance_cancel(
+    pub async fn maintenance_cancel(
         &self,
-        request: &PostV1ProductionMaintenanceCancelRequest,
+        request: &MaintenanceCancelProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionMaintenanceCancelResponse, ApiError> {
+    ) -> Result<MaintenanceCancelProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_maintenance_list(
+    pub async fn maintenance_list(
         &self,
-        request: &PostV1ProductionMaintenanceListRequest,
+        request: &MaintenanceListProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionMaintenanceListResponse, ApiError> {
+    ) -> Result<MaintenanceListProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_boms_create(
+    pub async fn boms_create(
         &self,
-        request: &PostV1ProductionBomsCreateRequest,
+        request: &BomsCreateProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionBomsCreateResponse, ApiError> {
+    ) -> Result<BomsCreateProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_boms_get(
+    pub async fn boms_get(
         &self,
-        request: &PostV1ProductionBomsGetRequest,
+        request: &BomsGetProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionBomsGetResponse, ApiError> {
+    ) -> Result<BomsGetProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_boms_list(
+    pub async fn boms_list(
         &self,
-        request: &PostV1ProductionBomsListRequest,
+        request: &BomsListProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionBomsListResponse, ApiError> {
+    ) -> Result<BomsListProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_orders_create(
+    pub async fn orders_create(
         &self,
-        request: &PostV1ProductionOrdersCreateRequest,
+        request: &OrdersCreateProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionOrdersCreateResponse, ApiError> {
+    ) -> Result<OrdersCreateProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_orders_record_operation(
+    pub async fn orders_record_operation(
         &self,
-        request: &PostV1ProductionOrdersRecordOperationRequest,
+        request: &OrdersRecordOperationProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionOrdersRecordOperationResponse, ApiError> {
+    ) -> Result<OrdersRecordOperationProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_quality_checks_add(
+    pub async fn quality_checks_add(
         &self,
-        request: &PostV1ProductionQualityChecksAddRequest,
+        request: &QualityChecksAddProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionQualityChecksAddResponse, ApiError> {
+    ) -> Result<QualityChecksAddProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_quality_checks_record(
+    pub async fn quality_checks_record(
         &self,
-        request: &PostV1ProductionQualityChecksRecordRequest,
+        request: &QualityChecksRecordProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionQualityChecksRecordResponse, ApiError> {
+    ) -> Result<QualityChecksRecordProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_quality_checks_list(
+    pub async fn quality_checks_list(
         &self,
-        request: &PostV1ProductionQualityChecksListRequest,
+        request: &QualityChecksListProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionQualityChecksListResponse, ApiError> {
+    ) -> Result<QualityChecksListProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_orders_complete(
+    pub async fn orders_complete(
         &self,
-        request: &PostV1ProductionOrdersCompleteRequest,
+        request: &OrdersCompleteProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionOrdersCompleteResponse, ApiError> {
+    ) -> Result<OrdersCompleteProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_orders_get(
+    pub async fn orders_get(
         &self,
-        request: &PostV1ProductionOrdersGetRequest,
+        request: &OrdersGetProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionOrdersGetResponse, ApiError> {
+    ) -> Result<OrdersGetProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +333,11 @@ impl ProductionClient {
             .await
     }
 
-    pub async fn post_v1_production_orders_list(
+    pub async fn orders_list(
         &self,
-        request: &PostV1ProductionOrdersListRequest,
+        request: &OrdersListProductionRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProductionOrdersListResponse, ApiError> {
+    ) -> Result<OrdersListProductionResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

@@ -13,11 +13,11 @@ impl ConsolidationClient {
         })
     }
 
-    pub async fn post_v1_consolidation_groups_create(
+    pub async fn groups_create(
         &self,
-        request: &PostV1ConsolidationGroupsCreateRequest,
+        request: &GroupsCreateConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationGroupsCreateResponse, ApiError> {
+    ) -> Result<GroupsCreateConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_groups_list(
+    pub async fn groups_list(
         &self,
-        request: &PostV1ConsolidationGroupsListRequest,
+        request: &GroupsListConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationGroupsListResponse, ApiError> {
+    ) -> Result<GroupsListConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_groups_get(
+    pub async fn groups_get(
         &self,
-        request: &PostV1ConsolidationGroupsGetRequest,
+        request: &GroupsGetConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationGroupsGetResponse, ApiError> {
+    ) -> Result<GroupsGetConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_groups_update(
+    pub async fn groups_update(
         &self,
-        request: &PostV1ConsolidationGroupsUpdateRequest,
+        request: &GroupsUpdateConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationGroupsUpdateResponse, ApiError> {
+    ) -> Result<GroupsUpdateConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_groups_delete(
+    pub async fn groups_delete(
         &self,
-        request: &PostV1ConsolidationGroupsDeleteRequest,
+        request: &GroupsDeleteConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationGroupsDeleteResponse, ApiError> {
+    ) -> Result<GroupsDeleteConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_members_add(
+    pub async fn members_add(
         &self,
-        request: &PostV1ConsolidationMembersAddRequest,
+        request: &MembersAddConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationMembersAddResponse, ApiError> {
+    ) -> Result<MembersAddConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_members_remove(
+    pub async fn members_remove(
         &self,
-        request: &PostV1ConsolidationMembersRemoveRequest,
+        request: &MembersRemoveConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationMembersRemoveResponse, ApiError> {
+    ) -> Result<MembersRemoveConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -134,11 +134,11 @@ impl ConsolidationClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_consolidation_intercompany_candidates(
+    pub async fn intercompany_candidates(
         &self,
-        request: &PostV1ConsolidationIntercompanyCandidatesRequest,
+        request: &IntercompanyCandidatesConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationIntercompanyCandidatesResponse, ApiError> {
+    ) -> Result<IntercompanyCandidatesConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -159,11 +159,11 @@ impl ConsolidationClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_consolidation_intercompany_links_set(
+    pub async fn intercompany_links_set(
         &self,
-        request: &PostV1ConsolidationIntercompanyLinksSetRequest,
+        request: &IntercompanyLinksSetConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationIntercompanyLinksSetResponse, ApiError> {
+    ) -> Result<IntercompanyLinksSetConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -175,11 +175,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_intercompany_links_list(
+    pub async fn intercompany_links_list(
         &self,
-        request: &PostV1ConsolidationIntercompanyLinksListRequest,
+        request: &IntercompanyLinksListConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationIntercompanyLinksListResponse, ApiError> {
+    ) -> Result<IntercompanyLinksListConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -191,11 +191,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_intercompany_links_remove(
+    pub async fn intercompany_links_remove(
         &self,
-        request: &PostV1ConsolidationIntercompanyLinksRemoveRequest,
+        request: &IntercompanyLinksRemoveConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationIntercompanyLinksRemoveResponse, ApiError> {
+    ) -> Result<IntercompanyLinksRemoveConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -216,11 +216,11 @@ impl ConsolidationClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_consolidation_intercompany_report(
+    pub async fn intercompany_report(
         &self,
-        request: &PostV1ConsolidationIntercompanyReportRequest,
+        request: &IntercompanyReportConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationIntercompanyReportResponse, ApiError> {
+    ) -> Result<IntercompanyReportConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -232,11 +232,11 @@ impl ConsolidationClient {
             .await
     }
 
-    pub async fn post_v1_consolidation_report(
+    pub async fn report(
         &self,
-        request: &PostV1ConsolidationReportRequest,
+        request: &ReportConsolidationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ConsolidationReportResponse, ApiError> {
+    ) -> Result<ReportConsolidationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

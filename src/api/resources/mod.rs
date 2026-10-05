@@ -2,37 +2,41 @@
 //!
 //! This module contains client implementations for:
 //!
-//! - **Reference**
-//! - **Partners**
-//! - **Catalog**
-//! - **Sales**
-//! - **Purchases**
-//! - **Capture**
-//! - **Declarations**
-//! - **Ledger**
-//! - **Migration**
-//! - **Assets**
-//! - **Hr**
-//! - **Fleet**
-//! - **Payroll**
-//! - **Agreements**
-//! - **Inventory**
-//! - **Production**
-//! - **Ecommerce**
-//! - **Cash**
-//! - **Projects**
-//! - **Transport**
-//! - **Pos**
-//! - **Calendar**
-//! - **Audit**
-//! - **Webhooks**
-//! - **Bank**
-//! - **Files**
-//! - **Reports**
-//! - **Consolidation**
-//! - **Public**
-//! - **Billing**
-//! - **Account**
+//! - **reference**
+//! - **partners**
+//! - **Leads**
+//! - **catalog**
+//! - **sales**
+//! - **OperationTypes**
+//! - **DocumentSeries**
+//! - **purchases**
+//! - **capture**
+//! - **declarations**
+//! - **ledger**
+//! - **Officers**
+//! - **migration**
+//! - **assets**
+//! - **hr**
+//! - **fleet**
+//! - **payroll**
+//! - **agreements**
+//! - **inventory**
+//! - **production**
+//! - **ecommerce**
+//! - **cash**
+//! - **projects**
+//! - **transport**
+//! - **pos**
+//! - **calendar**
+//! - **audit**
+//! - **webhooks**
+//! - **bank**
+//! - **files**
+//! - **reports**
+//! - **consolidation**
+//! - **public**
+//! - **billing**
+//! - **account**
 
 use crate::{ApiError, ClientConfig};
 
@@ -48,13 +52,17 @@ pub mod cash;
 pub mod catalog;
 pub mod consolidation;
 pub mod declarations;
+pub mod document_series;
 pub mod ecommerce;
 pub mod files;
 pub mod fleet;
 pub mod hr;
 pub mod inventory;
+pub mod leads;
 pub mod ledger;
 pub mod migration;
+pub mod officers;
+pub mod operation_types;
 pub mod partners;
 pub mod payroll;
 pub mod pos;
@@ -71,12 +79,16 @@ pub struct ApiClient {
     pub config: ClientConfig,
     pub reference: ReferenceClient,
     pub partners: PartnersClient,
+    pub leads: LeadsClient,
     pub catalog: CatalogClient,
     pub sales: SalesClient,
+    pub operation_types: OperationTypesClient,
+    pub document_series: DocumentSeriesClient,
     pub purchases: PurchasesClient,
     pub capture: CaptureClient,
     pub declarations: DeclarationsClient,
     pub ledger: LedgerClient,
+    pub officers: OfficersClient,
     pub migration: MigrationClient,
     pub assets: AssetsClient,
     pub hr: HrClient,
@@ -108,12 +120,16 @@ impl ApiClient {
             config: config.clone(),
             reference: ReferenceClient::new(config.clone())?,
             partners: PartnersClient::new(config.clone())?,
+            leads: LeadsClient::new(config.clone())?,
             catalog: CatalogClient::new(config.clone())?,
             sales: SalesClient::new(config.clone())?,
+            operation_types: OperationTypesClient::new(config.clone())?,
+            document_series: DocumentSeriesClient::new(config.clone())?,
             purchases: PurchasesClient::new(config.clone())?,
             capture: CaptureClient::new(config.clone())?,
             declarations: DeclarationsClient::new(config.clone())?,
             ledger: LedgerClient::new(config.clone())?,
+            officers: OfficersClient::new(config.clone())?,
             migration: MigrationClient::new(config.clone())?,
             assets: AssetsClient::new(config.clone())?,
             hr: HrClient::new(config.clone())?,
@@ -153,13 +169,17 @@ pub use cash::CashClient;
 pub use catalog::CatalogClient;
 pub use consolidation::ConsolidationClient;
 pub use declarations::DeclarationsClient;
+pub use document_series::DocumentSeriesClient;
 pub use ecommerce::EcommerceClient;
 pub use files::FilesClient;
 pub use fleet::FleetClient;
 pub use hr::HrClient;
 pub use inventory::InventoryClient;
+pub use leads::LeadsClient;
 pub use ledger::LedgerClient;
 pub use migration::MigrationClient;
+pub use officers::OfficersClient;
+pub use operation_types::OperationTypesClient;
 pub use partners::PartnersClient;
 pub use payroll::PayrollClient;
 pub use pos::PosClient;

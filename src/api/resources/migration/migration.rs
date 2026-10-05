@@ -22,11 +22,11 @@ impl MigrationClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn check_a_historical_books_package_without_writing_anything(
+    pub async fn books_validate(
         &self,
-        request: &PostV1MigrationBooksValidateRequest,
+        request: &BooksValidateMigrationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1MigrationBooksValidateResponse, ApiError> {
+    ) -> Result<BooksValidateMigrationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -47,11 +47,11 @@ impl MigrationClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn import_historical_books_from_a_previous_accounting_system(
+    pub async fn books_import(
         &self,
-        request: &PostV1MigrationBooksImportRequest,
+        request: &BooksImportMigrationRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1MigrationBooksImportResponse, ApiError> {
+    ) -> Result<BooksImportMigrationResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

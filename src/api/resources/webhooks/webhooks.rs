@@ -13,11 +13,11 @@ impl WebhooksClient {
         })
     }
 
-    pub async fn post_v1_webhooks_subscriptions_create(
+    pub async fn subscriptions_create(
         &self,
-        request: &PostV1WebhooksSubscriptionsCreateRequest,
+        request: &SubscriptionsCreateWebhooksRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1WebhooksSubscriptionsCreateResponse, ApiError> {
+    ) -> Result<SubscriptionsCreateWebhooksResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl WebhooksClient {
             .await
     }
 
-    pub async fn post_v1_webhooks_subscriptions_list(
+    pub async fn subscriptions_list(
         &self,
-        request: &PostV1WebhooksSubscriptionsListRequest,
+        request: &SubscriptionsListWebhooksRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1WebhooksSubscriptionsListResponse, ApiError> {
+    ) -> Result<SubscriptionsListWebhooksResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl WebhooksClient {
             .await
     }
 
-    pub async fn post_v1_webhooks_subscriptions_update(
+    pub async fn subscriptions_update(
         &self,
-        request: &PostV1WebhooksSubscriptionsUpdateRequest,
+        request: &SubscriptionsUpdateWebhooksRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1WebhooksSubscriptionsUpdateResponse, ApiError> {
+    ) -> Result<SubscriptionsUpdateWebhooksResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl WebhooksClient {
             .await
     }
 
-    pub async fn post_v1_webhooks_subscriptions_delete(
+    pub async fn subscriptions_delete(
         &self,
-        request: &PostV1WebhooksSubscriptionsDeleteRequest,
+        request: &SubscriptionsDeleteWebhooksRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1WebhooksSubscriptionsDeleteResponse, ApiError> {
+    ) -> Result<SubscriptionsDeleteWebhooksResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl WebhooksClient {
             .await
     }
 
-    pub async fn post_v1_webhooks_deliveries_list(
+    pub async fn deliveries_list(
         &self,
-        request: &PostV1WebhooksDeliveriesListRequest,
+        request: &DeliveriesListWebhooksRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1WebhooksDeliveriesListResponse, ApiError> {
+    ) -> Result<DeliveriesListWebhooksResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl WebhooksClient {
             .await
     }
 
-    pub async fn post_v1_webhooks_deliveries_redeliver(
+    pub async fn deliveries_redeliver(
         &self,
-        request: &PostV1WebhooksDeliveriesRedeliverRequest,
+        request: &DeliveriesRedeliverWebhooksRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1WebhooksDeliveriesRedeliverResponse, ApiError> {
+    ) -> Result<DeliveriesRedeliverWebhooksResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

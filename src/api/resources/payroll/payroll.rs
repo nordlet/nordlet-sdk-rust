@@ -13,11 +13,11 @@ impl PayrollClient {
         })
     }
 
-    pub async fn post_v1_payroll_departments_create(
+    pub async fn departments_create(
         &self,
-        request: &PostV1PayrollDepartmentsCreateRequest,
+        request: &DepartmentsCreatePayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollDepartmentsCreateResponse, ApiError> {
+    ) -> Result<DepartmentsCreatePayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_departments_list(
+    pub async fn departments_list(
         &self,
-        request: &PostV1PayrollDepartmentsListRequest,
+        request: &DepartmentsListPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollDepartmentsListResponse, ApiError> {
+    ) -> Result<DepartmentsListPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_schedules_create(
+    pub async fn schedules_create(
         &self,
-        request: &PostV1PayrollSchedulesCreateRequest,
+        request: &SchedulesCreatePayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollSchedulesCreateResponse, ApiError> {
+    ) -> Result<SchedulesCreatePayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_schedules_list(
+    pub async fn schedules_list(
         &self,
-        request: &PostV1PayrollSchedulesListRequest,
+        request: &SchedulesListPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollSchedulesListResponse, ApiError> {
+    ) -> Result<SchedulesListPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn calculate_one_employee_payment_under_the_rules_of_the_company_country(
+    pub async fn calc(
         &self,
-        request: &PostV1PayrollCalcRequest,
+        request: &CalcPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollCalcResponse, ApiError> {
+    ) -> Result<CalcPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_runs_create(
+    pub async fn runs_create(
         &self,
-        request: &PostV1PayrollRunsCreateRequest,
+        request: &RunsCreatePayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollRunsCreateResponse, ApiError> {
+    ) -> Result<RunsCreatePayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_runs_get(
+    pub async fn runs_get(
         &self,
-        request: &PostV1PayrollRunsGetRequest,
+        request: &RunsGetPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollRunsGetResponse, ApiError> {
+    ) -> Result<RunsGetPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_runs_list(
+    pub async fn runs_list(
         &self,
-        request: &PostV1PayrollRunsListRequest,
+        request: &RunsListPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollRunsListResponse, ApiError> {
+    ) -> Result<RunsListPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -150,11 +150,11 @@ impl PayrollClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn record_the_time_a_person_worked_in_a_payroll_line(
+    pub async fn lines_attendance(
         &self,
-        request: &PostV1PayrollLinesAttendanceRequest,
+        request: &LinesAttendancePayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollLinesAttendanceResponse, ApiError> {
+    ) -> Result<LinesAttendancePayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -166,11 +166,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_runs_approve(
+    pub async fn runs_approve(
         &self,
-        request: &PostV1PayrollRunsApproveRequest,
+        request: &RunsApprovePayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollRunsApproveResponse, ApiError> {
+    ) -> Result<RunsApprovePayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -182,11 +182,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_runs_cancel(
+    pub async fn runs_cancel(
         &self,
-        request: &PostV1PayrollRunsCancelRequest,
+        request: &RunsCancelPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollRunsCancelResponse, ApiError> {
+    ) -> Result<RunsCancelPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -198,11 +198,11 @@ impl PayrollClient {
             .await
     }
 
-    pub async fn post_v1_payroll_payments_export(
+    pub async fn payments_export(
         &self,
-        request: &PostV1PayrollPaymentsExportRequest,
+        request: &PaymentsExportPayrollRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PayrollPaymentsExportResponse, ApiError> {
+    ) -> Result<PaymentsExportPayrollResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

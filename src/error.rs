@@ -13,6 +13,11 @@ pub enum ApiError {
         message: String,
         error: Option<ErrorResponseError>,
     },
+    #[error("PaymentRequiredError: {message}")]
+    PaymentRequiredError {
+        message: String,
+        error: Option<ErrorResponseError>,
+    },
     #[error("ForbiddenError: Access forbidden - {message}")]
     ForbiddenError {
         message: String,
@@ -25,6 +30,11 @@ pub enum ApiError {
     },
     #[error("ConflictError: Conflict - {message}")]
     ConflictError {
+        message: String,
+        error: Option<ErrorResponseError>,
+    },
+    #[error("ContentTooLargeError: {message}")]
+    ContentTooLargeError {
         message: String,
         error: Option<ErrorResponseError>,
     },
@@ -110,6 +120,27 @@ impl ApiError {
                     error: None,
                 };
             }
+            402 => {
+                // Parse error body for PaymentRequiredError;
+                if let Some(body_str) = body {
+                    if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(body_str) {
+                        return Self::PaymentRequiredError {
+                            message: parsed
+                                .get("message")
+                                .and_then(|v| v.as_str())
+                                .unwrap_or("Unknown error")
+                                .to_string(),
+                            error: parsed.get("error").and_then(|v| {
+                                serde_json::from_value::<ErrorResponseError>(v.clone()).ok()
+                            }),
+                        };
+                    }
+                }
+                return Self::PaymentRequiredError {
+                    message: body.unwrap_or("Unknown error").to_string(),
+                    error: None,
+                };
+            }
             403 => {
                 // Parse error body for ForbiddenError;
                 if let Some(body_str) = body {
@@ -169,6 +200,27 @@ impl ApiError {
                     }
                 }
                 return Self::ConflictError {
+                    message: body.unwrap_or("Unknown error").to_string(),
+                    error: None,
+                };
+            }
+            413 => {
+                // Parse error body for ContentTooLargeError;
+                if let Some(body_str) = body {
+                    if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(body_str) {
+                        return Self::ContentTooLargeError {
+                            message: parsed
+                                .get("message")
+                                .and_then(|v| v.as_str())
+                                .unwrap_or("Unknown error")
+                                .to_string(),
+                            error: parsed.get("error").and_then(|v| {
+                                serde_json::from_value::<ErrorResponseError>(v.clone()).ok()
+                            }),
+                        };
+                    }
+                }
+                return Self::ContentTooLargeError {
                     message: body.unwrap_or("Unknown error").to_string(),
                     error: None,
                 };

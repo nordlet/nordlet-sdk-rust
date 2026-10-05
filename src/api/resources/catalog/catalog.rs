@@ -13,11 +13,11 @@ impl CatalogClient {
         })
     }
 
-    pub async fn post_v1_catalog_items_create(
+    pub async fn items_create(
         &self,
-        request: &PostV1CatalogItemsCreateRequest,
+        request: &ItemsCreateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsCreateResponse, ApiError> {
+    ) -> Result<ItemsCreateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_get(
+    pub async fn items_get(
         &self,
-        request: &PostV1CatalogItemsGetRequest,
+        request: &ItemsGetCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsGetResponse, ApiError> {
+    ) -> Result<ItemsGetCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_update(
+    pub async fn items_update(
         &self,
-        request: &PostV1CatalogItemsUpdateRequest,
+        request: &ItemsUpdateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsUpdateResponse, ApiError> {
+    ) -> Result<ItemsUpdateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_delete(
+    pub async fn items_delete(
         &self,
-        request: &PostV1CatalogItemsDeleteRequest,
+        request: &ItemsDeleteCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsDeleteResponse, ApiError> {
+    ) -> Result<ItemsDeleteCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_list(
+    pub async fn items_list(
         &self,
-        request: &PostV1CatalogItemsListRequest,
+        request: &ItemsListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsListResponse, ApiError> {
+    ) -> Result<ItemsListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_files_list(
+    pub async fn items_files_list(
         &self,
-        request: &PostV1CatalogItemsFilesListRequest,
+        request: &ItemsFilesListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsFilesListResponse, ApiError> {
+    ) -> Result<ItemsFilesListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_kinds_create(
+    pub async fn items_kinds_create(
         &self,
-        request: &PostV1CatalogItemsKindsCreateRequest,
+        request: &ItemsKindsCreateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsKindsCreateResponse, ApiError> {
+    ) -> Result<ItemsKindsCreateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_kinds_update(
+    pub async fn items_kinds_update(
         &self,
-        request: &PostV1CatalogItemsKindsUpdateRequest,
+        request: &ItemsKindsUpdateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsKindsUpdateResponse, ApiError> {
+    ) -> Result<ItemsKindsUpdateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_kinds_delete(
+    pub async fn items_kinds_delete(
         &self,
-        request: &PostV1CatalogItemsKindsDeleteRequest,
+        request: &ItemsKindsDeleteCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsKindsDeleteResponse, ApiError> {
+    ) -> Result<ItemsKindsDeleteCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_kinds_list(
+    pub async fn items_kinds_list(
         &self,
-        request: &PostV1CatalogItemsKindsListRequest,
+        request: &ItemsKindsListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsKindsListResponse, ApiError> {
+    ) -> Result<ItemsKindsListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_units_create(
+    pub async fn units_create(
         &self,
-        request: &PostV1CatalogUnitsCreateRequest,
+        request: &UnitsCreateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogUnitsCreateResponse, ApiError> {
+    ) -> Result<UnitsCreateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_units_update(
+    pub async fn units_update(
         &self,
-        request: &PostV1CatalogUnitsUpdateRequest,
+        request: &UnitsUpdateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogUnitsUpdateResponse, ApiError> {
+    ) -> Result<UnitsUpdateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_units_delete(
+    pub async fn units_delete(
         &self,
-        request: &PostV1CatalogUnitsDeleteRequest,
+        request: &UnitsDeleteCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogUnitsDeleteResponse, ApiError> {
+    ) -> Result<UnitsDeleteCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_units_list(
+    pub async fn units_list(
         &self,
-        request: &PostV1CatalogUnitsListRequest,
+        request: &UnitsListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogUnitsListResponse, ApiError> {
+    ) -> Result<UnitsListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_units_options(
+    pub async fn units_options(
         &self,
-        request: &PostV1CatalogUnitsOptionsRequest,
+        request: &UnitsOptionsCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogUnitsOptionsResponse, ApiError> {
+    ) -> Result<UnitsOptionsCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_item_groups_create(
+    pub async fn item_groups_create(
         &self,
-        request: &PostV1CatalogItemGroupsCreateRequest,
+        request: &ItemGroupsCreateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemGroupsCreateResponse, ApiError> {
+    ) -> Result<ItemGroupsCreateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_item_groups_update(
+    pub async fn item_groups_update(
         &self,
-        request: &PostV1CatalogItemGroupsUpdateRequest,
+        request: &ItemGroupsUpdateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemGroupsUpdateResponse, ApiError> {
+    ) -> Result<ItemGroupsUpdateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_item_groups_delete(
+    pub async fn item_groups_delete(
         &self,
-        request: &PostV1CatalogItemGroupsDeleteRequest,
+        request: &ItemGroupsDeleteCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemGroupsDeleteResponse, ApiError> {
+    ) -> Result<ItemGroupsDeleteCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_item_groups_list(
+    pub async fn item_groups_list(
         &self,
-        request: &PostV1CatalogItemGroupsListRequest,
+        request: &ItemGroupsListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemGroupsListResponse, ApiError> {
+    ) -> Result<ItemGroupsListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_suppliers_upsert(
+    pub async fn items_suppliers_upsert(
         &self,
-        request: &PostV1CatalogItemsSuppliersUpsertRequest,
+        request: &ItemsSuppliersUpsertCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsSuppliersUpsertResponse, ApiError> {
+    ) -> Result<ItemsSuppliersUpsertCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +333,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_suppliers_list(
+    pub async fn items_suppliers_list(
         &self,
-        request: &PostV1CatalogItemsSuppliersListRequest,
+        request: &ItemsSuppliersListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsSuppliersListResponse, ApiError> {
+    ) -> Result<ItemsSuppliersListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -349,11 +349,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_items_suppliers_delete(
+    pub async fn items_suppliers_delete(
         &self,
-        request: &PostV1CatalogItemsSuppliersDeleteRequest,
+        request: &ItemsSuppliersDeleteCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogItemsSuppliersDeleteResponse, ApiError> {
+    ) -> Result<ItemsSuppliersDeleteCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -365,11 +365,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_price_lists_create(
+    pub async fn price_lists_create(
         &self,
-        request: &PostV1CatalogPriceListsCreateRequest,
+        request: &PriceListsCreateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogPriceListsCreateResponse, ApiError> {
+    ) -> Result<PriceListsCreateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -381,11 +381,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_price_lists_update(
+    pub async fn price_lists_update(
         &self,
-        request: &PostV1CatalogPriceListsUpdateRequest,
+        request: &PriceListsUpdateCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogPriceListsUpdateResponse, ApiError> {
+    ) -> Result<PriceListsUpdateCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -397,11 +397,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_price_lists_list(
+    pub async fn price_lists_list(
         &self,
-        request: &PostV1CatalogPriceListsListRequest,
+        request: &PriceListsListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogPriceListsListResponse, ApiError> {
+    ) -> Result<PriceListsListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -413,11 +413,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_price_lists_items_set(
+    pub async fn price_lists_items_set(
         &self,
-        request: &PostV1CatalogPriceListsItemsSetRequest,
+        request: &PriceListsItemsSetCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogPriceListsItemsSetResponse, ApiError> {
+    ) -> Result<PriceListsItemsSetCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -429,11 +429,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_price_lists_items_list(
+    pub async fn price_lists_items_list(
         &self,
-        request: &PostV1CatalogPriceListsItemsListRequest,
+        request: &PriceListsItemsListCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogPriceListsItemsListResponse, ApiError> {
+    ) -> Result<PriceListsItemsListCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -445,11 +445,11 @@ impl CatalogClient {
             .await
     }
 
-    pub async fn post_v1_catalog_price_lists_items_delete(
+    pub async fn price_lists_items_delete(
         &self,
-        request: &PostV1CatalogPriceListsItemsDeleteRequest,
+        request: &PriceListsItemsDeleteCatalogRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CatalogPriceListsItemsDeleteResponse, ApiError> {
+    ) -> Result<PriceListsItemsDeleteCatalogResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

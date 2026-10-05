@@ -13,11 +13,11 @@ impl BillingClient {
         })
     }
 
-    pub async fn post_v1_billing_account_get(
+    pub async fn account_get(
         &self,
-        request: &PostV1BillingAccountGetRequest,
+        request: &AccountGetBillingRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BillingAccountGetResponse, ApiError> {
+    ) -> Result<AccountGetBillingResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl BillingClient {
             .await
     }
 
-    pub async fn post_v1_billing_account_set_plan(
+    pub async fn account_set_plan(
         &self,
-        request: &PostV1BillingAccountSetPlanRequest,
+        request: &AccountSetPlanBillingRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BillingAccountSetPlanResponse, ApiError> {
+    ) -> Result<AccountSetPlanBillingResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl BillingClient {
             .await
     }
 
-    pub async fn post_v1_billing_topup_create(
+    pub async fn topup_create(
         &self,
-        request: &PostV1BillingTopupCreateRequest,
+        request: &TopupCreateBillingRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BillingTopupCreateResponse, ApiError> {
+    ) -> Result<TopupCreateBillingResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl BillingClient {
             .await
     }
 
-    pub async fn post_v1_billing_portal_create(
+    pub async fn portal_create(
         &self,
-        request: &PostV1BillingPortalCreateRequest,
+        request: &PortalCreateBillingRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BillingPortalCreateResponse, ApiError> {
+    ) -> Result<PortalCreateBillingResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl BillingClient {
             .await
     }
 
-    pub async fn post_v1_billing_transactions_list(
+    pub async fn transactions_list(
         &self,
-        request: &PostV1BillingTransactionsListRequest,
+        request: &TransactionsListBillingRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BillingTransactionsListResponse, ApiError> {
+    ) -> Result<TransactionsListBillingResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl BillingClient {
             .await
     }
 
-    pub async fn post_v1_billing_usage_list(
+    pub async fn usage_list(
         &self,
-        request: &PostV1BillingUsageListRequest,
+        request: &UsageListBillingRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1BillingUsageListResponse, ApiError> {
+    ) -> Result<UsageListBillingResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

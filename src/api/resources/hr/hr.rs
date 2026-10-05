@@ -13,11 +13,11 @@ impl HrClient {
         })
     }
 
-    pub async fn post_v1_hr_positions_create(
+    pub async fn positions_create(
         &self,
-        request: &PostV1HrPositionsCreateRequest,
+        request: &PositionsCreateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrPositionsCreateResponse, ApiError> {
+    ) -> Result<PositionsCreateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_positions_update(
+    pub async fn positions_update(
         &self,
-        request: &PostV1HrPositionsUpdateRequest,
+        request: &PositionsUpdateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrPositionsUpdateResponse, ApiError> {
+    ) -> Result<PositionsUpdateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_positions_list(
+    pub async fn positions_list(
         &self,
-        request: &PostV1HrPositionsListRequest,
+        request: &PositionsListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrPositionsListResponse, ApiError> {
+    ) -> Result<PositionsListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_create(
+    pub async fn employees_create(
         &self,
-        request: &PostV1HrEmployeesCreateRequest,
+        request: &EmployeesCreateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesCreateResponse, ApiError> {
+    ) -> Result<EmployeesCreateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_update(
+    pub async fn employees_update(
         &self,
-        request: &PostV1HrEmployeesUpdateRequest,
+        request: &EmployeesUpdateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesUpdateResponse, ApiError> {
+    ) -> Result<EmployeesUpdateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_get(
+    pub async fn employees_get(
         &self,
-        request: &PostV1HrEmployeesGetRequest,
+        request: &EmployeesGetHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesGetResponse, ApiError> {
+    ) -> Result<EmployeesGetHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -118,11 +118,11 @@ impl HrClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn extra_employee_details_the_country_of_the_company_asks_for(
+    pub async fn employees_fields(
         &self,
-        request: &PostV1HrEmployeesFieldsRequest,
+        request: &EmployeesFieldsHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesFieldsResponse, ApiError> {
+    ) -> Result<EmployeesFieldsHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -134,11 +134,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_list(
+    pub async fn employees_list(
         &self,
-        request: &PostV1HrEmployeesListRequest,
+        request: &EmployeesListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesListResponse, ApiError> {
+    ) -> Result<EmployeesListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -150,11 +150,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_delete(
+    pub async fn employees_delete(
         &self,
-        request: &PostV1HrEmployeesDeleteRequest,
+        request: &EmployeesDeleteHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesDeleteResponse, ApiError> {
+    ) -> Result<EmployeesDeleteHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -175,11 +175,11 @@ impl HrClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn blank_an_employees_personal_data_and_hide_the_record(
+    pub async fn employees_anonymize(
         &self,
-        request: &PostV1HrEmployeesAnonymizeRequest,
+        request: &EmployeesAnonymizeHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesAnonymizeResponse, ApiError> {
+    ) -> Result<EmployeesAnonymizeHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -191,11 +191,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_contracts_create(
+    pub async fn contracts_create(
         &self,
-        request: &PostV1HrContractsCreateRequest,
+        request: &ContractsCreateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrContractsCreateResponse, ApiError> {
+    ) -> Result<ContractsCreateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -207,11 +207,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_contracts_end(
+    pub async fn contracts_end(
         &self,
-        request: &PostV1HrContractsEndRequest,
+        request: &ContractsEndHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrContractsEndResponse, ApiError> {
+    ) -> Result<ContractsEndHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -223,11 +223,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_contracts_list(
+    pub async fn contracts_list(
         &self,
-        request: &PostV1HrContractsListRequest,
+        request: &ContractsListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrContractsListResponse, ApiError> {
+    ) -> Result<ContractsListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -239,11 +239,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_leave_balances_set(
+    pub async fn leave_balances_set(
         &self,
-        request: &PostV1HrLeaveBalancesSetRequest,
+        request: &LeaveBalancesSetHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrLeaveBalancesSetResponse, ApiError> {
+    ) -> Result<LeaveBalancesSetHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -255,11 +255,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_leave_balances_list(
+    pub async fn leave_balances_list(
         &self,
-        request: &PostV1HrLeaveBalancesListRequest,
+        request: &LeaveBalancesListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrLeaveBalancesListResponse, ApiError> {
+    ) -> Result<LeaveBalancesListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -271,11 +271,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_incapacity_certificates_create(
+    pub async fn incapacity_certificates_create(
         &self,
-        request: &PostV1HrIncapacityCertificatesCreateRequest,
+        request: &IncapacityCertificatesCreateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrIncapacityCertificatesCreateResponse, ApiError> {
+    ) -> Result<IncapacityCertificatesCreateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -287,11 +287,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_incapacity_certificates_list(
+    pub async fn incapacity_certificates_list(
         &self,
-        request: &PostV1HrIncapacityCertificatesListRequest,
+        request: &IncapacityCertificatesListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrIncapacityCertificatesListResponse, ApiError> {
+    ) -> Result<IncapacityCertificatesListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -303,11 +303,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_records_create(
+    pub async fn employees_records_create(
         &self,
-        request: &PostV1HrEmployeesRecordsCreateRequest,
+        request: &EmployeesRecordsCreateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesRecordsCreateResponse, ApiError> {
+    ) -> Result<EmployeesRecordsCreateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -319,11 +319,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_records_update(
+    pub async fn employees_records_update(
         &self,
-        request: &PostV1HrEmployeesRecordsUpdateRequest,
+        request: &EmployeesRecordsUpdateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesRecordsUpdateResponse, ApiError> {
+    ) -> Result<EmployeesRecordsUpdateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -335,11 +335,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_records_delete(
+    pub async fn employees_records_delete(
         &self,
-        request: &PostV1HrEmployeesRecordsDeleteRequest,
+        request: &EmployeesRecordsDeleteHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesRecordsDeleteResponse, ApiError> {
+    ) -> Result<EmployeesRecordsDeleteHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -351,11 +351,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_records_list(
+    pub async fn employees_records_list(
         &self,
-        request: &PostV1HrEmployeesRecordsListRequest,
+        request: &EmployeesRecordsListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesRecordsListResponse, ApiError> {
+    ) -> Result<EmployeesRecordsListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -367,11 +367,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_employees_attachments_list(
+    pub async fn employees_attachments_list(
         &self,
-        request: &PostV1HrEmployeesAttachmentsListRequest,
+        request: &EmployeesAttachmentsListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrEmployeesAttachmentsListResponse, ApiError> {
+    ) -> Result<EmployeesAttachmentsListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -383,11 +383,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_timesheets_generate(
+    pub async fn timesheets_generate(
         &self,
-        request: &PostV1HrTimesheetsGenerateRequest,
+        request: &TimesheetsGenerateHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrTimesheetsGenerateResponse, ApiError> {
+    ) -> Result<TimesheetsGenerateHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -399,11 +399,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_timesheets_upsert(
+    pub async fn timesheets_upsert(
         &self,
-        request: &PostV1HrTimesheetsUpsertRequest,
+        request: &TimesheetsUpsertHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrTimesheetsUpsertResponse, ApiError> {
+    ) -> Result<TimesheetsUpsertHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -415,11 +415,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_timesheets_get(
+    pub async fn timesheets_get(
         &self,
-        request: &PostV1HrTimesheetsGetRequest,
+        request: &TimesheetsGetHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrTimesheetsGetResponse, ApiError> {
+    ) -> Result<TimesheetsGetHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -431,11 +431,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_timesheets_list(
+    pub async fn timesheets_list(
         &self,
-        request: &PostV1HrTimesheetsListRequest,
+        request: &TimesheetsListHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrTimesheetsListResponse, ApiError> {
+    ) -> Result<TimesheetsListHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -447,11 +447,11 @@ impl HrClient {
             .await
     }
 
-    pub async fn post_v1_hr_timesheets_delete(
+    pub async fn timesheets_delete(
         &self,
-        request: &PostV1HrTimesheetsDeleteRequest,
+        request: &TimesheetsDeleteHrRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1HrTimesheetsDeleteResponse, ApiError> {
+    ) -> Result<TimesheetsDeleteHrResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

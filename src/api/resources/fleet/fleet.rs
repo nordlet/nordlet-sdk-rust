@@ -13,11 +13,11 @@ impl FleetClient {
         })
     }
 
-    pub async fn post_v1_fleet_vehicles_create(
+    pub async fn vehicles_create(
         &self,
-        request: &PostV1FleetVehiclesCreateRequest,
+        request: &VehiclesCreateFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetVehiclesCreateResponse, ApiError> {
+    ) -> Result<VehiclesCreateFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_vehicles_update(
+    pub async fn vehicles_update(
         &self,
-        request: &PostV1FleetVehiclesUpdateRequest,
+        request: &VehiclesUpdateFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetVehiclesUpdateResponse, ApiError> {
+    ) -> Result<VehiclesUpdateFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_vehicles_get(
+    pub async fn vehicles_get(
         &self,
-        request: &PostV1FleetVehiclesGetRequest,
+        request: &VehiclesGetFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetVehiclesGetResponse, ApiError> {
+    ) -> Result<VehiclesGetFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_vehicles_list(
+    pub async fn vehicles_list(
         &self,
-        request: &PostV1FleetVehiclesListRequest,
+        request: &VehiclesListFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetVehiclesListResponse, ApiError> {
+    ) -> Result<VehiclesListFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_assignments_create(
+    pub async fn assignments_create(
         &self,
-        request: &PostV1FleetAssignmentsCreateRequest,
+        request: &AssignmentsCreateFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetAssignmentsCreateResponse, ApiError> {
+    ) -> Result<AssignmentsCreateFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_assignments_end(
+    pub async fn assignments_end(
         &self,
-        request: &PostV1FleetAssignmentsEndRequest,
+        request: &AssignmentsEndFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetAssignmentsEndResponse, ApiError> {
+    ) -> Result<AssignmentsEndFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_assignments_list(
+    pub async fn assignments_list(
         &self,
-        request: &PostV1FleetAssignmentsListRequest,
+        request: &AssignmentsListFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetAssignmentsListResponse, ApiError> {
+    ) -> Result<AssignmentsListFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl FleetClient {
             .await
     }
 
-    pub async fn post_v1_fleet_natura_preview(
+    pub async fn natura_preview(
         &self,
-        request: &PostV1FleetNaturaPreviewRequest,
+        request: &NaturaPreviewFleetRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FleetNaturaPreviewResponse, ApiError> {
+    ) -> Result<NaturaPreviewFleetResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

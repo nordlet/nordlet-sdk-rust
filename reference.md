@@ -1,6 +1,6 @@
 # Reference
-## Reference
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_exchange_rates_sync</a>(request: PostV1ReferenceExchangeRatesSyncRequest) -> Result&lt;PostV1ReferenceExchangeRatesSyncResponse, ApiError&gt;</code></summary>
+## reference
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">exchange_rates_sync</a>(request: ExchangeRatesSyncReferenceRequest) -> Result&lt;ExchangeRatesSyncReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24,8 +24,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_exchange_rates_sync(
-            &PostV1ReferenceExchangeRatesSyncRequest {
+        .exchange_rates_sync(
+            &ExchangeRatesSyncReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -58,7 +58,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_exchange_rates_list</a>(request: PostV1ReferenceExchangeRatesListRequest) -> Result&lt;PostV1ReferenceExchangeRatesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">exchange_rates_list</a>(request: ExchangeRatesListReferenceRequest) -> Result&lt;ExchangeRatesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -82,8 +82,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_exchange_rates_list(
-            &PostV1ReferenceExchangeRatesListRequest {
+        .exchange_rates_list(
+            &ExchangeRatesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -120,7 +120,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceExchangeRatesListRequestSortItem>>` 
+**sort:** `Option<Vec<ExchangeRatesListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -128,7 +128,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceExchangeRatesListRequestFilterItem>>` 
+**filter:** `Option<Vec<ExchangeRatesListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -148,7 +148,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_exchange_rates_set</a>(request: PostV1ReferenceExchangeRatesSetRequest) -> Result&lt;PostV1ReferenceExchangeRatesSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">exchange_rates_set</a>(request: ExchangeRatesSetReferenceRequest) -> Result&lt;ExchangeRatesSetReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -172,11 +172,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_exchange_rates_set(
-            &PostV1ReferenceExchangeRatesSetRequest {
+        .exchange_rates_set(
+            &ExchangeRatesSetReferenceRequest {
                 currency: "currency".to_string(),
-                date: "date".to_string(),
-                rate: "rate".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                rate: "121.00000000".to_string(),
             },
             None,
         )
@@ -224,7 +224,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_exchange_rates_overrides_list</a>(request: PostV1ReferenceExchangeRatesOverridesListRequest) -> Result&lt;PostV1ReferenceExchangeRatesOverridesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">exchange_rates_overrides_list</a>(request: ExchangeRatesOverridesListReferenceRequest) -> Result&lt;ExchangeRatesOverridesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -248,8 +248,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_exchange_rates_overrides_list(
-            &PostV1ReferenceExchangeRatesOverridesListRequest {
+        .exchange_rates_overrides_list(
+            &ExchangeRatesOverridesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -286,7 +286,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceExchangeRatesOverridesListRequestSortItem>>` 
+**sort:** `Option<Vec<ExchangeRatesOverridesListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -294,7 +294,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceExchangeRatesOverridesListRequestFilterItem>>` 
+**filter:** `Option<Vec<ExchangeRatesOverridesListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -314,7 +314,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_exchange_rates_overrides_delete</a>(request: PostV1ReferenceExchangeRatesOverridesDeleteRequest) -> Result&lt;PostV1ReferenceExchangeRatesOverridesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">exchange_rates_overrides_delete</a>(request: ExchangeRatesOverridesDeleteReferenceRequest) -> Result&lt;ExchangeRatesOverridesDeleteReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -338,10 +338,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_exchange_rates_overrides_delete(
-            &PostV1ReferenceExchangeRatesOverridesDeleteRequest {
+        .exchange_rates_overrides_delete(
+            &ExchangeRatesOverridesDeleteReferenceRequest {
                 currency: "currency".to_string(),
-                date: "date".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -381,7 +381,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_countries_list</a>(request: PostV1ReferenceCountriesListRequest) -> Result&lt;PostV1ReferenceCountriesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">countries_list</a>(request: CountriesListReferenceRequest) -> Result&lt;CountriesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -405,8 +405,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_countries_list(
-            &PostV1ReferenceCountriesListRequest {
+        .countries_list(
+            &CountriesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -424,7 +424,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_counties_list</a>(request: PostV1ReferenceLtCountiesListRequest) -> Result&lt;PostV1ReferenceLtCountiesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">lt_counties_list</a>(request: LtCountiesListReferenceRequest) -> Result&lt;LtCountiesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -448,8 +448,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_lt_counties_list(
-            &PostV1ReferenceLtCountiesListRequest {
+        .lt_counties_list(
+            &LtCountiesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -467,7 +467,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_municipalities_list</a>(request: PostV1ReferenceLtMunicipalitiesListRequest) -> Result&lt;PostV1ReferenceLtMunicipalitiesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">lt_municipalities_list</a>(request: LtMunicipalitiesListReferenceRequest) -> Result&lt;LtMunicipalitiesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -491,8 +491,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_lt_municipalities_list(
-            &PostV1ReferenceLtMunicipalitiesListRequest {
+        .lt_municipalities_list(
+            &LtMunicipalitiesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -525,7 +525,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_cities_list</a>(request: PostV1ReferenceLtCitiesListRequest) -> Result&lt;PostV1ReferenceLtCitiesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">lt_cities_list</a>(request: LtCitiesListReferenceRequest) -> Result&lt;LtCitiesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -549,8 +549,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_lt_cities_list(
-            &PostV1ReferenceLtCitiesListRequest {
+        .lt_cities_list(
+            &LtCitiesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -591,7 +591,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_banks_list</a>(request: PostV1ReferenceBanksListRequest) -> Result&lt;PostV1ReferenceBanksListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">banks_list</a>(request: BanksListReferenceRequest) -> Result&lt;BanksListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -615,8 +615,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_banks_list(
-            &PostV1ReferenceBanksListRequest {
+        .banks_list(
+            &BanksListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -653,7 +653,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceBanksListRequestSortItem>>` 
+**sort:** `Option<Vec<BanksListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -661,7 +661,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceBanksListRequestFilterItem>>` 
+**filter:** `Option<Vec<BanksListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -681,7 +681,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_banks_upsert</a>(request: PostV1ReferenceBanksUpsertRequest) -> Result&lt;PostV1ReferenceBanksUpsertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">banks_upsert</a>(request: BanksUpsertReferenceRequest) -> Result&lt;BanksUpsertReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -705,8 +705,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_banks_upsert(
-            &PostV1ReferenceBanksUpsertRequest {
+        .banks_upsert(
+            &BanksUpsertReferenceRequest {
                 country_code: "countryCode".to_string(),
                 name: "name".to_string(),
                 bic: "bic".to_string(),
@@ -775,7 +775,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_lt_regions_list</a>(request: PostV1ReferenceLtRegionsListRequest) -> Result&lt;PostV1ReferenceLtRegionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">lt_regions_list</a>(request: LtRegionsListReferenceRequest) -> Result&lt;LtRegionsListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -799,8 +799,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_lt_regions_list(
-            &PostV1ReferenceLtRegionsListRequest {
+        .lt_regions_list(
+            &LtRegionsListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -818,7 +818,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_currencies_list</a>(request: PostV1ReferenceCurrenciesListRequest) -> Result&lt;PostV1ReferenceCurrenciesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">currencies_list</a>(request: CurrenciesListReferenceRequest) -> Result&lt;CurrenciesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -842,98 +842,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_currencies_list(
-            &PostV1ReferenceCurrenciesListRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**page:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**page_size:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**sort:** `Option<Vec<PostV1ReferenceCurrenciesListRequestSortItem>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**filter:** `Option<Vec<PostV1ReferenceCurrenciesListRequestFilterItem>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_vat_classifiers_list</a>(request: PostV1ReferenceVatClassifiersListRequest) -> Result&lt;PostV1ReferenceVatClassifiersListResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .reference
-        .post_v1reference_vat_classifiers_list(
-            &PostV1ReferenceVatClassifiersListRequest {
+        .currencies_list(
+            &CurrenciesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -970,7 +880,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceVatClassifiersListRequestSortItem>>` 
+**sort:** `Option<Vec<CurrenciesListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -978,7 +888,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceVatClassifiersListRequestFilterItem>>` 
+**filter:** `Option<Vec<CurrenciesListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -998,7 +908,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_vat_classifiers_upsert</a>(request: PostV1ReferenceVatClassifiersUpsertRequest) -> Result&lt;PostV1ReferenceVatClassifiersUpsertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">vat_classifiers_list</a>(request: VatClassifiersListReferenceRequest) -> Result&lt;VatClassifiersListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1022,9 +932,99 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_vat_classifiers_upsert(
-            &PostV1ReferenceVatClassifiersUpsertRequest {
-                rows: vec![PostV1ReferenceVatClassifiersUpsertRequestRowsItem {
+        .vat_classifiers_list(
+            &VatClassifiersListReferenceRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<VatClassifiersListReferenceRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<VatClassifiersListReferenceRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">vat_classifiers_upsert</a>(request: VatClassifiersUpsertReferenceRequest) -> Result&lt;VatClassifiersUpsertReferenceResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .reference
+        .vat_classifiers_upsert(
+            &VatClassifiersUpsertReferenceRequest {
+                rows: vec![VatClassifiersUpsertReferenceRequestRowsItem {
                     code: "code".to_string(),
                     name: "name".to_string(),
                     ..Default::default()
@@ -1048,7 +1048,7 @@ async fn main() {
 <dl>
 <dd>
 
-**rows:** `Vec<PostV1ReferenceVatClassifiersUpsertRequestRowsItem>` 
+**rows:** `Vec<VatClassifiersUpsertReferenceRequestRowsItem>` 
     
 </dd>
 </dl>
@@ -1060,7 +1060,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_eu_vat_rates_list</a>(request: PostV1ReferenceEuVatRatesListRequest) -> Result&lt;PostV1ReferenceEuVatRatesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">eu_vat_rates_list</a>(request: EuVatRatesListReferenceRequest) -> Result&lt;EuVatRatesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1098,8 +1098,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_eu_vat_rates_list(
-            &PostV1ReferenceEuVatRatesListRequest {
+        .eu_vat_rates_list(
+            &EuVatRatesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1140,7 +1140,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_eu_vat_rates_set_overrides</a>(request: PostV1ReferenceEuVatRatesSetOverridesRequest) -> Result&lt;PostV1ReferenceEuVatRatesSetOverridesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">eu_vat_rates_set_overrides</a>(request: EuVatRatesSetOverridesReferenceRequest) -> Result&lt;EuVatRatesSetOverridesReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1178,13 +1178,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_eu_vat_rates_set_overrides(
-            &PostV1ReferenceEuVatRatesSetOverridesRequest {
+        .eu_vat_rates_set_overrides(
+            &EuVatRatesSetOverridesReferenceRequest {
                 country_code: "countryCode".to_string(),
-                rates: vec![PostV1ReferenceEuVatRatesSetOverridesRequestRatesItem {
-                    category:
-                        PostV1ReferenceEuVatRatesSetOverridesRequestRatesItemCategory::Standard,
-                    rate_percent: "ratePercent".to_string(),
+                rates: vec![EuVatRatesSetOverridesReferenceRequestRatesItem {
+                    category: EuVatRatesSetOverridesReferenceRequestRatesItemCategory::Standard,
+                    rate_percent: "121.00".to_string(),
                 }],
             },
             None,
@@ -1213,7 +1212,7 @@ async fn main() {
 <dl>
 <dd>
 
-**rates:** `Vec<PostV1ReferenceEuVatRatesSetOverridesRequestRatesItem>` 
+**rates:** `Vec<EuVatRatesSetOverridesReferenceRequestRatesItem>` 
     
 </dd>
 </dl>
@@ -1225,7 +1224,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_vat_resolve</a>(request: PostV1ReferenceVatResolveRequest) -> Result&lt;PostV1ReferenceVatResolveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">vat_resolve</a>(request: VatResolveReferenceRequest) -> Result&lt;VatResolveReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1249,8 +1248,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_vat_resolve(
-            &PostV1ReferenceVatResolveRequest {
+        .vat_resolve(
+            &VatResolveReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1295,7 +1294,7 @@ async fn main() {
 <dl>
 <dd>
 
-**supply_type:** `Option<PostV1ReferenceVatResolveRequestSupplyType>` 
+**supply_type:** `Option<VatResolveReferenceRequestSupplyType>` 
     
 </dd>
 </dl>
@@ -1355,7 +1354,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_cn_codes_list</a>(request: PostV1ReferenceCnCodesListRequest) -> Result&lt;PostV1ReferenceCnCodesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">cn_codes_list</a>(request: CnCodesListReferenceRequest) -> Result&lt;CnCodesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1379,8 +1378,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_cn_codes_list(
-            &PostV1ReferenceCnCodesListRequest {
+        .cn_codes_list(
+            &CnCodesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1417,7 +1416,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceCnCodesListRequestSortItem>>` 
+**sort:** `Option<Vec<CnCodesListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -1425,7 +1424,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceCnCodesListRequestFilterItem>>` 
+**filter:** `Option<Vec<CnCodesListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -1445,7 +1444,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_cn_codes_upsert</a>(request: PostV1ReferenceCnCodesUpsertRequest) -> Result&lt;PostV1ReferenceCnCodesUpsertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">cn_codes_upsert</a>(request: CnCodesUpsertReferenceRequest) -> Result&lt;CnCodesUpsertReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1469,9 +1468,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_cn_codes_upsert(
-            &PostV1ReferenceCnCodesUpsertRequest {
-                rows: vec![PostV1ReferenceCnCodesUpsertRequestRowsItem {
+        .cn_codes_upsert(
+            &CnCodesUpsertReferenceRequest {
+                rows: vec![CnCodesUpsertReferenceRequestRowsItem {
                     code: "code".to_string(),
                     name: "name".to_string(),
                     ..Default::default()
@@ -1495,7 +1494,7 @@ async fn main() {
 <dl>
 <dd>
 
-**rows:** `Vec<PostV1ReferenceCnCodesUpsertRequestRowsItem>` 
+**rows:** `Vec<CnCodesUpsertReferenceRequestRowsItem>` 
     
 </dd>
 </dl>
@@ -1507,7 +1506,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_compliance_versions_list</a>(request: PostV1ReferenceComplianceVersionsListRequest) -> Result&lt;PostV1ReferenceComplianceVersionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">compliance_versions_list</a>(request: ComplianceVersionsListReferenceRequest) -> Result&lt;ComplianceVersionsListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1531,8 +1530,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_compliance_versions_list(
-            &PostV1ReferenceComplianceVersionsListRequest {
+        .compliance_versions_list(
+            &ComplianceVersionsListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1565,7 +1564,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_intrastat_thresholds_list</a>(request: PostV1ReferenceIntrastatThresholdsListRequest) -> Result&lt;PostV1ReferenceIntrastatThresholdsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">intrastat_thresholds_list</a>(request: IntrastatThresholdsListReferenceRequest) -> Result&lt;IntrastatThresholdsListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1589,8 +1588,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_intrastat_thresholds_list(
-            &PostV1ReferenceIntrastatThresholdsListRequest {
+        .intrastat_thresholds_list(
+            &IntrastatThresholdsListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1608,7 +1607,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_units_list</a>(request: PostV1ReferenceUnitsListRequest) -> Result&lt;PostV1ReferenceUnitsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">units_list</a>(request: UnitsListReferenceRequest) -> Result&lt;UnitsListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1632,8 +1631,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_units_list(
-            &PostV1ReferenceUnitsListRequest {
+        .units_list(
+            &UnitsListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1670,7 +1669,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceUnitsListRequestSortItem>>` 
+**sort:** `Option<Vec<UnitsListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -1678,7 +1677,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceUnitsListRequestFilterItem>>` 
+**filter:** `Option<Vec<UnitsListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -1698,7 +1697,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_series_create</a>(request: PostV1ReferenceSeriesCreateRequest) -> Result&lt;PostV1ReferenceSeriesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">series_create</a>(request: SeriesCreateReferenceRequest) -> Result&lt;SeriesCreateReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1722,8 +1721,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_series_create(
-            &PostV1ReferenceSeriesCreateRequest {
+        .series_create(
+            &SeriesCreateReferenceRequest {
                 document_type: "documentType".to_string(),
                 year: 1000000,
                 prefix: None,
@@ -1783,7 +1782,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">post_v1_reference_series_list</a>(request: PostV1ReferenceSeriesListRequest) -> Result&lt;PostV1ReferenceSeriesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reference.<a href="/src/api/resources/reference/client.rs">series_list</a>(request: SeriesListReferenceRequest) -> Result&lt;SeriesListReferenceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1807,8 +1806,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_series_list(
-            &PostV1ReferenceSeriesListRequest {
+        .series_list(
+            &SeriesListReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -1845,7 +1844,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReferenceSeriesListRequestSortItem>>` 
+**sort:** `Option<Vec<SeriesListReferenceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -1853,7 +1852,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReferenceSeriesListRequestFilterItem>>` 
+**filter:** `Option<Vec<SeriesListReferenceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -1873,8 +1872,8 @@ async fn main() {
 </dl>
 </details>
 
-## Partners
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_addresses_create</a>(request: PostV1PartnersAddressesCreateRequest) -> Result&lt;PostV1PartnersAddressesCreateResponse, ApiError&gt;</code></summary>
+## partners
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">addresses_create</a>(request: AddressesCreatePartnersRequest) -> Result&lt;AddressesCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1898,8 +1897,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_addresses_create(
-            &PostV1PartnersAddressesCreateRequest {
+        .addresses_create(
+            &AddressesCreatePartnersRequest {
                 partner_id: "partnerId".to_string(),
                 r#type: None,
                 street: None,
@@ -1926,7 +1925,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1PartnersAddressesCreateRequestType>` 
+**type_:** `Option<AddressesCreatePartnersRequestType>` 
     
 </dd>
 </dl>
@@ -1986,7 +1985,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_addresses_update</a>(request: PostV1PartnersAddressesUpdateRequest) -> Result&lt;PostV1PartnersAddressesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">addresses_update</a>(request: AddressesUpdatePartnersRequest) -> Result&lt;AddressesUpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2010,8 +2009,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_addresses_update(
-            &PostV1PartnersAddressesUpdateRequest {
+        .addresses_update(
+            &AddressesUpdatePartnersRequest {
                 id: "id".to_string(),
                 r#type: None,
                 street: None,
@@ -2038,7 +2037,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1PartnersAddressesUpdateRequestType>` 
+**type_:** `Option<AddressesUpdatePartnersRequestType>` 
     
 </dd>
 </dl>
@@ -2098,7 +2097,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_addresses_delete</a>(request: PostV1PartnersAddressesDeleteRequest) -> Result&lt;PostV1PartnersAddressesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">addresses_delete</a>(request: AddressesDeletePartnersRequest) -> Result&lt;AddressesDeletePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2122,8 +2121,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_addresses_delete(
-            &PostV1PartnersAddressesDeleteRequest {
+        .addresses_delete(
+            &AddressesDeletePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -2156,7 +2155,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_addresses_list</a>(request: PostV1PartnersAddressesListRequest) -> Result&lt;PostV1PartnersAddressesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">addresses_list</a>(request: AddressesListPartnersRequest) -> Result&lt;AddressesListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2180,8 +2179,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_addresses_list(
-            &PostV1PartnersAddressesListRequest {
+        .addresses_list(
+            &AddressesListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -2218,7 +2217,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersAddressesListRequestSortItem>>` 
+**sort:** `Option<Vec<AddressesListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -2226,7 +2225,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersAddressesListRequestFilterItem>>` 
+**filter:** `Option<Vec<AddressesListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -2246,7 +2245,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_contacts_create</a>(request: PostV1PartnersContactsCreateRequest) -> Result&lt;PostV1PartnersContactsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">contacts_create</a>(request: ContactsCreatePartnersRequest) -> Result&lt;ContactsCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2270,8 +2269,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_contacts_create(
-            &PostV1PartnersContactsCreateRequest {
+        .contacts_create(
+            &ContactsCreatePartnersRequest {
                 name: "name".to_string(),
                 partner_id: "partnerId".to_string(),
                 role: None,
@@ -2349,7 +2348,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_contacts_update</a>(request: PostV1PartnersContactsUpdateRequest) -> Result&lt;PostV1PartnersContactsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">contacts_update</a>(request: ContactsUpdatePartnersRequest) -> Result&lt;ContactsUpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2373,8 +2372,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_contacts_update(
-            &PostV1PartnersContactsUpdateRequest {
+        .contacts_update(
+            &ContactsUpdatePartnersRequest {
                 id: "id".to_string(),
                 name: None,
                 role: None,
@@ -2452,7 +2451,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_contacts_delete</a>(request: PostV1PartnersContactsDeleteRequest) -> Result&lt;PostV1PartnersContactsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">contacts_delete</a>(request: ContactsDeletePartnersRequest) -> Result&lt;ContactsDeletePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2476,8 +2475,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_contacts_delete(
-            &PostV1PartnersContactsDeleteRequest {
+        .contacts_delete(
+            &ContactsDeletePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -2510,7 +2509,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_contacts_list</a>(request: PostV1PartnersContactsListRequest) -> Result&lt;PostV1PartnersContactsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">contacts_list</a>(request: ContactsListPartnersRequest) -> Result&lt;ContactsListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2534,8 +2533,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_contacts_list(
-            &PostV1PartnersContactsListRequest {
+        .contacts_list(
+            &ContactsListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -2572,7 +2571,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersContactsListRequestSortItem>>` 
+**sort:** `Option<Vec<ContactsListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -2580,7 +2579,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersContactsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ContactsListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -2600,7 +2599,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_bank_accounts_create</a>(request: PostV1PartnersBankAccountsCreateRequest) -> Result&lt;PostV1PartnersBankAccountsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">bank_accounts_create</a>(request: BankAccountsCreatePartnersRequest) -> Result&lt;BankAccountsCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2624,8 +2623,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_bank_accounts_create(
-            &PostV1PartnersBankAccountsCreateRequest {
+        .bank_accounts_create(
+            &BankAccountsCreatePartnersRequest {
                 iban: "iban".to_string(),
                 partner_id: "partnerId".to_string(),
                 bank_name: None,
@@ -2703,7 +2702,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_bank_accounts_update</a>(request: PostV1PartnersBankAccountsUpdateRequest) -> Result&lt;PostV1PartnersBankAccountsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">bank_accounts_update</a>(request: BankAccountsUpdatePartnersRequest) -> Result&lt;BankAccountsUpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2727,8 +2726,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_bank_accounts_update(
-            &PostV1PartnersBankAccountsUpdateRequest {
+        .bank_accounts_update(
+            &BankAccountsUpdatePartnersRequest {
                 id: "id".to_string(),
                 iban: None,
                 bank_name: None,
@@ -2806,7 +2805,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_bank_accounts_delete</a>(request: PostV1PartnersBankAccountsDeleteRequest) -> Result&lt;PostV1PartnersBankAccountsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">bank_accounts_delete</a>(request: BankAccountsDeletePartnersRequest) -> Result&lt;BankAccountsDeletePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2830,8 +2829,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_bank_accounts_delete(
-            &PostV1PartnersBankAccountsDeleteRequest {
+        .bank_accounts_delete(
+            &BankAccountsDeletePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -2864,7 +2863,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_bank_accounts_list</a>(request: PostV1PartnersBankAccountsListRequest) -> Result&lt;PostV1PartnersBankAccountsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">bank_accounts_list</a>(request: BankAccountsListPartnersRequest) -> Result&lt;BankAccountsListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2888,8 +2887,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_bank_accounts_list(
-            &PostV1PartnersBankAccountsListRequest {
+        .bank_accounts_list(
+            &BankAccountsListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -2926,7 +2925,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersBankAccountsListRequestSortItem>>` 
+**sort:** `Option<Vec<BankAccountsListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -2934,7 +2933,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersBankAccountsListRequestFilterItem>>` 
+**filter:** `Option<Vec<BankAccountsListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -2954,7 +2953,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_files_list</a>(request: PostV1PartnersFilesListRequest) -> Result&lt;PostV1PartnersFilesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">files_list</a>(request: FilesListPartnersRequest) -> Result&lt;FilesListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2978,8 +2977,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_files_list(
-            &PostV1PartnersFilesListRequest {
+        .files_list(
+            &FilesListPartnersRequest {
                 partner_id: "partnerId".to_string(),
             },
             None,
@@ -3012,7 +3011,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">reminders_the_overnight_debt_reminder_job_would_send_today_for_this_company</a>(request: PostV1PartnersDebtRemindersPreviewRequest) -> Result&lt;PostV1PartnersDebtRemindersPreviewResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">debt_reminders_preview</a>(request: DebtRemindersPreviewPartnersRequest) -> Result&lt;DebtRemindersPreviewPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3036,8 +3035,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .reminders_the_overnight_debt_reminder_job_would_send_today_for_this_company(
-            &PostV1PartnersDebtRemindersPreviewRequest {
+        .debt_reminders_preview(
+            &DebtRemindersPreviewPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -3055,7 +3054,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_debt_reminders_list</a>(request: PostV1PartnersDebtRemindersListRequest) -> Result&lt;PostV1PartnersDebtRemindersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">debt_reminders_list</a>(request: DebtRemindersListPartnersRequest) -> Result&lt;DebtRemindersListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3079,8 +3078,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_debt_reminders_list(
-            &PostV1PartnersDebtRemindersListRequest {
+        .debt_reminders_list(
+            &DebtRemindersListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -3117,7 +3116,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersDebtRemindersListRequestSortItem>>` 
+**sort:** `Option<Vec<DebtRemindersListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -3125,7 +3124,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersDebtRemindersListRequestFilterItem>>` 
+**filter:** `Option<Vec<DebtRemindersListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -3145,7 +3144,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_validate_vat</a>(request: PostV1PartnersValidateVatRequest) -> Result&lt;PostV1PartnersValidateVatResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">validate_vat</a>(request: ValidateVatPartnersRequest) -> Result&lt;ValidateVatPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3169,8 +3168,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_validate_vat(
-            &PostV1PartnersValidateVatRequest {
+        .validate_vat(
+            &ValidateVatPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -3211,7 +3210,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_vat_reviews_list</a>(request: PostV1PartnersVatReviewsListRequest) -> Result&lt;PostV1PartnersVatReviewsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">vat_reviews_list</a>(request: VatReviewsListPartnersRequest) -> Result&lt;VatReviewsListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3235,8 +3234,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_vat_reviews_list(
-            &PostV1PartnersVatReviewsListRequest {
+        .vat_reviews_list(
+            &VatReviewsListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -3273,7 +3272,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersVatReviewsListRequestSortItem>>` 
+**sort:** `Option<Vec<VatReviewsListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -3281,7 +3280,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersVatReviewsListRequestFilterItem>>` 
+**filter:** `Option<Vec<VatReviewsListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -3301,7 +3300,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_vat_reviews_resolve</a>(request: PostV1PartnersVatReviewsResolveRequest) -> Result&lt;PostV1PartnersVatReviewsResolveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">vat_reviews_resolve</a>(request: VatReviewsResolvePartnersRequest) -> Result&lt;VatReviewsResolvePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3325,10 +3324,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_vat_reviews_resolve(
-            &PostV1PartnersVatReviewsResolveRequest {
+        .vat_reviews_resolve(
+            &VatReviewsResolvePartnersRequest {
                 id: "id".to_string(),
-                resolution: PostV1PartnersVatReviewsResolveRequestResolution::ConfirmedValid,
+                resolution: VatReviewsResolvePartnersRequestResolution::ConfirmedValid,
                 note: None,
             },
             None,
@@ -3357,7 +3356,7 @@ async fn main() {
 <dl>
 <dd>
 
-**resolution:** `PostV1PartnersVatReviewsResolveRequestResolution` 
+**resolution:** `VatReviewsResolvePartnersRequestResolution` 
     
 </dd>
 </dl>
@@ -3377,7 +3376,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_create</a>(request: PostV1PartnersCreateRequest) -> Result&lt;PostV1PartnersCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">create</a>(request: CreatePartnersRequest) -> Result&lt;CreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3401,8 +3400,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_create(
-            &PostV1PartnersCreateRequest {
+        .create(
+            &CreatePartnersRequest {
                 name: "name".to_string(),
                 r#type: None,
                 code: None,
@@ -3458,7 +3457,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1PartnersCreateRequestType>` 
+**type_:** `Option<CreatePartnersRequestType>` 
     
 </dd>
 </dl>
@@ -3586,7 +3585,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1PartnersCreateRequestAddress>` 
+**address:** `Option<CreatePartnersRequestAddress>` 
     
 </dd>
 </dl>
@@ -3594,7 +3593,7 @@ async fn main() {
 <dl>
 <dd>
 
-**correspondence_address:** `Option<PostV1PartnersCreateRequestCorrespondenceAddress>` 
+**correspondence_address:** `Option<CreatePartnersRequestCorrespondenceAddress>` 
     
 </dd>
 </dl>
@@ -3738,7 +3737,7 @@ async fn main() {
 <dl>
 <dd>
 
-**legal_country_class:** `Option<PostV1PartnersCreateRequestLegalCountryClass>` 
+**legal_country_class:** `Option<CreatePartnersRequestLegalCountryClass>` 
     
 </dd>
 </dl>
@@ -3750,7 +3749,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_find_or_create</a>(request: PostV1PartnersFindOrCreateRequest) -> Result&lt;PostV1PartnersFindOrCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">find_or_create</a>(request: FindOrCreatePartnersRequest) -> Result&lt;FindOrCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3774,8 +3773,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_find_or_create(
-            &PostV1PartnersFindOrCreateRequest {
+        .find_or_create(
+            &FindOrCreatePartnersRequest {
                 name: "name".to_string(),
                 r#type: None,
                 code: None,
@@ -3831,7 +3830,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1PartnersFindOrCreateRequestType>` 
+**type_:** `Option<FindOrCreatePartnersRequestType>` 
     
 </dd>
 </dl>
@@ -3959,7 +3958,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1PartnersFindOrCreateRequestAddress>` 
+**address:** `Option<FindOrCreatePartnersRequestAddress>` 
     
 </dd>
 </dl>
@@ -3967,7 +3966,7 @@ async fn main() {
 <dl>
 <dd>
 
-**correspondence_address:** `Option<PostV1PartnersFindOrCreateRequestCorrespondenceAddress>` 
+**correspondence_address:** `Option<FindOrCreatePartnersRequestCorrespondenceAddress>` 
     
 </dd>
 </dl>
@@ -4111,7 +4110,7 @@ async fn main() {
 <dl>
 <dd>
 
-**legal_country_class:** `Option<PostV1PartnersFindOrCreateRequestLegalCountryClass>` 
+**legal_country_class:** `Option<FindOrCreatePartnersRequestLegalCountryClass>` 
     
 </dd>
 </dl>
@@ -4123,7 +4122,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_get</a>(request: PostV1PartnersGetRequest) -> Result&lt;PostV1PartnersGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">get</a>(request: GetPartnersRequest) -> Result&lt;GetPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4147,8 +4146,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_get(
-            &PostV1PartnersGetRequest {
+        .get(
+            &GetPartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -4181,7 +4180,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_update</a>(request: PostV1PartnersUpdateRequest) -> Result&lt;PostV1PartnersUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">update</a>(request: UpdatePartnersRequest) -> Result&lt;UpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4205,8 +4204,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_update(
-            &PostV1PartnersUpdateRequest {
+        .update(
+            &UpdatePartnersRequest {
                 id: "id".to_string(),
                 r#type: None,
                 name: None,
@@ -4271,7 +4270,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1PartnersUpdateRequestType>` 
+**type_:** `Option<UpdatePartnersRequestType>` 
     
 </dd>
 </dl>
@@ -4399,7 +4398,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<Option<PostV1PartnersUpdateRequestAddress>>` 
+**address:** `Option<Option<UpdatePartnersRequestAddress>>` 
     
 </dd>
 </dl>
@@ -4407,7 +4406,7 @@ async fn main() {
 <dl>
 <dd>
 
-**correspondence_address:** `Option<Option<PostV1PartnersUpdateRequestCorrespondenceAddress>>` 
+**correspondence_address:** `Option<Option<UpdatePartnersRequestCorrespondenceAddress>>` 
     
 </dd>
 </dl>
@@ -4551,7 +4550,7 @@ async fn main() {
 <dl>
 <dd>
 
-**legal_country_class:** `Option<Option<PostV1PartnersUpdateRequestLegalCountryClass>>` 
+**legal_country_class:** `Option<Option<UpdatePartnersRequestLegalCountryClass>>` 
     
 </dd>
 </dl>
@@ -4563,7 +4562,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_delete</a>(request: PostV1PartnersDeleteRequest) -> Result&lt;PostV1PartnersDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">delete</a>(request: DeletePartnersRequest) -> Result&lt;DeletePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4587,8 +4586,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_delete(
-            &PostV1PartnersDeleteRequest {
+        .delete(
+            &DeletePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -4621,7 +4620,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">blank_a_partners_personal_data_and_hide_the_record</a>(request: PostV1PartnersAnonymizeRequest) -> Result&lt;PostV1PartnersAnonymizeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">anonymize</a>(request: AnonymizePartnersRequest) -> Result&lt;AnonymizePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4659,8 +4658,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .blank_a_partners_personal_data_and_hide_the_record(
-            &PostV1PartnersAnonymizeRequest {
+        .anonymize(
+            &AnonymizePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -4693,7 +4692,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_list</a>(request: PostV1PartnersListRequest) -> Result&lt;PostV1PartnersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">list</a>(request: ListPartnersRequest) -> Result&lt;ListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4717,8 +4716,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_list(
-            &PostV1PartnersListRequest {
+        .list(
+            &ListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -4755,7 +4754,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersListRequestSortItem>>` 
+**sort:** `Option<Vec<ListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -4763,7 +4762,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -4783,7 +4782,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_groups_create</a>(request: PostV1PartnersGroupsCreateRequest) -> Result&lt;PostV1PartnersGroupsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">groups_create</a>(request: GroupsCreatePartnersRequest) -> Result&lt;GroupsCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4807,8 +4806,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_groups_create(
-            &PostV1PartnersGroupsCreateRequest {
+        .groups_create(
+            &GroupsCreatePartnersRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
             },
@@ -4850,7 +4849,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_groups_update</a>(request: PostV1PartnersGroupsUpdateRequest) -> Result&lt;PostV1PartnersGroupsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">groups_update</a>(request: GroupsUpdatePartnersRequest) -> Result&lt;GroupsUpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4874,8 +4873,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_groups_update(
-            &PostV1PartnersGroupsUpdateRequest {
+        .groups_update(
+            &GroupsUpdatePartnersRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -4926,7 +4925,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_groups_delete</a>(request: PostV1PartnersGroupsDeleteRequest) -> Result&lt;PostV1PartnersGroupsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">groups_delete</a>(request: GroupsDeletePartnersRequest) -> Result&lt;GroupsDeletePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4950,8 +4949,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_groups_delete(
-            &PostV1PartnersGroupsDeleteRequest {
+        .groups_delete(
+            &GroupsDeletePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -4984,7 +4983,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_groups_list</a>(request: PostV1PartnersGroupsListRequest) -> Result&lt;PostV1PartnersGroupsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">groups_list</a>(request: GroupsListPartnersRequest) -> Result&lt;GroupsListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5008,8 +5007,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_groups_list(
-            &PostV1PartnersGroupsListRequest {
+        .groups_list(
+            &GroupsListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -5027,7 +5026,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_statuses_create</a>(request: PostV1PartnersStatusesCreateRequest) -> Result&lt;PostV1PartnersStatusesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">statuses_create</a>(request: StatusesCreatePartnersRequest) -> Result&lt;StatusesCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5051,8 +5050,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_statuses_create(
-            &PostV1PartnersStatusesCreateRequest {
+        .statuses_create(
+            &StatusesCreatePartnersRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 sort_order: None,
@@ -5103,7 +5102,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_statuses_update</a>(request: PostV1PartnersStatusesUpdateRequest) -> Result&lt;PostV1PartnersStatusesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">statuses_update</a>(request: StatusesUpdatePartnersRequest) -> Result&lt;StatusesUpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5127,8 +5126,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_statuses_update(
-            &PostV1PartnersStatusesUpdateRequest {
+        .statuses_update(
+            &StatusesUpdatePartnersRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -5188,7 +5187,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_statuses_delete</a>(request: PostV1PartnersStatusesDeleteRequest) -> Result&lt;PostV1PartnersStatusesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">statuses_delete</a>(request: StatusesDeletePartnersRequest) -> Result&lt;StatusesDeletePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5212,8 +5211,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_statuses_delete(
-            &PostV1PartnersStatusesDeleteRequest {
+        .statuses_delete(
+            &StatusesDeletePartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -5246,7 +5245,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_statuses_list</a>(request: PostV1PartnersStatusesListRequest) -> Result&lt;PostV1PartnersStatusesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">statuses_list</a>(request: StatusesListPartnersRequest) -> Result&lt;StatusesListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5270,8 +5269,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_statuses_list(
-            &PostV1PartnersStatusesListRequest {
+        .statuses_list(
+            &StatusesListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -5289,7 +5288,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_inquiries_create</a>(request: PostV1PartnersInquiriesCreateRequest) -> Result&lt;PostV1PartnersInquiriesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">inquiries_create</a>(request: InquiriesCreatePartnersRequest) -> Result&lt;InquiriesCreatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5313,8 +5312,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_inquiries_create(
-            &PostV1PartnersInquiriesCreateRequest {
+        .inquiries_create(
+            &InquiriesCreatePartnersRequest {
                 subject: "subject".to_string(),
                 partner_id: None,
                 contact_name: None,
@@ -5419,7 +5418,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_inquiries_update</a>(request: PostV1PartnersInquiriesUpdateRequest) -> Result&lt;PostV1PartnersInquiriesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">inquiries_update</a>(request: InquiriesUpdatePartnersRequest) -> Result&lt;InquiriesUpdatePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5443,8 +5442,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_inquiries_update(
-            &PostV1PartnersInquiriesUpdateRequest {
+        .inquiries_update(
+            &InquiriesUpdatePartnersRequest {
                 id: "id".to_string(),
                 partner_id: None,
                 subject: None,
@@ -5512,7 +5511,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1PartnersInquiriesUpdateRequestStatus>` 
+**status:** `Option<InquiriesUpdatePartnersRequestStatus>` 
     
 </dd>
 </dl>
@@ -5540,7 +5539,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_inquiries_get</a>(request: PostV1PartnersInquiriesGetRequest) -> Result&lt;PostV1PartnersInquiriesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">inquiries_get</a>(request: InquiriesGetPartnersRequest) -> Result&lt;InquiriesGetPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5564,8 +5563,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_inquiries_get(
-            &PostV1PartnersInquiriesGetRequest {
+        .inquiries_get(
+            &InquiriesGetPartnersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -5598,7 +5597,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_inquiries_list</a>(request: PostV1PartnersInquiriesListRequest) -> Result&lt;PostV1PartnersInquiriesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">inquiries_list</a>(request: InquiriesListPartnersRequest) -> Result&lt;InquiriesListPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5622,8 +5621,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_inquiries_list(
-            &PostV1PartnersInquiriesListRequest {
+        .inquiries_list(
+            &InquiriesListPartnersRequest {
                 ..Default::default()
             },
             None,
@@ -5660,7 +5659,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PartnersInquiriesListRequestSortItem>>` 
+**sort:** `Option<Vec<InquiriesListPartnersRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -5668,7 +5667,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PartnersInquiriesListRequestFilterItem>>` 
+**filter:** `Option<Vec<InquiriesListPartnersRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -5688,7 +5687,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_partners_credit_check</a>(request: PostV1PartnersCreditCheckRequest) -> Result&lt;PostV1PartnersCreditCheckResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">credit_check</a>(request: CreditCheckPartnersRequest) -> Result&lt;CreditCheckPartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5712,8 +5711,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .partners
-        .post_v1partners_credit_check(
-            &PostV1PartnersCreditCheckRequest {
+        .credit_check(
+            &CreditCheckPartnersRequest {
                 partner_id: "partnerId".to_string(),
                 additional_amount: None,
             },
@@ -5755,7 +5754,8 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_create</a>(request: PostV1LeadsCreateRequest) -> Result&lt;PostV1LeadsCreateResponse, ApiError&gt;</code></summary>
+## Leads
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">create</a>(request: CreateLeadsRequest) -> Result&lt;CreateLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5778,9 +5778,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_create(
-            &PostV1LeadsCreateRequest {
+        .leads
+        .create(
+            &CreateLeadsRequest {
                 name: "name".to_string(),
                 contact_name: None,
                 email: None,
@@ -5870,7 +5870,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1LeadsCreateRequestStatus>` 
+**status:** `Option<CreateLeadsRequestStatus>` 
     
 </dd>
 </dl>
@@ -5910,7 +5910,7 @@ async fn main() {
 <dl>
 <dd>
 
-**documents:** `Option<Vec<PostV1LeadsCreateRequestDocumentsItem>>` 
+**documents:** `Option<Vec<CreateLeadsRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -5930,7 +5930,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_get</a>(request: PostV1LeadsGetRequest) -> Result&lt;PostV1LeadsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">get</a>(request: GetLeadsRequest) -> Result&lt;GetLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5953,9 +5953,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_get(
-            &PostV1LeadsGetRequest {
+        .leads
+        .get(
+            &GetLeadsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -5988,7 +5988,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_update</a>(request: PostV1LeadsUpdateRequest) -> Result&lt;PostV1LeadsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">update</a>(request: UpdateLeadsRequest) -> Result&lt;UpdateLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6011,9 +6011,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_update(
-            &PostV1LeadsUpdateRequest {
+        .leads
+        .update(
+            &UpdateLeadsRequest {
                 id: "id".to_string(),
                 name: None,
                 contact_name: None,
@@ -6111,7 +6111,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1LeadsUpdateRequestStatus>` 
+**status:** `Option<UpdateLeadsRequestStatus>` 
     
 </dd>
 </dl>
@@ -6151,7 +6151,7 @@ async fn main() {
 <dl>
 <dd>
 
-**documents:** `Option<Vec<PostV1LeadsUpdateRequestDocumentsItem>>` 
+**documents:** `Option<Vec<UpdateLeadsRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -6163,7 +6163,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_delete</a>(request: PostV1LeadsDeleteRequest) -> Result&lt;PostV1LeadsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">delete</a>(request: DeleteLeadsRequest) -> Result&lt;DeleteLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6186,9 +6186,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_delete(
-            &PostV1LeadsDeleteRequest {
+        .leads
+        .delete(
+            &DeleteLeadsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -6221,7 +6221,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_list</a>(request: PostV1LeadsListRequest) -> Result&lt;PostV1LeadsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">list</a>(request: ListLeadsRequest) -> Result&lt;ListLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6244,9 +6244,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_list(
-            &PostV1LeadsListRequest {
+        .leads
+        .list(
+            &ListLeadsRequest {
                 ..Default::default()
             },
             None,
@@ -6283,7 +6283,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LeadsListRequestSortItem>>` 
+**sort:** `Option<Vec<ListLeadsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -6291,7 +6291,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LeadsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListLeadsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -6311,7 +6311,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_notes_create</a>(request: PostV1LeadsNotesCreateRequest) -> Result&lt;PostV1LeadsNotesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">notes_create</a>(request: NotesCreateLeadsRequest) -> Result&lt;NotesCreateLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6334,9 +6334,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_notes_create(
-            &PostV1LeadsNotesCreateRequest {
+        .leads
+        .notes_create(
+            &NotesCreateLeadsRequest {
                 lead_id: "leadId".to_string(),
                 body: "body".to_string(),
             },
@@ -6378,7 +6378,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_notes_delete</a>(request: PostV1LeadsNotesDeleteRequest) -> Result&lt;PostV1LeadsNotesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">notes_delete</a>(request: NotesDeleteLeadsRequest) -> Result&lt;NotesDeleteLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6401,9 +6401,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_notes_delete(
-            &PostV1LeadsNotesDeleteRequest {
+        .leads
+        .notes_delete(
+            &NotesDeleteLeadsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -6436,7 +6436,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_notes_list</a>(request: PostV1LeadsNotesListRequest) -> Result&lt;PostV1LeadsNotesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">notes_list</a>(request: NotesListLeadsRequest) -> Result&lt;NotesListLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6459,9 +6459,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_notes_list(
-            &PostV1LeadsNotesListRequest {
+        .leads
+        .notes_list(
+            &NotesListLeadsRequest {
                 lead_id: "leadId".to_string(),
             },
             None,
@@ -6494,7 +6494,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_files_list</a>(request: PostV1LeadsFilesListRequest) -> Result&lt;PostV1LeadsFilesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">files_list</a>(request: FilesListLeadsRequest) -> Result&lt;FilesListLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6517,9 +6517,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_files_list(
-            &PostV1LeadsFilesListRequest {
+        .leads
+        .files_list(
+            &FilesListLeadsRequest {
                 lead_id: "leadId".to_string(),
             },
             None,
@@ -6552,7 +6552,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_create</a>(request: PostV1LeadsSourcesCreateRequest) -> Result&lt;PostV1LeadsSourcesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">sources_create</a>(request: SourcesCreateLeadsRequest) -> Result&lt;SourcesCreateLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6575,9 +6575,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_sources_create(
-            &PostV1LeadsSourcesCreateRequest {
+        .leads
+        .sources_create(
+            &SourcesCreateLeadsRequest {
                 name: "name".to_string(),
                 is_active: None,
             },
@@ -6619,7 +6619,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_update</a>(request: PostV1LeadsSourcesUpdateRequest) -> Result&lt;PostV1LeadsSourcesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">sources_update</a>(request: SourcesUpdateLeadsRequest) -> Result&lt;SourcesUpdateLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6642,9 +6642,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_sources_update(
-            &PostV1LeadsSourcesUpdateRequest {
+        .leads
+        .sources_update(
+            &SourcesUpdateLeadsRequest {
                 id: "id".to_string(),
                 name: None,
                 is_active: None,
@@ -6695,7 +6695,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_delete</a>(request: PostV1LeadsSourcesDeleteRequest) -> Result&lt;PostV1LeadsSourcesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">sources_delete</a>(request: SourcesDeleteLeadsRequest) -> Result&lt;SourcesDeleteLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6718,9 +6718,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_sources_delete(
-            &PostV1LeadsSourcesDeleteRequest {
+        .leads
+        .sources_delete(
+            &SourcesDeleteLeadsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -6753,7 +6753,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_list</a>(request: PostV1LeadsSourcesListRequest) -> Result&lt;PostV1LeadsSourcesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">sources_list</a>(request: SourcesListLeadsRequest) -> Result&lt;SourcesListLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6776,9 +6776,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_sources_list(
-            &PostV1LeadsSourcesListRequest {
+        .leads
+        .sources_list(
+            &SourcesListLeadsRequest {
                 ..Default::default()
             },
             None,
@@ -6796,7 +6796,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_sources_options</a>(request: PostV1LeadsSourcesOptionsRequest) -> Result&lt;PostV1LeadsSourcesOptionsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">sources_options</a>(request: SourcesOptionsLeadsRequest) -> Result&lt;SourcesOptionsLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6819,9 +6819,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_sources_options(
-            &PostV1LeadsSourcesOptionsRequest {
+        .leads
+        .sources_options(
+            &SourcesOptionsLeadsRequest {
                 ..Default::default()
             },
             None,
@@ -6839,7 +6839,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">post_v1_leads_convert</a>(request: PostV1LeadsConvertRequest) -> Result&lt;PostV1LeadsConvertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">convert</a>(request: ConvertLeadsRequest) -> Result&lt;ConvertLeadsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6876,9 +6876,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .partners
-        .post_v1leads_convert(
-            &PostV1LeadsConvertRequest {
+        .leads
+        .convert(
+            &ConvertLeadsRequest {
                 id: "id".to_string(),
                 partner_type: None,
                 code: None,
@@ -6910,7 +6910,7 @@ async fn main() {
 <dl>
 <dd>
 
-**partner_type:** `Option<PostV1LeadsConvertRequestPartnerType>` 
+**partner_type:** `Option<ConvertLeadsRequestPartnerType>` 
     
 </dd>
 </dl>
@@ -6938,8 +6938,8 @@ async fn main() {
 </dl>
 </details>
 
-## Catalog
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_create</a>(request: PostV1CatalogItemsCreateRequest) -> Result&lt;PostV1CatalogItemsCreateResponse, ApiError&gt;</code></summary>
+## catalog
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_create</a>(request: ItemsCreateCatalogRequest) -> Result&lt;ItemsCreateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -6963,8 +6963,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_create(
-            &PostV1CatalogItemsCreateRequest {
+        .items_create(
+            &ItemsCreateCatalogRequest {
                 name: "name".to_string(),
                 r#type: None,
                 tracking: None,
@@ -7032,7 +7032,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1CatalogItemsCreateRequestType>` 
+**type_:** `Option<ItemsCreateCatalogRequestType>` 
     
 </dd>
 </dl>
@@ -7040,7 +7040,7 @@ async fn main() {
 <dl>
 <dd>
 
-**tracking:** `Option<PostV1CatalogItemsCreateRequestTracking>` 
+**tracking:** `Option<ItemsCreateCatalogRequestTracking>` 
     
 </dd>
 </dl>
@@ -7184,7 +7184,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<std::collections::HashMap<String, PostV1CatalogItemsCreateRequestTranslationsValue>>` 
+**translations:** `Option<std::collections::HashMap<String, ItemsCreateCatalogRequestTranslationsValue>>` 
     
 </dd>
 </dl>
@@ -7192,7 +7192,7 @@ async fn main() {
 <dl>
 <dd>
 
-**components:** `Option<Vec<PostV1CatalogItemsCreateRequestComponentsItem>>` 
+**components:** `Option<Vec<ItemsCreateCatalogRequestComponentsItem>>` 
     
 </dd>
 </dl>
@@ -7420,7 +7420,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_get</a>(request: PostV1CatalogItemsGetRequest) -> Result&lt;PostV1CatalogItemsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_get</a>(request: ItemsGetCatalogRequest) -> Result&lt;ItemsGetCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7444,8 +7444,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_get(
-            &PostV1CatalogItemsGetRequest {
+        .items_get(
+            &ItemsGetCatalogRequest {
                 id: "id".to_string(),
             },
             None,
@@ -7478,7 +7478,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_update</a>(request: PostV1CatalogItemsUpdateRequest) -> Result&lt;PostV1CatalogItemsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_update</a>(request: ItemsUpdateCatalogRequest) -> Result&lt;ItemsUpdateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7502,8 +7502,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_update(
-            &PostV1CatalogItemsUpdateRequest {
+        .items_update(
+            &ItemsUpdateCatalogRequest {
                 id: "id".to_string(),
                 r#type: None,
                 tracking: None,
@@ -7580,7 +7580,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1CatalogItemsUpdateRequestType>` 
+**type_:** `Option<ItemsUpdateCatalogRequestType>` 
     
 </dd>
 </dl>
@@ -7588,7 +7588,7 @@ async fn main() {
 <dl>
 <dd>
 
-**tracking:** `Option<PostV1CatalogItemsUpdateRequestTracking>` 
+**tracking:** `Option<ItemsUpdateCatalogRequestTracking>` 
     
 </dd>
 </dl>
@@ -7732,7 +7732,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<Option<std::collections::HashMap<String, Option<PostV1CatalogItemsUpdateRequestTranslationsValue>>>>` 
+**translations:** `Option<Option<std::collections::HashMap<String, Option<ItemsUpdateCatalogRequestTranslationsValue>>>>` 
     
 </dd>
 </dl>
@@ -7740,7 +7740,7 @@ async fn main() {
 <dl>
 <dd>
 
-**components:** `Option<Vec<PostV1CatalogItemsUpdateRequestComponentsItem>>` 
+**components:** `Option<Vec<ItemsUpdateCatalogRequestComponentsItem>>` 
     
 </dd>
 </dl>
@@ -7968,7 +7968,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_delete</a>(request: PostV1CatalogItemsDeleteRequest) -> Result&lt;PostV1CatalogItemsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_delete</a>(request: ItemsDeleteCatalogRequest) -> Result&lt;ItemsDeleteCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -7992,8 +7992,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_delete(
-            &PostV1CatalogItemsDeleteRequest {
+        .items_delete(
+            &ItemsDeleteCatalogRequest {
                 id: "id".to_string(),
             },
             None,
@@ -8026,7 +8026,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_list</a>(request: PostV1CatalogItemsListRequest) -> Result&lt;PostV1CatalogItemsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_list</a>(request: ItemsListCatalogRequest) -> Result&lt;ItemsListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8050,8 +8050,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_list(
-            &PostV1CatalogItemsListRequest {
+        .items_list(
+            &ItemsListCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -8088,7 +8088,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1CatalogItemsListRequestSortItem>>` 
+**sort:** `Option<Vec<ItemsListCatalogRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -8096,7 +8096,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1CatalogItemsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ItemsListCatalogRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -8116,7 +8116,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_files_list</a>(request: PostV1CatalogItemsFilesListRequest) -> Result&lt;PostV1CatalogItemsFilesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_files_list</a>(request: ItemsFilesListCatalogRequest) -> Result&lt;ItemsFilesListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8140,8 +8140,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_files_list(
-            &PostV1CatalogItemsFilesListRequest {
+        .items_files_list(
+            &ItemsFilesListCatalogRequest {
                 item_id: "itemId".to_string(),
             },
             None,
@@ -8174,7 +8174,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_create</a>(request: PostV1CatalogItemsKindsCreateRequest) -> Result&lt;PostV1CatalogItemsKindsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_kinds_create</a>(request: ItemsKindsCreateCatalogRequest) -> Result&lt;ItemsKindsCreateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8198,8 +8198,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_kinds_create(
-            &PostV1CatalogItemsKindsCreateRequest {
+        .items_kinds_create(
+            &ItemsKindsCreateCatalogRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 saft_type: None,
@@ -8240,7 +8240,7 @@ async fn main() {
 <dl>
 <dd>
 
-**saft_type:** `Option<PostV1CatalogItemsKindsCreateRequestSaftType>` 
+**saft_type:** `Option<ItemsKindsCreateCatalogRequestSaftType>` 
     
 </dd>
 </dl>
@@ -8268,7 +8268,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_update</a>(request: PostV1CatalogItemsKindsUpdateRequest) -> Result&lt;PostV1CatalogItemsKindsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_kinds_update</a>(request: ItemsKindsUpdateCatalogRequest) -> Result&lt;ItemsKindsUpdateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8292,8 +8292,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_kinds_update(
-            &PostV1CatalogItemsKindsUpdateRequest {
+        .items_kinds_update(
+            &ItemsKindsUpdateCatalogRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -8343,7 +8343,7 @@ async fn main() {
 <dl>
 <dd>
 
-**saft_type:** `Option<PostV1CatalogItemsKindsUpdateRequestSaftType>` 
+**saft_type:** `Option<ItemsKindsUpdateCatalogRequestSaftType>` 
     
 </dd>
 </dl>
@@ -8371,7 +8371,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_delete</a>(request: PostV1CatalogItemsKindsDeleteRequest) -> Result&lt;PostV1CatalogItemsKindsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_kinds_delete</a>(request: ItemsKindsDeleteCatalogRequest) -> Result&lt;ItemsKindsDeleteCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8395,8 +8395,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_kinds_delete(
-            &PostV1CatalogItemsKindsDeleteRequest {
+        .items_kinds_delete(
+            &ItemsKindsDeleteCatalogRequest {
                 id: "id".to_string(),
             },
             None,
@@ -8429,7 +8429,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_kinds_list</a>(request: PostV1CatalogItemsKindsListRequest) -> Result&lt;PostV1CatalogItemsKindsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_kinds_list</a>(request: ItemsKindsListCatalogRequest) -> Result&lt;ItemsKindsListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8453,8 +8453,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_kinds_list(
-            &PostV1CatalogItemsKindsListRequest {
+        .items_kinds_list(
+            &ItemsKindsListCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -8472,7 +8472,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_create</a>(request: PostV1CatalogUnitsCreateRequest) -> Result&lt;PostV1CatalogUnitsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">units_create</a>(request: UnitsCreateCatalogRequest) -> Result&lt;UnitsCreateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8496,8 +8496,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_units_create(
-            &PostV1CatalogUnitsCreateRequest {
+        .units_create(
+            &UnitsCreateCatalogRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 is_active: None,
@@ -8548,7 +8548,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_update</a>(request: PostV1CatalogUnitsUpdateRequest) -> Result&lt;PostV1CatalogUnitsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">units_update</a>(request: UnitsUpdateCatalogRequest) -> Result&lt;UnitsUpdateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8572,8 +8572,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_units_update(
-            &PostV1CatalogUnitsUpdateRequest {
+        .units_update(
+            &UnitsUpdateCatalogRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -8633,7 +8633,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_delete</a>(request: PostV1CatalogUnitsDeleteRequest) -> Result&lt;PostV1CatalogUnitsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">units_delete</a>(request: UnitsDeleteCatalogRequest) -> Result&lt;UnitsDeleteCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8657,8 +8657,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_units_delete(
-            &PostV1CatalogUnitsDeleteRequest {
+        .units_delete(
+            &UnitsDeleteCatalogRequest {
                 id: "id".to_string(),
             },
             None,
@@ -8691,7 +8691,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_list</a>(request: PostV1CatalogUnitsListRequest) -> Result&lt;PostV1CatalogUnitsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">units_list</a>(request: UnitsListCatalogRequest) -> Result&lt;UnitsListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8715,8 +8715,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_units_list(
-            &PostV1CatalogUnitsListRequest {
+        .units_list(
+            &UnitsListCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -8734,7 +8734,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_units_options</a>(request: PostV1CatalogUnitsOptionsRequest) -> Result&lt;PostV1CatalogUnitsOptionsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">units_options</a>(request: UnitsOptionsCatalogRequest) -> Result&lt;UnitsOptionsCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8758,8 +8758,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_units_options(
-            &PostV1CatalogUnitsOptionsRequest {
+        .units_options(
+            &UnitsOptionsCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -8780,7 +8780,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1CatalogUnitsOptionsRequestLocale>` 
+**locale:** `Option<UnitsOptionsCatalogRequestLocale>` 
     
 </dd>
 </dl>
@@ -8792,7 +8792,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_item_groups_create</a>(request: PostV1CatalogItemGroupsCreateRequest) -> Result&lt;PostV1CatalogItemGroupsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">item_groups_create</a>(request: ItemGroupsCreateCatalogRequest) -> Result&lt;ItemGroupsCreateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8816,8 +8816,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_item_groups_create(
-            &PostV1CatalogItemGroupsCreateRequest {
+        .item_groups_create(
+            &ItemGroupsCreateCatalogRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 parent_id: None,
@@ -8868,7 +8868,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_item_groups_update</a>(request: PostV1CatalogItemGroupsUpdateRequest) -> Result&lt;PostV1CatalogItemGroupsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">item_groups_update</a>(request: ItemGroupsUpdateCatalogRequest) -> Result&lt;ItemGroupsUpdateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8892,8 +8892,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_item_groups_update(
-            &PostV1CatalogItemGroupsUpdateRequest {
+        .item_groups_update(
+            &ItemGroupsUpdateCatalogRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -8953,7 +8953,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_item_groups_delete</a>(request: PostV1CatalogItemGroupsDeleteRequest) -> Result&lt;PostV1CatalogItemGroupsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">item_groups_delete</a>(request: ItemGroupsDeleteCatalogRequest) -> Result&lt;ItemGroupsDeleteCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -8977,8 +8977,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_item_groups_delete(
-            &PostV1CatalogItemGroupsDeleteRequest {
+        .item_groups_delete(
+            &ItemGroupsDeleteCatalogRequest {
                 id: "id".to_string(),
             },
             None,
@@ -9011,7 +9011,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_item_groups_list</a>(request: PostV1CatalogItemGroupsListRequest) -> Result&lt;PostV1CatalogItemGroupsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">item_groups_list</a>(request: ItemGroupsListCatalogRequest) -> Result&lt;ItemGroupsListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9035,8 +9035,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_item_groups_list(
-            &PostV1CatalogItemGroupsListRequest {
+        .item_groups_list(
+            &ItemGroupsListCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -9054,7 +9054,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_suppliers_upsert</a>(request: PostV1CatalogItemsSuppliersUpsertRequest) -> Result&lt;PostV1CatalogItemsSuppliersUpsertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_suppliers_upsert</a>(request: ItemsSuppliersUpsertCatalogRequest) -> Result&lt;ItemsSuppliersUpsertCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9078,8 +9078,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_suppliers_upsert(
-            &PostV1CatalogItemsSuppliersUpsertRequest {
+        .items_suppliers_upsert(
+            &ItemsSuppliersUpsertCatalogRequest {
                 item_id: "itemId".to_string(),
                 partner_id: "partnerId".to_string(),
                 supplier_code: None,
@@ -9157,7 +9157,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_suppliers_list</a>(request: PostV1CatalogItemsSuppliersListRequest) -> Result&lt;PostV1CatalogItemsSuppliersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_suppliers_list</a>(request: ItemsSuppliersListCatalogRequest) -> Result&lt;ItemsSuppliersListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9181,8 +9181,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_suppliers_list(
-            &PostV1CatalogItemsSuppliersListRequest {
+        .items_suppliers_list(
+            &ItemsSuppliersListCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -9223,7 +9223,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_items_suppliers_delete</a>(request: PostV1CatalogItemsSuppliersDeleteRequest) -> Result&lt;PostV1CatalogItemsSuppliersDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">items_suppliers_delete</a>(request: ItemsSuppliersDeleteCatalogRequest) -> Result&lt;ItemsSuppliersDeleteCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9247,8 +9247,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_items_suppliers_delete(
-            &PostV1CatalogItemsSuppliersDeleteRequest {
+        .items_suppliers_delete(
+            &ItemsSuppliersDeleteCatalogRequest {
                 id: "id".to_string(),
             },
             None,
@@ -9281,7 +9281,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_price_lists_create</a>(request: PostV1CatalogPriceListsCreateRequest) -> Result&lt;PostV1CatalogPriceListsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">price_lists_create</a>(request: PriceListsCreateCatalogRequest) -> Result&lt;PriceListsCreateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9305,8 +9305,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_price_lists_create(
-            &PostV1CatalogPriceListsCreateRequest {
+        .price_lists_create(
+            &PriceListsCreateCatalogRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 currency: None,
@@ -9366,7 +9366,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_price_lists_update</a>(request: PostV1CatalogPriceListsUpdateRequest) -> Result&lt;PostV1CatalogPriceListsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">price_lists_update</a>(request: PriceListsUpdateCatalogRequest) -> Result&lt;PriceListsUpdateCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9390,8 +9390,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_price_lists_update(
-            &PostV1CatalogPriceListsUpdateRequest {
+        .price_lists_update(
+            &PriceListsUpdateCatalogRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -9460,7 +9460,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_price_lists_list</a>(request: PostV1CatalogPriceListsListRequest) -> Result&lt;PostV1CatalogPriceListsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">price_lists_list</a>(request: PriceListsListCatalogRequest) -> Result&lt;PriceListsListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9484,8 +9484,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_price_lists_list(
-            &PostV1CatalogPriceListsListRequest {
+        .price_lists_list(
+            &PriceListsListCatalogRequest {
                 ..Default::default()
             },
             None,
@@ -9503,7 +9503,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_price_lists_items_set</a>(request: PostV1CatalogPriceListsItemsSetRequest) -> Result&lt;PostV1CatalogPriceListsItemsSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">price_lists_items_set</a>(request: PriceListsItemsSetCatalogRequest) -> Result&lt;PriceListsItemsSetCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9527,12 +9527,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_price_lists_items_set(
-            &PostV1CatalogPriceListsItemsSetRequest {
+        .price_lists_items_set(
+            &PriceListsItemsSetCatalogRequest {
                 price_list_id: "priceListId".to_string(),
-                items: vec![PostV1CatalogPriceListsItemsSetRequestItemsItem {
+                items: vec![PriceListsItemsSetCatalogRequestItemsItem {
                     item_id: "itemId".to_string(),
-                    unit_price_excl_vat: "unitPriceExclVat".to_string(),
+                    unit_price_excl_vat: "121.0000".to_string(),
                     ..Default::default()
                 }],
             },
@@ -9562,7 +9562,7 @@ async fn main() {
 <dl>
 <dd>
 
-**items:** `Vec<PostV1CatalogPriceListsItemsSetRequestItemsItem>` 
+**items:** `Vec<PriceListsItemsSetCatalogRequestItemsItem>` 
     
 </dd>
 </dl>
@@ -9574,7 +9574,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_price_lists_items_list</a>(request: PostV1CatalogPriceListsItemsListRequest) -> Result&lt;PostV1CatalogPriceListsItemsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">price_lists_items_list</a>(request: PriceListsItemsListCatalogRequest) -> Result&lt;PriceListsItemsListCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9598,8 +9598,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_price_lists_items_list(
-            &PostV1CatalogPriceListsItemsListRequest {
+        .price_lists_items_list(
+            &PriceListsItemsListCatalogRequest {
                 price_list_id: "priceListId".to_string(),
             },
             None,
@@ -9632,7 +9632,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">post_v1_catalog_price_lists_items_delete</a>(request: PostV1CatalogPriceListsItemsDeleteRequest) -> Result&lt;PostV1CatalogPriceListsItemsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client.rs">price_lists_items_delete</a>(request: PriceListsItemsDeleteCatalogRequest) -> Result&lt;PriceListsItemsDeleteCatalogResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9656,8 +9656,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .catalog
-        .post_v1catalog_price_lists_items_delete(
-            &PostV1CatalogPriceListsItemsDeleteRequest {
+        .price_lists_items_delete(
+            &PriceListsItemsDeleteCatalogRequest {
                 price_list_id: "priceListId".to_string(),
                 item_id: "itemId".to_string(),
             },
@@ -9699,8 +9699,8 @@ async fn main() {
 </dl>
 </details>
 
-## Sales
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_create</a>(request: PostV1SalesInvoicesCreateRequest) -> Result&lt;PostV1SalesInvoicesCreateResponse, ApiError&gt;</code></summary>
+## sales
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_create</a>(request: InvoicesCreateSalesRequest) -> Result&lt;InvoicesCreateSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9724,10 +9724,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_create(
-            &PostV1SalesInvoicesCreateRequest {
+        .invoices_create(
+            &InvoicesCreateSalesRequest {
                 partner_id: "partnerId".to_string(),
-                lines: vec![PostV1SalesInvoicesCreateRequestLinesItem {
+                lines: vec![InvoicesCreateSalesRequestLinesItem {
                     ..Default::default()
                 }],
                 r#type: None,
@@ -9735,6 +9735,8 @@ async fn main() {
                 issue_date: None,
                 due_date: None,
                 credited_invoice_id: None,
+                credited_invoice_reference: None,
+                credited_invoice_date: None,
                 agreement_id: None,
                 vat_scheme: None,
                 intrastat_transport_mode: None,
@@ -9781,7 +9783,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1SalesInvoicesCreateRequestType>` 
+**type_:** `Option<InvoicesCreateSalesRequestType>` 
     
 </dd>
 </dl>
@@ -9821,6 +9823,22 @@ async fn main() {
 <dl>
 <dd>
 
+**credited_invoice_reference:** `Option<String>` — Number of an original invoice issued outside Nordlet; give it with creditedInvoiceDate
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**credited_invoice_date:** `Option<String>` — Issue date of the original invoice issued outside Nordlet
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **agreement_id:** `Option<String>` 
     
 </dd>
@@ -9829,7 +9847,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_scheme:** `Option<PostV1SalesInvoicesCreateRequestVatScheme>` 
+**vat_scheme:** `Option<InvoicesCreateSalesRequestVatScheme>` 
     
 </dd>
 </dl>
@@ -9973,7 +9991,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1SalesInvoicesCreateRequestLinesItem>` 
+**lines:** `Vec<InvoicesCreateSalesRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -9985,7 +10003,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_get</a>(request: PostV1SalesInvoicesGetRequest) -> Result&lt;PostV1SalesInvoicesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_get</a>(request: InvoicesGetSalesRequest) -> Result&lt;InvoicesGetSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10009,8 +10027,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_get(
-            &PostV1SalesInvoicesGetRequest {
+        .invoices_get(
+            &InvoicesGetSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10043,7 +10061,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_pdf</a>(request: PostV1SalesInvoicesPdfRequest) -> Result&lt;PostV1SalesInvoicesPdfResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_pdf</a>(request: InvoicesPdfSalesRequest) -> Result&lt;InvoicesPdfSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10067,8 +10085,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_pdf(
-            &PostV1SalesInvoicesPdfRequest {
+        .invoices_pdf(
+            &InvoicesPdfSalesRequest {
                 id: "id".to_string(),
                 locale: None,
             },
@@ -10098,7 +10116,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1SalesInvoicesPdfRequestLocale>` 
+**locale:** `Option<InvoicesPdfSalesRequestLocale>` 
     
 </dd>
 </dl>
@@ -10110,7 +10128,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_send</a>(request: PostV1SalesInvoicesSendRequest) -> Result&lt;PostV1SalesInvoicesSendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_send</a>(request: InvoicesSendSalesRequest) -> Result&lt;InvoicesSendSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10134,8 +10152,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_send(
-            &PostV1SalesInvoicesSendRequest {
+        .invoices_send(
+            &InvoicesSendSalesRequest {
                 id: "id".to_string(),
                 to: None,
                 locale: None,
@@ -10174,7 +10192,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1SalesInvoicesSendRequestLocale>` 
+**locale:** `Option<InvoicesSendSalesRequestLocale>` 
     
 </dd>
 </dl>
@@ -10186,7 +10204,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_peppol_xml</a>(request: PostV1SalesInvoicesPeppolXmlRequest) -> Result&lt;PostV1SalesInvoicesPeppolXmlResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_peppol_xml</a>(request: InvoicesPeppolXmlSalesRequest) -> Result&lt;InvoicesPeppolXmlSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10210,8 +10228,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_peppol_xml(
-            &PostV1SalesInvoicesPeppolXMLRequest {
+        .invoices_peppol_xml(
+            &InvoicesPeppolXMLSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10244,7 +10262,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_peppol_send</a>(request: PostV1SalesInvoicesPeppolSendRequest) -> Result&lt;PostV1SalesInvoicesPeppolSendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_peppol_send</a>(request: InvoicesPeppolSendSalesRequest) -> Result&lt;InvoicesPeppolSendSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10268,8 +10286,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_peppol_send(
-            &PostV1SalesInvoicesPeppolSendRequest {
+        .invoices_peppol_send(
+            &InvoicesPeppolSendSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10302,7 +10320,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_einvoice_xml</a>(request: PostV1SalesInvoicesEinvoiceXmlRequest) -> Result&lt;PostV1SalesInvoicesEinvoiceXmlResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_einvoice_xml</a>(request: InvoicesEinvoiceXmlSalesRequest) -> Result&lt;InvoicesEinvoiceXmlSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10340,8 +10358,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_einvoice_xml(
-            &PostV1SalesInvoicesEinvoiceXMLRequest {
+        .invoices_einvoice_xml(
+            &InvoicesEinvoiceXMLSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10374,7 +10392,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_einvoice_send</a>(request: PostV1SalesInvoicesEinvoiceSendRequest) -> Result&lt;PostV1SalesInvoicesEinvoiceSendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_einvoice_send</a>(request: InvoicesEinvoiceSendSalesRequest) -> Result&lt;InvoicesEinvoiceSendSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10412,8 +10430,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_einvoice_send(
-            &PostV1SalesInvoicesEinvoiceSendRequest {
+        .invoices_einvoice_send(
+            &InvoicesEinvoiceSendSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10446,7 +10464,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_einvoice_status</a>(request: PostV1SalesInvoicesEinvoiceStatusRequest) -> Result&lt;PostV1SalesInvoicesEinvoiceStatusResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_einvoice_status</a>(request: InvoicesEinvoiceStatusSalesRequest) -> Result&lt;InvoicesEinvoiceStatusSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10484,8 +10502,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_einvoice_status(
-            &PostV1SalesInvoicesEinvoiceStatusRequest {
+        .invoices_einvoice_status(
+            &InvoicesEinvoiceStatusSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10518,7 +10536,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_update</a>(request: PostV1SalesInvoicesUpdateRequest) -> Result&lt;PostV1SalesInvoicesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_update</a>(request: InvoicesUpdateSalesRequest) -> Result&lt;InvoicesUpdateSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10542,8 +10560,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_update(
-            &PostV1SalesInvoicesUpdateRequest {
+        .invoices_update(
+            &InvoicesUpdateSalesRequest {
                 id: "id".to_string(),
                 partner_id: None,
                 agreement_id: None,
@@ -10635,7 +10653,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_scheme:** `Option<Option<PostV1SalesInvoicesUpdateRequestVatScheme>>` 
+**vat_scheme:** `Option<Option<InvoicesUpdateSalesRequestVatScheme>>` 
     
 </dd>
 </dl>
@@ -10771,7 +10789,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1SalesInvoicesUpdateRequestLinesItem>>` 
+**lines:** `Option<Vec<InvoicesUpdateSalesRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -10783,7 +10801,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_delete</a>(request: PostV1SalesInvoicesDeleteRequest) -> Result&lt;PostV1SalesInvoicesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_delete</a>(request: InvoicesDeleteSalesRequest) -> Result&lt;InvoicesDeleteSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10807,8 +10825,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_delete(
-            &PostV1SalesInvoicesDeleteRequest {
+        .invoices_delete(
+            &InvoicesDeleteSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10841,7 +10859,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_issue</a>(request: PostV1SalesInvoicesIssueRequest) -> Result&lt;PostV1SalesInvoicesIssueResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_issue</a>(request: InvoicesIssueSalesRequest) -> Result&lt;InvoicesIssueSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10865,8 +10883,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_issue(
-            &PostV1SalesInvoicesIssueRequest {
+        .invoices_issue(
+            &InvoicesIssueSalesRequest {
                 id: "id".to_string(),
                 series: None,
                 issue_date: None,
@@ -10926,7 +10944,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_lock</a>(request: PostV1SalesInvoicesLockRequest) -> Result&lt;PostV1SalesInvoicesLockResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_lock</a>(request: InvoicesLockSalesRequest) -> Result&lt;InvoicesLockSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -10950,8 +10968,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_lock(
-            &PostV1SalesInvoicesLockRequest {
+        .invoices_lock(
+            &InvoicesLockSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -10984,7 +11002,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_unlock</a>(request: PostV1SalesInvoicesUnlockRequest) -> Result&lt;PostV1SalesInvoicesUnlockResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_unlock</a>(request: InvoicesUnlockSalesRequest) -> Result&lt;InvoicesUnlockSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11008,8 +11026,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_unlock(
-            &PostV1SalesInvoicesUnlockRequest {
+        .invoices_unlock(
+            &InvoicesUnlockSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -11042,7 +11060,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_payment_link</a>(request: PostV1SalesInvoicesPaymentLinkRequest) -> Result&lt;PostV1SalesInvoicesPaymentLinkResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_payment_link</a>(request: InvoicesPaymentLinkSalesRequest) -> Result&lt;InvoicesPaymentLinkSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11066,8 +11084,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_payment_link(
-            &PostV1SalesInvoicesPaymentLinkRequest {
+        .invoices_payment_link(
+            &InvoicesPaymentLinkSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -11100,7 +11118,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_payment_settings_get</a>(request: PostV1SalesInvoicesPaymentSettingsGetRequest) -> Result&lt;PostV1SalesInvoicesPaymentSettingsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_payment_settings_get</a>(request: InvoicesPaymentSettingsGetSalesRequest) -> Result&lt;InvoicesPaymentSettingsGetSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11124,8 +11142,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_payment_settings_get(
-            &PostV1SalesInvoicesPaymentSettingsGetRequest {
+        .invoices_payment_settings_get(
+            &InvoicesPaymentSettingsGetSalesRequest {
                 ..Default::default()
             },
             None,
@@ -11143,7 +11161,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_payment_settings_update</a>(request: PostV1SalesInvoicesPaymentSettingsUpdateRequest) -> Result&lt;PostV1SalesInvoicesPaymentSettingsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_payment_settings_update</a>(request: InvoicesPaymentSettingsUpdateSalesRequest) -> Result&lt;InvoicesPaymentSettingsUpdateSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11167,8 +11185,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_payment_settings_update(
-            &PostV1SalesInvoicesPaymentSettingsUpdateRequest {
+        .invoices_payment_settings_update(
+            &InvoicesPaymentSettingsUpdateSalesRequest {
                 ..Default::default()
             },
             None,
@@ -11201,7 +11219,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_schedules_list</a>(request: PostV1SalesRecognitionSchedulesListRequest) -> Result&lt;PostV1SalesRecognitionSchedulesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_schedules_list</a>(request: RecognitionSchedulesListSalesRequest) -> Result&lt;RecognitionSchedulesListSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11225,8 +11243,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_recognition_schedules_list(
-            &PostV1SalesRecognitionSchedulesListRequest {
+        .recognition_schedules_list(
+            &RecognitionSchedulesListSalesRequest {
                 ..Default::default()
             },
             None,
@@ -11263,7 +11281,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1SalesRecognitionSchedulesListRequestSortItem>>` 
+**sort:** `Option<Vec<RecognitionSchedulesListSalesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -11271,7 +11289,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1SalesRecognitionSchedulesListRequestFilterItem>>` 
+**filter:** `Option<Vec<RecognitionSchedulesListSalesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -11291,7 +11309,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_apply_advance</a>(request: PostV1SalesInvoicesApplyAdvanceRequest) -> Result&lt;PostV1SalesInvoicesApplyAdvanceResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_apply_advance</a>(request: InvoicesApplyAdvanceSalesRequest) -> Result&lt;InvoicesApplyAdvanceSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11315,8 +11333,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_apply_advance(
-            &PostV1SalesInvoicesApplyAdvanceRequest {
+        .invoices_apply_advance(
+            &InvoicesApplyAdvanceSalesRequest {
                 advance_id: "advanceId".to_string(),
                 invoice_id: "invoiceId".to_string(),
                 date: None,
@@ -11367,7 +11385,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_invoices_list</a>(request: PostV1SalesInvoicesListRequest) -> Result&lt;PostV1SalesInvoicesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoices_list</a>(request: InvoicesListSalesRequest) -> Result&lt;InvoicesListSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11391,8 +11409,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_invoices_list(
-            &PostV1SalesInvoicesListRequest {
+        .invoices_list(
+            &InvoicesListSalesRequest {
                 ..Default::default()
             },
             None,
@@ -11429,7 +11447,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1SalesInvoicesListRequestSortItem>>` 
+**sort:** `Option<Vec<InvoicesListSalesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -11437,7 +11455,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1SalesInvoicesListRequestFilterItem>>` 
+**filter:** `Option<Vec<InvoicesListSalesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -11457,7 +11475,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_create</a>(request: PostV1SalesActsCreateRequest) -> Result&lt;PostV1SalesActsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_create</a>(request: ActsCreateSalesRequest) -> Result&lt;ActsCreateSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11481,8 +11499,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_create(
-            &PostV1SalesActsCreateRequest {
+        .acts_create(
+            &ActsCreateSalesRequest {
                 partner_id: "partnerId".to_string(),
                 r#type: None,
                 document_date: None,
@@ -11521,7 +11539,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1SalesActsCreateRequestType>` 
+**type_:** `Option<ActsCreateSalesRequestType>` 
     
 </dd>
 </dl>
@@ -11593,7 +11611,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1SalesActsCreateRequestLinesItem>>` 
+**lines:** `Option<Vec<ActsCreateSalesRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -11605,7 +11623,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_update</a>(request: PostV1SalesActsUpdateRequest) -> Result&lt;PostV1SalesActsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_update</a>(request: ActsUpdateSalesRequest) -> Result&lt;ActsUpdateSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11629,8 +11647,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_update(
-            &PostV1SalesActsUpdateRequest {
+        .acts_update(
+            &ActsUpdateSalesRequest {
                 id: "id".to_string(),
                 partner_id: None,
                 r#type: None,
@@ -11670,7 +11688,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1SalesActsUpdateRequestType>` 
+**type_:** `Option<ActsUpdateSalesRequestType>` 
     
 </dd>
 </dl>
@@ -11742,7 +11760,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1SalesActsUpdateRequestLinesItem>>` 
+**lines:** `Option<Vec<ActsUpdateSalesRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -11762,7 +11780,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_issue</a>(request: PostV1SalesActsIssueRequest) -> Result&lt;PostV1SalesActsIssueResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_issue</a>(request: ActsIssueSalesRequest) -> Result&lt;ActsIssueSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11786,8 +11804,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_issue(
-            &PostV1SalesActsIssueRequest {
+        .acts_issue(
+            &ActsIssueSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -11820,7 +11838,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_cancel</a>(request: PostV1SalesActsCancelRequest) -> Result&lt;PostV1SalesActsCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_cancel</a>(request: ActsCancelSalesRequest) -> Result&lt;ActsCancelSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11844,8 +11862,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_cancel(
-            &PostV1SalesActsCancelRequest {
+        .acts_cancel(
+            &ActsCancelSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -11878,7 +11896,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_get</a>(request: PostV1SalesActsGetRequest) -> Result&lt;PostV1SalesActsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_get</a>(request: ActsGetSalesRequest) -> Result&lt;ActsGetSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11902,8 +11920,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_get(
-            &PostV1SalesActsGetRequest {
+        .acts_get(
+            &ActsGetSalesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -11936,7 +11954,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_list</a>(request: PostV1SalesActsListRequest) -> Result&lt;PostV1SalesActsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_list</a>(request: ActsListSalesRequest) -> Result&lt;ActsListSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11960,8 +11978,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_list(
-            &PostV1SalesActsListRequest {
+        .acts_list(
+            &ActsListSalesRequest {
                 ..Default::default()
             },
             None,
@@ -11998,7 +12016,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1SalesActsListRequestSortItem>>` 
+**sort:** `Option<Vec<ActsListSalesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -12006,7 +12024,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1SalesActsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ActsListSalesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -12026,7 +12044,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_acts_pdf</a>(request: PostV1SalesActsPdfRequest) -> Result&lt;PostV1SalesActsPdfResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">acts_pdf</a>(request: ActsPdfSalesRequest) -> Result&lt;ActsPdfSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12050,8 +12068,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1sales_acts_pdf(
-            &PostV1SalesActsPdfRequest {
+        .acts_pdf(
+            &ActsPdfSalesRequest {
                 id: "id".to_string(),
                 locale: None,
             },
@@ -12081,7 +12099,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1SalesActsPdfRequestLocale>` 
+**locale:** `Option<ActsPdfSalesRequestLocale>` 
     
 </dd>
 </dl>
@@ -12093,7 +12111,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_create</a>(request: PostV1OperationTypesCreateRequest) -> Result&lt;PostV1OperationTypesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_compute</a>(request: RecognitionComputeSalesRequest) -> Result&lt;RecognitionComputeSalesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12117,8 +12135,639 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .sales
-        .post_v1operation_types_create(
-            &PostV1OperationTypesCreateRequest {
+        .recognition_compute(
+            &RecognitionComputeSalesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_run</a>(request: RecognitionRunSalesRequest) -> Result&lt;RecognitionRunSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .recognition_run(
+            &RecognitionRunSalesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**posting_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**schedule_ids:** `Option<Vec<String>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_progress</a>(request: RecognitionProgressSalesRequest) -> Result&lt;RecognitionProgressSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .recognition_progress(
+            &RecognitionProgressSalesRequest {
+                invoice_line_id: "invoiceLineId".to_string(),
+                percent_complete: "121.00".to_string(),
+                date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_line_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**percent_complete:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_modify</a>(request: RecognitionModifySalesRequest) -> Result&lt;RecognitionModifySalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Apply an IFRS 15 contract modification to a deferred invoice line. Prospective: cancel the pending schedule and respread the unrecognized remainder over the new terms. Cumulative catch-up (ratable only): recompute revenue as if the new terms applied from the start and post the difference immediately.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .recognition_modify(
+            &RecognitionModifySalesRequest {
+                invoice_line_id: "invoiceLineId".to_string(),
+                approach: RecognitionModifySalesRequestApproach::Prospective,
+                date: None,
+                new_end_date: None,
+                new_milestones: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_line_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**approach:** `RecognitionModifySalesRequestApproach` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**new_end_date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**new_milestones:** `Option<Vec<RecognitionModifySalesRequestNewMilestonesItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_runs_list</a>(request: RecognitionRunsListSalesRequest) -> Result&lt;RecognitionRunsListSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .recognition_runs_list(
+            &RecognitionRunsListSalesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<RecognitionRunsListSalesRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<RecognitionRunsListSalesRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">recognition_summary</a>(request: RecognitionSummarySalesRequest) -> Result&lt;RecognitionSummarySalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .recognition_summary(
+            &RecognitionSummarySalesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">refund_liability_list</a>(request: RefundLiabilityListSalesRequest) -> Result&lt;RefundLiabilityListSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .refund_liability_list(
+            &RefundLiabilityListSalesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<RefundLiabilityListSalesRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<RefundLiabilityListSalesRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">refund_liability_true_up</a>(request: RefundLiabilityTrueUpSalesRequest) -> Result&lt;RefundLiabilityTrueUpSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .refund_liability_true_up(
+            &RefundLiabilityTrueUpSalesRequest {
+                invoice_id: "invoiceId".to_string(),
+                estimated_total: "121.0000".to_string(),
+                date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**invoice_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**estimated_total:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## OperationTypes
+<details><summary><code>client.operation_types.<a href="/src/api/resources/operation_types/client.rs">create</a>(request: CreateOperationTypesRequest) -> Result&lt;CreateOperationTypesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .operation_types
+        .create(
+            &CreateOperationTypesRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 invoice_type: None,
@@ -12179,7 +12828,7 @@ async fn main() {
 <dl>
 <dd>
 
-**invoice_type:** `Option<Option<PostV1OperationTypesCreateRequestInvoiceType>>` 
+**invoice_type:** `Option<Option<CreateOperationTypesRequestInvoiceType>>` 
     
 </dd>
 </dl>
@@ -12367,7 +13016,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_update</a>(request: PostV1OperationTypesUpdateRequest) -> Result&lt;PostV1OperationTypesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.operation_types.<a href="/src/api/resources/operation_types/client.rs">update</a>(request: UpdateOperationTypesRequest) -> Result&lt;UpdateOperationTypesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12390,9 +13039,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1operation_types_update(
-            &PostV1OperationTypesUpdateRequest {
+        .operation_types
+        .update(
+            &UpdateOperationTypesRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -12462,7 +13111,7 @@ async fn main() {
 <dl>
 <dd>
 
-**invoice_type:** `Option<Option<PostV1OperationTypesUpdateRequestInvoiceType>>` 
+**invoice_type:** `Option<Option<UpdateOperationTypesRequestInvoiceType>>` 
     
 </dd>
 </dl>
@@ -12650,7 +13299,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_get</a>(request: PostV1OperationTypesGetRequest) -> Result&lt;PostV1OperationTypesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.operation_types.<a href="/src/api/resources/operation_types/client.rs">get</a>(request: GetOperationTypesRequest) -> Result&lt;GetOperationTypesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12673,9 +13322,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1operation_types_get(
-            &PostV1OperationTypesGetRequest {
+        .operation_types
+        .get(
+            &GetOperationTypesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -12708,7 +13357,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_delete</a>(request: PostV1OperationTypesDeleteRequest) -> Result&lt;PostV1OperationTypesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.operation_types.<a href="/src/api/resources/operation_types/client.rs">delete</a>(request: DeleteOperationTypesRequest) -> Result&lt;DeleteOperationTypesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12731,9 +13380,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1operation_types_delete(
-            &PostV1OperationTypesDeleteRequest {
+        .operation_types
+        .delete(
+            &DeleteOperationTypesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -12766,7 +13415,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_operation_types_list</a>(request: PostV1OperationTypesListRequest) -> Result&lt;PostV1OperationTypesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.operation_types.<a href="/src/api/resources/operation_types/client.rs">list</a>(request: ListOperationTypesRequest) -> Result&lt;ListOperationTypesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12789,9 +13438,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1operation_types_list(
-            &PostV1OperationTypesListRequest {
+        .operation_types
+        .list(
+            &ListOperationTypesRequest {
                 ..Default::default()
             },
             None,
@@ -12828,7 +13477,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1OperationTypesListRequestSortItem>>` 
+**sort:** `Option<Vec<ListOperationTypesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -12836,7 +13485,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1OperationTypesListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListOperationTypesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -12856,7 +13505,8 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_create</a>(request: PostV1DocumentSeriesCreateRequest) -> Result&lt;PostV1DocumentSeriesCreateResponse, ApiError&gt;</code></summary>
+## DocumentSeries
+<details><summary><code>client.document_series.<a href="/src/api/resources/document_series/client.rs">create</a>(request: CreateDocumentSeriesRequest) -> Result&lt;CreateDocumentSeriesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -12879,9 +13529,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1document_series_create(
-            &PostV1DocumentSeriesCreateRequest {
+        .document_series
+        .create(
+            &CreateDocumentSeriesRequest {
                 prefix: "prefix".to_string(),
                 document_type: None,
                 name: None,
@@ -12914,7 +13564,7 @@ async fn main() {
 <dl>
 <dd>
 
-**document_type:** `Option<PostV1DocumentSeriesCreateRequestDocumentType>` 
+**document_type:** `Option<CreateDocumentSeriesRequestDocumentType>` 
     
 </dd>
 </dl>
@@ -13022,7 +13672,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_update</a>(request: PostV1DocumentSeriesUpdateRequest) -> Result&lt;PostV1DocumentSeriesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.document_series.<a href="/src/api/resources/document_series/client.rs">update</a>(request: UpdateDocumentSeriesRequest) -> Result&lt;UpdateDocumentSeriesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13045,9 +13695,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1document_series_update(
-            &PostV1DocumentSeriesUpdateRequest {
+        .document_series
+        .update(
+            &UpdateDocumentSeriesRequest {
                 id: "id".to_string(),
                 document_type: None,
                 prefix: None,
@@ -13089,7 +13739,7 @@ async fn main() {
 <dl>
 <dd>
 
-**document_type:** `Option<PostV1DocumentSeriesUpdateRequestDocumentType>` 
+**document_type:** `Option<UpdateDocumentSeriesRequestDocumentType>` 
     
 </dd>
 </dl>
@@ -13197,7 +13847,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_get</a>(request: PostV1DocumentSeriesGetRequest) -> Result&lt;PostV1DocumentSeriesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.document_series.<a href="/src/api/resources/document_series/client.rs">get</a>(request: GetDocumentSeriesRequest) -> Result&lt;GetDocumentSeriesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13220,9 +13870,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1document_series_get(
-            &PostV1DocumentSeriesGetRequest {
+        .document_series
+        .get(
+            &GetDocumentSeriesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -13255,7 +13905,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_delete</a>(request: PostV1DocumentSeriesDeleteRequest) -> Result&lt;PostV1DocumentSeriesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.document_series.<a href="/src/api/resources/document_series/client.rs">delete</a>(request: DeleteDocumentSeriesRequest) -> Result&lt;DeleteDocumentSeriesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13278,9 +13928,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1document_series_delete(
-            &PostV1DocumentSeriesDeleteRequest {
+        .document_series
+        .delete(
+            &DeleteDocumentSeriesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -13313,7 +13963,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_document_series_list</a>(request: PostV1DocumentSeriesListRequest) -> Result&lt;PostV1DocumentSeriesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.document_series.<a href="/src/api/resources/document_series/client.rs">list</a>(request: ListDocumentSeriesRequest) -> Result&lt;ListDocumentSeriesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13336,9 +13986,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .sales
-        .post_v1document_series_list(
-            &PostV1DocumentSeriesListRequest {
+        .document_series
+        .list(
+            &ListDocumentSeriesRequest {
                 ..Default::default()
             },
             None,
@@ -13375,7 +14025,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1DocumentSeriesListRequestSortItem>>` 
+**sort:** `Option<Vec<ListDocumentSeriesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -13383,413 +14033,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1DocumentSeriesListRequestFilterItem>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_compute</a>(request: PostV1SalesRecognitionComputeRequest) -> Result&lt;PostV1SalesRecognitionComputeResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_recognition_compute(
-            &PostV1SalesRecognitionComputeRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**as_of_date:** `Option<String>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_run</a>(request: PostV1SalesRecognitionRunRequest) -> Result&lt;PostV1SalesRecognitionRunResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_recognition_run(
-            &PostV1SalesRecognitionRunRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**as_of_date:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**posting_date:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**schedule_ids:** `Option<Vec<String>>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_progress</a>(request: PostV1SalesRecognitionProgressRequest) -> Result&lt;PostV1SalesRecognitionProgressResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_recognition_progress(
-            &PostV1SalesRecognitionProgressRequest {
-                invoice_line_id: "invoiceLineId".to_string(),
-                percent_complete: "percentComplete".to_string(),
-                date: None,
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**invoice_line_id:** `String` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**percent_complete:** `String` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**date:** `Option<String>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_modify</a>(request: PostV1SalesRecognitionModifyRequest) -> Result&lt;PostV1SalesRecognitionModifyResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Apply an IFRS 15 contract modification to a deferred invoice line. Prospective: cancel the pending schedule and respread the unrecognized remainder over the new terms. Cumulative catch-up (ratable only): recompute revenue as if the new terms applied from the start and post the difference immediately.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_recognition_modify(
-            &PostV1SalesRecognitionModifyRequest {
-                invoice_line_id: "invoiceLineId".to_string(),
-                approach: PostV1SalesRecognitionModifyRequestApproach::Prospective,
-                date: None,
-                new_end_date: None,
-                new_milestones: None,
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**invoice_line_id:** `String` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**approach:** `PostV1SalesRecognitionModifyRequestApproach` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**date:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**new_end_date:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**new_milestones:** `Option<Vec<PostV1SalesRecognitionModifyRequestNewMilestonesItem>>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_runs_list</a>(request: PostV1SalesRecognitionRunsListRequest) -> Result&lt;PostV1SalesRecognitionRunsListResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_recognition_runs_list(
-            &PostV1SalesRecognitionRunsListRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**page:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**page_size:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**sort:** `Option<Vec<PostV1SalesRecognitionRunsListRequestSortItem>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**filter:** `Option<Vec<PostV1SalesRecognitionRunsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListDocumentSeriesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -13809,232 +14053,8 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_recognition_summary</a>(request: PostV1SalesRecognitionSummaryRequest) -> Result&lt;PostV1SalesRecognitionSummaryResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_recognition_summary(
-            &PostV1SalesRecognitionSummaryRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**invoice_id:** `Option<String>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_refund_liability_list</a>(request: PostV1SalesRefundLiabilityListRequest) -> Result&lt;PostV1SalesRefundLiabilityListResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_refund_liability_list(
-            &PostV1SalesRefundLiabilityListRequest {
-                ..Default::default()
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**page:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**page_size:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**sort:** `Option<Vec<PostV1SalesRefundLiabilityListRequestSortItem>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**filter:** `Option<Vec<PostV1SalesRefundLiabilityListRequestFilterItem>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">post_v1_sales_refund_liability_true_up</a>(request: PostV1SalesRefundLiabilityTrueUpRequest) -> Result&lt;PostV1SalesRefundLiabilityTrueUpResponse, ApiError&gt;</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```rust
-use nordlet::prelude::*;
-
-#[tokio::main]
-async fn main() {
-    let config = ClientConfig {
-        token: Some("<token>".to_string()),
-        ..Default::default()
-    };
-    let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .sales
-        .post_v1sales_refund_liability_true_up(
-            &PostV1SalesRefundLiabilityTrueUpRequest {
-                invoice_id: "invoiceId".to_string(),
-                estimated_total: "estimatedTotal".to_string(),
-                date: None,
-            },
-            None,
-        )
-        .await;
-}
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**invoice_id:** `String` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**estimated_total:** `String` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**date:** `Option<String>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## Purchases
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_create</a>(request: PostV1PurchasesInvoicesCreateRequest) -> Result&lt;PostV1PurchasesInvoicesCreateResponse, ApiError&gt;</code></summary>
+## purchases
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_create</a>(request: InvoicesCreatePurchasesRequest) -> Result&lt;InvoicesCreatePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14058,12 +14078,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_create(
-            &PostV1PurchasesInvoicesCreateRequest {
+        .invoices_create(
+            &InvoicesCreatePurchasesRequest {
                 partner_id: "partnerId".to_string(),
                 document_number: "documentNumber".to_string(),
-                document_date: "documentDate".to_string(),
-                lines: vec![PostV1PurchasesInvoicesCreateRequestLinesItem {
+                document_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                lines: vec![InvoicesCreatePurchasesRequestLinesItem {
                     ..Default::default()
                 }],
                 r#type: None,
@@ -14106,7 +14126,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1PurchasesInvoicesCreateRequestType>` 
+**type_:** `Option<InvoicesCreatePurchasesRequestType>` 
     
 </dd>
 </dl>
@@ -14226,7 +14246,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1PurchasesInvoicesCreateRequestLinesItem>` 
+**lines:** `Vec<InvoicesCreatePurchasesRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -14238,7 +14258,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_get</a>(request: PostV1PurchasesInvoicesGetRequest) -> Result&lt;PostV1PurchasesInvoicesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_get</a>(request: InvoicesGetPurchasesRequest) -> Result&lt;InvoicesGetPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14262,8 +14282,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_get(
-            &PostV1PurchasesInvoicesGetRequest {
+        .invoices_get(
+            &InvoicesGetPurchasesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -14296,7 +14316,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_update</a>(request: PostV1PurchasesInvoicesUpdateRequest) -> Result&lt;PostV1PurchasesInvoicesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_update</a>(request: InvoicesUpdatePurchasesRequest) -> Result&lt;InvoicesUpdatePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14320,8 +14340,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_update(
-            &PostV1PurchasesInvoicesUpdateRequest {
+        .invoices_update(
+            &InvoicesUpdatePurchasesRequest {
                 id: "id".to_string(),
                 partner_id: None,
                 document_number: None,
@@ -14468,7 +14488,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1PurchasesInvoicesUpdateRequestLinesItem>>` 
+**lines:** `Option<Vec<InvoicesUpdatePurchasesRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -14480,7 +14500,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_delete</a>(request: PostV1PurchasesInvoicesDeleteRequest) -> Result&lt;PostV1PurchasesInvoicesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_delete</a>(request: InvoicesDeletePurchasesRequest) -> Result&lt;InvoicesDeletePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14504,8 +14524,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_delete(
-            &PostV1PurchasesInvoicesDeleteRequest {
+        .invoices_delete(
+            &InvoicesDeletePurchasesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -14538,7 +14558,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_register</a>(request: PostV1PurchasesInvoicesRegisterRequest) -> Result&lt;PostV1PurchasesInvoicesRegisterResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_register</a>(request: InvoicesRegisterPurchasesRequest) -> Result&lt;InvoicesRegisterPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14562,8 +14582,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_register(
-            &PostV1PurchasesInvoicesRegisterRequest {
+        .invoices_register(
+            &InvoicesRegisterPurchasesRequest {
                 id: "id".to_string(),
                 registration_date: None,
                 warehouse_id: None,
@@ -14614,7 +14634,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_list</a>(request: PostV1PurchasesInvoicesListRequest) -> Result&lt;PostV1PurchasesInvoicesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_list</a>(request: InvoicesListPurchasesRequest) -> Result&lt;InvoicesListPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14638,8 +14658,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_list(
-            &PostV1PurchasesInvoicesListRequest {
+        .invoices_list(
+            &InvoicesListPurchasesRequest {
                 ..Default::default()
             },
             None,
@@ -14676,7 +14696,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PurchasesInvoicesListRequestSortItem>>` 
+**sort:** `Option<Vec<InvoicesListPurchasesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -14684,7 +14704,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PurchasesInvoicesListRequestFilterItem>>` 
+**filter:** `Option<Vec<InvoicesListPurchasesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -14704,7 +14724,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_create</a>(request: PostV1PurchasesOrdersCreateRequest) -> Result&lt;PostV1PurchasesOrdersCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_create</a>(request: OrdersCreatePurchasesRequest) -> Result&lt;OrdersCreatePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14728,11 +14748,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_create(
-            &PostV1PurchasesOrdersCreateRequest {
+        .orders_create(
+            &OrdersCreatePurchasesRequest {
                 partner_id: "partnerId".to_string(),
-                order_date: "orderDate".to_string(),
-                lines: vec![PostV1PurchasesOrdersCreateRequestLinesItem {
+                order_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                lines: vec![OrdersCreatePurchasesRequestLinesItem {
                     ..Default::default()
                 }],
                 order_number: None,
@@ -14824,7 +14844,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1PurchasesOrdersCreateRequestLinesItem>` 
+**lines:** `Vec<OrdersCreatePurchasesRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -14836,7 +14856,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_update</a>(request: PostV1PurchasesOrdersUpdateRequest) -> Result&lt;PostV1PurchasesOrdersUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_update</a>(request: OrdersUpdatePurchasesRequest) -> Result&lt;OrdersUpdatePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14860,8 +14880,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_update(
-            &PostV1PurchasesOrdersUpdateRequest {
+        .orders_update(
+            &OrdersUpdatePurchasesRequest {
                 id: "id".to_string(),
                 partner_id: None,
                 order_date: None,
@@ -14945,7 +14965,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1PurchasesOrdersUpdateRequestLinesItem>>` 
+**lines:** `Option<Vec<OrdersUpdatePurchasesRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -14957,7 +14977,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_get</a>(request: PostV1PurchasesOrdersGetRequest) -> Result&lt;PostV1PurchasesOrdersGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_get</a>(request: OrdersGetPurchasesRequest) -> Result&lt;OrdersGetPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -14981,8 +15001,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_get(
-            &PostV1PurchasesOrdersGetRequest {
+        .orders_get(
+            &OrdersGetPurchasesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -15015,7 +15035,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_list</a>(request: PostV1PurchasesOrdersListRequest) -> Result&lt;PostV1PurchasesOrdersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_list</a>(request: OrdersListPurchasesRequest) -> Result&lt;OrdersListPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15039,8 +15059,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_list(
-            &PostV1PurchasesOrdersListRequest {
+        .orders_list(
+            &OrdersListPurchasesRequest {
                 ..Default::default()
             },
             None,
@@ -15077,7 +15097,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PurchasesOrdersListRequestSortItem>>` 
+**sort:** `Option<Vec<OrdersListPurchasesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -15085,7 +15105,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PurchasesOrdersListRequestFilterItem>>` 
+**filter:** `Option<Vec<OrdersListPurchasesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -15105,7 +15125,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_submit</a>(request: PostV1PurchasesOrdersSubmitRequest) -> Result&lt;PostV1PurchasesOrdersSubmitResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_submit</a>(request: OrdersSubmitPurchasesRequest) -> Result&lt;OrdersSubmitPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15129,8 +15149,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_submit(
-            &PostV1PurchasesOrdersSubmitRequest {
+        .orders_submit(
+            &OrdersSubmitPurchasesRequest {
                 id: "id".to_string(),
                 reason: None,
             },
@@ -15172,7 +15192,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_approve</a>(request: PostV1PurchasesOrdersApproveRequest) -> Result&lt;PostV1PurchasesOrdersApproveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_approve</a>(request: OrdersApprovePurchasesRequest) -> Result&lt;OrdersApprovePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15196,8 +15216,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_approve(
-            &PostV1PurchasesOrdersApproveRequest {
+        .orders_approve(
+            &OrdersApprovePurchasesRequest {
                 id: "id".to_string(),
                 reason: None,
             },
@@ -15239,7 +15259,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_reject</a>(request: PostV1PurchasesOrdersRejectRequest) -> Result&lt;PostV1PurchasesOrdersRejectResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_reject</a>(request: OrdersRejectPurchasesRequest) -> Result&lt;OrdersRejectPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15263,8 +15283,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_reject(
-            &PostV1PurchasesOrdersRejectRequest {
+        .orders_reject(
+            &OrdersRejectPurchasesRequest {
                 id: "id".to_string(),
                 reason: None,
             },
@@ -15306,7 +15326,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_cancel</a>(request: PostV1PurchasesOrdersCancelRequest) -> Result&lt;PostV1PurchasesOrdersCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_cancel</a>(request: OrdersCancelPurchasesRequest) -> Result&lt;OrdersCancelPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15330,8 +15350,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_cancel(
-            &PostV1PurchasesOrdersCancelRequest {
+        .orders_cancel(
+            &OrdersCancelPurchasesRequest {
                 id: "id".to_string(),
                 reason: None,
             },
@@ -15373,7 +15393,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_close</a>(request: PostV1PurchasesOrdersCloseRequest) -> Result&lt;PostV1PurchasesOrdersCloseResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_close</a>(request: OrdersClosePurchasesRequest) -> Result&lt;OrdersClosePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15397,8 +15417,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_close(
-            &PostV1PurchasesOrdersCloseRequest {
+        .orders_close(
+            &OrdersClosePurchasesRequest {
                 id: "id".to_string(),
                 reason: None,
             },
@@ -15440,7 +15460,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_orders_delete</a>(request: PostV1PurchasesOrdersDeleteRequest) -> Result&lt;PostV1PurchasesOrdersDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">orders_delete</a>(request: OrdersDeletePurchasesRequest) -> Result&lt;OrdersDeletePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15464,8 +15484,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_orders_delete(
-            &PostV1PurchasesOrdersDeleteRequest {
+        .orders_delete(
+            &OrdersDeletePurchasesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -15498,7 +15518,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_receipts_create</a>(request: PostV1PurchasesReceiptsCreateRequest) -> Result&lt;PostV1PurchasesReceiptsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">receipts_create</a>(request: ReceiptsCreatePurchasesRequest) -> Result&lt;ReceiptsCreatePurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15522,13 +15542,13 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_receipts_create(
-            &PostV1PurchasesReceiptsCreateRequest {
+        .receipts_create(
+            &ReceiptsCreatePurchasesRequest {
                 order_id: "orderId".to_string(),
-                receipt_date: "receiptDate".to_string(),
-                lines: vec![PostV1PurchasesReceiptsCreateRequestLinesItem {
+                receipt_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                lines: vec![ReceiptsCreatePurchasesRequestLinesItem {
                     order_line_id: "orderLineId".to_string(),
-                    quantity: "quantity".to_string(),
+                    quantity: "121.0000".to_string(),
                     ..Default::default()
                 }],
                 warehouse_id: None,
@@ -15584,7 +15604,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1PurchasesReceiptsCreateRequestLinesItem>` 
+**lines:** `Vec<ReceiptsCreatePurchasesRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -15596,7 +15616,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_receipts_get</a>(request: PostV1PurchasesReceiptsGetRequest) -> Result&lt;PostV1PurchasesReceiptsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">receipts_get</a>(request: ReceiptsGetPurchasesRequest) -> Result&lt;ReceiptsGetPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15620,8 +15640,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_receipts_get(
-            &PostV1PurchasesReceiptsGetRequest {
+        .receipts_get(
+            &ReceiptsGetPurchasesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -15654,7 +15674,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_receipts_list</a>(request: PostV1PurchasesReceiptsListRequest) -> Result&lt;PostV1PurchasesReceiptsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">receipts_list</a>(request: ReceiptsListPurchasesRequest) -> Result&lt;ReceiptsListPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15678,8 +15698,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_receipts_list(
-            &PostV1PurchasesReceiptsListRequest {
+        .receipts_list(
+            &ReceiptsListPurchasesRequest {
                 ..Default::default()
             },
             None,
@@ -15716,7 +15736,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PurchasesReceiptsListRequestSortItem>>` 
+**sort:** `Option<Vec<ReceiptsListPurchasesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -15724,7 +15744,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PurchasesReceiptsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ReceiptsListPurchasesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -15744,7 +15764,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">post_v1_purchases_invoices_match</a>(request: PostV1PurchasesInvoicesMatchRequest) -> Result&lt;PostV1PurchasesInvoicesMatchResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">invoices_match</a>(request: InvoicesMatchPurchasesRequest) -> Result&lt;InvoicesMatchPurchasesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15768,8 +15788,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .purchases
-        .post_v1purchases_invoices_match(
-            &PostV1PurchasesInvoicesMatchRequest {
+        .invoices_match(
+            &InvoicesMatchPurchasesRequest {
                 invoice_id: "invoiceId".to_string(),
                 price_tolerance_percent: None,
             },
@@ -15811,8 +15831,8 @@ async fn main() {
 </dl>
 </details>
 
-## Capture
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_settings_get</a>(request: PostV1CaptureSettingsGetRequest) -> Result&lt;PostV1CaptureSettingsGetResponse, ApiError&gt;</code></summary>
+## capture
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">settings_get</a>(request: SettingsGetCaptureRequest) -> Result&lt;SettingsGetCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15836,8 +15856,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .post_v1capture_settings_get(
-            &PostV1CaptureSettingsGetRequest {
+        .settings_get(
+            &SettingsGetCaptureRequest {
                 ..Default::default()
             },
             None,
@@ -15855,7 +15875,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_settings_update</a>(request: PostV1CaptureSettingsUpdateRequest) -> Result&lt;PostV1CaptureSettingsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">settings_update</a>(request: SettingsUpdateCaptureRequest) -> Result&lt;SettingsUpdateCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15879,8 +15899,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .post_v1capture_settings_update(
-            &PostV1CaptureSettingsUpdateRequest {
+        .settings_update(
+            &SettingsUpdateCaptureRequest {
                 ..Default::default()
             },
             None,
@@ -15921,7 +15941,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_settings_regenerate_intake</a>(request: PostV1CaptureSettingsRegenerateIntakeRequest) -> Result&lt;PostV1CaptureSettingsRegenerateIntakeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">settings_regenerate_intake</a>(request: SettingsRegenerateIntakeCaptureRequest) -> Result&lt;SettingsRegenerateIntakeCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15945,8 +15965,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .post_v1capture_settings_regenerate_intake(
-            &PostV1CaptureSettingsRegenerateIntakeRequest {
+        .settings_regenerate_intake(
+            &SettingsRegenerateIntakeCaptureRequest {
                 ..Default::default()
             },
             None,
@@ -15964,7 +15984,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">receive_an_inbound_email_with_supplier_documents_attached_postmark_style_or_generic_json</a>(request: PostV1CaptureInboundEmailRequest) -> Result&lt;PostV1CaptureInboundEmailResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">inbound_email</a>(request: InboundEmailCaptureRequest) -> Result&lt;InboundEmailCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -15988,8 +16008,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .receive_an_inbound_email_with_supplier_documents_attached_postmark_style_or_generic_json(
-            &PostV1CaptureInboundEmailRequest {
+        .inbound_email(
+            &InboundEmailCaptureRequest {
                 ..Default::default()
             },
             None,
@@ -16018,7 +16038,7 @@ async fn main() {
 <dl>
 <dd>
 
-**to_full:** `Option<Vec<PostV1CaptureInboundEmailRequestToFullItem>>` 
+**to_full:** `Option<Vec<InboundEmailCaptureRequestToFullItem>>` 
     
 </dd>
 </dl>
@@ -16042,7 +16062,7 @@ async fn main() {
 <dl>
 <dd>
 
-**postmark_attachments:** `Option<Vec<PostV1CaptureInboundEmailRequestAttachmentsItem>>` 
+**postmark_attachments:** `Option<Vec<InboundEmailCaptureRequestAttachmentsItem>>` 
     
 </dd>
 </dl>
@@ -16050,7 +16070,7 @@ async fn main() {
 <dl>
 <dd>
 
-**to:** `Option<PostV1CaptureInboundEmailRequestTo>` 
+**to:** `Option<InboundEmailCaptureRequestTo>` 
     
 </dd>
 </dl>
@@ -16074,7 +16094,7 @@ async fn main() {
 <dl>
 <dd>
 
-**attachments:** `Option<Vec<PostV1CaptureInboundEmailRequestAttachmentsItem>>` 
+**attachments:** `Option<Vec<InboundEmailCaptureRequestAttachmentsItem>>` 
     
 </dd>
 </dl>
@@ -16086,7 +16106,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">read_a_vendor_bill_or_receipt_and_return_an_editable_purchase_invoice_draft</a>(request: PostV1CaptureDocumentsUploadRequest) -> Result&lt;PostV1CaptureDocumentsUploadResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">documents_upload</a>(request: DocumentsUploadCaptureRequest) -> Result&lt;DocumentsUploadCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16110,8 +16130,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .read_a_vendor_bill_or_receipt_and_return_an_editable_purchase_invoice_draft(
-            &PostV1CaptureDocumentsUploadRequest {
+        .documents_upload(
+            &DocumentsUploadCaptureRequest {
                 file_name: "fileName".to_string(),
                 mime_type: "mimeType".to_string(),
                 content: "content".to_string(),
@@ -16162,7 +16182,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">re_read_a_stored_capture_replacing_the_previous_draft</a>(request: PostV1CaptureDocumentsExtractRequest) -> Result&lt;PostV1CaptureDocumentsExtractResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">documents_extract</a>(request: DocumentsExtractCaptureRequest) -> Result&lt;DocumentsExtractCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16186,8 +16206,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .re_read_a_stored_capture_replacing_the_previous_draft(
-            &PostV1CaptureDocumentsExtractRequest {
+        .documents_extract(
+            &DocumentsExtractCaptureRequest {
                 id: "id".to_string(),
             },
             None,
@@ -16220,7 +16240,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_documents_get</a>(request: PostV1CaptureDocumentsGetRequest) -> Result&lt;PostV1CaptureDocumentsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">documents_get</a>(request: DocumentsGetCaptureRequest) -> Result&lt;DocumentsGetCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16244,8 +16264,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .post_v1capture_documents_get(
-            &PostV1CaptureDocumentsGetRequest {
+        .documents_get(
+            &DocumentsGetCaptureRequest {
                 id: "id".to_string(),
             },
             None,
@@ -16278,7 +16298,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_documents_list</a>(request: PostV1CaptureDocumentsListRequest) -> Result&lt;PostV1CaptureDocumentsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">documents_list</a>(request: DocumentsListCaptureRequest) -> Result&lt;DocumentsListCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16302,8 +16322,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .post_v1capture_documents_list(
-            &PostV1CaptureDocumentsListRequest {
+        .documents_list(
+            &DocumentsListCaptureRequest {
                 ..Default::default()
             },
             None,
@@ -16340,7 +16360,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1CaptureDocumentsListRequestSortItem>>` 
+**sort:** `Option<Vec<DocumentsListCaptureRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -16348,7 +16368,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1CaptureDocumentsListRequestFilterItem>>` 
+**filter:** `Option<Vec<DocumentsListCaptureRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -16368,7 +16388,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">post_v1_capture_documents_delete</a>(request: PostV1CaptureDocumentsDeleteRequest) -> Result&lt;PostV1CaptureDocumentsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">documents_delete</a>(request: DocumentsDeleteCaptureRequest) -> Result&lt;DocumentsDeleteCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16392,8 +16412,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .post_v1capture_documents_delete(
-            &PostV1CaptureDocumentsDeleteRequest {
+        .documents_delete(
+            &DocumentsDeleteCaptureRequest {
                 id: "id".to_string(),
             },
             None,
@@ -16426,7 +16446,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">save_the_reviewed_draft_as_a_purchase_invoice_and_attach_the_original_document</a>(request: PostV1CaptureDocumentsConfirmRequest) -> Result&lt;PostV1CaptureDocumentsConfirmResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.capture.<a href="/src/api/resources/capture/client.rs">documents_confirm</a>(request: DocumentsConfirmCaptureRequest) -> Result&lt;DocumentsConfirmCaptureResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16450,12 +16470,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .capture
-        .save_the_reviewed_draft_as_a_purchase_invoice_and_attach_the_original_document(
-            &PostV1CaptureDocumentsConfirmRequest {
+        .documents_confirm(
+            &DocumentsConfirmCaptureRequest {
                 id: "id".to_string(),
                 document_number: "documentNumber".to_string(),
-                document_date: "documentDate".to_string(),
-                lines: vec![PostV1CaptureDocumentsConfirmRequestLinesItem {
+                document_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                lines: vec![DocumentsConfirmCaptureRequestLinesItem {
                     ..Default::default()
                 }],
                 partner_id: None,
@@ -16498,7 +16518,7 @@ async fn main() {
 <dl>
 <dd>
 
-**new_supplier:** `Option<PostV1CaptureDocumentsConfirmRequestNewSupplier>` 
+**new_supplier:** `Option<DocumentsConfirmCaptureRequestNewSupplier>` 
     
 </dd>
 </dl>
@@ -16546,7 +16566,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1CaptureDocumentsConfirmRequestLinesItem>` 
+**lines:** `Vec<DocumentsConfirmCaptureRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -16558,8 +16578,8 @@ async fn main() {
 </dl>
 </details>
 
-## Declarations
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_intrastat_compute</a>(request: PostV1DeclarationsLtIntrastatComputeRequest) -> Result&lt;PostV1DeclarationsLtIntrastatComputeResponse, ApiError&gt;</code></summary>
+## declarations
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_intrastat_compute</a>(request: LtIntrastatComputeDeclarationsRequest) -> Result&lt;LtIntrastatComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16583,11 +16603,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_intrastat_compute(
-            &PostV1DeclarationsLtIntrastatComputeRequest {
+        .lt_intrastat_compute(
+            &LtIntrastatComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
-                flow: PostV1DeclarationsLtIntrastatComputeRequestFlow::Arrivals,
+                flow: LtIntrastatComputeDeclarationsRequestFlow::Arrivals,
                 transaction_nature: None,
                 delivery_terms: None,
                 transport_mode: None,
@@ -16631,7 +16651,7 @@ async fn main() {
 <dl>
 <dd>
 
-**flow:** `PostV1DeclarationsLtIntrastatComputeRequestFlow` 
+**flow:** `LtIntrastatComputeDeclarationsRequestFlow` 
     
 </dd>
 </dl>
@@ -16655,7 +16675,7 @@ async fn main() {
 <dl>
 <dd>
 
-**transport_mode:** `Option<PostV1DeclarationsLtIntrastatComputeRequestTransportMode>` 
+**transport_mode:** `Option<LtIntrastatComputeDeclarationsRequestTransportMode>` 
     
 </dd>
 </dl>
@@ -16707,7 +16727,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_ivaz_generate</a>(request: PostV1DeclarationsLtIvazGenerateRequest) -> Result&lt;PostV1DeclarationsLtIvazGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_ivaz_generate</a>(request: LtIvazGenerateDeclarationsRequest) -> Result&lt;LtIvazGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16731,8 +16751,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_ivaz_generate(
-            &PostV1DeclarationsLtIvazGenerateRequest {
+        .lt_ivaz_generate(
+            &LtIvazGenerateDeclarationsRequest {
                 waybill_ids: vec!["waybillIds".to_string()],
                 persist: None,
             },
@@ -16774,7 +16794,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_intrastat_obligation</a>(request: PostV1DeclarationsLtIntrastatObligationRequest) -> Result&lt;PostV1DeclarationsLtIntrastatObligationResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_intrastat_obligation</a>(request: LtIntrastatObligationDeclarationsRequest) -> Result&lt;LtIntrastatObligationDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16798,8 +16818,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_intrastat_obligation(
-            &PostV1DeclarationsLtIntrastatObligationRequest { year: 1000000 },
+        .lt_intrastat_obligation(
+            &LtIntrastatObligationDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -16830,7 +16850,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_isaf_generate</a>(request: PostV1DeclarationsLtIsafGenerateRequest) -> Result&lt;PostV1DeclarationsLtIsafGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_isaf_generate</a>(request: LtIsafGenerateDeclarationsRequest) -> Result&lt;LtIsafGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16854,8 +16874,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_isaf_generate(
-            &PostV1DeclarationsLtIsafGenerateRequest {
+        .lt_isaf_generate(
+            &LtIsafGenerateDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
                 data_type: None,
@@ -16894,7 +16914,7 @@ async fn main() {
 <dl>
 <dd>
 
-**data_type:** `Option<PostV1DeclarationsLtIsafGenerateRequestDataType>` 
+**data_type:** `Option<LtIsafGenerateDeclarationsRequestDataType>` 
     
 </dd>
 </dl>
@@ -16906,7 +16926,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_fr0600_compute</a>(request: PostV1DeclarationsLtFr0600ComputeRequest) -> Result&lt;PostV1DeclarationsLtFr0600ComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_fr0600_compute</a>(request: LtFr0600ComputeDeclarationsRequest) -> Result&lt;LtFr0600ComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -16930,8 +16950,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_fr0600compute(
-            &PostV1DeclarationsLtFr0600ComputeRequest {
+        .lt_fr0600compute(
+            &LtFr0600ComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
                 months: None,
@@ -16991,7 +17011,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_gpm313_compute</a>(request: PostV1DeclarationsLtGpm313ComputeRequest) -> Result&lt;PostV1DeclarationsLtGpm313ComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_gpm313_compute</a>(request: LtGpm313ComputeDeclarationsRequest) -> Result&lt;LtGpm313ComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17015,8 +17035,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_gpm313compute(
-            &PostV1DeclarationsLtGpm313ComputeRequest {
+        .lt_gpm313compute(
+            &LtGpm313ComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
                 payout_timing: None,
@@ -17056,7 +17076,7 @@ async fn main() {
 <dl>
 <dd>
 
-**payout_timing:** `Option<PostV1DeclarationsLtGpm313ComputeRequestPayoutTiming>` 
+**payout_timing:** `Option<LtGpm313ComputeDeclarationsRequestPayoutTiming>` 
     
 </dd>
 </dl>
@@ -17076,7 +17096,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_sam_compute</a>(request: PostV1DeclarationsLtSamComputeRequest) -> Result&lt;PostV1DeclarationsLtSamComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_sam_compute</a>(request: LtSamComputeDeclarationsRequest) -> Result&lt;LtSamComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17100,8 +17120,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_sam_compute(
-            &PostV1DeclarationsLtSamComputeRequest {
+        .lt_sam_compute(
+            &LtSamComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -17143,7 +17163,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_sd_generate</a>(request: PostV1DeclarationsLtSdGenerateRequest) -> Result&lt;PostV1DeclarationsLtSdGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_sd_generate</a>(request: LtSdGenerateDeclarationsRequest) -> Result&lt;LtSdGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17167,11 +17187,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_sd_generate(
-            &PostV1DeclarationsLtSdGenerateRequest {
-                r#type: PostV1DeclarationsLtSdGenerateRequestType::OneSd,
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .lt_sd_generate(
+            &LtSdGenerateDeclarationsRequest {
+                r#type: LtSdGenerateDeclarationsRequestType::OneSd,
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -17191,7 +17211,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1DeclarationsLtSdGenerateRequestType` 
+**type_:** `LtSdGenerateDeclarationsRequestType` 
     
 </dd>
 </dl>
@@ -17219,7 +17239,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_saft_generate</a>(request: PostV1DeclarationsLtSaftGenerateRequest) -> Result&lt;PostV1DeclarationsLtSaftGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_saft_generate</a>(request: LtSaftGenerateDeclarationsRequest) -> Result&lt;LtSaftGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17243,10 +17263,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_saft_generate(
-            &PostV1DeclarationsLtSaftGenerateRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .lt_saft_generate(
+            &LtSaftGenerateDeclarationsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 data_type: None,
                 persist: None,
             },
@@ -17284,7 +17304,7 @@ async fn main() {
 <dl>
 <dd>
 
-**data_type:** `Option<PostV1DeclarationsLtSaftGenerateRequestDataType>` 
+**data_type:** `Option<LtSaftGenerateDeclarationsRequestDataType>` 
     
 </dd>
 </dl>
@@ -17304,7 +17324,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_ivaz_amend</a>(request: PostV1DeclarationsLtIvazAmendRequest) -> Result&lt;PostV1DeclarationsLtIvazAmendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_ivaz_amend</a>(request: LtIvazAmendDeclarationsRequest) -> Result&lt;LtIvazAmendDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17328,8 +17348,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_ivaz_amend(
-            &PostV1DeclarationsLtIvazAmendRequest {
+        .lt_ivaz_amend(
+            &LtIvazAmendDeclarationsRequest {
                 waybill_ids: vec!["waybillIds".to_string()],
                 persist: None,
             },
@@ -17371,7 +17391,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_ivaz_cancel</a>(request: PostV1DeclarationsLtIvazCancelRequest) -> Result&lt;PostV1DeclarationsLtIvazCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_ivaz_cancel</a>(request: LtIvazCancelDeclarationsRequest) -> Result&lt;LtIvazCancelDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17395,11 +17415,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_ivaz_cancel(
-            &PostV1DeclarationsLtIvazCancelRequest {
-                entries: vec![PostV1DeclarationsLtIvazCancelRequestEntriesItem {
+        .lt_ivaz_cancel(
+            &LtIvazCancelDeclarationsRequest {
+                entries: vec![LtIvazCancelDeclarationsRequestEntriesItem {
                     waybill_id: "waybillId".to_string(),
-                    reason: PostV1DeclarationsLtIvazCancelRequestEntriesItemReason::One,
+                    reason: LtIvazCancelDeclarationsRequestEntriesItemReason::One,
                     additional_info: None,
                 }],
                 persist: None,
@@ -17422,7 +17442,7 @@ async fn main() {
 <dl>
 <dd>
 
-**entries:** `Vec<PostV1DeclarationsLtIvazCancelRequestEntriesItem>` 
+**entries:** `Vec<LtIvazCancelDeclarationsRequestEntriesItem>` 
     
 </dd>
 </dl>
@@ -17442,7 +17462,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_fr0564_compute</a>(request: PostV1DeclarationsLtFr0564ComputeRequest) -> Result&lt;PostV1DeclarationsLtFr0564ComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_fr0564_compute</a>(request: LtFr0564ComputeDeclarationsRequest) -> Result&lt;LtFr0564ComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17466,8 +17486,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_fr0564compute(
-            &PostV1DeclarationsLtFr0564ComputeRequest {
+        .lt_fr0564compute(
+            &LtFr0564ComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -17509,7 +17529,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_gpm312_compute</a>(request: PostV1DeclarationsLtGpm312ComputeRequest) -> Result&lt;PostV1DeclarationsLtGpm312ComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_gpm312_compute</a>(request: LtGpm312ComputeDeclarationsRequest) -> Result&lt;LtGpm312ComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17533,8 +17553,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_gpm312compute(
-            &PostV1DeclarationsLtGpm312ComputeRequest {
+        .lt_gpm312compute(
+            &LtGpm312ComputeDeclarationsRequest {
                 year: 1000000,
                 payout_timing: None,
             },
@@ -17564,7 +17584,7 @@ async fn main() {
 <dl>
 <dd>
 
-**payout_timing:** `Option<PostV1DeclarationsLtGpm312ComputeRequestPayoutTiming>` 
+**payout_timing:** `Option<LtGpm312ComputeDeclarationsRequestPayoutTiming>` 
     
 </dd>
 </dl>
@@ -17576,7 +17596,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_pln204_compute</a>(request: PostV1DeclarationsLtPln204ComputeRequest) -> Result&lt;PostV1DeclarationsLtPln204ComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_pln204_compute</a>(request: LtPln204ComputeDeclarationsRequest) -> Result&lt;LtPln204ComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17600,10 +17620,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_pln204compute(
-            &PostV1DeclarationsLtPln204ComputeRequest { year: 1000000 },
-            None,
-        )
+        .lt_pln204compute(&LtPln204ComputeDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -17632,7 +17649,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_oss_compute</a>(request: PostV1DeclarationsEuOssComputeRequest) -> Result&lt;PostV1DeclarationsEuOssComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_oss_compute</a>(request: EuOssComputeDeclarationsRequest) -> Result&lt;EuOssComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17656,8 +17673,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_oss_compute(
-            &PostV1DeclarationsEuOssComputeRequest {
+        .eu_oss_compute(
+            &EuOssComputeDeclarationsRequest {
                 year: 1000000,
                 quarter: 1000000,
             },
@@ -17699,7 +17716,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_ioss_compute</a>(request: PostV1DeclarationsEuIossComputeRequest) -> Result&lt;PostV1DeclarationsEuIossComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_ioss_compute</a>(request: EuIossComputeDeclarationsRequest) -> Result&lt;EuIossComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17723,8 +17740,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_ioss_compute(
-            &PostV1DeclarationsEuIossComputeRequest {
+        .eu_ioss_compute(
+            &EuIossComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -17766,7 +17783,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_distance_sales_threshold_get</a>(request: PostV1DeclarationsEuDistanceSalesThresholdGetRequest) -> Result&lt;PostV1DeclarationsEuDistanceSalesThresholdGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_distance_sales_threshold_get</a>(request: EuDistanceSalesThresholdGetDeclarationsRequest) -> Result&lt;EuDistanceSalesThresholdGetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17790,8 +17807,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_distance_sales_threshold_get(
-            &PostV1DeclarationsEuDistanceSalesThresholdGetRequest {
+        .eu_distance_sales_threshold_get(
+            &EuDistanceSalesThresholdGetDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -17824,7 +17841,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_union_turnover_get</a>(request: PostV1DeclarationsEuUnionTurnoverGetRequest) -> Result&lt;PostV1DeclarationsEuUnionTurnoverGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_union_turnover_get</a>(request: EuUnionTurnoverGetDeclarationsRequest) -> Result&lt;EuUnionTurnoverGetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17848,8 +17865,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_union_turnover_get(
-            &PostV1DeclarationsEuUnionTurnoverGetRequest {
+        .eu_union_turnover_get(
+            &EuUnionTurnoverGetDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -17882,7 +17899,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_sme_cross_border_report_compute</a>(request: PostV1DeclarationsEuSmeCrossBorderReportComputeRequest) -> Result&lt;PostV1DeclarationsEuSmeCrossBorderReportComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_sme_cross_border_report_compute</a>(request: EuSmeCrossBorderReportComputeDeclarationsRequest) -> Result&lt;EuSmeCrossBorderReportComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17906,8 +17923,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_sme_cross_border_report_compute(
-            &PostV1DeclarationsEuSmeCrossBorderReportComputeRequest {
+        .eu_sme_cross_border_report_compute(
+            &EuSmeCrossBorderReportComputeDeclarationsRequest {
                 year: 1000000,
                 quarter: 1000000,
             },
@@ -17949,7 +17966,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_sme_thresholds_list</a>(request: PostV1DeclarationsEuSmeThresholdsListRequest) -> Result&lt;PostV1DeclarationsEuSmeThresholdsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_sme_thresholds_list</a>(request: EuSmeThresholdsListDeclarationsRequest) -> Result&lt;EuSmeThresholdsListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -17973,8 +17990,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_sme_thresholds_list(
-            &PostV1DeclarationsEuSmeThresholdsListRequest {
+        .eu_sme_thresholds_list(
+            &EuSmeThresholdsListDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -17992,7 +18009,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_sme_threshold_get</a>(request: PostV1DeclarationsEuSmeThresholdGetRequest) -> Result&lt;PostV1DeclarationsEuSmeThresholdGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_sme_threshold_get</a>(request: EuSmeThresholdGetDeclarationsRequest) -> Result&lt;EuSmeThresholdGetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18016,8 +18033,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_sme_threshold_get(
-            &PostV1DeclarationsEuSmeThresholdGetRequest {
+        .eu_sme_threshold_get(
+            &EuSmeThresholdGetDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -18050,7 +18067,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_vat_return_packs_list</a>(request: PostV1DeclarationsEuVatReturnPacksListRequest) -> Result&lt;PostV1DeclarationsEuVatReturnPacksListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_vat_return_packs_list</a>(request: EuVatReturnPacksListDeclarationsRequest) -> Result&lt;EuVatReturnPacksListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18074,8 +18091,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_vat_return_packs_list(
-            &PostV1DeclarationsEuVatReturnPacksListRequest {
+        .eu_vat_return_packs_list(
+            &EuVatReturnPacksListDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -18093,7 +18110,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_eu_vat_return_compute</a>(request: PostV1DeclarationsEuVatReturnComputeRequest) -> Result&lt;PostV1DeclarationsEuVatReturnComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">eu_vat_return_compute</a>(request: EuVatReturnComputeDeclarationsRequest) -> Result&lt;EuVatReturnComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18117,8 +18134,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_eu_vat_return_compute(
-            &PostV1DeclarationsEuVatReturnComputeRequest {
+        .eu_vat_return_compute(
+            &EuVatReturnComputeDeclarationsRequest {
                 country_code: "countryCode".to_string(),
                 year: 1000000,
                 month: 1000000,
@@ -18178,7 +18195,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_v7_m_generate</a>(request: PostV1DeclarationsPlJpkV7MGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkV7MGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_jpk_v7m_generate</a>(request: PlJpkV7MGenerateDeclarationsRequest) -> Result&lt;PlJpkV7MGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18216,8 +18233,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_jpk_v7m_generate(
-            &PostV1DeclarationsPlJpkV7MGenerateRequest {
+        .pl_jpk_v7m_generate(
+            &PlJpkV7MGenerateDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
                 kod_urzedu: "kodUrzedu".to_string(),
@@ -18286,7 +18303,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_vat_ue_generate</a>(request: PostV1DeclarationsPlVatUeGenerateRequest) -> Result&lt;PostV1DeclarationsPlVatUeGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_vat_ue_generate</a>(request: PlVatUeGenerateDeclarationsRequest) -> Result&lt;PlVatUeGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18324,8 +18341,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_vat_ue_generate(
-            &PostV1DeclarationsPlVatUeGenerateRequest {
+        .pl_vat_ue_generate(
+            &PlVatUeGenerateDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -18367,7 +18384,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_intrastat_generate</a>(request: PostV1DeclarationsPlIntrastatGenerateRequest) -> Result&lt;PostV1DeclarationsPlIntrastatGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_intrastat_generate</a>(request: PlIntrastatGenerateDeclarationsRequest) -> Result&lt;PlIntrastatGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18405,11 +18422,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_intrastat_generate(
-            &PostV1DeclarationsPlIntrastatGenerateRequest {
+        .pl_intrastat_generate(
+            &PlIntrastatGenerateDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
-                flow: PostV1DeclarationsPlIntrastatGenerateRequestFlow::Arrivals,
+                flow: PlIntrastatGenerateDeclarationsRequestFlow::Arrivals,
                 transaction_nature: None,
             },
             None,
@@ -18446,7 +18463,7 @@ async fn main() {
 <dl>
 <dd>
 
-**flow:** `PostV1DeclarationsPlIntrastatGenerateRequestFlow` 
+**flow:** `PlIntrastatGenerateDeclarationsRequestFlow` 
     
 </dd>
 </dl>
@@ -18466,7 +18483,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_ksef_received_list</a>(request: PostV1DeclarationsPlKsefReceivedListRequest) -> Result&lt;PostV1DeclarationsPlKsefReceivedListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_ksef_received_list</a>(request: PlKsefReceivedListDeclarationsRequest) -> Result&lt;PlKsefReceivedListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18504,8 +18521,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_ksef_received_list(
-            &PostV1DeclarationsPlKsefReceivedListRequest {
+        .pl_ksef_received_list(
+            &PlKsefReceivedListDeclarationsRequest {
                 from: DateTime::parse_from_rfc3339("2024-01-15T09:30:00Z").unwrap(),
                 to: DateTime::parse_from_rfc3339("2024-01-15T09:30:00Z").unwrap(),
                 page_size: None,
@@ -18565,7 +18582,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_ksef_received_fetch</a>(request: PostV1DeclarationsPlKsefReceivedFetchRequest) -> Result&lt;PostV1DeclarationsPlKsefReceivedFetchResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_ksef_received_fetch</a>(request: PlKsefReceivedFetchDeclarationsRequest) -> Result&lt;PlKsefReceivedFetchDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18603,8 +18620,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_ksef_received_fetch(
-            &PostV1DeclarationsPlKsefReceivedFetchRequest {
+        .pl_ksef_received_fetch(
+            &PlKsefReceivedFetchDeclarationsRequest {
                 ksef_number: "ksefNumber".to_string(),
                 purchase_invoice_id: None,
             },
@@ -18646,7 +18663,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_ksef_receipt</a>(request: PostV1DeclarationsPlKsefReceiptRequest) -> Result&lt;PostV1DeclarationsPlKsefReceiptResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_ksef_receipt</a>(request: PlKsefReceiptDeclarationsRequest) -> Result&lt;PlKsefReceiptDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18684,8 +18701,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_ksef_receipt(
-            &PostV1DeclarationsPlKsefReceiptRequest {
+        .pl_ksef_receipt(
+            &PlKsefReceiptDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -18718,7 +18735,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_adjustments_recorded_for_a_tax_year</a>(request: PostV1DeclarationsTaxAdjustmentsListRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_adjustments_list</a>(request: TaxAdjustmentsListDeclarationsRequest) -> Result&lt;TaxAdjustmentsListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18756,8 +18773,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .tax_adjustments_recorded_for_a_tax_year(
-            &PostV1DeclarationsTaxAdjustmentsListRequest { year: 1000000 },
+        .tax_adjustments_list(
+            &TaxAdjustmentsListDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -18788,7 +18805,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_a_tax_adjustment_for_a_tax_year</a>(request: PostV1DeclarationsTaxAdjustmentsCreateRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_adjustments_create</a>(request: TaxAdjustmentsCreateDeclarationsRequest) -> Result&lt;TaxAdjustmentsCreateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18812,11 +18829,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .record_a_tax_adjustment_for_a_tax_year(
-            &PostV1DeclarationsTaxAdjustmentsCreateRequest {
+        .tax_adjustments_create(
+            &TaxAdjustmentsCreateDeclarationsRequest {
                 year: 1000000,
-                kind: PostV1DeclarationsTaxAdjustmentsCreateRequestKind::NonDeductible,
-                amount: "amount".to_string(),
+                kind: TaxAdjustmentsCreateDeclarationsRequestKind::NonDeductible,
+                amount: "121.00".to_string(),
                 description: "description".to_string(),
                 code: None,
             },
@@ -18846,7 +18863,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `PostV1DeclarationsTaxAdjustmentsCreateRequestKind` 
+**kind:** `TaxAdjustmentsCreateDeclarationsRequestKind` 
     
 </dd>
 </dl>
@@ -18882,7 +18899,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_tax_adjustment</a>(request: PostV1DeclarationsTaxAdjustmentsUpdateRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_adjustments_update</a>(request: TaxAdjustmentsUpdateDeclarationsRequest) -> Result&lt;TaxAdjustmentsUpdateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -18906,8 +18923,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .change_a_recorded_tax_adjustment(
-            &PostV1DeclarationsTaxAdjustmentsUpdateRequest {
+        .tax_adjustments_update(
+            &TaxAdjustmentsUpdateDeclarationsRequest {
                 id: "id".to_string(),
                 kind: None,
                 code: None,
@@ -18940,7 +18957,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `Option<PostV1DeclarationsTaxAdjustmentsUpdateRequestKind>` 
+**kind:** `Option<TaxAdjustmentsUpdateDeclarationsRequestKind>` 
     
 </dd>
 </dl>
@@ -18976,7 +18993,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_tax_adjustment</a>(request: PostV1DeclarationsTaxAdjustmentsDeleteRequest) -> Result&lt;PostV1DeclarationsTaxAdjustmentsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_adjustments_delete</a>(request: TaxAdjustmentsDeleteDeclarationsRequest) -> Result&lt;TaxAdjustmentsDeleteDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19000,8 +19017,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .remove_a_recorded_tax_adjustment(
-            &PostV1DeclarationsTaxAdjustmentsDeleteRequest {
+        .tax_adjustments_delete(
+            &TaxAdjustmentsDeleteDeclarationsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -19034,7 +19051,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">payments_already_made_towards_a_tax_of_a_year</a>(request: PostV1DeclarationsTaxPaymentsListRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_payments_list</a>(request: TaxPaymentsListDeclarationsRequest) -> Result&lt;TaxPaymentsListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19072,9 +19089,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .payments_already_made_towards_a_tax_of_a_year(
-            &PostV1DeclarationsTaxPaymentsListRequest {
-                tax: PostV1DeclarationsTaxPaymentsListRequestTax::CorporateIncomeTax,
+        .tax_payments_list(
+            &TaxPaymentsListDeclarationsRequest {
+                tax: TaxPaymentsListDeclarationsRequestTax::CorporateIncomeTax,
                 year: 1000000,
                 month: None,
             },
@@ -19096,7 +19113,7 @@ async fn main() {
 <dl>
 <dd>
 
-**tax:** `PostV1DeclarationsTaxPaymentsListRequestTax` 
+**tax:** `TaxPaymentsListDeclarationsRequestTax` 
     
 </dd>
 </dl>
@@ -19124,7 +19141,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_a_payment_made_towards_a_tax</a>(request: PostV1DeclarationsTaxPaymentsCreateRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_payments_create</a>(request: TaxPaymentsCreateDeclarationsRequest) -> Result&lt;TaxPaymentsCreateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19148,13 +19165,13 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .record_a_payment_made_towards_a_tax(
-            &PostV1DeclarationsTaxPaymentsCreateRequest {
-                tax: PostV1DeclarationsTaxPaymentsCreateRequestTax::CorporateIncomeTax,
+        .tax_payments_create(
+            &TaxPaymentsCreateDeclarationsRequest {
+                tax: TaxPaymentsCreateDeclarationsRequestTax::CorporateIncomeTax,
                 year: 1000000,
-                kind: PostV1DeclarationsTaxPaymentsCreateRequestKind::Advance,
-                amount: "amount".to_string(),
-                paid_on: "paidOn".to_string(),
+                kind: TaxPaymentsCreateDeclarationsRequestKind::Advance,
+                amount: "121.00".to_string(),
+                paid_on: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 description: "description".to_string(),
                 month: None,
                 reference: None,
@@ -19177,7 +19194,7 @@ async fn main() {
 <dl>
 <dd>
 
-**tax:** `PostV1DeclarationsTaxPaymentsCreateRequestTax` 
+**tax:** `TaxPaymentsCreateDeclarationsRequestTax` 
     
 </dd>
 </dl>
@@ -19201,7 +19218,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `PostV1DeclarationsTaxPaymentsCreateRequestKind` 
+**kind:** `TaxPaymentsCreateDeclarationsRequestKind` 
     
 </dd>
 </dl>
@@ -19245,7 +19262,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_tax_payment</a>(request: PostV1DeclarationsTaxPaymentsUpdateRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_payments_update</a>(request: TaxPaymentsUpdateDeclarationsRequest) -> Result&lt;TaxPaymentsUpdateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19269,8 +19286,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .change_a_recorded_tax_payment(
-            &PostV1DeclarationsTaxPaymentsUpdateRequest {
+        .tax_payments_update(
+            &TaxPaymentsUpdateDeclarationsRequest {
                 id: "id".to_string(),
                 kind: None,
                 amount: None,
@@ -19304,7 +19321,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `Option<PostV1DeclarationsTaxPaymentsUpdateRequestKind>` 
+**kind:** `Option<TaxPaymentsUpdateDeclarationsRequestKind>` 
     
 </dd>
 </dl>
@@ -19348,7 +19365,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_tax_payment</a>(request: PostV1DeclarationsTaxPaymentsDeleteRequest) -> Result&lt;PostV1DeclarationsTaxPaymentsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">tax_payments_delete</a>(request: TaxPaymentsDeleteDeclarationsRequest) -> Result&lt;TaxPaymentsDeleteDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19372,8 +19389,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .remove_a_recorded_tax_payment(
-            &PostV1DeclarationsTaxPaymentsDeleteRequest {
+        .tax_payments_delete(
+            &TaxPaymentsDeleteDeclarationsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -19406,7 +19423,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">adoption_and_signing_facts_of_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsGetRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_get</a>(request: AnnualAccountsGetDeclarationsRequest) -> Result&lt;AnnualAccountsGetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19444,8 +19461,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .adoption_and_signing_facts_of_the_annual_accounts_of_a_year(
-            &PostV1DeclarationsAnnualAccountsGetRequest { year: 1000000 },
+        .annual_accounts_get(
+            &AnnualAccountsGetDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -19476,7 +19493,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_the_adoption_and_preparation_of_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsSetRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_set</a>(request: AnnualAccountsSetDeclarationsRequest) -> Result&lt;AnnualAccountsSetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19500,11 +19517,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .record_the_adoption_and_preparation_of_the_annual_accounts_of_a_year(
-            &PostV1DeclarationsAnnualAccountsSetRequest {
+        .annual_accounts_set(
+            &AnnualAccountsSetDeclarationsRequest {
                 year: 1000000,
                 adopted: true,
-                date_of_preparation: "dateOfPreparation".to_string(),
+                date_of_preparation: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 adoption_date: None,
                 audited: None,
                 audit_report_qualified: None,
@@ -19651,7 +19668,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_whether_a_director_signed_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsSignaturesCreateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSignaturesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_signatures_create</a>(request: AnnualAccountsSignaturesCreateDeclarationsRequest) -> Result&lt;AnnualAccountsSignaturesCreateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19673,15 +19690,22 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client.declarations.record_whether_a_director_signed_the_annual_accounts_of_a_year(&PostV1DeclarationsAnnualAccountsSignaturesCreateRequest {
-        year: 1000000,
-        director_name: "directorName".to_string(),
-        director_type: PostV1DeclarationsAnnualAccountsSignaturesCreateRequestDirectorType::ManagingCurrent,
-        signed: true,
-        signed_on: None,
-        signed_at: None,
-        reason_not_signed: None
-    }, None).await;
+    client
+        .declarations
+        .annual_accounts_signatures_create(
+            &AnnualAccountsSignaturesCreateDeclarationsRequest {
+                year: 1000000,
+                director_name: "directorName".to_string(),
+                director_type:
+                    AnnualAccountsSignaturesCreateDeclarationsRequestDirectorType::ManagingCurrent,
+                signed: true,
+                signed_on: None,
+                signed_at: None,
+                reason_not_signed: None,
+            },
+            None,
+        )
+        .await;
 }
 ```
 </dd>
@@ -19713,7 +19737,7 @@ async fn main() {
 <dl>
 <dd>
 
-**director_type:** `PostV1DeclarationsAnnualAccountsSignaturesCreateRequestDirectorType` 
+**director_type:** `AnnualAccountsSignaturesCreateDeclarationsRequestDirectorType` 
     
 </dd>
 </dl>
@@ -19757,7 +19781,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_director_signature</a>(request: PostV1DeclarationsAnnualAccountsSignaturesUpdateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSignaturesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_signatures_update</a>(request: AnnualAccountsSignaturesUpdateDeclarationsRequest) -> Result&lt;AnnualAccountsSignaturesUpdateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19779,15 +19803,22 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client.declarations.change_a_recorded_director_signature(&PostV1DeclarationsAnnualAccountsSignaturesUpdateRequest {
-        id: "id".to_string(),
-        director_name: "directorName".to_string(),
-        director_type: PostV1DeclarationsAnnualAccountsSignaturesUpdateRequestDirectorType::ManagingCurrent,
-        signed: true,
-        signed_on: None,
-        signed_at: None,
-        reason_not_signed: None
-    }, None).await;
+    client
+        .declarations
+        .annual_accounts_signatures_update(
+            &AnnualAccountsSignaturesUpdateDeclarationsRequest {
+                id: "id".to_string(),
+                director_name: "directorName".to_string(),
+                director_type:
+                    AnnualAccountsSignaturesUpdateDeclarationsRequestDirectorType::ManagingCurrent,
+                signed: true,
+                signed_on: None,
+                signed_at: None,
+                reason_not_signed: None,
+            },
+            None,
+        )
+        .await;
 }
 ```
 </dd>
@@ -19819,7 +19850,7 @@ async fn main() {
 <dl>
 <dd>
 
-**director_type:** `PostV1DeclarationsAnnualAccountsSignaturesUpdateRequestDirectorType` 
+**director_type:** `AnnualAccountsSignaturesUpdateDeclarationsRequestDirectorType` 
     
 </dd>
 </dl>
@@ -19863,7 +19894,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_director_signature</a>(request: PostV1DeclarationsAnnualAccountsSignaturesDeleteRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsSignaturesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_signatures_delete</a>(request: AnnualAccountsSignaturesDeleteDeclarationsRequest) -> Result&lt;AnnualAccountsSignaturesDeleteDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19887,8 +19918,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .remove_a_recorded_director_signature(
-            &PostV1DeclarationsAnnualAccountsSignaturesDeleteRequest {
+        .annual_accounts_signatures_delete(
+            &AnnualAccountsSignaturesDeleteDeclarationsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -19921,7 +19952,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">record_a_decision_to_distribute_profit_a_dividend_an_interim_dividend_or_a_payment_treated_as_one</a>(request: PostV1DeclarationsAnnualAccountsDistributionsCreateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsDistributionsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_distributions_create</a>(request: AnnualAccountsDistributionsCreateDeclarationsRequest) -> Result&lt;AnnualAccountsDistributionsCreateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -19943,13 +19974,19 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client.declarations.record_a_decision_to_distribute_profit_a_dividend_an_interim_dividend_or_a_payment_treated_as_one(&PostV1DeclarationsAnnualAccountsDistributionsCreateRequest {
-        year: 1000000,
-        decided_on: "decidedOn".to_string(),
-        kind: PostV1DeclarationsAnnualAccountsDistributionsCreateRequestKind::Dividend,
-        amount: "amount".to_string(),
-        description: None
-    }, None).await;
+    client
+        .declarations
+        .annual_accounts_distributions_create(
+            &AnnualAccountsDistributionsCreateDeclarationsRequest {
+                year: 1000000,
+                decided_on: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                kind: AnnualAccountsDistributionsCreateDeclarationsRequestKind::Dividend,
+                amount: "121.00".to_string(),
+                description: None,
+            },
+            None,
+        )
+        .await;
 }
 ```
 </dd>
@@ -19981,7 +20018,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `PostV1DeclarationsAnnualAccountsDistributionsCreateRequestKind` 
+**kind:** `AnnualAccountsDistributionsCreateDeclarationsRequestKind` 
     
 </dd>
 </dl>
@@ -20009,7 +20046,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">change_a_recorded_profit_distribution</a>(request: PostV1DeclarationsAnnualAccountsDistributionsUpdateRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsDistributionsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_distributions_update</a>(request: AnnualAccountsDistributionsUpdateDeclarationsRequest) -> Result&lt;AnnualAccountsDistributionsUpdateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20033,12 +20070,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .change_a_recorded_profit_distribution(
-            &PostV1DeclarationsAnnualAccountsDistributionsUpdateRequest {
+        .annual_accounts_distributions_update(
+            &AnnualAccountsDistributionsUpdateDeclarationsRequest {
                 id: "id".to_string(),
-                decided_on: "decidedOn".to_string(),
-                kind: PostV1DeclarationsAnnualAccountsDistributionsUpdateRequestKind::Dividend,
-                amount: "amount".to_string(),
+                decided_on: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                kind: AnnualAccountsDistributionsUpdateDeclarationsRequestKind::Dividend,
+                amount: "121.00".to_string(),
                 description: None,
             },
             None,
@@ -20075,7 +20112,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `PostV1DeclarationsAnnualAccountsDistributionsUpdateRequestKind` 
+**kind:** `AnnualAccountsDistributionsUpdateDeclarationsRequestKind` 
     
 </dd>
 </dl>
@@ -20103,7 +20140,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_recorded_profit_distribution</a>(request: PostV1DeclarationsAnnualAccountsDistributionsDeleteRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsDistributionsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_distributions_delete</a>(request: AnnualAccountsDistributionsDeleteDeclarationsRequest) -> Result&lt;AnnualAccountsDistributionsDeleteDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20127,8 +20164,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .remove_a_recorded_profit_distribution(
-            &PostV1DeclarationsAnnualAccountsDistributionsDeleteRequest {
+        .annual_accounts_distributions_delete(
+            &AnnualAccountsDistributionsDeleteDeclarationsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -20161,7 +20198,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">attach_an_uploaded_document_to_the_annual_accounts_of_a_year</a>(request: PostV1DeclarationsAnnualAccountsAttachmentsAddRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsAttachmentsAddResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_attachments_add</a>(request: AnnualAccountsAttachmentsAddDeclarationsRequest) -> Result&lt;AnnualAccountsAttachmentsAddDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20199,10 +20236,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .attach_an_uploaded_document_to_the_annual_accounts_of_a_year(
-            &PostV1DeclarationsAnnualAccountsAttachmentsAddRequest {
+        .annual_accounts_attachments_add(
+            &AnnualAccountsAttachmentsAddDeclarationsRequest {
                 year: 1000000,
-                kind: PostV1DeclarationsAnnualAccountsAttachmentsAddRequestKind::FullReport,
+                kind: AnnualAccountsAttachmentsAddDeclarationsRequestKind::FullReport,
                 r#ref: "ref".to_string(),
                 name: None,
             },
@@ -20232,7 +20269,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `PostV1DeclarationsAnnualAccountsAttachmentsAddRequestKind` 
+**kind:** `AnnualAccountsAttachmentsAddDeclarationsRequestKind` 
     
 </dd>
 </dl>
@@ -20260,7 +20297,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">remove_a_document_attached_to_the_annual_accounts_and_delete_its_file</a>(request: PostV1DeclarationsAnnualAccountsAttachmentsDeleteRequest) -> Result&lt;PostV1DeclarationsAnnualAccountsAttachmentsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">annual_accounts_attachments_delete</a>(request: AnnualAccountsAttachmentsDeleteDeclarationsRequest) -> Result&lt;AnnualAccountsAttachmentsDeleteDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20284,8 +20321,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .remove_a_document_attached_to_the_annual_accounts_and_delete_its_file(
-            &PostV1DeclarationsAnnualAccountsAttachmentsDeleteRequest {
+        .annual_accounts_attachments_delete(
+            &AnnualAccountsAttachmentsDeleteDeclarationsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -20318,7 +20355,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_cy_td4_generate</a>(request: PostV1DeclarationsCyTd4GenerateRequest) -> Result&lt;PostV1DeclarationsCyTd4GenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">cy_td4_generate</a>(request: CyTd4GenerateDeclarationsRequest) -> Result&lt;CyTd4GenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20356,10 +20393,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_cy_td4generate(
-            &PostV1DeclarationsCyTd4GenerateRequest { year: 1000000 },
-            None,
-        )
+        .cy_td4generate(&CyTd4GenerateDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -20388,7 +20422,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_cy_he32_generate</a>(request: PostV1DeclarationsCyHe32GenerateRequest) -> Result&lt;PostV1DeclarationsCyHe32GenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">cy_he32_generate</a>(request: CyHe32GenerateDeclarationsRequest) -> Result&lt;CyHe32GenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20426,10 +20460,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_cy_he32generate(
-            &PostV1DeclarationsCyHe32GenerateRequest { year: 1000000 },
-            None,
-        )
+        .cy_he32generate(&CyHe32GenerateDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -20458,7 +20489,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_returns_generate</a>(request: PostV1DeclarationsDeReturnsGenerateRequest) -> Result&lt;PostV1DeclarationsDeReturnsGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">de_returns_generate</a>(request: DeReturnsGenerateDeclarationsRequest) -> Result&lt;DeReturnsGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20496,9 +20527,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_de_returns_generate(
-            &PostV1DeclarationsDeReturnsGenerateRequest {
-                rule_key: PostV1DeclarationsDeReturnsGenerateRequestRuleKey::DeEBilanz,
+        .de_returns_generate(
+            &DeReturnsGenerateDeclarationsRequest {
+                rule_key: DeReturnsGenerateDeclarationsRequestRuleKey::DeEBilanz,
                 period: "period".to_string(),
             },
             None,
@@ -20519,7 +20550,7 @@ async fn main() {
 <dl>
 <dd>
 
-**rule_key:** `PostV1DeclarationsDeReturnsGenerateRequestRuleKey` 
+**rule_key:** `DeReturnsGenerateDeclarationsRequestRuleKey` 
     
 </dd>
 </dl>
@@ -20539,7 +20570,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_return_facts_get</a>(request: PostV1DeclarationsDeReturnFactsGetRequest) -> Result&lt;PostV1DeclarationsDeReturnFactsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">de_return_facts_get</a>(request: DeReturnFactsGetDeclarationsRequest) -> Result&lt;DeReturnFactsGetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20577,10 +20608,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_de_return_facts_get(
-            &PostV1DeclarationsDeReturnFactsGetRequest { year: 1000000 },
-            None,
-        )
+        .de_return_facts_get(&DeReturnFactsGetDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -20609,7 +20637,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_return_facts_set</a>(request: PostV1DeclarationsDeReturnFactsSetRequest) -> Result&lt;PostV1DeclarationsDeReturnFactsSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">de_return_facts_set</a>(request: DeReturnFactsSetDeclarationsRequest) -> Result&lt;DeReturnFactsSetDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20647,10 +20675,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_de_return_facts_set(
-            &PostV1DeclarationsDeReturnFactsSetRequest {
+        .de_return_facts_set(
+            &DeReturnFactsSetDeclarationsRequest {
                 year: 1000000,
-                facts: PostV1DeclarationsDeReturnFactsSetRequestFacts {
+                facts: DeReturnFactsSetDeclarationsRequestFacts {
                     ..Default::default()
                 },
             },
@@ -20680,7 +20708,7 @@ async fn main() {
 <dl>
 <dd>
 
-**facts:** `PostV1DeclarationsDeReturnFactsSetRequestFacts` 
+**facts:** `DeReturnFactsSetDeclarationsRequestFacts` 
     
 </dd>
 </dl>
@@ -20692,7 +20720,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_deuev_generate</a>(request: PostV1DeclarationsDeDeuevGenerateRequest) -> Result&lt;PostV1DeclarationsDeDeuevGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">de_deuev_generate</a>(request: DeDeuevGenerateDeclarationsRequest) -> Result&lt;DeDeuevGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20730,8 +20758,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_de_deuev_generate(
-            &PostV1DeclarationsDeDeuevGenerateRequest {
+        .de_deuev_generate(
+            &DeDeuevGenerateDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -20773,7 +20801,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_de_beitragsnachweis_generate</a>(request: PostV1DeclarationsDeBeitragsnachweisGenerateRequest) -> Result&lt;PostV1DeclarationsDeBeitragsnachweisGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">de_beitragsnachweis_generate</a>(request: DeBeitragsnachweisGenerateDeclarationsRequest) -> Result&lt;DeBeitragsnachweisGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20811,8 +20839,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_de_beitragsnachweis_generate(
-            &PostV1DeclarationsDeBeitragsnachweisGenerateRequest {
+        .de_beitragsnachweis_generate(
+            &DeBeitragsnachweisGenerateDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -20854,7 +20882,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_dk_selskabsskat_generate</a>(request: PostV1DeclarationsDkSelskabsskatGenerateRequest) -> Result&lt;PostV1DeclarationsDkSelskabsskatGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">dk_selskabsskat_generate</a>(request: DkSelskabsskatGenerateDeclarationsRequest) -> Result&lt;DkSelskabsskatGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20892,8 +20920,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_dk_selskabsskat_generate(
-            &PostV1DeclarationsDkSelskabsskatGenerateRequest { year: 1000000 },
+        .dk_selskabsskat_generate(
+            &DkSelskabsskatGenerateDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -20924,7 +20952,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ee_employment_register_send</a>(request: PostV1DeclarationsEeEmploymentRegisterSendRequest) -> Result&lt;PostV1DeclarationsEeEmploymentRegisterSendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">ee_employment_register_send</a>(request: EeEmploymentRegisterSendDeclarationsRequest) -> Result&lt;EeEmploymentRegisterSendDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20962,10 +20990,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_ee_employment_register_send(
-            &PostV1DeclarationsEeEmploymentRegisterSendRequest {
+        .ee_employment_register_send(
+            &EeEmploymentRegisterSendDeclarationsRequest {
                 contract_id: "contractId".to_string(),
-                event: PostV1DeclarationsEeEmploymentRegisterSendRequestEvent::Start,
+                event: EeEmploymentRegisterSendDeclarationsRequestEvent::Start,
             },
             None,
         )
@@ -20993,7 +21021,7 @@ async fn main() {
 <dl>
 <dd>
 
-**event:** `PostV1DeclarationsEeEmploymentRegisterSendRequestEvent` 
+**event:** `EeEmploymentRegisterSendDeclarationsRequestEvent` 
     
 </dd>
 </dl>
@@ -21005,7 +21033,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_es_verifactu_declaracion_responsable</a>(request: PostV1DeclarationsEsVerifactuDeclaracionResponsableRequest) -> Result&lt;PostV1DeclarationsEsVerifactuDeclaracionResponsableResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">es_verifactu_declaracion_responsable</a>(request: EsVerifactuDeclaracionResponsableDeclarationsRequest) -> Result&lt;EsVerifactuDeclaracionResponsableDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21043,8 +21071,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_es_verifactu_declaracion_responsable(
-            &PostV1DeclarationsEsVerifactuDeclaracionResponsableRequest {
+        .es_verifactu_declaracion_responsable(
+            &EsVerifactuDeclaracionResponsableDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -21062,7 +21090,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ie_ct1_generate</a>(request: PostV1DeclarationsIeCt1GenerateRequest) -> Result&lt;PostV1DeclarationsIeCt1GenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">ie_ct1_generate</a>(request: IeCt1GenerateDeclarationsRequest) -> Result&lt;IeCt1GenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21100,10 +21128,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_ie_ct1generate(
-            &PostV1DeclarationsIeCt1GenerateRequest { year: 1000000 },
-            None,
-        )
+        .ie_ct1generate(&IeCt1GenerateDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -21132,7 +21157,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ie_b1_generate</a>(request: PostV1DeclarationsIeB1GenerateRequest) -> Result&lt;PostV1DeclarationsIeB1GenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">ie_b1_generate</a>(request: IeB1GenerateDeclarationsRequest) -> Result&lt;IeB1GenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21170,10 +21195,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_ie_b1generate(
-            &PostV1DeclarationsIeB1GenerateRequest { year: 1000000 },
-            None,
-        )
+        .ie_b1generate(&IeB1GenerateDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -21202,7 +21224,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_it_sdi_purchase_send</a>(request: PostV1DeclarationsItSdiPurchaseSendRequest) -> Result&lt;PostV1DeclarationsItSdiPurchaseSendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">it_sdi_purchase_send</a>(request: ItSdiPurchaseSendDeclarationsRequest) -> Result&lt;ItSdiPurchaseSendDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21240,8 +21262,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_it_sdi_purchase_send(
-            &PostV1DeclarationsItSdiPurchaseSendRequest {
+        .it_sdi_purchase_send(
+            &ItSdiPurchaseSendDeclarationsRequest {
                 purchase_invoice_id: "purchaseInvoiceId".to_string(),
                 vat_rate_percent: None,
                 tipo_documento: None,
@@ -21280,7 +21302,7 @@ async fn main() {
 <dl>
 <dd>
 
-**tipo_documento:** `Option<PostV1DeclarationsItSdiPurchaseSendRequestTipoDocumento>` 
+**tipo_documento:** `Option<ItSdiPurchaseSendDeclarationsRequestTipoDocumento>` 
     
 </dd>
 </dl>
@@ -21292,7 +21314,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_it_sdi_purchase_preview</a>(request: PostV1DeclarationsItSdiPurchasePreviewRequest) -> Result&lt;PostV1DeclarationsItSdiPurchasePreviewResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">it_sdi_purchase_preview</a>(request: ItSdiPurchasePreviewDeclarationsRequest) -> Result&lt;ItSdiPurchasePreviewDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21330,8 +21352,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_it_sdi_purchase_preview(
-            &PostV1DeclarationsItSdiPurchasePreviewRequest {
+        .it_sdi_purchase_preview(
+            &ItSdiPurchasePreviewDeclarationsRequest {
                 purchase_invoice_id: "purchaseInvoiceId".to_string(),
                 vat_rate_percent: None,
                 tipo_documento: None,
@@ -21370,7 +21392,7 @@ async fn main() {
 <dl>
 <dd>
 
-**tipo_documento:** `Option<PostV1DeclarationsItSdiPurchasePreviewRequestTipoDocumento>` 
+**tipo_documento:** `Option<ItSdiPurchasePreviewDeclarationsRequestTipoDocumento>` 
     
 </dd>
 </dl>
@@ -21382,7 +21404,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_saft_send</a>(request: PostV1DeclarationsLtSaftSendRequest) -> Result&lt;PostV1DeclarationsLtSaftSendResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_saft_send</a>(request: LtSaftSendDeclarationsRequest) -> Result&lt;LtSaftSendDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21394,7 +21416,7 @@ async fn main() {
 <dl>
 <dd>
 
-Upload the SAF-T file to i.SAF-T over the iSAFTUploaderService web service and start its processing. The submission itself is confirmed separately, because after confirmation the file can no longer be corrected.
+Upload the SAF-T file to i.SAF-T over the iSAFTUploaderService web service and start its processing. The file, the case reference and the status are kept as a declaration submission (submissionId), whose outcome Nordlet then checks with i.SAF-T. The submission itself is confirmed separately, because after confirmation the file can no longer be corrected. A range and data type already sent is sent again only with amend: true.
 </dd>
 </dl>
 </dd>
@@ -21420,12 +21442,13 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_saft_send(
-            &PostV1DeclarationsLtSaftSendRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .lt_saft_send(
+            &LtSaftSendDeclarationsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 data_type: None,
                 confirm: None,
+                amend: None,
             },
             None,
         )
@@ -21461,7 +21484,7 @@ async fn main() {
 <dl>
 <dd>
 
-**data_type:** `Option<PostV1DeclarationsLtSaftSendRequestDataType>` 
+**data_type:** `Option<LtSaftSendDeclarationsRequestDataType>` 
     
 </dd>
 </dl>
@@ -21473,6 +21496,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**amend:** `Option<bool>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -21481,7 +21512,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_sd_ffdata</a>(request: PostV1DeclarationsLtSdFfdataRequest) -> Result&lt;PostV1DeclarationsLtSdFfdataResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_sd_ffdata</a>(request: LtSdFfdataDeclarationsRequest) -> Result&lt;LtSdFfdataDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21519,11 +21550,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_sd_ffdata(
-            &PostV1DeclarationsLtSdFfdataRequest {
-                r#type: PostV1DeclarationsLtSdFfdataRequestType::OneSd,
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .lt_sd_ffdata(
+            &LtSdFfdataDeclarationsRequest {
+                r#type: LtSdFfdataDeclarationsRequestType::OneSd,
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 manager_full_name: None,
                 preparator_details: None,
             },
@@ -21545,7 +21576,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1DeclarationsLtSdFfdataRequestType` 
+**type_:** `LtSdFfdataDeclarationsRequestType` 
     
 </dd>
 </dl>
@@ -21589,7 +21620,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_lt_pln204_ffdata</a>(request: PostV1DeclarationsLtPln204FfdataRequest) -> Result&lt;PostV1DeclarationsLtPln204FfdataResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">lt_pln204_ffdata</a>(request: LtPln204FfdataDeclarationsRequest) -> Result&lt;LtPln204FfdataDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21627,10 +21658,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_lt_pln204ffdata(
-            &PostV1DeclarationsLtPln204FfdataRequest { year: 1000000 },
-            None,
-        )
+        .lt_pln204ffdata(&LtPln204FfdataDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -21659,7 +21687,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_mt_company_tax_generate</a>(request: PostV1DeclarationsMtCompanyTaxGenerateRequest) -> Result&lt;PostV1DeclarationsMtCompanyTaxGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">mt_company_tax_generate</a>(request: MtCompanyTaxGenerateDeclarationsRequest) -> Result&lt;MtCompanyTaxGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21697,8 +21725,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_mt_company_tax_generate(
-            &PostV1DeclarationsMtCompanyTaxGenerateRequest { year: 1000000 },
+        .mt_company_tax_generate(
+            &MtCompanyTaxGenerateDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -21729,7 +21757,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_mt_annual_return_generate</a>(request: PostV1DeclarationsMtAnnualReturnGenerateRequest) -> Result&lt;PostV1DeclarationsMtAnnualReturnGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">mt_annual_return_generate</a>(request: MtAnnualReturnGenerateDeclarationsRequest) -> Result&lt;MtAnnualReturnGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21767,8 +21795,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_mt_annual_return_generate(
-            &PostV1DeclarationsMtAnnualReturnGenerateRequest { year: 1000000 },
+        .mt_annual_return_generate(
+            &MtAnnualReturnGenerateDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -21799,7 +21827,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_fa_generate</a>(request: PostV1DeclarationsPlJpkFaGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkFaGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_jpk_fa_generate</a>(request: PlJpkFaGenerateDeclarationsRequest) -> Result&lt;PlJpkFaGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21837,10 +21865,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_jpk_fa_generate(
-            &PostV1DeclarationsPlJpkFaGenerateRequest {
-                date_from: "dateFrom".to_string(),
-                date_to: "dateTo".to_string(),
+        .pl_jpk_fa_generate(
+            &PlJpkFaGenerateDeclarationsRequest {
+                date_from: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                date_to: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -21880,7 +21908,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_kr_generate</a>(request: PostV1DeclarationsPlJpkKrGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkKrGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_jpk_kr_generate</a>(request: PlJpkKrGenerateDeclarationsRequest) -> Result&lt;PlJpkKrGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21918,10 +21946,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_jpk_kr_generate(
-            &PostV1DeclarationsPlJpkKrGenerateRequest {
-                date_from: "dateFrom".to_string(),
-                date_to: "dateTo".to_string(),
+        .pl_jpk_kr_generate(
+            &PlJpkKrGenerateDeclarationsRequest {
+                date_from: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                date_to: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -21961,7 +21989,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_jpk_mag_generate</a>(request: PostV1DeclarationsPlJpkMagGenerateRequest) -> Result&lt;PostV1DeclarationsPlJpkMagGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_jpk_mag_generate</a>(request: PlJpkMagGenerateDeclarationsRequest) -> Result&lt;PlJpkMagGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -21999,10 +22027,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_jpk_mag_generate(
-            &PostV1DeclarationsPlJpkMagGenerateRequest {
-                date_from: "dateFrom".to_string(),
-                date_to: "dateTo".to_string(),
+        .pl_jpk_mag_generate(
+            &PlJpkMagGenerateDeclarationsRequest {
+                date_from: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                date_to: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 warehouse_id: None,
             },
             None,
@@ -22051,7 +22079,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_pit11_generate</a>(request: PostV1DeclarationsPlPit11GenerateRequest) -> Result&lt;PostV1DeclarationsPlPit11GenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_pit11_generate</a>(request: PlPit11GenerateDeclarationsRequest) -> Result&lt;PlPit11GenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22089,10 +22117,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_pit11generate(
-            &PostV1DeclarationsPlPit11GenerateRequest { year: 1000000 },
-            None,
-        )
+        .pl_pit11generate(&PlPit11GenerateDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -22121,7 +22146,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_cit8_generate</a>(request: PostV1DeclarationsPlCit8GenerateRequest) -> Result&lt;PostV1DeclarationsPlCit8GenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_cit8_generate</a>(request: PlCit8GenerateDeclarationsRequest) -> Result&lt;PlCit8GenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22159,10 +22184,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_cit8generate(
-            &PostV1DeclarationsPlCit8GenerateRequest { year: 1000000 },
-            None,
-        )
+        .pl_cit8generate(&PlCit8GenerateDeclarationsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -22191,7 +22213,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_zus_dra_compute</a>(request: PostV1DeclarationsPlZusDraComputeRequest) -> Result&lt;PostV1DeclarationsPlZusDraComputeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_zus_dra_compute</a>(request: PlZusDraComputeDeclarationsRequest) -> Result&lt;PlZusDraComputeDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22229,8 +22251,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_zus_dra_compute(
-            &PostV1DeclarationsPlZusDraComputeRequest {
+        .pl_zus_dra_compute(
+            &PlZusDraComputeDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -22272,7 +22294,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_zus_dra_kedu</a>(request: PostV1DeclarationsPlZusDraKeduRequest) -> Result&lt;PostV1DeclarationsPlZusDraKeduResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_zus_dra_kedu</a>(request: PlZusDraKeduDeclarationsRequest) -> Result&lt;PlZusDraKeduDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22310,8 +22332,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_zus_dra_kedu(
-            &PostV1DeclarationsPlZusDraKeduRequest {
+        .pl_zus_dra_kedu(
+            &PlZusDraKeduDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -22353,7 +22375,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_pl_zus_dra_pdf</a>(request: PostV1DeclarationsPlZusDraPdfRequest) -> Result&lt;PostV1DeclarationsPlZusDraPdfResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">pl_zus_dra_pdf</a>(request: PlZusDraPdfDeclarationsRequest) -> Result&lt;PlZusDraPdfDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22391,8 +22413,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_pl_zus_dra_pdf(
-            &PostV1DeclarationsPlZusDraPdfRequest {
+        .pl_zus_dra_pdf(
+            &PlZusDraPdfDeclarationsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -22434,7 +22456,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ro_etransport_build</a>(request: PostV1DeclarationsRoEtransportBuildRequest) -> Result&lt;PostV1DeclarationsRoEtransportBuildResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">ro_etransport_build</a>(request: RoEtransportBuildDeclarationsRequest) -> Result&lt;RoEtransportBuildDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22472,8 +22494,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_ro_etransport_build(
-            &PostV1DeclarationsRoEtransportBuildRequest {
+        .ro_etransport_build(
+            &RoEtransportBuildDeclarationsRequest {
                 waybill_id: "waybillId".to_string(),
             },
             None,
@@ -22506,7 +22528,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ro_etransport_submit</a>(request: PostV1DeclarationsRoEtransportSubmitRequest) -> Result&lt;PostV1DeclarationsRoEtransportSubmitResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">ro_etransport_submit</a>(request: RoEtransportSubmitDeclarationsRequest) -> Result&lt;RoEtransportSubmitDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22544,8 +22566,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_ro_etransport_submit(
-            &PostV1DeclarationsRoEtransportSubmitRequest {
+        .ro_etransport_submit(
+            &RoEtransportSubmitDeclarationsRequest {
                 waybill_id: "waybillId".to_string(),
             },
             None,
@@ -22578,7 +22600,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_ro_etransport_status</a>(request: PostV1DeclarationsRoEtransportStatusRequest) -> Result&lt;PostV1DeclarationsRoEtransportStatusResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">ro_etransport_status</a>(request: RoEtransportStatusDeclarationsRequest) -> Result&lt;RoEtransportStatusDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22616,8 +22638,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_ro_etransport_status(
-            &PostV1DeclarationsRoEtransportStatusRequest {
+        .ro_etransport_status(
+            &RoEtransportStatusDeclarationsRequest {
                 reference: "reference".to_string(),
             },
             None,
@@ -22650,7 +22672,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_li_lohndeklaration_generate</a>(request: PostV1DeclarationsLiLohndeklarationGenerateRequest) -> Result&lt;PostV1DeclarationsLiLohndeklarationGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">li_lohndeklaration_generate</a>(request: LiLohndeklarationGenerateDeclarationsRequest) -> Result&lt;LiLohndeklarationGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22688,8 +22710,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_li_lohndeklaration_generate(
-            &PostV1DeclarationsLiLohndeklarationGenerateRequest { year: 1000000 },
+        .li_lohndeklaration_generate(
+            &LiLohndeklarationGenerateDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -22720,7 +22742,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_li_lohnlisten_generate</a>(request: PostV1DeclarationsLiLohnlistenGenerateRequest) -> Result&lt;PostV1DeclarationsLiLohnlistenGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">li_lohnlisten_generate</a>(request: LiLohnlistenGenerateDeclarationsRequest) -> Result&lt;LiLohnlistenGenerateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22758,8 +22780,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_li_lohnlisten_generate(
-            &PostV1DeclarationsLiLohnlistenGenerateRequest { year: 1000000 },
+        .li_lohnlisten_generate(
+            &LiLohnlistenGenerateDeclarationsRequest { year: 1000000 },
             None,
         )
         .await;
@@ -22790,7 +22812,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_configs_list</a>(request: PostV1DeclarationsConfigsListRequest) -> Result&lt;PostV1DeclarationsConfigsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">configs_list</a>(request: ConfigsListDeclarationsRequest) -> Result&lt;ConfigsListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22814,8 +22836,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_configs_list(
-            &PostV1DeclarationsConfigsListRequest {
+        .configs_list(
+            &ConfigsListDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -22833,7 +22855,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_configs_update</a>(request: PostV1DeclarationsConfigsUpdateRequest) -> Result&lt;PostV1DeclarationsConfigsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">configs_update</a>(request: ConfigsUpdateDeclarationsRequest) -> Result&lt;ConfigsUpdateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22857,8 +22879,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_configs_update(
-            &PostV1DeclarationsConfigsUpdateRequest {
+        .configs_update(
+            &ConfigsUpdateDeclarationsRequest {
                 system: "system".to_string(),
                 config: HashMap::from([("key".to_string(), "value".to_string())]),
             },
@@ -22900,7 +22922,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">store_the_certificate_or_private_key_a_filing_system_authenticates_with</a>(request: PostV1DeclarationsCertificatesUploadRequest) -> Result&lt;PostV1DeclarationsCertificatesUploadResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">certificates_upload</a>(request: CertificatesUploadDeclarationsRequest) -> Result&lt;CertificatesUploadDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -22924,8 +22946,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .store_the_certificate_or_private_key_a_filing_system_authenticates_with(
-            &PostV1DeclarationsCertificatesUploadRequest {
+        .certificates_upload(
+            &CertificatesUploadDeclarationsRequest {
                 system: "system".to_string(),
                 file_name: "fileName".to_string(),
                 content: "content".to_string(),
@@ -22985,7 +23007,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_certificates_list</a>(request: PostV1DeclarationsCertificatesListRequest) -> Result&lt;PostV1DeclarationsCertificatesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">certificates_list</a>(request: CertificatesListDeclarationsRequest) -> Result&lt;CertificatesListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23009,8 +23031,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_certificates_list(
-            &PostV1DeclarationsCertificatesListRequest {
+        .certificates_list(
+            &CertificatesListDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -23028,7 +23050,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_certificates_delete</a>(request: PostV1DeclarationsCertificatesDeleteRequest) -> Result&lt;PostV1DeclarationsCertificatesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">certificates_delete</a>(request: CertificatesDeleteDeclarationsRequest) -> Result&lt;CertificatesDeleteDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23052,10 +23074,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_certificates_delete(
-            &PostV1DeclarationsCertificatesDeleteRequest {
+        .certificates_delete(
+            &CertificatesDeleteDeclarationsRequest {
                 system: "system".to_string(),
-                field_key: PostV1DeclarationsCertificatesDeleteRequestFieldKey::Certificate,
+                field_key: CertificatesDeleteDeclarationsRequestFieldKey::Certificate,
             },
             None,
         )
@@ -23083,7 +23105,7 @@ async fn main() {
 <dl>
 <dd>
 
-**field_key:** `PostV1DeclarationsCertificatesDeleteRequestFieldKey` 
+**field_key:** `CertificatesDeleteDeclarationsRequestFieldKey` 
     
 </dd>
 </dl>
@@ -23095,7 +23117,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">which_deadlines_nordlet_can_file_by_itself_for_this_company_and_which_are_switched_on</a>(request: PostV1DeclarationsAutomationListRequest) -> Result&lt;PostV1DeclarationsAutomationListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">automation_list</a>(request: AutomationListDeclarationsRequest) -> Result&lt;AutomationListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23119,8 +23141,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .which_deadlines_nordlet_can_file_by_itself_for_this_company_and_which_are_switched_on(
-            &PostV1DeclarationsAutomationListRequest {
+        .automation_list(
+            &AutomationListDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -23138,7 +23160,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_automation_update</a>(request: PostV1DeclarationsAutomationUpdateRequest) -> Result&lt;PostV1DeclarationsAutomationUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">automation_update</a>(request: AutomationUpdateDeclarationsRequest) -> Result&lt;AutomationUpdateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23162,8 +23184,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_automation_update(
-            &PostV1DeclarationsAutomationUpdateRequest {
+        .automation_update(
+            &AutomationUpdateDeclarationsRequest {
                 rule_key: "ruleKey".to_string(),
                 enabled: true,
             },
@@ -23205,7 +23227,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">send_a_filing_whose_delivery_failed_once_more_with_the_bytes_that_were_generated</a>(request: PostV1DeclarationsSubmissionsRetryRequest) -> Result&lt;PostV1DeclarationsSubmissionsRetryResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">submissions_retry</a>(request: SubmissionsRetryDeclarationsRequest) -> Result&lt;SubmissionsRetryDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23229,8 +23251,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .send_a_filing_whose_delivery_failed_once_more_with_the_bytes_that_were_generated(
-            &PostV1DeclarationsSubmissionsRetryRequest {
+        .submissions_retry(
+            &SubmissionsRetryDeclarationsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -23263,7 +23285,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_submissions_create</a>(request: PostV1DeclarationsSubmissionsCreateRequest) -> Result&lt;PostV1DeclarationsSubmissionsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">submissions_create</a>(request: SubmissionsCreateDeclarationsRequest) -> Result&lt;SubmissionsCreateDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23287,9 +23309,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_submissions_create(
-            &PostV1DeclarationsSubmissionsCreateRequest {
-                obligation: PostV1DeclarationsSubmissionsCreateRequestObligation::LtIsaf,
+        .submissions_create(
+            &SubmissionsCreateDeclarationsRequest {
+                obligation: SubmissionsCreateDeclarationsRequestObligation::LtIsaf,
                 year: 1000000,
                 month: 1000000,
                 data_type: None,
@@ -23312,7 +23334,7 @@ async fn main() {
 <dl>
 <dd>
 
-**obligation:** `PostV1DeclarationsSubmissionsCreateRequestObligation` 
+**obligation:** `SubmissionsCreateDeclarationsRequestObligation` 
     
 </dd>
 </dl>
@@ -23336,7 +23358,7 @@ async fn main() {
 <dl>
 <dd>
 
-**data_type:** `Option<PostV1DeclarationsSubmissionsCreateRequestDataType>` 
+**data_type:** `Option<SubmissionsCreateDeclarationsRequestDataType>` 
     
 </dd>
 </dl>
@@ -23348,7 +23370,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_submissions_mark</a>(request: PostV1DeclarationsSubmissionsMarkRequest) -> Result&lt;PostV1DeclarationsSubmissionsMarkResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">submissions_mark</a>(request: SubmissionsMarkDeclarationsRequest) -> Result&lt;SubmissionsMarkDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23372,10 +23394,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_submissions_mark(
-            &PostV1DeclarationsSubmissionsMarkRequest {
+        .submissions_mark(
+            &SubmissionsMarkDeclarationsRequest {
                 id: "id".to_string(),
-                status: PostV1DeclarationsSubmissionsMarkRequestStatus::Submitted,
+                status: SubmissionsMarkDeclarationsRequestStatus::Submitted,
                 external_ref: None,
                 message: None,
             },
@@ -23405,7 +23427,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `PostV1DeclarationsSubmissionsMarkRequestStatus` 
+**status:** `SubmissionsMarkDeclarationsRequestStatus` 
     
 </dd>
 </dl>
@@ -23433,7 +23455,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">post_v1_declarations_submissions_list</a>(request: PostV1DeclarationsSubmissionsListRequest) -> Result&lt;PostV1DeclarationsSubmissionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.declarations.<a href="/src/api/resources/declarations/client.rs">submissions_list</a>(request: SubmissionsListDeclarationsRequest) -> Result&lt;SubmissionsListDeclarationsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23457,8 +23479,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .declarations
-        .post_v1declarations_submissions_list(
-            &PostV1DeclarationsSubmissionsListRequest {
+        .submissions_list(
+            &SubmissionsListDeclarationsRequest {
                 ..Default::default()
             },
             None,
@@ -23495,7 +23517,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1DeclarationsSubmissionsListRequestSortItem>>` 
+**sort:** `Option<Vec<SubmissionsListDeclarationsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -23503,7 +23525,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1DeclarationsSubmissionsListRequestFilterItem>>` 
+**filter:** `Option<Vec<SubmissionsListDeclarationsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -23523,8 +23545,8 @@ async fn main() {
 </dl>
 </details>
 
-## Ledger
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_accounts_list</a>(request: PostV1LedgerAccountsListRequest) -> Result&lt;PostV1LedgerAccountsListResponse, ApiError&gt;</code></summary>
+## ledger
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_list</a>(request: AccountsListLedgerRequest) -> Result&lt;AccountsListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23548,8 +23570,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_accounts_list(
-            &PostV1LedgerAccountsListRequest {
+        .accounts_list(
+            &AccountsListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -23586,7 +23608,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LedgerAccountsListRequestSortItem>>` 
+**sort:** `Option<Vec<AccountsListLedgerRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -23594,7 +23616,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LedgerAccountsListRequestFilterItem>>` 
+**filter:** `Option<Vec<AccountsListLedgerRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -23614,7 +23636,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_accounts_create</a>(request: PostV1LedgerAccountsCreateRequest) -> Result&lt;PostV1LedgerAccountsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_create</a>(request: AccountsCreateLedgerRequest) -> Result&lt;AccountsCreateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23638,11 +23660,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_accounts_create(
-            &PostV1LedgerAccountsCreateRequest {
+        .accounts_create(
+            &AccountsCreateLedgerRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
-                r#type: PostV1LedgerAccountsCreateRequestType::Asset,
+                r#type: AccountsCreateLedgerRequestType::Asset,
                 translations: None,
                 parent_id: None,
                 is_postable: None,
@@ -23681,7 +23703,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<std::collections::HashMap<String, PostV1LedgerAccountsCreateRequestTranslationsValue>>` 
+**translations:** `Option<std::collections::HashMap<String, AccountsCreateLedgerRequestTranslationsValue>>` 
     
 </dd>
 </dl>
@@ -23689,7 +23711,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1LedgerAccountsCreateRequestType` 
+**type_:** `AccountsCreateLedgerRequestType` 
     
 </dd>
 </dl>
@@ -23717,7 +23739,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_accounts_update</a>(request: PostV1LedgerAccountsUpdateRequest) -> Result&lt;PostV1LedgerAccountsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_update</a>(request: AccountsUpdateLedgerRequest) -> Result&lt;AccountsUpdateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23741,8 +23763,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_accounts_update(
-            &PostV1LedgerAccountsUpdateRequest {
+        .accounts_update(
+            &AccountsUpdateLedgerRequest {
                 id: "id".to_string(),
                 name: None,
                 translations: None,
@@ -23783,7 +23805,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<Option<std::collections::HashMap<String, Option<PostV1LedgerAccountsUpdateRequestTranslationsValue>>>>` 
+**translations:** `Option<Option<std::collections::HashMap<String, Option<AccountsUpdateLedgerRequestTranslationsValue>>>>` 
     
 </dd>
 </dl>
@@ -23811,7 +23833,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_accounts_apply_template</a>(request: PostV1LedgerAccountsApplyTemplateRequest) -> Result&lt;PostV1LedgerAccountsApplyTemplateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_apply_template</a>(request: AccountsApplyTemplateLedgerRequest) -> Result&lt;AccountsApplyTemplateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23835,8 +23857,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_accounts_apply_template(
-            &PostV1LedgerAccountsApplyTemplateRequest {
+        .accounts_apply_template(
+            &AccountsApplyTemplateLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -23854,7 +23876,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">move_a_company_that_has_posted_nothing_yet_to_the_chart_of_accounts_of_its_country</a>(request: PostV1LedgerAccountsSwitchChartRequest) -> Result&lt;PostV1LedgerAccountsSwitchChartResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_switch_chart</a>(request: AccountsSwitchChartLedgerRequest) -> Result&lt;AccountsSwitchChartLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23892,8 +23914,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .move_a_company_that_has_posted_nothing_yet_to_the_chart_of_accounts_of_its_country(
-            &PostV1LedgerAccountsSwitchChartRequest {
+        .accounts_switch_chart(
+            &AccountsSwitchChartLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -23911,7 +23933,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_periods_list</a>(request: PostV1LedgerPeriodsListRequest) -> Result&lt;PostV1LedgerPeriodsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">periods_list</a>(request: PeriodsListLedgerRequest) -> Result&lt;PeriodsListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -23935,8 +23957,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_periods_list(
-            &PostV1LedgerPeriodsListRequest {
+        .periods_list(
+            &PeriodsListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -23973,7 +23995,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LedgerPeriodsListRequestSortItem>>` 
+**sort:** `Option<Vec<PeriodsListLedgerRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -23981,7 +24003,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LedgerPeriodsListRequestFilterItem>>` 
+**filter:** `Option<Vec<PeriodsListLedgerRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -24001,7 +24023,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_periods_lock</a>(request: PostV1LedgerPeriodsLockRequest) -> Result&lt;PostV1LedgerPeriodsLockResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">periods_lock</a>(request: PeriodsLockLedgerRequest) -> Result&lt;PeriodsLockLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24025,8 +24047,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_periods_lock(
-            &PostV1LedgerPeriodsLockRequest {
+        .periods_lock(
+            &PeriodsLockLedgerRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -24068,7 +24090,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_periods_unlock</a>(request: PostV1LedgerPeriodsUnlockRequest) -> Result&lt;PostV1LedgerPeriodsUnlockResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">periods_unlock</a>(request: PeriodsUnlockLedgerRequest) -> Result&lt;PeriodsUnlockLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24092,8 +24114,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_periods_unlock(
-            &PostV1LedgerPeriodsUnlockRequest {
+        .periods_unlock(
+            &PeriodsUnlockLedgerRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -24135,7 +24157,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_journal_transactions_list</a>(request: PostV1LedgerJournalTransactionsListRequest) -> Result&lt;PostV1LedgerJournalTransactionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">journal_transactions_list</a>(request: JournalTransactionsListLedgerRequest) -> Result&lt;JournalTransactionsListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24159,8 +24181,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_journal_transactions_list(
-            &PostV1LedgerJournalTransactionsListRequest {
+        .journal_transactions_list(
+            &JournalTransactionsListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -24197,7 +24219,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LedgerJournalTransactionsListRequestSortItem>>` 
+**sort:** `Option<Vec<JournalTransactionsListLedgerRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -24205,7 +24227,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LedgerJournalTransactionsListRequestFilterItem>>` 
+**filter:** `Option<Vec<JournalTransactionsListLedgerRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -24225,7 +24247,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_centers_create</a>(request: PostV1LedgerCostCentersCreateRequest) -> Result&lt;PostV1LedgerCostCentersCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_centers_create</a>(request: CostCentersCreateLedgerRequest) -> Result&lt;CostCentersCreateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24249,8 +24271,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_centers_create(
-            &PostV1LedgerCostCentersCreateRequest {
+        .cost_centers_create(
+            &CostCentersCreateLedgerRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 group_id: None,
@@ -24301,7 +24323,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_centers_update</a>(request: PostV1LedgerCostCentersUpdateRequest) -> Result&lt;PostV1LedgerCostCentersUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_centers_update</a>(request: CostCentersUpdateLedgerRequest) -> Result&lt;CostCentersUpdateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24325,8 +24347,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_centers_update(
-            &PostV1LedgerCostCentersUpdateRequest {
+        .cost_centers_update(
+            &CostCentersUpdateLedgerRequest {
                 id: "id".to_string(),
                 name: None,
                 is_active: None,
@@ -24386,7 +24408,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_centers_list</a>(request: PostV1LedgerCostCentersListRequest) -> Result&lt;PostV1LedgerCostCentersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_centers_list</a>(request: CostCentersListLedgerRequest) -> Result&lt;CostCentersListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24410,8 +24432,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_centers_list(
-            &PostV1LedgerCostCentersListRequest {
+        .cost_centers_list(
+            &CostCentersListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -24448,7 +24470,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LedgerCostCentersListRequestSortItem>>` 
+**sort:** `Option<Vec<CostCentersListLedgerRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -24456,7 +24478,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LedgerCostCentersListRequestFilterItem>>` 
+**filter:** `Option<Vec<CostCentersListLedgerRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -24476,7 +24498,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_center_groups_create</a>(request: PostV1LedgerCostCenterGroupsCreateRequest) -> Result&lt;PostV1LedgerCostCenterGroupsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_center_groups_create</a>(request: CostCenterGroupsCreateLedgerRequest) -> Result&lt;CostCenterGroupsCreateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24500,8 +24522,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_center_groups_create(
-            &PostV1LedgerCostCenterGroupsCreateRequest {
+        .cost_center_groups_create(
+            &CostCenterGroupsCreateLedgerRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
             },
@@ -24543,7 +24565,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_center_groups_update</a>(request: PostV1LedgerCostCenterGroupsUpdateRequest) -> Result&lt;PostV1LedgerCostCenterGroupsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_center_groups_update</a>(request: CostCenterGroupsUpdateLedgerRequest) -> Result&lt;CostCenterGroupsUpdateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24567,8 +24589,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_center_groups_update(
-            &PostV1LedgerCostCenterGroupsUpdateRequest {
+        .cost_center_groups_update(
+            &CostCenterGroupsUpdateLedgerRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -24619,7 +24641,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_center_groups_delete</a>(request: PostV1LedgerCostCenterGroupsDeleteRequest) -> Result&lt;PostV1LedgerCostCenterGroupsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_center_groups_delete</a>(request: CostCenterGroupsDeleteLedgerRequest) -> Result&lt;CostCenterGroupsDeleteLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24643,8 +24665,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_center_groups_delete(
-            &PostV1LedgerCostCenterGroupsDeleteRequest {
+        .cost_center_groups_delete(
+            &CostCenterGroupsDeleteLedgerRequest {
                 id: "id".to_string(),
             },
             None,
@@ -24677,7 +24699,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_cost_center_groups_list</a>(request: PostV1LedgerCostCenterGroupsListRequest) -> Result&lt;PostV1LedgerCostCenterGroupsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">cost_center_groups_list</a>(request: CostCenterGroupsListLedgerRequest) -> Result&lt;CostCenterGroupsListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24701,8 +24723,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_cost_center_groups_list(
-            &PostV1LedgerCostCenterGroupsListRequest {
+        .cost_center_groups_list(
+            &CostCenterGroupsListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -24739,7 +24761,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LedgerCostCenterGroupsListRequestSortItem>>` 
+**sort:** `Option<Vec<CostCenterGroupsListLedgerRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -24747,7 +24769,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LedgerCostCenterGroupsListRequestFilterItem>>` 
+**filter:** `Option<Vec<CostCenterGroupsListLedgerRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -24767,7 +24789,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_posting_rules_list</a>(request: PostV1LedgerPostingRulesListRequest) -> Result&lt;PostV1LedgerPostingRulesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">posting_rules_list</a>(request: PostingRulesListLedgerRequest) -> Result&lt;PostingRulesListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24791,8 +24813,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_posting_rules_list(
-            &PostV1LedgerPostingRulesListRequest {
+        .posting_rules_list(
+            &PostingRulesListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -24810,7 +24832,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_posting_rules_update</a>(request: PostV1LedgerPostingRulesUpdateRequest) -> Result&lt;PostV1LedgerPostingRulesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">posting_rules_update</a>(request: PostingRulesUpdateLedgerRequest) -> Result&lt;PostingRulesUpdateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24834,10 +24856,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_posting_rules_update(
-            &PostV1LedgerPostingRulesUpdateRequest {
-                rules: vec![PostV1LedgerPostingRulesUpdateRequestRulesItem {
-                    key: PostV1LedgerPostingRulesUpdateRequestRulesItemKey::SalesReceivable,
+        .posting_rules_update(
+            &PostingRulesUpdateLedgerRequest {
+                rules: vec![PostingRulesUpdateLedgerRequestRulesItem {
+                    key: PostingRulesUpdateLedgerRequestRulesItemKey::SalesReceivable,
                     account_code: None,
                 }],
             },
@@ -24859,7 +24881,7 @@ async fn main() {
 <dl>
 <dd>
 
-**rules:** `Vec<PostV1LedgerPostingRulesUpdateRequestRulesItem>` 
+**rules:** `Vec<PostingRulesUpdateLedgerRequestRulesItem>` 
     
 </dd>
 </dl>
@@ -24871,7 +24893,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_owners_create</a>(request: PostV1LedgerOwnersCreateRequest) -> Result&lt;PostV1LedgerOwnersCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">owners_create</a>(request: OwnersCreateLedgerRequest) -> Result&lt;OwnersCreateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -24895,8 +24917,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_owners_create(
-            &PostV1LedgerOwnersCreateRequest {
+        .owners_create(
+            &OwnersCreateLedgerRequest {
                 name: "name".to_string(),
                 code: None,
                 equity_account_code: None,
@@ -24968,7 +24990,7 @@ async fn main() {
 <dl>
 <dd>
 
-**shares_type:** `Option<PostV1LedgerOwnersCreateRequestSharesType>` 
+**shares_type:** `Option<OwnersCreateLedgerRequestSharesType>` 
     
 </dd>
 </dl>
@@ -24992,7 +25014,7 @@ async fn main() {
 <dl>
 <dd>
 
-**partner_liability:** `Option<Option<PostV1LedgerOwnersCreateRequestPartnerLiability>>` 
+**partner_liability:** `Option<Option<OwnersCreateLedgerRequestPartnerLiability>>` 
     
 </dd>
 </dl>
@@ -25016,7 +25038,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1LedgerOwnersCreateRequestAddress>` 
+**address:** `Option<OwnersCreateLedgerRequestAddress>` 
     
 </dd>
 </dl>
@@ -25028,7 +25050,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_owners_update</a>(request: PostV1LedgerOwnersUpdateRequest) -> Result&lt;PostV1LedgerOwnersUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">owners_update</a>(request: OwnersUpdateLedgerRequest) -> Result&lt;OwnersUpdateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25052,8 +25074,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_owners_update(
-            &PostV1LedgerOwnersUpdateRequest {
+        .owners_update(
+            &OwnersUpdateLedgerRequest {
                 id: "id".to_string(),
                 name: None,
                 code: None,
@@ -25134,7 +25156,7 @@ async fn main() {
 <dl>
 <dd>
 
-**shares_type:** `Option<Option<PostV1LedgerOwnersUpdateRequestSharesType>>` 
+**shares_type:** `Option<Option<OwnersUpdateLedgerRequestSharesType>>` 
     
 </dd>
 </dl>
@@ -25158,7 +25180,7 @@ async fn main() {
 <dl>
 <dd>
 
-**partner_liability:** `Option<Option<PostV1LedgerOwnersUpdateRequestPartnerLiability>>` 
+**partner_liability:** `Option<Option<OwnersUpdateLedgerRequestPartnerLiability>>` 
     
 </dd>
 </dl>
@@ -25182,7 +25204,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<Option<PostV1LedgerOwnersUpdateRequestAddress>>` 
+**address:** `Option<Option<OwnersUpdateLedgerRequestAddress>>` 
     
 </dd>
 </dl>
@@ -25194,7 +25216,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_owners_delete</a>(request: PostV1LedgerOwnersDeleteRequest) -> Result&lt;PostV1LedgerOwnersDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">owners_delete</a>(request: OwnersDeleteLedgerRequest) -> Result&lt;OwnersDeleteLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25218,8 +25240,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_owners_delete(
-            &PostV1LedgerOwnersDeleteRequest {
+        .owners_delete(
+            &OwnersDeleteLedgerRequest {
                 id: "id".to_string(),
             },
             None,
@@ -25252,7 +25274,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_owners_list</a>(request: PostV1LedgerOwnersListRequest) -> Result&lt;PostV1LedgerOwnersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">owners_list</a>(request: OwnersListLedgerRequest) -> Result&lt;OwnersListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25276,8 +25298,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_owners_list(
-            &PostV1LedgerOwnersListRequest {
+        .owners_list(
+            &OwnersListLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -25314,7 +25336,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1LedgerOwnersListRequestSortItem>>` 
+**sort:** `Option<Vec<OwnersListLedgerRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -25322,7 +25344,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1LedgerOwnersListRequestFilterItem>>` 
+**filter:** `Option<Vec<OwnersListLedgerRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -25342,7 +25364,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_journal_transactions_get</a>(request: PostV1LedgerJournalTransactionsGetRequest) -> Result&lt;PostV1LedgerJournalTransactionsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">journal_transactions_get</a>(request: JournalTransactionsGetLedgerRequest) -> Result&lt;JournalTransactionsGetLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25366,8 +25388,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_journal_transactions_get(
-            &PostV1LedgerJournalTransactionsGetRequest {
+        .journal_transactions_get(
+            &JournalTransactionsGetLedgerRequest {
                 id: "id".to_string(),
             },
             None,
@@ -25400,7 +25422,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">post_v1_ledger_journal_transactions_create</a>(request: PostV1LedgerJournalTransactionsCreateRequest) -> Result&lt;PostV1LedgerJournalTransactionsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">journal_transactions_create</a>(request: JournalTransactionsCreateLedgerRequest) -> Result&lt;JournalTransactionsCreateLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25424,10 +25446,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .post_v1ledger_journal_transactions_create(
-            &PostV1LedgerJournalTransactionsCreateRequest {
-                date: "date".to_string(),
-                entries: vec![PostV1LedgerJournalTransactionsCreateRequestEntriesItem {
+        .journal_transactions_create(
+            &JournalTransactionsCreateLedgerRequest {
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                entries: vec![JournalTransactionsCreateLedgerRequestEntriesItem {
                     account_code: "accountCode".to_string(),
                     ..Default::default()
                 }],
@@ -25467,7 +25489,7 @@ async fn main() {
 <dl>
 <dd>
 
-**entries:** `Vec<PostV1LedgerJournalTransactionsCreateRequestEntriesItem>` 
+**entries:** `Vec<JournalTransactionsCreateLedgerRequestEntriesItem>` 
     
 </dd>
 </dl>
@@ -25479,7 +25501,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">national_statement_layouts_available_to_the_company</a>(request: PostV1LedgerStatementRowsSchemesRequest) -> Result&lt;PostV1LedgerStatementRowsSchemesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">statement_rows_schemes</a>(request: StatementRowsSchemesLedgerRequest) -> Result&lt;StatementRowsSchemesLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25517,8 +25539,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .national_statement_layouts_available_to_the_company(
-            &PostV1LedgerStatementRowsSchemesRequest {
+        .statement_rows_schemes(
+            &StatementRowsSchemesLedgerRequest {
                 ..Default::default()
             },
             None,
@@ -25536,7 +25558,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">accounts_placed_on_the_rows_of_a_statement_layout_with_the_row_totals_of_a_period</a>(request: PostV1LedgerStatementRowsListRequest) -> Result&lt;PostV1LedgerStatementRowsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">statement_rows_list</a>(request: StatementRowsListLedgerRequest) -> Result&lt;StatementRowsListLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25560,8 +25582,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .accounts_placed_on_the_rows_of_a_statement_layout_with_the_row_totals_of_a_period(
-            &PostV1LedgerStatementRowsListRequest {
+        .statement_rows_list(
+            &StatementRowsListLedgerRequest {
                 scheme: "scheme".to_string(),
                 from_date: None,
                 to_date: None,
@@ -25612,7 +25634,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">map_an_account_or_an_account_code_prefix_to_a_row_of_a_statement_layout</a>(request: PostV1LedgerStatementRowsSetRequest) -> Result&lt;PostV1LedgerStatementRowsSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">statement_rows_set</a>(request: StatementRowsSetLedgerRequest) -> Result&lt;StatementRowsSetLedgerResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25650,8 +25672,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ledger
-        .map_an_account_or_an_account_code_prefix_to_a_row_of_a_statement_layout(
-            &PostV1LedgerStatementRowsSetRequest {
+        .statement_rows_set(
+            &StatementRowsSetLedgerRequest {
                 scheme: "scheme".to_string(),
                 account_code: "accountCode".to_string(),
                 row_code: None,
@@ -25702,7 +25724,8 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">officers_of_the_company</a>(request: PostV1OfficersListRequest) -> Result&lt;PostV1OfficersListResponse, ApiError&gt;</code></summary>
+## Officers
+<details><summary><code>client.officers.<a href="/src/api/resources/officers/client.rs">list</a>(request: ListOfficersRequest) -> Result&lt;ListOfficersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25739,9 +25762,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .ledger
-        .officers_of_the_company(
-            &PostV1OfficersListRequest {
+        .officers
+        .list(
+            &ListOfficersRequest {
                 ..Default::default()
             },
             None,
@@ -25759,7 +25782,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">record_an_officer_of_the_company</a>(request: PostV1OfficersCreateRequest) -> Result&lt;PostV1OfficersCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.officers.<a href="/src/api/resources/officers/client.rs">create</a>(request: CreateOfficersRequest) -> Result&lt;CreateOfficersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25782,11 +25805,11 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .ledger
-        .record_an_officer_of_the_company(
-            &PostV1OfficersCreateRequest {
+        .officers
+        .create(
+            &CreateOfficersRequest {
                 name: "name".to_string(),
-                role: PostV1OfficersCreateRequestRole::Director,
+                role: CreateOfficersRequestRole::Director,
                 personal_code: None,
                 birth_date: None,
                 appointed_on: None,
@@ -25820,7 +25843,7 @@ async fn main() {
 <dl>
 <dd>
 
-**role:** `PostV1OfficersCreateRequestRole` 
+**role:** `CreateOfficersRequestRole` 
     
 </dd>
 </dl>
@@ -25880,7 +25903,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">change_a_recorded_officer</a>(request: PostV1OfficersUpdateRequest) -> Result&lt;PostV1OfficersUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.officers.<a href="/src/api/resources/officers/client.rs">update</a>(request: UpdateOfficersRequest) -> Result&lt;UpdateOfficersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -25903,12 +25926,12 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .ledger
-        .change_a_recorded_officer(
-            &PostV1OfficersUpdateRequest {
+        .officers
+        .update(
+            &UpdateOfficersRequest {
                 id: "id".to_string(),
                 name: "name".to_string(),
-                role: PostV1OfficersUpdateRequestRole::Director,
+                role: UpdateOfficersRequestRole::Director,
                 personal_code: None,
                 birth_date: None,
                 appointed_on: None,
@@ -25950,7 +25973,7 @@ async fn main() {
 <dl>
 <dd>
 
-**role:** `PostV1OfficersUpdateRequestRole` 
+**role:** `UpdateOfficersRequestRole` 
     
 </dd>
 </dl>
@@ -26010,7 +26033,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ledger.<a href="/src/api/resources/ledger/client.rs">remove_a_recorded_officer</a>(request: PostV1OfficersDeleteRequest) -> Result&lt;PostV1OfficersDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.officers.<a href="/src/api/resources/officers/client.rs">delete</a>(request: DeleteOfficersRequest) -> Result&lt;DeleteOfficersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26033,9 +26056,9 @@ async fn main() {
     };
     let client = ApiClient::new(config).expect("Failed to build client");
     client
-        .ledger
-        .remove_a_recorded_officer(
-            &PostV1OfficersDeleteRequest {
+        .officers
+        .delete(
+            &DeleteOfficersRequest {
                 id: "id".to_string(),
             },
             None,
@@ -26068,8 +26091,8 @@ async fn main() {
 </dl>
 </details>
 
-## Migration
-<details><summary><code>client.migration.<a href="/src/api/resources/migration/client.rs">check_a_historical_books_package_without_writing_anything</a>(request: PostV1MigrationBooksValidateRequest) -> Result&lt;PostV1MigrationBooksValidateResponse, ApiError&gt;</code></summary>
+## migration
+<details><summary><code>client.migration.<a href="/src/api/resources/migration/client.rs">books_validate</a>(request: BooksValidateMigrationRequest) -> Result&lt;BooksValidateMigrationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26107,9 +26130,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .migration
-        .check_a_historical_books_package_without_writing_anything(
-            &PostV1MigrationBooksValidateRequest {
-                cutover_date: "cutoverDate".to_string(),
+        .books_validate(
+            &BooksValidateMigrationRequest {
+                cutover_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 source: None,
                 accounts: None,
                 partners: None,
@@ -26156,7 +26179,7 @@ async fn main() {
 <dl>
 <dd>
 
-**accounts:** `Option<Vec<PostV1MigrationBooksValidateRequestAccountsItem>>` 
+**accounts:** `Option<Vec<BooksValidateMigrationRequestAccountsItem>>` 
     
 </dd>
 </dl>
@@ -26164,7 +26187,7 @@ async fn main() {
 <dl>
 <dd>
 
-**partners:** `Option<Vec<PostV1MigrationBooksValidateRequestPartnersItem>>` 
+**partners:** `Option<Vec<BooksValidateMigrationRequestPartnersItem>>` 
     
 </dd>
 </dl>
@@ -26172,7 +26195,7 @@ async fn main() {
 <dl>
 <dd>
 
-**items:** `Option<Vec<PostV1MigrationBooksValidateRequestItemsItem>>` 
+**items:** `Option<Vec<BooksValidateMigrationRequestItemsItem>>` 
     
 </dd>
 </dl>
@@ -26180,7 +26203,7 @@ async fn main() {
 <dl>
 <dd>
 
-**opening_balances:** `Option<PostV1MigrationBooksValidateRequestOpeningBalances>` 
+**opening_balances:** `Option<BooksValidateMigrationRequestOpeningBalances>` 
     
 </dd>
 </dl>
@@ -26188,7 +26211,7 @@ async fn main() {
 <dl>
 <dd>
 
-**journal:** `Option<Vec<PostV1MigrationBooksValidateRequestJournalItem>>` 
+**journal:** `Option<Vec<BooksValidateMigrationRequestJournalItem>>` 
     
 </dd>
 </dl>
@@ -26196,7 +26219,7 @@ async fn main() {
 <dl>
 <dd>
 
-**open_receivables:** `Option<Vec<PostV1MigrationBooksValidateRequestOpenReceivablesItem>>` 
+**open_receivables:** `Option<Vec<BooksValidateMigrationRequestOpenReceivablesItem>>` 
     
 </dd>
 </dl>
@@ -26204,7 +26227,7 @@ async fn main() {
 <dl>
 <dd>
 
-**open_payables:** `Option<Vec<PostV1MigrationBooksValidateRequestOpenPayablesItem>>` 
+**open_payables:** `Option<Vec<BooksValidateMigrationRequestOpenPayablesItem>>` 
     
 </dd>
 </dl>
@@ -26212,7 +26235,7 @@ async fn main() {
 <dl>
 <dd>
 
-**asset_groups:** `Option<Vec<PostV1MigrationBooksValidateRequestAssetGroupsItem>>` 
+**asset_groups:** `Option<Vec<BooksValidateMigrationRequestAssetGroupsItem>>` 
     
 </dd>
 </dl>
@@ -26220,7 +26243,7 @@ async fn main() {
 <dl>
 <dd>
 
-**fixed_assets:** `Option<Vec<PostV1MigrationBooksValidateRequestFixedAssetsItem>>` 
+**fixed_assets:** `Option<Vec<BooksValidateMigrationRequestFixedAssetsItem>>` 
     
 </dd>
 </dl>
@@ -26228,7 +26251,7 @@ async fn main() {
 <dl>
 <dd>
 
-**stock:** `Option<Vec<PostV1MigrationBooksValidateRequestStockItem>>` 
+**stock:** `Option<Vec<BooksValidateMigrationRequestStockItem>>` 
     
 </dd>
 </dl>
@@ -26240,7 +26263,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.migration.<a href="/src/api/resources/migration/client.rs">import_historical_books_from_a_previous_accounting_system</a>(request: PostV1MigrationBooksImportRequest) -> Result&lt;PostV1MigrationBooksImportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.migration.<a href="/src/api/resources/migration/client.rs">books_import</a>(request: BooksImportMigrationRequest) -> Result&lt;BooksImportMigrationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26278,9 +26301,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .migration
-        .import_historical_books_from_a_previous_accounting_system(
-            &PostV1MigrationBooksImportRequest {
-                cutover_date: "cutoverDate".to_string(),
+        .books_import(
+            &BooksImportMigrationRequest {
+                cutover_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 source: None,
                 accounts: None,
                 partners: None,
@@ -26327,7 +26350,7 @@ async fn main() {
 <dl>
 <dd>
 
-**accounts:** `Option<Vec<PostV1MigrationBooksImportRequestAccountsItem>>` 
+**accounts:** `Option<Vec<BooksImportMigrationRequestAccountsItem>>` 
     
 </dd>
 </dl>
@@ -26335,7 +26358,7 @@ async fn main() {
 <dl>
 <dd>
 
-**partners:** `Option<Vec<PostV1MigrationBooksImportRequestPartnersItem>>` 
+**partners:** `Option<Vec<BooksImportMigrationRequestPartnersItem>>` 
     
 </dd>
 </dl>
@@ -26343,7 +26366,7 @@ async fn main() {
 <dl>
 <dd>
 
-**items:** `Option<Vec<PostV1MigrationBooksImportRequestItemsItem>>` 
+**items:** `Option<Vec<BooksImportMigrationRequestItemsItem>>` 
     
 </dd>
 </dl>
@@ -26351,7 +26374,7 @@ async fn main() {
 <dl>
 <dd>
 
-**opening_balances:** `Option<PostV1MigrationBooksImportRequestOpeningBalances>` 
+**opening_balances:** `Option<BooksImportMigrationRequestOpeningBalances>` 
     
 </dd>
 </dl>
@@ -26359,7 +26382,7 @@ async fn main() {
 <dl>
 <dd>
 
-**journal:** `Option<Vec<PostV1MigrationBooksImportRequestJournalItem>>` 
+**journal:** `Option<Vec<BooksImportMigrationRequestJournalItem>>` 
     
 </dd>
 </dl>
@@ -26367,7 +26390,7 @@ async fn main() {
 <dl>
 <dd>
 
-**open_receivables:** `Option<Vec<PostV1MigrationBooksImportRequestOpenReceivablesItem>>` 
+**open_receivables:** `Option<Vec<BooksImportMigrationRequestOpenReceivablesItem>>` 
     
 </dd>
 </dl>
@@ -26375,7 +26398,7 @@ async fn main() {
 <dl>
 <dd>
 
-**open_payables:** `Option<Vec<PostV1MigrationBooksImportRequestOpenPayablesItem>>` 
+**open_payables:** `Option<Vec<BooksImportMigrationRequestOpenPayablesItem>>` 
     
 </dd>
 </dl>
@@ -26383,7 +26406,7 @@ async fn main() {
 <dl>
 <dd>
 
-**asset_groups:** `Option<Vec<PostV1MigrationBooksImportRequestAssetGroupsItem>>` 
+**asset_groups:** `Option<Vec<BooksImportMigrationRequestAssetGroupsItem>>` 
     
 </dd>
 </dl>
@@ -26391,7 +26414,7 @@ async fn main() {
 <dl>
 <dd>
 
-**fixed_assets:** `Option<Vec<PostV1MigrationBooksImportRequestFixedAssetsItem>>` 
+**fixed_assets:** `Option<Vec<BooksImportMigrationRequestFixedAssetsItem>>` 
     
 </dd>
 </dl>
@@ -26399,7 +26422,7 @@ async fn main() {
 <dl>
 <dd>
 
-**stock:** `Option<Vec<PostV1MigrationBooksImportRequestStockItem>>` 
+**stock:** `Option<Vec<BooksImportMigrationRequestStockItem>>` 
     
 </dd>
 </dl>
@@ -26411,8 +26434,8 @@ async fn main() {
 </dl>
 </details>
 
-## Assets
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_groups_create</a>(request: PostV1AssetsGroupsCreateRequest) -> Result&lt;PostV1AssetsGroupsCreateResponse, ApiError&gt;</code></summary>
+## assets
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">groups_create</a>(request: GroupsCreateAssetsRequest) -> Result&lt;GroupsCreateAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26436,8 +26459,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_groups_create(
-            &PostV1AssetsGroupsCreateRequest {
+        .groups_create(
+            &GroupsCreateAssetsRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 asset_account_code: "assetAccountCode".to_string(),
@@ -26515,7 +26538,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_groups_list</a>(request: PostV1AssetsGroupsListRequest) -> Result&lt;PostV1AssetsGroupsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">groups_list</a>(request: GroupsListAssetsRequest) -> Result&lt;GroupsListAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26539,8 +26562,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_groups_list(
-            &PostV1AssetsGroupsListRequest {
+        .groups_list(
+            &GroupsListAssetsRequest {
                 ..Default::default()
             },
             None,
@@ -26577,7 +26600,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1AssetsGroupsListRequestSortItem>>` 
+**sort:** `Option<Vec<GroupsListAssetsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -26585,7 +26608,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1AssetsGroupsListRequestFilterItem>>` 
+**filter:** `Option<Vec<GroupsListAssetsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -26605,7 +26628,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_create</a>(request: PostV1AssetsAssetsCreateRequest) -> Result&lt;PostV1AssetsAssetsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_create</a>(request: AssetsCreateAssetsRequest) -> Result&lt;AssetsCreateAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26629,13 +26652,13 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_assets_create(
-            &PostV1AssetsAssetsCreateRequest {
+        .assets_create(
+            &AssetsCreateAssetsRequest {
                 group_id: "groupId".to_string(),
                 code: "code".to_string(),
                 name: "name".to_string(),
-                acquisition_date: "acquisitionDate".to_string(),
-                acquisition_cost: "acquisitionCost".to_string(),
+                acquisition_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                acquisition_cost: "121.0000".to_string(),
                 depreciation_start_date: None,
                 salvage_value: None,
                 useful_life_months: None,
@@ -26732,7 +26755,7 @@ async fn main() {
 <dl>
 <dd>
 
-**documents:** `Option<Vec<PostV1AssetsAssetsCreateRequestDocumentsItem>>` 
+**documents:** `Option<Vec<AssetsCreateAssetsRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -26744,7 +26767,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_update</a>(request: PostV1AssetsAssetsUpdateRequest) -> Result&lt;PostV1AssetsAssetsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_update</a>(request: AssetsUpdateAssetsRequest) -> Result&lt;AssetsUpdateAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26768,8 +26791,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_assets_update(
-            &PostV1AssetsAssetsUpdateRequest {
+        .assets_update(
+            &AssetsUpdateAssetsRequest {
                 id: "id".to_string(),
                 group_id: None,
                 code: None,
@@ -26872,7 +26895,7 @@ async fn main() {
 <dl>
 <dd>
 
-**documents:** `Option<Vec<PostV1AssetsAssetsUpdateRequestDocumentsItem>>` 
+**documents:** `Option<Vec<AssetsUpdateAssetsRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -26892,7 +26915,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_input_vat</a>(request: PostV1AssetsAssetsInputVatRequest) -> Result&lt;PostV1AssetsAssetsInputVatResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_input_vat</a>(request: AssetsInputVatAssetsRequest) -> Result&lt;AssetsInputVatAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -26928,18 +26951,24 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client.assets.post_v1assets_assets_input_vat(&PostV1AssetsAssetsInputVatRequest {
-        id: "id".to_string(),
-        input_vat_real_estate: true,
-        input_vat_use_changes: vec![PostV1AssetsAssetsInputVatRequestInputVatUseChangesItem {
-            year: 1000000,
-            percent: "percent".to_string(),
-            reason: PostV1AssetsAssetsInputVatRequestInputVatUseChangesItemReason::UseChange
-        }],
-        input_vat_amount: None,
-        input_vat_first_use_date: None,
-        input_vat_deductible_percent: None
-    }, None).await;
+    client
+        .assets
+        .assets_input_vat(
+            &AssetsInputVatAssetsRequest {
+                id: "id".to_string(),
+                input_vat_real_estate: true,
+                input_vat_use_changes: vec![AssetsInputVatAssetsRequestInputVatUseChangesItem {
+                    year: 1000000,
+                    percent: "121.00".to_string(),
+                    reason: AssetsInputVatAssetsRequestInputVatUseChangesItemReason::UseChange,
+                }],
+                input_vat_amount: None,
+                input_vat_first_use_date: None,
+                input_vat_deductible_percent: None,
+            },
+            None,
+        )
+        .await;
 }
 ```
 </dd>
@@ -26995,7 +27024,7 @@ async fn main() {
 <dl>
 <dd>
 
-**input_vat_use_changes:** `Vec<PostV1AssetsAssetsInputVatRequestInputVatUseChangesItem>` 
+**input_vat_use_changes:** `Vec<AssetsInputVatAssetsRequestInputVatUseChangesItem>` 
     
 </dd>
 </dl>
@@ -27007,7 +27036,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_get</a>(request: PostV1AssetsAssetsGetRequest) -> Result&lt;PostV1AssetsAssetsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_get</a>(request: AssetsGetAssetsRequest) -> Result&lt;AssetsGetAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27031,8 +27060,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_assets_get(
-            &PostV1AssetsAssetsGetRequest {
+        .assets_get(
+            &AssetsGetAssetsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -27065,7 +27094,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_list</a>(request: PostV1AssetsAssetsListRequest) -> Result&lt;PostV1AssetsAssetsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_list</a>(request: AssetsListAssetsRequest) -> Result&lt;AssetsListAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27089,8 +27118,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_assets_list(
-            &PostV1AssetsAssetsListRequest {
+        .assets_list(
+            &AssetsListAssetsRequest {
                 ..Default::default()
             },
             None,
@@ -27127,7 +27156,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1AssetsAssetsListRequestSortItem>>` 
+**sort:** `Option<Vec<AssetsListAssetsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -27135,7 +27164,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1AssetsAssetsListRequestFilterItem>>` 
+**filter:** `Option<Vec<AssetsListAssetsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -27155,7 +27184,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_assets_modernize</a>(request: PostV1AssetsAssetsModernizeRequest) -> Result&lt;PostV1AssetsAssetsModernizeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_modernize</a>(request: AssetsModernizeAssetsRequest) -> Result&lt;AssetsModernizeAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27179,11 +27208,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_assets_modernize(
-            &PostV1AssetsAssetsModernizeRequest {
+        .assets_modernize(
+            &AssetsModernizeAssetsRequest {
                 id: "id".to_string(),
-                date: "date".to_string(),
-                amount: "amount".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                amount: "121.0000".to_string(),
                 added_life_months: None,
                 notes: None,
             },
@@ -27249,7 +27278,115 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_depreciation_preview</a>(request: PostV1AssetsDepreciationPreviewRequest) -> Result&lt;PostV1AssetsDepreciationPreviewResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">assets_dispose</a>(request: AssetsDisposeAssetsRequest) -> Result&lt;AssetsDisposeAssetsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Dispose of a fixed asset (sold, scrapped or written off). Removes its cost and accumulated depreciation, books the net book value as a disposal loss and the proceeds as a disposal gain (posting rules assets.disposalLoss, assets.disposalGain, assets.disposalProceeds), and stops its depreciation. Depreciation must be posted for every month before the disposal month.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .assets
+        .assets_dispose(
+            &AssetsDisposeAssetsRequest {
+                id: "id".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                reason: AssetsDisposeAssetsRequestReason::Sold,
+                proceeds: None,
+                notes: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**reason:** `AssetsDisposeAssetsRequestReason` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**proceeds:** `Option<String>` — Sale price excluding VAT; 0 when scrapped or written off
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">depreciation_preview</a>(request: DepreciationPreviewAssetsRequest) -> Result&lt;DepreciationPreviewAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27273,8 +27410,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_depreciation_preview(
-            &PostV1AssetsDepreciationPreviewRequest {
+        .depreciation_preview(
+            &DepreciationPreviewAssetsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -27316,7 +27453,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">post_v1_assets_depreciation_post</a>(request: PostV1AssetsDepreciationPostRequest) -> Result&lt;PostV1AssetsDepreciationPostResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">depreciation_post</a>(request: DepreciationPostAssetsRequest) -> Result&lt;DepreciationPostAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27340,8 +27477,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .assets
-        .post_v1assets_depreciation_post(
-            &PostV1AssetsDepreciationPostRequest {
+        .depreciation_post(
+            &DepreciationPostAssetsRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -27383,8 +27520,8 @@ async fn main() {
 </dl>
 </details>
 
-## Hr
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_positions_create</a>(request: PostV1HrPositionsCreateRequest) -> Result&lt;PostV1HrPositionsCreateResponse, ApiError&gt;</code></summary>
+## hr
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">positions_create</a>(request: PositionsCreateHrRequest) -> Result&lt;PositionsCreateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27408,8 +27545,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_positions_create(
-            &PostV1HrPositionsCreateRequest {
+        .positions_create(
+            &PositionsCreateHrRequest {
                 name: "name".to_string(),
                 code: None,
                 translations: None,
@@ -27448,7 +27585,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<std::collections::HashMap<String, PostV1HrPositionsCreateRequestTranslationsValue>>` 
+**translations:** `Option<std::collections::HashMap<String, PositionsCreateHrRequestTranslationsValue>>` 
     
 </dd>
 </dl>
@@ -27460,7 +27597,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_positions_update</a>(request: PostV1HrPositionsUpdateRequest) -> Result&lt;PostV1HrPositionsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">positions_update</a>(request: PositionsUpdateHrRequest) -> Result&lt;PositionsUpdateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27484,8 +27621,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_positions_update(
-            &PostV1HrPositionsUpdateRequest {
+        .positions_update(
+            &PositionsUpdateHrRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -27533,7 +27670,7 @@ async fn main() {
 <dl>
 <dd>
 
-**translations:** `Option<Option<std::collections::HashMap<String, Option<PostV1HrPositionsUpdateRequestTranslationsValue>>>>` 
+**translations:** `Option<Option<std::collections::HashMap<String, Option<PositionsUpdateHrRequestTranslationsValue>>>>` 
     
 </dd>
 </dl>
@@ -27545,7 +27682,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_positions_list</a>(request: PostV1HrPositionsListRequest) -> Result&lt;PostV1HrPositionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">positions_list</a>(request: PositionsListHrRequest) -> Result&lt;PositionsListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27569,8 +27706,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_positions_list(
-            &PostV1HrPositionsListRequest {
+        .positions_list(
+            &PositionsListHrRequest {
                 ..Default::default()
             },
             None,
@@ -27607,7 +27744,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1HrPositionsListRequestSortItem>>` 
+**sort:** `Option<Vec<PositionsListHrRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -27615,7 +27752,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1HrPositionsListRequestFilterItem>>` 
+**filter:** `Option<Vec<PositionsListHrRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -27635,7 +27772,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_create</a>(request: PostV1HrEmployeesCreateRequest) -> Result&lt;PostV1HrEmployeesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_create</a>(request: EmployeesCreateHrRequest) -> Result&lt;EmployeesCreateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27659,8 +27796,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_create(
-            &PostV1HrEmployeesCreateRequest {
+        .employees_create(
+            &EmployeesCreateHrRequest {
                 first_name: "firstName".to_string(),
                 last_name: "lastName".to_string(),
                 code: None,
@@ -27754,7 +27891,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1HrEmployeesCreateRequestAddress>` 
+**address:** `Option<EmployeesCreateHrRequestAddress>` 
     
 </dd>
 </dl>
@@ -27834,7 +27971,7 @@ async fn main() {
 <dl>
 <dd>
 
-**attributes:** `Option<Vec<PostV1HrEmployeesCreateRequestAttributesItem>>` 
+**attributes:** `Option<Vec<EmployeesCreateHrRequestAttributesItem>>` 
     
 </dd>
 </dl>
@@ -27846,7 +27983,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_update</a>(request: PostV1HrEmployeesUpdateRequest) -> Result&lt;PostV1HrEmployeesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_update</a>(request: EmployeesUpdateHrRequest) -> Result&lt;EmployeesUpdateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -27870,8 +28007,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_update(
-            &PostV1HrEmployeesUpdateRequest {
+        .employees_update(
+            &EmployeesUpdateHrRequest {
                 id: "id".to_string(),
                 code: None,
                 first_name: None,
@@ -27968,7 +28105,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<Option<PostV1HrEmployeesUpdateRequestAddress>>` 
+**address:** `Option<Option<EmployeesUpdateHrRequestAddress>>` 
     
 </dd>
 </dl>
@@ -28048,7 +28185,7 @@ async fn main() {
 <dl>
 <dd>
 
-**attributes:** `Option<Vec<PostV1HrEmployeesUpdateRequestAttributesItem>>` 
+**attributes:** `Option<Vec<EmployeesUpdateHrRequestAttributesItem>>` 
     
 </dd>
 </dl>
@@ -28072,7 +28209,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1HrEmployeesUpdateRequestStatus>` 
+**status:** `Option<EmployeesUpdateHrRequestStatus>` 
     
 </dd>
 </dl>
@@ -28084,7 +28221,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_get</a>(request: PostV1HrEmployeesGetRequest) -> Result&lt;PostV1HrEmployeesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_get</a>(request: EmployeesGetHrRequest) -> Result&lt;EmployeesGetHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28108,8 +28245,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_get(
-            &PostV1HrEmployeesGetRequest {
+        .employees_get(
+            &EmployeesGetHrRequest {
                 id: "id".to_string(),
             },
             None,
@@ -28142,7 +28279,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">extra_employee_details_the_country_of_the_company_asks_for</a>(request: PostV1HrEmployeesFieldsRequest) -> Result&lt;PostV1HrEmployeesFieldsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_fields</a>(request: EmployeesFieldsHrRequest) -> Result&lt;EmployeesFieldsHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28180,8 +28317,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .extra_employee_details_the_country_of_the_company_asks_for(
-            &PostV1HrEmployeesFieldsRequest {
+        .employees_fields(
+            &EmployeesFieldsHrRequest {
                 ..Default::default()
             },
             None,
@@ -28199,7 +28336,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_list</a>(request: PostV1HrEmployeesListRequest) -> Result&lt;PostV1HrEmployeesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_list</a>(request: EmployeesListHrRequest) -> Result&lt;EmployeesListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28223,8 +28360,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_list(
-            &PostV1HrEmployeesListRequest {
+        .employees_list(
+            &EmployeesListHrRequest {
                 ..Default::default()
             },
             None,
@@ -28261,7 +28398,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1HrEmployeesListRequestSortItem>>` 
+**sort:** `Option<Vec<EmployeesListHrRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -28269,7 +28406,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1HrEmployeesListRequestFilterItem>>` 
+**filter:** `Option<Vec<EmployeesListHrRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -28289,7 +28426,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_delete</a>(request: PostV1HrEmployeesDeleteRequest) -> Result&lt;PostV1HrEmployeesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_delete</a>(request: EmployeesDeleteHrRequest) -> Result&lt;EmployeesDeleteHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28313,8 +28450,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_delete(
-            &PostV1HrEmployeesDeleteRequest {
+        .employees_delete(
+            &EmployeesDeleteHrRequest {
                 id: "id".to_string(),
             },
             None,
@@ -28347,7 +28484,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">blank_an_employees_personal_data_and_hide_the_record</a>(request: PostV1HrEmployeesAnonymizeRequest) -> Result&lt;PostV1HrEmployeesAnonymizeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_anonymize</a>(request: EmployeesAnonymizeHrRequest) -> Result&lt;EmployeesAnonymizeHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28385,8 +28522,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .blank_an_employees_personal_data_and_hide_the_record(
-            &PostV1HrEmployeesAnonymizeRequest {
+        .employees_anonymize(
+            &EmployeesAnonymizeHrRequest {
                 id: "id".to_string(),
             },
             None,
@@ -28419,7 +28556,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_contracts_create</a>(request: PostV1HrContractsCreateRequest) -> Result&lt;PostV1HrContractsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">contracts_create</a>(request: ContractsCreateHrRequest) -> Result&lt;ContractsCreateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28443,11 +28580,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_contracts_create(
-            &PostV1HrContractsCreateRequest {
+        .contracts_create(
+            &ContractsCreateHrRequest {
                 employee_id: "employeeId".to_string(),
-                start_date: "startDate".to_string(),
-                base_salary: "baseSalary".to_string(),
+                start_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                base_salary: "121.0000".to_string(),
                 position_id: None,
                 department_id: None,
                 schedule_id: None,
@@ -28525,7 +28662,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1HrContractsCreateRequestType>` 
+**type_:** `Option<ContractsCreateHrRequestType>` 
     
 </dd>
 </dl>
@@ -28557,7 +28694,7 @@ async fn main() {
 <dl>
 <dd>
 
-**salary_type:** `Option<PostV1HrContractsCreateRequestSalaryType>` 
+**salary_type:** `Option<ContractsCreateHrRequestSalaryType>` 
     
 </dd>
 </dl>
@@ -28585,7 +28722,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_contracts_end</a>(request: PostV1HrContractsEndRequest) -> Result&lt;PostV1HrContractsEndResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">contracts_end</a>(request: ContractsEndHrRequest) -> Result&lt;ContractsEndHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28609,10 +28746,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_contracts_end(
-            &PostV1HrContractsEndRequest {
+        .contracts_end(
+            &ContractsEndHrRequest {
                 id: "id".to_string(),
-                end_date: "endDate".to_string(),
+                end_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 end_reason: None,
             },
             None,
@@ -28661,7 +28798,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_contracts_list</a>(request: PostV1HrContractsListRequest) -> Result&lt;PostV1HrContractsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">contracts_list</a>(request: ContractsListHrRequest) -> Result&lt;ContractsListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28685,8 +28822,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_contracts_list(
-            &PostV1HrContractsListRequest {
+        .contracts_list(
+            &ContractsListHrRequest {
                 ..Default::default()
             },
             None,
@@ -28723,7 +28860,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1HrContractsListRequestSortItem>>` 
+**sort:** `Option<Vec<ContractsListHrRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -28731,7 +28868,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1HrContractsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ContractsListHrRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -28751,7 +28888,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_leave_balances_set</a>(request: PostV1HrLeaveBalancesSetRequest) -> Result&lt;PostV1HrLeaveBalancesSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">leave_balances_set</a>(request: LeaveBalancesSetHrRequest) -> Result&lt;LeaveBalancesSetHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28775,11 +28912,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_leave_balances_set(
-            &PostV1HrLeaveBalancesSetRequest {
+        .leave_balances_set(
+            &LeaveBalancesSetHrRequest {
                 employee_id: "employeeId".to_string(),
                 year: 1000000,
-                entitled_days: "entitledDays".to_string(),
+                entitled_days: "121.00".to_string(),
                 used_days: None,
             },
             None,
@@ -28836,7 +28973,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_leave_balances_list</a>(request: PostV1HrLeaveBalancesListRequest) -> Result&lt;PostV1HrLeaveBalancesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">leave_balances_list</a>(request: LeaveBalancesListHrRequest) -> Result&lt;LeaveBalancesListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28860,8 +28997,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_leave_balances_list(
-            &PostV1HrLeaveBalancesListRequest {
+        .leave_balances_list(
+            &LeaveBalancesListHrRequest {
                 ..Default::default()
             },
             None,
@@ -28902,7 +29039,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_incapacity_certificates_create</a>(request: PostV1HrIncapacityCertificatesCreateRequest) -> Result&lt;PostV1HrIncapacityCertificatesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">incapacity_certificates_create</a>(request: IncapacityCertificatesCreateHrRequest) -> Result&lt;IncapacityCertificatesCreateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -28926,12 +29063,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_incapacity_certificates_create(
-            &PostV1HrIncapacityCertificatesCreateRequest {
+        .incapacity_certificates_create(
+            &IncapacityCertificatesCreateHrRequest {
                 employee_id: "employeeId".to_string(),
                 number: "number".to_string(),
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 series: None,
                 reason: None,
                 notes: None,
@@ -29014,7 +29151,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_incapacity_certificates_list</a>(request: PostV1HrIncapacityCertificatesListRequest) -> Result&lt;PostV1HrIncapacityCertificatesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">incapacity_certificates_list</a>(request: IncapacityCertificatesListHrRequest) -> Result&lt;IncapacityCertificatesListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29038,8 +29175,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_incapacity_certificates_list(
-            &PostV1HrIncapacityCertificatesListRequest {
+        .incapacity_certificates_list(
+            &IncapacityCertificatesListHrRequest {
                 ..Default::default()
             },
             None,
@@ -29076,7 +29213,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1HrIncapacityCertificatesListRequestSortItem>>` 
+**sort:** `Option<Vec<IncapacityCertificatesListHrRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -29084,7 +29221,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1HrIncapacityCertificatesListRequestFilterItem>>` 
+**filter:** `Option<Vec<IncapacityCertificatesListHrRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -29104,7 +29241,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_records_create</a>(request: PostV1HrEmployeesRecordsCreateRequest) -> Result&lt;PostV1HrEmployeesRecordsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_records_create</a>(request: EmployeesRecordsCreateHrRequest) -> Result&lt;EmployeesRecordsCreateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29128,10 +29265,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_records_create(
-            &PostV1HrEmployeesRecordsCreateRequest {
+        .employees_records_create(
+            &EmployeesRecordsCreateHrRequest {
                 employee_id: "employeeId".to_string(),
-                r#type: PostV1HrEmployeesRecordsCreateRequestType::Education,
+                r#type: EmployeesRecordsCreateHrRequestType::Education,
                 title: "title".to_string(),
                 institution: None,
                 issued_at: None,
@@ -29165,7 +29302,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1HrEmployeesRecordsCreateRequestType` 
+**type_:** `EmployeesRecordsCreateHrRequestType` 
     
 </dd>
 </dl>
@@ -29225,7 +29362,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_records_update</a>(request: PostV1HrEmployeesRecordsUpdateRequest) -> Result&lt;PostV1HrEmployeesRecordsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_records_update</a>(request: EmployeesRecordsUpdateHrRequest) -> Result&lt;EmployeesRecordsUpdateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29249,8 +29386,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_records_update(
-            &PostV1HrEmployeesRecordsUpdateRequest {
+        .employees_records_update(
+            &EmployeesRecordsUpdateHrRequest {
                 id: "id".to_string(),
                 r#type: None,
                 title: None,
@@ -29286,7 +29423,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1HrEmployeesRecordsUpdateRequestType>` 
+**type_:** `Option<EmployeesRecordsUpdateHrRequestType>` 
     
 </dd>
 </dl>
@@ -29346,7 +29483,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_records_delete</a>(request: PostV1HrEmployeesRecordsDeleteRequest) -> Result&lt;PostV1HrEmployeesRecordsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_records_delete</a>(request: EmployeesRecordsDeleteHrRequest) -> Result&lt;EmployeesRecordsDeleteHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29370,8 +29507,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_records_delete(
-            &PostV1HrEmployeesRecordsDeleteRequest {
+        .employees_records_delete(
+            &EmployeesRecordsDeleteHrRequest {
                 id: "id".to_string(),
             },
             None,
@@ -29404,7 +29541,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_records_list</a>(request: PostV1HrEmployeesRecordsListRequest) -> Result&lt;PostV1HrEmployeesRecordsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_records_list</a>(request: EmployeesRecordsListHrRequest) -> Result&lt;EmployeesRecordsListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29428,8 +29565,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_records_list(
-            &PostV1HrEmployeesRecordsListRequest {
+        .employees_records_list(
+            &EmployeesRecordsListHrRequest {
                 ..Default::default()
             },
             None,
@@ -29466,7 +29603,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1HrEmployeesRecordsListRequestSortItem>>` 
+**sort:** `Option<Vec<EmployeesRecordsListHrRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -29474,7 +29611,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1HrEmployeesRecordsListRequestFilterItem>>` 
+**filter:** `Option<Vec<EmployeesRecordsListHrRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -29494,7 +29631,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_employees_attachments_list</a>(request: PostV1HrEmployeesAttachmentsListRequest) -> Result&lt;PostV1HrEmployeesAttachmentsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_attachments_list</a>(request: EmployeesAttachmentsListHrRequest) -> Result&lt;EmployeesAttachmentsListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29518,8 +29655,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_employees_attachments_list(
-            &PostV1HrEmployeesAttachmentsListRequest {
+        .employees_attachments_list(
+            &EmployeesAttachmentsListHrRequest {
                 employee_id: "employeeId".to_string(),
             },
             None,
@@ -29552,7 +29689,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_timesheets_generate</a>(request: PostV1HrTimesheetsGenerateRequest) -> Result&lt;PostV1HrTimesheetsGenerateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">timesheets_generate</a>(request: TimesheetsGenerateHrRequest) -> Result&lt;TimesheetsGenerateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29576,8 +29713,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_timesheets_generate(
-            &PostV1HrTimesheetsGenerateRequest {
+        .timesheets_generate(
+            &TimesheetsGenerateHrRequest {
                 year: 1000000,
                 month: 1000000,
                 employee_id: None,
@@ -29628,7 +29765,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_timesheets_upsert</a>(request: PostV1HrTimesheetsUpsertRequest) -> Result&lt;PostV1HrTimesheetsUpsertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">timesheets_upsert</a>(request: TimesheetsUpsertHrRequest) -> Result&lt;TimesheetsUpsertHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29652,15 +29789,15 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_timesheets_upsert(
-            &PostV1HrTimesheetsUpsertRequest {
+        .timesheets_upsert(
+            &TimesheetsUpsertHrRequest {
                 employee_id: "employeeId".to_string(),
                 year: 1000000,
                 month: 1000000,
-                days: vec![PostV1HrTimesheetsUpsertRequestDaysItem {
+                days: vec![TimesheetsUpsertHrRequestDaysItem {
                     day: 1000000,
-                    hours: "hours".to_string(),
-                    r#type: PostV1HrTimesheetsUpsertRequestDaysItemType::Work,
+                    hours: "121.00".to_string(),
+                    r#type: TimesheetsUpsertHrRequestDaysItemType::Work,
                 }],
             },
             None,
@@ -29705,7 +29842,7 @@ async fn main() {
 <dl>
 <dd>
 
-**days:** `Vec<PostV1HrTimesheetsUpsertRequestDaysItem>` 
+**days:** `Vec<TimesheetsUpsertHrRequestDaysItem>` 
     
 </dd>
 </dl>
@@ -29717,7 +29854,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_timesheets_get</a>(request: PostV1HrTimesheetsGetRequest) -> Result&lt;PostV1HrTimesheetsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">timesheets_get</a>(request: TimesheetsGetHrRequest) -> Result&lt;TimesheetsGetHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29741,8 +29878,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_timesheets_get(
-            &PostV1HrTimesheetsGetRequest {
+        .timesheets_get(
+            &TimesheetsGetHrRequest {
                 employee_id: "employeeId".to_string(),
                 year: 1000000,
                 month: 1000000,
@@ -29793,7 +29930,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_timesheets_list</a>(request: PostV1HrTimesheetsListRequest) -> Result&lt;PostV1HrTimesheetsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">timesheets_list</a>(request: TimesheetsListHrRequest) -> Result&lt;TimesheetsListHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29817,8 +29954,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_timesheets_list(
-            &PostV1HrTimesheetsListRequest {
+        .timesheets_list(
+            &TimesheetsListHrRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -29860,7 +29997,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">post_v1_hr_timesheets_delete</a>(request: PostV1HrTimesheetsDeleteRequest) -> Result&lt;PostV1HrTimesheetsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">timesheets_delete</a>(request: TimesheetsDeleteHrRequest) -> Result&lt;TimesheetsDeleteHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29884,8 +30021,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .hr
-        .post_v1hr_timesheets_delete(
-            &PostV1HrTimesheetsDeleteRequest {
+        .timesheets_delete(
+            &TimesheetsDeleteHrRequest {
                 id: "id".to_string(),
             },
             None,
@@ -29918,8 +30055,8 @@ async fn main() {
 </dl>
 </details>
 
-## Fleet
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_vehicles_create</a>(request: PostV1FleetVehiclesCreateRequest) -> Result&lt;PostV1FleetVehiclesCreateResponse, ApiError&gt;</code></summary>
+## fleet
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">vehicles_create</a>(request: VehiclesCreateFleetRequest) -> Result&lt;VehiclesCreateFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -29943,8 +30080,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_vehicles_create(
-            &PostV1FleetVehiclesCreateRequest {
+        .vehicles_create(
+            &VehiclesCreateFleetRequest {
                 plate_number: "plateNumber".to_string(),
                 make: "make".to_string(),
                 model: "model".to_string(),
@@ -30017,7 +30154,7 @@ async fn main() {
 <dl>
 <dd>
 
-**fuel_type:** `Option<PostV1FleetVehiclesCreateRequestFuelType>` 
+**fuel_type:** `Option<VehiclesCreateFleetRequestFuelType>` 
     
 </dd>
 </dl>
@@ -30073,7 +30210,7 @@ async fn main() {
 <dl>
 <dd>
 
-**documents:** `Option<Vec<PostV1FleetVehiclesCreateRequestDocumentsItem>>` 
+**documents:** `Option<Vec<VehiclesCreateFleetRequestDocumentsItem>>` 
     
 </dd>
 </dl>
@@ -30085,7 +30222,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_vehicles_update</a>(request: PostV1FleetVehiclesUpdateRequest) -> Result&lt;PostV1FleetVehiclesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">vehicles_update</a>(request: VehiclesUpdateFleetRequest) -> Result&lt;VehiclesUpdateFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30109,8 +30246,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_vehicles_update(
-            &PostV1FleetVehiclesUpdateRequest {
+        .vehicles_update(
+            &VehiclesUpdateFleetRequest {
                 id: "id".to_string(),
                 plate_number: None,
                 make: None,
@@ -30192,7 +30329,7 @@ async fn main() {
 <dl>
 <dd>
 
-**fuel_type:** `Option<Option<PostV1FleetVehiclesUpdateRequestFuelType>>` 
+**fuel_type:** `Option<Option<VehiclesUpdateFleetRequestFuelType>>` 
     
 </dd>
 </dl>
@@ -30240,7 +30377,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1FleetVehiclesUpdateRequestStatus>` 
+**status:** `Option<VehiclesUpdateFleetRequestStatus>` 
     
 </dd>
 </dl>
@@ -30260,7 +30397,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_vehicles_get</a>(request: PostV1FleetVehiclesGetRequest) -> Result&lt;PostV1FleetVehiclesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">vehicles_get</a>(request: VehiclesGetFleetRequest) -> Result&lt;VehiclesGetFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30284,8 +30421,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_vehicles_get(
-            &PostV1FleetVehiclesGetRequest {
+        .vehicles_get(
+            &VehiclesGetFleetRequest {
                 id: "id".to_string(),
             },
             None,
@@ -30318,7 +30455,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_vehicles_list</a>(request: PostV1FleetVehiclesListRequest) -> Result&lt;PostV1FleetVehiclesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">vehicles_list</a>(request: VehiclesListFleetRequest) -> Result&lt;VehiclesListFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30342,8 +30479,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_vehicles_list(
-            &PostV1FleetVehiclesListRequest {
+        .vehicles_list(
+            &VehiclesListFleetRequest {
                 ..Default::default()
             },
             None,
@@ -30380,7 +30517,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1FleetVehiclesListRequestSortItem>>` 
+**sort:** `Option<Vec<VehiclesListFleetRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -30388,7 +30525,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1FleetVehiclesListRequestFilterItem>>` 
+**filter:** `Option<Vec<VehiclesListFleetRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -30408,7 +30545,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_assignments_create</a>(request: PostV1FleetAssignmentsCreateRequest) -> Result&lt;PostV1FleetAssignmentsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">assignments_create</a>(request: AssignmentsCreateFleetRequest) -> Result&lt;AssignmentsCreateFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30432,11 +30569,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_assignments_create(
-            &PostV1FleetAssignmentsCreateRequest {
+        .assignments_create(
+            &AssignmentsCreateFleetRequest {
                 vehicle_id: "vehicleId".to_string(),
                 employee_id: "employeeId".to_string(),
-                from_date: "fromDate".to_string(),
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 to_date: None,
                 private_use: None,
                 employer_pays_fuel: None,
@@ -30520,7 +30657,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_assignments_end</a>(request: PostV1FleetAssignmentsEndRequest) -> Result&lt;PostV1FleetAssignmentsEndResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">assignments_end</a>(request: AssignmentsEndFleetRequest) -> Result&lt;AssignmentsEndFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30544,10 +30681,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_assignments_end(
-            &PostV1FleetAssignmentsEndRequest {
+        .assignments_end(
+            &AssignmentsEndFleetRequest {
                 id: "id".to_string(),
-                to_date: "toDate".to_string(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -30587,7 +30724,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_assignments_list</a>(request: PostV1FleetAssignmentsListRequest) -> Result&lt;PostV1FleetAssignmentsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">assignments_list</a>(request: AssignmentsListFleetRequest) -> Result&lt;AssignmentsListFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30611,8 +30748,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_assignments_list(
-            &PostV1FleetAssignmentsListRequest {
+        .assignments_list(
+            &AssignmentsListFleetRequest {
                 ..Default::default()
             },
             None,
@@ -30649,7 +30786,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1FleetAssignmentsListRequestSortItem>>` 
+**sort:** `Option<Vec<AssignmentsListFleetRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -30657,7 +30794,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1FleetAssignmentsListRequestFilterItem>>` 
+**filter:** `Option<Vec<AssignmentsListFleetRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -30677,7 +30814,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">post_v1_fleet_natura_preview</a>(request: PostV1FleetNaturaPreviewRequest) -> Result&lt;PostV1FleetNaturaPreviewResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.fleet.<a href="/src/api/resources/fleet/client.rs">natura_preview</a>(request: NaturaPreviewFleetRequest) -> Result&lt;NaturaPreviewFleetResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30701,8 +30838,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .fleet
-        .post_v1fleet_natura_preview(
-            &PostV1FleetNaturaPreviewRequest {
+        .natura_preview(
+            &NaturaPreviewFleetRequest {
                 year: 1000000,
                 month: 1000000,
             },
@@ -30744,8 +30881,8 @@ async fn main() {
 </dl>
 </details>
 
-## Payroll
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_departments_create</a>(request: PostV1PayrollDepartmentsCreateRequest) -> Result&lt;PostV1PayrollDepartmentsCreateResponse, ApiError&gt;</code></summary>
+## payroll
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">departments_create</a>(request: DepartmentsCreatePayrollRequest) -> Result&lt;DepartmentsCreatePayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30769,8 +30906,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_departments_create(
-            &PostV1PayrollDepartmentsCreateRequest {
+        .departments_create(
+            &DepartmentsCreatePayrollRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
             },
@@ -30812,7 +30949,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_departments_list</a>(request: PostV1PayrollDepartmentsListRequest) -> Result&lt;PostV1PayrollDepartmentsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">departments_list</a>(request: DepartmentsListPayrollRequest) -> Result&lt;DepartmentsListPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30836,8 +30973,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_departments_list(
-            &PostV1PayrollDepartmentsListRequest {
+        .departments_list(
+            &DepartmentsListPayrollRequest {
                 ..Default::default()
             },
             None,
@@ -30855,7 +30992,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_schedules_create</a>(request: PostV1PayrollSchedulesCreateRequest) -> Result&lt;PostV1PayrollSchedulesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">schedules_create</a>(request: SchedulesCreatePayrollRequest) -> Result&lt;SchedulesCreatePayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30879,8 +31016,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_schedules_create(
-            &PostV1PayrollSchedulesCreateRequest {
+        .schedules_create(
+            &SchedulesCreatePayrollRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 hours_per_week: None,
@@ -30931,7 +31068,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_schedules_list</a>(request: PostV1PayrollSchedulesListRequest) -> Result&lt;PostV1PayrollSchedulesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">schedules_list</a>(request: SchedulesListPayrollRequest) -> Result&lt;SchedulesListPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30955,8 +31092,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_schedules_list(
-            &PostV1PayrollSchedulesListRequest {
+        .schedules_list(
+            &SchedulesListPayrollRequest {
                 ..Default::default()
             },
             None,
@@ -30974,7 +31111,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">calculate_one_employee_payment_under_the_rules_of_the_company_country</a>(request: PostV1PayrollCalcRequest) -> Result&lt;PostV1PayrollCalcResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">calc</a>(request: CalcPayrollRequest) -> Result&lt;CalcPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -30998,10 +31135,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .calculate_one_employee_payment_under_the_rules_of_the_company_country(
-            &PostV1PayrollCalcRequest {
-                taxable_base: "taxableBase".to_string(),
-                date: "date".to_string(),
+        .calc(
+            &CalcPayrollRequest {
+                taxable_base: "121.00".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 apply_allowance: None,
                 allowance_override: None,
                 pension_accumulation: None,
@@ -31095,7 +31232,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_runs_create</a>(request: PostV1PayrollRunsCreateRequest) -> Result&lt;PostV1PayrollRunsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_create</a>(request: RunsCreatePayrollRequest) -> Result&lt;RunsCreatePayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31119,8 +31256,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_runs_create(
-            &PostV1PayrollRunsCreateRequest {
+        .runs_create(
+            &RunsCreatePayrollRequest {
                 year: 1000000,
                 month: 1000000,
                 include_natura: None,
@@ -31170,7 +31307,7 @@ async fn main() {
 <dl>
 <dd>
 
-**gross_overrides:** `Option<Vec<PostV1PayrollRunsCreateRequestGrossOverridesItem>>` 
+**gross_overrides:** `Option<Vec<RunsCreatePayrollRequestGrossOverridesItem>>` 
     
 </dd>
 </dl>
@@ -31178,7 +31315,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1PayrollRunsCreateRequestLinesItem>>` 
+**lines:** `Option<Vec<RunsCreatePayrollRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -31198,7 +31335,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_runs_get</a>(request: PostV1PayrollRunsGetRequest) -> Result&lt;PostV1PayrollRunsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_get</a>(request: RunsGetPayrollRequest) -> Result&lt;RunsGetPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31222,8 +31359,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_runs_get(
-            &PostV1PayrollRunsGetRequest {
+        .runs_get(
+            &RunsGetPayrollRequest {
                 id: "id".to_string(),
             },
             None,
@@ -31256,7 +31393,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_runs_list</a>(request: PostV1PayrollRunsListRequest) -> Result&lt;PostV1PayrollRunsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_list</a>(request: RunsListPayrollRequest) -> Result&lt;RunsListPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31280,8 +31417,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_runs_list(
-            &PostV1PayrollRunsListRequest {
+        .runs_list(
+            &RunsListPayrollRequest {
                 ..Default::default()
             },
             None,
@@ -31318,7 +31455,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PayrollRunsListRequestSortItem>>` 
+**sort:** `Option<Vec<RunsListPayrollRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -31326,7 +31463,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PayrollRunsListRequestFilterItem>>` 
+**filter:** `Option<Vec<RunsListPayrollRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -31346,7 +31483,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">record_the_time_a_person_worked_in_a_payroll_line</a>(request: PostV1PayrollLinesAttendanceRequest) -> Result&lt;PostV1PayrollLinesAttendanceResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">lines_attendance</a>(request: LinesAttendancePayrollRequest) -> Result&lt;LinesAttendancePayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31384,8 +31521,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .record_the_time_a_person_worked_in_a_payroll_line(
-            &PostV1PayrollLinesAttendanceRequest {
+        .lines_attendance(
+            &LinesAttendancePayrollRequest {
                 id: "id".to_string(),
                 days_worked: None,
                 hours_worked: None,
@@ -31454,7 +31591,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_runs_approve</a>(request: PostV1PayrollRunsApproveRequest) -> Result&lt;PostV1PayrollRunsApproveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_approve</a>(request: RunsApprovePayrollRequest) -> Result&lt;RunsApprovePayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31478,8 +31615,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_runs_approve(
-            &PostV1PayrollRunsApproveRequest {
+        .runs_approve(
+            &RunsApprovePayrollRequest {
                 id: "id".to_string(),
                 wage_account_code: None,
                 employer_account_code: None,
@@ -31575,7 +31712,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_runs_cancel</a>(request: PostV1PayrollRunsCancelRequest) -> Result&lt;PostV1PayrollRunsCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_cancel</a>(request: RunsCancelPayrollRequest) -> Result&lt;RunsCancelPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31599,8 +31736,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_runs_cancel(
-            &PostV1PayrollRunsCancelRequest {
+        .runs_cancel(
+            &RunsCancelPayrollRequest {
                 id: "id".to_string(),
             },
             None,
@@ -31633,7 +31770,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">post_v1_payroll_payments_export</a>(request: PostV1PayrollPaymentsExportRequest) -> Result&lt;PostV1PayrollPaymentsExportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">payments_export</a>(request: PaymentsExportPayrollRequest) -> Result&lt;PaymentsExportPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31657,11 +31794,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .payroll
-        .post_v1payroll_payments_export(
-            &PostV1PayrollPaymentsExportRequest {
+        .payments_export(
+            &PaymentsExportPayrollRequest {
                 run_id: "runId".to_string(),
                 bank_account_id: "bankAccountId".to_string(),
                 execution_date: None,
+                locale: None,
             },
             None,
         )
@@ -31701,6 +31839,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**locale:** `Option<PaymentsExportPayrollRequestLocale>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -31709,8 +31855,8 @@ async fn main() {
 </dl>
 </details>
 
-## Agreements
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_types_create</a>(request: PostV1AgreementsTypesCreateRequest) -> Result&lt;PostV1AgreementsTypesCreateResponse, ApiError&gt;</code></summary>
+## agreements
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">types_create</a>(request: TypesCreateAgreementsRequest) -> Result&lt;TypesCreateAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31734,8 +31880,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_types_create(
-            &PostV1AgreementsTypesCreateRequest {
+        .types_create(
+            &TypesCreateAgreementsRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
             },
@@ -31777,7 +31923,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_types_list</a>(request: PostV1AgreementsTypesListRequest) -> Result&lt;PostV1AgreementsTypesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">types_list</a>(request: TypesListAgreementsRequest) -> Result&lt;TypesListAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31801,8 +31947,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_types_list(
-            &PostV1AgreementsTypesListRequest {
+        .types_list(
+            &TypesListAgreementsRequest {
                 ..Default::default()
             },
             None,
@@ -31839,7 +31985,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1AgreementsTypesListRequestSortItem>>` 
+**sort:** `Option<Vec<TypesListAgreementsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -31847,7 +31993,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1AgreementsTypesListRequestFilterItem>>` 
+**filter:** `Option<Vec<TypesListAgreementsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -31867,7 +32013,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_create</a>(request: PostV1AgreementsAgreementsCreateRequest) -> Result&lt;PostV1AgreementsAgreementsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_create</a>(request: AgreementsCreateAgreementsRequest) -> Result&lt;AgreementsCreateAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -31891,10 +32037,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_create(
-            &PostV1AgreementsAgreementsCreateRequest {
+        .agreements_create(
+            &AgreementsCreateAgreementsRequest {
                 number: "number".to_string(),
-                start_date: "startDate".to_string(),
+                start_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 type_id: None,
                 kind: None,
                 partner_id: None,
@@ -31937,7 +32083,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `Option<PostV1AgreementsAgreementsCreateRequestKind>` 
+**kind:** `Option<AgreementsCreateAgreementsRequestKind>` 
     
 </dd>
 </dl>
@@ -32017,7 +32163,7 @@ async fn main() {
 <dl>
 <dd>
 
-**billing_period:** `Option<PostV1AgreementsAgreementsCreateRequestBillingPeriod>` 
+**billing_period:** `Option<AgreementsCreateAgreementsRequestBillingPeriod>` 
     
 </dd>
 </dl>
@@ -32033,7 +32179,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1AgreementsAgreementsCreateRequestStatus>` 
+**status:** `Option<AgreementsCreateAgreementsRequestStatus>` 
     
 </dd>
 </dl>
@@ -32057,7 +32203,7 @@ async fn main() {
 <dl>
 <dd>
 
-**items:** `Option<Vec<PostV1AgreementsAgreementsCreateRequestItemsItem>>` 
+**items:** `Option<Vec<AgreementsCreateAgreementsRequestItemsItem>>` 
     
 </dd>
 </dl>
@@ -32069,7 +32215,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_get</a>(request: PostV1AgreementsAgreementsGetRequest) -> Result&lt;PostV1AgreementsAgreementsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_get</a>(request: AgreementsGetAgreementsRequest) -> Result&lt;AgreementsGetAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32093,8 +32239,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_get(
-            &PostV1AgreementsAgreementsGetRequest {
+        .agreements_get(
+            &AgreementsGetAgreementsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -32127,7 +32273,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_update</a>(request: PostV1AgreementsAgreementsUpdateRequest) -> Result&lt;PostV1AgreementsAgreementsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_update</a>(request: AgreementsUpdateAgreementsRequest) -> Result&lt;AgreementsUpdateAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32151,8 +32297,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_update(
-            &PostV1AgreementsAgreementsUpdateRequest {
+        .agreements_update(
+            &AgreementsUpdateAgreementsRequest {
                 id: "id".to_string(),
                 type_id: None,
                 kind: None,
@@ -32199,7 +32345,7 @@ async fn main() {
 <dl>
 <dd>
 
-**kind:** `Option<PostV1AgreementsAgreementsUpdateRequestKind>` 
+**kind:** `Option<AgreementsUpdateAgreementsRequestKind>` 
     
 </dd>
 </dl>
@@ -32239,7 +32385,7 @@ async fn main() {
 <dl>
 <dd>
 
-**billing_period:** `Option<Option<PostV1AgreementsAgreementsUpdateRequestBillingPeriod>>` 
+**billing_period:** `Option<Option<AgreementsUpdateAgreementsRequestBillingPeriod>>` 
     
 </dd>
 </dl>
@@ -32247,7 +32393,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1AgreementsAgreementsUpdateRequestStatus>` 
+**status:** `Option<AgreementsUpdateAgreementsRequestStatus>` 
     
 </dd>
 </dl>
@@ -32275,7 +32421,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_delete</a>(request: PostV1AgreementsAgreementsDeleteRequest) -> Result&lt;PostV1AgreementsAgreementsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_delete</a>(request: AgreementsDeleteAgreementsRequest) -> Result&lt;AgreementsDeleteAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32299,8 +32445,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_delete(
-            &PostV1AgreementsAgreementsDeleteRequest {
+        .agreements_delete(
+            &AgreementsDeleteAgreementsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -32333,7 +32479,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_list</a>(request: PostV1AgreementsAgreementsListRequest) -> Result&lt;PostV1AgreementsAgreementsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_list</a>(request: AgreementsListAgreementsRequest) -> Result&lt;AgreementsListAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32357,8 +32503,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_list(
-            &PostV1AgreementsAgreementsListRequest {
+        .agreements_list(
+            &AgreementsListAgreementsRequest {
                 ..Default::default()
             },
             None,
@@ -32395,7 +32541,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1AgreementsAgreementsListRequestSortItem>>` 
+**sort:** `Option<Vec<AgreementsListAgreementsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -32403,7 +32549,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1AgreementsAgreementsListRequestFilterItem>>` 
+**filter:** `Option<Vec<AgreementsListAgreementsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -32423,7 +32569,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_generate_invoice</a>(request: PostV1AgreementsAgreementsGenerateInvoiceRequest) -> Result&lt;PostV1AgreementsAgreementsGenerateInvoiceResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_generate_invoice</a>(request: AgreementsGenerateInvoiceAgreementsRequest) -> Result&lt;AgreementsGenerateInvoiceAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32447,8 +32593,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_generate_invoice(
-            &PostV1AgreementsAgreementsGenerateInvoiceRequest {
+        .agreements_generate_invoice(
+            &AgreementsGenerateInvoiceAgreementsRequest {
                 id: "id".to_string(),
                 as_of_date: None,
             },
@@ -32490,7 +32636,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_agreements_billing_run</a>(request: PostV1AgreementsAgreementsBillingRunRequest) -> Result&lt;PostV1AgreementsAgreementsBillingRunResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">agreements_billing_run</a>(request: AgreementsBillingRunAgreementsRequest) -> Result&lt;AgreementsBillingRunAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32514,8 +32660,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_agreements_billing_run(
-            &PostV1AgreementsAgreementsBillingRunRequest {
+        .agreements_billing_run(
+            &AgreementsBillingRunAgreementsRequest {
                 ..Default::default()
             },
             None,
@@ -32548,7 +32694,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_insurance_policies_create</a>(request: PostV1AgreementsInsurancePoliciesCreateRequest) -> Result&lt;PostV1AgreementsInsurancePoliciesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">insurance_policies_create</a>(request: InsurancePoliciesCreateAgreementsRequest) -> Result&lt;InsurancePoliciesCreateAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32572,12 +32718,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_insurance_policies_create(
-            &PostV1AgreementsInsurancePoliciesCreateRequest {
+        .insurance_policies_create(
+            &InsurancePoliciesCreateAgreementsRequest {
                 policy_number: "policyNumber".to_string(),
                 insured_object: "insuredObject".to_string(),
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 insurer_partner_id: None,
                 premium: None,
                 currency: None,
@@ -32669,7 +32815,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_insurance_policies_list</a>(request: PostV1AgreementsInsurancePoliciesListRequest) -> Result&lt;PostV1AgreementsInsurancePoliciesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">insurance_policies_list</a>(request: InsurancePoliciesListAgreementsRequest) -> Result&lt;InsurancePoliciesListAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32693,8 +32839,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_insurance_policies_list(
-            &PostV1AgreementsInsurancePoliciesListRequest {
+        .insurance_policies_list(
+            &InsurancePoliciesListAgreementsRequest {
                 ..Default::default()
             },
             None,
@@ -32731,7 +32877,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1AgreementsInsurancePoliciesListRequestSortItem>>` 
+**sort:** `Option<Vec<InsurancePoliciesListAgreementsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -32739,7 +32885,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1AgreementsInsurancePoliciesListRequestFilterItem>>` 
+**filter:** `Option<Vec<InsurancePoliciesListAgreementsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -32759,7 +32905,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">post_v1_agreements_insurance_policies_delete</a>(request: PostV1AgreementsInsurancePoliciesDeleteRequest) -> Result&lt;PostV1AgreementsInsurancePoliciesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">insurance_policies_delete</a>(request: InsurancePoliciesDeleteAgreementsRequest) -> Result&lt;InsurancePoliciesDeleteAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32783,8 +32929,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .agreements
-        .post_v1agreements_insurance_policies_delete(
-            &PostV1AgreementsInsurancePoliciesDeleteRequest {
+        .insurance_policies_delete(
+            &InsurancePoliciesDeleteAgreementsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -32817,8 +32963,8 @@ async fn main() {
 </dl>
 </details>
 
-## Inventory
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_settings_get</a>(request: PostV1InventorySettingsGetRequest) -> Result&lt;PostV1InventorySettingsGetResponse, ApiError&gt;</code></summary>
+## inventory
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">settings_get</a>(request: SettingsGetInventoryRequest) -> Result&lt;SettingsGetInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32842,8 +32988,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_settings_get(
-            &PostV1InventorySettingsGetRequest {
+        .settings_get(
+            &SettingsGetInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -32861,7 +33007,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_settings_update</a>(request: PostV1InventorySettingsUpdateRequest) -> Result&lt;PostV1InventorySettingsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">settings_update</a>(request: SettingsUpdateInventoryRequest) -> Result&lt;SettingsUpdateInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32885,10 +33031,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_settings_update(
-            &PostV1InventorySettingsUpdateRequest {
-                negative_stock_policy:
-                    PostV1InventorySettingsUpdateRequestNegativeStockPolicy::Reject,
+        .settings_update(
+            &SettingsUpdateInventoryRequest {
+                negative_stock_policy: SettingsUpdateInventoryRequestNegativeStockPolicy::Reject,
             },
             None,
         )
@@ -32908,7 +33053,7 @@ async fn main() {
 <dl>
 <dd>
 
-**negative_stock_policy:** `PostV1InventorySettingsUpdateRequestNegativeStockPolicy` 
+**negative_stock_policy:** `SettingsUpdateInventoryRequestNegativeStockPolicy` 
     
 </dd>
 </dl>
@@ -32920,7 +33065,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_warehouses_create</a>(request: PostV1InventoryWarehousesCreateRequest) -> Result&lt;PostV1InventoryWarehousesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">warehouses_create</a>(request: WarehousesCreateInventoryRequest) -> Result&lt;WarehousesCreateInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -32944,8 +33089,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_warehouses_create(
-            &PostV1InventoryWarehousesCreateRequest {
+        .warehouses_create(
+            &WarehousesCreateInventoryRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 is_default: None,
@@ -32996,7 +33141,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_warehouses_list</a>(request: PostV1InventoryWarehousesListRequest) -> Result&lt;PostV1InventoryWarehousesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">warehouses_list</a>(request: WarehousesListInventoryRequest) -> Result&lt;WarehousesListInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33020,8 +33165,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_warehouses_list(
-            &PostV1InventoryWarehousesListRequest {
+        .warehouses_list(
+            &WarehousesListInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -33058,7 +33203,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1InventoryWarehousesListRequestSortItem>>` 
+**sort:** `Option<Vec<WarehousesListInventoryRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -33066,7 +33211,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1InventoryWarehousesListRequestFilterItem>>` 
+**filter:** `Option<Vec<WarehousesListInventoryRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -33086,7 +33231,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_stock_receive</a>(request: PostV1InventoryStockReceiveRequest) -> Result&lt;PostV1InventoryStockReceiveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">stock_receive</a>(request: StockReceiveInventoryRequest) -> Result&lt;StockReceiveInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33110,13 +33255,13 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_stock_receive(
-            &PostV1InventoryStockReceiveRequest {
+        .stock_receive(
+            &StockReceiveInventoryRequest {
                 warehouse_id: "warehouseId".to_string(),
                 item_id: "itemId".to_string(),
-                date: "date".to_string(),
-                quantity: "quantity".to_string(),
-                unit_cost: "unitCost".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                quantity: "121.0000".to_string(),
+                unit_cost: "121.000000".to_string(),
                 lot_number: None,
                 expiry_date: None,
                 notes: None,
@@ -33207,7 +33352,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_stock_write_off</a>(request: PostV1InventoryStockWriteOffRequest) -> Result&lt;PostV1InventoryStockWriteOffResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">stock_write_off</a>(request: StockWriteOffInventoryRequest) -> Result&lt;StockWriteOffInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33231,12 +33376,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_stock_write_off(
-            &PostV1InventoryStockWriteOffRequest {
+        .stock_write_off(
+            &StockWriteOffInventoryRequest {
                 warehouse_id: "warehouseId".to_string(),
                 item_id: "itemId".to_string(),
-                date: "date".to_string(),
-                quantity: "quantity".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                quantity: "121.0000".to_string(),
                 lot_number: None,
                 expense_account_code: None,
                 inventory_account_code: None,
@@ -33328,7 +33473,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_stock_transfer</a>(request: PostV1InventoryStockTransferRequest) -> Result&lt;PostV1InventoryStockTransferResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">stock_transfer</a>(request: StockTransferInventoryRequest) -> Result&lt;StockTransferInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33352,13 +33497,13 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_stock_transfer(
-            &PostV1InventoryStockTransferRequest {
+        .stock_transfer(
+            &StockTransferInventoryRequest {
                 from_warehouse_id: "fromWarehouseId".to_string(),
                 to_warehouse_id: "toWarehouseId".to_string(),
                 item_id: "itemId".to_string(),
-                date: "date".to_string(),
-                quantity: "quantity".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                quantity: "121.0000".to_string(),
                 lot_number: None,
                 notes: None,
             },
@@ -33440,7 +33585,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_stock_take</a>(request: PostV1InventoryStockTakeRequest) -> Result&lt;PostV1InventoryStockTakeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">stock_take</a>(request: StockTakeInventoryRequest) -> Result&lt;StockTakeInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33464,12 +33609,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_stock_take(
-            &PostV1InventoryStockTakeRequest {
+        .stock_take(
+            &StockTakeInventoryRequest {
                 warehouse_id: "warehouseId".to_string(),
-                date: "date".to_string(),
-                lines: vec![PostV1InventoryStockTakeRequestLinesItem {
-                    counted_qty: "countedQty".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                lines: vec![StockTakeInventoryRequestLinesItem {
+                    counted_qty: "121.0000".to_string(),
                     ..Default::default()
                 }],
                 expense_account_code: None,
@@ -33525,7 +33670,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1InventoryStockTakeRequestLinesItem>` 
+**lines:** `Vec<StockTakeInventoryRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -33537,7 +33682,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_stock_levels</a>(request: PostV1InventoryStockLevelsRequest) -> Result&lt;PostV1InventoryStockLevelsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">stock_levels</a>(request: StockLevelsInventoryRequest) -> Result&lt;StockLevelsInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33561,8 +33706,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_stock_levels(
-            &PostV1InventoryStockLevelsRequest {
+        .stock_levels(
+            &StockLevelsInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -33603,7 +33748,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_stock_movements_list</a>(request: PostV1InventoryStockMovementsListRequest) -> Result&lt;PostV1InventoryStockMovementsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">stock_movements_list</a>(request: StockMovementsListInventoryRequest) -> Result&lt;StockMovementsListInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33627,8 +33772,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_stock_movements_list(
-            &PostV1InventoryStockMovementsListRequest {
+        .stock_movements_list(
+            &StockMovementsListInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -33665,7 +33810,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1InventoryStockMovementsListRequestSortItem>>` 
+**sort:** `Option<Vec<StockMovementsListInventoryRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -33673,7 +33818,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1InventoryStockMovementsListRequestFilterItem>>` 
+**filter:** `Option<Vec<StockMovementsListInventoryRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -33693,7 +33838,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_lots_list</a>(request: PostV1InventoryLotsListRequest) -> Result&lt;PostV1InventoryLotsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">lots_list</a>(request: LotsListInventoryRequest) -> Result&lt;LotsListInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33717,8 +33862,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_lots_list(
-            &PostV1InventoryLotsListRequest {
+        .lots_list(
+            &LotsListInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -33755,7 +33900,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1InventoryLotsListRequestSortItem>>` 
+**sort:** `Option<Vec<LotsListInventoryRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -33763,7 +33908,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1InventoryLotsListRequestFilterItem>>` 
+**filter:** `Option<Vec<LotsListInventoryRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -33783,7 +33928,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_lots_get</a>(request: PostV1InventoryLotsGetRequest) -> Result&lt;PostV1InventoryLotsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">lots_get</a>(request: LotsGetInventoryRequest) -> Result&lt;LotsGetInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33807,8 +33952,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_lots_get(
-            &PostV1InventoryLotsGetRequest {
+        .lots_get(
+            &LotsGetInventoryRequest {
                 id: "id".to_string(),
             },
             None,
@@ -33841,7 +33986,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_lots_update</a>(request: PostV1InventoryLotsUpdateRequest) -> Result&lt;PostV1InventoryLotsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">lots_update</a>(request: LotsUpdateInventoryRequest) -> Result&lt;LotsUpdateInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33865,8 +34010,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_lots_update(
-            &PostV1InventoryLotsUpdateRequest {
+        .lots_update(
+            &LotsUpdateInventoryRequest {
                 id: "id".to_string(),
                 expiry_date: None,
                 notes: None,
@@ -33917,7 +34062,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_landed_costs_create</a>(request: PostV1InventoryLandedCostsCreateRequest) -> Result&lt;PostV1InventoryLandedCostsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">landed_costs_create</a>(request: LandedCostsCreateInventoryRequest) -> Result&lt;LandedCostsCreateInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -33941,10 +34086,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_landed_costs_create(
-            &PostV1InventoryLandedCostsCreateRequest {
-                date: "date".to_string(),
-                amount: "amount".to_string(),
+        .landed_costs_create(
+            &LandedCostsCreateInventoryRequest {
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                amount: "121.000000".to_string(),
                 method: None,
                 goods_receipt_id: None,
                 movement_ids: None,
@@ -33985,7 +34130,7 @@ async fn main() {
 <dl>
 <dd>
 
-**method:** `Option<PostV1InventoryLandedCostsCreateRequestMethod>` 
+**method:** `Option<LandedCostsCreateInventoryRequestMethod>` 
     
 </dd>
 </dl>
@@ -34029,7 +34174,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_landed_costs_get</a>(request: PostV1InventoryLandedCostsGetRequest) -> Result&lt;PostV1InventoryLandedCostsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">landed_costs_get</a>(request: LandedCostsGetInventoryRequest) -> Result&lt;LandedCostsGetInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34053,8 +34198,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_landed_costs_get(
-            &PostV1InventoryLandedCostsGetRequest {
+        .landed_costs_get(
+            &LandedCostsGetInventoryRequest {
                 id: "id".to_string(),
             },
             None,
@@ -34087,7 +34232,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_landed_costs_list</a>(request: PostV1InventoryLandedCostsListRequest) -> Result&lt;PostV1InventoryLandedCostsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">landed_costs_list</a>(request: LandedCostsListInventoryRequest) -> Result&lt;LandedCostsListInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34111,8 +34256,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_landed_costs_list(
-            &PostV1InventoryLandedCostsListRequest {
+        .landed_costs_list(
+            &LandedCostsListInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -34149,7 +34294,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1InventoryLandedCostsListRequestSortItem>>` 
+**sort:** `Option<Vec<LandedCostsListInventoryRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -34157,7 +34302,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1InventoryLandedCostsListRequestFilterItem>>` 
+**filter:** `Option<Vec<LandedCostsListInventoryRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -34177,7 +34322,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_reorder_rules_create</a>(request: PostV1InventoryReorderRulesCreateRequest) -> Result&lt;PostV1InventoryReorderRulesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">reorder_rules_create</a>(request: ReorderRulesCreateInventoryRequest) -> Result&lt;ReorderRulesCreateInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34201,10 +34346,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_reorder_rules_create(
-            &PostV1InventoryReorderRulesCreateRequest {
+        .reorder_rules_create(
+            &ReorderRulesCreateInventoryRequest {
                 item_id: "itemId".to_string(),
-                min_qty: "minQty".to_string(),
+                min_qty: "121.0000".to_string(),
                 warehouse_id: None,
                 reorder_qty: None,
                 is_active: None,
@@ -34280,7 +34425,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_reorder_rules_update</a>(request: PostV1InventoryReorderRulesUpdateRequest) -> Result&lt;PostV1InventoryReorderRulesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">reorder_rules_update</a>(request: ReorderRulesUpdateInventoryRequest) -> Result&lt;ReorderRulesUpdateInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34304,8 +34449,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_reorder_rules_update(
-            &PostV1InventoryReorderRulesUpdateRequest {
+        .reorder_rules_update(
+            &ReorderRulesUpdateInventoryRequest {
                 id: "id".to_string(),
                 min_qty: None,
                 reorder_qty: None,
@@ -34374,7 +34519,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_reorder_rules_delete</a>(request: PostV1InventoryReorderRulesDeleteRequest) -> Result&lt;PostV1InventoryReorderRulesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">reorder_rules_delete</a>(request: ReorderRulesDeleteInventoryRequest) -> Result&lt;ReorderRulesDeleteInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34398,8 +34543,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_reorder_rules_delete(
-            &PostV1InventoryReorderRulesDeleteRequest {
+        .reorder_rules_delete(
+            &ReorderRulesDeleteInventoryRequest {
                 id: "id".to_string(),
             },
             None,
@@ -34432,7 +34577,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_reorder_rules_list</a>(request: PostV1InventoryReorderRulesListRequest) -> Result&lt;PostV1InventoryReorderRulesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">reorder_rules_list</a>(request: ReorderRulesListInventoryRequest) -> Result&lt;ReorderRulesListInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34456,8 +34601,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_reorder_rules_list(
-            &PostV1InventoryReorderRulesListRequest {
+        .reorder_rules_list(
+            &ReorderRulesListInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -34494,7 +34639,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1InventoryReorderRulesListRequestSortItem>>` 
+**sort:** `Option<Vec<ReorderRulesListInventoryRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -34502,7 +34647,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1InventoryReorderRulesListRequestFilterItem>>` 
+**filter:** `Option<Vec<ReorderRulesListInventoryRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -34522,7 +34667,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">post_v1_inventory_reorder_rules_check</a>(request: PostV1InventoryReorderRulesCheckRequest) -> Result&lt;PostV1InventoryReorderRulesCheckResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client.rs">reorder_rules_check</a>(request: ReorderRulesCheckInventoryRequest) -> Result&lt;ReorderRulesCheckInventoryResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34546,8 +34691,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .inventory
-        .post_v1inventory_reorder_rules_check(
-            &PostV1InventoryReorderRulesCheckRequest {
+        .reorder_rules_check(
+            &ReorderRulesCheckInventoryRequest {
                 ..Default::default()
             },
             None,
@@ -34565,8 +34710,8 @@ async fn main() {
 </dl>
 </details>
 
-## Production
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_work_centers_create</a>(request: PostV1ProductionWorkCentersCreateRequest) -> Result&lt;PostV1ProductionWorkCentersCreateResponse, ApiError&gt;</code></summary>
+## production
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">work_centers_create</a>(request: WorkCentersCreateProductionRequest) -> Result&lt;WorkCentersCreateProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34590,8 +34735,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_work_centers_create(
-            &PostV1ProductionWorkCentersCreateRequest {
+        .work_centers_create(
+            &WorkCentersCreateProductionRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 cost_per_hour: None,
@@ -34669,7 +34814,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_work_centers_update</a>(request: PostV1ProductionWorkCentersUpdateRequest) -> Result&lt;PostV1ProductionWorkCentersUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">work_centers_update</a>(request: WorkCentersUpdateProductionRequest) -> Result&lt;WorkCentersUpdateProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34693,8 +34838,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_work_centers_update(
-            &PostV1ProductionWorkCentersUpdateRequest {
+        .work_centers_update(
+            &WorkCentersUpdateProductionRequest {
                 id: "id".to_string(),
                 code: None,
                 name: None,
@@ -34790,7 +34935,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_work_centers_list</a>(request: PostV1ProductionWorkCentersListRequest) -> Result&lt;PostV1ProductionWorkCentersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">work_centers_list</a>(request: WorkCentersListProductionRequest) -> Result&lt;WorkCentersListProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34814,8 +34959,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_work_centers_list(
-            &PostV1ProductionWorkCentersListRequest {
+        .work_centers_list(
+            &WorkCentersListProductionRequest {
                 ..Default::default()
             },
             None,
@@ -34852,7 +34997,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProductionWorkCentersListRequestSortItem>>` 
+**sort:** `Option<Vec<WorkCentersListProductionRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -34860,7 +35005,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProductionWorkCentersListRequestFilterItem>>` 
+**filter:** `Option<Vec<WorkCentersListProductionRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -34880,7 +35025,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_routings_create</a>(request: PostV1ProductionRoutingsCreateRequest) -> Result&lt;PostV1ProductionRoutingsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">routings_create</a>(request: RoutingsCreateProductionRequest) -> Result&lt;RoutingsCreateProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34904,11 +35049,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_routings_create(
-            &PostV1ProductionRoutingsCreateRequest {
+        .routings_create(
+            &RoutingsCreateProductionRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
-                operations: vec![PostV1ProductionRoutingsCreateRequestOperationsItem {
+                operations: vec![RoutingsCreateProductionRequestOperationsItem {
                     sequence: 1000000,
                     name: "name".to_string(),
                     work_center_id: "workCenterId".to_string(),
@@ -34958,7 +35103,7 @@ async fn main() {
 <dl>
 <dd>
 
-**operations:** `Vec<PostV1ProductionRoutingsCreateRequestOperationsItem>` 
+**operations:** `Vec<RoutingsCreateProductionRequestOperationsItem>` 
     
 </dd>
 </dl>
@@ -34970,7 +35115,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_routings_get</a>(request: PostV1ProductionRoutingsGetRequest) -> Result&lt;PostV1ProductionRoutingsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">routings_get</a>(request: RoutingsGetProductionRequest) -> Result&lt;RoutingsGetProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -34994,8 +35139,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_routings_get(
-            &PostV1ProductionRoutingsGetRequest {
+        .routings_get(
+            &RoutingsGetProductionRequest {
                 id: "id".to_string(),
             },
             None,
@@ -35028,7 +35173,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_routings_list</a>(request: PostV1ProductionRoutingsListRequest) -> Result&lt;PostV1ProductionRoutingsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">routings_list</a>(request: RoutingsListProductionRequest) -> Result&lt;RoutingsListProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35052,8 +35197,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_routings_list(
-            &PostV1ProductionRoutingsListRequest {
+        .routings_list(
+            &RoutingsListProductionRequest {
                 ..Default::default()
             },
             None,
@@ -35090,7 +35235,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProductionRoutingsListRequestSortItem>>` 
+**sort:** `Option<Vec<RoutingsListProductionRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -35098,7 +35243,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProductionRoutingsListRequestFilterItem>>` 
+**filter:** `Option<Vec<RoutingsListProductionRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -35118,7 +35263,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_maintenance_create</a>(request: PostV1ProductionMaintenanceCreateRequest) -> Result&lt;PostV1ProductionMaintenanceCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">maintenance_create</a>(request: MaintenanceCreateProductionRequest) -> Result&lt;MaintenanceCreateProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35142,11 +35287,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_maintenance_create(
-            &PostV1ProductionMaintenanceCreateRequest {
+        .maintenance_create(
+            &MaintenanceCreateProductionRequest {
                 work_center_id: "workCenterId".to_string(),
-                r#type: PostV1ProductionMaintenanceCreateRequestType::Preventive,
-                planned_date: "plannedDate".to_string(),
+                r#type: MaintenanceCreateProductionRequestType::Preventive,
+                planned_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 description: None,
                 notes: None,
             },
@@ -35176,7 +35321,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1ProductionMaintenanceCreateRequestType` 
+**type_:** `MaintenanceCreateProductionRequestType` 
     
 </dd>
 </dl>
@@ -35212,7 +35357,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_maintenance_complete</a>(request: PostV1ProductionMaintenanceCompleteRequest) -> Result&lt;PostV1ProductionMaintenanceCompleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">maintenance_complete</a>(request: MaintenanceCompleteProductionRequest) -> Result&lt;MaintenanceCompleteProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35236,10 +35381,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_maintenance_complete(
-            &PostV1ProductionMaintenanceCompleteRequest {
+        .maintenance_complete(
+            &MaintenanceCompleteProductionRequest {
                 id: "id".to_string(),
-                completed_date: "completedDate".to_string(),
+                completed_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 downtime_hours: None,
                 cost: None,
                 notes: None,
@@ -35306,7 +35451,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_maintenance_cancel</a>(request: PostV1ProductionMaintenanceCancelRequest) -> Result&lt;PostV1ProductionMaintenanceCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">maintenance_cancel</a>(request: MaintenanceCancelProductionRequest) -> Result&lt;MaintenanceCancelProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35330,8 +35475,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_maintenance_cancel(
-            &PostV1ProductionMaintenanceCancelRequest {
+        .maintenance_cancel(
+            &MaintenanceCancelProductionRequest {
                 id: "id".to_string(),
             },
             None,
@@ -35364,7 +35509,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_maintenance_list</a>(request: PostV1ProductionMaintenanceListRequest) -> Result&lt;PostV1ProductionMaintenanceListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">maintenance_list</a>(request: MaintenanceListProductionRequest) -> Result&lt;MaintenanceListProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35388,8 +35533,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_maintenance_list(
-            &PostV1ProductionMaintenanceListRequest {
+        .maintenance_list(
+            &MaintenanceListProductionRequest {
                 ..Default::default()
             },
             None,
@@ -35426,7 +35571,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProductionMaintenanceListRequestSortItem>>` 
+**sort:** `Option<Vec<MaintenanceListProductionRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -35434,7 +35579,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProductionMaintenanceListRequestFilterItem>>` 
+**filter:** `Option<Vec<MaintenanceListProductionRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -35454,7 +35599,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_boms_create</a>(request: PostV1ProductionBomsCreateRequest) -> Result&lt;PostV1ProductionBomsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">boms_create</a>(request: BomsCreateProductionRequest) -> Result&lt;BomsCreateProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35478,14 +35623,14 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_boms_create(
-            &PostV1ProductionBomsCreateRequest {
+        .boms_create(
+            &BomsCreateProductionRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 finished_item_id: "finishedItemId".to_string(),
-                lines: vec![PostV1ProductionBomsCreateRequestLinesItem {
+                lines: vec![BomsCreateProductionRequestLinesItem {
                     component_item_id: "componentItemId".to_string(),
-                    quantity: "quantity".to_string(),
+                    quantity: "121.0000".to_string(),
                     ..Default::default()
                 }],
                 output_quantity: None,
@@ -35549,7 +35694,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1ProductionBomsCreateRequestLinesItem>` 
+**lines:** `Vec<BomsCreateProductionRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -35561,7 +35706,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_boms_get</a>(request: PostV1ProductionBomsGetRequest) -> Result&lt;PostV1ProductionBomsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">boms_get</a>(request: BomsGetProductionRequest) -> Result&lt;BomsGetProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35585,8 +35730,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_boms_get(
-            &PostV1ProductionBomsGetRequest {
+        .boms_get(
+            &BomsGetProductionRequest {
                 id: "id".to_string(),
             },
             None,
@@ -35619,7 +35764,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_boms_list</a>(request: PostV1ProductionBomsListRequest) -> Result&lt;PostV1ProductionBomsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">boms_list</a>(request: BomsListProductionRequest) -> Result&lt;BomsListProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35643,8 +35788,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_boms_list(
-            &PostV1ProductionBomsListRequest {
+        .boms_list(
+            &BomsListProductionRequest {
                 ..Default::default()
             },
             None,
@@ -35681,7 +35826,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProductionBomsListRequestSortItem>>` 
+**sort:** `Option<Vec<BomsListProductionRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -35689,7 +35834,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProductionBomsListRequestFilterItem>>` 
+**filter:** `Option<Vec<BomsListProductionRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -35709,7 +35854,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_orders_create</a>(request: PostV1ProductionOrdersCreateRequest) -> Result&lt;PostV1ProductionOrdersCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">orders_create</a>(request: OrdersCreateProductionRequest) -> Result&lt;OrdersCreateProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35733,12 +35878,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_orders_create(
-            &PostV1ProductionOrdersCreateRequest {
+        .orders_create(
+            &OrdersCreateProductionRequest {
                 bom_id: "bomId".to_string(),
                 warehouse_id: "warehouseId".to_string(),
-                quantity: "quantity".to_string(),
-                date: "date".to_string(),
+                quantity: "121.0000".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 r#type: None,
                 routing_id: None,
                 notes: None,
@@ -35761,7 +35906,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1ProductionOrdersCreateRequestType>` 
+**type_:** `Option<OrdersCreateProductionRequestType>` 
     
 </dd>
 </dl>
@@ -35821,7 +35966,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_orders_record_operation</a>(request: PostV1ProductionOrdersRecordOperationRequest) -> Result&lt;PostV1ProductionOrdersRecordOperationResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">orders_record_operation</a>(request: OrdersRecordOperationProductionRequest) -> Result&lt;OrdersRecordOperationProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35845,10 +35990,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_orders_record_operation(
-            &PostV1ProductionOrdersRecordOperationRequest {
+        .orders_record_operation(
+            &OrdersRecordOperationProductionRequest {
                 id: "id".to_string(),
-                actual_minutes: "actualMinutes".to_string(),
+                actual_minutes: "121.00".to_string(),
             },
             None,
         )
@@ -35888,7 +36033,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_quality_checks_add</a>(request: PostV1ProductionQualityChecksAddRequest) -> Result&lt;PostV1ProductionQualityChecksAddResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">quality_checks_add</a>(request: QualityChecksAddProductionRequest) -> Result&lt;QualityChecksAddProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35912,8 +36057,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_quality_checks_add(
-            &PostV1ProductionQualityChecksAddRequest {
+        .quality_checks_add(
+            &QualityChecksAddProductionRequest {
                 order_id: "orderId".to_string(),
                 name: "name".to_string(),
                 notes: None,
@@ -35964,7 +36109,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_quality_checks_record</a>(request: PostV1ProductionQualityChecksRecordRequest) -> Result&lt;PostV1ProductionQualityChecksRecordResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">quality_checks_record</a>(request: QualityChecksRecordProductionRequest) -> Result&lt;QualityChecksRecordProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -35988,10 +36133,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_quality_checks_record(
-            &PostV1ProductionQualityChecksRecordRequest {
+        .quality_checks_record(
+            &QualityChecksRecordProductionRequest {
                 id: "id".to_string(),
-                result: PostV1ProductionQualityChecksRecordRequestResult::Passed,
+                result: QualityChecksRecordProductionRequestResult::Passed,
                 notes: None,
             },
             None,
@@ -36020,7 +36165,7 @@ async fn main() {
 <dl>
 <dd>
 
-**result:** `PostV1ProductionQualityChecksRecordRequestResult` 
+**result:** `QualityChecksRecordProductionRequestResult` 
     
 </dd>
 </dl>
@@ -36040,7 +36185,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_quality_checks_list</a>(request: PostV1ProductionQualityChecksListRequest) -> Result&lt;PostV1ProductionQualityChecksListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">quality_checks_list</a>(request: QualityChecksListProductionRequest) -> Result&lt;QualityChecksListProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36064,8 +36209,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_quality_checks_list(
-            &PostV1ProductionQualityChecksListRequest {
+        .quality_checks_list(
+            &QualityChecksListProductionRequest {
                 ..Default::default()
             },
             None,
@@ -36102,7 +36247,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProductionQualityChecksListRequestSortItem>>` 
+**sort:** `Option<Vec<QualityChecksListProductionRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -36110,7 +36255,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProductionQualityChecksListRequestFilterItem>>` 
+**filter:** `Option<Vec<QualityChecksListProductionRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -36130,7 +36275,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_orders_complete</a>(request: PostV1ProductionOrdersCompleteRequest) -> Result&lt;PostV1ProductionOrdersCompleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">orders_complete</a>(request: OrdersCompleteProductionRequest) -> Result&lt;OrdersCompleteProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36154,8 +36299,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_orders_complete(
-            &PostV1ProductionOrdersCompleteRequest {
+        .orders_complete(
+            &OrdersCompleteProductionRequest {
                 id: "id".to_string(),
                 scrapped_quantity: None,
                 components_account_code: None,
@@ -36215,7 +36360,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_orders_get</a>(request: PostV1ProductionOrdersGetRequest) -> Result&lt;PostV1ProductionOrdersGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">orders_get</a>(request: OrdersGetProductionRequest) -> Result&lt;OrdersGetProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36239,8 +36384,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_orders_get(
-            &PostV1ProductionOrdersGetRequest {
+        .orders_get(
+            &OrdersGetProductionRequest {
                 id: "id".to_string(),
             },
             None,
@@ -36273,7 +36418,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">post_v1_production_orders_list</a>(request: PostV1ProductionOrdersListRequest) -> Result&lt;PostV1ProductionOrdersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.production.<a href="/src/api/resources/production/client.rs">orders_list</a>(request: OrdersListProductionRequest) -> Result&lt;OrdersListProductionResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36297,8 +36442,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .production
-        .post_v1production_orders_list(
-            &PostV1ProductionOrdersListRequest {
+        .orders_list(
+            &OrdersListProductionRequest {
                 ..Default::default()
             },
             None,
@@ -36335,7 +36480,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProductionOrdersListRequestSortItem>>` 
+**sort:** `Option<Vec<OrdersListProductionRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -36343,7 +36488,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProductionOrdersListRequestFilterItem>>` 
+**filter:** `Option<Vec<OrdersListProductionRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -36363,8 +36508,8 @@ async fn main() {
 </dl>
 </details>
 
-## Ecommerce
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_orders_create</a>(request: PostV1EcommerceOrdersCreateRequest) -> Result&lt;PostV1EcommerceOrdersCreateResponse, ApiError&gt;</code></summary>
+## ecommerce
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">orders_create</a>(request: OrdersCreateEcommerceRequest) -> Result&lt;OrdersCreateEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36388,12 +36533,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_orders_create(
-            &PostV1EcommerceOrdersCreateRequest {
-                lines: vec![PostV1EcommerceOrdersCreateRequestLinesItem {
+        .orders_create(
+            &OrdersCreateEcommerceRequest {
+                lines: vec![OrdersCreateEcommerceRequestLinesItem {
                     description: "description".to_string(),
-                    quantity: "quantity".to_string(),
-                    unit_price_excl_vat: "unitPriceExclVat".to_string(),
+                    quantity: "121.0000".to_string(),
+                    unit_price_excl_vat: "121.0000".to_string(),
                     ..Default::default()
                 }],
                 channel: None,
@@ -36448,7 +36593,7 @@ async fn main() {
 <dl>
 <dd>
 
-**partner:** `Option<PostV1EcommerceOrdersCreateRequestPartner>` 
+**partner:** `Option<OrdersCreateEcommerceRequestPartner>` 
     
 </dd>
 </dl>
@@ -36496,7 +36641,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Vec<PostV1EcommerceOrdersCreateRequestLinesItem>` 
+**lines:** `Vec<OrdersCreateEcommerceRequestLinesItem>` 
     
 </dd>
 </dl>
@@ -36508,7 +36653,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_orders_get</a>(request: PostV1EcommerceOrdersGetRequest) -> Result&lt;PostV1EcommerceOrdersGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">orders_get</a>(request: OrdersGetEcommerceRequest) -> Result&lt;OrdersGetEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36532,8 +36677,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_orders_get(
-            &PostV1EcommerceOrdersGetRequest {
+        .orders_get(
+            &OrdersGetEcommerceRequest {
                 id: "id".to_string(),
             },
             None,
@@ -36566,7 +36711,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_orders_list</a>(request: PostV1EcommerceOrdersListRequest) -> Result&lt;PostV1EcommerceOrdersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">orders_list</a>(request: OrdersListEcommerceRequest) -> Result&lt;OrdersListEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36590,8 +36735,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_orders_list(
-            &PostV1EcommerceOrdersListRequest {
+        .orders_list(
+            &OrdersListEcommerceRequest {
                 ..Default::default()
             },
             None,
@@ -36628,7 +36773,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1EcommerceOrdersListRequestSortItem>>` 
+**sort:** `Option<Vec<OrdersListEcommerceRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -36636,7 +36781,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1EcommerceOrdersListRequestFilterItem>>` 
+**filter:** `Option<Vec<OrdersListEcommerceRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -36656,7 +36801,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_orders_reserve</a>(request: PostV1EcommerceOrdersReserveRequest) -> Result&lt;PostV1EcommerceOrdersReserveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">orders_reserve</a>(request: OrdersReserveEcommerceRequest) -> Result&lt;OrdersReserveEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36680,8 +36825,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_orders_reserve(
-            &PostV1EcommerceOrdersReserveRequest {
+        .orders_reserve(
+            &OrdersReserveEcommerceRequest {
                 id: "id".to_string(),
                 warehouse_id: None,
             },
@@ -36723,7 +36868,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_orders_fulfill</a>(request: PostV1EcommerceOrdersFulfillRequest) -> Result&lt;PostV1EcommerceOrdersFulfillResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">orders_fulfill</a>(request: OrdersFulfillEcommerceRequest) -> Result&lt;OrdersFulfillEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36747,8 +36892,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_orders_fulfill(
-            &PostV1EcommerceOrdersFulfillRequest {
+        .orders_fulfill(
+            &OrdersFulfillEcommerceRequest {
                 id: "id".to_string(),
                 date: None,
                 cogs_account_code: None,
@@ -36808,7 +36953,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_orders_cancel</a>(request: PostV1EcommerceOrdersCancelRequest) -> Result&lt;PostV1EcommerceOrdersCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">orders_cancel</a>(request: OrdersCancelEcommerceRequest) -> Result&lt;OrdersCancelEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36832,8 +36977,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_orders_cancel(
-            &PostV1EcommerceOrdersCancelRequest {
+        .orders_cancel(
+            &OrdersCancelEcommerceRequest {
                 id: "id".to_string(),
             },
             None,
@@ -36866,7 +37011,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_products_list</a>(request: PostV1EcommerceProductsListRequest) -> Result&lt;PostV1EcommerceProductsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">products_list</a>(request: ProductsListEcommerceRequest) -> Result&lt;ProductsListEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36890,8 +37035,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_products_list(
-            &PostV1EcommerceProductsListRequest {
+        .products_list(
+            &ProductsListEcommerceRequest {
                 ..Default::default()
             },
             None,
@@ -36956,7 +37101,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">post_v1_ecommerce_stock_list</a>(request: PostV1EcommerceStockListRequest) -> Result&lt;PostV1EcommerceStockListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client.rs">stock_list</a>(request: StockListEcommerceRequest) -> Result&lt;StockListEcommerceResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -36980,8 +37125,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .ecommerce
-        .post_v1ecommerce_stock_list(
-            &PostV1EcommerceStockListRequest {
+        .stock_list(
+            &StockListEcommerceRequest {
                 ..Default::default()
             },
             None,
@@ -37014,8 +37159,8 @@ async fn main() {
 </dl>
 </details>
 
-## Cash
-<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">post_v1_cash_orders_create</a>(request: PostV1CashOrdersCreateRequest) -> Result&lt;PostV1CashOrdersCreateResponse, ApiError&gt;</code></summary>
+## cash
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">orders_create</a>(request: OrdersCreateCashRequest) -> Result&lt;OrdersCreateCashResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37039,11 +37184,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .cash
-        .post_v1cash_orders_create(
-            &PostV1CashOrdersCreateRequest {
-                r#type: PostV1CashOrdersCreateRequestType::Receipt,
-                date: "date".to_string(),
-                amount: "amount".to_string(),
+        .orders_create(
+            &OrdersCreateCashRequest {
+                r#type: OrdersCreateCashRequestType::Receipt,
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                amount: "121.0000".to_string(),
                 purpose: "purpose".to_string(),
                 counter_account_code: "counterAccountCode".to_string(),
                 cash_account_code: None,
@@ -37070,7 +37215,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1CashOrdersCreateRequestType` 
+**type_:** `OrdersCreateCashRequestType` 
     
 </dd>
 </dl>
@@ -37154,7 +37299,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">post_v1_cash_orders_get</a>(request: PostV1CashOrdersGetRequest) -> Result&lt;PostV1CashOrdersGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">orders_get</a>(request: OrdersGetCashRequest) -> Result&lt;OrdersGetCashResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37178,8 +37323,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .cash
-        .post_v1cash_orders_get(
-            &PostV1CashOrdersGetRequest {
+        .orders_get(
+            &OrdersGetCashRequest {
                 id: "id".to_string(),
             },
             None,
@@ -37212,7 +37357,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">post_v1_cash_orders_list</a>(request: PostV1CashOrdersListRequest) -> Result&lt;PostV1CashOrdersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">orders_list</a>(request: OrdersListCashRequest) -> Result&lt;OrdersListCashResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37236,8 +37381,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .cash
-        .post_v1cash_orders_list(
-            &PostV1CashOrdersListRequest {
+        .orders_list(
+            &OrdersListCashRequest {
                 ..Default::default()
             },
             None,
@@ -37274,7 +37419,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1CashOrdersListRequestSortItem>>` 
+**sort:** `Option<Vec<OrdersListCashRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -37282,7 +37427,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1CashOrdersListRequestFilterItem>>` 
+**filter:** `Option<Vec<OrdersListCashRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -37302,7 +37447,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">post_v1_cash_balance</a>(request: PostV1CashBalanceRequest) -> Result&lt;PostV1CashBalanceResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">balance</a>(request: BalanceCashRequest) -> Result&lt;BalanceCashResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37326,8 +37471,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .cash
-        .post_v1cash_balance(
-            &PostV1CashBalanceRequest {
+        .balance(
+            &BalanceCashRequest {
                 ..Default::default()
             },
             None,
@@ -37368,7 +37513,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">post_v1_cash_advance_holders_balances</a>(request: PostV1CashAdvanceHoldersBalancesRequest) -> Result&lt;PostV1CashAdvanceHoldersBalancesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">advance_holders_balances</a>(request: AdvanceHoldersBalancesCashRequest) -> Result&lt;AdvanceHoldersBalancesCashResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37392,8 +37537,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .cash
-        .post_v1cash_advance_holders_balances(
-            &PostV1CashAdvanceHoldersBalancesRequest {
+        .advance_holders_balances(
+            &AdvanceHoldersBalancesCashRequest {
                 ..Default::default()
             },
             None,
@@ -37411,8 +37556,8 @@ async fn main() {
 </dl>
 </details>
 
-## Projects
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_create</a>(request: PostV1ProjectsCreateRequest) -> Result&lt;PostV1ProjectsCreateResponse, ApiError&gt;</code></summary>
+## projects
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">create</a>(request: CreateProjectsRequest) -> Result&lt;CreateProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37436,8 +37581,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_create(
-            &PostV1ProjectsCreateRequest {
+        .create(
+            &CreateProjectsRequest {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 partner_id: None,
@@ -37497,7 +37642,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_update</a>(request: PostV1ProjectsUpdateRequest) -> Result&lt;PostV1ProjectsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">update</a>(request: UpdateProjectsRequest) -> Result&lt;UpdateProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37521,8 +37666,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_update(
-            &PostV1ProjectsUpdateRequest {
+        .update(
+            &UpdateProjectsRequest {
                 id: "id".to_string(),
                 name: None,
                 partner_id: None,
@@ -37571,7 +37716,7 @@ async fn main() {
 <dl>
 <dd>
 
-**status:** `Option<PostV1ProjectsUpdateRequestStatus>` 
+**status:** `Option<UpdateProjectsRequestStatus>` 
     
 </dd>
 </dl>
@@ -37591,7 +37736,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_get</a>(request: PostV1ProjectsGetRequest) -> Result&lt;PostV1ProjectsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">get</a>(request: GetProjectsRequest) -> Result&lt;GetProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37615,8 +37760,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_get(
-            &PostV1ProjectsGetRequest {
+        .get(
+            &GetProjectsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -37649,7 +37794,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_list</a>(request: PostV1ProjectsListRequest) -> Result&lt;PostV1ProjectsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">list</a>(request: ListProjectsRequest) -> Result&lt;ListProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37673,8 +37818,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_list(
-            &PostV1ProjectsListRequest {
+        .list(
+            &ListProjectsRequest {
                 ..Default::default()
             },
             None,
@@ -37711,7 +37856,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProjectsListRequestSortItem>>` 
+**sort:** `Option<Vec<ListProjectsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -37719,7 +37864,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProjectsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListProjectsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -37739,7 +37884,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_time_entries_create</a>(request: PostV1ProjectsTimeEntriesCreateRequest) -> Result&lt;PostV1ProjectsTimeEntriesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">time_entries_create</a>(request: TimeEntriesCreateProjectsRequest) -> Result&lt;TimeEntriesCreateProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37763,11 +37908,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_time_entries_create(
-            &PostV1ProjectsTimeEntriesCreateRequest {
+        .time_entries_create(
+            &TimeEntriesCreateProjectsRequest {
                 project_id: "projectId".to_string(),
-                date: "date".to_string(),
-                hours: "hours".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                hours: "121.00".to_string(),
                 employee_id: None,
                 description: None,
                 billable: None,
@@ -37851,7 +37996,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_time_entries_update</a>(request: PostV1ProjectsTimeEntriesUpdateRequest) -> Result&lt;PostV1ProjectsTimeEntriesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">time_entries_update</a>(request: TimeEntriesUpdateProjectsRequest) -> Result&lt;TimeEntriesUpdateProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37875,8 +38020,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_time_entries_update(
-            &PostV1ProjectsTimeEntriesUpdateRequest {
+        .time_entries_update(
+            &TimeEntriesUpdateProjectsRequest {
                 id: "id".to_string(),
                 date: None,
                 hours: None,
@@ -37954,7 +38099,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_time_entries_delete</a>(request: PostV1ProjectsTimeEntriesDeleteRequest) -> Result&lt;PostV1ProjectsTimeEntriesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">time_entries_delete</a>(request: TimeEntriesDeleteProjectsRequest) -> Result&lt;TimeEntriesDeleteProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -37978,8 +38123,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_time_entries_delete(
-            &PostV1ProjectsTimeEntriesDeleteRequest {
+        .time_entries_delete(
+            &TimeEntriesDeleteProjectsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -38012,7 +38157,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_time_entries_list</a>(request: PostV1ProjectsTimeEntriesListRequest) -> Result&lt;PostV1ProjectsTimeEntriesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">time_entries_list</a>(request: TimeEntriesListProjectsRequest) -> Result&lt;TimeEntriesListProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38036,8 +38181,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_time_entries_list(
-            &PostV1ProjectsTimeEntriesListRequest {
+        .time_entries_list(
+            &TimeEntriesListProjectsRequest {
                 ..Default::default()
             },
             None,
@@ -38074,7 +38219,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ProjectsTimeEntriesListRequestSortItem>>` 
+**sort:** `Option<Vec<TimeEntriesListProjectsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -38082,7 +38227,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ProjectsTimeEntriesListRequestFilterItem>>` 
+**filter:** `Option<Vec<TimeEntriesListProjectsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -38102,7 +38247,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_time_entries_bill</a>(request: PostV1ProjectsTimeEntriesBillRequest) -> Result&lt;PostV1ProjectsTimeEntriesBillResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">time_entries_bill</a>(request: TimeEntriesBillProjectsRequest) -> Result&lt;TimeEntriesBillProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38126,8 +38271,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_time_entries_bill(
-            &PostV1ProjectsTimeEntriesBillRequest {
+        .time_entries_bill(
+            &TimeEntriesBillProjectsRequest {
                 project_id: "projectId".to_string(),
                 partner_id: None,
                 date_from: None,
@@ -38239,7 +38384,7 @@ async fn main() {
 <dl>
 <dd>
 
-**group_by:** `Option<PostV1ProjectsTimeEntriesBillRequestGroupBy>` 
+**group_by:** `Option<TimeEntriesBillProjectsRequestGroupBy>` 
     
 </dd>
 </dl>
@@ -38259,7 +38404,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">post_v1_projects_report</a>(request: PostV1ProjectsReportRequest) -> Result&lt;PostV1ProjectsReportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.projects.<a href="/src/api/resources/projects/client.rs">report</a>(request: ReportProjectsRequest) -> Result&lt;ReportProjectsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38283,8 +38428,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .projects
-        .post_v1projects_report(
-            &PostV1ProjectsReportRequest {
+        .report(
+            &ReportProjectsRequest {
                 ..Default::default()
             },
             None,
@@ -38333,8 +38478,8 @@ async fn main() {
 </dl>
 </details>
 
-## Transport
-<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">post_v1_transport_waybills_create</a>(request: PostV1TransportWaybillsCreateRequest) -> Result&lt;PostV1TransportWaybillsCreateResponse, ApiError&gt;</code></summary>
+## transport
+<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">waybills_create</a>(request: WaybillsCreateTransportRequest) -> Result&lt;WaybillsCreateTransportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38358,8 +38503,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .transport
-        .post_v1transport_waybills_create(
-            &PostV1TransportWaybillsCreateRequest {
+        .waybills_create(
+            &WaybillsCreateTransportRequest {
                 consignee_partner_id: "consigneePartnerId".to_string(),
                 dispatch_at: DateTime::parse_from_rfc3339("2024-01-15T09:30:00Z").unwrap(),
                 load_address: "loadAddress".to_string(),
@@ -38524,7 +38669,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1TransportWaybillsCreateRequestLinesItem>>` 
+**lines:** `Option<Vec<WaybillsCreateTransportRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -38536,7 +38681,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">post_v1_transport_waybills_update</a>(request: PostV1TransportWaybillsUpdateRequest) -> Result&lt;PostV1TransportWaybillsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">waybills_update</a>(request: WaybillsUpdateTransportRequest) -> Result&lt;WaybillsUpdateTransportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38560,8 +38705,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .transport
-        .post_v1transport_waybills_update(
-            &PostV1TransportWaybillsUpdateRequest {
+        .waybills_update(
+            &WaybillsUpdateTransportRequest {
                 id: "id".to_string(),
                 consignee_partner_id: None,
                 transporter_partner_id: None,
@@ -38727,7 +38872,7 @@ async fn main() {
 <dl>
 <dd>
 
-**lines:** `Option<Vec<PostV1TransportWaybillsUpdateRequestLinesItem>>` 
+**lines:** `Option<Vec<WaybillsUpdateTransportRequestLinesItem>>` 
     
 </dd>
 </dl>
@@ -38747,7 +38892,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">post_v1_transport_waybills_issue</a>(request: PostV1TransportWaybillsIssueRequest) -> Result&lt;PostV1TransportWaybillsIssueResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">waybills_issue</a>(request: WaybillsIssueTransportRequest) -> Result&lt;WaybillsIssueTransportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38771,8 +38916,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .transport
-        .post_v1transport_waybills_issue(
-            &PostV1TransportWaybillsIssueRequest {
+        .waybills_issue(
+            &WaybillsIssueTransportRequest {
                 id: "id".to_string(),
             },
             None,
@@ -38805,7 +38950,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">post_v1_transport_waybills_cancel</a>(request: PostV1TransportWaybillsCancelRequest) -> Result&lt;PostV1TransportWaybillsCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">waybills_cancel</a>(request: WaybillsCancelTransportRequest) -> Result&lt;WaybillsCancelTransportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38829,8 +38974,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .transport
-        .post_v1transport_waybills_cancel(
-            &PostV1TransportWaybillsCancelRequest {
+        .waybills_cancel(
+            &WaybillsCancelTransportRequest {
                 id: "id".to_string(),
             },
             None,
@@ -38863,7 +39008,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">post_v1_transport_waybills_get</a>(request: PostV1TransportWaybillsGetRequest) -> Result&lt;PostV1TransportWaybillsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">waybills_get</a>(request: WaybillsGetTransportRequest) -> Result&lt;WaybillsGetTransportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38887,8 +39032,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .transport
-        .post_v1transport_waybills_get(
-            &PostV1TransportWaybillsGetRequest {
+        .waybills_get(
+            &WaybillsGetTransportRequest {
                 id: "id".to_string(),
             },
             None,
@@ -38921,7 +39066,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">post_v1_transport_waybills_list</a>(request: PostV1TransportWaybillsListRequest) -> Result&lt;PostV1TransportWaybillsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.transport.<a href="/src/api/resources/transport/client.rs">waybills_list</a>(request: WaybillsListTransportRequest) -> Result&lt;WaybillsListTransportResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -38945,8 +39090,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .transport
-        .post_v1transport_waybills_list(
-            &PostV1TransportWaybillsListRequest {
+        .waybills_list(
+            &WaybillsListTransportRequest {
                 ..Default::default()
             },
             None,
@@ -38983,7 +39128,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1TransportWaybillsListRequestSortItem>>` 
+**sort:** `Option<Vec<WaybillsListTransportRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -38991,7 +39136,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1TransportWaybillsListRequestFilterItem>>` 
+**filter:** `Option<Vec<WaybillsListTransportRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -39011,8 +39156,8 @@ async fn main() {
 </dl>
 </details>
 
-## Pos
-<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">post_v1_pos_devices_create</a>(request: PostV1PosDevicesCreateRequest) -> Result&lt;PostV1PosDevicesCreateResponse, ApiError&gt;</code></summary>
+## pos
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">devices_create</a>(request: DevicesCreatePosRequest) -> Result&lt;DevicesCreatePosResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39036,8 +39181,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .pos
-        .post_v1pos_devices_create(
-            &PostV1PosDevicesCreateRequest {
+        .devices_create(
+            &DevicesCreatePosRequest {
                 name: "name".to_string(),
                 serial_number: "serialNumber".to_string(),
                 model: None,
@@ -39106,7 +39251,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">post_v1_pos_devices_update</a>(request: PostV1PosDevicesUpdateRequest) -> Result&lt;PostV1PosDevicesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">devices_update</a>(request: DevicesUpdatePosRequest) -> Result&lt;DevicesUpdatePosResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39130,8 +39275,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .pos
-        .post_v1pos_devices_update(
-            &PostV1PosDevicesUpdateRequest {
+        .devices_update(
+            &DevicesUpdatePosRequest {
                 id: "id".to_string(),
                 is_active: None,
                 name: None,
@@ -39218,7 +39363,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">post_v1_pos_devices_list</a>(request: PostV1PosDevicesListRequest) -> Result&lt;PostV1PosDevicesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">devices_list</a>(request: DevicesListPosRequest) -> Result&lt;DevicesListPosResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39242,8 +39387,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .pos
-        .post_v1pos_devices_list(
-            &PostV1PosDevicesListRequest {
+        .devices_list(
+            &DevicesListPosRequest {
                 ..Default::default()
             },
             None,
@@ -39280,7 +39425,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PosDevicesListRequestSortItem>>` 
+**sort:** `Option<Vec<DevicesListPosRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -39288,7 +39433,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PosDevicesListRequestFilterItem>>` 
+**filter:** `Option<Vec<DevicesListPosRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -39308,7 +39453,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">post_v1_pos_reports_create</a>(request: PostV1PosReportsCreateRequest) -> Result&lt;PostV1PosReportsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">reports_create</a>(request: ReportsCreatePosRequest) -> Result&lt;ReportsCreatePosResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39332,14 +39477,14 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .pos
-        .post_v1pos_reports_create(
-            &PostV1PosReportsCreateRequest {
+        .reports_create(
+            &ReportsCreatePosRequest {
                 report_number: "reportNumber".to_string(),
-                date: "date".to_string(),
-                vat_lines: vec![PostV1PosReportsCreateRequestVatLinesItem {
-                    vat_rate_percent: "vatRatePercent".to_string(),
-                    net_amount: "netAmount".to_string(),
-                    vat_amount: "vatAmount".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                vat_lines: vec![ReportsCreatePosRequestVatLinesItem {
+                    vat_rate_percent: "121.00".to_string(),
+                    net_amount: "121.0000".to_string(),
+                    vat_amount: "121.0000".to_string(),
                     ..Default::default()
                 }],
                 device_id: None,
@@ -39405,7 +39550,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_lines:** `Vec<PostV1PosReportsCreateRequestVatLinesItem>` 
+**vat_lines:** `Vec<ReportsCreatePosRequestVatLinesItem>` 
     
 </dd>
 </dl>
@@ -39429,7 +39574,7 @@ async fn main() {
 <dl>
 <dd>
 
-**item_lines:** `Option<Vec<PostV1PosReportsCreateRequestItemLinesItem>>` 
+**item_lines:** `Option<Vec<ReportsCreatePosRequestItemLinesItem>>` 
     
 </dd>
 </dl>
@@ -39497,7 +39642,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">post_v1_pos_reports_get</a>(request: PostV1PosReportsGetRequest) -> Result&lt;PostV1PosReportsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">reports_get</a>(request: ReportsGetPosRequest) -> Result&lt;ReportsGetPosResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39521,8 +39666,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .pos
-        .post_v1pos_reports_get(
-            &PostV1PosReportsGetRequest {
+        .reports_get(
+            &ReportsGetPosRequest {
                 id: "id".to_string(),
             },
             None,
@@ -39555,7 +39700,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">post_v1_pos_reports_list</a>(request: PostV1PosReportsListRequest) -> Result&lt;PostV1PosReportsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">reports_list</a>(request: ReportsListPosRequest) -> Result&lt;ReportsListPosResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39579,8 +39724,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .pos
-        .post_v1pos_reports_list(
-            &PostV1PosReportsListRequest {
+        .reports_list(
+            &ReportsListPosRequest {
                 ..Default::default()
             },
             None,
@@ -39617,7 +39762,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1PosReportsListRequestSortItem>>` 
+**sort:** `Option<Vec<ReportsListPosRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -39625,7 +39770,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1PosReportsListRequestFilterItem>>` 
+**filter:** `Option<Vec<ReportsListPosRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -39645,8 +39790,8 @@ async fn main() {
 </dl>
 </details>
 
-## Calendar
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_list</a>(request: PostV1CalendarListRequest) -> Result&lt;PostV1CalendarListResponse, ApiError&gt;</code></summary>
+## calendar
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">list</a>(request: ListCalendarRequest) -> Result&lt;ListCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39670,8 +39815,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .post_v1calendar_list(
-            &PostV1CalendarListRequest {
+        .list(
+            &ListCalendarRequest {
                 ..Default::default()
             },
             None,
@@ -39720,7 +39865,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_get</a>(request: PostV1CalendarGetRequest) -> Result&lt;PostV1CalendarGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">get</a>(request: GetCalendarRequest) -> Result&lt;GetCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39744,8 +39889,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .post_v1calendar_get(
-            &PostV1CalendarGetRequest {
+        .get(
+            &GetCalendarRequest {
                 key: "key".to_string(),
             },
             None,
@@ -39778,9 +39923,23 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">generate_the_filing_for_a_deadline_and_send_it_to_the_administration</a>(request: PostV1CalendarSubmitRequest) -> Result&lt;PostV1CalendarSubmitResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">submit</a>(request: SubmitCalendarRequest) -> Result&lt;SubmitCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+With amend: true the return is filed again as a correction of the one already submitted or accepted for the period; only returns whose format has a correction mark accept it.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -39802,9 +39961,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .generate_the_filing_for_a_deadline_and_send_it_to_the_administration(
-            &PostV1CalendarSubmitRequest {
+        .submit(
+            &SubmitCalendarRequest {
                 key: "key".to_string(),
+                amend: None,
             },
             None,
         )
@@ -39828,6 +39988,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**amend:** `Option<bool>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -39836,7 +40004,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">generate_the_file_of_a_deadline_for_the_company_to_send_itself</a>(request: PostV1CalendarDownloadRequest) -> Result&lt;PostV1CalendarDownloadResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">download</a>(request: DownloadCalendarRequest) -> Result&lt;DownloadCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39874,8 +40042,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .generate_the_file_of_a_deadline_for_the_company_to_send_itself(
-            &PostV1CalendarDownloadRequest {
+        .download(
+            &DownloadCalendarRequest {
                 key: "key".to_string(),
             },
             None,
@@ -39908,7 +40076,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_create</a>(request: PostV1CalendarCreateRequest) -> Result&lt;PostV1CalendarCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">create</a>(request: CreateCalendarRequest) -> Result&lt;CreateCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -39932,10 +40100,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .post_v1calendar_create(
-            &PostV1CalendarCreateRequest {
+        .create(
+            &CreateCalendarRequest {
                 title: "title".to_string(),
-                due_date: "dueDate".to_string(),
+                due_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 notes: None,
                 done: None,
             },
@@ -39993,7 +40161,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_update</a>(request: PostV1CalendarUpdateRequest) -> Result&lt;PostV1CalendarUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">update</a>(request: UpdateCalendarRequest) -> Result&lt;UpdateCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40017,8 +40185,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .post_v1calendar_update(
-            &PostV1CalendarUpdateRequest {
+        .update(
+            &UpdateCalendarRequest {
                 key: "key".to_string(),
                 title: None,
                 due_date: None,
@@ -40087,7 +40255,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">post_v1_calendar_delete</a>(request: PostV1CalendarDeleteRequest) -> Result&lt;PostV1CalendarDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">delete</a>(request: DeleteCalendarRequest) -> Result&lt;DeleteCalendarResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40111,8 +40279,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .calendar
-        .post_v1calendar_delete(
-            &PostV1CalendarDeleteRequest {
+        .delete(
+            &DeleteCalendarRequest {
                 key: "key".to_string(),
             },
             None,
@@ -40145,8 +40313,8 @@ async fn main() {
 </dl>
 </details>
 
-## Audit
-<details><summary><code>client.audit.<a href="/src/api/resources/audit/client.rs">post_v1_audit_list</a>(request: PostV1AuditListRequest) -> Result&lt;PostV1AuditListResponse, ApiError&gt;</code></summary>
+## audit
+<details><summary><code>client.audit.<a href="/src/api/resources/audit/client.rs">list</a>(request: ListAuditRequest) -> Result&lt;ListAuditResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40170,8 +40338,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .audit
-        .post_v1audit_list(
-            &PostV1AuditListRequest {
+        .list(
+            &ListAuditRequest {
                 ..Default::default()
             },
             None,
@@ -40208,7 +40376,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1AuditListRequestSortItem>>` 
+**sort:** `Option<Vec<ListAuditRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -40216,7 +40384,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1AuditListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListAuditRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -40236,8 +40404,8 @@ async fn main() {
 </dl>
 </details>
 
-## Webhooks
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">post_v1_webhooks_subscriptions_create</a>(request: PostV1WebhooksSubscriptionsCreateRequest) -> Result&lt;PostV1WebhooksSubscriptionsCreateResponse, ApiError&gt;</code></summary>
+## webhooks
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">subscriptions_create</a>(request: SubscriptionsCreateWebhooksRequest) -> Result&lt;SubscriptionsCreateWebhooksResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40261,10 +40429,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .webhooks
-        .post_v1webhooks_subscriptions_create(
-            &PostV1WebhooksSubscriptionsCreateRequest {
+        .subscriptions_create(
+            &SubscriptionsCreateWebhooksRequest {
                 url: "url".to_string(),
-                events: vec!["events".to_string()],
+                events: vec![
+                    SubscriptionsCreateWebhooksRequestEventsItem::AgreementInvoiceGenerated,
+                ],
                 secret: None,
             },
             None,
@@ -40293,7 +40463,7 @@ async fn main() {
 <dl>
 <dd>
 
-**events:** `Vec<String>` 
+**events:** `Vec<SubscriptionsCreateWebhooksRequestEventsItem>` 
     
 </dd>
 </dl>
@@ -40313,7 +40483,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">post_v1_webhooks_subscriptions_list</a>(request: PostV1WebhooksSubscriptionsListRequest) -> Result&lt;PostV1WebhooksSubscriptionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">subscriptions_list</a>(request: SubscriptionsListWebhooksRequest) -> Result&lt;SubscriptionsListWebhooksResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40337,8 +40507,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .webhooks
-        .post_v1webhooks_subscriptions_list(
-            &PostV1WebhooksSubscriptionsListRequest {
+        .subscriptions_list(
+            &SubscriptionsListWebhooksRequest {
                 ..Default::default()
             },
             None,
@@ -40375,7 +40545,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1WebhooksSubscriptionsListRequestSortItem>>` 
+**sort:** `Option<Vec<SubscriptionsListWebhooksRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -40383,7 +40553,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1WebhooksSubscriptionsListRequestFilterItem>>` 
+**filter:** `Option<Vec<SubscriptionsListWebhooksRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -40403,7 +40573,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">post_v1_webhooks_subscriptions_update</a>(request: PostV1WebhooksSubscriptionsUpdateRequest) -> Result&lt;PostV1WebhooksSubscriptionsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">subscriptions_update</a>(request: SubscriptionsUpdateWebhooksRequest) -> Result&lt;SubscriptionsUpdateWebhooksResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40427,8 +40597,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .webhooks
-        .post_v1webhooks_subscriptions_update(
-            &PostV1WebhooksSubscriptionsUpdateRequest {
+        .subscriptions_update(
+            &SubscriptionsUpdateWebhooksRequest {
                 id: "id".to_string(),
                 url: None,
                 events: None,
@@ -40468,7 +40638,7 @@ async fn main() {
 <dl>
 <dd>
 
-**events:** `Option<Vec<String>>` 
+**events:** `Option<Vec<SubscriptionsUpdateWebhooksRequestEventsItem>>` 
     
 </dd>
 </dl>
@@ -40488,7 +40658,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">post_v1_webhooks_subscriptions_delete</a>(request: PostV1WebhooksSubscriptionsDeleteRequest) -> Result&lt;PostV1WebhooksSubscriptionsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">subscriptions_delete</a>(request: SubscriptionsDeleteWebhooksRequest) -> Result&lt;SubscriptionsDeleteWebhooksResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40512,8 +40682,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .webhooks
-        .post_v1webhooks_subscriptions_delete(
-            &PostV1WebhooksSubscriptionsDeleteRequest {
+        .subscriptions_delete(
+            &SubscriptionsDeleteWebhooksRequest {
                 id: "id".to_string(),
             },
             None,
@@ -40546,7 +40716,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">post_v1_webhooks_deliveries_list</a>(request: PostV1WebhooksDeliveriesListRequest) -> Result&lt;PostV1WebhooksDeliveriesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">deliveries_list</a>(request: DeliveriesListWebhooksRequest) -> Result&lt;DeliveriesListWebhooksResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40570,8 +40740,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .webhooks
-        .post_v1webhooks_deliveries_list(
-            &PostV1WebhooksDeliveriesListRequest {
+        .deliveries_list(
+            &DeliveriesListWebhooksRequest {
                 ..Default::default()
             },
             None,
@@ -40608,7 +40778,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1WebhooksDeliveriesListRequestSortItem>>` 
+**sort:** `Option<Vec<DeliveriesListWebhooksRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -40616,7 +40786,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1WebhooksDeliveriesListRequestFilterItem>>` 
+**filter:** `Option<Vec<DeliveriesListWebhooksRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -40636,7 +40806,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">post_v1_webhooks_deliveries_redeliver</a>(request: PostV1WebhooksDeliveriesRedeliverRequest) -> Result&lt;PostV1WebhooksDeliveriesRedeliverResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client.rs">deliveries_redeliver</a>(request: DeliveriesRedeliverWebhooksRequest) -> Result&lt;DeliveriesRedeliverWebhooksResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40660,8 +40830,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .webhooks
-        .post_v1webhooks_deliveries_redeliver(
-            &PostV1WebhooksDeliveriesRedeliverRequest {
+        .deliveries_redeliver(
+            &DeliveriesRedeliverWebhooksRequest {
                 id: "id".to_string(),
             },
             None,
@@ -40694,8 +40864,8 @@ async fn main() {
 </dl>
 </details>
 
-## Bank
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_accounts_create</a>(request: PostV1BankAccountsCreateRequest) -> Result&lt;PostV1BankAccountsCreateResponse, ApiError&gt;</code></summary>
+## bank
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">accounts_create</a>(request: AccountsCreateBankRequest) -> Result&lt;AccountsCreateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40719,8 +40889,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_accounts_create(
-            &PostV1BankAccountsCreateRequest {
+        .accounts_create(
+            &AccountsCreateBankRequest {
                 name: "name".to_string(),
                 iban: None,
                 currency: None,
@@ -40789,7 +40959,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_accounts_list</a>(request: PostV1BankAccountsListRequest) -> Result&lt;PostV1BankAccountsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">accounts_list</a>(request: AccountsListBankRequest) -> Result&lt;AccountsListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40813,8 +40983,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_accounts_list(
-            &PostV1BankAccountsListRequest {
+        .accounts_list(
+            &AccountsListBankRequest {
                 ..Default::default()
             },
             None,
@@ -40851,7 +41021,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1BankAccountsListRequestSortItem>>` 
+**sort:** `Option<Vec<AccountsListBankRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -40859,7 +41029,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1BankAccountsListRequestFilterItem>>` 
+**filter:** `Option<Vec<AccountsListBankRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -40879,7 +41049,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_accounts_update</a>(request: PostV1BankAccountsUpdateRequest) -> Result&lt;PostV1BankAccountsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">accounts_update</a>(request: AccountsUpdateBankRequest) -> Result&lt;AccountsUpdateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40903,8 +41073,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_accounts_update(
-            &PostV1BankAccountsUpdateRequest {
+        .accounts_update(
+            &AccountsUpdateBankRequest {
                 id: "id".to_string(),
                 name: None,
                 iban: None,
@@ -40973,7 +41143,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_transactions_import</a>(request: PostV1BankTransactionsImportRequest) -> Result&lt;PostV1BankTransactionsImportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_import</a>(request: TransactionsImportBankRequest) -> Result&lt;TransactionsImportBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -40997,12 +41167,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_transactions_import(
-            &PostV1BankTransactionsImportRequest {
+        .transactions_import(
+            &TransactionsImportBankRequest {
                 bank_account_id: "bankAccountId".to_string(),
-                transactions: vec![PostV1BankTransactionsImportRequestTransactionsItem {
-                    date: "date".to_string(),
-                    amount: "amount".to_string(),
+                transactions: vec![TransactionsImportBankRequestTransactionsItem {
+                    date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                    amount: "-121.0000".to_string(),
                     ..Default::default()
                 }],
             },
@@ -41032,7 +41202,7 @@ async fn main() {
 <dl>
 <dd>
 
-**transactions:** `Vec<PostV1BankTransactionsImportRequestTransactionsItem>` 
+**transactions:** `Vec<TransactionsImportBankRequestTransactionsItem>` 
     
 </dd>
 </dl>
@@ -41044,7 +41214,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_statements_import</a>(request: PostV1BankStatementsImportRequest) -> Result&lt;PostV1BankStatementsImportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">statements_import</a>(request: StatementsImportBankRequest) -> Result&lt;StatementsImportBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41068,8 +41238,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_statements_import(
-            &PostV1BankStatementsImportRequest {
+        .statements_import(
+            &StatementsImportBankRequest {
                 bank_account_id: "bankAccountId".to_string(),
                 content: "content".to_string(),
                 template_id: None,
@@ -41110,7 +41280,7 @@ async fn main() {
 <dl>
 <dd>
 
-**format:** `Option<PostV1BankStatementsImportRequestFormat>` 
+**format:** `Option<StatementsImportBankRequestFormat>` 
     
 </dd>
 </dl>
@@ -41138,7 +41308,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_transactions_list</a>(request: PostV1BankTransactionsListRequest) -> Result&lt;PostV1BankTransactionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_list</a>(request: TransactionsListBankRequest) -> Result&lt;TransactionsListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41162,8 +41332,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_transactions_list(
-            &PostV1BankTransactionsListRequest {
+        .transactions_list(
+            &TransactionsListBankRequest {
                 ..Default::default()
             },
             None,
@@ -41200,7 +41370,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1BankTransactionsListRequestSortItem>>` 
+**sort:** `Option<Vec<TransactionsListBankRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -41208,7 +41378,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1BankTransactionsListRequestFilterItem>>` 
+**filter:** `Option<Vec<TransactionsListBankRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -41228,7 +41398,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_transactions_match</a>(request: PostV1BankTransactionsMatchRequest) -> Result&lt;PostV1BankTransactionsMatchResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_match</a>(request: TransactionsMatchBankRequest) -> Result&lt;TransactionsMatchBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41252,11 +41422,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_transactions_match(
-            &PostV1BankTransactionsMatchRequest {
+        .transactions_match(
+            &TransactionsMatchBankRequest {
                 transaction_id: "transactionId".to_string(),
-                document_type: PostV1BankTransactionsMatchRequestDocumentType::SaleInvoice,
+                document_type: TransactionsMatchBankRequestDocumentType::SaleInvoice,
                 document_id: "documentId".to_string(),
+                invoice_amount: None,
             },
             None,
         )
@@ -41284,7 +41455,7 @@ async fn main() {
 <dl>
 <dd>
 
-**document_type:** `PostV1BankTransactionsMatchRequestDocumentType` 
+**document_type:** `TransactionsMatchBankRequestDocumentType` 
     
 </dd>
 </dl>
@@ -41296,6 +41467,14 @@ async fn main() {
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**invoice_amount:** `Option<String>` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -41304,7 +41483,88 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_transactions_record</a>(request: PostV1BankTransactionsRecordRequest) -> Result&lt;PostV1BankTransactionsRecordResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_unmatch</a>(request: TransactionsUnmatchBankRequest) -> Result&lt;TransactionsUnmatchBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Undo a match. A payment matched to an invoice, or a line posted by an import template, gets a reversing journal transaction dated date (default: today) and the invoice paid amount and payment status are restored; a line linked to a payment-provider settlement is only unlinked. The line returns to status new.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .transactions_unmatch(
+            &TransactionsUnmatchBankRequest {
+                transaction_id: "transactionId".to_string(),
+                date: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_record</a>(request: TransactionsRecordBankRequest) -> Result&lt;TransactionsRecordBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41328,12 +41588,12 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_transactions_record(
-            &PostV1BankTransactionsRecordRequest {
+        .transactions_record(
+            &TransactionsRecordBankRequest {
                 bank_account_id: "bankAccountId".to_string(),
-                date: "date".to_string(),
-                amount: "amount".to_string(),
-                document_type: PostV1BankTransactionsRecordRequestDocumentType::SaleInvoice,
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                amount: "121.0000".to_string(),
+                document_type: TransactionsRecordBankRequestDocumentType::SaleInvoice,
                 document_id: "documentId".to_string(),
                 description: None,
             },
@@ -41387,7 +41647,7 @@ async fn main() {
 <dl>
 <dd>
 
-**document_type:** `PostV1BankTransactionsRecordRequestDocumentType` 
+**document_type:** `TransactionsRecordBankRequestDocumentType` 
     
 </dd>
 </dl>
@@ -41407,7 +41667,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_payments_export</a>(request: PostV1BankPaymentsExportRequest) -> Result&lt;PostV1BankPaymentsExportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">payments_export</a>(request: PaymentsExportBankRequest) -> Result&lt;PaymentsExportBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41431,8 +41691,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_payments_export(
-            &PostV1BankPaymentsExportRequest {
+        .payments_export(
+            &PaymentsExportBankRequest {
                 bank_account_id: "bankAccountId".to_string(),
                 purchase_invoice_ids: vec!["purchaseInvoiceIds".to_string()],
                 execution_date: None,
@@ -41483,7 +41743,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">create_a_bank_import_template_fields_default_to_the_types_standard_field_list</a>(request: PostV1BankImportTemplatesCreateRequest) -> Result&lt;PostV1BankImportTemplatesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">import_templates_create</a>(request: ImportTemplatesCreateBankRequest) -> Result&lt;ImportTemplatesCreateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41507,10 +41767,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .create_a_bank_import_template_fields_default_to_the_types_standard_field_list(
-            &PostV1BankImportTemplatesCreateRequest {
+        .import_templates_create(
+            &ImportTemplatesCreateBankRequest {
                 name: "name".to_string(),
-                r#type: PostV1BankImportTemplatesCreateRequestType::Stripe,
+                r#type: ImportTemplatesCreateBankRequestType::Stripe,
                 fields: None,
                 meta_fields: None,
                 invoice_meta_field: None,
@@ -41551,7 +41811,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `PostV1BankImportTemplatesCreateRequestType` 
+**type_:** `ImportTemplatesCreateBankRequestType` 
     
 </dd>
 </dl>
@@ -41559,7 +41819,7 @@ async fn main() {
 <dl>
 <dd>
 
-**fields:** `Option<Vec<PostV1BankImportTemplatesCreateRequestFieldsItem>>` 
+**fields:** `Option<Vec<ImportTemplatesCreateBankRequestFieldsItem>>` 
     
 </dd>
 </dl>
@@ -41667,7 +41927,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_update</a>(request: PostV1BankImportTemplatesUpdateRequest) -> Result&lt;PostV1BankImportTemplatesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">import_templates_update</a>(request: ImportTemplatesUpdateBankRequest) -> Result&lt;ImportTemplatesUpdateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41691,8 +41951,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_import_templates_update(
-            &PostV1BankImportTemplatesUpdateRequest {
+        .import_templates_update(
+            &ImportTemplatesUpdateBankRequest {
                 id: "id".to_string(),
                 name: None,
                 r#type: None,
@@ -41736,7 +41996,7 @@ async fn main() {
 <dl>
 <dd>
 
-**type_:** `Option<PostV1BankImportTemplatesUpdateRequestType>` 
+**type_:** `Option<ImportTemplatesUpdateBankRequestType>` 
     
 </dd>
 </dl>
@@ -41744,7 +42004,7 @@ async fn main() {
 <dl>
 <dd>
 
-**fields:** `Option<Vec<PostV1BankImportTemplatesUpdateRequestFieldsItem>>` 
+**fields:** `Option<Vec<ImportTemplatesUpdateBankRequestFieldsItem>>` 
     
 </dd>
 </dl>
@@ -41860,7 +42120,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_delete</a>(request: PostV1BankImportTemplatesDeleteRequest) -> Result&lt;PostV1BankImportTemplatesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">import_templates_delete</a>(request: ImportTemplatesDeleteBankRequest) -> Result&lt;ImportTemplatesDeleteBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41884,8 +42144,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_import_templates_delete(
-            &PostV1BankImportTemplatesDeleteRequest {
+        .import_templates_delete(
+            &ImportTemplatesDeleteBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -41918,7 +42178,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_get</a>(request: PostV1BankImportTemplatesGetRequest) -> Result&lt;PostV1BankImportTemplatesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">import_templates_get</a>(request: ImportTemplatesGetBankRequest) -> Result&lt;ImportTemplatesGetBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -41942,8 +42202,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_import_templates_get(
-            &PostV1BankImportTemplatesGetRequest {
+        .import_templates_get(
+            &ImportTemplatesGetBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -41976,7 +42236,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_import_templates_list</a>(request: PostV1BankImportTemplatesListRequest) -> Result&lt;PostV1BankImportTemplatesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">import_templates_list</a>(request: ImportTemplatesListBankRequest) -> Result&lt;ImportTemplatesListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42000,8 +42260,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_import_templates_list(
-            &PostV1BankImportTemplatesListRequest {
+        .import_templates_list(
+            &ImportTemplatesListBankRequest {
                 ..Default::default()
             },
             None,
@@ -42038,7 +42298,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1BankImportTemplatesListRequestSortItem>>` 
+**sort:** `Option<Vec<ImportTemplatesListBankRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -42046,7 +42306,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1BankImportTemplatesListRequestFilterItem>>` 
+**filter:** `Option<Vec<ImportTemplatesListBankRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -42066,7 +42326,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_create</a>(request: PostV1BankMatchRulesCreateRequest) -> Result&lt;PostV1BankMatchRulesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">match_rules_create</a>(request: MatchRulesCreateBankRequest) -> Result&lt;MatchRulesCreateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42090,8 +42350,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_match_rules_create(
-            &PostV1BankMatchRulesCreateRequest {
+        .match_rules_create(
+            &MatchRulesCreateBankRequest {
                 name: "name".to_string(),
                 pattern: "pattern".to_string(),
                 provider: None,
@@ -42178,7 +42438,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_update</a>(request: PostV1BankMatchRulesUpdateRequest) -> Result&lt;PostV1BankMatchRulesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">match_rules_update</a>(request: MatchRulesUpdateBankRequest) -> Result&lt;MatchRulesUpdateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42202,8 +42462,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_match_rules_update(
-            &PostV1BankMatchRulesUpdateRequest {
+        .match_rules_update(
+            &MatchRulesUpdateBankRequest {
                 id: "id".to_string(),
                 name: None,
                 provider: None,
@@ -42299,7 +42559,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_delete</a>(request: PostV1BankMatchRulesDeleteRequest) -> Result&lt;PostV1BankMatchRulesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">match_rules_delete</a>(request: MatchRulesDeleteBankRequest) -> Result&lt;MatchRulesDeleteBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42323,8 +42583,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_match_rules_delete(
-            &PostV1BankMatchRulesDeleteRequest {
+        .match_rules_delete(
+            &MatchRulesDeleteBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -42357,7 +42617,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_match_rules_list</a>(request: PostV1BankMatchRulesListRequest) -> Result&lt;PostV1BankMatchRulesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">match_rules_list</a>(request: MatchRulesListBankRequest) -> Result&lt;MatchRulesListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42381,8 +42641,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_match_rules_list(
-            &PostV1BankMatchRulesListRequest {
+        .match_rules_list(
+            &MatchRulesListBankRequest {
                 ..Default::default()
             },
             None,
@@ -42400,7 +42660,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_mandates_create</a>(request: PostV1BankMandatesCreateRequest) -> Result&lt;PostV1BankMandatesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">mandates_create</a>(request: MandatesCreateBankRequest) -> Result&lt;MandatesCreateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42424,11 +42684,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_mandates_create(
-            &PostV1BankMandatesCreateRequest {
+        .mandates_create(
+            &MandatesCreateBankRequest {
                 partner_id: "partnerId".to_string(),
                 iban: "iban".to_string(),
-                signature_date: "signatureDate".to_string(),
+                signature_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 bic: None,
                 scheme: None,
                 sequence_type: None,
@@ -42478,7 +42738,7 @@ async fn main() {
 <dl>
 <dd>
 
-**scheme:** `Option<PostV1BankMandatesCreateRequestScheme>` 
+**scheme:** `Option<MandatesCreateBankRequestScheme>` 
     
 </dd>
 </dl>
@@ -42486,7 +42746,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sequence_type:** `Option<PostV1BankMandatesCreateRequestSequenceType>` 
+**sequence_type:** `Option<MandatesCreateBankRequestSequenceType>` 
     
 </dd>
 </dl>
@@ -42530,7 +42790,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_mandates_update</a>(request: PostV1BankMandatesUpdateRequest) -> Result&lt;PostV1BankMandatesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">mandates_update</a>(request: MandatesUpdateBankRequest) -> Result&lt;MandatesUpdateBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42554,8 +42814,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_mandates_update(
-            &PostV1BankMandatesUpdateRequest {
+        .mandates_update(
+            &MandatesUpdateBankRequest {
                 id: "id".to_string(),
                 bic: None,
                 debtor_name: None,
@@ -42615,7 +42875,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_mandates_cancel</a>(request: PostV1BankMandatesCancelRequest) -> Result&lt;PostV1BankMandatesCancelResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">mandates_cancel</a>(request: MandatesCancelBankRequest) -> Result&lt;MandatesCancelBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42639,8 +42899,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_mandates_cancel(
-            &PostV1BankMandatesCancelRequest {
+        .mandates_cancel(
+            &MandatesCancelBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -42673,7 +42933,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_mandates_get</a>(request: PostV1BankMandatesGetRequest) -> Result&lt;PostV1BankMandatesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">mandates_get</a>(request: MandatesGetBankRequest) -> Result&lt;MandatesGetBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42697,8 +42957,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_mandates_get(
-            &PostV1BankMandatesGetRequest {
+        .mandates_get(
+            &MandatesGetBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -42731,7 +42991,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_mandates_list</a>(request: PostV1BankMandatesListRequest) -> Result&lt;PostV1BankMandatesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">mandates_list</a>(request: MandatesListBankRequest) -> Result&lt;MandatesListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42755,8 +43015,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_mandates_list(
-            &PostV1BankMandatesListRequest {
+        .mandates_list(
+            &MandatesListBankRequest {
                 ..Default::default()
             },
             None,
@@ -42793,7 +43053,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1BankMandatesListRequestSortItem>>` 
+**sort:** `Option<Vec<MandatesListBankRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -42801,7 +43061,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1BankMandatesListRequestFilterItem>>` 
+**filter:** `Option<Vec<MandatesListBankRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -42821,7 +43081,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_direct_debits_export</a>(request: PostV1BankDirectDebitsExportRequest) -> Result&lt;PostV1BankDirectDebitsExportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">direct_debits_export</a>(request: DirectDebitsExportBankRequest) -> Result&lt;DirectDebitsExportBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42845,8 +43105,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_direct_debits_export(
-            &PostV1BankDirectDebitsExportRequest {
+        .direct_debits_export(
+            &DirectDebitsExportBankRequest {
                 bank_account_id: "bankAccountId".to_string(),
                 sale_invoice_ids: vec!["saleInvoiceIds".to_string()],
                 collection_date: None,
@@ -42897,7 +43157,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_transactions_suggest_matches</a>(request: PostV1BankTransactionsSuggestMatchesRequest) -> Result&lt;PostV1BankTransactionsSuggestMatchesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_suggest_matches</a>(request: TransactionsSuggestMatchesBankRequest) -> Result&lt;TransactionsSuggestMatchesBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42921,8 +43181,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_transactions_suggest_matches(
-            &PostV1BankTransactionsSuggestMatchesRequest {
+        .transactions_suggest_matches(
+            &TransactionsSuggestMatchesBankRequest {
                 transaction_id: "transactionId".to_string(),
                 limit: None,
             },
@@ -42964,7 +43224,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_import</a>(request: PostV1BankSettlementsImportRequest) -> Result&lt;PostV1BankSettlementsImportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_import</a>(request: SettlementsImportBankRequest) -> Result&lt;SettlementsImportBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -42988,8 +43248,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_import(
-            &PostV1BankSettlementsImportRequest {
+        .settlements_import(
+            &SettlementsImportBankRequest {
                 bank_account_id: "bankAccountId".to_string(),
                 content: "content".to_string(),
                 provider: None,
@@ -43020,7 +43280,7 @@ async fn main() {
 <dl>
 <dd>
 
-**provider:** `Option<PostV1BankSettlementsImportRequestProvider>` 
+**provider:** `Option<SettlementsImportBankRequestProvider>` 
     
 </dd>
 </dl>
@@ -43040,7 +43300,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_list</a>(request: PostV1BankSettlementsListRequest) -> Result&lt;PostV1BankSettlementsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_list</a>(request: SettlementsListBankRequest) -> Result&lt;SettlementsListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43064,8 +43324,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_list(
-            &PostV1BankSettlementsListRequest {
+        .settlements_list(
+            &SettlementsListBankRequest {
                 ..Default::default()
             },
             None,
@@ -43102,7 +43362,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1BankSettlementsListRequestSortItem>>` 
+**sort:** `Option<Vec<SettlementsListBankRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -43110,7 +43370,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1BankSettlementsListRequestFilterItem>>` 
+**filter:** `Option<Vec<SettlementsListBankRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -43130,7 +43390,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_get</a>(request: PostV1BankSettlementsGetRequest) -> Result&lt;PostV1BankSettlementsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_get</a>(request: SettlementsGetBankRequest) -> Result&lt;SettlementsGetBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43154,8 +43414,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_get(
-            &PostV1BankSettlementsGetRequest {
+        .settlements_get(
+            &SettlementsGetBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -43188,7 +43448,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_match</a>(request: PostV1BankSettlementsMatchRequest) -> Result&lt;PostV1BankSettlementsMatchResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_match</a>(request: SettlementsMatchBankRequest) -> Result&lt;SettlementsMatchBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43212,8 +43472,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_match(
-            &PostV1BankSettlementsMatchRequest {
+        .settlements_match(
+            &SettlementsMatchBankRequest {
                 line_id: "lineId".to_string(),
                 invoice_id: None,
             },
@@ -43255,7 +43515,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">set_what_the_marketplace_keeps_from_one_settlement_line_as_a_rate_or_as_an_amount</a>(request: PostV1BankSettlementsCommissionRequest) -> Result&lt;PostV1BankSettlementsCommissionResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_commission</a>(request: SettlementsCommissionBankRequest) -> Result&lt;SettlementsCommissionBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43293,8 +43553,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .set_what_the_marketplace_keeps_from_one_settlement_line_as_a_rate_or_as_an_amount(
-            &PostV1BankSettlementsCommissionRequest {
+        .settlements_commission(
+            &SettlementsCommissionBankRequest {
                 line_id: "lineId".to_string(),
                 commission_percent: None,
                 commission_amount: None,
@@ -43345,7 +43605,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_link</a>(request: PostV1BankSettlementsLinkRequest) -> Result&lt;PostV1BankSettlementsLinkResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_link</a>(request: SettlementsLinkBankRequest) -> Result&lt;SettlementsLinkBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43383,8 +43643,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_link(
-            &PostV1BankSettlementsLinkRequest {
+        .settlements_link(
+            &SettlementsLinkBankRequest {
                 id: "id".to_string(),
                 bank_transaction_id: "bankTransactionId".to_string(),
             },
@@ -43426,7 +43686,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_unlink</a>(request: PostV1BankSettlementsUnlinkRequest) -> Result&lt;PostV1BankSettlementsUnlinkResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_unlink</a>(request: SettlementsUnlinkBankRequest) -> Result&lt;SettlementsUnlinkBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43464,8 +43724,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_unlink(
-            &PostV1BankSettlementsUnlinkRequest {
+        .settlements_unlink(
+            &SettlementsUnlinkBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -43498,7 +43758,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_settlements_post</a>(request: PostV1BankSettlementsPostRequest) -> Result&lt;PostV1BankSettlementsPostResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">settlements_post</a>(request: SettlementsPostBankRequest) -> Result&lt;SettlementsPostBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43522,8 +43782,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_settlements_post(
-            &PostV1BankSettlementsPostRequest {
+        .settlements_post(
+            &SettlementsPostBankRequest {
                 id: "id".to_string(),
                 date: None,
                 commission_percent: None,
@@ -43574,7 +43834,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">list_the_psd2_banks_asps_ps_available_to_connect</a>(request: PostV1BankFeedsBanksListRequest) -> Result&lt;PostV1BankFeedsBanksListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_banks_list</a>(request: FeedsBanksListBankRequest) -> Result&lt;FeedsBanksListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43598,8 +43858,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .list_the_psd2banks_asps_ps_available_to_connect(
-            &PostV1BankFeedsBanksListRequest {
+        .feeds_banks_list(
+            &FeedsBanksListBankRequest {
                 ..Default::default()
             },
             None,
@@ -43632,7 +43892,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">begin_bank_authorization_redirect_the_user_to_the_returned_url</a>(request: PostV1BankFeedsConnectionsStartRequest) -> Result&lt;PostV1BankFeedsConnectionsStartResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_connections_start</a>(request: FeedsConnectionsStartBankRequest) -> Result&lt;FeedsConnectionsStartBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43656,8 +43916,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .begin_bank_authorization_redirect_the_user_to_the_returned_url(
-            &PostV1BankFeedsConnectionsStartRequest {
+        .feeds_connections_start(
+            &FeedsConnectionsStartBankRequest {
                 aspsp_name: "aspspName".to_string(),
                 aspsp_country: "aspspCountry".to_string(),
                 psu_type: None,
@@ -43699,7 +43959,7 @@ async fn main() {
 <dl>
 <dd>
 
-**psu_type:** `Option<PostV1BankFeedsConnectionsStartRequestPsuType>` 
+**psu_type:** `Option<FeedsConnectionsStartBankRequestPsuType>` 
     
 </dd>
 </dl>
@@ -43735,7 +43995,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">exchange_the_redirect_code_for_a_session_and_store_the_bank_accounts_it_exposes</a>(request: PostV1BankFeedsConnectionsCompleteRequest) -> Result&lt;PostV1BankFeedsConnectionsCompleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_connections_complete</a>(request: FeedsConnectionsCompleteBankRequest) -> Result&lt;FeedsConnectionsCompleteBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43759,8 +44019,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .exchange_the_redirect_code_for_a_session_and_store_the_bank_accounts_it_exposes(
-            &PostV1BankFeedsConnectionsCompleteRequest {
+        .feeds_connections_complete(
+            &FeedsConnectionsCompleteBankRequest {
                 reference: "reference".to_string(),
                 code: "code".to_string(),
             },
@@ -43802,7 +44062,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_feeds_connections_get</a>(request: PostV1BankFeedsConnectionsGetRequest) -> Result&lt;PostV1BankFeedsConnectionsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_connections_get</a>(request: FeedsConnectionsGetBankRequest) -> Result&lt;FeedsConnectionsGetBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43826,8 +44086,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_feeds_connections_get(
-            &PostV1BankFeedsConnectionsGetRequest {
+        .feeds_connections_get(
+            &FeedsConnectionsGetBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -43860,7 +44120,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">post_v1_bank_feeds_connections_list</a>(request: PostV1BankFeedsConnectionsListRequest) -> Result&lt;PostV1BankFeedsConnectionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_connections_list</a>(request: FeedsConnectionsListBankRequest) -> Result&lt;FeedsConnectionsListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43884,8 +44144,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .post_v1bank_feeds_connections_list(
-            &PostV1BankFeedsConnectionsListRequest {
+        .feeds_connections_list(
+            &FeedsConnectionsListBankRequest {
                 ..Default::default()
             },
             None,
@@ -43922,7 +44182,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1BankFeedsConnectionsListRequestSortItem>>` 
+**sort:** `Option<Vec<FeedsConnectionsListBankRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -43930,7 +44190,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1BankFeedsConnectionsListRequestFilterItem>>` 
+**filter:** `Option<Vec<FeedsConnectionsListBankRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -43950,7 +44210,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">revoke_the_consent_at_the_bank_and_drop_the_stored_connection</a>(request: PostV1BankFeedsConnectionsDeleteRequest) -> Result&lt;PostV1BankFeedsConnectionsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_connections_delete</a>(request: FeedsConnectionsDeleteBankRequest) -> Result&lt;FeedsConnectionsDeleteBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -43974,8 +44234,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .revoke_the_consent_at_the_bank_and_drop_the_stored_connection(
-            &PostV1BankFeedsConnectionsDeleteRequest {
+        .feeds_connections_delete(
+            &FeedsConnectionsDeleteBankRequest {
                 id: "id".to_string(),
             },
             None,
@@ -44008,7 +44268,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">point_a_bank_feed_account_at_a_ledger_bank_account_so_its_transactions_can_be_synced</a>(request: PostV1BankFeedsAccountsLinkRequest) -> Result&lt;PostV1BankFeedsAccountsLinkResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_accounts_link</a>(request: FeedsAccountsLinkBankRequest) -> Result&lt;FeedsAccountsLinkBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44032,8 +44292,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .point_a_bank_feed_account_at_a_ledger_bank_account_so_its_transactions_can_be_synced(
-            &PostV1BankFeedsAccountsLinkRequest {
+        .feeds_accounts_link(
+            &FeedsAccountsLinkBankRequest {
                 id: "id".to_string(),
                 bank_account_id: None,
                 create_bank_account: None,
@@ -44073,7 +44333,7 @@ async fn main() {
 <dl>
 <dd>
 
-**create_bank_account:** `Option<PostV1BankFeedsAccountsLinkRequestCreateBankAccount>` 
+**create_bank_account:** `Option<FeedsAccountsLinkBankRequestCreateBankAccount>` 
     
 </dd>
 </dl>
@@ -44093,7 +44353,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">choose_the_import_template_applied_on_sync_and_how_often_the_account_is_synced_automatically</a>(request: PostV1BankFeedsAccountsConfigureRequest) -> Result&lt;PostV1BankFeedsAccountsConfigureResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_accounts_configure</a>(request: FeedsAccountsConfigureBankRequest) -> Result&lt;FeedsAccountsConfigureBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44115,11 +44375,17 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client.bank.choose_the_import_template_applied_on_sync_and_how_often_the_account_is_synced_automatically(&PostV1BankFeedsAccountsConfigureRequest {
-        id: "id".to_string(),
-        import_template_id: None,
-        sync_schedule: None
-    }, None).await;
+    client
+        .bank
+        .feeds_accounts_configure(
+            &FeedsAccountsConfigureBankRequest {
+                id: "id".to_string(),
+                import_template_id: None,
+                sync_schedule: None,
+            },
+            None,
+        )
+        .await;
 }
 ```
 </dd>
@@ -44151,7 +44417,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sync_schedule:** `Option<PostV1BankFeedsAccountsConfigureRequestSyncSchedule>` 
+**sync_schedule:** `Option<FeedsAccountsConfigureBankRequestSyncSchedule>` 
     
 </dd>
 </dl>
@@ -44163,7 +44429,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">pull_new_transactions_from_the_bank_into_the_ledger_emits_bank_feed_synced</a>(request: PostV1BankFeedsSyncRequest) -> Result&lt;PostV1BankFeedsSyncResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_sync</a>(request: FeedsSyncBankRequest) -> Result&lt;FeedsSyncBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44187,8 +44453,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .bank
-        .pull_new_transactions_from_the_bank_into_the_ledger_emits_bank_feed_synced(
-            &PostV1BankFeedsSyncRequest {
+        .feeds_sync(
+            &FeedsSyncBankRequest {
                 connection_id: "connectionId".to_string(),
                 feed_account_id: None,
                 date_from: None,
@@ -44248,8 +44514,8 @@ async fn main() {
 </dl>
 </details>
 
-## Files
-<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">post_v1_files_upload</a>(request: PostV1FilesUploadRequest) -> Result&lt;PostV1FilesUploadResponse, ApiError&gt;</code></summary>
+## files
+<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">upload</a>(request: UploadFilesRequest) -> Result&lt;UploadFilesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44273,8 +44539,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .files
-        .post_v1files_upload(
-            &PostV1FilesUploadRequest {
+        .upload(
+            &UploadFilesRequest {
                 entity: "entity".to_string(),
                 file_name: "fileName".to_string(),
                 mime_type: "mimeType".to_string(),
@@ -44323,7 +44589,7 @@ async fn main() {
 <dl>
 <dd>
 
-**mime_type:** `String` 
+**mime_type:** `String` — Stored as the bare media type; only PNG, JPEG, GIF, WebP and PDF files are shown in the browser, every other type is downloaded
     
 </dd>
 </dl>
@@ -44343,7 +44609,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">post_v1_files_get</a>(request: PostV1FilesGetRequest) -> Result&lt;PostV1FilesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">get</a>(request: GetFilesRequest) -> Result&lt;GetFilesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44367,8 +44633,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .files
-        .post_v1files_get(
-            &PostV1FilesGetRequest {
+        .get(
+            &GetFilesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -44401,7 +44667,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">post_v1_files_list</a>(request: PostV1FilesListRequest) -> Result&lt;PostV1FilesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">list</a>(request: ListFilesRequest) -> Result&lt;ListFilesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44425,8 +44691,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .files
-        .post_v1files_list(
-            &PostV1FilesListRequest {
+        .list(
+            &ListFilesRequest {
                 ..Default::default()
             },
             None,
@@ -44463,7 +44729,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1FilesListRequestSortItem>>` 
+**sort:** `Option<Vec<ListFilesRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -44471,7 +44737,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1FilesListRequestFilterItem>>` 
+**filter:** `Option<Vec<ListFilesRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -44491,7 +44757,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">post_v1_files_delete</a>(request: PostV1FilesDeleteRequest) -> Result&lt;PostV1FilesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.files.<a href="/src/api/resources/files/client.rs">delete</a>(request: DeleteFilesRequest) -> Result&lt;DeleteFilesResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44515,8 +44781,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .files
-        .post_v1files_delete(
-            &PostV1FilesDeleteRequest {
+        .delete(
+            &DeleteFilesRequest {
                 id: "id".to_string(),
             },
             None,
@@ -44549,8 +44815,8 @@ async fn main() {
 </dl>
 </details>
 
-## Reports
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_trial_balance</a>(request: PostV1ReportsTrialBalanceRequest) -> Result&lt;PostV1ReportsTrialBalanceResponse, ApiError&gt;</code></summary>
+## reports
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">trial_balance</a>(request: TrialBalanceReportsRequest) -> Result&lt;TrialBalanceReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44574,10 +44840,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_trial_balance(
-            &PostV1ReportsTrialBalanceRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .trial_balance(
+            &TrialBalanceReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -44617,7 +44883,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_size_category</a>(request: PostV1ReportsSizeCategoryRequest) -> Result&lt;PostV1ReportsSizeCategoryResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">size_category</a>(request: SizeCategoryReportsRequest) -> Result&lt;SizeCategoryReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44641,7 +44907,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_size_category(&PostV1ReportsSizeCategoryRequest { year: 1000000 }, None)
+        .size_category(&SizeCategoryReportsRequest { year: 1000000 }, None)
         .await;
 }
 ```
@@ -44670,7 +44936,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_financial_statements</a>(request: PostV1ReportsFinancialStatementsRequest) -> Result&lt;PostV1ReportsFinancialStatementsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">financial_statements</a>(request: FinancialStatementsReportsRequest) -> Result&lt;FinancialStatementsReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44694,10 +44960,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_financial_statements(
-            &PostV1ReportsFinancialStatementsRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .financial_statements(
+            &FinancialStatementsReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 category: None,
             },
             None,
@@ -44734,7 +45000,7 @@ async fn main() {
 <dl>
 <dd>
 
-**category:** `Option<PostV1ReportsFinancialStatementsRequestCategory>` 
+**category:** `Option<FinancialStatementsReportsRequestCategory>` 
     
 </dd>
 </dl>
@@ -44746,7 +45012,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_general_journal</a>(request: PostV1ReportsGeneralJournalRequest) -> Result&lt;PostV1ReportsGeneralJournalResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">general_journal</a>(request: GeneralJournalReportsRequest) -> Result&lt;GeneralJournalReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44770,10 +45036,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_general_journal(
-            &PostV1ReportsGeneralJournalRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .general_journal(
+            &GeneralJournalReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 page: None,
                 page_size: None,
             },
@@ -44831,7 +45097,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_gl_detail</a>(request: PostV1ReportsGlDetailRequest) -> Result&lt;PostV1ReportsGlDetailResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">gl_detail</a>(request: GlDetailReportsRequest) -> Result&lt;GlDetailReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44855,11 +45121,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_gl_detail(
-            &PostV1ReportsGlDetailRequest {
+        .gl_detail(
+            &GlDetailReportsRequest {
                 account_code: "accountCode".to_string(),
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -44907,7 +45173,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_partner_balances</a>(request: PostV1ReportsPartnerBalancesRequest) -> Result&lt;PostV1ReportsPartnerBalancesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">partner_balances</a>(request: PartnerBalancesReportsRequest) -> Result&lt;PartnerBalancesReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44931,8 +45197,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_partner_balances(
-            &PostV1ReportsPartnerBalancesRequest {
+        .partner_balances(
+            &PartnerBalancesReportsRequest {
                 ..Default::default()
             },
             None,
@@ -44950,7 +45216,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_debt_aging</a>(request: PostV1ReportsDebtAgingRequest) -> Result&lt;PostV1ReportsDebtAgingResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">debt_aging</a>(request: DebtAgingReportsRequest) -> Result&lt;DebtAgingReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -44974,8 +45240,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_debt_aging(
-            &PostV1ReportsDebtAgingRequest {
+        .debt_aging(
+            &DebtAgingReportsRequest {
                 ..Default::default()
             },
             None,
@@ -44996,7 +45262,7 @@ async fn main() {
 <dl>
 <dd>
 
-**side:** `Option<PostV1ReportsDebtAgingRequestSide>` 
+**side:** `Option<DebtAgingReportsRequestSide>` 
     
 </dd>
 </dl>
@@ -45016,7 +45282,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_monthly_summary</a>(request: PostV1ReportsMonthlySummaryRequest) -> Result&lt;PostV1ReportsMonthlySummaryResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">monthly_summary</a>(request: MonthlySummaryReportsRequest) -> Result&lt;MonthlySummaryReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45040,8 +45306,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_monthly_summary(
-            &PostV1ReportsMonthlySummaryRequest {
+        .monthly_summary(
+            &MonthlySummaryReportsRequest {
                 ..Default::default()
             },
             None,
@@ -45074,7 +45340,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_stock_balance</a>(request: PostV1ReportsStockBalanceRequest) -> Result&lt;PostV1ReportsStockBalanceResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">stock_balance</a>(request: StockBalanceReportsRequest) -> Result&lt;StockBalanceReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45098,9 +45364,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_stock_balance(
-            &PostV1ReportsStockBalanceRequest {
-                as_of: "asOf".to_string(),
+        .stock_balance(
+            &StockBalanceReportsRequest {
+                as_of: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 warehouse_id: None,
             },
             None,
@@ -45141,7 +45407,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_stock_movement</a>(request: PostV1ReportsStockMovementRequest) -> Result&lt;PostV1ReportsStockMovementResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">stock_movement</a>(request: StockMovementReportsRequest) -> Result&lt;StockMovementReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45165,10 +45431,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_stock_movement(
-            &PostV1ReportsStockMovementRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .stock_movement(
+            &StockMovementReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 warehouse_id: None,
                 item_id: None,
             },
@@ -45226,7 +45492,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_vat_summary</a>(request: PostV1ReportsVatSummaryRequest) -> Result&lt;PostV1ReportsVatSummaryResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">vat_summary</a>(request: VatSummaryReportsRequest) -> Result&lt;VatSummaryReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45250,10 +45516,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_vat_summary(
-            &PostV1ReportsVatSummaryRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .vat_summary(
+            &VatSummaryReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 side: None,
             },
             None,
@@ -45290,7 +45556,7 @@ async fn main() {
 <dl>
 <dd>
 
-**side:** `Option<PostV1ReportsVatSummaryRequestSide>` 
+**side:** `Option<VatSummaryReportsRequestSide>` 
     
 </dd>
 </dl>
@@ -45302,7 +45568,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_cash_flow</a>(request: PostV1ReportsCashFlowRequest) -> Result&lt;PostV1ReportsCashFlowResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">cash_flow</a>(request: CashFlowReportsRequest) -> Result&lt;CashFlowReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45326,10 +45592,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_cash_flow(
-            &PostV1ReportsCashFlowRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .cash_flow(
+            &CashFlowReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -45369,7 +45635,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_stock_aging</a>(request: PostV1ReportsStockAgingRequest) -> Result&lt;PostV1ReportsStockAgingResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">stock_aging</a>(request: StockAgingReportsRequest) -> Result&lt;StockAgingReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45393,9 +45659,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_stock_aging(
-            &PostV1ReportsStockAgingRequest {
-                as_of: "asOf".to_string(),
+        .stock_aging(
+            &StockAgingReportsRequest {
+                as_of: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 warehouse_id: None,
             },
             None,
@@ -45436,7 +45702,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_stock_shortage</a>(request: PostV1ReportsStockShortageRequest) -> Result&lt;PostV1ReportsStockShortageResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">stock_shortage</a>(request: StockShortageReportsRequest) -> Result&lt;StockShortageReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45460,8 +45726,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_stock_shortage(
-            &PostV1ReportsStockShortageRequest {
+        .stock_shortage(
+            &StockShortageReportsRequest {
                 ..Default::default()
             },
             None,
@@ -45494,7 +45760,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_sie</a>(request: PostV1ReportsSieRequest) -> Result&lt;PostV1ReportsSieResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">sie</a>(request: SieReportsRequest) -> Result&lt;SieReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45532,10 +45798,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_sie(
-            &PostV1ReportsSieRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .sie(
+            &SieReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 include_transactions: None,
             },
             None,
@@ -45584,7 +45850,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_datev</a>(request: PostV1ReportsDatevRequest) -> Result&lt;PostV1ReportsDatevResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">datev</a>(request: DatevReportsRequest) -> Result&lt;DatevReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45622,10 +45888,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_datev(
-            &PostV1ReportsDatevRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .datev(
+            &DatevReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 consultant_number: None,
                 client_number: None,
             },
@@ -45683,7 +45949,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_fec</a>(request: PostV1ReportsFecRequest) -> Result&lt;PostV1ReportsFecResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">fec</a>(request: FecReportsRequest) -> Result&lt;FecReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45721,10 +45987,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_fec(
-            &PostV1ReportsFecRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .fec(
+            &FecReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -45764,7 +46030,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_eu_purchases</a>(request: PostV1ReportsEuPurchasesRequest) -> Result&lt;PostV1ReportsEuPurchasesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">eu_purchases</a>(request: EuPurchasesReportsRequest) -> Result&lt;EuPurchasesReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45788,10 +46054,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_eu_purchases(
-            &PostV1ReportsEuPurchasesRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .eu_purchases(
+            &EuPurchasesReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -45831,7 +46097,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_vat_detail</a>(request: PostV1ReportsVatDetailRequest) -> Result&lt;PostV1ReportsVatDetailResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">vat_detail</a>(request: VatDetailReportsRequest) -> Result&lt;VatDetailReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45855,10 +46121,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_vat_detail(
-            &PostV1ReportsVatDetailRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .vat_detail(
+            &VatDetailReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 side: None,
             },
             None,
@@ -45895,7 +46161,7 @@ async fn main() {
 <dl>
 <dd>
 
-**side:** `Option<PostV1ReportsVatDetailRequestSide>` 
+**side:** `Option<VatDetailReportsRequestSide>` 
     
 </dd>
 </dl>
@@ -45907,7 +46173,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_pos_sales</a>(request: PostV1ReportsPosSalesRequest) -> Result&lt;PostV1ReportsPosSalesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">pos_sales</a>(request: PosSalesReportsRequest) -> Result&lt;PosSalesReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45931,10 +46197,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_pos_sales(
-            &PostV1ReportsPosSalesRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .pos_sales(
+            &PosSalesReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -45974,7 +46240,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_online_sales</a>(request: PostV1ReportsOnlineSalesRequest) -> Result&lt;PostV1ReportsOnlineSalesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">online_sales</a>(request: OnlineSalesReportsRequest) -> Result&lt;OnlineSalesReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -45998,10 +46264,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_online_sales(
-            &PostV1ReportsOnlineSalesRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .online_sales(
+            &OnlineSalesReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -46041,7 +46307,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_oss</a>(request: PostV1ReportsOssRequest) -> Result&lt;PostV1ReportsOssResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">oss</a>(request: OssReportsRequest) -> Result&lt;OssReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46065,10 +46331,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_oss(
-            &PostV1ReportsOssRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .oss(
+            &OssReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -46108,7 +46374,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_advance_reconciliation</a>(request: PostV1ReportsAdvanceReconciliationRequest) -> Result&lt;PostV1ReportsAdvanceReconciliationResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">advance_reconciliation</a>(request: AdvanceReconciliationReportsRequest) -> Result&lt;AdvanceReconciliationReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46132,10 +46398,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_advance_reconciliation(
-            &PostV1ReportsAdvanceReconciliationRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .advance_reconciliation(
+            &AdvanceReconciliationReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -46175,7 +46441,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_write_off_acts</a>(request: PostV1ReportsWriteOffActsRequest) -> Result&lt;PostV1ReportsWriteOffActsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">write_off_acts</a>(request: WriteOffActsReportsRequest) -> Result&lt;WriteOffActsReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46199,10 +46465,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_write_off_acts(
-            &PostV1ReportsWriteOffActsRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .write_off_acts(
+            &WriteOffActsReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 warehouse_id: None,
             },
             None,
@@ -46251,7 +46517,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_cost_centers</a>(request: PostV1ReportsCostCentersRequest) -> Result&lt;PostV1ReportsCostCentersResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">cost_centers</a>(request: CostCentersReportsRequest) -> Result&lt;CostCentersReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46275,10 +46541,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_cost_centers(
-            &PostV1ReportsCostCentersRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .cost_centers(
+            &CostCentersReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -46318,7 +46584,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_cost_center_activity</a>(request: PostV1ReportsCostCenterActivityRequest) -> Result&lt;PostV1ReportsCostCenterActivityResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">cost_center_activity</a>(request: CostCenterActivityReportsRequest) -> Result&lt;CostCenterActivityReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46342,10 +46608,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_cost_center_activity(
-            &PostV1ReportsCostCenterActivityRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .cost_center_activity(
+            &CostCenterActivityReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 cost_center_id: "costCenterId".to_string(),
             },
             None,
@@ -46394,7 +46660,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_cost_center_items</a>(request: PostV1ReportsCostCenterItemsRequest) -> Result&lt;PostV1ReportsCostCenterItemsResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">cost_center_items</a>(request: CostCenterItemsReportsRequest) -> Result&lt;CostCenterItemsReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46418,10 +46684,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_cost_center_items(
-            &PostV1ReportsCostCenterItemsRequest {
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+        .cost_center_items(
+            &CostCenterItemsReportsRequest {
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 cost_center_id: None,
             },
             None,
@@ -46470,7 +46736,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_jobs_create</a>(request: PostV1ReportsJobsCreateRequest) -> Result&lt;PostV1ReportsJobsCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">jobs_create</a>(request: JobsCreateReportsRequest) -> Result&lt;JobsCreateReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46494,8 +46760,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_jobs_create(
-            &PostV1ReportsJobsCreateRequest {
+        .jobs_create(
+            &JobsCreateReportsRequest {
                 report_type: "reportType".to_string(),
                 params: None,
                 formats: None,
@@ -46534,7 +46800,7 @@ async fn main() {
 <dl>
 <dd>
 
-**formats:** `Option<Vec<PostV1ReportsJobsCreateRequestFormatsItem>>` 
+**formats:** `Option<Vec<JobsCreateReportsRequestFormatsItem>>` 
     
 </dd>
 </dl>
@@ -46546,7 +46812,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_jobs_get</a>(request: PostV1ReportsJobsGetRequest) -> Result&lt;PostV1ReportsJobsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">jobs_get</a>(request: JobsGetReportsRequest) -> Result&lt;JobsGetReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46570,8 +46836,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_jobs_get(
-            &PostV1ReportsJobsGetRequest {
+        .jobs_get(
+            &JobsGetReportsRequest {
                 id: "id".to_string(),
             },
             None,
@@ -46604,7 +46870,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">post_v1_reports_jobs_list</a>(request: PostV1ReportsJobsListRequest) -> Result&lt;PostV1ReportsJobsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.reports.<a href="/src/api/resources/reports/client.rs">jobs_list</a>(request: JobsListReportsRequest) -> Result&lt;JobsListReportsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46628,8 +46894,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reports
-        .post_v1reports_jobs_list(
-            &PostV1ReportsJobsListRequest {
+        .jobs_list(
+            &JobsListReportsRequest {
                 ..Default::default()
             },
             None,
@@ -46666,7 +46932,7 @@ async fn main() {
 <dl>
 <dd>
 
-**sort:** `Option<Vec<PostV1ReportsJobsListRequestSortItem>>` 
+**sort:** `Option<Vec<JobsListReportsRequestSortItem>>` 
     
 </dd>
 </dl>
@@ -46674,7 +46940,7 @@ async fn main() {
 <dl>
 <dd>
 
-**filter:** `Option<Vec<PostV1ReportsJobsListRequestFilterItem>>` 
+**filter:** `Option<Vec<JobsListReportsRequestFilterItem>>` 
     
 </dd>
 </dl>
@@ -46694,8 +46960,8 @@ async fn main() {
 </dl>
 </details>
 
-## Consolidation
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_groups_create</a>(request: PostV1ConsolidationGroupsCreateRequest) -> Result&lt;PostV1ConsolidationGroupsCreateResponse, ApiError&gt;</code></summary>
+## consolidation
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">groups_create</a>(request: GroupsCreateConsolidationRequest) -> Result&lt;GroupsCreateConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46719,8 +46985,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_groups_create(
-            &PostV1ConsolidationGroupsCreateRequest {
+        .groups_create(
+            &GroupsCreateConsolidationRequest {
                 name: "name".to_string(),
                 presentation_currency: None,
             },
@@ -46762,7 +47028,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_groups_list</a>(request: PostV1ConsolidationGroupsListRequest) -> Result&lt;PostV1ConsolidationGroupsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">groups_list</a>(request: GroupsListConsolidationRequest) -> Result&lt;GroupsListConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46786,8 +47052,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_groups_list(
-            &PostV1ConsolidationGroupsListRequest {
+        .groups_list(
+            &GroupsListConsolidationRequest {
                 ..Default::default()
             },
             None,
@@ -46805,7 +47071,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_groups_get</a>(request: PostV1ConsolidationGroupsGetRequest) -> Result&lt;PostV1ConsolidationGroupsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">groups_get</a>(request: GroupsGetConsolidationRequest) -> Result&lt;GroupsGetConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46829,8 +47095,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_groups_get(
-            &PostV1ConsolidationGroupsGetRequest {
+        .groups_get(
+            &GroupsGetConsolidationRequest {
                 group_id: "groupId".to_string(),
             },
             None,
@@ -46863,7 +47129,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_groups_update</a>(request: PostV1ConsolidationGroupsUpdateRequest) -> Result&lt;PostV1ConsolidationGroupsUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">groups_update</a>(request: GroupsUpdateConsolidationRequest) -> Result&lt;GroupsUpdateConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46887,8 +47153,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_groups_update(
-            &PostV1ConsolidationGroupsUpdateRequest {
+        .groups_update(
+            &GroupsUpdateConsolidationRequest {
                 group_id: "groupId".to_string(),
                 name: None,
                 presentation_currency: None,
@@ -46939,7 +47205,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_groups_delete</a>(request: PostV1ConsolidationGroupsDeleteRequest) -> Result&lt;PostV1ConsolidationGroupsDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">groups_delete</a>(request: GroupsDeleteConsolidationRequest) -> Result&lt;GroupsDeleteConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -46963,8 +47229,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_groups_delete(
-            &PostV1ConsolidationGroupsDeleteRequest {
+        .groups_delete(
+            &GroupsDeleteConsolidationRequest {
                 group_id: "groupId".to_string(),
             },
             None,
@@ -46997,7 +47263,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_members_add</a>(request: PostV1ConsolidationMembersAddRequest) -> Result&lt;PostV1ConsolidationMembersAddResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">members_add</a>(request: MembersAddConsolidationRequest) -> Result&lt;MembersAddConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47021,8 +47287,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_members_add(
-            &PostV1ConsolidationMembersAddRequest {
+        .members_add(
+            &MembersAddConsolidationRequest {
                 group_id: "groupId".to_string(),
                 member_company_id: "memberCompanyId".to_string(),
                 ownership_percent: None,
@@ -47070,7 +47336,7 @@ async fn main() {
 <dl>
 <dd>
 
-**method:** `Option<PostV1ConsolidationMembersAddRequestMethod>` 
+**method:** `Option<MembersAddConsolidationRequestMethod>` 
     
 </dd>
 </dl>
@@ -47082,7 +47348,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_members_remove</a>(request: PostV1ConsolidationMembersRemoveRequest) -> Result&lt;PostV1ConsolidationMembersRemoveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">members_remove</a>(request: MembersRemoveConsolidationRequest) -> Result&lt;MembersRemoveConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47106,8 +47372,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_members_remove(
-            &PostV1ConsolidationMembersRemoveRequest {
+        .members_remove(
+            &MembersRemoveConsolidationRequest {
                 group_id: "groupId".to_string(),
                 member_company_id: "memberCompanyId".to_string(),
             },
@@ -47149,7 +47415,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_intercompany_candidates</a>(request: PostV1ConsolidationIntercompanyCandidatesRequest) -> Result&lt;PostV1ConsolidationIntercompanyCandidatesResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">intercompany_candidates</a>(request: IntercompanyCandidatesConsolidationRequest) -> Result&lt;IntercompanyCandidatesConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47187,8 +47453,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_intercompany_candidates(
-            &PostV1ConsolidationIntercompanyCandidatesRequest {
+        .intercompany_candidates(
+            &IntercompanyCandidatesConsolidationRequest {
                 group_id: "groupId".to_string(),
             },
             None,
@@ -47221,7 +47487,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_intercompany_links_set</a>(request: PostV1ConsolidationIntercompanyLinksSetRequest) -> Result&lt;PostV1ConsolidationIntercompanyLinksSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">intercompany_links_set</a>(request: IntercompanyLinksSetConsolidationRequest) -> Result&lt;IntercompanyLinksSetConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47259,8 +47525,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_intercompany_links_set(
-            &PostV1ConsolidationIntercompanyLinksSetRequest {
+        .intercompany_links_set(
+            &IntercompanyLinksSetConsolidationRequest {
                 group_id: "groupId".to_string(),
                 partner_id: "partnerId".to_string(),
                 counterparty_company_id: "counterpartyCompanyId".to_string(),
@@ -47311,7 +47577,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_intercompany_links_list</a>(request: PostV1ConsolidationIntercompanyLinksListRequest) -> Result&lt;PostV1ConsolidationIntercompanyLinksListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">intercompany_links_list</a>(request: IntercompanyLinksListConsolidationRequest) -> Result&lt;IntercompanyLinksListConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47335,8 +47601,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_intercompany_links_list(
-            &PostV1ConsolidationIntercompanyLinksListRequest {
+        .intercompany_links_list(
+            &IntercompanyLinksListConsolidationRequest {
                 group_id: "groupId".to_string(),
             },
             None,
@@ -47369,7 +47635,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_intercompany_links_remove</a>(request: PostV1ConsolidationIntercompanyLinksRemoveRequest) -> Result&lt;PostV1ConsolidationIntercompanyLinksRemoveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">intercompany_links_remove</a>(request: IntercompanyLinksRemoveConsolidationRequest) -> Result&lt;IntercompanyLinksRemoveConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47393,8 +47659,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_intercompany_links_remove(
-            &PostV1ConsolidationIntercompanyLinksRemoveRequest {
+        .intercompany_links_remove(
+            &IntercompanyLinksRemoveConsolidationRequest {
                 group_id: "groupId".to_string(),
                 id: "id".to_string(),
             },
@@ -47436,7 +47702,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_intercompany_report</a>(request: PostV1ConsolidationIntercompanyReportRequest) -> Result&lt;PostV1ConsolidationIntercompanyReportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">intercompany_report</a>(request: IntercompanyReportConsolidationRequest) -> Result&lt;IntercompanyReportConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47474,11 +47740,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_intercompany_report(
-            &PostV1ConsolidationIntercompanyReportRequest {
+        .intercompany_report(
+            &IntercompanyReportConsolidationRequest {
                 group_id: "groupId".to_string(),
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -47526,7 +47792,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">post_v1_consolidation_report</a>(request: PostV1ConsolidationReportRequest) -> Result&lt;PostV1ConsolidationReportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.consolidation.<a href="/src/api/resources/consolidation/client.rs">report</a>(request: ReportConsolidationRequest) -> Result&lt;ReportConsolidationResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47550,11 +47816,11 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .consolidation
-        .post_v1consolidation_report(
-            &PostV1ConsolidationReportRequest {
+        .report(
+            &ReportConsolidationRequest {
                 group_id: "groupId".to_string(),
-                from_date: "fromDate".to_string(),
-                to_date: "toDate".to_string(),
+                from_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 category: None,
                 eliminations: None,
             },
@@ -47600,7 +47866,7 @@ async fn main() {
 <dl>
 <dd>
 
-**category:** `Option<PostV1ConsolidationReportRequestCategory>` 
+**category:** `Option<ReportConsolidationRequestCategory>` 
     
 </dd>
 </dl>
@@ -47608,7 +47874,7 @@ async fn main() {
 <dl>
 <dd>
 
-**eliminations:** `Option<Vec<PostV1ConsolidationReportRequestEliminationsItem>>` 
+**eliminations:** `Option<Vec<ReportConsolidationRequestEliminationsItem>>` 
     
 </dd>
 </dl>
@@ -47620,8 +47886,8 @@ async fn main() {
 </dl>
 </details>
 
-## Public
-<details><summary><code>client.public.<a href="/src/api/resources/public/client.rs">post_v1_public_integration_requests</a>(request: PostV1PublicIntegrationRequestsRequest) -> Result&lt;PostV1PublicIntegrationRequestsResponse, ApiError&gt;</code></summary>
+## public
+<details><summary><code>client.public.<a href="/src/api/resources/public/client.rs">integration_requests</a>(request: IntegrationRequestsPublicRequest) -> Result&lt;IntegrationRequestsPublicResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47645,8 +47911,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .public
-        .post_v1public_integration_requests(
-            &PostV1PublicIntegrationRequestsRequest {
+        .integration_requests(
+            &IntegrationRequestsPublicRequest {
                 integration: "integration".to_string(),
                 name: "name".to_string(),
                 email: "email".to_string(),
@@ -47724,7 +47990,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.public.<a href="/src/api/resources/public/client.rs">get_v1_public_pay_token</a>(token: String) -> Result&lt;(), ApiError&gt;</code></summary>
+<details><summary><code>client.public.<a href="/src/api/resources/public/client.rs">pay</a>(token: String) -> Result&lt;(), ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47746,10 +48012,7 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client
-        .public
-        .get_v1public_pay_token(&"token".to_string(), None)
-        .await;
+    client.public.pay(&"token".to_string(), None).await;
 }
 ```
 </dd>
@@ -47777,8 +48040,8 @@ async fn main() {
 </dl>
 </details>
 
-## Billing
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_account_get</a>(request: PostV1BillingAccountGetRequest) -> Result&lt;PostV1BillingAccountGetResponse, ApiError&gt;</code></summary>
+## billing
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">account_get</a>(request: AccountGetBillingRequest) -> Result&lt;AccountGetBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47802,8 +48065,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .billing
-        .post_v1billing_account_get(
-            &PostV1BillingAccountGetRequest {
+        .account_get(
+            &AccountGetBillingRequest {
                 ..Default::default()
             },
             None,
@@ -47821,7 +48084,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_account_set_plan</a>(request: PostV1BillingAccountSetPlanRequest) -> Result&lt;PostV1BillingAccountSetPlanResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">account_set_plan</a>(request: AccountSetPlanBillingRequest) -> Result&lt;AccountSetPlanBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47845,9 +48108,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .billing
-        .post_v1billing_account_set_plan(
-            &PostV1BillingAccountSetPlanRequest {
-                plan: PostV1BillingAccountSetPlanRequestPlan::Starter,
+        .account_set_plan(
+            &AccountSetPlanBillingRequest {
+                plan: AccountSetPlanBillingRequestPlan::Starter,
             },
             None,
         )
@@ -47867,7 +48130,7 @@ async fn main() {
 <dl>
 <dd>
 
-**plan:** `PostV1BillingAccountSetPlanRequestPlan` 
+**plan:** `AccountSetPlanBillingRequestPlan` 
     
 </dd>
 </dl>
@@ -47879,7 +48142,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_topup_create</a>(request: PostV1BillingTopupCreateRequest) -> Result&lt;PostV1BillingTopupCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">topup_create</a>(request: TopupCreateBillingRequest) -> Result&lt;TopupCreateBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47903,8 +48166,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .billing
-        .post_v1billing_topup_create(
-            &PostV1BillingTopupCreateRequest {
+        .topup_create(
+            &TopupCreateBillingRequest {
                 amount_cents: 1000000,
                 locale: None,
             },
@@ -47934,7 +48197,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1BillingTopupCreateRequestLocale>` 
+**locale:** `Option<TopupCreateBillingRequestLocale>` 
     
 </dd>
 </dl>
@@ -47946,7 +48209,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_portal_create</a>(request: PostV1BillingPortalCreateRequest) -> Result&lt;PostV1BillingPortalCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">portal_create</a>(request: PortalCreateBillingRequest) -> Result&lt;PortalCreateBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -47970,8 +48233,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .billing
-        .post_v1billing_portal_create(
-            &PostV1BillingPortalCreateRequest {
+        .portal_create(
+            &PortalCreateBillingRequest {
                 ..Default::default()
             },
             None,
@@ -47992,7 +48255,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1BillingPortalCreateRequestLocale>` 
+**locale:** `Option<PortalCreateBillingRequestLocale>` 
     
 </dd>
 </dl>
@@ -48004,7 +48267,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_transactions_list</a>(request: PostV1BillingTransactionsListRequest) -> Result&lt;PostV1BillingTransactionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">transactions_list</a>(request: TransactionsListBillingRequest) -> Result&lt;TransactionsListBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48028,8 +48291,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .billing
-        .post_v1billing_transactions_list(
-            &PostV1BillingTransactionsListRequest {
+        .transactions_list(
+            &TransactionsListBillingRequest {
                 ..Default::default()
             },
             None,
@@ -48062,7 +48325,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">post_v1_billing_usage_list</a>(request: PostV1BillingUsageListRequest) -> Result&lt;PostV1BillingUsageListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">usage_list</a>(request: UsageListBillingRequest) -> Result&lt;UsageListBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48086,10 +48349,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .billing
-        .post_v1billing_usage_list(
-            &PostV1BillingUsageListRequest {
-                from: "from".to_string(),
-                to: "to".to_string(),
+        .usage_list(
+            &UsageListBillingRequest {
+                from: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                to: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
             },
             None,
         )
@@ -48129,8 +48392,8 @@ async fn main() {
 </dl>
 </details>
 
-## Account
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_login_link_request</a>(request: PostV1AccountLoginLinkRequestRequest) -> Result&lt;PostV1AccountLoginLinkRequestResponse, ApiError&gt;</code></summary>
+## account
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">login_link_request</a>(request: LoginLinkRequestAccountRequest) -> Result&lt;LoginLinkRequestAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48154,8 +48417,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_login_link_request(
-            &PostV1AccountLoginLinkRequestRequest {
+        .login_link_request(
+            &LoginLinkRequestAccountRequest {
                 email: "email".to_string(),
                 locale: None,
                 accept_terms: None,
@@ -48188,7 +48451,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1AccountLoginLinkRequestRequestLocale>` 
+**locale:** `Option<LoginLinkRequestAccountRequestLocale>` 
     
 </dd>
 </dl>
@@ -48224,7 +48487,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_login_link_consume</a>(request: PostV1AccountLoginLinkConsumeRequest) -> Result&lt;PostV1AccountLoginLinkConsumeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">login_link_consume</a>(request: LoginLinkConsumeAccountRequest) -> Result&lt;LoginLinkConsumeAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48248,8 +48511,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_login_link_consume(
-            &PostV1AccountLoginLinkConsumeRequest {
+        .login_link_consume(
+            &LoginLinkConsumeAccountRequest {
                 token: "token".to_string(),
             },
             None,
@@ -48282,7 +48545,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_logout</a>(request: PostV1AccountLogoutRequest) -> Result&lt;PostV1AccountLogoutResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">logout</a>(request: LogoutAccountRequest) -> Result&lt;LogoutAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48306,8 +48569,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_logout(
-            &PostV1AccountLogoutRequest {
+        .logout(
+            &LogoutAccountRequest {
                 ..Default::default()
             },
             None,
@@ -48325,7 +48588,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_me</a>(request: PostV1AccountMeRequest) -> Result&lt;PostV1AccountMeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">me</a>(request: MeAccountRequest) -> Result&lt;MeAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48349,8 +48612,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_me(
-            &PostV1AccountMeRequest {
+        .me(
+            &MeAccountRequest {
                 ..Default::default()
             },
             None,
@@ -48368,7 +48631,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_members_list</a>(request: PostV1AccountMembersListRequest) -> Result&lt;PostV1AccountMembersListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">members_list</a>(request: MembersListAccountRequest) -> Result&lt;MembersListAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48392,8 +48655,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_members_list(
-            &PostV1AccountMembersListRequest {
+        .members_list(
+            &MembersListAccountRequest {
                 ..Default::default()
             },
             None,
@@ -48411,7 +48674,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_members_set_role</a>(request: PostV1AccountMembersSetRoleRequest) -> Result&lt;PostV1AccountMembersSetRoleResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">members_set_role</a>(request: MembersSetRoleAccountRequest) -> Result&lt;MembersSetRoleAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48435,10 +48698,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_members_set_role(
-            &PostV1AccountMembersSetRoleRequest {
+        .members_set_role(
+            &MembersSetRoleAccountRequest {
                 user_id: "userId".to_string(),
-                role: PostV1AccountMembersSetRoleRequestRole::Admin,
+                role: MembersSetRoleAccountRequestRole::Admin,
             },
             None,
         )
@@ -48466,7 +48729,7 @@ async fn main() {
 <dl>
 <dd>
 
-**role:** `PostV1AccountMembersSetRoleRequestRole` 
+**role:** `MembersSetRoleAccountRequestRole` 
     
 </dd>
 </dl>
@@ -48478,7 +48741,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_members_transfer_ownership</a>(request: PostV1AccountMembersTransferOwnershipRequest) -> Result&lt;PostV1AccountMembersTransferOwnershipResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">members_transfer_ownership</a>(request: MembersTransferOwnershipAccountRequest) -> Result&lt;MembersTransferOwnershipAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48502,8 +48765,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_members_transfer_ownership(
-            &PostV1AccountMembersTransferOwnershipRequest {
+        .members_transfer_ownership(
+            &MembersTransferOwnershipAccountRequest {
                 user_id: "userId".to_string(),
                 move_payer: None,
             },
@@ -48545,7 +48808,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_members_remove</a>(request: PostV1AccountMembersRemoveRequest) -> Result&lt;PostV1AccountMembersRemoveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">members_remove</a>(request: MembersRemoveAccountRequest) -> Result&lt;MembersRemoveAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48569,8 +48832,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_members_remove(
-            &PostV1AccountMembersRemoveRequest {
+        .members_remove(
+            &MembersRemoveAccountRequest {
                 user_id: "userId".to_string(),
             },
             None,
@@ -48603,7 +48866,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_invites_create</a>(request: PostV1AccountInvitesCreateRequest) -> Result&lt;PostV1AccountInvitesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">invites_create</a>(request: InvitesCreateAccountRequest) -> Result&lt;InvitesCreateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48627,10 +48890,10 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_invites_create(
-            &PostV1AccountInvitesCreateRequest {
+        .invites_create(
+            &InvitesCreateAccountRequest {
                 email: "email".to_string(),
-                role: PostV1AccountInvitesCreateRequestRole::Admin,
+                role: InvitesCreateAccountRequestRole::Admin,
                 locale: None,
             },
             None,
@@ -48659,7 +48922,7 @@ async fn main() {
 <dl>
 <dd>
 
-**role:** `PostV1AccountInvitesCreateRequestRole` 
+**role:** `InvitesCreateAccountRequestRole` 
     
 </dd>
 </dl>
@@ -48667,7 +48930,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1AccountInvitesCreateRequestLocale>` 
+**locale:** `Option<InvitesCreateAccountRequestLocale>` 
     
 </dd>
 </dl>
@@ -48679,7 +48942,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_invites_list</a>(request: PostV1AccountInvitesListRequest) -> Result&lt;PostV1AccountInvitesListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">invites_list</a>(request: InvitesListAccountRequest) -> Result&lt;InvitesListAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48703,8 +48966,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_invites_list(
-            &PostV1AccountInvitesListRequest {
+        .invites_list(
+            &InvitesListAccountRequest {
                 ..Default::default()
             },
             None,
@@ -48722,7 +48985,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_invites_revoke</a>(request: PostV1AccountInvitesRevokeRequest) -> Result&lt;PostV1AccountInvitesRevokeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">invites_revoke</a>(request: InvitesRevokeAccountRequest) -> Result&lt;InvitesRevokeAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48746,8 +49009,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_invites_revoke(
-            &PostV1AccountInvitesRevokeRequest {
+        .invites_revoke(
+            &InvitesRevokeAccountRequest {
                 id: "id".to_string(),
             },
             None,
@@ -48780,7 +49043,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_invites_get</a>(request: PostV1AccountInvitesGetRequest) -> Result&lt;PostV1AccountInvitesGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">invites_get</a>(request: InvitesGetAccountRequest) -> Result&lt;InvitesGetAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48804,8 +49067,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_invites_get(
-            &PostV1AccountInvitesGetRequest {
+        .invites_get(
+            &InvitesGetAccountRequest {
                 token: "token".to_string(),
             },
             None,
@@ -48838,7 +49101,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_invites_accept</a>(request: PostV1AccountInvitesAcceptRequest) -> Result&lt;PostV1AccountInvitesAcceptResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">invites_accept</a>(request: InvitesAcceptAccountRequest) -> Result&lt;InvitesAcceptAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48862,8 +49125,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_invites_accept(
-            &PostV1AccountInvitesAcceptRequest {
+        .invites_accept(
+            &InvitesAcceptAccountRequest {
                 token: "token".to_string(),
                 name: None,
                 locale: None,
@@ -48904,7 +49167,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1AccountInvitesAcceptRequestLocale>` 
+**locale:** `Option<InvitesAcceptAccountRequestLocale>` 
     
 </dd>
 </dl>
@@ -48932,7 +49195,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_locale_set</a>(request: PostV1AccountLocaleSetRequest) -> Result&lt;PostV1AccountLocaleSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">locale_set</a>(request: LocaleSetAccountRequest) -> Result&lt;LocaleSetAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -48956,9 +49219,9 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_locale_set(
-            &PostV1AccountLocaleSetRequest {
-                locale: PostV1AccountLocaleSetRequestLocale::En,
+        .locale_set(
+            &LocaleSetAccountRequest {
+                locale: LocaleSetAccountRequestLocale::En,
             },
             None,
         )
@@ -48978,7 +49241,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `PostV1AccountLocaleSetRequestLocale` 
+**locale:** `LocaleSetAccountRequestLocale` 
     
 </dd>
 </dl>
@@ -48990,7 +49253,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_create</a>(request: PostV1AccountCompaniesCreateRequest) -> Result&lt;PostV1AccountCompaniesCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_create</a>(request: CompaniesCreateAccountRequest) -> Result&lt;CompaniesCreateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49014,8 +49277,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_create(
-            &PostV1AccountCompaniesCreateRequest {
+        .companies_create(
+            &CompaniesCreateAccountRequest {
                 name: "name".to_string(),
                 code: None,
                 vat_code: None,
@@ -49043,6 +49306,7 @@ async fn main() {
                 auditor_registration_number: None,
                 audit_required: None,
                 country_code: None,
+                base_currency: None,
                 is_sandbox: None,
             },
             None,
@@ -49103,7 +49367,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_period:** `Option<PostV1AccountCompaniesCreateRequestVatPeriod>` 
+**vat_period:** `Option<CompaniesCreateAccountRequestVatPeriod>` 
     
 </dd>
 </dl>
@@ -49135,7 +49399,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1AccountCompaniesCreateRequestAddress>` 
+**address:** `Option<CompaniesCreateAccountRequestAddress>` 
     
 </dd>
 </dl>
@@ -49231,7 +49495,7 @@ async fn main() {
 <dl>
 <dd>
 
-**accounts_kept_by:** `Option<PostV1AccountCompaniesCreateRequestAccountsKeptBy>` 
+**accounts_kept_by:** `Option<CompaniesCreateAccountRequestAccountsKeptBy>` 
     
 </dd>
 </dl>
@@ -49271,7 +49535,15 @@ async fn main() {
 <dl>
 <dd>
 
-**country_code:** `Option<PostV1AccountCompaniesCreateRequestCountryCode>` — Jurisdiction the company is registered in (immutable after creation)
+**country_code:** `Option<CompaniesCreateAccountRequestCountryCode>` — Jurisdiction the company is registered in (immutable after creation)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**base_currency:** `Option<String>` — Currency the ledger is kept in; defaults to the national currency of countryCode (immutable after creation)
     
 </dd>
 </dl>
@@ -49291,7 +49563,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_select</a>(request: PostV1AccountCompaniesSelectRequest) -> Result&lt;PostV1AccountCompaniesSelectResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_select</a>(request: CompaniesSelectAccountRequest) -> Result&lt;CompaniesSelectAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49315,8 +49587,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_select(
-            &PostV1AccountCompaniesSelectRequest {
+        .companies_select(
+            &CompaniesSelectAccountRequest {
                 company_id: "companyId".to_string(),
             },
             None,
@@ -49349,7 +49621,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_profile</a>(request: PostV1AccountCompaniesProfileRequest) -> Result&lt;PostV1AccountCompaniesProfileResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_profile</a>(request: CompaniesProfileAccountRequest) -> Result&lt;CompaniesProfileAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49373,8 +49645,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_profile(
-            &PostV1AccountCompaniesProfileRequest {
+        .companies_profile(
+            &CompaniesProfileAccountRequest {
                 ..Default::default()
             },
             None,
@@ -49392,7 +49664,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_update</a>(request: PostV1AccountCompaniesUpdateRequest) -> Result&lt;PostV1AccountCompaniesUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_update</a>(request: CompaniesUpdateAccountRequest) -> Result&lt;CompaniesUpdateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49416,8 +49688,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_update(
-            &PostV1AccountCompaniesUpdateRequest {
+        .companies_update(
+            &CompaniesUpdateAccountRequest {
                 ..Default::default()
             },
             None,
@@ -49478,7 +49750,7 @@ async fn main() {
 <dl>
 <dd>
 
-**vat_period:** `Option<Option<PostV1AccountCompaniesUpdateRequestVatPeriod>>` 
+**vat_period:** `Option<Option<CompaniesUpdateAccountRequestVatPeriod>>` 
     
 </dd>
 </dl>
@@ -49510,7 +49782,7 @@ async fn main() {
 <dl>
 <dd>
 
-**address:** `Option<PostV1AccountCompaniesUpdateRequestAddress>` 
+**address:** `Option<CompaniesUpdateAccountRequestAddress>` 
     
 </dd>
 </dl>
@@ -49606,7 +49878,7 @@ async fn main() {
 <dl>
 <dd>
 
-**accounts_kept_by:** `Option<Option<PostV1AccountCompaniesUpdateRequestAccountsKeptBy>>` 
+**accounts_kept_by:** `Option<Option<CompaniesUpdateAccountRequestAccountsKeptBy>>` 
     
 </dd>
 </dl>
@@ -49646,7 +49918,7 @@ async fn main() {
 <dl>
 <dd>
 
-**logo:** `Option<PostV1AccountCompaniesUpdateRequestLogo>` 
+**logo:** `Option<CompaniesUpdateAccountRequestLogo>` 
     
 </dd>
 </dl>
@@ -49658,7 +49930,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_archive</a>(request: PostV1AccountCompaniesArchiveRequest) -> Result&lt;PostV1AccountCompaniesArchiveResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_archive</a>(request: CompaniesArchiveAccountRequest) -> Result&lt;CompaniesArchiveAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49682,8 +49954,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_archive(
-            &PostV1AccountCompaniesArchiveRequest {
+        .companies_archive(
+            &CompaniesArchiveAccountRequest {
                 company_id: "companyId".to_string(),
             },
             None,
@@ -49716,7 +49988,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_delete</a>(request: PostV1AccountCompaniesDeleteRequest) -> Result&lt;PostV1AccountCompaniesDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_delete</a>(request: CompaniesDeleteAccountRequest) -> Result&lt;CompaniesDeleteAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49740,8 +50012,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_delete(
-            &PostV1AccountCompaniesDeleteRequest {
+        .companies_delete(
+            &CompaniesDeleteAccountRequest {
                 company_id: "companyId".to_string(),
             },
             None,
@@ -49774,7 +50046,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_companies_activate</a>(request: PostV1AccountCompaniesActivateRequest) -> Result&lt;PostV1AccountCompaniesActivateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">companies_activate</a>(request: CompaniesActivateAccountRequest) -> Result&lt;CompaniesActivateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49798,8 +50070,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_companies_activate(
-            &PostV1AccountCompaniesActivateRequest {
+        .companies_activate(
+            &CompaniesActivateAccountRequest {
                 company_id: "companyId".to_string(),
             },
             None,
@@ -49832,7 +50104,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_api_keys_create</a>(request: PostV1AccountApiKeysCreateRequest) -> Result&lt;PostV1AccountApiKeysCreateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">api_keys_create</a>(request: ApiKeysCreateAccountRequest) -> Result&lt;ApiKeysCreateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49856,8 +50128,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_api_keys_create(
-            &PostV1AccountAPIKeysCreateRequest {
+        .api_keys_create(
+            &APIKeysCreateAccountRequest {
                 name: "name".to_string(),
                 scopes: None,
                 expires_in_days: None,
@@ -49908,7 +50180,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_api_keys_list</a>(request: PostV1AccountApiKeysListRequest) -> Result&lt;PostV1AccountApiKeysListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">api_keys_list</a>(request: ApiKeysListAccountRequest) -> Result&lt;ApiKeysListAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49932,8 +50204,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_api_keys_list(
-            &PostV1AccountAPIKeysListRequest {
+        .api_keys_list(
+            &APIKeysListAccountRequest {
                 ..Default::default()
             },
             None,
@@ -49951,7 +50223,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">issue_a_replacement_for_an_api_key_and_set_the_old_one_to_stop_working_after_a_short_overlap</a>(request: PostV1AccountApiKeysRotateRequest) -> Result&lt;PostV1AccountApiKeysRotateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">api_keys_rotate</a>(request: ApiKeysRotateAccountRequest) -> Result&lt;ApiKeysRotateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -49973,11 +50245,17 @@ async fn main() {
         ..Default::default()
     };
     let client = ApiClient::new(config).expect("Failed to build client");
-    client.account.issue_a_replacement_for_an_api_key_and_set_the_old_one_to_stop_working_after_a_short_overlap(&PostV1AccountAPIKeysRotateRequest {
-        id: "id".to_string(),
-        overlap_hours: None,
-        expires_in_days: None
-    }, None).await;
+    client
+        .account
+        .api_keys_rotate(
+            &APIKeysRotateAccountRequest {
+                id: "id".to_string(),
+                overlap_hours: None,
+                expires_in_days: None,
+            },
+            None,
+        )
+        .await;
 }
 ```
 </dd>
@@ -50021,7 +50299,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_api_keys_revoke</a>(request: PostV1AccountApiKeysRevokeRequest) -> Result&lt;PostV1AccountApiKeysRevokeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">api_keys_revoke</a>(request: ApiKeysRevokeAccountRequest) -> Result&lt;ApiKeysRevokeAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50045,8 +50323,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_api_keys_revoke(
-            &PostV1AccountAPIKeysRevokeRequest {
+        .api_keys_revoke(
+            &APIKeysRevokeAccountRequest {
                 id: "id".to_string(),
             },
             None,
@@ -50079,7 +50357,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_consent_accept</a>(request: PostV1AccountConsentAcceptRequest) -> Result&lt;PostV1AccountConsentAcceptResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">consent_accept</a>(request: ConsentAcceptAccountRequest) -> Result&lt;ConsentAcceptAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50103,8 +50381,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_consent_accept(
-            &PostV1AccountConsentAcceptRequest {
+        .consent_accept(
+            &ConsentAcceptAccountRequest {
                 accept_terms: true,
                 accept_dpa: true,
             },
@@ -50146,7 +50424,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_profile_update</a>(request: PostV1AccountProfileUpdateRequest) -> Result&lt;PostV1AccountProfileUpdateResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">profile_update</a>(request: ProfileUpdateAccountRequest) -> Result&lt;ProfileUpdateAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50170,8 +50448,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_profile_update(
-            &PostV1AccountProfileUpdateRequest {
+        .profile_update(
+            &ProfileUpdateAccountRequest {
                 ..Default::default()
             },
             None,
@@ -50204,7 +50482,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_email_change_request</a>(request: PostV1AccountEmailChangeRequestRequest) -> Result&lt;PostV1AccountEmailChangeRequestResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">email_change_request</a>(request: EmailChangeRequestAccountRequest) -> Result&lt;EmailChangeRequestAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50228,8 +50506,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_email_change_request(
-            &PostV1AccountEmailChangeRequestRequest {
+        .email_change_request(
+            &EmailChangeRequestAccountRequest {
                 new_email: "newEmail".to_string(),
                 locale: None,
             },
@@ -50259,7 +50537,7 @@ async fn main() {
 <dl>
 <dd>
 
-**locale:** `Option<PostV1AccountEmailChangeRequestRequestLocale>` 
+**locale:** `Option<EmailChangeRequestAccountRequestLocale>` 
     
 </dd>
 </dl>
@@ -50271,7 +50549,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_sessions_list</a>(request: PostV1AccountSessionsListRequest) -> Result&lt;PostV1AccountSessionsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">sessions_list</a>(request: SessionsListAccountRequest) -> Result&lt;SessionsListAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50295,8 +50573,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_sessions_list(
-            &PostV1AccountSessionsListRequest {
+        .sessions_list(
+            &SessionsListAccountRequest {
                 ..Default::default()
             },
             None,
@@ -50314,7 +50592,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_sessions_revoke</a>(request: PostV1AccountSessionsRevokeRequest) -> Result&lt;PostV1AccountSessionsRevokeResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">sessions_revoke</a>(request: SessionsRevokeAccountRequest) -> Result&lt;SessionsRevokeAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50338,8 +50616,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_sessions_revoke(
-            &PostV1AccountSessionsRevokeRequest {
+        .sessions_revoke(
+            &SessionsRevokeAccountRequest {
                 id: "id".to_string(),
             },
             None,
@@ -50372,7 +50650,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_sessions_revoke_others</a>(request: PostV1AccountSessionsRevokeOthersRequest) -> Result&lt;PostV1AccountSessionsRevokeOthersResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">sessions_revoke_others</a>(request: SessionsRevokeOthersAccountRequest) -> Result&lt;SessionsRevokeOthersAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50396,8 +50674,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_sessions_revoke_others(
-            &PostV1AccountSessionsRevokeOthersRequest {
+        .sessions_revoke_others(
+            &SessionsRevokeOthersAccountRequest {
                 ..Default::default()
             },
             None,
@@ -50415,7 +50693,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">download_everything_nordlet_stores_about_the_signed_in_user</a>(request: PostV1AccountExportRequest) -> Result&lt;PostV1AccountExportResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">export</a>(request: ExportAccountRequest) -> Result&lt;ExportAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50439,8 +50717,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .download_everything_nordlet_stores_about_the_signed_in_user(
-            &PostV1AccountExportRequest {
+        .export(
+            &ExportAccountRequest {
                 ..Default::default()
             },
             None,
@@ -50458,7 +50736,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">delete_the_signed_in_user_account</a>(request: PostV1AccountDeleteRequest) -> Result&lt;PostV1AccountDeleteResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">delete</a>(request: DeleteAccountRequest) -> Result&lt;DeleteAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50496,8 +50774,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .delete_the_signed_in_user_account(
-            &PostV1AccountDeleteRequest {
+        .delete(
+            &DeleteAccountRequest {
                 confirm_email: "confirmEmail".to_string(),
             },
             None,
@@ -50530,7 +50808,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_referral_get</a>(request: PostV1AccountReferralGetRequest) -> Result&lt;PostV1AccountReferralGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">referral_get</a>(request: ReferralGetAccountRequest) -> Result&lt;ReferralGetAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50554,8 +50832,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_referral_get(
-            &PostV1AccountReferralGetRequest {
+        .referral_get(
+            &ReferralGetAccountRequest {
                 ..Default::default()
             },
             None,
@@ -50573,7 +50851,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_referral_convert</a>(request: PostV1AccountReferralConvertRequest) -> Result&lt;PostV1AccountReferralConvertResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">referral_convert</a>(request: ReferralConvertAccountRequest) -> Result&lt;ReferralConvertAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50597,10 +50875,7 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_referral_convert(
-            &PostV1AccountReferralConvertRequest { points: 1000000 },
-            None,
-        )
+        .referral_convert(&ReferralConvertAccountRequest { points: 1000000 }, None)
         .await;
 }
 ```
@@ -50629,7 +50904,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_table_settings_get</a>(request: PostV1AccountTableSettingsGetRequest) -> Result&lt;PostV1AccountTableSettingsGetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">table_settings_get</a>(request: TableSettingsGetAccountRequest) -> Result&lt;TableSettingsGetAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50653,8 +50928,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_table_settings_get(
-            &PostV1AccountTableSettingsGetRequest {
+        .table_settings_get(
+            &TableSettingsGetAccountRequest {
                 table_key: "tableKey".to_string(),
             },
             None,
@@ -50687,7 +50962,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_table_settings_set</a>(request: PostV1AccountTableSettingsSetRequest) -> Result&lt;PostV1AccountTableSettingsSetResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">table_settings_set</a>(request: TableSettingsSetAccountRequest) -> Result&lt;TableSettingsSetAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50711,8 +50986,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_table_settings_set(
-            &PostV1AccountTableSettingsSetRequest {
+        .table_settings_set(
+            &TableSettingsSetAccountRequest {
                 table_key: "tableKey".to_string(),
                 columns: None,
                 page_size: None,
@@ -50763,7 +51038,7 @@ async fn main() {
 </dl>
 </details>
 
-<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">post_v1_account_table_settings_list</a>(request: PostV1AccountTableSettingsListRequest) -> Result&lt;PostV1AccountTableSettingsListResponse, ApiError&gt;</code></summary>
+<details><summary><code>client.account.<a href="/src/api/resources/account/client.rs">table_settings_list</a>(request: TableSettingsListAccountRequest) -> Result&lt;TableSettingsListAccountResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
 
@@ -50787,8 +51062,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .account
-        .post_v1account_table_settings_list(
-            &PostV1AccountTableSettingsListRequest {
+        .table_settings_list(
+            &TableSettingsListAccountRequest {
                 ..Default::default()
             },
             None,

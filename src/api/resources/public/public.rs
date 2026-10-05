@@ -13,11 +13,11 @@ impl PublicClient {
         })
     }
 
-    pub async fn post_v1_public_integration_requests(
+    pub async fn integration_requests(
         &self,
-        request: &PostV1PublicIntegrationRequestsRequest,
+        request: &IntegrationRequestsPublicRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PublicIntegrationRequestsResponse, ApiError> {
+    ) -> Result<IntegrationRequestsPublicResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,7 @@ impl PublicClient {
             .await
     }
 
-    pub async fn get_v1_public_pay_token(
-        &self,
-        token: &str,
-        options: Option<RequestOptions>,
-    ) -> Result<(), ApiError> {
+    pub async fn pay(&self, token: &str, options: Option<RequestOptions>) -> Result<(), ApiError> {
         self.http_client
             .execute_request(
                 Method::GET,

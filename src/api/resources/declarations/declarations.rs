@@ -13,11 +13,11 @@ impl DeclarationsClient {
         })
     }
 
-    pub async fn post_v1_declarations_lt_intrastat_compute(
+    pub async fn lt_intrastat_compute(
         &self,
-        request: &PostV1DeclarationsLtIntrastatComputeRequest,
+        request: &LtIntrastatComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtIntrastatComputeResponse, ApiError> {
+    ) -> Result<LtIntrastatComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_ivaz_generate(
+    pub async fn lt_ivaz_generate(
         &self,
-        request: &PostV1DeclarationsLtIvazGenerateRequest,
+        request: &LtIvazGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtIvazGenerateResponse, ApiError> {
+    ) -> Result<LtIvazGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_intrastat_obligation(
+    pub async fn lt_intrastat_obligation(
         &self,
-        request: &PostV1DeclarationsLtIntrastatObligationRequest,
+        request: &LtIntrastatObligationDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtIntrastatObligationResponse, ApiError> {
+    ) -> Result<LtIntrastatObligationDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_isaf_generate(
+    pub async fn lt_isaf_generate(
         &self,
-        request: &PostV1DeclarationsLtIsafGenerateRequest,
+        request: &LtIsafGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtIsafGenerateResponse, ApiError> {
+    ) -> Result<LtIsafGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_fr0600_compute(
+    pub async fn lt_fr0600_compute(
         &self,
-        request: &PostV1DeclarationsLtFr0600ComputeRequest,
+        request: &LtFr0600ComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtFr0600ComputeResponse, ApiError> {
+    ) -> Result<LtFr0600ComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_gpm313_compute(
+    pub async fn lt_gpm313_compute(
         &self,
-        request: &PostV1DeclarationsLtGpm313ComputeRequest,
+        request: &LtGpm313ComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtGpm313ComputeResponse, ApiError> {
+    ) -> Result<LtGpm313ComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_sam_compute(
+    pub async fn lt_sam_compute(
         &self,
-        request: &PostV1DeclarationsLtSamComputeRequest,
+        request: &LtSamComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtSamComputeResponse, ApiError> {
+    ) -> Result<LtSamComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_sd_generate(
+    pub async fn lt_sd_generate(
         &self,
-        request: &PostV1DeclarationsLtSdGenerateRequest,
+        request: &LtSdGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtSdGenerateResponse, ApiError> {
+    ) -> Result<LtSdGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_saft_generate(
+    pub async fn lt_saft_generate(
         &self,
-        request: &PostV1DeclarationsLtSaftGenerateRequest,
+        request: &LtSaftGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtSaftGenerateResponse, ApiError> {
+    ) -> Result<LtSaftGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_ivaz_amend(
+    pub async fn lt_ivaz_amend(
         &self,
-        request: &PostV1DeclarationsLtIvazAmendRequest,
+        request: &LtIvazAmendDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtIvazAmendResponse, ApiError> {
+    ) -> Result<LtIvazAmendDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_ivaz_cancel(
+    pub async fn lt_ivaz_cancel(
         &self,
-        request: &PostV1DeclarationsLtIvazCancelRequest,
+        request: &LtIvazCancelDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtIvazCancelResponse, ApiError> {
+    ) -> Result<LtIvazCancelDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_fr0564_compute(
+    pub async fn lt_fr0564_compute(
         &self,
-        request: &PostV1DeclarationsLtFr0564ComputeRequest,
+        request: &LtFr0564ComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtFr0564ComputeResponse, ApiError> {
+    ) -> Result<LtFr0564ComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_gpm312_compute(
+    pub async fn lt_gpm312_compute(
         &self,
-        request: &PostV1DeclarationsLtGpm312ComputeRequest,
+        request: &LtGpm312ComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtGpm312ComputeResponse, ApiError> {
+    ) -> Result<LtGpm312ComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_lt_pln204_compute(
+    pub async fn lt_pln204_compute(
         &self,
-        request: &PostV1DeclarationsLtPln204ComputeRequest,
+        request: &LtPln204ComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtPln204ComputeResponse, ApiError> {
+    ) -> Result<LtPln204ComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_oss_compute(
+    pub async fn eu_oss_compute(
         &self,
-        request: &PostV1DeclarationsEuOssComputeRequest,
+        request: &EuOssComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuOssComputeResponse, ApiError> {
+    ) -> Result<EuOssComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_ioss_compute(
+    pub async fn eu_ioss_compute(
         &self,
-        request: &PostV1DeclarationsEuIossComputeRequest,
+        request: &EuIossComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuIossComputeResponse, ApiError> {
+    ) -> Result<EuIossComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_distance_sales_threshold_get(
+    pub async fn eu_distance_sales_threshold_get(
         &self,
-        request: &PostV1DeclarationsEuDistanceSalesThresholdGetRequest,
+        request: &EuDistanceSalesThresholdGetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuDistanceSalesThresholdGetResponse, ApiError> {
+    ) -> Result<EuDistanceSalesThresholdGetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_union_turnover_get(
+    pub async fn eu_union_turnover_get(
         &self,
-        request: &PostV1DeclarationsEuUnionTurnoverGetRequest,
+        request: &EuUnionTurnoverGetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuUnionTurnoverGetResponse, ApiError> {
+    ) -> Result<EuUnionTurnoverGetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_sme_cross_border_report_compute(
+    pub async fn eu_sme_cross_border_report_compute(
         &self,
-        request: &PostV1DeclarationsEuSmeCrossBorderReportComputeRequest,
+        request: &EuSmeCrossBorderReportComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuSmeCrossBorderReportComputeResponse, ApiError> {
+    ) -> Result<EuSmeCrossBorderReportComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_sme_thresholds_list(
+    pub async fn eu_sme_thresholds_list(
         &self,
-        request: &PostV1DeclarationsEuSmeThresholdsListRequest,
+        request: &EuSmeThresholdsListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuSmeThresholdsListResponse, ApiError> {
+    ) -> Result<EuSmeThresholdsListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +333,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_sme_threshold_get(
+    pub async fn eu_sme_threshold_get(
         &self,
-        request: &PostV1DeclarationsEuSmeThresholdGetRequest,
+        request: &EuSmeThresholdGetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuSmeThresholdGetResponse, ApiError> {
+    ) -> Result<EuSmeThresholdGetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -349,11 +349,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_vat_return_packs_list(
+    pub async fn eu_vat_return_packs_list(
         &self,
-        request: &PostV1DeclarationsEuVatReturnPacksListRequest,
+        request: &EuVatReturnPacksListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuVatReturnPacksListResponse, ApiError> {
+    ) -> Result<EuVatReturnPacksListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -365,11 +365,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_eu_vat_return_compute(
+    pub async fn eu_vat_return_compute(
         &self,
-        request: &PostV1DeclarationsEuVatReturnComputeRequest,
+        request: &EuVatReturnComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEuVatReturnComputeResponse, ApiError> {
+    ) -> Result<EuVatReturnComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -390,11 +390,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_jpk_v7_m_generate(
+    pub async fn pl_jpk_v7m_generate(
         &self,
-        request: &PostV1DeclarationsPlJpkV7MGenerateRequest,
+        request: &PlJpkV7MGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlJpkV7MGenerateResponse, ApiError> {
+    ) -> Result<PlJpkV7MGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -415,11 +415,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_vat_ue_generate(
+    pub async fn pl_vat_ue_generate(
         &self,
-        request: &PostV1DeclarationsPlVatUeGenerateRequest,
+        request: &PlVatUeGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlVatUeGenerateResponse, ApiError> {
+    ) -> Result<PlVatUeGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -440,11 +440,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_intrastat_generate(
+    pub async fn pl_intrastat_generate(
         &self,
-        request: &PostV1DeclarationsPlIntrastatGenerateRequest,
+        request: &PlIntrastatGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlIntrastatGenerateResponse, ApiError> {
+    ) -> Result<PlIntrastatGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -465,11 +465,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_ksef_received_list(
+    pub async fn pl_ksef_received_list(
         &self,
-        request: &PostV1DeclarationsPlKsefReceivedListRequest,
+        request: &PlKsefReceivedListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlKsefReceivedListResponse, ApiError> {
+    ) -> Result<PlKsefReceivedListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -490,11 +490,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_ksef_received_fetch(
+    pub async fn pl_ksef_received_fetch(
         &self,
-        request: &PostV1DeclarationsPlKsefReceivedFetchRequest,
+        request: &PlKsefReceivedFetchDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlKsefReceivedFetchResponse, ApiError> {
+    ) -> Result<PlKsefReceivedFetchDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -515,11 +515,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_ksef_receipt(
+    pub async fn pl_ksef_receipt(
         &self,
-        request: &PostV1DeclarationsPlKsefReceiptRequest,
+        request: &PlKsefReceiptDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlKsefReceiptResponse, ApiError> {
+    ) -> Result<PlKsefReceiptDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -540,11 +540,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn tax_adjustments_recorded_for_a_tax_year(
+    pub async fn tax_adjustments_list(
         &self,
-        request: &PostV1DeclarationsTaxAdjustmentsListRequest,
+        request: &TaxAdjustmentsListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxAdjustmentsListResponse, ApiError> {
+    ) -> Result<TaxAdjustmentsListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -556,11 +556,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn record_a_tax_adjustment_for_a_tax_year(
+    pub async fn tax_adjustments_create(
         &self,
-        request: &PostV1DeclarationsTaxAdjustmentsCreateRequest,
+        request: &TaxAdjustmentsCreateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxAdjustmentsCreateResponse, ApiError> {
+    ) -> Result<TaxAdjustmentsCreateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -572,11 +572,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn change_a_recorded_tax_adjustment(
+    pub async fn tax_adjustments_update(
         &self,
-        request: &PostV1DeclarationsTaxAdjustmentsUpdateRequest,
+        request: &TaxAdjustmentsUpdateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxAdjustmentsUpdateResponse, ApiError> {
+    ) -> Result<TaxAdjustmentsUpdateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -588,11 +588,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn remove_a_recorded_tax_adjustment(
+    pub async fn tax_adjustments_delete(
         &self,
-        request: &PostV1DeclarationsTaxAdjustmentsDeleteRequest,
+        request: &TaxAdjustmentsDeleteDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxAdjustmentsDeleteResponse, ApiError> {
+    ) -> Result<TaxAdjustmentsDeleteDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -613,11 +613,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn payments_already_made_towards_a_tax_of_a_year(
+    pub async fn tax_payments_list(
         &self,
-        request: &PostV1DeclarationsTaxPaymentsListRequest,
+        request: &TaxPaymentsListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxPaymentsListResponse, ApiError> {
+    ) -> Result<TaxPaymentsListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -629,11 +629,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn record_a_payment_made_towards_a_tax(
+    pub async fn tax_payments_create(
         &self,
-        request: &PostV1DeclarationsTaxPaymentsCreateRequest,
+        request: &TaxPaymentsCreateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxPaymentsCreateResponse, ApiError> {
+    ) -> Result<TaxPaymentsCreateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -645,11 +645,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn change_a_recorded_tax_payment(
+    pub async fn tax_payments_update(
         &self,
-        request: &PostV1DeclarationsTaxPaymentsUpdateRequest,
+        request: &TaxPaymentsUpdateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxPaymentsUpdateResponse, ApiError> {
+    ) -> Result<TaxPaymentsUpdateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -661,11 +661,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn remove_a_recorded_tax_payment(
+    pub async fn tax_payments_delete(
         &self,
-        request: &PostV1DeclarationsTaxPaymentsDeleteRequest,
+        request: &TaxPaymentsDeleteDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsTaxPaymentsDeleteResponse, ApiError> {
+    ) -> Result<TaxPaymentsDeleteDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -686,11 +686,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn adoption_and_signing_facts_of_the_annual_accounts_of_a_year(
+    pub async fn annual_accounts_get(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsGetRequest,
+        request: &AnnualAccountsGetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsGetResponse, ApiError> {
+    ) -> Result<AnnualAccountsGetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -702,11 +702,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn record_the_adoption_and_preparation_of_the_annual_accounts_of_a_year(
+    pub async fn annual_accounts_set(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsSetRequest,
+        request: &AnnualAccountsSetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsSetResponse, ApiError> {
+    ) -> Result<AnnualAccountsSetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -718,11 +718,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn record_whether_a_director_signed_the_annual_accounts_of_a_year(
+    pub async fn annual_accounts_signatures_create(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsSignaturesCreateRequest,
+        request: &AnnualAccountsSignaturesCreateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsSignaturesCreateResponse, ApiError> {
+    ) -> Result<AnnualAccountsSignaturesCreateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -734,11 +734,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn change_a_recorded_director_signature(
+    pub async fn annual_accounts_signatures_update(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsSignaturesUpdateRequest,
+        request: &AnnualAccountsSignaturesUpdateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsSignaturesUpdateResponse, ApiError> {
+    ) -> Result<AnnualAccountsSignaturesUpdateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -750,11 +750,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn remove_a_recorded_director_signature(
+    pub async fn annual_accounts_signatures_delete(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsSignaturesDeleteRequest,
+        request: &AnnualAccountsSignaturesDeleteDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsSignaturesDeleteResponse, ApiError> {
+    ) -> Result<AnnualAccountsSignaturesDeleteDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -766,11 +766,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn record_a_decision_to_distribute_profit_a_dividend_an_interim_dividend_or_a_payment_treated_as_one(
+    pub async fn annual_accounts_distributions_create(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsDistributionsCreateRequest,
+        request: &AnnualAccountsDistributionsCreateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsDistributionsCreateResponse, ApiError> {
+    ) -> Result<AnnualAccountsDistributionsCreateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -782,11 +782,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn change_a_recorded_profit_distribution(
+    pub async fn annual_accounts_distributions_update(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsDistributionsUpdateRequest,
+        request: &AnnualAccountsDistributionsUpdateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsDistributionsUpdateResponse, ApiError> {
+    ) -> Result<AnnualAccountsDistributionsUpdateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -798,11 +798,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn remove_a_recorded_profit_distribution(
+    pub async fn annual_accounts_distributions_delete(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsDistributionsDeleteRequest,
+        request: &AnnualAccountsDistributionsDeleteDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsDistributionsDeleteResponse, ApiError> {
+    ) -> Result<AnnualAccountsDistributionsDeleteDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -823,11 +823,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn attach_an_uploaded_document_to_the_annual_accounts_of_a_year(
+    pub async fn annual_accounts_attachments_add(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsAttachmentsAddRequest,
+        request: &AnnualAccountsAttachmentsAddDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsAttachmentsAddResponse, ApiError> {
+    ) -> Result<AnnualAccountsAttachmentsAddDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -839,11 +839,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn remove_a_document_attached_to_the_annual_accounts_and_delete_its_file(
+    pub async fn annual_accounts_attachments_delete(
         &self,
-        request: &PostV1DeclarationsAnnualAccountsAttachmentsDeleteRequest,
+        request: &AnnualAccountsAttachmentsDeleteDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAnnualAccountsAttachmentsDeleteResponse, ApiError> {
+    ) -> Result<AnnualAccountsAttachmentsDeleteDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -864,11 +864,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_cy_td4_generate(
+    pub async fn cy_td4_generate(
         &self,
-        request: &PostV1DeclarationsCyTd4GenerateRequest,
+        request: &CyTd4GenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsCyTd4GenerateResponse, ApiError> {
+    ) -> Result<CyTd4GenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -889,11 +889,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_cy_he32_generate(
+    pub async fn cy_he32_generate(
         &self,
-        request: &PostV1DeclarationsCyHe32GenerateRequest,
+        request: &CyHe32GenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsCyHe32GenerateResponse, ApiError> {
+    ) -> Result<CyHe32GenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -914,11 +914,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_de_returns_generate(
+    pub async fn de_returns_generate(
         &self,
-        request: &PostV1DeclarationsDeReturnsGenerateRequest,
+        request: &DeReturnsGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsDeReturnsGenerateResponse, ApiError> {
+    ) -> Result<DeReturnsGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -939,11 +939,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_de_return_facts_get(
+    pub async fn de_return_facts_get(
         &self,
-        request: &PostV1DeclarationsDeReturnFactsGetRequest,
+        request: &DeReturnFactsGetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsDeReturnFactsGetResponse, ApiError> {
+    ) -> Result<DeReturnFactsGetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -964,11 +964,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_de_return_facts_set(
+    pub async fn de_return_facts_set(
         &self,
-        request: &PostV1DeclarationsDeReturnFactsSetRequest,
+        request: &DeReturnFactsSetDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsDeReturnFactsSetResponse, ApiError> {
+    ) -> Result<DeReturnFactsSetDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -989,11 +989,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_de_deuev_generate(
+    pub async fn de_deuev_generate(
         &self,
-        request: &PostV1DeclarationsDeDeuevGenerateRequest,
+        request: &DeDeuevGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsDeDeuevGenerateResponse, ApiError> {
+    ) -> Result<DeDeuevGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1014,11 +1014,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_de_beitragsnachweis_generate(
+    pub async fn de_beitragsnachweis_generate(
         &self,
-        request: &PostV1DeclarationsDeBeitragsnachweisGenerateRequest,
+        request: &DeBeitragsnachweisGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsDeBeitragsnachweisGenerateResponse, ApiError> {
+    ) -> Result<DeBeitragsnachweisGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1039,11 +1039,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_dk_selskabsskat_generate(
+    pub async fn dk_selskabsskat_generate(
         &self,
-        request: &PostV1DeclarationsDkSelskabsskatGenerateRequest,
+        request: &DkSelskabsskatGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsDkSelskabsskatGenerateResponse, ApiError> {
+    ) -> Result<DkSelskabsskatGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1064,11 +1064,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_ee_employment_register_send(
+    pub async fn ee_employment_register_send(
         &self,
-        request: &PostV1DeclarationsEeEmploymentRegisterSendRequest,
+        request: &EeEmploymentRegisterSendDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEeEmploymentRegisterSendResponse, ApiError> {
+    ) -> Result<EeEmploymentRegisterSendDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1089,11 +1089,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_es_verifactu_declaracion_responsable(
+    pub async fn es_verifactu_declaracion_responsable(
         &self,
-        request: &PostV1DeclarationsEsVerifactuDeclaracionResponsableRequest,
+        request: &EsVerifactuDeclaracionResponsableDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsEsVerifactuDeclaracionResponsableResponse, ApiError> {
+    ) -> Result<EsVerifactuDeclaracionResponsableDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1114,11 +1114,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_ie_ct1_generate(
+    pub async fn ie_ct1_generate(
         &self,
-        request: &PostV1DeclarationsIeCt1GenerateRequest,
+        request: &IeCt1GenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsIeCt1GenerateResponse, ApiError> {
+    ) -> Result<IeCt1GenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1139,11 +1139,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_ie_b1_generate(
+    pub async fn ie_b1_generate(
         &self,
-        request: &PostV1DeclarationsIeB1GenerateRequest,
+        request: &IeB1GenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsIeB1GenerateResponse, ApiError> {
+    ) -> Result<IeB1GenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1164,11 +1164,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_it_sdi_purchase_send(
+    pub async fn it_sdi_purchase_send(
         &self,
-        request: &PostV1DeclarationsItSdiPurchaseSendRequest,
+        request: &ItSdiPurchaseSendDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsItSdiPurchaseSendResponse, ApiError> {
+    ) -> Result<ItSdiPurchaseSendDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1189,11 +1189,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_it_sdi_purchase_preview(
+    pub async fn it_sdi_purchase_preview(
         &self,
-        request: &PostV1DeclarationsItSdiPurchasePreviewRequest,
+        request: &ItSdiPurchasePreviewDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsItSdiPurchasePreviewResponse, ApiError> {
+    ) -> Result<ItSdiPurchasePreviewDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1205,7 +1205,7 @@ impl DeclarationsClient {
             .await
     }
 
-    /// Upload the SAF-T file to i.SAF-T over the iSAFTUploaderService web service and start its processing. The submission itself is confirmed separately, because after confirmation the file can no longer be corrected.
+    /// Upload the SAF-T file to i.SAF-T over the iSAFTUploaderService web service and start its processing. The file, the case reference and the status are kept as a declaration submission (submissionId), whose outcome Nordlet then checks with i.SAF-T. The submission itself is confirmed separately, because after confirmation the file can no longer be corrected. A range and data type already sent is sent again only with amend: true.
     ///
     /// # Arguments
     ///
@@ -1214,11 +1214,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_lt_saft_send(
+    pub async fn lt_saft_send(
         &self,
-        request: &PostV1DeclarationsLtSaftSendRequest,
+        request: &LtSaftSendDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtSaftSendResponse, ApiError> {
+    ) -> Result<LtSaftSendDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1239,11 +1239,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_lt_sd_ffdata(
+    pub async fn lt_sd_ffdata(
         &self,
-        request: &PostV1DeclarationsLtSdFfdataRequest,
+        request: &LtSdFfdataDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtSdFfdataResponse, ApiError> {
+    ) -> Result<LtSdFfdataDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1264,11 +1264,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_lt_pln204_ffdata(
+    pub async fn lt_pln204_ffdata(
         &self,
-        request: &PostV1DeclarationsLtPln204FfdataRequest,
+        request: &LtPln204FfdataDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLtPln204FfdataResponse, ApiError> {
+    ) -> Result<LtPln204FfdataDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1289,11 +1289,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_mt_company_tax_generate(
+    pub async fn mt_company_tax_generate(
         &self,
-        request: &PostV1DeclarationsMtCompanyTaxGenerateRequest,
+        request: &MtCompanyTaxGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsMtCompanyTaxGenerateResponse, ApiError> {
+    ) -> Result<MtCompanyTaxGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1314,11 +1314,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_mt_annual_return_generate(
+    pub async fn mt_annual_return_generate(
         &self,
-        request: &PostV1DeclarationsMtAnnualReturnGenerateRequest,
+        request: &MtAnnualReturnGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsMtAnnualReturnGenerateResponse, ApiError> {
+    ) -> Result<MtAnnualReturnGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1339,11 +1339,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_jpk_fa_generate(
+    pub async fn pl_jpk_fa_generate(
         &self,
-        request: &PostV1DeclarationsPlJpkFaGenerateRequest,
+        request: &PlJpkFaGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlJpkFaGenerateResponse, ApiError> {
+    ) -> Result<PlJpkFaGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1364,11 +1364,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_jpk_kr_generate(
+    pub async fn pl_jpk_kr_generate(
         &self,
-        request: &PostV1DeclarationsPlJpkKrGenerateRequest,
+        request: &PlJpkKrGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlJpkKrGenerateResponse, ApiError> {
+    ) -> Result<PlJpkKrGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1389,11 +1389,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_jpk_mag_generate(
+    pub async fn pl_jpk_mag_generate(
         &self,
-        request: &PostV1DeclarationsPlJpkMagGenerateRequest,
+        request: &PlJpkMagGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlJpkMagGenerateResponse, ApiError> {
+    ) -> Result<PlJpkMagGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1414,11 +1414,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_pit11_generate(
+    pub async fn pl_pit11_generate(
         &self,
-        request: &PostV1DeclarationsPlPit11GenerateRequest,
+        request: &PlPit11GenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlPit11GenerateResponse, ApiError> {
+    ) -> Result<PlPit11GenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1439,11 +1439,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_cit8_generate(
+    pub async fn pl_cit8_generate(
         &self,
-        request: &PostV1DeclarationsPlCit8GenerateRequest,
+        request: &PlCit8GenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlCit8GenerateResponse, ApiError> {
+    ) -> Result<PlCit8GenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1464,11 +1464,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_zus_dra_compute(
+    pub async fn pl_zus_dra_compute(
         &self,
-        request: &PostV1DeclarationsPlZusDraComputeRequest,
+        request: &PlZusDraComputeDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlZusDraComputeResponse, ApiError> {
+    ) -> Result<PlZusDraComputeDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1489,11 +1489,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_zus_dra_kedu(
+    pub async fn pl_zus_dra_kedu(
         &self,
-        request: &PostV1DeclarationsPlZusDraKeduRequest,
+        request: &PlZusDraKeduDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlZusDraKeduResponse, ApiError> {
+    ) -> Result<PlZusDraKeduDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1514,11 +1514,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_pl_zus_dra_pdf(
+    pub async fn pl_zus_dra_pdf(
         &self,
-        request: &PostV1DeclarationsPlZusDraPdfRequest,
+        request: &PlZusDraPdfDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsPlZusDraPdfResponse, ApiError> {
+    ) -> Result<PlZusDraPdfDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1539,11 +1539,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_ro_etransport_build(
+    pub async fn ro_etransport_build(
         &self,
-        request: &PostV1DeclarationsRoEtransportBuildRequest,
+        request: &RoEtransportBuildDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsRoEtransportBuildResponse, ApiError> {
+    ) -> Result<RoEtransportBuildDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1564,11 +1564,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_ro_etransport_submit(
+    pub async fn ro_etransport_submit(
         &self,
-        request: &PostV1DeclarationsRoEtransportSubmitRequest,
+        request: &RoEtransportSubmitDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsRoEtransportSubmitResponse, ApiError> {
+    ) -> Result<RoEtransportSubmitDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1589,11 +1589,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_ro_etransport_status(
+    pub async fn ro_etransport_status(
         &self,
-        request: &PostV1DeclarationsRoEtransportStatusRequest,
+        request: &RoEtransportStatusDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsRoEtransportStatusResponse, ApiError> {
+    ) -> Result<RoEtransportStatusDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1614,11 +1614,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_li_lohndeklaration_generate(
+    pub async fn li_lohndeklaration_generate(
         &self,
-        request: &PostV1DeclarationsLiLohndeklarationGenerateRequest,
+        request: &LiLohndeklarationGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLiLohndeklarationGenerateResponse, ApiError> {
+    ) -> Result<LiLohndeklarationGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1639,11 +1639,11 @@ impl DeclarationsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_declarations_li_lohnlisten_generate(
+    pub async fn li_lohnlisten_generate(
         &self,
-        request: &PostV1DeclarationsLiLohnlistenGenerateRequest,
+        request: &LiLohnlistenGenerateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsLiLohnlistenGenerateResponse, ApiError> {
+    ) -> Result<LiLohnlistenGenerateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1655,11 +1655,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_configs_list(
+    pub async fn configs_list(
         &self,
-        request: &PostV1DeclarationsConfigsListRequest,
+        request: &ConfigsListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsConfigsListResponse, ApiError> {
+    ) -> Result<ConfigsListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1671,11 +1671,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_configs_update(
+    pub async fn configs_update(
         &self,
-        request: &PostV1DeclarationsConfigsUpdateRequest,
+        request: &ConfigsUpdateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsConfigsUpdateResponse, ApiError> {
+    ) -> Result<ConfigsUpdateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1687,11 +1687,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn store_the_certificate_or_private_key_a_filing_system_authenticates_with(
+    pub async fn certificates_upload(
         &self,
-        request: &PostV1DeclarationsCertificatesUploadRequest,
+        request: &CertificatesUploadDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsCertificatesUploadResponse, ApiError> {
+    ) -> Result<CertificatesUploadDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1703,11 +1703,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_certificates_list(
+    pub async fn certificates_list(
         &self,
-        request: &PostV1DeclarationsCertificatesListRequest,
+        request: &CertificatesListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsCertificatesListResponse, ApiError> {
+    ) -> Result<CertificatesListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1719,11 +1719,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_certificates_delete(
+    pub async fn certificates_delete(
         &self,
-        request: &PostV1DeclarationsCertificatesDeleteRequest,
+        request: &CertificatesDeleteDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsCertificatesDeleteResponse, ApiError> {
+    ) -> Result<CertificatesDeleteDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1735,11 +1735,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn which_deadlines_nordlet_can_file_by_itself_for_this_company_and_which_are_switched_on(
+    pub async fn automation_list(
         &self,
-        request: &PostV1DeclarationsAutomationListRequest,
+        request: &AutomationListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAutomationListResponse, ApiError> {
+    ) -> Result<AutomationListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1751,11 +1751,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_automation_update(
+    pub async fn automation_update(
         &self,
-        request: &PostV1DeclarationsAutomationUpdateRequest,
+        request: &AutomationUpdateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsAutomationUpdateResponse, ApiError> {
+    ) -> Result<AutomationUpdateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1767,11 +1767,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn send_a_filing_whose_delivery_failed_once_more_with_the_bytes_that_were_generated(
+    pub async fn submissions_retry(
         &self,
-        request: &PostV1DeclarationsSubmissionsRetryRequest,
+        request: &SubmissionsRetryDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsSubmissionsRetryResponse, ApiError> {
+    ) -> Result<SubmissionsRetryDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1783,11 +1783,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_submissions_create(
+    pub async fn submissions_create(
         &self,
-        request: &PostV1DeclarationsSubmissionsCreateRequest,
+        request: &SubmissionsCreateDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsSubmissionsCreateResponse, ApiError> {
+    ) -> Result<SubmissionsCreateDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1799,11 +1799,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_submissions_mark(
+    pub async fn submissions_mark(
         &self,
-        request: &PostV1DeclarationsSubmissionsMarkRequest,
+        request: &SubmissionsMarkDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsSubmissionsMarkResponse, ApiError> {
+    ) -> Result<SubmissionsMarkDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -1815,11 +1815,11 @@ impl DeclarationsClient {
             .await
     }
 
-    pub async fn post_v1_declarations_submissions_list(
+    pub async fn submissions_list(
         &self,
-        request: &PostV1DeclarationsSubmissionsListRequest,
+        request: &SubmissionsListDeclarationsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1DeclarationsSubmissionsListResponse, ApiError> {
+    ) -> Result<SubmissionsListDeclarationsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

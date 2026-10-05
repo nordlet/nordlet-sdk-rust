@@ -13,11 +13,11 @@ impl CaptureClient {
         })
     }
 
-    pub async fn post_v1_capture_settings_get(
+    pub async fn settings_get(
         &self,
-        request: &PostV1CaptureSettingsGetRequest,
+        request: &SettingsGetCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureSettingsGetResponse, ApiError> {
+    ) -> Result<SettingsGetCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn post_v1_capture_settings_update(
+    pub async fn settings_update(
         &self,
-        request: &PostV1CaptureSettingsUpdateRequest,
+        request: &SettingsUpdateCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureSettingsUpdateResponse, ApiError> {
+    ) -> Result<SettingsUpdateCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn post_v1_capture_settings_regenerate_intake(
+    pub async fn settings_regenerate_intake(
         &self,
-        request: &PostV1CaptureSettingsRegenerateIntakeRequest,
+        request: &SettingsRegenerateIntakeCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureSettingsRegenerateIntakeResponse, ApiError> {
+    ) -> Result<SettingsRegenerateIntakeCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn receive_an_inbound_email_with_supplier_documents_attached_postmark_style_or_generic_json(
+    pub async fn inbound_email(
         &self,
-        request: &PostV1CaptureInboundEmailRequest,
+        request: &InboundEmailCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureInboundEmailResponse, ApiError> {
+    ) -> Result<InboundEmailCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn read_a_vendor_bill_or_receipt_and_return_an_editable_purchase_invoice_draft(
+    pub async fn documents_upload(
         &self,
-        request: &PostV1CaptureDocumentsUploadRequest,
+        request: &DocumentsUploadCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureDocumentsUploadResponse, ApiError> {
+    ) -> Result<DocumentsUploadCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn re_read_a_stored_capture_replacing_the_previous_draft(
+    pub async fn documents_extract(
         &self,
-        request: &PostV1CaptureDocumentsExtractRequest,
+        request: &DocumentsExtractCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureDocumentsExtractResponse, ApiError> {
+    ) -> Result<DocumentsExtractCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn post_v1_capture_documents_get(
+    pub async fn documents_get(
         &self,
-        request: &PostV1CaptureDocumentsGetRequest,
+        request: &DocumentsGetCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureDocumentsGetResponse, ApiError> {
+    ) -> Result<DocumentsGetCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn post_v1_capture_documents_list(
+    pub async fn documents_list(
         &self,
-        request: &PostV1CaptureDocumentsListRequest,
+        request: &DocumentsListCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureDocumentsListResponse, ApiError> {
+    ) -> Result<DocumentsListCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn post_v1_capture_documents_delete(
+    pub async fn documents_delete(
         &self,
-        request: &PostV1CaptureDocumentsDeleteRequest,
+        request: &DocumentsDeleteCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureDocumentsDeleteResponse, ApiError> {
+    ) -> Result<DocumentsDeleteCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl CaptureClient {
             .await
     }
 
-    pub async fn save_the_reviewed_draft_as_a_purchase_invoice_and_attach_the_original_document(
+    pub async fn documents_confirm(
         &self,
-        request: &PostV1CaptureDocumentsConfirmRequest,
+        request: &DocumentsConfirmCaptureRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CaptureDocumentsConfirmResponse, ApiError> {
+    ) -> Result<DocumentsConfirmCaptureResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

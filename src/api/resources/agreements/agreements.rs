@@ -13,11 +13,11 @@ impl AgreementsClient {
         })
     }
 
-    pub async fn post_v1_agreements_types_create(
+    pub async fn types_create(
         &self,
-        request: &PostV1AgreementsTypesCreateRequest,
+        request: &TypesCreateAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsTypesCreateResponse, ApiError> {
+    ) -> Result<TypesCreateAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_types_list(
+    pub async fn types_list(
         &self,
-        request: &PostV1AgreementsTypesListRequest,
+        request: &TypesListAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsTypesListResponse, ApiError> {
+    ) -> Result<TypesListAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_create(
+    pub async fn agreements_create(
         &self,
-        request: &PostV1AgreementsAgreementsCreateRequest,
+        request: &AgreementsCreateAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsCreateResponse, ApiError> {
+    ) -> Result<AgreementsCreateAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_get(
+    pub async fn agreements_get(
         &self,
-        request: &PostV1AgreementsAgreementsGetRequest,
+        request: &AgreementsGetAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsGetResponse, ApiError> {
+    ) -> Result<AgreementsGetAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_update(
+    pub async fn agreements_update(
         &self,
-        request: &PostV1AgreementsAgreementsUpdateRequest,
+        request: &AgreementsUpdateAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsUpdateResponse, ApiError> {
+    ) -> Result<AgreementsUpdateAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_delete(
+    pub async fn agreements_delete(
         &self,
-        request: &PostV1AgreementsAgreementsDeleteRequest,
+        request: &AgreementsDeleteAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsDeleteResponse, ApiError> {
+    ) -> Result<AgreementsDeleteAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_list(
+    pub async fn agreements_list(
         &self,
-        request: &PostV1AgreementsAgreementsListRequest,
+        request: &AgreementsListAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsListResponse, ApiError> {
+    ) -> Result<AgreementsListAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_generate_invoice(
+    pub async fn agreements_generate_invoice(
         &self,
-        request: &PostV1AgreementsAgreementsGenerateInvoiceRequest,
+        request: &AgreementsGenerateInvoiceAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsGenerateInvoiceResponse, ApiError> {
+    ) -> Result<AgreementsGenerateInvoiceAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_agreements_billing_run(
+    pub async fn agreements_billing_run(
         &self,
-        request: &PostV1AgreementsAgreementsBillingRunRequest,
+        request: &AgreementsBillingRunAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsAgreementsBillingRunResponse, ApiError> {
+    ) -> Result<AgreementsBillingRunAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_insurance_policies_create(
+    pub async fn insurance_policies_create(
         &self,
-        request: &PostV1AgreementsInsurancePoliciesCreateRequest,
+        request: &InsurancePoliciesCreateAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsInsurancePoliciesCreateResponse, ApiError> {
+    ) -> Result<InsurancePoliciesCreateAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_insurance_policies_list(
+    pub async fn insurance_policies_list(
         &self,
-        request: &PostV1AgreementsInsurancePoliciesListRequest,
+        request: &InsurancePoliciesListAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsInsurancePoliciesListResponse, ApiError> {
+    ) -> Result<InsurancePoliciesListAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl AgreementsClient {
             .await
     }
 
-    pub async fn post_v1_agreements_insurance_policies_delete(
+    pub async fn insurance_policies_delete(
         &self,
-        request: &PostV1AgreementsInsurancePoliciesDeleteRequest,
+        request: &InsurancePoliciesDeleteAgreementsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AgreementsInsurancePoliciesDeleteResponse, ApiError> {
+    ) -> Result<InsurancePoliciesDeleteAgreementsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

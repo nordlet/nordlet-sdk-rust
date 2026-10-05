@@ -13,11 +13,11 @@ impl FilesClient {
         })
     }
 
-    pub async fn post_v1_files_upload(
+    pub async fn upload(
         &self,
-        request: &PostV1FilesUploadRequest,
+        request: &UploadFilesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FilesUploadResponse, ApiError> {
+    ) -> Result<UploadFilesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl FilesClient {
             .await
     }
 
-    pub async fn post_v1_files_get(
+    pub async fn get(
         &self,
-        request: &PostV1FilesGetRequest,
+        request: &GetFilesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FilesGetResponse, ApiError> {
+    ) -> Result<GetFilesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl FilesClient {
             .await
     }
 
-    pub async fn post_v1_files_list(
+    pub async fn list(
         &self,
-        request: &PostV1FilesListRequest,
+        request: &ListFilesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FilesListResponse, ApiError> {
+    ) -> Result<ListFilesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl FilesClient {
             .await
     }
 
-    pub async fn post_v1_files_delete(
+    pub async fn delete(
         &self,
-        request: &PostV1FilesDeleteRequest,
+        request: &DeleteFilesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1FilesDeleteResponse, ApiError> {
+    ) -> Result<DeleteFilesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

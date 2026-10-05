@@ -26,7 +26,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-nordlet = "0.3.4"
+nordlet = "0.3.7"
 ```
 
 Or install via cargo:
@@ -55,8 +55,8 @@ async fn main() {
     let client = ApiClient::new(config).expect("Failed to build client");
     client
         .reference
-        .post_v1reference_exchange_rates_sync(
-            &PostV1ReferenceExchangeRatesSyncRequest {
+        .exchange_rates_sync(
+            &ExchangeRatesSyncReferenceRequest {
                 ..Default::default()
             },
             None,
@@ -84,7 +84,7 @@ let client = Client::new(config).expect("Failed to build client");
 When the API returns a non-success status code (4xx or 5xx response), an error will be returned.
 
 ```rust
-match client.reference.post_v1_reference_exchange_rates_sync(None)?.await {
+match client.reference.exchange_rates_sync(None)?.await {
     Ok(response) => {
         println!("Success: {:?}", response);
     },
@@ -104,7 +104,7 @@ The SDK exports all request types as Rust structs. Simply import them from the c
 ```rust
 use nordlet::prelude::{*};
 
-let request = PostV1ReferenceExchangeRatesSyncRequest {
+let request = ExchangeRatesSyncReferenceRequest {
     ...
 };
 ```
@@ -131,7 +131,7 @@ The `retryStatusCodes` configuration controls which [5XX](https://developer.mozi
 Use the `max_retries` method to configure this behavior.
 
 ```rust
-let response = client.reference.post_v1_reference_exchange_rates_sync(
+let response = client.reference.exchange_rates_sync(
     Some(RequestOptions::new().max_retries(3))
 )?.await;
 ```
@@ -141,7 +141,7 @@ let response = client.reference.post_v1_reference_exchange_rates_sync(
 The SDK defaults to a 30 second timeout. Use the `timeout` method to configure this behavior.
 
 ```rust
-let response = client.reference.post_v1_reference_exchange_rates_sync(
+let response = client.reference.exchange_rates_sync(
     Some(RequestOptions::new().timeout_seconds(30))
 )?.await;
 ```
@@ -151,7 +151,7 @@ let response = client.reference.post_v1_reference_exchange_rates_sync(
 You can add custom headers to requests using `RequestOptions`.
 
 ```rust
-let response = client.reference.post_v1_reference_exchange_rates_sync(
+let response = client.reference.exchange_rates_sync(
     Some(
         RequestOptions::new()
             .additional_header("X-Custom-Header", "custom-value")
@@ -166,7 +166,7 @@ let response = client.reference.post_v1_reference_exchange_rates_sync(
 You can add custom query parameters to requests using `RequestOptions`.
 
 ```rust
-let response = client.reference.post_v1_reference_exchange_rates_sync(
+let response = client.reference.exchange_rates_sync(
     Some(
         RequestOptions::new()
             .additional_query_param("filter", "active")

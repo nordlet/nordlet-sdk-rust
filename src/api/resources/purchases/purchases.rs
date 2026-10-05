@@ -13,11 +13,11 @@ impl PurchasesClient {
         })
     }
 
-    pub async fn post_v1_purchases_invoices_create(
+    pub async fn invoices_create(
         &self,
-        request: &PostV1PurchasesInvoicesCreateRequest,
+        request: &InvoicesCreatePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesCreateResponse, ApiError> {
+    ) -> Result<InvoicesCreatePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_invoices_get(
+    pub async fn invoices_get(
         &self,
-        request: &PostV1PurchasesInvoicesGetRequest,
+        request: &InvoicesGetPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesGetResponse, ApiError> {
+    ) -> Result<InvoicesGetPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_invoices_update(
+    pub async fn invoices_update(
         &self,
-        request: &PostV1PurchasesInvoicesUpdateRequest,
+        request: &InvoicesUpdatePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesUpdateResponse, ApiError> {
+    ) -> Result<InvoicesUpdatePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_invoices_delete(
+    pub async fn invoices_delete(
         &self,
-        request: &PostV1PurchasesInvoicesDeleteRequest,
+        request: &InvoicesDeletePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesDeleteResponse, ApiError> {
+    ) -> Result<InvoicesDeletePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_invoices_register(
+    pub async fn invoices_register(
         &self,
-        request: &PostV1PurchasesInvoicesRegisterRequest,
+        request: &InvoicesRegisterPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesRegisterResponse, ApiError> {
+    ) -> Result<InvoicesRegisterPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_invoices_list(
+    pub async fn invoices_list(
         &self,
-        request: &PostV1PurchasesInvoicesListRequest,
+        request: &InvoicesListPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesListResponse, ApiError> {
+    ) -> Result<InvoicesListPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_create(
+    pub async fn orders_create(
         &self,
-        request: &PostV1PurchasesOrdersCreateRequest,
+        request: &OrdersCreatePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersCreateResponse, ApiError> {
+    ) -> Result<OrdersCreatePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_update(
+    pub async fn orders_update(
         &self,
-        request: &PostV1PurchasesOrdersUpdateRequest,
+        request: &OrdersUpdatePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersUpdateResponse, ApiError> {
+    ) -> Result<OrdersUpdatePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_get(
+    pub async fn orders_get(
         &self,
-        request: &PostV1PurchasesOrdersGetRequest,
+        request: &OrdersGetPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersGetResponse, ApiError> {
+    ) -> Result<OrdersGetPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_list(
+    pub async fn orders_list(
         &self,
-        request: &PostV1PurchasesOrdersListRequest,
+        request: &OrdersListPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersListResponse, ApiError> {
+    ) -> Result<OrdersListPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_submit(
+    pub async fn orders_submit(
         &self,
-        request: &PostV1PurchasesOrdersSubmitRequest,
+        request: &OrdersSubmitPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersSubmitResponse, ApiError> {
+    ) -> Result<OrdersSubmitPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_approve(
+    pub async fn orders_approve(
         &self,
-        request: &PostV1PurchasesOrdersApproveRequest,
+        request: &OrdersApprovePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersApproveResponse, ApiError> {
+    ) -> Result<OrdersApprovePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_reject(
+    pub async fn orders_reject(
         &self,
-        request: &PostV1PurchasesOrdersRejectRequest,
+        request: &OrdersRejectPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersRejectResponse, ApiError> {
+    ) -> Result<OrdersRejectPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_cancel(
+    pub async fn orders_cancel(
         &self,
-        request: &PostV1PurchasesOrdersCancelRequest,
+        request: &OrdersCancelPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersCancelResponse, ApiError> {
+    ) -> Result<OrdersCancelPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_close(
+    pub async fn orders_close(
         &self,
-        request: &PostV1PurchasesOrdersCloseRequest,
+        request: &OrdersClosePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersCloseResponse, ApiError> {
+    ) -> Result<OrdersClosePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_orders_delete(
+    pub async fn orders_delete(
         &self,
-        request: &PostV1PurchasesOrdersDeleteRequest,
+        request: &OrdersDeletePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesOrdersDeleteResponse, ApiError> {
+    ) -> Result<OrdersDeletePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_receipts_create(
+    pub async fn receipts_create(
         &self,
-        request: &PostV1PurchasesReceiptsCreateRequest,
+        request: &ReceiptsCreatePurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesReceiptsCreateResponse, ApiError> {
+    ) -> Result<ReceiptsCreatePurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_receipts_get(
+    pub async fn receipts_get(
         &self,
-        request: &PostV1PurchasesReceiptsGetRequest,
+        request: &ReceiptsGetPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesReceiptsGetResponse, ApiError> {
+    ) -> Result<ReceiptsGetPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_receipts_list(
+    pub async fn receipts_list(
         &self,
-        request: &PostV1PurchasesReceiptsListRequest,
+        request: &ReceiptsListPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesReceiptsListResponse, ApiError> {
+    ) -> Result<ReceiptsListPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl PurchasesClient {
             .await
     }
 
-    pub async fn post_v1_purchases_invoices_match(
+    pub async fn invoices_match(
         &self,
-        request: &PostV1PurchasesInvoicesMatchRequest,
+        request: &InvoicesMatchPurchasesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PurchasesInvoicesMatchResponse, ApiError> {
+    ) -> Result<InvoicesMatchPurchasesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

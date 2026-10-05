@@ -13,11 +13,11 @@ impl SalesClient {
         })
     }
 
-    pub async fn post_v1_sales_invoices_create(
+    pub async fn invoices_create(
         &self,
-        request: &PostV1SalesInvoicesCreateRequest,
+        request: &InvoicesCreateSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesCreateResponse, ApiError> {
+    ) -> Result<InvoicesCreateSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_get(
+    pub async fn invoices_get(
         &self,
-        request: &PostV1SalesInvoicesGetRequest,
+        request: &InvoicesGetSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesGetResponse, ApiError> {
+    ) -> Result<InvoicesGetSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_pdf(
+    pub async fn invoices_pdf(
         &self,
-        request: &PostV1SalesInvoicesPdfRequest,
+        request: &InvoicesPdfSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesPdfResponse, ApiError> {
+    ) -> Result<InvoicesPdfSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_send(
+    pub async fn invoices_send(
         &self,
-        request: &PostV1SalesInvoicesSendRequest,
+        request: &InvoicesSendSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesSendResponse, ApiError> {
+    ) -> Result<InvoicesSendSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_peppol_xml(
+    pub async fn invoices_peppol_xml(
         &self,
-        request: &PostV1SalesInvoicesPeppolXmlRequest,
+        request: &InvoicesPeppolXmlSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesPeppolXmlResponse, ApiError> {
+    ) -> Result<InvoicesPeppolXmlSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_peppol_send(
+    pub async fn invoices_peppol_send(
         &self,
-        request: &PostV1SalesInvoicesPeppolSendRequest,
+        request: &InvoicesPeppolSendSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesPeppolSendResponse, ApiError> {
+    ) -> Result<InvoicesPeppolSendSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -118,11 +118,11 @@ impl SalesClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_sales_invoices_einvoice_xml(
+    pub async fn invoices_einvoice_xml(
         &self,
-        request: &PostV1SalesInvoicesEinvoiceXmlRequest,
+        request: &InvoicesEinvoiceXmlSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesEinvoiceXmlResponse, ApiError> {
+    ) -> Result<InvoicesEinvoiceXmlSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -143,11 +143,11 @@ impl SalesClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_sales_invoices_einvoice_send(
+    pub async fn invoices_einvoice_send(
         &self,
-        request: &PostV1SalesInvoicesEinvoiceSendRequest,
+        request: &InvoicesEinvoiceSendSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesEinvoiceSendResponse, ApiError> {
+    ) -> Result<InvoicesEinvoiceSendSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -168,11 +168,11 @@ impl SalesClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_sales_invoices_einvoice_status(
+    pub async fn invoices_einvoice_status(
         &self,
-        request: &PostV1SalesInvoicesEinvoiceStatusRequest,
+        request: &InvoicesEinvoiceStatusSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesEinvoiceStatusResponse, ApiError> {
+    ) -> Result<InvoicesEinvoiceStatusSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -184,11 +184,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_update(
+    pub async fn invoices_update(
         &self,
-        request: &PostV1SalesInvoicesUpdateRequest,
+        request: &InvoicesUpdateSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesUpdateResponse, ApiError> {
+    ) -> Result<InvoicesUpdateSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -200,11 +200,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_delete(
+    pub async fn invoices_delete(
         &self,
-        request: &PostV1SalesInvoicesDeleteRequest,
+        request: &InvoicesDeleteSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesDeleteResponse, ApiError> {
+    ) -> Result<InvoicesDeleteSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -216,11 +216,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_issue(
+    pub async fn invoices_issue(
         &self,
-        request: &PostV1SalesInvoicesIssueRequest,
+        request: &InvoicesIssueSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesIssueResponse, ApiError> {
+    ) -> Result<InvoicesIssueSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -232,11 +232,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_lock(
+    pub async fn invoices_lock(
         &self,
-        request: &PostV1SalesInvoicesLockRequest,
+        request: &InvoicesLockSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesLockResponse, ApiError> {
+    ) -> Result<InvoicesLockSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -248,11 +248,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_unlock(
+    pub async fn invoices_unlock(
         &self,
-        request: &PostV1SalesInvoicesUnlockRequest,
+        request: &InvoicesUnlockSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesUnlockResponse, ApiError> {
+    ) -> Result<InvoicesUnlockSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -264,11 +264,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_payment_link(
+    pub async fn invoices_payment_link(
         &self,
-        request: &PostV1SalesInvoicesPaymentLinkRequest,
+        request: &InvoicesPaymentLinkSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesPaymentLinkResponse, ApiError> {
+    ) -> Result<InvoicesPaymentLinkSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -280,11 +280,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_payment_settings_get(
+    pub async fn invoices_payment_settings_get(
         &self,
-        request: &PostV1SalesInvoicesPaymentSettingsGetRequest,
+        request: &InvoicesPaymentSettingsGetSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesPaymentSettingsGetResponse, ApiError> {
+    ) -> Result<InvoicesPaymentSettingsGetSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -296,11 +296,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_payment_settings_update(
+    pub async fn invoices_payment_settings_update(
         &self,
-        request: &PostV1SalesInvoicesPaymentSettingsUpdateRequest,
+        request: &InvoicesPaymentSettingsUpdateSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesPaymentSettingsUpdateResponse, ApiError> {
+    ) -> Result<InvoicesPaymentSettingsUpdateSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -312,11 +312,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_recognition_schedules_list(
+    pub async fn recognition_schedules_list(
         &self,
-        request: &PostV1SalesRecognitionSchedulesListRequest,
+        request: &RecognitionSchedulesListSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionSchedulesListResponse, ApiError> {
+    ) -> Result<RecognitionSchedulesListSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -328,11 +328,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_apply_advance(
+    pub async fn invoices_apply_advance(
         &self,
-        request: &PostV1SalesInvoicesApplyAdvanceRequest,
+        request: &InvoicesApplyAdvanceSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesApplyAdvanceResponse, ApiError> {
+    ) -> Result<InvoicesApplyAdvanceSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -344,11 +344,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_invoices_list(
+    pub async fn invoices_list(
         &self,
-        request: &PostV1SalesInvoicesListRequest,
+        request: &InvoicesListSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesInvoicesListResponse, ApiError> {
+    ) -> Result<InvoicesListSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -360,11 +360,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_create(
+    pub async fn acts_create(
         &self,
-        request: &PostV1SalesActsCreateRequest,
+        request: &ActsCreateSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsCreateResponse, ApiError> {
+    ) -> Result<ActsCreateSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -376,11 +376,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_update(
+    pub async fn acts_update(
         &self,
-        request: &PostV1SalesActsUpdateRequest,
+        request: &ActsUpdateSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsUpdateResponse, ApiError> {
+    ) -> Result<ActsUpdateSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -392,11 +392,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_issue(
+    pub async fn acts_issue(
         &self,
-        request: &PostV1SalesActsIssueRequest,
+        request: &ActsIssueSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsIssueResponse, ApiError> {
+    ) -> Result<ActsIssueSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -408,11 +408,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_cancel(
+    pub async fn acts_cancel(
         &self,
-        request: &PostV1SalesActsCancelRequest,
+        request: &ActsCancelSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsCancelResponse, ApiError> {
+    ) -> Result<ActsCancelSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -424,11 +424,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_get(
+    pub async fn acts_get(
         &self,
-        request: &PostV1SalesActsGetRequest,
+        request: &ActsGetSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsGetResponse, ApiError> {
+    ) -> Result<ActsGetSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -440,11 +440,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_list(
+    pub async fn acts_list(
         &self,
-        request: &PostV1SalesActsListRequest,
+        request: &ActsListSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsListResponse, ApiError> {
+    ) -> Result<ActsListSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -456,11 +456,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_acts_pdf(
+    pub async fn acts_pdf(
         &self,
-        request: &PostV1SalesActsPdfRequest,
+        request: &ActsPdfSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesActsPdfResponse, ApiError> {
+    ) -> Result<ActsPdfSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -472,171 +472,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_operation_types_create(
+    pub async fn recognition_compute(
         &self,
-        request: &PostV1OperationTypesCreateRequest,
+        request: &RecognitionComputeSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1OperationTypesCreateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/operation-types/create",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_operation_types_update(
-        &self,
-        request: &PostV1OperationTypesUpdateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OperationTypesUpdateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/operation-types/update",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_operation_types_get(
-        &self,
-        request: &PostV1OperationTypesGetRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OperationTypesGetResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/operation-types/get",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_operation_types_delete(
-        &self,
-        request: &PostV1OperationTypesDeleteRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OperationTypesDeleteResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/operation-types/delete",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_operation_types_list(
-        &self,
-        request: &PostV1OperationTypesListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1OperationTypesListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/operation-types/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_document_series_create(
-        &self,
-        request: &PostV1DocumentSeriesCreateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1DocumentSeriesCreateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/document-series/create",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_document_series_update(
-        &self,
-        request: &PostV1DocumentSeriesUpdateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1DocumentSeriesUpdateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/document-series/update",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_document_series_get(
-        &self,
-        request: &PostV1DocumentSeriesGetRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1DocumentSeriesGetResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/document-series/get",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_document_series_delete(
-        &self,
-        request: &PostV1DocumentSeriesDeleteRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1DocumentSeriesDeleteResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/document-series/delete",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_document_series_list(
-        &self,
-        request: &PostV1DocumentSeriesListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1DocumentSeriesListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/document-series/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_sales_recognition_compute(
-        &self,
-        request: &PostV1SalesRecognitionComputeRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionComputeResponse, ApiError> {
+    ) -> Result<RecognitionComputeSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -648,11 +488,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_recognition_run(
+    pub async fn recognition_run(
         &self,
-        request: &PostV1SalesRecognitionRunRequest,
+        request: &RecognitionRunSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionRunResponse, ApiError> {
+    ) -> Result<RecognitionRunSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -664,11 +504,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_recognition_progress(
+    pub async fn recognition_progress(
         &self,
-        request: &PostV1SalesRecognitionProgressRequest,
+        request: &RecognitionProgressSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionProgressResponse, ApiError> {
+    ) -> Result<RecognitionProgressSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -689,11 +529,11 @@ impl SalesClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_sales_recognition_modify(
+    pub async fn recognition_modify(
         &self,
-        request: &PostV1SalesRecognitionModifyRequest,
+        request: &RecognitionModifySalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionModifyResponse, ApiError> {
+    ) -> Result<RecognitionModifySalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -705,11 +545,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_recognition_runs_list(
+    pub async fn recognition_runs_list(
         &self,
-        request: &PostV1SalesRecognitionRunsListRequest,
+        request: &RecognitionRunsListSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionRunsListResponse, ApiError> {
+    ) -> Result<RecognitionRunsListSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -721,11 +561,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_recognition_summary(
+    pub async fn recognition_summary(
         &self,
-        request: &PostV1SalesRecognitionSummaryRequest,
+        request: &RecognitionSummarySalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRecognitionSummaryResponse, ApiError> {
+    ) -> Result<RecognitionSummarySalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -737,11 +577,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_refund_liability_list(
+    pub async fn refund_liability_list(
         &self,
-        request: &PostV1SalesRefundLiabilityListRequest,
+        request: &RefundLiabilityListSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRefundLiabilityListResponse, ApiError> {
+    ) -> Result<RefundLiabilityListSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -753,11 +593,11 @@ impl SalesClient {
             .await
     }
 
-    pub async fn post_v1_sales_refund_liability_true_up(
+    pub async fn refund_liability_true_up(
         &self,
-        request: &PostV1SalesRefundLiabilityTrueUpRequest,
+        request: &RefundLiabilityTrueUpSalesRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1SalesRefundLiabilityTrueUpResponse, ApiError> {
+    ) -> Result<RefundLiabilityTrueUpSalesResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

@@ -13,11 +13,11 @@ impl InventoryClient {
         })
     }
 
-    pub async fn post_v1_inventory_settings_get(
+    pub async fn settings_get(
         &self,
-        request: &PostV1InventorySettingsGetRequest,
+        request: &SettingsGetInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventorySettingsGetResponse, ApiError> {
+    ) -> Result<SettingsGetInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_settings_update(
+    pub async fn settings_update(
         &self,
-        request: &PostV1InventorySettingsUpdateRequest,
+        request: &SettingsUpdateInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventorySettingsUpdateResponse, ApiError> {
+    ) -> Result<SettingsUpdateInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_warehouses_create(
+    pub async fn warehouses_create(
         &self,
-        request: &PostV1InventoryWarehousesCreateRequest,
+        request: &WarehousesCreateInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryWarehousesCreateResponse, ApiError> {
+    ) -> Result<WarehousesCreateInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_warehouses_list(
+    pub async fn warehouses_list(
         &self,
-        request: &PostV1InventoryWarehousesListRequest,
+        request: &WarehousesListInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryWarehousesListResponse, ApiError> {
+    ) -> Result<WarehousesListInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_stock_receive(
+    pub async fn stock_receive(
         &self,
-        request: &PostV1InventoryStockReceiveRequest,
+        request: &StockReceiveInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryStockReceiveResponse, ApiError> {
+    ) -> Result<StockReceiveInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_stock_write_off(
+    pub async fn stock_write_off(
         &self,
-        request: &PostV1InventoryStockWriteOffRequest,
+        request: &StockWriteOffInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryStockWriteOffResponse, ApiError> {
+    ) -> Result<StockWriteOffInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_stock_transfer(
+    pub async fn stock_transfer(
         &self,
-        request: &PostV1InventoryStockTransferRequest,
+        request: &StockTransferInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryStockTransferResponse, ApiError> {
+    ) -> Result<StockTransferInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_stock_take(
+    pub async fn stock_take(
         &self,
-        request: &PostV1InventoryStockTakeRequest,
+        request: &StockTakeInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryStockTakeResponse, ApiError> {
+    ) -> Result<StockTakeInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_stock_levels(
+    pub async fn stock_levels(
         &self,
-        request: &PostV1InventoryStockLevelsRequest,
+        request: &StockLevelsInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryStockLevelsResponse, ApiError> {
+    ) -> Result<StockLevelsInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_stock_movements_list(
+    pub async fn stock_movements_list(
         &self,
-        request: &PostV1InventoryStockMovementsListRequest,
+        request: &StockMovementsListInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryStockMovementsListResponse, ApiError> {
+    ) -> Result<StockMovementsListInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_lots_list(
+    pub async fn lots_list(
         &self,
-        request: &PostV1InventoryLotsListRequest,
+        request: &LotsListInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryLotsListResponse, ApiError> {
+    ) -> Result<LotsListInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_lots_get(
+    pub async fn lots_get(
         &self,
-        request: &PostV1InventoryLotsGetRequest,
+        request: &LotsGetInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryLotsGetResponse, ApiError> {
+    ) -> Result<LotsGetInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_lots_update(
+    pub async fn lots_update(
         &self,
-        request: &PostV1InventoryLotsUpdateRequest,
+        request: &LotsUpdateInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryLotsUpdateResponse, ApiError> {
+    ) -> Result<LotsUpdateInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_landed_costs_create(
+    pub async fn landed_costs_create(
         &self,
-        request: &PostV1InventoryLandedCostsCreateRequest,
+        request: &LandedCostsCreateInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryLandedCostsCreateResponse, ApiError> {
+    ) -> Result<LandedCostsCreateInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_landed_costs_get(
+    pub async fn landed_costs_get(
         &self,
-        request: &PostV1InventoryLandedCostsGetRequest,
+        request: &LandedCostsGetInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryLandedCostsGetResponse, ApiError> {
+    ) -> Result<LandedCostsGetInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_landed_costs_list(
+    pub async fn landed_costs_list(
         &self,
-        request: &PostV1InventoryLandedCostsListRequest,
+        request: &LandedCostsListInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryLandedCostsListResponse, ApiError> {
+    ) -> Result<LandedCostsListInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_reorder_rules_create(
+    pub async fn reorder_rules_create(
         &self,
-        request: &PostV1InventoryReorderRulesCreateRequest,
+        request: &ReorderRulesCreateInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryReorderRulesCreateResponse, ApiError> {
+    ) -> Result<ReorderRulesCreateInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_reorder_rules_update(
+    pub async fn reorder_rules_update(
         &self,
-        request: &PostV1InventoryReorderRulesUpdateRequest,
+        request: &ReorderRulesUpdateInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryReorderRulesUpdateResponse, ApiError> {
+    ) -> Result<ReorderRulesUpdateInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_reorder_rules_delete(
+    pub async fn reorder_rules_delete(
         &self,
-        request: &PostV1InventoryReorderRulesDeleteRequest,
+        request: &ReorderRulesDeleteInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryReorderRulesDeleteResponse, ApiError> {
+    ) -> Result<ReorderRulesDeleteInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_reorder_rules_list(
+    pub async fn reorder_rules_list(
         &self,
-        request: &PostV1InventoryReorderRulesListRequest,
+        request: &ReorderRulesListInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryReorderRulesListResponse, ApiError> {
+    ) -> Result<ReorderRulesListInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +333,11 @@ impl InventoryClient {
             .await
     }
 
-    pub async fn post_v1_inventory_reorder_rules_check(
+    pub async fn reorder_rules_check(
         &self,
-        request: &PostV1InventoryReorderRulesCheckRequest,
+        request: &ReorderRulesCheckInventoryRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1InventoryReorderRulesCheckResponse, ApiError> {
+    ) -> Result<ReorderRulesCheckInventoryResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

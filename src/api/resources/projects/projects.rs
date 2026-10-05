@@ -13,11 +13,11 @@ impl ProjectsClient {
         })
     }
 
-    pub async fn post_v1_projects_create(
+    pub async fn create(
         &self,
-        request: &PostV1ProjectsCreateRequest,
+        request: &CreateProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsCreateResponse, ApiError> {
+    ) -> Result<CreateProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_update(
+    pub async fn update(
         &self,
-        request: &PostV1ProjectsUpdateRequest,
+        request: &UpdateProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsUpdateResponse, ApiError> {
+    ) -> Result<UpdateProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_get(
+    pub async fn get(
         &self,
-        request: &PostV1ProjectsGetRequest,
+        request: &GetProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsGetResponse, ApiError> {
+    ) -> Result<GetProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_list(
+    pub async fn list(
         &self,
-        request: &PostV1ProjectsListRequest,
+        request: &ListProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsListResponse, ApiError> {
+    ) -> Result<ListProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_time_entries_create(
+    pub async fn time_entries_create(
         &self,
-        request: &PostV1ProjectsTimeEntriesCreateRequest,
+        request: &TimeEntriesCreateProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsTimeEntriesCreateResponse, ApiError> {
+    ) -> Result<TimeEntriesCreateProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_time_entries_update(
+    pub async fn time_entries_update(
         &self,
-        request: &PostV1ProjectsTimeEntriesUpdateRequest,
+        request: &TimeEntriesUpdateProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsTimeEntriesUpdateResponse, ApiError> {
+    ) -> Result<TimeEntriesUpdateProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_time_entries_delete(
+    pub async fn time_entries_delete(
         &self,
-        request: &PostV1ProjectsTimeEntriesDeleteRequest,
+        request: &TimeEntriesDeleteProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsTimeEntriesDeleteResponse, ApiError> {
+    ) -> Result<TimeEntriesDeleteProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_time_entries_list(
+    pub async fn time_entries_list(
         &self,
-        request: &PostV1ProjectsTimeEntriesListRequest,
+        request: &TimeEntriesListProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsTimeEntriesListResponse, ApiError> {
+    ) -> Result<TimeEntriesListProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_time_entries_bill(
+    pub async fn time_entries_bill(
         &self,
-        request: &PostV1ProjectsTimeEntriesBillRequest,
+        request: &TimeEntriesBillProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsTimeEntriesBillResponse, ApiError> {
+    ) -> Result<TimeEntriesBillProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl ProjectsClient {
             .await
     }
 
-    pub async fn post_v1_projects_report(
+    pub async fn report(
         &self,
-        request: &PostV1ProjectsReportRequest,
+        request: &ReportProjectsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ProjectsReportResponse, ApiError> {
+    ) -> Result<ReportProjectsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

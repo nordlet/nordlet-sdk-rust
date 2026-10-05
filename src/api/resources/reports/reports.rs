@@ -13,11 +13,11 @@ impl ReportsClient {
         })
     }
 
-    pub async fn post_v1_reports_trial_balance(
+    pub async fn trial_balance(
         &self,
-        request: &PostV1ReportsTrialBalanceRequest,
+        request: &TrialBalanceReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsTrialBalanceResponse, ApiError> {
+    ) -> Result<TrialBalanceReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_size_category(
+    pub async fn size_category(
         &self,
-        request: &PostV1ReportsSizeCategoryRequest,
+        request: &SizeCategoryReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsSizeCategoryResponse, ApiError> {
+    ) -> Result<SizeCategoryReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_financial_statements(
+    pub async fn financial_statements(
         &self,
-        request: &PostV1ReportsFinancialStatementsRequest,
+        request: &FinancialStatementsReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsFinancialStatementsResponse, ApiError> {
+    ) -> Result<FinancialStatementsReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_general_journal(
+    pub async fn general_journal(
         &self,
-        request: &PostV1ReportsGeneralJournalRequest,
+        request: &GeneralJournalReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsGeneralJournalResponse, ApiError> {
+    ) -> Result<GeneralJournalReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_gl_detail(
+    pub async fn gl_detail(
         &self,
-        request: &PostV1ReportsGlDetailRequest,
+        request: &GlDetailReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsGlDetailResponse, ApiError> {
+    ) -> Result<GlDetailReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_partner_balances(
+    pub async fn partner_balances(
         &self,
-        request: &PostV1ReportsPartnerBalancesRequest,
+        request: &PartnerBalancesReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsPartnerBalancesResponse, ApiError> {
+    ) -> Result<PartnerBalancesReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_debt_aging(
+    pub async fn debt_aging(
         &self,
-        request: &PostV1ReportsDebtAgingRequest,
+        request: &DebtAgingReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsDebtAgingResponse, ApiError> {
+    ) -> Result<DebtAgingReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_monthly_summary(
+    pub async fn monthly_summary(
         &self,
-        request: &PostV1ReportsMonthlySummaryRequest,
+        request: &MonthlySummaryReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsMonthlySummaryResponse, ApiError> {
+    ) -> Result<MonthlySummaryReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_stock_balance(
+    pub async fn stock_balance(
         &self,
-        request: &PostV1ReportsStockBalanceRequest,
+        request: &StockBalanceReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsStockBalanceResponse, ApiError> {
+    ) -> Result<StockBalanceReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_stock_movement(
+    pub async fn stock_movement(
         &self,
-        request: &PostV1ReportsStockMovementRequest,
+        request: &StockMovementReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsStockMovementResponse, ApiError> {
+    ) -> Result<StockMovementReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_vat_summary(
+    pub async fn vat_summary(
         &self,
-        request: &PostV1ReportsVatSummaryRequest,
+        request: &VatSummaryReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsVatSummaryResponse, ApiError> {
+    ) -> Result<VatSummaryReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_cash_flow(
+    pub async fn cash_flow(
         &self,
-        request: &PostV1ReportsCashFlowRequest,
+        request: &CashFlowReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsCashFlowResponse, ApiError> {
+    ) -> Result<CashFlowReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_stock_aging(
+    pub async fn stock_aging(
         &self,
-        request: &PostV1ReportsStockAgingRequest,
+        request: &StockAgingReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsStockAgingResponse, ApiError> {
+    ) -> Result<StockAgingReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_stock_shortage(
+    pub async fn stock_shortage(
         &self,
-        request: &PostV1ReportsStockShortageRequest,
+        request: &StockShortageReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsStockShortageResponse, ApiError> {
+    ) -> Result<StockShortageReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -246,11 +246,11 @@ impl ReportsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_reports_sie(
+    pub async fn sie(
         &self,
-        request: &PostV1ReportsSieRequest,
+        request: &SieReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsSieResponse, ApiError> {
+    ) -> Result<SieReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -271,11 +271,11 @@ impl ReportsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_reports_datev(
+    pub async fn datev(
         &self,
-        request: &PostV1ReportsDatevRequest,
+        request: &DatevReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsDatevResponse, ApiError> {
+    ) -> Result<DatevReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -296,11 +296,11 @@ impl ReportsClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_reports_fec(
+    pub async fn fec(
         &self,
-        request: &PostV1ReportsFecRequest,
+        request: &FecReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsFecResponse, ApiError> {
+    ) -> Result<FecReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -312,11 +312,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_eu_purchases(
+    pub async fn eu_purchases(
         &self,
-        request: &PostV1ReportsEuPurchasesRequest,
+        request: &EuPurchasesReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsEuPurchasesResponse, ApiError> {
+    ) -> Result<EuPurchasesReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -328,11 +328,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_vat_detail(
+    pub async fn vat_detail(
         &self,
-        request: &PostV1ReportsVatDetailRequest,
+        request: &VatDetailReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsVatDetailResponse, ApiError> {
+    ) -> Result<VatDetailReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -344,11 +344,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_pos_sales(
+    pub async fn pos_sales(
         &self,
-        request: &PostV1ReportsPosSalesRequest,
+        request: &PosSalesReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsPosSalesResponse, ApiError> {
+    ) -> Result<PosSalesReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -360,11 +360,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_online_sales(
+    pub async fn online_sales(
         &self,
-        request: &PostV1ReportsOnlineSalesRequest,
+        request: &OnlineSalesReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsOnlineSalesResponse, ApiError> {
+    ) -> Result<OnlineSalesReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -376,11 +376,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_oss(
+    pub async fn oss(
         &self,
-        request: &PostV1ReportsOssRequest,
+        request: &OssReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsOssResponse, ApiError> {
+    ) -> Result<OssReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -392,11 +392,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_advance_reconciliation(
+    pub async fn advance_reconciliation(
         &self,
-        request: &PostV1ReportsAdvanceReconciliationRequest,
+        request: &AdvanceReconciliationReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsAdvanceReconciliationResponse, ApiError> {
+    ) -> Result<AdvanceReconciliationReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -408,11 +408,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_write_off_acts(
+    pub async fn write_off_acts(
         &self,
-        request: &PostV1ReportsWriteOffActsRequest,
+        request: &WriteOffActsReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsWriteOffActsResponse, ApiError> {
+    ) -> Result<WriteOffActsReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -424,11 +424,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_cost_centers(
+    pub async fn cost_centers(
         &self,
-        request: &PostV1ReportsCostCentersRequest,
+        request: &CostCentersReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsCostCentersResponse, ApiError> {
+    ) -> Result<CostCentersReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -440,11 +440,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_cost_center_activity(
+    pub async fn cost_center_activity(
         &self,
-        request: &PostV1ReportsCostCenterActivityRequest,
+        request: &CostCenterActivityReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsCostCenterActivityResponse, ApiError> {
+    ) -> Result<CostCenterActivityReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -456,11 +456,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_cost_center_items(
+    pub async fn cost_center_items(
         &self,
-        request: &PostV1ReportsCostCenterItemsRequest,
+        request: &CostCenterItemsReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsCostCenterItemsResponse, ApiError> {
+    ) -> Result<CostCenterItemsReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -472,11 +472,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_jobs_create(
+    pub async fn jobs_create(
         &self,
-        request: &PostV1ReportsJobsCreateRequest,
+        request: &JobsCreateReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsJobsCreateResponse, ApiError> {
+    ) -> Result<JobsCreateReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -488,11 +488,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_jobs_get(
+    pub async fn jobs_get(
         &self,
-        request: &PostV1ReportsJobsGetRequest,
+        request: &JobsGetReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsJobsGetResponse, ApiError> {
+    ) -> Result<JobsGetReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -504,11 +504,11 @@ impl ReportsClient {
             .await
     }
 
-    pub async fn post_v1_reports_jobs_list(
+    pub async fn jobs_list(
         &self,
-        request: &PostV1ReportsJobsListRequest,
+        request: &JobsListReportsRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReportsJobsListResponse, ApiError> {
+    ) -> Result<JobsListReportsResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

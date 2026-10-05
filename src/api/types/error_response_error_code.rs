@@ -11,6 +11,7 @@ pub enum ErrorResponseErrorCode {
     IdempotencyKeyReuse,
     IdempotencyInProgress,
     RateLimited,
+    PaymentRequired,
     Internal,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
@@ -28,6 +29,7 @@ impl Serialize for ErrorResponseErrorCode {
             Self::IdempotencyKeyReuse => serializer.serialize_str("idempotency_key_reuse"),
             Self::IdempotencyInProgress => serializer.serialize_str("idempotency_in_progress"),
             Self::RateLimited => serializer.serialize_str("rate_limited"),
+            Self::PaymentRequired => serializer.serialize_str("payment_required"),
             Self::Internal => serializer.serialize_str("internal"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
@@ -46,6 +48,7 @@ impl<'de> Deserialize<'de> for ErrorResponseErrorCode {
             "idempotency_key_reuse" => Ok(Self::IdempotencyKeyReuse),
             "idempotency_in_progress" => Ok(Self::IdempotencyInProgress),
             "rate_limited" => Ok(Self::RateLimited),
+            "payment_required" => Ok(Self::PaymentRequired),
             "internal" => Ok(Self::Internal),
             _ => Ok(Self::__Unknown(value)),
         }
@@ -63,6 +66,7 @@ impl fmt::Display for ErrorResponseErrorCode {
             Self::IdempotencyKeyReuse => write!(f, "idempotency_key_reuse"),
             Self::IdempotencyInProgress => write!(f, "idempotency_in_progress"),
             Self::RateLimited => write!(f, "rate_limited"),
+            Self::PaymentRequired => write!(f, "payment_required"),
             Self::Internal => write!(f, "internal"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }

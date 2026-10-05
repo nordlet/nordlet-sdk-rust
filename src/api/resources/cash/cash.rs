@@ -13,11 +13,11 @@ impl CashClient {
         })
     }
 
-    pub async fn post_v1_cash_orders_create(
+    pub async fn orders_create(
         &self,
-        request: &PostV1CashOrdersCreateRequest,
+        request: &OrdersCreateCashRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CashOrdersCreateResponse, ApiError> {
+    ) -> Result<OrdersCreateCashResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl CashClient {
             .await
     }
 
-    pub async fn post_v1_cash_orders_get(
+    pub async fn orders_get(
         &self,
-        request: &PostV1CashOrdersGetRequest,
+        request: &OrdersGetCashRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CashOrdersGetResponse, ApiError> {
+    ) -> Result<OrdersGetCashResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl CashClient {
             .await
     }
 
-    pub async fn post_v1_cash_orders_list(
+    pub async fn orders_list(
         &self,
-        request: &PostV1CashOrdersListRequest,
+        request: &OrdersListCashRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CashOrdersListResponse, ApiError> {
+    ) -> Result<OrdersListCashResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl CashClient {
             .await
     }
 
-    pub async fn post_v1_cash_balance(
+    pub async fn balance(
         &self,
-        request: &PostV1CashBalanceRequest,
+        request: &BalanceCashRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CashBalanceResponse, ApiError> {
+    ) -> Result<BalanceCashResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl CashClient {
             .await
     }
 
-    pub async fn post_v1_cash_advance_holders_balances(
+    pub async fn advance_holders_balances(
         &self,
-        request: &PostV1CashAdvanceHoldersBalancesRequest,
+        request: &AdvanceHoldersBalancesCashRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CashAdvanceHoldersBalancesResponse, ApiError> {
+    ) -> Result<AdvanceHoldersBalancesCashResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

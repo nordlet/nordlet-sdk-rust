@@ -13,11 +13,11 @@ impl EcommerceClient {
         })
     }
 
-    pub async fn post_v1_ecommerce_orders_create(
+    pub async fn orders_create(
         &self,
-        request: &PostV1EcommerceOrdersCreateRequest,
+        request: &OrdersCreateEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceOrdersCreateResponse, ApiError> {
+    ) -> Result<OrdersCreateEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_orders_get(
+    pub async fn orders_get(
         &self,
-        request: &PostV1EcommerceOrdersGetRequest,
+        request: &OrdersGetEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceOrdersGetResponse, ApiError> {
+    ) -> Result<OrdersGetEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_orders_list(
+    pub async fn orders_list(
         &self,
-        request: &PostV1EcommerceOrdersListRequest,
+        request: &OrdersListEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceOrdersListResponse, ApiError> {
+    ) -> Result<OrdersListEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_orders_reserve(
+    pub async fn orders_reserve(
         &self,
-        request: &PostV1EcommerceOrdersReserveRequest,
+        request: &OrdersReserveEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceOrdersReserveResponse, ApiError> {
+    ) -> Result<OrdersReserveEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_orders_fulfill(
+    pub async fn orders_fulfill(
         &self,
-        request: &PostV1EcommerceOrdersFulfillRequest,
+        request: &OrdersFulfillEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceOrdersFulfillResponse, ApiError> {
+    ) -> Result<OrdersFulfillEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_orders_cancel(
+    pub async fn orders_cancel(
         &self,
-        request: &PostV1EcommerceOrdersCancelRequest,
+        request: &OrdersCancelEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceOrdersCancelResponse, ApiError> {
+    ) -> Result<OrdersCancelEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_products_list(
+    pub async fn products_list(
         &self,
-        request: &PostV1EcommerceProductsListRequest,
+        request: &ProductsListEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceProductsListResponse, ApiError> {
+    ) -> Result<ProductsListEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl EcommerceClient {
             .await
     }
 
-    pub async fn post_v1_ecommerce_stock_list(
+    pub async fn stock_list(
         &self,
-        request: &PostV1EcommerceStockListRequest,
+        request: &StockListEcommerceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1EcommerceStockListResponse, ApiError> {
+    ) -> Result<StockListEcommerceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

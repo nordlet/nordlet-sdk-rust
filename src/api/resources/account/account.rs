@@ -13,11 +13,11 @@ impl AccountClient {
         })
     }
 
-    pub async fn post_v1_account_login_link_request(
+    pub async fn login_link_request(
         &self,
-        request: &PostV1AccountLoginLinkRequestRequest,
+        request: &LoginLinkRequestAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountLoginLinkRequestResponse, ApiError> {
+    ) -> Result<LoginLinkRequestAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_login_link_consume(
+    pub async fn login_link_consume(
         &self,
-        request: &PostV1AccountLoginLinkConsumeRequest,
+        request: &LoginLinkConsumeAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountLoginLinkConsumeResponse, ApiError> {
+    ) -> Result<LoginLinkConsumeAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_logout(
+    pub async fn logout(
         &self,
-        request: &PostV1AccountLogoutRequest,
+        request: &LogoutAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountLogoutResponse, ApiError> {
+    ) -> Result<LogoutAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_me(
+    pub async fn me(
         &self,
-        request: &PostV1AccountMeRequest,
+        request: &MeAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountMeResponse, ApiError> {
+    ) -> Result<MeAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_members_list(
+    pub async fn members_list(
         &self,
-        request: &PostV1AccountMembersListRequest,
+        request: &MembersListAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountMembersListResponse, ApiError> {
+    ) -> Result<MembersListAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_members_set_role(
+    pub async fn members_set_role(
         &self,
-        request: &PostV1AccountMembersSetRoleRequest,
+        request: &MembersSetRoleAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountMembersSetRoleResponse, ApiError> {
+    ) -> Result<MembersSetRoleAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_members_transfer_ownership(
+    pub async fn members_transfer_ownership(
         &self,
-        request: &PostV1AccountMembersTransferOwnershipRequest,
+        request: &MembersTransferOwnershipAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountMembersTransferOwnershipResponse, ApiError> {
+    ) -> Result<MembersTransferOwnershipAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_members_remove(
+    pub async fn members_remove(
         &self,
-        request: &PostV1AccountMembersRemoveRequest,
+        request: &MembersRemoveAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountMembersRemoveResponse, ApiError> {
+    ) -> Result<MembersRemoveAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_invites_create(
+    pub async fn invites_create(
         &self,
-        request: &PostV1AccountInvitesCreateRequest,
+        request: &InvitesCreateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountInvitesCreateResponse, ApiError> {
+    ) -> Result<InvitesCreateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_invites_list(
+    pub async fn invites_list(
         &self,
-        request: &PostV1AccountInvitesListRequest,
+        request: &InvitesListAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountInvitesListResponse, ApiError> {
+    ) -> Result<InvitesListAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_invites_revoke(
+    pub async fn invites_revoke(
         &self,
-        request: &PostV1AccountInvitesRevokeRequest,
+        request: &InvitesRevokeAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountInvitesRevokeResponse, ApiError> {
+    ) -> Result<InvitesRevokeAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_invites_get(
+    pub async fn invites_get(
         &self,
-        request: &PostV1AccountInvitesGetRequest,
+        request: &InvitesGetAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountInvitesGetResponse, ApiError> {
+    ) -> Result<InvitesGetAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_invites_accept(
+    pub async fn invites_accept(
         &self,
-        request: &PostV1AccountInvitesAcceptRequest,
+        request: &InvitesAcceptAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountInvitesAcceptResponse, ApiError> {
+    ) -> Result<InvitesAcceptAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_locale_set(
+    pub async fn locale_set(
         &self,
-        request: &PostV1AccountLocaleSetRequest,
+        request: &LocaleSetAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountLocaleSetResponse, ApiError> {
+    ) -> Result<LocaleSetAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_create(
+    pub async fn companies_create(
         &self,
-        request: &PostV1AccountCompaniesCreateRequest,
+        request: &CompaniesCreateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesCreateResponse, ApiError> {
+    ) -> Result<CompaniesCreateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_select(
+    pub async fn companies_select(
         &self,
-        request: &PostV1AccountCompaniesSelectRequest,
+        request: &CompaniesSelectAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesSelectResponse, ApiError> {
+    ) -> Result<CompaniesSelectAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_profile(
+    pub async fn companies_profile(
         &self,
-        request: &PostV1AccountCompaniesProfileRequest,
+        request: &CompaniesProfileAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesProfileResponse, ApiError> {
+    ) -> Result<CompaniesProfileAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_update(
+    pub async fn companies_update(
         &self,
-        request: &PostV1AccountCompaniesUpdateRequest,
+        request: &CompaniesUpdateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesUpdateResponse, ApiError> {
+    ) -> Result<CompaniesUpdateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_archive(
+    pub async fn companies_archive(
         &self,
-        request: &PostV1AccountCompaniesArchiveRequest,
+        request: &CompaniesArchiveAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesArchiveResponse, ApiError> {
+    ) -> Result<CompaniesArchiveAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_delete(
+    pub async fn companies_delete(
         &self,
-        request: &PostV1AccountCompaniesDeleteRequest,
+        request: &CompaniesDeleteAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesDeleteResponse, ApiError> {
+    ) -> Result<CompaniesDeleteAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +333,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_companies_activate(
+    pub async fn companies_activate(
         &self,
-        request: &PostV1AccountCompaniesActivateRequest,
+        request: &CompaniesActivateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountCompaniesActivateResponse, ApiError> {
+    ) -> Result<CompaniesActivateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -349,11 +349,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_api_keys_create(
+    pub async fn api_keys_create(
         &self,
-        request: &PostV1AccountApiKeysCreateRequest,
+        request: &ApiKeysCreateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountApiKeysCreateResponse, ApiError> {
+    ) -> Result<ApiKeysCreateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -365,11 +365,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_api_keys_list(
+    pub async fn api_keys_list(
         &self,
-        request: &PostV1AccountApiKeysListRequest,
+        request: &ApiKeysListAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountApiKeysListResponse, ApiError> {
+    ) -> Result<ApiKeysListAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -381,11 +381,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn issue_a_replacement_for_an_api_key_and_set_the_old_one_to_stop_working_after_a_short_overlap(
+    pub async fn api_keys_rotate(
         &self,
-        request: &PostV1AccountApiKeysRotateRequest,
+        request: &ApiKeysRotateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountApiKeysRotateResponse, ApiError> {
+    ) -> Result<ApiKeysRotateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -397,11 +397,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_api_keys_revoke(
+    pub async fn api_keys_revoke(
         &self,
-        request: &PostV1AccountApiKeysRevokeRequest,
+        request: &ApiKeysRevokeAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountApiKeysRevokeResponse, ApiError> {
+    ) -> Result<ApiKeysRevokeAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -413,11 +413,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_consent_accept(
+    pub async fn consent_accept(
         &self,
-        request: &PostV1AccountConsentAcceptRequest,
+        request: &ConsentAcceptAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountConsentAcceptResponse, ApiError> {
+    ) -> Result<ConsentAcceptAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -429,11 +429,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_profile_update(
+    pub async fn profile_update(
         &self,
-        request: &PostV1AccountProfileUpdateRequest,
+        request: &ProfileUpdateAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountProfileUpdateResponse, ApiError> {
+    ) -> Result<ProfileUpdateAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -445,11 +445,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_email_change_request(
+    pub async fn email_change_request(
         &self,
-        request: &PostV1AccountEmailChangeRequestRequest,
+        request: &EmailChangeRequestAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountEmailChangeRequestResponse, ApiError> {
+    ) -> Result<EmailChangeRequestAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -461,11 +461,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_sessions_list(
+    pub async fn sessions_list(
         &self,
-        request: &PostV1AccountSessionsListRequest,
+        request: &SessionsListAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountSessionsListResponse, ApiError> {
+    ) -> Result<SessionsListAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -477,11 +477,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_sessions_revoke(
+    pub async fn sessions_revoke(
         &self,
-        request: &PostV1AccountSessionsRevokeRequest,
+        request: &SessionsRevokeAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountSessionsRevokeResponse, ApiError> {
+    ) -> Result<SessionsRevokeAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -493,11 +493,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_sessions_revoke_others(
+    pub async fn sessions_revoke_others(
         &self,
-        request: &PostV1AccountSessionsRevokeOthersRequest,
+        request: &SessionsRevokeOthersAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountSessionsRevokeOthersResponse, ApiError> {
+    ) -> Result<SessionsRevokeOthersAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -509,11 +509,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn download_everything_nordlet_stores_about_the_signed_in_user(
+    pub async fn export(
         &self,
-        request: &PostV1AccountExportRequest,
+        request: &ExportAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountExportResponse, ApiError> {
+    ) -> Result<ExportAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -534,11 +534,11 @@ impl AccountClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn delete_the_signed_in_user_account(
+    pub async fn delete(
         &self,
-        request: &PostV1AccountDeleteRequest,
+        request: &DeleteAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountDeleteResponse, ApiError> {
+    ) -> Result<DeleteAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -550,11 +550,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_referral_get(
+    pub async fn referral_get(
         &self,
-        request: &PostV1AccountReferralGetRequest,
+        request: &ReferralGetAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountReferralGetResponse, ApiError> {
+    ) -> Result<ReferralGetAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -566,11 +566,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_referral_convert(
+    pub async fn referral_convert(
         &self,
-        request: &PostV1AccountReferralConvertRequest,
+        request: &ReferralConvertAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountReferralConvertResponse, ApiError> {
+    ) -> Result<ReferralConvertAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -582,11 +582,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_table_settings_get(
+    pub async fn table_settings_get(
         &self,
-        request: &PostV1AccountTableSettingsGetRequest,
+        request: &TableSettingsGetAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountTableSettingsGetResponse, ApiError> {
+    ) -> Result<TableSettingsGetAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -598,11 +598,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_table_settings_set(
+    pub async fn table_settings_set(
         &self,
-        request: &PostV1AccountTableSettingsSetRequest,
+        request: &TableSettingsSetAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountTableSettingsSetResponse, ApiError> {
+    ) -> Result<TableSettingsSetAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -614,11 +614,11 @@ impl AccountClient {
             .await
     }
 
-    pub async fn post_v1_account_table_settings_list(
+    pub async fn table_settings_list(
         &self,
-        request: &PostV1AccountTableSettingsListRequest,
+        request: &TableSettingsListAccountRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1AccountTableSettingsListResponse, ApiError> {
+    ) -> Result<TableSettingsListAccountResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

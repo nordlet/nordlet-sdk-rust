@@ -14,8 +14,9 @@ pub mod types;
 pub use resources::{
     AccountClient, AgreementsClient, ApiClient, AssetsClient, AuditClient, BankClient,
     BillingClient, CalendarClient, CaptureClient, CashClient, CatalogClient, ConsolidationClient,
-    DeclarationsClient, EcommerceClient, FilesClient, FleetClient, HrClient, InventoryClient,
-    LedgerClient, MigrationClient, PartnersClient, PayrollClient, PosClient, ProductionClient,
+    DeclarationsClient, DocumentSeriesClient, EcommerceClient, FilesClient, FleetClient, HrClient,
+    InventoryClient, LeadsClient, LedgerClient, MigrationClient, OfficersClient,
+    OperationTypesClient, PartnersClient, PayrollClient, PosClient, ProductionClient,
     ProjectsClient, PublicClient, PurchasesClient, ReferenceClient, ReportsClient, SalesClient,
     TransportClient, WebhooksClient,
 };

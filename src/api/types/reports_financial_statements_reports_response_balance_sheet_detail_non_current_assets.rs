@@ -1,0 +1,91 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssets {
+    #[serde(default)]
+    pub intangible: String,
+    #[serde(default)]
+    pub tangible: String,
+    #[serde(default)]
+    pub financial: String,
+    #[serde(default)]
+    pub other: String,
+    #[serde(default)]
+    pub total: String,
+}
+
+impl FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssets {
+    pub fn builder() -> FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder
+    {
+        <FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder {
+    intangible: Option<String>,
+    tangible: Option<String>,
+    financial: Option<String>,
+    other: Option<String>,
+    total: Option<String>,
+}
+
+impl FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder {
+    pub fn intangible(mut self, value: impl Into<String>) -> Self {
+        self.intangible = Some(value.into());
+        self
+    }
+
+    pub fn tangible(mut self, value: impl Into<String>) -> Self {
+        self.tangible = Some(value.into());
+        self
+    }
+
+    pub fn financial(mut self, value: impl Into<String>) -> Self {
+        self.financial = Some(value.into());
+        self
+    }
+
+    pub fn other(mut self, value: impl Into<String>) -> Self {
+        self.other = Some(value.into());
+        self
+    }
+
+    pub fn total(mut self, value: impl Into<String>) -> Self {
+        self.total = Some(value.into());
+        self
+    }
+
+    /// Consumes the builder and constructs a [`FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssets`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`intangible`](FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder::intangible)
+    /// - [`tangible`](FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder::tangible)
+    /// - [`financial`](FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder::financial)
+    /// - [`other`](FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder::other)
+    /// - [`total`](FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssetsBuilder::total)
+    pub fn build(
+        self,
+    ) -> Result<FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssets, BuildError>
+    {
+        Ok(
+            FinancialStatementsReportsResponseBalanceSheetDetailNonCurrentAssets {
+                intangible: self
+                    .intangible
+                    .ok_or_else(|| BuildError::missing_field("intangible"))?,
+                tangible: self
+                    .tangible
+                    .ok_or_else(|| BuildError::missing_field("tangible"))?,
+                financial: self
+                    .financial
+                    .ok_or_else(|| BuildError::missing_field("financial"))?,
+                other: self
+                    .other
+                    .ok_or_else(|| BuildError::missing_field("other"))?,
+                total: self
+                    .total
+                    .ok_or_else(|| BuildError::missing_field("total"))?,
+            },
+        )
+    }
+}

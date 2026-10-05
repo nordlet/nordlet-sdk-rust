@@ -13,11 +13,11 @@ impl ReferenceClient {
         })
     }
 
-    pub async fn post_v1_reference_exchange_rates_sync(
+    pub async fn exchange_rates_sync(
         &self,
-        request: &PostV1ReferenceExchangeRatesSyncRequest,
+        request: &ExchangeRatesSyncReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceExchangeRatesSyncResponse, ApiError> {
+    ) -> Result<ExchangeRatesSyncReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_exchange_rates_list(
+    pub async fn exchange_rates_list(
         &self,
-        request: &PostV1ReferenceExchangeRatesListRequest,
+        request: &ExchangeRatesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceExchangeRatesListResponse, ApiError> {
+    ) -> Result<ExchangeRatesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_exchange_rates_set(
+    pub async fn exchange_rates_set(
         &self,
-        request: &PostV1ReferenceExchangeRatesSetRequest,
+        request: &ExchangeRatesSetReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceExchangeRatesSetResponse, ApiError> {
+    ) -> Result<ExchangeRatesSetReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_exchange_rates_overrides_list(
+    pub async fn exchange_rates_overrides_list(
         &self,
-        request: &PostV1ReferenceExchangeRatesOverridesListRequest,
+        request: &ExchangeRatesOverridesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceExchangeRatesOverridesListResponse, ApiError> {
+    ) -> Result<ExchangeRatesOverridesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_exchange_rates_overrides_delete(
+    pub async fn exchange_rates_overrides_delete(
         &self,
-        request: &PostV1ReferenceExchangeRatesOverridesDeleteRequest,
+        request: &ExchangeRatesOverridesDeleteReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceExchangeRatesOverridesDeleteResponse, ApiError> {
+    ) -> Result<ExchangeRatesOverridesDeleteReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_countries_list(
+    pub async fn countries_list(
         &self,
-        request: &PostV1ReferenceCountriesListRequest,
+        request: &CountriesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceCountriesListResponse, ApiError> {
+    ) -> Result<CountriesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_lt_counties_list(
+    pub async fn lt_counties_list(
         &self,
-        request: &PostV1ReferenceLtCountiesListRequest,
+        request: &LtCountiesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceLtCountiesListResponse, ApiError> {
+    ) -> Result<LtCountiesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_lt_municipalities_list(
+    pub async fn lt_municipalities_list(
         &self,
-        request: &PostV1ReferenceLtMunicipalitiesListRequest,
+        request: &LtMunicipalitiesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceLtMunicipalitiesListResponse, ApiError> {
+    ) -> Result<LtMunicipalitiesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_lt_cities_list(
+    pub async fn lt_cities_list(
         &self,
-        request: &PostV1ReferenceLtCitiesListRequest,
+        request: &LtCitiesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceLtCitiesListResponse, ApiError> {
+    ) -> Result<LtCitiesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_banks_list(
+    pub async fn banks_list(
         &self,
-        request: &PostV1ReferenceBanksListRequest,
+        request: &BanksListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceBanksListResponse, ApiError> {
+    ) -> Result<BanksListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_banks_upsert(
+    pub async fn banks_upsert(
         &self,
-        request: &PostV1ReferenceBanksUpsertRequest,
+        request: &BanksUpsertReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceBanksUpsertResponse, ApiError> {
+    ) -> Result<BanksUpsertReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_lt_regions_list(
+    pub async fn lt_regions_list(
         &self,
-        request: &PostV1ReferenceLtRegionsListRequest,
+        request: &LtRegionsListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceLtRegionsListResponse, ApiError> {
+    ) -> Result<LtRegionsListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_currencies_list(
+    pub async fn currencies_list(
         &self,
-        request: &PostV1ReferenceCurrenciesListRequest,
+        request: &CurrenciesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceCurrenciesListResponse, ApiError> {
+    ) -> Result<CurrenciesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_vat_classifiers_list(
+    pub async fn vat_classifiers_list(
         &self,
-        request: &PostV1ReferenceVatClassifiersListRequest,
+        request: &VatClassifiersListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceVatClassifiersListResponse, ApiError> {
+    ) -> Result<VatClassifiersListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_vat_classifiers_upsert(
+    pub async fn vat_classifiers_upsert(
         &self,
-        request: &PostV1ReferenceVatClassifiersUpsertRequest,
+        request: &VatClassifiersUpsertReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceVatClassifiersUpsertResponse, ApiError> {
+    ) -> Result<VatClassifiersUpsertReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -262,11 +262,11 @@ impl ReferenceClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_reference_eu_vat_rates_list(
+    pub async fn eu_vat_rates_list(
         &self,
-        request: &PostV1ReferenceEuVatRatesListRequest,
+        request: &EuVatRatesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceEuVatRatesListResponse, ApiError> {
+    ) -> Result<EuVatRatesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -287,11 +287,11 @@ impl ReferenceClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn post_v1_reference_eu_vat_rates_set_overrides(
+    pub async fn eu_vat_rates_set_overrides(
         &self,
-        request: &PostV1ReferenceEuVatRatesSetOverridesRequest,
+        request: &EuVatRatesSetOverridesReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceEuVatRatesSetOverridesResponse, ApiError> {
+    ) -> Result<EuVatRatesSetOverridesReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -303,11 +303,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_vat_resolve(
+    pub async fn vat_resolve(
         &self,
-        request: &PostV1ReferenceVatResolveRequest,
+        request: &VatResolveReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceVatResolveResponse, ApiError> {
+    ) -> Result<VatResolveReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -319,11 +319,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_cn_codes_list(
+    pub async fn cn_codes_list(
         &self,
-        request: &PostV1ReferenceCnCodesListRequest,
+        request: &CnCodesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceCnCodesListResponse, ApiError> {
+    ) -> Result<CnCodesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -335,11 +335,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_cn_codes_upsert(
+    pub async fn cn_codes_upsert(
         &self,
-        request: &PostV1ReferenceCnCodesUpsertRequest,
+        request: &CnCodesUpsertReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceCnCodesUpsertResponse, ApiError> {
+    ) -> Result<CnCodesUpsertReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -351,11 +351,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_compliance_versions_list(
+    pub async fn compliance_versions_list(
         &self,
-        request: &PostV1ReferenceComplianceVersionsListRequest,
+        request: &ComplianceVersionsListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceComplianceVersionsListResponse, ApiError> {
+    ) -> Result<ComplianceVersionsListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -367,11 +367,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_intrastat_thresholds_list(
+    pub async fn intrastat_thresholds_list(
         &self,
-        request: &PostV1ReferenceIntrastatThresholdsListRequest,
+        request: &IntrastatThresholdsListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceIntrastatThresholdsListResponse, ApiError> {
+    ) -> Result<IntrastatThresholdsListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -383,11 +383,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_units_list(
+    pub async fn units_list(
         &self,
-        request: &PostV1ReferenceUnitsListRequest,
+        request: &UnitsListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceUnitsListResponse, ApiError> {
+    ) -> Result<UnitsListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -399,11 +399,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_series_create(
+    pub async fn series_create(
         &self,
-        request: &PostV1ReferenceSeriesCreateRequest,
+        request: &SeriesCreateReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceSeriesCreateResponse, ApiError> {
+    ) -> Result<SeriesCreateReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -415,11 +415,11 @@ impl ReferenceClient {
             .await
     }
 
-    pub async fn post_v1_reference_series_list(
+    pub async fn series_list(
         &self,
-        request: &PostV1ReferenceSeriesListRequest,
+        request: &SeriesListReferenceRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1ReferenceSeriesListResponse, ApiError> {
+    ) -> Result<SeriesListReferenceResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

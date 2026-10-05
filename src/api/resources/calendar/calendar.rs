@@ -13,11 +13,11 @@ impl CalendarClient {
         })
     }
 
-    pub async fn post_v1_calendar_list(
+    pub async fn list(
         &self,
-        request: &PostV1CalendarListRequest,
+        request: &ListCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarListResponse, ApiError> {
+    ) -> Result<ListCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl CalendarClient {
             .await
     }
 
-    pub async fn post_v1_calendar_get(
+    pub async fn get(
         &self,
-        request: &PostV1CalendarGetRequest,
+        request: &GetCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarGetResponse, ApiError> {
+    ) -> Result<GetCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,20 @@ impl CalendarClient {
             .await
     }
 
-    pub async fn generate_the_filing_for_a_deadline_and_send_it_to_the_administration(
+    /// With amend: true the return is filed again as a correction of the one already submitted or accepted for the period; only returns whose format has a correction mark accept it.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn submit(
         &self,
-        request: &PostV1CalendarSubmitRequest,
+        request: &SubmitCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarSubmitResponse, ApiError> {
+    ) -> Result<SubmitCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -70,11 +79,11 @@ impl CalendarClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn generate_the_file_of_a_deadline_for_the_company_to_send_itself(
+    pub async fn download(
         &self,
-        request: &PostV1CalendarDownloadRequest,
+        request: &DownloadCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarDownloadResponse, ApiError> {
+    ) -> Result<DownloadCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -86,11 +95,11 @@ impl CalendarClient {
             .await
     }
 
-    pub async fn post_v1_calendar_create(
+    pub async fn create(
         &self,
-        request: &PostV1CalendarCreateRequest,
+        request: &CreateCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarCreateResponse, ApiError> {
+    ) -> Result<CreateCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -102,11 +111,11 @@ impl CalendarClient {
             .await
     }
 
-    pub async fn post_v1_calendar_update(
+    pub async fn update(
         &self,
-        request: &PostV1CalendarUpdateRequest,
+        request: &UpdateCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarUpdateResponse, ApiError> {
+    ) -> Result<UpdateCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -118,11 +127,11 @@ impl CalendarClient {
             .await
     }
 
-    pub async fn post_v1_calendar_delete(
+    pub async fn delete(
         &self,
-        request: &PostV1CalendarDeleteRequest,
+        request: &DeleteCalendarRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1CalendarDeleteResponse, ApiError> {
+    ) -> Result<DeleteCalendarResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,

@@ -13,11 +13,11 @@ impl PartnersClient {
         })
     }
 
-    pub async fn post_v1_partners_addresses_create(
+    pub async fn addresses_create(
         &self,
-        request: &PostV1PartnersAddressesCreateRequest,
+        request: &AddressesCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersAddressesCreateResponse, ApiError> {
+    ) -> Result<AddressesCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -29,11 +29,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_addresses_update(
+    pub async fn addresses_update(
         &self,
-        request: &PostV1PartnersAddressesUpdateRequest,
+        request: &AddressesUpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersAddressesUpdateResponse, ApiError> {
+    ) -> Result<AddressesUpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -45,11 +45,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_addresses_delete(
+    pub async fn addresses_delete(
         &self,
-        request: &PostV1PartnersAddressesDeleteRequest,
+        request: &AddressesDeletePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersAddressesDeleteResponse, ApiError> {
+    ) -> Result<AddressesDeletePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -61,11 +61,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_addresses_list(
+    pub async fn addresses_list(
         &self,
-        request: &PostV1PartnersAddressesListRequest,
+        request: &AddressesListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersAddressesListResponse, ApiError> {
+    ) -> Result<AddressesListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -77,11 +77,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_contacts_create(
+    pub async fn contacts_create(
         &self,
-        request: &PostV1PartnersContactsCreateRequest,
+        request: &ContactsCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersContactsCreateResponse, ApiError> {
+    ) -> Result<ContactsCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -93,11 +93,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_contacts_update(
+    pub async fn contacts_update(
         &self,
-        request: &PostV1PartnersContactsUpdateRequest,
+        request: &ContactsUpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersContactsUpdateResponse, ApiError> {
+    ) -> Result<ContactsUpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -109,11 +109,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_contacts_delete(
+    pub async fn contacts_delete(
         &self,
-        request: &PostV1PartnersContactsDeleteRequest,
+        request: &ContactsDeletePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersContactsDeleteResponse, ApiError> {
+    ) -> Result<ContactsDeletePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -125,11 +125,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_contacts_list(
+    pub async fn contacts_list(
         &self,
-        request: &PostV1PartnersContactsListRequest,
+        request: &ContactsListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersContactsListResponse, ApiError> {
+    ) -> Result<ContactsListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -141,11 +141,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_bank_accounts_create(
+    pub async fn bank_accounts_create(
         &self,
-        request: &PostV1PartnersBankAccountsCreateRequest,
+        request: &BankAccountsCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersBankAccountsCreateResponse, ApiError> {
+    ) -> Result<BankAccountsCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -157,11 +157,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_bank_accounts_update(
+    pub async fn bank_accounts_update(
         &self,
-        request: &PostV1PartnersBankAccountsUpdateRequest,
+        request: &BankAccountsUpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersBankAccountsUpdateResponse, ApiError> {
+    ) -> Result<BankAccountsUpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -173,11 +173,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_bank_accounts_delete(
+    pub async fn bank_accounts_delete(
         &self,
-        request: &PostV1PartnersBankAccountsDeleteRequest,
+        request: &BankAccountsDeletePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersBankAccountsDeleteResponse, ApiError> {
+    ) -> Result<BankAccountsDeletePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -189,11 +189,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_bank_accounts_list(
+    pub async fn bank_accounts_list(
         &self,
-        request: &PostV1PartnersBankAccountsListRequest,
+        request: &BankAccountsListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersBankAccountsListResponse, ApiError> {
+    ) -> Result<BankAccountsListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -205,11 +205,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_files_list(
+    pub async fn files_list(
         &self,
-        request: &PostV1PartnersFilesListRequest,
+        request: &FilesListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersFilesListResponse, ApiError> {
+    ) -> Result<FilesListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -221,11 +221,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn reminders_the_overnight_debt_reminder_job_would_send_today_for_this_company(
+    pub async fn debt_reminders_preview(
         &self,
-        request: &PostV1PartnersDebtRemindersPreviewRequest,
+        request: &DebtRemindersPreviewPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersDebtRemindersPreviewResponse, ApiError> {
+    ) -> Result<DebtRemindersPreviewPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -237,11 +237,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_debt_reminders_list(
+    pub async fn debt_reminders_list(
         &self,
-        request: &PostV1PartnersDebtRemindersListRequest,
+        request: &DebtRemindersListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersDebtRemindersListResponse, ApiError> {
+    ) -> Result<DebtRemindersListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -253,11 +253,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_validate_vat(
+    pub async fn validate_vat(
         &self,
-        request: &PostV1PartnersValidateVatRequest,
+        request: &ValidateVatPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersValidateVatResponse, ApiError> {
+    ) -> Result<ValidateVatPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -269,11 +269,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_vat_reviews_list(
+    pub async fn vat_reviews_list(
         &self,
-        request: &PostV1PartnersVatReviewsListRequest,
+        request: &VatReviewsListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersVatReviewsListResponse, ApiError> {
+    ) -> Result<VatReviewsListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -285,11 +285,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_vat_reviews_resolve(
+    pub async fn vat_reviews_resolve(
         &self,
-        request: &PostV1PartnersVatReviewsResolveRequest,
+        request: &VatReviewsResolvePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersVatReviewsResolveResponse, ApiError> {
+    ) -> Result<VatReviewsResolvePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -301,11 +301,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_create(
+    pub async fn create(
         &self,
-        request: &PostV1PartnersCreateRequest,
+        request: &CreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersCreateResponse, ApiError> {
+    ) -> Result<CreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -317,11 +317,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_find_or_create(
+    pub async fn find_or_create(
         &self,
-        request: &PostV1PartnersFindOrCreateRequest,
+        request: &FindOrCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersFindOrCreateResponse, ApiError> {
+    ) -> Result<FindOrCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -333,11 +333,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_get(
+    pub async fn get(
         &self,
-        request: &PostV1PartnersGetRequest,
+        request: &GetPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersGetResponse, ApiError> {
+    ) -> Result<GetPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -349,11 +349,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_update(
+    pub async fn update(
         &self,
-        request: &PostV1PartnersUpdateRequest,
+        request: &UpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersUpdateResponse, ApiError> {
+    ) -> Result<UpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -365,11 +365,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_delete(
+    pub async fn delete(
         &self,
-        request: &PostV1PartnersDeleteRequest,
+        request: &DeletePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersDeleteResponse, ApiError> {
+    ) -> Result<DeletePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -390,11 +390,11 @@ impl PartnersClient {
     /// # Returns
     ///
     /// JSON response from the API
-    pub async fn blank_a_partners_personal_data_and_hide_the_record(
+    pub async fn anonymize(
         &self,
-        request: &PostV1PartnersAnonymizeRequest,
+        request: &AnonymizePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersAnonymizeResponse, ApiError> {
+    ) -> Result<AnonymizePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -406,11 +406,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_list(
+    pub async fn list(
         &self,
-        request: &PostV1PartnersListRequest,
+        request: &ListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersListResponse, ApiError> {
+    ) -> Result<ListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -422,11 +422,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_groups_create(
+    pub async fn groups_create(
         &self,
-        request: &PostV1PartnersGroupsCreateRequest,
+        request: &GroupsCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersGroupsCreateResponse, ApiError> {
+    ) -> Result<GroupsCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -438,11 +438,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_groups_update(
+    pub async fn groups_update(
         &self,
-        request: &PostV1PartnersGroupsUpdateRequest,
+        request: &GroupsUpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersGroupsUpdateResponse, ApiError> {
+    ) -> Result<GroupsUpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -454,11 +454,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_groups_delete(
+    pub async fn groups_delete(
         &self,
-        request: &PostV1PartnersGroupsDeleteRequest,
+        request: &GroupsDeletePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersGroupsDeleteResponse, ApiError> {
+    ) -> Result<GroupsDeletePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -470,11 +470,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_groups_list(
+    pub async fn groups_list(
         &self,
-        request: &PostV1PartnersGroupsListRequest,
+        request: &GroupsListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersGroupsListResponse, ApiError> {
+    ) -> Result<GroupsListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -486,11 +486,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_statuses_create(
+    pub async fn statuses_create(
         &self,
-        request: &PostV1PartnersStatusesCreateRequest,
+        request: &StatusesCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersStatusesCreateResponse, ApiError> {
+    ) -> Result<StatusesCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -502,11 +502,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_statuses_update(
+    pub async fn statuses_update(
         &self,
-        request: &PostV1PartnersStatusesUpdateRequest,
+        request: &StatusesUpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersStatusesUpdateResponse, ApiError> {
+    ) -> Result<StatusesUpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -518,11 +518,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_statuses_delete(
+    pub async fn statuses_delete(
         &self,
-        request: &PostV1PartnersStatusesDeleteRequest,
+        request: &StatusesDeletePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersStatusesDeleteResponse, ApiError> {
+    ) -> Result<StatusesDeletePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -534,11 +534,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_statuses_list(
+    pub async fn statuses_list(
         &self,
-        request: &PostV1PartnersStatusesListRequest,
+        request: &StatusesListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersStatusesListResponse, ApiError> {
+    ) -> Result<StatusesListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -550,11 +550,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_inquiries_create(
+    pub async fn inquiries_create(
         &self,
-        request: &PostV1PartnersInquiriesCreateRequest,
+        request: &InquiriesCreatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersInquiriesCreateResponse, ApiError> {
+    ) -> Result<InquiriesCreatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -566,11 +566,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_inquiries_update(
+    pub async fn inquiries_update(
         &self,
-        request: &PostV1PartnersInquiriesUpdateRequest,
+        request: &InquiriesUpdatePartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersInquiriesUpdateResponse, ApiError> {
+    ) -> Result<InquiriesUpdatePartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -582,11 +582,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_inquiries_get(
+    pub async fn inquiries_get(
         &self,
-        request: &PostV1PartnersInquiriesGetRequest,
+        request: &InquiriesGetPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersInquiriesGetResponse, ApiError> {
+    ) -> Result<InquiriesGetPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -598,11 +598,11 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_inquiries_list(
+    pub async fn inquiries_list(
         &self,
-        request: &PostV1PartnersInquiriesListRequest,
+        request: &InquiriesListPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersInquiriesListResponse, ApiError> {
+    ) -> Result<InquiriesListPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
@@ -614,264 +614,15 @@ impl PartnersClient {
             .await
     }
 
-    pub async fn post_v1_partners_credit_check(
+    pub async fn credit_check(
         &self,
-        request: &PostV1PartnersCreditCheckRequest,
+        request: &CreditCheckPartnersRequest,
         options: Option<RequestOptions>,
-    ) -> Result<PostV1PartnersCreditCheckResponse, ApiError> {
+    ) -> Result<CreditCheckPartnersResponse, ApiError> {
         self.http_client
             .execute_request(
                 Method::POST,
                 "v1/partners/credit-check",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_create(
-        &self,
-        request: &PostV1LeadsCreateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsCreateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/create",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_get(
-        &self,
-        request: &PostV1LeadsGetRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsGetResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/get",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_update(
-        &self,
-        request: &PostV1LeadsUpdateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsUpdateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/update",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_delete(
-        &self,
-        request: &PostV1LeadsDeleteRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsDeleteResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/delete",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_list(
-        &self,
-        request: &PostV1LeadsListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_notes_create(
-        &self,
-        request: &PostV1LeadsNotesCreateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsNotesCreateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/notes/create",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_notes_delete(
-        &self,
-        request: &PostV1LeadsNotesDeleteRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsNotesDeleteResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/notes/delete",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_notes_list(
-        &self,
-        request: &PostV1LeadsNotesListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsNotesListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/notes/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_files_list(
-        &self,
-        request: &PostV1LeadsFilesListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsFilesListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/files/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_sources_create(
-        &self,
-        request: &PostV1LeadsSourcesCreateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsSourcesCreateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/sources/create",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_sources_update(
-        &self,
-        request: &PostV1LeadsSourcesUpdateRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsSourcesUpdateResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/sources/update",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_sources_delete(
-        &self,
-        request: &PostV1LeadsSourcesDeleteRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsSourcesDeleteResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/sources/delete",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_sources_list(
-        &self,
-        request: &PostV1LeadsSourcesListRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsSourcesListResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/sources/list",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    pub async fn post_v1_leads_sources_options(
-        &self,
-        request: &PostV1LeadsSourcesOptionsRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsSourcesOptionsResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/sources/options",
-                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
-                None,
-                options,
-            )
-            .await
-    }
-
-    /// Create a customer partner from the lead, move the lead files to the partner, copy the lead notes into the partner notes and mark the lead as converted.
-    ///
-    /// # Arguments
-    ///
-    /// * `options` - Additional request options such as headers, timeout, etc.
-    ///
-    /// # Returns
-    ///
-    /// JSON response from the API
-    pub async fn post_v1_leads_convert(
-        &self,
-        request: &PostV1LeadsConvertRequest,
-        options: Option<RequestOptions>,
-    ) -> Result<PostV1LeadsConvertResponse, ApiError> {
-        self.http_client
-            .execute_request(
-                Method::POST,
-                "v1/leads/convert",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,
