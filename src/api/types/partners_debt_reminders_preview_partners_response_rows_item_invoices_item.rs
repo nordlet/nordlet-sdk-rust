@@ -14,6 +14,8 @@ pub struct DebtRemindersPreviewPartnersResponseRowsItemInvoicesItem {
     #[serde(default)]
     pub due_date: NaiveDate,
     #[serde(default)]
+    pub currency: String,
+    #[serde(default)]
     pub remaining: String,
     #[serde(rename = "daysLate")]
     #[serde(default)]
@@ -35,6 +37,7 @@ pub struct DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder {
     full_number: Option<String>,
     issue_date: Option<NaiveDate>,
     due_date: Option<NaiveDate>,
+    currency: Option<String>,
     remaining: Option<String>,
     days_late: Option<i64>,
     interest: Option<String>,
@@ -61,6 +64,11 @@ impl DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder {
         self
     }
 
+    pub fn currency(mut self, value: impl Into<String>) -> Self {
+        self.currency = Some(value.into());
+        self
+    }
+
     pub fn remaining(mut self, value: impl Into<String>) -> Self {
         self.remaining = Some(value.into());
         self
@@ -82,6 +90,7 @@ impl DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder {
     /// - [`full_number`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::full_number)
     /// - [`issue_date`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::issue_date)
     /// - [`due_date`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::due_date)
+    /// - [`currency`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::currency)
     /// - [`remaining`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::remaining)
     /// - [`days_late`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::days_late)
     /// - [`interest`](DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder::interest)
@@ -99,6 +108,9 @@ impl DebtRemindersPreviewPartnersResponseRowsItemInvoicesItemBuilder {
             due_date: self
                 .due_date
                 .ok_or_else(|| BuildError::missing_field("due_date"))?,
+            currency: self
+                .currency
+                .ok_or_else(|| BuildError::missing_field("currency"))?,
             remaining: self
                 .remaining
                 .ok_or_else(|| BuildError::missing_field("remaining"))?,

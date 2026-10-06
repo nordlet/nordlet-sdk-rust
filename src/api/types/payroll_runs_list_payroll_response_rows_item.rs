@@ -11,6 +11,9 @@ pub struct RunsListPayrollResponseRowsItem {
     #[serde(rename = "countryCode")]
     #[serde(default)]
     pub country_code: String,
+    #[serde(rename = "payDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_date: Option<NaiveDate>,
     pub status: RunsListPayrollResponseRowsItemStatus,
     #[serde(rename = "grossTotal")]
     #[serde(default)]
@@ -64,6 +67,7 @@ pub struct RunsListPayrollResponseRowsItemBuilder {
     year: Option<i64>,
     month: Option<i64>,
     country_code: Option<String>,
+    pay_date: Option<NaiveDate>,
     status: Option<RunsListPayrollResponseRowsItemStatus>,
     gross_total: Option<String>,
     tax_allowance_total: Option<String>,
@@ -97,6 +101,11 @@ impl RunsListPayrollResponseRowsItemBuilder {
 
     pub fn country_code(mut self, value: impl Into<String>) -> Self {
         self.country_code = Some(value.into());
+        self
+    }
+
+    pub fn pay_date(mut self, value: NaiveDate) -> Self {
+        self.pay_date = Some(value);
         self
     }
 
@@ -194,6 +203,7 @@ impl RunsListPayrollResponseRowsItemBuilder {
             country_code: self
                 .country_code
                 .ok_or_else(|| BuildError::missing_field("country_code"))?,
+            pay_date: self.pay_date,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

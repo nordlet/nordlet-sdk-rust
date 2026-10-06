@@ -11,8 +11,8 @@ pub struct InvoicesPeppolSendSalesResponse {
     #[serde(default)]
     pub receiver_id: String,
     #[serde(rename = "fileId")]
-    #[serde(default)]
-    pub file_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub file_id: Option<String>,
 }
 
 impl InvoicesPeppolSendSalesResponse {
@@ -56,7 +56,6 @@ impl InvoicesPeppolSendSalesResponseBuilder {
     /// - [`sent`](InvoicesPeppolSendSalesResponseBuilder::sent)
     /// - [`message_id`](InvoicesPeppolSendSalesResponseBuilder::message_id)
     /// - [`receiver_id`](InvoicesPeppolSendSalesResponseBuilder::receiver_id)
-    /// - [`file_id`](InvoicesPeppolSendSalesResponseBuilder::file_id)
     pub fn build(self) -> Result<InvoicesPeppolSendSalesResponse, BuildError> {
         Ok(InvoicesPeppolSendSalesResponse {
             sent: self.sent.ok_or_else(|| BuildError::missing_field("sent"))?,
@@ -66,9 +65,7 @@ impl InvoicesPeppolSendSalesResponseBuilder {
             receiver_id: self
                 .receiver_id
                 .ok_or_else(|| BuildError::missing_field("receiver_id"))?,
-            file_id: self
-                .file_id
-                .ok_or_else(|| BuildError::missing_field("file_id"))?,
+            file_id: self.file_id,
         })
     }
 }

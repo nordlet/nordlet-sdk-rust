@@ -13,6 +13,10 @@ pub struct VatReviewsListPartnersResponse {
     pub total: i64,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub totals: Option<HashMap<String, String>>,
+    /// The requested totals split by currency code, present when the listed records carry a currency
+    #[serde(rename = "totalsByCurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub totals_by_currency: Option<HashMap<String, HashMap<String, String>>>,
 }
 
 impl VatReviewsListPartnersResponse {
@@ -29,6 +33,7 @@ pub struct VatReviewsListPartnersResponseBuilder {
     page_size: Option<i64>,
     total: Option<i64>,
     totals: Option<HashMap<String, String>>,
+    totals_by_currency: Option<HashMap<String, HashMap<String, String>>>,
 }
 
 impl VatReviewsListPartnersResponseBuilder {
@@ -57,6 +62,11 @@ impl VatReviewsListPartnersResponseBuilder {
         self
     }
 
+    pub fn totals_by_currency(mut self, value: HashMap<String, HashMap<String, String>>) -> Self {
+        self.totals_by_currency = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`VatReviewsListPartnersResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`rows`](VatReviewsListPartnersResponseBuilder::rows)
@@ -74,6 +84,7 @@ impl VatReviewsListPartnersResponseBuilder {
                 .total
                 .ok_or_else(|| BuildError::missing_field("total"))?,
             totals: self.totals,
+            totals_by_currency: self.totals_by_currency,
         })
     }
 }

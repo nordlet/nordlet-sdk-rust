@@ -5788,6 +5788,7 @@ async fn main() {
                 website: None,
                 country_code: None,
                 source_id: None,
+                type_id: None,
                 status: None,
                 estimated_value: None,
                 currency: None,
@@ -5863,6 +5864,14 @@ async fn main() {
 <dd>
 
 **source_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type_id:** `Option<String>` 
     
 </dd>
 </dl>
@@ -6022,6 +6031,7 @@ async fn main() {
                 website: None,
                 country_code: None,
                 source_id: None,
+                type_id: None,
                 status: None,
                 estimated_value: None,
                 currency: None,
@@ -6104,6 +6114,14 @@ async fn main() {
 <dd>
 
 **source_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type_id:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -6822,6 +6840,293 @@ async fn main() {
         .leads
         .sources_options(
             &SourcesOptionsLeadsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">types_create</a>(request: TypesCreateLeadsRequest) -> Result&lt;TypesCreateLeadsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .leads
+        .types_create(
+            &TypesCreateLeadsRequest {
+                name: "name".to_string(),
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">types_update</a>(request: TypesUpdateLeadsRequest) -> Result&lt;TypesUpdateLeadsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .leads
+        .types_update(
+            &TypesUpdateLeadsRequest {
+                id: "id".to_string(),
+                name: None,
+                is_active: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**is_active:** `Option<bool>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">types_delete</a>(request: TypesDeleteLeadsRequest) -> Result&lt;TypesDeleteLeadsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .leads
+        .types_delete(
+            &TypesDeleteLeadsRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">types_list</a>(request: TypesListLeadsRequest) -> Result&lt;TypesListLeadsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .leads
+        .types_list(
+            &TypesListLeadsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.leads.<a href="/src/api/resources/leads/client.rs">types_options</a>(request: TypesOptionsLeadsRequest) -> Result&lt;TypesOptionsLeadsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .leads
+        .types_options(
+            &TypesOptionsLeadsRequest {
                 ..Default::default()
             },
             None,
@@ -21169,7 +21474,7 @@ async fn main() {
 <dl>
 <dd>
 
-Build the working paper for the Form B1 annual return of a financial year — company details, registered office, directors and secretary from Settings → Officers, the members from Settings → Shareholders, the issued share capital and the figures of the financial statements — in the order the CORE screens ask for them. The CRO publishes no file format for the B1, so it is keyed into CORE.
+Build the working paper for the Form B1 annual return of a financial year - company details, registered office, directors and secretary from Settings → Officers, the members from Settings → Shareholders, the issued share capital and the figures of the financial statements - in the order the CORE screens ask for them. The CRO publishes no file format for the B1, so it is keyed into CORE.
 </dd>
 </dl>
 </dd>
@@ -26275,7 +26580,7 @@ async fn main() {
 <dl>
 <dd>
 
-Brings a company over from another system in one call: chart of accounts, partners, items, opening balances (or the full journal history), open customer and supplier invoices, fixed assets with their accumulated depreciation, and stock on hand. The whole package is written in one database transaction — if any row fails, nothing is stored.
+Brings a company over from another system in one call: chart of accounts, partners, items, opening balances (or the full journal history), open customer and supplier invoices, fixed assets with their accumulated depreciation, and stock on hand. The whole package is written in one database transaction - if any row fails, nothing is stored.
 </dd>
 </dl>
 </dd>
@@ -31264,6 +31569,7 @@ async fn main() {
                 gross_overrides: None,
                 lines: None,
                 notes: None,
+                pay_date: None,
             },
             None,
         )
@@ -31324,6 +31630,14 @@ async fn main() {
 <dd>
 
 **notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pay_date:** `Option<String>` 
     
 </dd>
 </dl>
@@ -43062,6 +43376,96 @@ async fn main() {
 <dd>
 
 **filter:** `Option<Vec<MandatesListBankRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">direct_debits_candidates</a>(request: DirectDebitsCandidatesBankRequest) -> Result&lt;DirectDebitsCandidatesBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .direct_debits_candidates(
+            &DirectDebitsCandidatesBankRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<DirectDebitsCandidatesBankRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<DirectDebitsCandidatesBankRequestFilterItem>>` 
     
 </dd>
 </dl>

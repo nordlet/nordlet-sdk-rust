@@ -406,6 +406,22 @@ impl BankClient {
             .await
     }
 
+    pub async fn direct_debits_candidates(
+        &self,
+        request: &DirectDebitsCandidatesBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<DirectDebitsCandidatesBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/direct-debits/candidates",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn direct_debits_export(
         &self,
         request: &DirectDebitsExportBankRequest,

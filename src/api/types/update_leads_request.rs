@@ -21,6 +21,9 @@ pub struct UpdateLeadsRequest {
     #[serde(rename = "sourceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub source_id: Option<String>,
+    #[serde(rename = "typeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub type_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<UpdateLeadsRequestStatus>,
     #[serde(rename = "estimatedValue")]
@@ -54,6 +57,7 @@ pub struct UpdateLeadsRequestBuilder {
     website: Option<String>,
     country_code: Option<String>,
     source_id: Option<String>,
+    type_id: Option<String>,
     status: Option<UpdateLeadsRequestStatus>,
     estimated_value: Option<String>,
     currency: Option<String>,
@@ -103,6 +107,11 @@ impl UpdateLeadsRequestBuilder {
         self
     }
 
+    pub fn type_id(mut self, value: impl Into<String>) -> Self {
+        self.type_id = Some(value.into());
+        self
+    }
+
     pub fn status(mut self, value: UpdateLeadsRequestStatus) -> Self {
         self.status = Some(value);
         self
@@ -146,6 +155,7 @@ impl UpdateLeadsRequestBuilder {
             website: self.website,
             country_code: self.country_code,
             source_id: self.source_id,
+            type_id: self.type_id,
             status: self.status,
             estimated_value: self.estimated_value,
             currency: self.currency,

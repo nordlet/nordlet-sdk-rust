@@ -24,6 +24,12 @@ pub struct CreateLeadsResponse {
     #[serde(rename = "sourceName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub source_name: Option<String>,
+    #[serde(rename = "typeId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub type_id: Option<String>,
+    #[serde(rename = "typeName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub type_name: Option<String>,
     pub status: CreateLeadsResponseStatus,
     #[serde(rename = "estimatedValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -71,6 +77,8 @@ pub struct CreateLeadsResponseBuilder {
     country_code: Option<String>,
     source_id: Option<String>,
     source_name: Option<String>,
+    type_id: Option<String>,
+    type_name: Option<String>,
     status: Option<CreateLeadsResponseStatus>,
     estimated_value: Option<String>,
     currency: Option<String>,
@@ -125,6 +133,16 @@ impl CreateLeadsResponseBuilder {
 
     pub fn source_name(mut self, value: impl Into<String>) -> Self {
         self.source_name = Some(value.into());
+        self
+    }
+
+    pub fn type_id(mut self, value: impl Into<String>) -> Self {
+        self.type_id = Some(value.into());
+        self
+    }
+
+    pub fn type_name(mut self, value: impl Into<String>) -> Self {
+        self.type_name = Some(value.into());
         self
     }
 
@@ -192,6 +210,8 @@ impl CreateLeadsResponseBuilder {
             country_code: self.country_code,
             source_id: self.source_id,
             source_name: self.source_name,
+            type_id: self.type_id,
+            type_name: self.type_name,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

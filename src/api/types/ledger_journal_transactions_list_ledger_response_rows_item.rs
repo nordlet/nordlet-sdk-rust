@@ -27,6 +27,9 @@ pub struct JournalTransactionsListLedgerResponseRowsItem {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset::option")]
     pub posted_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "partnerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_name: Option<String>,
 }
 
 impl JournalTransactionsListLedgerResponseRowsItem {
@@ -47,6 +50,7 @@ pub struct JournalTransactionsListLedgerResponseRowsItemBuilder {
     status: Option<JournalTransactionsListLedgerResponseRowsItemStatus>,
     created_at: Option<DateTime<FixedOffset>>,
     posted_at: Option<DateTime<FixedOffset>>,
+    partner_name: Option<String>,
 }
 
 impl JournalTransactionsListLedgerResponseRowsItemBuilder {
@@ -95,6 +99,11 @@ impl JournalTransactionsListLedgerResponseRowsItemBuilder {
         self
     }
 
+    pub fn partner_name(mut self, value: impl Into<String>) -> Self {
+        self.partner_name = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`JournalTransactionsListLedgerResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](JournalTransactionsListLedgerResponseRowsItemBuilder::id)
@@ -116,6 +125,7 @@ impl JournalTransactionsListLedgerResponseRowsItemBuilder {
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,
             posted_at: self.posted_at,
+            partner_name: self.partner_name,
         })
     }
 }

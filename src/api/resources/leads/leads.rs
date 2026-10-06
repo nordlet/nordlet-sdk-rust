@@ -237,6 +237,86 @@ impl LeadsClient {
             .await
     }
 
+    pub async fn types_create(
+        &self,
+        request: &TypesCreateLeadsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TypesCreateLeadsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/types/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn types_update(
+        &self,
+        request: &TypesUpdateLeadsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TypesUpdateLeadsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/types/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn types_delete(
+        &self,
+        request: &TypesDeleteLeadsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TypesDeleteLeadsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/types/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn types_list(
+        &self,
+        request: &TypesListLeadsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TypesListLeadsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/types/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn types_options(
+        &self,
+        request: &TypesOptionsLeadsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TypesOptionsLeadsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/leads/types/options",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     /// Create a customer partner from the lead, move the lead files to the partner, copy the lead notes into the partner notes and mark the lead as converted.
     ///
     /// # Arguments

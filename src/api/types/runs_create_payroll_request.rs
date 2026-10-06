@@ -16,6 +16,9 @@ pub struct RunsCreatePayrollRequest {
     pub lines: Option<Vec<RunsCreatePayrollRequestLinesItem>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(rename = "payDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_date: Option<NaiveDate>,
 }
 
 impl RunsCreatePayrollRequest {
@@ -33,6 +36,7 @@ pub struct RunsCreatePayrollRequestBuilder {
     gross_overrides: Option<Vec<RunsCreatePayrollRequestGrossOverridesItem>>,
     lines: Option<Vec<RunsCreatePayrollRequestLinesItem>>,
     notes: Option<String>,
+    pay_date: Option<NaiveDate>,
 }
 
 impl RunsCreatePayrollRequestBuilder {
@@ -69,6 +73,11 @@ impl RunsCreatePayrollRequestBuilder {
         self
     }
 
+    pub fn pay_date(mut self, value: NaiveDate) -> Self {
+        self.pay_date = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`RunsCreatePayrollRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`year`](RunsCreatePayrollRequestBuilder::year)
@@ -83,6 +92,7 @@ impl RunsCreatePayrollRequestBuilder {
             gross_overrides: self.gross_overrides,
             lines: self.lines,
             notes: self.notes,
+            pay_date: self.pay_date,
         })
     }
 }

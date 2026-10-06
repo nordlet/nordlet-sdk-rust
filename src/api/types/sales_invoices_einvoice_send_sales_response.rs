@@ -19,8 +19,8 @@ pub struct InvoicesEinvoiceSendSalesResponse {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub detail: Option<String>,
     #[serde(rename = "fileId")]
-    #[serde(default)]
-    pub file_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub file_id: Option<String>,
     #[serde(default)]
     pub warnings: Vec<String>,
 }
@@ -105,7 +105,6 @@ impl InvoicesEinvoiceSendSalesResponseBuilder {
     /// - [`transport`](InvoicesEinvoiceSendSalesResponseBuilder::transport)
     /// - [`message_id`](InvoicesEinvoiceSendSalesResponseBuilder::message_id)
     /// - [`status`](InvoicesEinvoiceSendSalesResponseBuilder::status)
-    /// - [`file_id`](InvoicesEinvoiceSendSalesResponseBuilder::file_id)
     /// - [`warnings`](InvoicesEinvoiceSendSalesResponseBuilder::warnings)
     pub fn build(self) -> Result<InvoicesEinvoiceSendSalesResponse, BuildError> {
         Ok(InvoicesEinvoiceSendSalesResponse {
@@ -127,9 +126,7 @@ impl InvoicesEinvoiceSendSalesResponseBuilder {
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
             detail: self.detail,
-            file_id: self
-                .file_id
-                .ok_or_else(|| BuildError::missing_field("file_id"))?,
+            file_id: self.file_id,
             warnings: self
                 .warnings
                 .ok_or_else(|| BuildError::missing_field("warnings"))?,

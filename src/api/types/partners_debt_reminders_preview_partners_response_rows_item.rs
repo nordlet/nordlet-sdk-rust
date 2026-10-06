@@ -12,15 +12,9 @@ pub struct DebtRemindersPreviewPartnersResponseRowsItem {
     pub email: String,
     pub locale: DebtRemindersPreviewPartnersResponseRowsItemLocale,
     #[serde(default)]
-    pub currency: String,
-    #[serde(default)]
     pub invoices: Vec<DebtRemindersPreviewPartnersResponseRowsItemInvoicesItem>,
-    #[serde(rename = "totalDue")]
     #[serde(default)]
-    pub total_due: String,
-    #[serde(rename = "interestDue")]
-    #[serde(default)]
-    pub interest_due: String,
+    pub totals: Vec<DebtRemindersPreviewPartnersResponseRowsItemTotalsItem>,
 }
 
 impl DebtRemindersPreviewPartnersResponseRowsItem {
@@ -36,10 +30,8 @@ pub struct DebtRemindersPreviewPartnersResponseRowsItemBuilder {
     partner_name: Option<String>,
     email: Option<String>,
     locale: Option<DebtRemindersPreviewPartnersResponseRowsItemLocale>,
-    currency: Option<String>,
     invoices: Option<Vec<DebtRemindersPreviewPartnersResponseRowsItemInvoicesItem>>,
-    total_due: Option<String>,
-    interest_due: Option<String>,
+    totals: Option<Vec<DebtRemindersPreviewPartnersResponseRowsItemTotalsItem>>,
 }
 
 impl DebtRemindersPreviewPartnersResponseRowsItemBuilder {
@@ -63,11 +55,6 @@ impl DebtRemindersPreviewPartnersResponseRowsItemBuilder {
         self
     }
 
-    pub fn currency(mut self, value: impl Into<String>) -> Self {
-        self.currency = Some(value.into());
-        self
-    }
-
     pub fn invoices(
         mut self,
         value: Vec<DebtRemindersPreviewPartnersResponseRowsItemInvoicesItem>,
@@ -76,13 +63,11 @@ impl DebtRemindersPreviewPartnersResponseRowsItemBuilder {
         self
     }
 
-    pub fn total_due(mut self, value: impl Into<String>) -> Self {
-        self.total_due = Some(value.into());
-        self
-    }
-
-    pub fn interest_due(mut self, value: impl Into<String>) -> Self {
-        self.interest_due = Some(value.into());
+    pub fn totals(
+        mut self,
+        value: Vec<DebtRemindersPreviewPartnersResponseRowsItemTotalsItem>,
+    ) -> Self {
+        self.totals = Some(value);
         self
     }
 
@@ -92,10 +77,8 @@ impl DebtRemindersPreviewPartnersResponseRowsItemBuilder {
     /// - [`partner_name`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::partner_name)
     /// - [`email`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::email)
     /// - [`locale`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::locale)
-    /// - [`currency`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::currency)
     /// - [`invoices`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::invoices)
-    /// - [`total_due`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::total_due)
-    /// - [`interest_due`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::interest_due)
+    /// - [`totals`](DebtRemindersPreviewPartnersResponseRowsItemBuilder::totals)
     pub fn build(self) -> Result<DebtRemindersPreviewPartnersResponseRowsItem, BuildError> {
         Ok(DebtRemindersPreviewPartnersResponseRowsItem {
             partner_id: self
@@ -110,18 +93,12 @@ impl DebtRemindersPreviewPartnersResponseRowsItemBuilder {
             locale: self
                 .locale
                 .ok_or_else(|| BuildError::missing_field("locale"))?,
-            currency: self
-                .currency
-                .ok_or_else(|| BuildError::missing_field("currency"))?,
             invoices: self
                 .invoices
                 .ok_or_else(|| BuildError::missing_field("invoices"))?,
-            total_due: self
-                .total_due
-                .ok_or_else(|| BuildError::missing_field("total_due"))?,
-            interest_due: self
-                .interest_due
-                .ok_or_else(|| BuildError::missing_field("interest_due"))?,
+            totals: self
+                .totals
+                .ok_or_else(|| BuildError::missing_field("totals"))?,
         })
     }
 }
