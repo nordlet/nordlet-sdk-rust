@@ -77,6 +77,54 @@ impl CashClient {
             .await
     }
 
+    pub async fn expense_reports_create(
+        &self,
+        request: &ExpenseReportsCreateCashRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ExpenseReportsCreateCashResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/cash/expense-reports/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn expense_reports_get(
+        &self,
+        request: &ExpenseReportsGetCashRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ExpenseReportsGetCashResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/cash/expense-reports/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn expense_reports_list(
+        &self,
+        request: &ExpenseReportsListCashRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ExpenseReportsListCashResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/cash/expense-reports/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn advance_holders_balances(
         &self,
         request: &AdvanceHoldersBalancesCashRequest,

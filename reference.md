@@ -4620,6 +4620,73 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">merge</a>(request: MergePartnersRequest) -> Result&lt;MergePartnersResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .partners
+        .merge(
+            &MergePartnersRequest {
+                source_id: "sourceId".to_string(),
+                target_id: "targetId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**source_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**target_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.partners.<a href="/src/api/resources/partners/client.rs">anonymize</a>(request: AnonymizePartnersRequest) -> Result&lt;AnonymizePartnersResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -11194,6 +11261,7 @@ async fn main() {
                 series: None,
                 issue_date: None,
                 warehouse_id: None,
+                return_to_stock: None,
             },
             None,
         )
@@ -11238,6 +11306,14 @@ async fn main() {
 <dd>
 
 **warehouse_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**return_to_stock:** `Option<bool>` 
     
 </dd>
 </dl>
@@ -14928,6 +15004,154 @@ async fn main() {
 <dd>
 
 **warehouse_id:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">deferrals_list</a>(request: DeferralsListPurchasesRequest) -> Result&lt;DeferralsListPurchasesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .purchases
+        .deferrals_list(
+            &DeferralsListPurchasesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<DeferralsListPurchasesRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<DeferralsListPurchasesRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.purchases.<a href="/src/api/resources/purchases/client.rs">deferrals_post</a>(request: DeferralsPostPurchasesRequest) -> Result&lt;DeferralsPostPurchasesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .purchases
+        .deferrals_post(
+            &DeferralsPostPurchasesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**as_of_date:** `Option<String>` 
     
 </dd>
 </dl>
@@ -26740,6 +26964,107 @@ async fn main() {
 </details>
 
 ## assets
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">settings_get</a>(request: SettingsGetAssetsRequest) -> Result&lt;SettingsGetAssetsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .assets
+        .settings_get(
+            &SettingsGetAssetsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">settings_update</a>(request: SettingsUpdateAssetsRequest) -> Result&lt;SettingsUpdateAssetsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .assets
+        .settings_update(
+            &SettingsUpdateAssetsRequest {
+                auto_depreciation: true,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**auto_depreciation:** `bool` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.assets.<a href="/src/api/resources/assets/client.rs">groups_create</a>(request: GroupsCreateAssetsRequest) -> Result&lt;GroupsCreateAssetsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -29546,6 +29871,588 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">per_diem_rates_create</a>(request: PerDiemRatesCreateHrRequest) -> Result&lt;PerDiemRatesCreateHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .per_diem_rates_create(
+            &PerDiemRatesCreateHrRequest {
+                country_code: "countryCode".to_string(),
+                daily_amount: "121.00".to_string(),
+                valid_from: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**country_code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**daily_amount:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**valid_from:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">per_diem_rates_list</a>(request: PerDiemRatesListHrRequest) -> Result&lt;PerDiemRatesListHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .per_diem_rates_list(
+            &PerDiemRatesListHrRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<PerDiemRatesListHrRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<PerDiemRatesListHrRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">per_diem_rates_delete</a>(request: PerDiemRatesDeleteHrRequest) -> Result&lt;PerDiemRatesDeleteHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .per_diem_rates_delete(
+            &PerDiemRatesDeleteHrRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">business_trips_create</a>(request: BusinessTripsCreateHrRequest) -> Result&lt;BusinessTripsCreateHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .business_trips_create(
+            &BusinessTripsCreateHrRequest {
+                employee_id: "employeeId".to_string(),
+                destination_country_code: "destinationCountryCode".to_string(),
+                purpose: "purpose".to_string(),
+                start_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                end_date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**employee_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destination_country_code:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**purpose:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**start_date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**end_date:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">business_trips_get</a>(request: BusinessTripsGetHrRequest) -> Result&lt;BusinessTripsGetHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .business_trips_get(
+            &BusinessTripsGetHrRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">business_trips_list</a>(request: BusinessTripsListHrRequest) -> Result&lt;BusinessTripsListHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .business_trips_list(
+            &BusinessTripsListHrRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<BusinessTripsListHrRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<BusinessTripsListHrRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">business_trips_approve</a>(request: BusinessTripsApproveHrRequest) -> Result&lt;BusinessTripsApproveHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .business_trips_approve(
+            &BusinessTripsApproveHrRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">business_trips_delete</a>(request: BusinessTripsDeleteHrRequest) -> Result&lt;BusinessTripsDeleteHrResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .hr
+        .business_trips_delete(
+            &BusinessTripsDeleteHrRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.hr.<a href="/src/api/resources/hr/client.rs">employees_records_create</a>(request: EmployeesRecordsCreateHrRequest) -> Result&lt;EmployeesRecordsCreateHrResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -32026,6 +32933,73 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_reverse</a>(request: RunsReversePayrollRequest) -> Result&lt;RunsReversePayrollResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .payroll
+        .runs_reverse(
+            &RunsReversePayrollRequest {
+                id: "id".to_string(),
+                reason: "reason".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**reason:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">runs_cancel</a>(request: RunsCancelPayrollRequest) -> Result&lt;RunsCancelPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -32170,6 +33144,105 @@ async fn main() {
 </details>
 
 ## agreements
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">settings_get</a>(request: SettingsGetAgreementsRequest) -> Result&lt;SettingsGetAgreementsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .agreements
+        .settings_get(
+            &SettingsGetAgreementsRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">settings_update</a>(request: SettingsUpdateAgreementsRequest) -> Result&lt;SettingsUpdateAgreementsResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .agreements
+        .settings_update(
+            &SettingsUpdateAgreementsRequest { auto_billing: true },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**auto_billing:** `bool` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.agreements.<a href="/src/api/resources/agreements/client.rs">types_create</a>(request: TypesCreateAgreementsRequest) -> Result&lt;TypesCreateAgreementsResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -37504,8 +38577,10 @@ async fn main() {
                 date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
                 amount: "121.0000".to_string(),
                 purpose: "purpose".to_string(),
-                counter_account_code: "counterAccountCode".to_string(),
+                counter_account_code: None,
                 cash_account_code: None,
+                sale_invoice_id: None,
+                purchase_invoice_id: None,
                 series: None,
                 partner_id: None,
                 employee_id: None,
@@ -37561,7 +38636,7 @@ async fn main() {
 <dl>
 <dd>
 
-**counter_account_code:** `String` 
+**counter_account_code:** `Option<String>` 
     
 </dd>
 </dl>
@@ -37570,6 +38645,22 @@ async fn main() {
 <dd>
 
 **cash_account_code:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sale_invoice_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**purchase_invoice_id:** `Option<String>` 
     
 </dd>
 </dl>
@@ -37816,6 +38907,244 @@ async fn main() {
 <dd>
 
 **as_of:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">expense_reports_create</a>(request: ExpenseReportsCreateCashRequest) -> Result&lt;ExpenseReportsCreateCashResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .cash
+        .expense_reports_create(
+            &ExpenseReportsCreateCashRequest {
+                employee_id: "employeeId".to_string(),
+                date: NaiveDate::parse_from_str("2026-07-01", "%Y-%m-%d").unwrap(),
+                lines: vec![ExpenseReportsCreateCashRequestLinesItem {
+                    description: "description".to_string(),
+                    account_code: "accountCode".to_string(),
+                    net_amount: "121.00".to_string(),
+                    ..Default::default()
+                }],
+                notes: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**employee_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lines:** `Vec<ExpenseReportsCreateCashRequestLinesItem>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">expense_reports_get</a>(request: ExpenseReportsGetCashRequest) -> Result&lt;ExpenseReportsGetCashResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .cash
+        .expense_reports_get(
+            &ExpenseReportsGetCashRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.cash.<a href="/src/api/resources/cash/client.rs">expense_reports_list</a>(request: ExpenseReportsListCashRequest) -> Result&lt;ExpenseReportsListCashResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .cash
+        .expense_reports_list(
+            &ExpenseReportsListCashRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<ExpenseReportsListCashRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<ExpenseReportsListCashRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -40104,6 +41433,553 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">shifts_open</a>(request: ShiftsOpenPosRequest) -> Result&lt;ShiftsOpenPosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .shifts_open(
+            &ShiftsOpenPosRequest {
+                device_id: "deviceId".to_string(),
+                warehouse_id: None,
+                opening_cash: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**device_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**warehouse_id:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**opening_cash:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">shifts_get</a>(request: ShiftsGetPosRequest) -> Result&lt;ShiftsGetPosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .shifts_get(
+            &ShiftsGetPosRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">shifts_list</a>(request: ShiftsListPosRequest) -> Result&lt;ShiftsListPosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .shifts_list(
+            &ShiftsListPosRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<ShiftsListPosRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<ShiftsListPosRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">receipts_create</a>(request: ReceiptsCreatePosRequest) -> Result&lt;ReceiptsCreatePosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .receipts_create(
+            &ReceiptsCreatePosRequest {
+                shift_id: "shiftId".to_string(),
+                lines: vec![ReceiptsCreatePosRequestLinesItem {
+                    quantity: "121.0000".to_string(),
+                    unit_price_incl_vat: "121.0000".to_string(),
+                    vat_rate_percent: "121.00".to_string(),
+                    ..Default::default()
+                }],
+                cash_amount: None,
+                card_amount: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**shift_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lines:** `Vec<ReceiptsCreatePosRequestLinesItem>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**cash_amount:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**card_amount:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">receipts_list</a>(request: ReceiptsListPosRequest) -> Result&lt;ReceiptsListPosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .receipts_list(
+            &ReceiptsListPosRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<ReceiptsListPosRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<ReceiptsListPosRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">receipts_get</a>(request: ReceiptsGetPosRequest) -> Result&lt;ReceiptsGetPosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .receipts_get(
+            &ReceiptsGetPosRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.pos.<a href="/src/api/resources/pos/client.rs">shifts_close</a>(request: ShiftsClosePosRequest) -> Result&lt;ShiftsClosePosResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .pos
+        .shifts_close(
+            &ShiftsClosePosRequest {
+                id: "id".to_string(),
+                counted_cash: "121.00".to_string(),
+                date: None,
+                report_number: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**counted_cash:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**date:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**report_number:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## calendar
 <details><summary><code>client.calendar.<a href="/src/api/resources/calendar/client.rs">list</a>(request: ListCalendarRequest) -> Result&lt;ListCalendarResponse, ApiError&gt;</code></summary>
 <dl>
@@ -41786,6 +43662,78 @@ async fn main() {
 <dd>
 
 **invoice_amount:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">transactions_match_many</a>(request: TransactionsMatchManyBankRequest) -> Result&lt;TransactionsMatchManyBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .transactions_match_many(
+            &TransactionsMatchManyBankRequest {
+                transaction_id: "transactionId".to_string(),
+                allocations: vec![TransactionsMatchManyBankRequestAllocationsItem {
+                    document_type:
+                        TransactionsMatchManyBankRequestAllocationsItemDocumentType::SaleInvoice,
+                    document_id: "documentId".to_string(),
+                    amount: "121.0000".to_string(),
+                }],
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**transaction_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**allocations:** `Vec<TransactionsMatchManyBankRequestAllocationsItem>` 
     
 </dd>
 </dl>

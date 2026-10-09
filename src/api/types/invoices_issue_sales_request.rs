@@ -12,6 +12,9 @@ pub struct InvoicesIssueSalesRequest {
     #[serde(rename = "warehouseId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub warehouse_id: Option<String>,
+    #[serde(rename = "returnToStock")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub return_to_stock: Option<bool>,
 }
 
 impl InvoicesIssueSalesRequest {
@@ -27,6 +30,7 @@ pub struct InvoicesIssueSalesRequestBuilder {
     series: Option<String>,
     issue_date: Option<NaiveDate>,
     warehouse_id: Option<String>,
+    return_to_stock: Option<bool>,
 }
 
 impl InvoicesIssueSalesRequestBuilder {
@@ -50,6 +54,11 @@ impl InvoicesIssueSalesRequestBuilder {
         self
     }
 
+    pub fn return_to_stock(mut self, value: bool) -> Self {
+        self.return_to_stock = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesIssueSalesRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesIssueSalesRequestBuilder::id)
@@ -59,6 +68,7 @@ impl InvoicesIssueSalesRequestBuilder {
             series: self.series,
             issue_date: self.issue_date,
             warehouse_id: self.warehouse_id,
+            return_to_stock: self.return_to_stock,
         })
     }
 }

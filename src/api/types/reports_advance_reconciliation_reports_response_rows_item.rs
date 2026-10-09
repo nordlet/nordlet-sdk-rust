@@ -18,6 +18,8 @@ pub struct AdvanceReconciliationReportsResponseRowsItem {
     #[serde(default)]
     pub returned: String,
     #[serde(default)]
+    pub settled: String,
+    #[serde(default)]
     pub closing: String,
 }
 
@@ -36,6 +38,7 @@ pub struct AdvanceReconciliationReportsResponseRowsItemBuilder {
     opening: Option<String>,
     issued: Option<String>,
     returned: Option<String>,
+    settled: Option<String>,
     closing: Option<String>,
 }
 
@@ -70,6 +73,11 @@ impl AdvanceReconciliationReportsResponseRowsItemBuilder {
         self
     }
 
+    pub fn settled(mut self, value: impl Into<String>) -> Self {
+        self.settled = Some(value.into());
+        self
+    }
+
     pub fn closing(mut self, value: impl Into<String>) -> Self {
         self.closing = Some(value.into());
         self
@@ -83,6 +91,7 @@ impl AdvanceReconciliationReportsResponseRowsItemBuilder {
     /// - [`opening`](AdvanceReconciliationReportsResponseRowsItemBuilder::opening)
     /// - [`issued`](AdvanceReconciliationReportsResponseRowsItemBuilder::issued)
     /// - [`returned`](AdvanceReconciliationReportsResponseRowsItemBuilder::returned)
+    /// - [`settled`](AdvanceReconciliationReportsResponseRowsItemBuilder::settled)
     /// - [`closing`](AdvanceReconciliationReportsResponseRowsItemBuilder::closing)
     pub fn build(self) -> Result<AdvanceReconciliationReportsResponseRowsItem, BuildError> {
         Ok(AdvanceReconciliationReportsResponseRowsItem {
@@ -104,6 +113,9 @@ impl AdvanceReconciliationReportsResponseRowsItemBuilder {
             returned: self
                 .returned
                 .ok_or_else(|| BuildError::missing_field("returned"))?,
+            settled: self
+                .settled
+                .ok_or_else(|| BuildError::missing_field("settled"))?,
             closing: self
                 .closing
                 .ok_or_else(|| BuildError::missing_field("closing"))?,

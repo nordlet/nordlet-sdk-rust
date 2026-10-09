@@ -52,6 +52,17 @@ pub struct RunsCreatePayrollResponse {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset::option")]
     pub approved_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "reversedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub reversed_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "reversalJournalTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversal_journal_transaction_id: Option<String>,
+    #[serde(rename = "reversalReason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversal_reason: Option<String>,
     #[serde(default)]
     pub lines: Vec<RunsCreatePayrollResponseLinesItem>,
 }
@@ -83,6 +94,9 @@ pub struct RunsCreatePayrollResponseBuilder {
     warnings: Option<Vec<String>>,
     created_at: Option<DateTime<FixedOffset>>,
     approved_at: Option<DateTime<FixedOffset>>,
+    reversed_at: Option<DateTime<FixedOffset>>,
+    reversal_journal_transaction_id: Option<String>,
+    reversal_reason: Option<String>,
     lines: Option<Vec<RunsCreatePayrollResponseLinesItem>>,
 }
 
@@ -180,6 +194,21 @@ impl RunsCreatePayrollResponseBuilder {
         self
     }
 
+    pub fn reversed_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.reversed_at = Some(value);
+        self
+    }
+
+    pub fn reversal_journal_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.reversal_journal_transaction_id = Some(value.into());
+        self
+    }
+
+    pub fn reversal_reason(mut self, value: impl Into<String>) -> Self {
+        self.reversal_reason = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<RunsCreatePayrollResponseLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -246,6 +275,9 @@ impl RunsCreatePayrollResponseBuilder {
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,
             approved_at: self.approved_at,
+            reversed_at: self.reversed_at,
+            reversal_journal_transaction_id: self.reversal_journal_transaction_id,
+            reversal_reason: self.reversal_reason,
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,

@@ -381,6 +381,22 @@ impl PartnersClient {
             .await
     }
 
+    pub async fn merge(
+        &self,
+        request: &MergePartnersRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<MergePartnersResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/partners/merge",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     /// Removes birth date, self-employment certificate number, email, phone, address, notes, contacts, addresses and bank accounts, then hides the partner. The name, code and VAT number stay because issued invoices must keep identifying the counterparty for the statutory retention period.
     ///
     /// # Arguments

@@ -35,6 +35,12 @@ pub struct OrdersGetCashResponse {
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
+    #[serde(rename = "saleInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sale_invoice_id: Option<String>,
+    #[serde(rename = "purchaseInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub purchase_invoice_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(rename = "createdAt")]
@@ -66,6 +72,8 @@ pub struct OrdersGetCashResponseBuilder {
     cash_account_code: Option<String>,
     counter_account_code: Option<String>,
     journal_transaction_id: Option<String>,
+    sale_invoice_id: Option<String>,
+    purchase_invoice_id: Option<String>,
     notes: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
 }
@@ -141,6 +149,16 @@ impl OrdersGetCashResponseBuilder {
         self
     }
 
+    pub fn sale_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.sale_invoice_id = Some(value.into());
+        self
+    }
+
+    pub fn purchase_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.purchase_invoice_id = Some(value.into());
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -199,6 +217,8 @@ impl OrdersGetCashResponseBuilder {
                 .counter_account_code
                 .ok_or_else(|| BuildError::missing_field("counter_account_code"))?,
             journal_transaction_id: self.journal_transaction_id,
+            sale_invoice_id: self.sale_invoice_id,
+            purchase_invoice_id: self.purchase_invoice_id,
             notes: self.notes,
             created_at: self
                 .created_at

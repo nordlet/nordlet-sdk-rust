@@ -125,6 +125,22 @@ impl BankClient {
             .await
     }
 
+    pub async fn transactions_match_many(
+        &self,
+        request: &TransactionsMatchManyBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TransactionsMatchManyBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/transactions/match-many",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     /// Undo a match. A payment matched to an invoice, or a line posted by an import template, gets a reversing journal transaction dated date (default: today) and the invoice paid amount and payment status are restored; a line linked to a payment-provider settlement is only unlinked. The line returns to status new.
     ///
     /// # Arguments

@@ -12,6 +12,7 @@ pub enum PostingRulesUpdateLedgerRequestRulesItemKey {
     PurchasesVatReceivable,
     PurchasesGoodsForResale,
     PurchasesDefaultExpense,
+    PurchasesPrepaidExpenses,
     InventoryCogs,
     InventoryStock,
     ProductionLaborApplied,
@@ -28,6 +29,7 @@ pub enum PostingRulesUpdateLedgerRequestRulesItemKey {
     AssetsDisposalGain,
     AssetsDisposalLoss,
     AssetsDisposalProceeds,
+    CashAdvances,
     ClosingRetainedEarnings,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
@@ -46,6 +48,7 @@ impl Serialize for PostingRulesUpdateLedgerRequestRulesItemKey {
             Self::PurchasesVatReceivable => serializer.serialize_str("purchases.vatReceivable"),
             Self::PurchasesGoodsForResale => serializer.serialize_str("purchases.goodsForResale"),
             Self::PurchasesDefaultExpense => serializer.serialize_str("purchases.defaultExpense"),
+            Self::PurchasesPrepaidExpenses => serializer.serialize_str("purchases.prepaidExpenses"),
             Self::InventoryCogs => serializer.serialize_str("inventory.cogs"),
             Self::InventoryStock => serializer.serialize_str("inventory.stock"),
             Self::ProductionLaborApplied => serializer.serialize_str("production.laborApplied"),
@@ -64,6 +67,7 @@ impl Serialize for PostingRulesUpdateLedgerRequestRulesItemKey {
             Self::AssetsDisposalGain => serializer.serialize_str("assets.disposalGain"),
             Self::AssetsDisposalLoss => serializer.serialize_str("assets.disposalLoss"),
             Self::AssetsDisposalProceeds => serializer.serialize_str("assets.disposalProceeds"),
+            Self::CashAdvances => serializer.serialize_str("cash.advances"),
             Self::ClosingRetainedEarnings => serializer.serialize_str("closing.retainedEarnings"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
@@ -83,6 +87,7 @@ impl<'de> Deserialize<'de> for PostingRulesUpdateLedgerRequestRulesItemKey {
             "purchases.vatReceivable" => Ok(Self::PurchasesVatReceivable),
             "purchases.goodsForResale" => Ok(Self::PurchasesGoodsForResale),
             "purchases.defaultExpense" => Ok(Self::PurchasesDefaultExpense),
+            "purchases.prepaidExpenses" => Ok(Self::PurchasesPrepaidExpenses),
             "inventory.cogs" => Ok(Self::InventoryCogs),
             "inventory.stock" => Ok(Self::InventoryStock),
             "production.laborApplied" => Ok(Self::ProductionLaborApplied),
@@ -99,6 +104,7 @@ impl<'de> Deserialize<'de> for PostingRulesUpdateLedgerRequestRulesItemKey {
             "assets.disposalGain" => Ok(Self::AssetsDisposalGain),
             "assets.disposalLoss" => Ok(Self::AssetsDisposalLoss),
             "assets.disposalProceeds" => Ok(Self::AssetsDisposalProceeds),
+            "cash.advances" => Ok(Self::CashAdvances),
             "closing.retainedEarnings" => Ok(Self::ClosingRetainedEarnings),
             _ => Ok(Self::__Unknown(value)),
         }
@@ -117,6 +123,7 @@ impl fmt::Display for PostingRulesUpdateLedgerRequestRulesItemKey {
             Self::PurchasesVatReceivable => write!(f, "purchases.vatReceivable"),
             Self::PurchasesGoodsForResale => write!(f, "purchases.goodsForResale"),
             Self::PurchasesDefaultExpense => write!(f, "purchases.defaultExpense"),
+            Self::PurchasesPrepaidExpenses => write!(f, "purchases.prepaidExpenses"),
             Self::InventoryCogs => write!(f, "inventory.cogs"),
             Self::InventoryStock => write!(f, "inventory.stock"),
             Self::ProductionLaborApplied => write!(f, "production.laborApplied"),
@@ -133,6 +140,7 @@ impl fmt::Display for PostingRulesUpdateLedgerRequestRulesItemKey {
             Self::AssetsDisposalGain => write!(f, "assets.disposalGain"),
             Self::AssetsDisposalLoss => write!(f, "assets.disposalLoss"),
             Self::AssetsDisposalProceeds => write!(f, "assets.disposalProceeds"),
+            Self::CashAdvances => write!(f, "cash.advances"),
             Self::ClosingRetainedEarnings => write!(f, "closing.retainedEarnings"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }

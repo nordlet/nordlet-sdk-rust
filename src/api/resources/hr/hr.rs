@@ -303,6 +303,134 @@ impl HrClient {
             .await
     }
 
+    pub async fn per_diem_rates_create(
+        &self,
+        request: &PerDiemRatesCreateHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PerDiemRatesCreateHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/per-diem-rates/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn per_diem_rates_list(
+        &self,
+        request: &PerDiemRatesListHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PerDiemRatesListHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/per-diem-rates/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn per_diem_rates_delete(
+        &self,
+        request: &PerDiemRatesDeleteHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PerDiemRatesDeleteHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/per-diem-rates/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn business_trips_create(
+        &self,
+        request: &BusinessTripsCreateHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<BusinessTripsCreateHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/business-trips/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn business_trips_get(
+        &self,
+        request: &BusinessTripsGetHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<BusinessTripsGetHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/business-trips/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn business_trips_list(
+        &self,
+        request: &BusinessTripsListHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<BusinessTripsListHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/business-trips/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn business_trips_approve(
+        &self,
+        request: &BusinessTripsApproveHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<BusinessTripsApproveHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/business-trips/approve",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn business_trips_delete(
+        &self,
+        request: &BusinessTripsDeleteHrRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<BusinessTripsDeleteHrResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/hr/business-trips/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn employees_records_create(
         &self,
         request: &EmployeesRecordsCreateHrRequest,

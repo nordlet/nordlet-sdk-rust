@@ -13,6 +13,38 @@ impl AgreementsClient {
         })
     }
 
+    pub async fn settings_get(
+        &self,
+        request: &SettingsGetAgreementsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SettingsGetAgreementsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/agreements/settings/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn settings_update(
+        &self,
+        request: &SettingsUpdateAgreementsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SettingsUpdateAgreementsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/agreements/settings/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn types_create(
         &self,
         request: &TypesCreateAgreementsRequest,

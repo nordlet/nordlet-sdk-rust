@@ -93,6 +93,38 @@ impl PurchasesClient {
             .await
     }
 
+    pub async fn deferrals_list(
+        &self,
+        request: &DeferralsListPurchasesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<DeferralsListPurchasesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/purchases/deferrals/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn deferrals_post(
+        &self,
+        request: &DeferralsPostPurchasesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<DeferralsPostPurchasesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/purchases/deferrals/post",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn invoices_list(
         &self,
         request: &InvoicesListPurchasesRequest,

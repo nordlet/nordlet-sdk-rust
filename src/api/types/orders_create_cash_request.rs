@@ -10,11 +10,17 @@ pub struct OrdersCreateCashRequest {
     #[serde(default)]
     pub purpose: String,
     #[serde(rename = "counterAccountCode")]
-    #[serde(default)]
-    pub counter_account_code: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub counter_account_code: Option<String>,
     #[serde(rename = "cashAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cash_account_code: Option<String>,
+    #[serde(rename = "saleInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sale_invoice_id: Option<String>,
+    #[serde(rename = "purchaseInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub purchase_invoice_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub series: Option<String>,
     #[serde(rename = "partnerId")]
@@ -42,6 +48,8 @@ pub struct OrdersCreateCashRequestBuilder {
     purpose: Option<String>,
     counter_account_code: Option<String>,
     cash_account_code: Option<String>,
+    sale_invoice_id: Option<String>,
+    purchase_invoice_id: Option<String>,
     series: Option<String>,
     partner_id: Option<String>,
     employee_id: Option<String>,
@@ -79,6 +87,16 @@ impl OrdersCreateCashRequestBuilder {
         self
     }
 
+    pub fn sale_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.sale_invoice_id = Some(value.into());
+        self
+    }
+
+    pub fn purchase_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.purchase_invoice_id = Some(value.into());
+        self
+    }
+
     pub fn series(mut self, value: impl Into<String>) -> Self {
         self.series = Some(value.into());
         self
@@ -105,7 +123,6 @@ impl OrdersCreateCashRequestBuilder {
     /// - [`date`](OrdersCreateCashRequestBuilder::date)
     /// - [`amount`](OrdersCreateCashRequestBuilder::amount)
     /// - [`purpose`](OrdersCreateCashRequestBuilder::purpose)
-    /// - [`counter_account_code`](OrdersCreateCashRequestBuilder::counter_account_code)
     pub fn build(self) -> Result<OrdersCreateCashRequest, BuildError> {
         Ok(OrdersCreateCashRequest {
             r#type: self
@@ -118,10 +135,10 @@ impl OrdersCreateCashRequestBuilder {
             purpose: self
                 .purpose
                 .ok_or_else(|| BuildError::missing_field("purpose"))?,
-            counter_account_code: self
-                .counter_account_code
-                .ok_or_else(|| BuildError::missing_field("counter_account_code"))?,
+            counter_account_code: self.counter_account_code,
             cash_account_code: self.cash_account_code,
+            sale_invoice_id: self.sale_invoice_id,
+            purchase_invoice_id: self.purchase_invoice_id,
             series: self.series,
             partner_id: self.partner_id,
             employee_id: self.employee_id,

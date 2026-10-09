@@ -182,6 +182,22 @@ impl PayrollClient {
             .await
     }
 
+    pub async fn runs_reverse(
+        &self,
+        request: &RunsReversePayrollRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<RunsReversePayrollResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/payroll/runs/reverse",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn runs_cancel(
         &self,
         request: &RunsCancelPayrollRequest,

@@ -34,6 +34,12 @@ pub struct InvoicesUpdatePurchasesResponseLinesItem {
     #[serde(rename = "accountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_code: Option<String>,
+    #[serde(rename = "deferralStartDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub deferral_start_date: Option<NaiveDate>,
+    #[serde(rename = "deferralEndDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub deferral_end_date: Option<NaiveDate>,
     #[serde(rename = "lineNet")]
     #[serde(default)]
     pub line_net: String,
@@ -69,6 +75,8 @@ pub struct InvoicesUpdatePurchasesResponseLinesItemBuilder {
     cost_center_id: Option<String>,
     project_id: Option<String>,
     account_code: Option<String>,
+    deferral_start_date: Option<NaiveDate>,
+    deferral_end_date: Option<NaiveDate>,
     line_net: Option<String>,
     line_vat: Option<String>,
     line_gross: Option<String>,
@@ -136,6 +144,16 @@ impl InvoicesUpdatePurchasesResponseLinesItemBuilder {
         self
     }
 
+    pub fn deferral_start_date(mut self, value: NaiveDate) -> Self {
+        self.deferral_start_date = Some(value);
+        self
+    }
+
+    pub fn deferral_end_date(mut self, value: NaiveDate) -> Self {
+        self.deferral_end_date = Some(value);
+        self
+    }
+
     pub fn line_net(mut self, value: impl Into<String>) -> Self {
         self.line_net = Some(value.into());
         self
@@ -187,6 +205,8 @@ impl InvoicesUpdatePurchasesResponseLinesItemBuilder {
             cost_center_id: self.cost_center_id,
             project_id: self.project_id,
             account_code: self.account_code,
+            deferral_start_date: self.deferral_start_date,
+            deferral_end_date: self.deferral_end_date,
             line_net: self
                 .line_net
                 .ok_or_else(|| BuildError::missing_field("line_net"))?,

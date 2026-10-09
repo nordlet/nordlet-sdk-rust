@@ -13,6 +13,38 @@ impl AssetsClient {
         })
     }
 
+    pub async fn settings_get(
+        &self,
+        request: &SettingsGetAssetsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SettingsGetAssetsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/assets/settings/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn settings_update(
+        &self,
+        request: &SettingsUpdateAssetsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SettingsUpdateAssetsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/assets/settings/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn groups_create(
         &self,
         request: &GroupsCreateAssetsRequest,

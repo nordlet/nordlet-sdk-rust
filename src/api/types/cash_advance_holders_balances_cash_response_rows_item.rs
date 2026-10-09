@@ -16,6 +16,8 @@ pub struct AdvanceHoldersBalancesCashResponseRowsItem {
     #[serde(default)]
     pub returned: String,
     #[serde(default)]
+    pub settled: String,
+    #[serde(default)]
     pub balance: String,
 }
 
@@ -33,6 +35,7 @@ pub struct AdvanceHoldersBalancesCashResponseRowsItemBuilder {
     last_name: Option<String>,
     issued: Option<String>,
     returned: Option<String>,
+    settled: Option<String>,
     balance: Option<String>,
 }
 
@@ -62,6 +65,11 @@ impl AdvanceHoldersBalancesCashResponseRowsItemBuilder {
         self
     }
 
+    pub fn settled(mut self, value: impl Into<String>) -> Self {
+        self.settled = Some(value.into());
+        self
+    }
+
     pub fn balance(mut self, value: impl Into<String>) -> Self {
         self.balance = Some(value.into());
         self
@@ -74,6 +82,7 @@ impl AdvanceHoldersBalancesCashResponseRowsItemBuilder {
     /// - [`last_name`](AdvanceHoldersBalancesCashResponseRowsItemBuilder::last_name)
     /// - [`issued`](AdvanceHoldersBalancesCashResponseRowsItemBuilder::issued)
     /// - [`returned`](AdvanceHoldersBalancesCashResponseRowsItemBuilder::returned)
+    /// - [`settled`](AdvanceHoldersBalancesCashResponseRowsItemBuilder::settled)
     /// - [`balance`](AdvanceHoldersBalancesCashResponseRowsItemBuilder::balance)
     pub fn build(self) -> Result<AdvanceHoldersBalancesCashResponseRowsItem, BuildError> {
         Ok(AdvanceHoldersBalancesCashResponseRowsItem {
@@ -92,6 +101,9 @@ impl AdvanceHoldersBalancesCashResponseRowsItemBuilder {
             returned: self
                 .returned
                 .ok_or_else(|| BuildError::missing_field("returned"))?,
+            settled: self
+                .settled
+                .ok_or_else(|| BuildError::missing_field("settled"))?,
             balance: self
                 .balance
                 .ok_or_else(|| BuildError::missing_field("balance"))?,
