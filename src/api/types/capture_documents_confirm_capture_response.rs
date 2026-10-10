@@ -4,6 +4,9 @@ pub use crate::prelude::*;
 pub struct DocumentsConfirmCaptureResponse {
     pub capture: DocumentsConfirmCaptureResponseCapture,
     pub invoice: DocumentsConfirmCaptureResponseInvoice,
+    #[serde(rename = "oppositeInvoice")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub opposite_invoice: Option<DocumentsConfirmCaptureResponseOppositeInvoice>,
 }
 
 impl DocumentsConfirmCaptureResponse {
@@ -17,6 +20,7 @@ impl DocumentsConfirmCaptureResponse {
 pub struct DocumentsConfirmCaptureResponseBuilder {
     capture: Option<DocumentsConfirmCaptureResponseCapture>,
     invoice: Option<DocumentsConfirmCaptureResponseInvoice>,
+    opposite_invoice: Option<DocumentsConfirmCaptureResponseOppositeInvoice>,
 }
 
 impl DocumentsConfirmCaptureResponseBuilder {
@@ -27,6 +31,14 @@ impl DocumentsConfirmCaptureResponseBuilder {
 
     pub fn invoice(mut self, value: DocumentsConfirmCaptureResponseInvoice) -> Self {
         self.invoice = Some(value);
+        self
+    }
+
+    pub fn opposite_invoice(
+        mut self,
+        value: DocumentsConfirmCaptureResponseOppositeInvoice,
+    ) -> Self {
+        self.opposite_invoice = Some(value);
         self
     }
 
@@ -42,6 +54,7 @@ impl DocumentsConfirmCaptureResponseBuilder {
             invoice: self
                 .invoice
                 .ok_or_else(|| BuildError::missing_field("invoice"))?,
+            opposite_invoice: self.opposite_invoice,
         })
     }
 }

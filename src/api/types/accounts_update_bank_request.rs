@@ -7,6 +7,8 @@ pub struct AccountsUpdateBankRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<AccountsUpdateBankRequestType>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
     #[serde(rename = "accountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -27,6 +29,7 @@ impl AccountsUpdateBankRequest {
 pub struct AccountsUpdateBankRequestBuilder {
     id: Option<String>,
     name: Option<String>,
+    r#type: Option<AccountsUpdateBankRequestType>,
     iban: Option<String>,
     account_code: Option<String>,
     is_active: Option<bool>,
@@ -40,6 +43,11 @@ impl AccountsUpdateBankRequestBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn r#type(mut self, value: AccountsUpdateBankRequestType) -> Self {
+        self.r#type = Some(value);
         self
     }
 
@@ -65,6 +73,7 @@ impl AccountsUpdateBankRequestBuilder {
         Ok(AccountsUpdateBankRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             name: self.name,
+            r#type: self.r#type,
             iban: self.iban,
             account_code: self.account_code,
             is_active: self.is_active,

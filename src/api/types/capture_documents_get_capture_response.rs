@@ -34,6 +34,9 @@ pub struct DocumentsGetCaptureResponse {
     pub purchase_invoice_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub error: Option<String>,
+    #[serde(rename = "senderId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sender_id: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
@@ -69,6 +72,7 @@ pub struct DocumentsGetCaptureResponseBuilder {
     matched_partner_id: Option<String>,
     purchase_invoice_id: Option<String>,
     error: Option<String>,
+    sender_id: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
     raw_text: Option<String>,
@@ -140,6 +144,11 @@ impl DocumentsGetCaptureResponseBuilder {
         self
     }
 
+    pub fn sender_id(mut self, value: impl Into<String>) -> Self {
+        self.sender_id = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.created_at = Some(value);
         self
@@ -190,6 +199,7 @@ impl DocumentsGetCaptureResponseBuilder {
             matched_partner_id: self.matched_partner_id,
             purchase_invoice_id: self.purchase_invoice_id,
             error: self.error,
+            sender_id: self.sender_id,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

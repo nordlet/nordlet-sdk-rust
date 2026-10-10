@@ -31,6 +31,24 @@ pub struct VatResolveReferenceRequest {
     #[serde(rename = "importedConsignmentValueEur")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub imported_consignment_value_eur: Option<String>,
+    #[serde(rename = "serviceKind")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub service_kind: Option<VatResolveReferenceRequestServiceKind>,
+    #[serde(rename = "serviceCountryCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub service_country_code: Option<String>,
+    #[serde(rename = "underlyingSupplierGaveVatNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub underlying_supplier_gave_vat_number: Option<bool>,
+    #[serde(rename = "underlyingSupplierChargesVat")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub underlying_supplier_charges_vat: Option<bool>,
+    #[serde(rename = "goodsKind")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub goods_kind: Option<VatResolveReferenceRequestGoodsKind>,
+    #[serde(rename = "goodsLocationCountryCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub goods_location_country_code: Option<String>,
 }
 
 impl VatResolveReferenceRequest {
@@ -52,6 +70,12 @@ pub struct VatResolveReferenceRequestBuilder {
     acting_as_marketplace: Option<bool>,
     seller_established_in_eu: Option<bool>,
     imported_consignment_value_eur: Option<String>,
+    service_kind: Option<VatResolveReferenceRequestServiceKind>,
+    service_country_code: Option<String>,
+    underlying_supplier_gave_vat_number: Option<bool>,
+    underlying_supplier_charges_vat: Option<bool>,
+    goods_kind: Option<VatResolveReferenceRequestGoodsKind>,
+    goods_location_country_code: Option<String>,
 }
 
 impl VatResolveReferenceRequestBuilder {
@@ -105,6 +129,36 @@ impl VatResolveReferenceRequestBuilder {
         self
     }
 
+    pub fn service_kind(mut self, value: VatResolveReferenceRequestServiceKind) -> Self {
+        self.service_kind = Some(value);
+        self
+    }
+
+    pub fn service_country_code(mut self, value: impl Into<String>) -> Self {
+        self.service_country_code = Some(value.into());
+        self
+    }
+
+    pub fn underlying_supplier_gave_vat_number(mut self, value: bool) -> Self {
+        self.underlying_supplier_gave_vat_number = Some(value);
+        self
+    }
+
+    pub fn underlying_supplier_charges_vat(mut self, value: bool) -> Self {
+        self.underlying_supplier_charges_vat = Some(value);
+        self
+    }
+
+    pub fn goods_kind(mut self, value: VatResolveReferenceRequestGoodsKind) -> Self {
+        self.goods_kind = Some(value);
+        self
+    }
+
+    pub fn goods_location_country_code(mut self, value: impl Into<String>) -> Self {
+        self.goods_location_country_code = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`VatResolveReferenceRequest`].
     pub fn build(self) -> Result<VatResolveReferenceRequest, BuildError> {
         Ok(VatResolveReferenceRequest {
@@ -118,6 +172,12 @@ impl VatResolveReferenceRequestBuilder {
             acting_as_marketplace: self.acting_as_marketplace,
             seller_established_in_eu: self.seller_established_in_eu,
             imported_consignment_value_eur: self.imported_consignment_value_eur,
+            service_kind: self.service_kind,
+            service_country_code: self.service_country_code,
+            underlying_supplier_gave_vat_number: self.underlying_supplier_gave_vat_number,
+            underlying_supplier_charges_vat: self.underlying_supplier_charges_vat,
+            goods_kind: self.goods_kind,
+            goods_location_country_code: self.goods_location_country_code,
         })
     }
 }

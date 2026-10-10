@@ -6,6 +6,7 @@ pub use crate::prelude::*;
 pub enum SubscriptionsUpdateWebhooksRequestEventsItem {
     AgreementInvoiceGenerated,
     BankFeedSynced,
+    DocumentCapturePeppolReceived,
     FilingFailed,
     FilingRejected,
     GoodsReceiptPosted,
@@ -33,6 +34,9 @@ pub enum SubscriptionsUpdateWebhooksRequestEventsItem {
     SaleInvoiceEinvoiceSent,
     SaleInvoiceIssued,
     SaleInvoicePaid,
+    SaleInvoicePeppolDelivered,
+    SaleInvoicePeppolFailed,
+    SaleInvoicePeppolRejected,
     SaleInvoicePeppolSent,
     SaleInvoiceSent,
     SalesOrderCreated,
@@ -57,6 +61,9 @@ impl Serialize for SubscriptionsUpdateWebhooksRequestEventsItem {
                 serializer.serialize_str("agreement.invoice_generated")
             }
             Self::BankFeedSynced => serializer.serialize_str("bank_feed.synced"),
+            Self::DocumentCapturePeppolReceived => {
+                serializer.serialize_str("document_capture.peppol_received")
+            }
             Self::FilingFailed => serializer.serialize_str("filing.failed"),
             Self::FilingRejected => serializer.serialize_str("filing.rejected"),
             Self::GoodsReceiptPosted => serializer.serialize_str("goods_receipt.posted"),
@@ -92,6 +99,13 @@ impl Serialize for SubscriptionsUpdateWebhooksRequestEventsItem {
             Self::SaleInvoiceEinvoiceSent => serializer.serialize_str("sale_invoice.einvoice_sent"),
             Self::SaleInvoiceIssued => serializer.serialize_str("sale_invoice.issued"),
             Self::SaleInvoicePaid => serializer.serialize_str("sale_invoice.paid"),
+            Self::SaleInvoicePeppolDelivered => {
+                serializer.serialize_str("sale_invoice.peppol_delivered")
+            }
+            Self::SaleInvoicePeppolFailed => serializer.serialize_str("sale_invoice.peppol_failed"),
+            Self::SaleInvoicePeppolRejected => {
+                serializer.serialize_str("sale_invoice.peppol_rejected")
+            }
             Self::SaleInvoicePeppolSent => serializer.serialize_str("sale_invoice.peppol_sent"),
             Self::SaleInvoiceSent => serializer.serialize_str("sale_invoice.sent"),
             Self::SalesOrderCreated => serializer.serialize_str("sales_order.created"),
@@ -115,6 +129,7 @@ impl<'de> Deserialize<'de> for SubscriptionsUpdateWebhooksRequestEventsItem {
         match value.as_str() {
             "agreement.invoice_generated" => Ok(Self::AgreementInvoiceGenerated),
             "bank_feed.synced" => Ok(Self::BankFeedSynced),
+            "document_capture.peppol_received" => Ok(Self::DocumentCapturePeppolReceived),
             "filing.failed" => Ok(Self::FilingFailed),
             "filing.rejected" => Ok(Self::FilingRejected),
             "goods_receipt.posted" => Ok(Self::GoodsReceiptPosted),
@@ -142,6 +157,9 @@ impl<'de> Deserialize<'de> for SubscriptionsUpdateWebhooksRequestEventsItem {
             "sale_invoice.einvoice_sent" => Ok(Self::SaleInvoiceEinvoiceSent),
             "sale_invoice.issued" => Ok(Self::SaleInvoiceIssued),
             "sale_invoice.paid" => Ok(Self::SaleInvoicePaid),
+            "sale_invoice.peppol_delivered" => Ok(Self::SaleInvoicePeppolDelivered),
+            "sale_invoice.peppol_failed" => Ok(Self::SaleInvoicePeppolFailed),
+            "sale_invoice.peppol_rejected" => Ok(Self::SaleInvoicePeppolRejected),
             "sale_invoice.peppol_sent" => Ok(Self::SaleInvoicePeppolSent),
             "sale_invoice.sent" => Ok(Self::SaleInvoiceSent),
             "sales_order.created" => Ok(Self::SalesOrderCreated),
@@ -164,6 +182,7 @@ impl fmt::Display for SubscriptionsUpdateWebhooksRequestEventsItem {
         match self {
             Self::AgreementInvoiceGenerated => write!(f, "agreement.invoice_generated"),
             Self::BankFeedSynced => write!(f, "bank_feed.synced"),
+            Self::DocumentCapturePeppolReceived => write!(f, "document_capture.peppol_received"),
             Self::FilingFailed => write!(f, "filing.failed"),
             Self::FilingRejected => write!(f, "filing.rejected"),
             Self::GoodsReceiptPosted => write!(f, "goods_receipt.posted"),
@@ -191,6 +210,9 @@ impl fmt::Display for SubscriptionsUpdateWebhooksRequestEventsItem {
             Self::SaleInvoiceEinvoiceSent => write!(f, "sale_invoice.einvoice_sent"),
             Self::SaleInvoiceIssued => write!(f, "sale_invoice.issued"),
             Self::SaleInvoicePaid => write!(f, "sale_invoice.paid"),
+            Self::SaleInvoicePeppolDelivered => write!(f, "sale_invoice.peppol_delivered"),
+            Self::SaleInvoicePeppolFailed => write!(f, "sale_invoice.peppol_failed"),
+            Self::SaleInvoicePeppolRejected => write!(f, "sale_invoice.peppol_rejected"),
             Self::SaleInvoicePeppolSent => write!(f, "sale_invoice.peppol_sent"),
             Self::SaleInvoiceSent => write!(f, "sale_invoice.sent"),
             Self::SalesOrderCreated => write!(f, "sales_order.created"),

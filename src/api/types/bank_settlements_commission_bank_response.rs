@@ -38,6 +38,18 @@ pub struct SettlementsCommissionBankResponse {
     pub matched_invoice_id: Option<String>,
     #[serde(rename = "matchStatus")]
     pub match_status: SettlementsCommissionBankResponseMatchStatus,
+    #[serde(rename = "clearingBankAccountId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub clearing_bank_account_id: Option<String>,
+    #[serde(rename = "clearingBooked")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub clearing_booked: Option<String>,
+    #[serde(rename = "clearingDifference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub clearing_difference: Option<String>,
+    #[serde(rename = "clearingUnposted")]
+    #[serde(default)]
+    pub clearing_unposted: bool,
 }
 
 impl SettlementsCommissionBankResponse {
@@ -64,6 +76,10 @@ pub struct SettlementsCommissionBankResponseBuilder {
     reference: Option<String>,
     matched_invoice_id: Option<String>,
     match_status: Option<SettlementsCommissionBankResponseMatchStatus>,
+    clearing_bank_account_id: Option<String>,
+    clearing_booked: Option<String>,
+    clearing_difference: Option<String>,
+    clearing_unposted: Option<bool>,
 }
 
 impl SettlementsCommissionBankResponseBuilder {
@@ -142,6 +158,26 @@ impl SettlementsCommissionBankResponseBuilder {
         self
     }
 
+    pub fn clearing_bank_account_id(mut self, value: impl Into<String>) -> Self {
+        self.clearing_bank_account_id = Some(value.into());
+        self
+    }
+
+    pub fn clearing_booked(mut self, value: impl Into<String>) -> Self {
+        self.clearing_booked = Some(value.into());
+        self
+    }
+
+    pub fn clearing_difference(mut self, value: impl Into<String>) -> Self {
+        self.clearing_difference = Some(value.into());
+        self
+    }
+
+    pub fn clearing_unposted(mut self, value: bool) -> Self {
+        self.clearing_unposted = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`SettlementsCommissionBankResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](SettlementsCommissionBankResponseBuilder::id)
@@ -152,6 +188,7 @@ impl SettlementsCommissionBankResponseBuilder {
     /// - [`fee`](SettlementsCommissionBankResponseBuilder::fee)
     /// - [`net`](SettlementsCommissionBankResponseBuilder::net)
     /// - [`match_status`](SettlementsCommissionBankResponseBuilder::match_status)
+    /// - [`clearing_unposted`](SettlementsCommissionBankResponseBuilder::clearing_unposted)
     pub fn build(self) -> Result<SettlementsCommissionBankResponse, BuildError> {
         Ok(SettlementsCommissionBankResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -177,6 +214,12 @@ impl SettlementsCommissionBankResponseBuilder {
             match_status: self
                 .match_status
                 .ok_or_else(|| BuildError::missing_field("match_status"))?,
+            clearing_bank_account_id: self.clearing_bank_account_id,
+            clearing_booked: self.clearing_booked,
+            clearing_difference: self.clearing_difference,
+            clearing_unposted: self
+                .clearing_unposted
+                .ok_or_else(|| BuildError::missing_field("clearing_unposted"))?,
         })
     }
 }

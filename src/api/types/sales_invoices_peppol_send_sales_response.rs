@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct InvoicesPeppolSendSalesResponse {
     #[serde(default)]
     pub sent: bool,
@@ -10,6 +10,9 @@ pub struct InvoicesPeppolSendSalesResponse {
     #[serde(rename = "receiverId")]
     #[serde(default)]
     pub receiver_id: String,
+    pub status: InvoicesPeppolSendSalesResponseStatus,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub detail: Option<String>,
     #[serde(rename = "fileId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub file_id: Option<String>,
@@ -27,6 +30,8 @@ pub struct InvoicesPeppolSendSalesResponseBuilder {
     sent: Option<bool>,
     message_id: Option<String>,
     receiver_id: Option<String>,
+    status: Option<InvoicesPeppolSendSalesResponseStatus>,
+    detail: Option<String>,
     file_id: Option<String>,
 }
 
@@ -46,6 +51,16 @@ impl InvoicesPeppolSendSalesResponseBuilder {
         self
     }
 
+    pub fn status(mut self, value: InvoicesPeppolSendSalesResponseStatus) -> Self {
+        self.status = Some(value);
+        self
+    }
+
+    pub fn detail(mut self, value: impl Into<String>) -> Self {
+        self.detail = Some(value.into());
+        self
+    }
+
     pub fn file_id(mut self, value: impl Into<String>) -> Self {
         self.file_id = Some(value.into());
         self
@@ -56,6 +71,7 @@ impl InvoicesPeppolSendSalesResponseBuilder {
     /// - [`sent`](InvoicesPeppolSendSalesResponseBuilder::sent)
     /// - [`message_id`](InvoicesPeppolSendSalesResponseBuilder::message_id)
     /// - [`receiver_id`](InvoicesPeppolSendSalesResponseBuilder::receiver_id)
+    /// - [`status`](InvoicesPeppolSendSalesResponseBuilder::status)
     pub fn build(self) -> Result<InvoicesPeppolSendSalesResponse, BuildError> {
         Ok(InvoicesPeppolSendSalesResponse {
             sent: self.sent.ok_or_else(|| BuildError::missing_field("sent"))?,
@@ -65,6 +81,10 @@ impl InvoicesPeppolSendSalesResponseBuilder {
             receiver_id: self
                 .receiver_id
                 .ok_or_else(|| BuildError::missing_field("receiver_id"))?,
+            status: self
+                .status
+                .ok_or_else(|| BuildError::missing_field("status"))?,
+            detail: self.detail,
             file_id: self.file_id,
         })
     }

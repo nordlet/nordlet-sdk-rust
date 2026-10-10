@@ -5,6 +5,8 @@ pub struct AccountsCreateBankRequest {
     #[serde(default)]
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<AccountsCreateBankRequestType>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
@@ -26,6 +28,7 @@ impl AccountsCreateBankRequest {
 #[non_exhaustive]
 pub struct AccountsCreateBankRequestBuilder {
     name: Option<String>,
+    r#type: Option<AccountsCreateBankRequestType>,
     iban: Option<String>,
     currency: Option<String>,
     account_code: Option<String>,
@@ -35,6 +38,11 @@ pub struct AccountsCreateBankRequestBuilder {
 impl AccountsCreateBankRequestBuilder {
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn r#type(mut self, value: AccountsCreateBankRequestType) -> Self {
+        self.r#type = Some(value);
         self
     }
 
@@ -64,6 +72,7 @@ impl AccountsCreateBankRequestBuilder {
     pub fn build(self) -> Result<AccountsCreateBankRequest, BuildError> {
         Ok(AccountsCreateBankRequest {
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            r#type: self.r#type,
             iban: self.iban,
             currency: self.currency,
             account_code: self.account_code,

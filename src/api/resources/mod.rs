@@ -11,9 +11,11 @@
 //! - **DocumentSeries**
 //! - **purchases**
 //! - **capture**
+//! - **peppol**
 //! - **declarations**
 //! - **ledger**
 //! - **Officers**
+//! - **PlatformSellers**
 //! - **migration**
 //! - **assets**
 //! - **hr**
@@ -65,6 +67,8 @@ pub mod officers;
 pub mod operation_types;
 pub mod partners;
 pub mod payroll;
+pub mod peppol;
+pub mod platform_sellers;
 pub mod pos;
 pub mod production;
 pub mod projects;
@@ -86,9 +90,11 @@ pub struct ApiClient {
     pub document_series: DocumentSeriesClient,
     pub purchases: PurchasesClient,
     pub capture: CaptureClient,
+    pub peppol: PeppolClient,
     pub declarations: DeclarationsClient,
     pub ledger: LedgerClient,
     pub officers: OfficersClient,
+    pub platform_sellers: PlatformSellersClient,
     pub migration: MigrationClient,
     pub assets: AssetsClient,
     pub hr: HrClient,
@@ -127,9 +133,11 @@ impl ApiClient {
             document_series: DocumentSeriesClient::new(config.clone())?,
             purchases: PurchasesClient::new(config.clone())?,
             capture: CaptureClient::new(config.clone())?,
+            peppol: PeppolClient::new(config.clone())?,
             declarations: DeclarationsClient::new(config.clone())?,
             ledger: LedgerClient::new(config.clone())?,
             officers: OfficersClient::new(config.clone())?,
+            platform_sellers: PlatformSellersClient::new(config.clone())?,
             migration: MigrationClient::new(config.clone())?,
             assets: AssetsClient::new(config.clone())?,
             hr: HrClient::new(config.clone())?,
@@ -182,6 +190,8 @@ pub use officers::OfficersClient;
 pub use operation_types::OperationTypesClient;
 pub use partners::PartnersClient;
 pub use payroll::PayrollClient;
+pub use peppol::PeppolClient;
+pub use platform_sellers::PlatformSellersClient;
 pub use pos::PosClient;
 pub use production::ProductionClient;
 pub use projects::ProjectsClient;

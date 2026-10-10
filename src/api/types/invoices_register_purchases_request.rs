@@ -10,6 +10,9 @@ pub struct InvoicesRegisterPurchasesRequest {
     #[serde(rename = "warehouseId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub warehouse_id: Option<String>,
+    #[serde(rename = "returnFromStock")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub return_from_stock: Option<bool>,
 }
 
 impl InvoicesRegisterPurchasesRequest {
@@ -24,6 +27,7 @@ pub struct InvoicesRegisterPurchasesRequestBuilder {
     id: Option<String>,
     registration_date: Option<NaiveDate>,
     warehouse_id: Option<String>,
+    return_from_stock: Option<bool>,
 }
 
 impl InvoicesRegisterPurchasesRequestBuilder {
@@ -42,6 +46,11 @@ impl InvoicesRegisterPurchasesRequestBuilder {
         self
     }
 
+    pub fn return_from_stock(mut self, value: bool) -> Self {
+        self.return_from_stock = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesRegisterPurchasesRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesRegisterPurchasesRequestBuilder::id)
@@ -50,6 +59,7 @@ impl InvoicesRegisterPurchasesRequestBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             registration_date: self.registration_date,
             warehouse_id: self.warehouse_id,
+            return_from_stock: self.return_from_stock,
         })
     }
 }

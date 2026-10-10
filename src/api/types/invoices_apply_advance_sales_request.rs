@@ -10,6 +10,9 @@ pub struct InvoicesApplyAdvanceSalesRequest {
     pub invoice_id: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<NaiveDate>,
+    /// Gross amount of the advance to apply; defaults to the unapplied advance or the unpaid balance of the invoice, whichever is smaller
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub amount: Option<String>,
 }
 
 impl InvoicesApplyAdvanceSalesRequest {
@@ -24,6 +27,7 @@ pub struct InvoicesApplyAdvanceSalesRequestBuilder {
     advance_id: Option<String>,
     invoice_id: Option<String>,
     date: Option<NaiveDate>,
+    amount: Option<String>,
 }
 
 impl InvoicesApplyAdvanceSalesRequestBuilder {
@@ -42,6 +46,11 @@ impl InvoicesApplyAdvanceSalesRequestBuilder {
         self
     }
 
+    pub fn amount(mut self, value: impl Into<String>) -> Self {
+        self.amount = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesApplyAdvanceSalesRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`advance_id`](InvoicesApplyAdvanceSalesRequestBuilder::advance_id)
@@ -55,6 +64,7 @@ impl InvoicesApplyAdvanceSalesRequestBuilder {
                 .invoice_id
                 .ok_or_else(|| BuildError::missing_field("invoice_id"))?,
             date: self.date,
+            amount: self.amount,
         })
     }
 }

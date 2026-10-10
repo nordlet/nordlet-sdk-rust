@@ -5,6 +5,8 @@ pub struct OnlineSalesReportsResponseRowsItem {
     #[serde(default)]
     pub channel: String,
     #[serde(default)]
+    pub currency: String,
+    #[serde(default)]
     pub orders: i64,
     #[serde(default)]
     pub fulfilled: i64,
@@ -28,6 +30,7 @@ impl OnlineSalesReportsResponseRowsItem {
 #[non_exhaustive]
 pub struct OnlineSalesReportsResponseRowsItemBuilder {
     channel: Option<String>,
+    currency: Option<String>,
     orders: Option<i64>,
     fulfilled: Option<i64>,
     cancelled: Option<i64>,
@@ -39,6 +42,11 @@ pub struct OnlineSalesReportsResponseRowsItemBuilder {
 impl OnlineSalesReportsResponseRowsItemBuilder {
     pub fn channel(mut self, value: impl Into<String>) -> Self {
         self.channel = Some(value.into());
+        self
+    }
+
+    pub fn currency(mut self, value: impl Into<String>) -> Self {
+        self.currency = Some(value.into());
         self
     }
 
@@ -75,6 +83,7 @@ impl OnlineSalesReportsResponseRowsItemBuilder {
     /// Consumes the builder and constructs a [`OnlineSalesReportsResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`channel`](OnlineSalesReportsResponseRowsItemBuilder::channel)
+    /// - [`currency`](OnlineSalesReportsResponseRowsItemBuilder::currency)
     /// - [`orders`](OnlineSalesReportsResponseRowsItemBuilder::orders)
     /// - [`fulfilled`](OnlineSalesReportsResponseRowsItemBuilder::fulfilled)
     /// - [`cancelled`](OnlineSalesReportsResponseRowsItemBuilder::cancelled)
@@ -86,6 +95,9 @@ impl OnlineSalesReportsResponseRowsItemBuilder {
             channel: self
                 .channel
                 .ok_or_else(|| BuildError::missing_field("channel"))?,
+            currency: self
+                .currency
+                .ok_or_else(|| BuildError::missing_field("currency"))?,
             orders: self
                 .orders
                 .ok_or_else(|| BuildError::missing_field("orders"))?,

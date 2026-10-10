@@ -151,6 +151,25 @@ pub struct InvoicesListSalesResponseRowsItem {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset::option")]
     pub einvoice_checked_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "peppolMessageId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub peppol_message_id: Option<String>,
+    #[serde(rename = "peppolStatus")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub peppol_status: Option<String>,
+    #[serde(rename = "peppolDetail")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub peppol_detail: Option<String>,
+    #[serde(rename = "peppolSentAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub peppol_sent_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "peppolCheckedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub peppol_checked_at: Option<DateTime<FixedOffset>>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
@@ -224,6 +243,11 @@ pub struct InvoicesListSalesResponseRowsItemBuilder {
     einvoice_detail: Option<String>,
     einvoice_sent_at: Option<DateTime<FixedOffset>>,
     einvoice_checked_at: Option<DateTime<FixedOffset>>,
+    peppol_message_id: Option<String>,
+    peppol_status: Option<String>,
+    peppol_detail: Option<String>,
+    peppol_sent_at: Option<DateTime<FixedOffset>>,
+    peppol_checked_at: Option<DateTime<FixedOffset>>,
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
     partner_name: Option<String>,
@@ -485,6 +509,31 @@ impl InvoicesListSalesResponseRowsItemBuilder {
         self
     }
 
+    pub fn peppol_message_id(mut self, value: impl Into<String>) -> Self {
+        self.peppol_message_id = Some(value.into());
+        self
+    }
+
+    pub fn peppol_status(mut self, value: impl Into<String>) -> Self {
+        self.peppol_status = Some(value.into());
+        self
+    }
+
+    pub fn peppol_detail(mut self, value: impl Into<String>) -> Self {
+        self.peppol_detail = Some(value.into());
+        self
+    }
+
+    pub fn peppol_sent_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.peppol_sent_at = Some(value);
+        self
+    }
+
+    pub fn peppol_checked_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.peppol_checked_at = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.created_at = Some(value);
         self
@@ -591,6 +640,11 @@ impl InvoicesListSalesResponseRowsItemBuilder {
             einvoice_detail: self.einvoice_detail,
             einvoice_sent_at: self.einvoice_sent_at,
             einvoice_checked_at: self.einvoice_checked_at,
+            peppol_message_id: self.peppol_message_id,
+            peppol_status: self.peppol_status,
+            peppol_detail: self.peppol_detail,
+            peppol_sent_at: self.peppol_sent_at,
+            peppol_checked_at: self.peppol_checked_at,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

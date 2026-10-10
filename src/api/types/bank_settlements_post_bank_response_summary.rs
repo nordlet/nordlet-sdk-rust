@@ -17,6 +17,9 @@ pub struct SettlementsPostBankResponseSummary {
     #[serde(rename = "suspenseAmount")]
     #[serde(default)]
     pub suspense_amount: String,
+    #[serde(rename = "clearedAmount")]
+    #[serde(default)]
+    pub cleared_amount: String,
     #[serde(rename = "fxRate")]
     #[serde(default)]
     pub fx_rate: String,
@@ -39,6 +42,7 @@ pub struct SettlementsPostBankResponseSummaryBuilder {
     seller_amount: Option<String>,
     fee_amount: Option<String>,
     suspense_amount: Option<String>,
+    cleared_amount: Option<String>,
     fx_rate: Option<String>,
     exchange_difference: Option<String>,
 }
@@ -69,6 +73,11 @@ impl SettlementsPostBankResponseSummaryBuilder {
         self
     }
 
+    pub fn cleared_amount(mut self, value: impl Into<String>) -> Self {
+        self.cleared_amount = Some(value.into());
+        self
+    }
+
     pub fn fx_rate(mut self, value: impl Into<String>) -> Self {
         self.fx_rate = Some(value.into());
         self
@@ -86,6 +95,7 @@ impl SettlementsPostBankResponseSummaryBuilder {
     /// - [`seller_amount`](SettlementsPostBankResponseSummaryBuilder::seller_amount)
     /// - [`fee_amount`](SettlementsPostBankResponseSummaryBuilder::fee_amount)
     /// - [`suspense_amount`](SettlementsPostBankResponseSummaryBuilder::suspense_amount)
+    /// - [`cleared_amount`](SettlementsPostBankResponseSummaryBuilder::cleared_amount)
     /// - [`fx_rate`](SettlementsPostBankResponseSummaryBuilder::fx_rate)
     /// - [`exchange_difference`](SettlementsPostBankResponseSummaryBuilder::exchange_difference)
     pub fn build(self) -> Result<SettlementsPostBankResponseSummary, BuildError> {
@@ -105,6 +115,9 @@ impl SettlementsPostBankResponseSummaryBuilder {
             suspense_amount: self
                 .suspense_amount
                 .ok_or_else(|| BuildError::missing_field("suspense_amount"))?,
+            cleared_amount: self
+                .cleared_amount
+                .ok_or_else(|| BuildError::missing_field("cleared_amount"))?,
             fx_rate: self
                 .fx_rate
                 .ok_or_else(|| BuildError::missing_field("fx_rate"))?,

@@ -36,6 +36,9 @@ pub struct RunsGetPayrollResponse {
     #[serde(rename = "netTotal")]
     #[serde(default)]
     pub net_total: String,
+    #[serde(rename = "paidAmount")]
+    #[serde(default)]
+    pub paid_amount: String,
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
@@ -89,6 +92,7 @@ pub struct RunsGetPayrollResponseBuilder {
     employer_contributions_total: Option<String>,
     component_totals: Option<Vec<RunsGetPayrollResponseComponentTotalsItem>>,
     net_total: Option<String>,
+    paid_amount: Option<String>,
     journal_transaction_id: Option<String>,
     notes: Option<String>,
     warnings: Option<Vec<String>>,
@@ -169,6 +173,11 @@ impl RunsGetPayrollResponseBuilder {
         self
     }
 
+    pub fn paid_amount(mut self, value: impl Into<String>) -> Self {
+        self.paid_amount = Some(value.into());
+        self
+    }
+
     pub fn journal_transaction_id(mut self, value: impl Into<String>) -> Self {
         self.journal_transaction_id = Some(value.into());
         self
@@ -228,6 +237,7 @@ impl RunsGetPayrollResponseBuilder {
     /// - [`employer_contributions_total`](RunsGetPayrollResponseBuilder::employer_contributions_total)
     /// - [`component_totals`](RunsGetPayrollResponseBuilder::component_totals)
     /// - [`net_total`](RunsGetPayrollResponseBuilder::net_total)
+    /// - [`paid_amount`](RunsGetPayrollResponseBuilder::paid_amount)
     /// - [`warnings`](RunsGetPayrollResponseBuilder::warnings)
     /// - [`created_at`](RunsGetPayrollResponseBuilder::created_at)
     /// - [`lines`](RunsGetPayrollResponseBuilder::lines)
@@ -266,6 +276,9 @@ impl RunsGetPayrollResponseBuilder {
             net_total: self
                 .net_total
                 .ok_or_else(|| BuildError::missing_field("net_total"))?,
+            paid_amount: self
+                .paid_amount
+                .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
             journal_transaction_id: self.journal_transaction_id,
             notes: self.notes,
             warnings: self

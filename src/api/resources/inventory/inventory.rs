@@ -77,6 +77,22 @@ impl InventoryClient {
             .await
     }
 
+    pub async fn warehouses_update(
+        &self,
+        request: &WarehousesUpdateInventoryRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<WarehousesUpdateInventoryResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/inventory/warehouses/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn stock_receive(
         &self,
         request: &StockReceiveInventoryRequest,

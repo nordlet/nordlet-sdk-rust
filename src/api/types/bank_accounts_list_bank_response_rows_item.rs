@@ -1,11 +1,12 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct AccountsListBankResponseRowsItem {
     #[serde(default)]
     pub id: String,
     #[serde(default)]
     pub name: String,
+    pub r#type: AccountsListBankResponseRowsItemType,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
     #[serde(default)]
@@ -33,6 +34,7 @@ impl AccountsListBankResponseRowsItem {
 pub struct AccountsListBankResponseRowsItemBuilder {
     id: Option<String>,
     name: Option<String>,
+    r#type: Option<AccountsListBankResponseRowsItemType>,
     iban: Option<String>,
     currency: Option<String>,
     account_code: Option<String>,
@@ -48,6 +50,11 @@ impl AccountsListBankResponseRowsItemBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn r#type(mut self, value: AccountsListBankResponseRowsItemType) -> Self {
+        self.r#type = Some(value);
         self
     }
 
@@ -80,6 +87,7 @@ impl AccountsListBankResponseRowsItemBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](AccountsListBankResponseRowsItemBuilder::id)
     /// - [`name`](AccountsListBankResponseRowsItemBuilder::name)
+    /// - [`r#type`](AccountsListBankResponseRowsItemBuilder::r#type)
     /// - [`currency`](AccountsListBankResponseRowsItemBuilder::currency)
     /// - [`account_code`](AccountsListBankResponseRowsItemBuilder::account_code)
     /// - [`is_active`](AccountsListBankResponseRowsItemBuilder::is_active)
@@ -88,6 +96,9 @@ impl AccountsListBankResponseRowsItemBuilder {
         Ok(AccountsListBankResponseRowsItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            r#type: self
+                .r#type
+                .ok_or_else(|| BuildError::missing_field("r#type"))?,
             iban: self.iban,
             currency: self
                 .currency

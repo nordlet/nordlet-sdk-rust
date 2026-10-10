@@ -2,6 +2,9 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct DocumentsUploadCaptureResponseExtraction {
+    #[serde(rename = "documentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_type: Option<DocumentsUploadCaptureResponseExtractionDocumentType>,
     #[serde(default)]
     pub supplier: DocumentsUploadCaptureResponseExtractionSupplier,
     #[serde(rename = "documentNumber")]
@@ -28,6 +31,9 @@ pub struct DocumentsUploadCaptureResponseExtraction {
     pub notes: Option<String>,
     #[serde(default)]
     pub lines: Vec<DocumentsUploadCaptureResponseExtractionLinesItem>,
+    #[serde(rename = "oppositeLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub opposite_lines: Option<Vec<DocumentsUploadCaptureResponseExtractionOppositeLinesItem>>,
 }
 
 impl DocumentsUploadCaptureResponseExtraction {
@@ -39,6 +45,7 @@ impl DocumentsUploadCaptureResponseExtraction {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct DocumentsUploadCaptureResponseExtractionBuilder {
+    document_type: Option<DocumentsUploadCaptureResponseExtractionDocumentType>,
     supplier: Option<DocumentsUploadCaptureResponseExtractionSupplier>,
     document_number: Option<String>,
     document_date: Option<NaiveDate>,
@@ -49,9 +56,18 @@ pub struct DocumentsUploadCaptureResponseExtractionBuilder {
     gross_total: Option<String>,
     notes: Option<String>,
     lines: Option<Vec<DocumentsUploadCaptureResponseExtractionLinesItem>>,
+    opposite_lines: Option<Vec<DocumentsUploadCaptureResponseExtractionOppositeLinesItem>>,
 }
 
 impl DocumentsUploadCaptureResponseExtractionBuilder {
+    pub fn document_type(
+        mut self,
+        value: DocumentsUploadCaptureResponseExtractionDocumentType,
+    ) -> Self {
+        self.document_type = Some(value);
+        self
+    }
+
     pub fn supplier(mut self, value: DocumentsUploadCaptureResponseExtractionSupplier) -> Self {
         self.supplier = Some(value);
         self
@@ -102,12 +118,21 @@ impl DocumentsUploadCaptureResponseExtractionBuilder {
         self
     }
 
+    pub fn opposite_lines(
+        mut self,
+        value: Vec<DocumentsUploadCaptureResponseExtractionOppositeLinesItem>,
+    ) -> Self {
+        self.opposite_lines = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`DocumentsUploadCaptureResponseExtraction`].
     /// This method will fail if any of the following fields are not set:
     /// - [`supplier`](DocumentsUploadCaptureResponseExtractionBuilder::supplier)
     /// - [`lines`](DocumentsUploadCaptureResponseExtractionBuilder::lines)
     pub fn build(self) -> Result<DocumentsUploadCaptureResponseExtraction, BuildError> {
         Ok(DocumentsUploadCaptureResponseExtraction {
+            document_type: self.document_type,
             supplier: self
                 .supplier
                 .ok_or_else(|| BuildError::missing_field("supplier"))?,
@@ -122,6 +147,7 @@ impl DocumentsUploadCaptureResponseExtractionBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            opposite_lines: self.opposite_lines,
         })
     }
 }

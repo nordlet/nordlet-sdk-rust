@@ -269,6 +269,79 @@ impl DeclarationsClient {
             .await
     }
 
+    pub async fn eu_own_goods_transfers_compute(
+        &self,
+        request: &EuOwnGoodsTransfersComputeDeclarationsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<EuOwnGoodsTransfersComputeDeclarationsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/own-goods-transfers/compute",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn eu_digital_reporting_list(
+        &self,
+        request: &EuDigitalReportingListDeclarationsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<EuDigitalReportingListDeclarationsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/digital-reporting/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Which platform sellers are reportable for the year (Council Directive (EU) 2021/514, Annex V) and why the others are excluded, the data still missing, and how the company files the report in its Member State.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn eu_dac7_preview(
+        &self,
+        request: &EuDac7PreviewDeclarationsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<EuDac7PreviewDeclarationsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/dac7/preview",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn eu_dac7_xml(
+        &self,
+        request: &EuDac7XmlDeclarationsRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<EuDac7XmlDeclarationsResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/declarations/eu/dac7/xml",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn eu_distance_sales_threshold_get(
         &self,
         request: &EuDistanceSalesThresholdGetDeclarationsRequest,
@@ -1405,7 +1478,7 @@ impl DeclarationsClient {
             .await
     }
 
-    /// Generate PIT-11(29) for every person on the payroll of one year: the pay, the deductible costs, the advance withheld and the social and health contributions taken off it. One document per person, because that is how the form is filed.
+    /// Generate PIT-11(29) for every person on the payroll of one year: the pay, the deductible costs, the advance withheld and the social and health contributions taken off it. One document per person, because that is how the form is filed, addressed to the tax office of the place of residence of that person (employee field plKodUrzedu); a person without that code is refused with 422.
     ///
     /// # Arguments
     ///

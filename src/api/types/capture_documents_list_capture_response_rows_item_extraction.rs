@@ -2,6 +2,9 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct DocumentsListCaptureResponseRowsItemExtraction {
+    #[serde(rename = "documentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_type: Option<DocumentsListCaptureResponseRowsItemExtractionDocumentType>,
     #[serde(default)]
     pub supplier: DocumentsListCaptureResponseRowsItemExtractionSupplier,
     #[serde(rename = "documentNumber")]
@@ -28,6 +31,10 @@ pub struct DocumentsListCaptureResponseRowsItemExtraction {
     pub notes: Option<String>,
     #[serde(default)]
     pub lines: Vec<DocumentsListCaptureResponseRowsItemExtractionLinesItem>,
+    #[serde(rename = "oppositeLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub opposite_lines:
+        Option<Vec<DocumentsListCaptureResponseRowsItemExtractionOppositeLinesItem>>,
 }
 
 impl DocumentsListCaptureResponseRowsItemExtraction {
@@ -39,6 +46,7 @@ impl DocumentsListCaptureResponseRowsItemExtraction {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct DocumentsListCaptureResponseRowsItemExtractionBuilder {
+    document_type: Option<DocumentsListCaptureResponseRowsItemExtractionDocumentType>,
     supplier: Option<DocumentsListCaptureResponseRowsItemExtractionSupplier>,
     document_number: Option<String>,
     document_date: Option<NaiveDate>,
@@ -49,9 +57,18 @@ pub struct DocumentsListCaptureResponseRowsItemExtractionBuilder {
     gross_total: Option<String>,
     notes: Option<String>,
     lines: Option<Vec<DocumentsListCaptureResponseRowsItemExtractionLinesItem>>,
+    opposite_lines: Option<Vec<DocumentsListCaptureResponseRowsItemExtractionOppositeLinesItem>>,
 }
 
 impl DocumentsListCaptureResponseRowsItemExtractionBuilder {
+    pub fn document_type(
+        mut self,
+        value: DocumentsListCaptureResponseRowsItemExtractionDocumentType,
+    ) -> Self {
+        self.document_type = Some(value);
+        self
+    }
+
     pub fn supplier(
         mut self,
         value: DocumentsListCaptureResponseRowsItemExtractionSupplier,
@@ -108,12 +125,21 @@ impl DocumentsListCaptureResponseRowsItemExtractionBuilder {
         self
     }
 
+    pub fn opposite_lines(
+        mut self,
+        value: Vec<DocumentsListCaptureResponseRowsItemExtractionOppositeLinesItem>,
+    ) -> Self {
+        self.opposite_lines = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`DocumentsListCaptureResponseRowsItemExtraction`].
     /// This method will fail if any of the following fields are not set:
     /// - [`supplier`](DocumentsListCaptureResponseRowsItemExtractionBuilder::supplier)
     /// - [`lines`](DocumentsListCaptureResponseRowsItemExtractionBuilder::lines)
     pub fn build(self) -> Result<DocumentsListCaptureResponseRowsItemExtraction, BuildError> {
         Ok(DocumentsListCaptureResponseRowsItemExtraction {
+            document_type: self.document_type,
             supplier: self
                 .supplier
                 .ok_or_else(|| BuildError::missing_field("supplier"))?,
@@ -128,6 +154,7 @@ impl DocumentsListCaptureResponseRowsItemExtractionBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            opposite_lines: self.opposite_lines,
         })
     }
 }

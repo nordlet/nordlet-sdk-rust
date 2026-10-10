@@ -21,6 +21,9 @@ pub struct LandedCostsCreateInventoryResponse {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
     pub created_at: DateTime<FixedOffset>,
+    #[serde(rename = "journalTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub journal_transaction_id: Option<String>,
     #[serde(default)]
     pub lines: Vec<LandedCostsCreateInventoryResponseLinesItem>,
 }
@@ -42,6 +45,7 @@ pub struct LandedCostsCreateInventoryResponseBuilder {
     source_invoice_id: Option<String>,
     notes: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
+    journal_transaction_id: Option<String>,
     lines: Option<Vec<LandedCostsCreateInventoryResponseLinesItem>>,
 }
 
@@ -86,6 +90,11 @@ impl LandedCostsCreateInventoryResponseBuilder {
         self
     }
 
+    pub fn journal_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.journal_transaction_id = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<LandedCostsCreateInventoryResponseLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -115,6 +124,7 @@ impl LandedCostsCreateInventoryResponseBuilder {
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,
+            journal_transaction_id: self.journal_transaction_id,
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,

@@ -36,6 +36,9 @@ pub struct RunsApprovePayrollResponse {
     #[serde(rename = "netTotal")]
     #[serde(default)]
     pub net_total: String,
+    #[serde(rename = "paidAmount")]
+    #[serde(default)]
+    pub paid_amount: String,
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
@@ -87,6 +90,7 @@ pub struct RunsApprovePayrollResponseBuilder {
     employer_contributions_total: Option<String>,
     component_totals: Option<Vec<RunsApprovePayrollResponseComponentTotalsItem>>,
     net_total: Option<String>,
+    paid_amount: Option<String>,
     journal_transaction_id: Option<String>,
     notes: Option<String>,
     warnings: Option<Vec<String>>,
@@ -166,6 +170,11 @@ impl RunsApprovePayrollResponseBuilder {
         self
     }
 
+    pub fn paid_amount(mut self, value: impl Into<String>) -> Self {
+        self.paid_amount = Some(value.into());
+        self
+    }
+
     pub fn journal_transaction_id(mut self, value: impl Into<String>) -> Self {
         self.journal_transaction_id = Some(value.into());
         self
@@ -220,6 +229,7 @@ impl RunsApprovePayrollResponseBuilder {
     /// - [`employer_contributions_total`](RunsApprovePayrollResponseBuilder::employer_contributions_total)
     /// - [`component_totals`](RunsApprovePayrollResponseBuilder::component_totals)
     /// - [`net_total`](RunsApprovePayrollResponseBuilder::net_total)
+    /// - [`paid_amount`](RunsApprovePayrollResponseBuilder::paid_amount)
     /// - [`warnings`](RunsApprovePayrollResponseBuilder::warnings)
     /// - [`created_at`](RunsApprovePayrollResponseBuilder::created_at)
     pub fn build(self) -> Result<RunsApprovePayrollResponse, BuildError> {
@@ -257,6 +267,9 @@ impl RunsApprovePayrollResponseBuilder {
             net_total: self
                 .net_total
                 .ok_or_else(|| BuildError::missing_field("net_total"))?,
+            paid_amount: self
+                .paid_amount
+                .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
             journal_transaction_id: self.journal_transaction_id,
             notes: self.notes,
             warnings: self

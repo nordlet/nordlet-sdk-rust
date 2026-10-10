@@ -9,6 +9,9 @@ pub struct WarehousesCreateInventoryRequest {
     #[serde(rename = "isDefault")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_default: Option<bool>,
+    #[serde(rename = "countryCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub country_code: Option<String>,
 }
 
 impl WarehousesCreateInventoryRequest {
@@ -23,6 +26,7 @@ pub struct WarehousesCreateInventoryRequestBuilder {
     code: Option<String>,
     name: Option<String>,
     is_default: Option<bool>,
+    country_code: Option<String>,
 }
 
 impl WarehousesCreateInventoryRequestBuilder {
@@ -41,6 +45,11 @@ impl WarehousesCreateInventoryRequestBuilder {
         self
     }
 
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`WarehousesCreateInventoryRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`code`](WarehousesCreateInventoryRequestBuilder::code)
@@ -50,6 +59,7 @@ impl WarehousesCreateInventoryRequestBuilder {
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             is_default: self.is_default,
+            country_code: self.country_code,
         })
     }
 }

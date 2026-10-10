@@ -10,6 +10,8 @@ pub struct DocumentsConfirmCaptureRequest {
     #[serde(rename = "newSupplier")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub new_supplier: Option<DocumentsConfirmCaptureRequestNewSupplier>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub r#type: Option<DocumentsConfirmCaptureRequestType>,
     #[serde(rename = "documentNumber")]
     #[serde(default)]
     pub document_number: String,
@@ -25,6 +27,12 @@ pub struct DocumentsConfirmCaptureRequest {
     pub notes: Option<String>,
     #[serde(default)]
     pub lines: Vec<DocumentsConfirmCaptureRequestLinesItem>,
+    #[serde(rename = "oppositeLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub opposite_lines: Option<Vec<DocumentsConfirmCaptureRequestOppositeLinesItem>>,
+    #[serde(rename = "oppositeDocumentNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub opposite_document_number: Option<String>,
 }
 
 impl DocumentsConfirmCaptureRequest {
@@ -39,12 +47,15 @@ pub struct DocumentsConfirmCaptureRequestBuilder {
     id: Option<String>,
     partner_id: Option<String>,
     new_supplier: Option<DocumentsConfirmCaptureRequestNewSupplier>,
+    r#type: Option<DocumentsConfirmCaptureRequestType>,
     document_number: Option<String>,
     document_date: Option<NaiveDate>,
     due_date: Option<NaiveDate>,
     currency: Option<String>,
     notes: Option<String>,
     lines: Option<Vec<DocumentsConfirmCaptureRequestLinesItem>>,
+    opposite_lines: Option<Vec<DocumentsConfirmCaptureRequestOppositeLinesItem>>,
+    opposite_document_number: Option<String>,
 }
 
 impl DocumentsConfirmCaptureRequestBuilder {
@@ -60,6 +71,11 @@ impl DocumentsConfirmCaptureRequestBuilder {
 
     pub fn new_supplier(mut self, value: DocumentsConfirmCaptureRequestNewSupplier) -> Self {
         self.new_supplier = Some(value);
+        self
+    }
+
+    pub fn r#type(mut self, value: DocumentsConfirmCaptureRequestType) -> Self {
+        self.r#type = Some(value);
         self
     }
 
@@ -93,6 +109,19 @@ impl DocumentsConfirmCaptureRequestBuilder {
         self
     }
 
+    pub fn opposite_lines(
+        mut self,
+        value: Vec<DocumentsConfirmCaptureRequestOppositeLinesItem>,
+    ) -> Self {
+        self.opposite_lines = Some(value);
+        self
+    }
+
+    pub fn opposite_document_number(mut self, value: impl Into<String>) -> Self {
+        self.opposite_document_number = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`DocumentsConfirmCaptureRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](DocumentsConfirmCaptureRequestBuilder::id)
@@ -104,6 +133,7 @@ impl DocumentsConfirmCaptureRequestBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             partner_id: self.partner_id,
             new_supplier: self.new_supplier,
+            r#type: self.r#type,
             document_number: self
                 .document_number
                 .ok_or_else(|| BuildError::missing_field("document_number"))?,
@@ -116,6 +146,8 @@ impl DocumentsConfirmCaptureRequestBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            opposite_lines: self.opposite_lines,
+            opposite_document_number: self.opposite_document_number,
         })
     }
 }

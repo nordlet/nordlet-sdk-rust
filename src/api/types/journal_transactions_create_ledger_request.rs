@@ -6,6 +6,8 @@ pub struct JournalTransactionsCreateLedgerRequest {
     pub date: NaiveDate,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub currency: Option<String>,
     #[serde(default)]
     pub entries: Vec<JournalTransactionsCreateLedgerRequestEntriesItem>,
 }
@@ -21,6 +23,7 @@ impl JournalTransactionsCreateLedgerRequest {
 pub struct JournalTransactionsCreateLedgerRequestBuilder {
     date: Option<NaiveDate>,
     description: Option<String>,
+    currency: Option<String>,
     entries: Option<Vec<JournalTransactionsCreateLedgerRequestEntriesItem>>,
 }
 
@@ -32,6 +35,11 @@ impl JournalTransactionsCreateLedgerRequestBuilder {
 
     pub fn description(mut self, value: impl Into<String>) -> Self {
         self.description = Some(value.into());
+        self
+    }
+
+    pub fn currency(mut self, value: impl Into<String>) -> Self {
+        self.currency = Some(value.into());
         self
     }
 
@@ -51,6 +59,7 @@ impl JournalTransactionsCreateLedgerRequestBuilder {
         Ok(JournalTransactionsCreateLedgerRequest {
             date: self.date.ok_or_else(|| BuildError::missing_field("date"))?,
             description: self.description,
+            currency: self.currency,
             entries: self
                 .entries
                 .ok_or_else(|| BuildError::missing_field("entries"))?,

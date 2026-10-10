@@ -2,6 +2,9 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct DocumentsConfirmCaptureResponseCaptureExtraction {
+    #[serde(rename = "documentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub document_type: Option<DocumentsConfirmCaptureResponseCaptureExtractionDocumentType>,
     #[serde(default)]
     pub supplier: DocumentsConfirmCaptureResponseCaptureExtractionSupplier,
     #[serde(rename = "documentNumber")]
@@ -28,6 +31,10 @@ pub struct DocumentsConfirmCaptureResponseCaptureExtraction {
     pub notes: Option<String>,
     #[serde(default)]
     pub lines: Vec<DocumentsConfirmCaptureResponseCaptureExtractionLinesItem>,
+    #[serde(rename = "oppositeLines")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub opposite_lines:
+        Option<Vec<DocumentsConfirmCaptureResponseCaptureExtractionOppositeLinesItem>>,
 }
 
 impl DocumentsConfirmCaptureResponseCaptureExtraction {
@@ -39,6 +46,7 @@ impl DocumentsConfirmCaptureResponseCaptureExtraction {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct DocumentsConfirmCaptureResponseCaptureExtractionBuilder {
+    document_type: Option<DocumentsConfirmCaptureResponseCaptureExtractionDocumentType>,
     supplier: Option<DocumentsConfirmCaptureResponseCaptureExtractionSupplier>,
     document_number: Option<String>,
     document_date: Option<NaiveDate>,
@@ -49,9 +57,18 @@ pub struct DocumentsConfirmCaptureResponseCaptureExtractionBuilder {
     gross_total: Option<String>,
     notes: Option<String>,
     lines: Option<Vec<DocumentsConfirmCaptureResponseCaptureExtractionLinesItem>>,
+    opposite_lines: Option<Vec<DocumentsConfirmCaptureResponseCaptureExtractionOppositeLinesItem>>,
 }
 
 impl DocumentsConfirmCaptureResponseCaptureExtractionBuilder {
+    pub fn document_type(
+        mut self,
+        value: DocumentsConfirmCaptureResponseCaptureExtractionDocumentType,
+    ) -> Self {
+        self.document_type = Some(value);
+        self
+    }
+
     pub fn supplier(
         mut self,
         value: DocumentsConfirmCaptureResponseCaptureExtractionSupplier,
@@ -108,12 +125,21 @@ impl DocumentsConfirmCaptureResponseCaptureExtractionBuilder {
         self
     }
 
+    pub fn opposite_lines(
+        mut self,
+        value: Vec<DocumentsConfirmCaptureResponseCaptureExtractionOppositeLinesItem>,
+    ) -> Self {
+        self.opposite_lines = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`DocumentsConfirmCaptureResponseCaptureExtraction`].
     /// This method will fail if any of the following fields are not set:
     /// - [`supplier`](DocumentsConfirmCaptureResponseCaptureExtractionBuilder::supplier)
     /// - [`lines`](DocumentsConfirmCaptureResponseCaptureExtractionBuilder::lines)
     pub fn build(self) -> Result<DocumentsConfirmCaptureResponseCaptureExtraction, BuildError> {
         Ok(DocumentsConfirmCaptureResponseCaptureExtraction {
+            document_type: self.document_type,
             supplier: self
                 .supplier
                 .ok_or_else(|| BuildError::missing_field("supplier"))?,
@@ -128,6 +154,7 @@ impl DocumentsConfirmCaptureResponseCaptureExtractionBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            opposite_lines: self.opposite_lines,
         })
     }
 }

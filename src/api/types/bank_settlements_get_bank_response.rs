@@ -45,6 +45,15 @@ pub struct SettlementsGetBankResponse {
     #[serde(rename = "unmatchedCount")]
     #[serde(default)]
     pub unmatched_count: i64,
+    #[serde(rename = "clearedNet")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cleared_net: Option<String>,
+    #[serde(rename = "clearingDifference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub clearing_difference: Option<String>,
+    #[serde(rename = "clearingOpenCount")]
+    #[serde(default)]
+    pub clearing_open_count: i64,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
@@ -82,6 +91,9 @@ pub struct SettlementsGetBankResponseBuilder {
     line_count: Option<i64>,
     matched_count: Option<i64>,
     unmatched_count: Option<i64>,
+    cleared_net: Option<String>,
+    clearing_difference: Option<String>,
+    clearing_open_count: Option<i64>,
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
     lines: Option<Vec<SettlementsGetBankResponseLinesItem>>,
@@ -168,6 +180,21 @@ impl SettlementsGetBankResponseBuilder {
         self
     }
 
+    pub fn cleared_net(mut self, value: impl Into<String>) -> Self {
+        self.cleared_net = Some(value.into());
+        self
+    }
+
+    pub fn clearing_difference(mut self, value: impl Into<String>) -> Self {
+        self.clearing_difference = Some(value.into());
+        self
+    }
+
+    pub fn clearing_open_count(mut self, value: i64) -> Self {
+        self.clearing_open_count = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.created_at = Some(value);
         self
@@ -197,6 +224,7 @@ impl SettlementsGetBankResponseBuilder {
     /// - [`line_count`](SettlementsGetBankResponseBuilder::line_count)
     /// - [`matched_count`](SettlementsGetBankResponseBuilder::matched_count)
     /// - [`unmatched_count`](SettlementsGetBankResponseBuilder::unmatched_count)
+    /// - [`clearing_open_count`](SettlementsGetBankResponseBuilder::clearing_open_count)
     /// - [`created_at`](SettlementsGetBankResponseBuilder::created_at)
     /// - [`updated_at`](SettlementsGetBankResponseBuilder::updated_at)
     /// - [`lines`](SettlementsGetBankResponseBuilder::lines)
@@ -240,6 +268,11 @@ impl SettlementsGetBankResponseBuilder {
             unmatched_count: self
                 .unmatched_count
                 .ok_or_else(|| BuildError::missing_field("unmatched_count"))?,
+            cleared_net: self.cleared_net,
+            clearing_difference: self.clearing_difference,
+            clearing_open_count: self
+                .clearing_open_count
+                .ok_or_else(|| BuildError::missing_field("clearing_open_count"))?,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,
