@@ -3,6 +3,8 @@ pub use crate::prelude::*;
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AccountGetBillingResponse {
     pub plan: AccountGetBillingResponsePlan,
+    #[serde(rename = "accountType")]
+    pub account_type: AccountGetBillingResponseAccountType,
     pub status: AccountGetBillingResponseStatus,
     #[serde(rename = "balanceCents")]
     #[serde(default)]
@@ -42,9 +44,21 @@ pub struct AccountGetBillingResponse {
     pub month_to_date: AccountGetBillingResponseMonthToDate,
     #[serde(default)]
     pub plans: HashMap<String, AccountGetBillingResponsePlansValue>,
+    #[serde(rename = "apiRequestEur")]
+    #[serde(default)]
+    pub api_request_eur: String,
     #[serde(rename = "topUp")]
     #[serde(default)]
     pub top_up: AccountGetBillingResponseTopUp,
+    #[serde(rename = "autoTopUp")]
+    #[serde(default)]
+    pub auto_top_up: AccountGetBillingResponseAutoTopUp,
+    #[serde(rename = "overdraftCapCents")]
+    #[serde(default)]
+    pub overdraft_cap_cents: i64,
+    #[serde(rename = "overdraftCapMaxCents")]
+    #[serde(default)]
+    pub overdraft_cap_max_cents: i64,
     #[serde(rename = "trialDays")]
     #[serde(default)]
     pub trial_days: i64,
@@ -60,6 +74,7 @@ impl AccountGetBillingResponse {
 #[non_exhaustive]
 pub struct AccountGetBillingResponseBuilder {
     plan: Option<AccountGetBillingResponsePlan>,
+    account_type: Option<AccountGetBillingResponseAccountType>,
     status: Option<AccountGetBillingResponseStatus>,
     balance_cents: Option<i64>,
     trial_ends_at: Option<DateTime<FixedOffset>>,
@@ -72,13 +87,22 @@ pub struct AccountGetBillingResponseBuilder {
     payment_failed_invoice_url: Option<String>,
     month_to_date: Option<AccountGetBillingResponseMonthToDate>,
     plans: Option<HashMap<String, AccountGetBillingResponsePlansValue>>,
+    api_request_eur: Option<String>,
     top_up: Option<AccountGetBillingResponseTopUp>,
+    auto_top_up: Option<AccountGetBillingResponseAutoTopUp>,
+    overdraft_cap_cents: Option<i64>,
+    overdraft_cap_max_cents: Option<i64>,
     trial_days: Option<i64>,
 }
 
 impl AccountGetBillingResponseBuilder {
     pub fn plan(mut self, value: AccountGetBillingResponsePlan) -> Self {
         self.plan = Some(value);
+        self
+    }
+
+    pub fn account_type(mut self, value: AccountGetBillingResponseAccountType) -> Self {
+        self.account_type = Some(value);
         self
     }
 
@@ -142,8 +166,28 @@ impl AccountGetBillingResponseBuilder {
         self
     }
 
+    pub fn api_request_eur(mut self, value: impl Into<String>) -> Self {
+        self.api_request_eur = Some(value.into());
+        self
+    }
+
     pub fn top_up(mut self, value: AccountGetBillingResponseTopUp) -> Self {
         self.top_up = Some(value);
+        self
+    }
+
+    pub fn auto_top_up(mut self, value: AccountGetBillingResponseAutoTopUp) -> Self {
+        self.auto_top_up = Some(value);
+        self
+    }
+
+    pub fn overdraft_cap_cents(mut self, value: i64) -> Self {
+        self.overdraft_cap_cents = Some(value);
+        self
+    }
+
+    pub fn overdraft_cap_max_cents(mut self, value: i64) -> Self {
+        self.overdraft_cap_max_cents = Some(value);
         self
     }
 
@@ -155,6 +199,7 @@ impl AccountGetBillingResponseBuilder {
     /// Consumes the builder and constructs a [`AccountGetBillingResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`plan`](AccountGetBillingResponseBuilder::plan)
+    /// - [`account_type`](AccountGetBillingResponseBuilder::account_type)
     /// - [`status`](AccountGetBillingResponseBuilder::status)
     /// - [`balance_cents`](AccountGetBillingResponseBuilder::balance_cents)
     /// - [`payments_configured`](AccountGetBillingResponseBuilder::payments_configured)
@@ -162,11 +207,18 @@ impl AccountGetBillingResponseBuilder {
     /// - [`has_subscription`](AccountGetBillingResponseBuilder::has_subscription)
     /// - [`month_to_date`](AccountGetBillingResponseBuilder::month_to_date)
     /// - [`plans`](AccountGetBillingResponseBuilder::plans)
+    /// - [`api_request_eur`](AccountGetBillingResponseBuilder::api_request_eur)
     /// - [`top_up`](AccountGetBillingResponseBuilder::top_up)
+    /// - [`auto_top_up`](AccountGetBillingResponseBuilder::auto_top_up)
+    /// - [`overdraft_cap_cents`](AccountGetBillingResponseBuilder::overdraft_cap_cents)
+    /// - [`overdraft_cap_max_cents`](AccountGetBillingResponseBuilder::overdraft_cap_max_cents)
     /// - [`trial_days`](AccountGetBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<AccountGetBillingResponse, BuildError> {
         Ok(AccountGetBillingResponse {
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
+            account_type: self
+                .account_type
+                .ok_or_else(|| BuildError::missing_field("account_type"))?,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
@@ -193,9 +245,21 @@ impl AccountGetBillingResponseBuilder {
             plans: self
                 .plans
                 .ok_or_else(|| BuildError::missing_field("plans"))?,
+            api_request_eur: self
+                .api_request_eur
+                .ok_or_else(|| BuildError::missing_field("api_request_eur"))?,
             top_up: self
                 .top_up
                 .ok_or_else(|| BuildError::missing_field("top_up"))?,
+            auto_top_up: self
+                .auto_top_up
+                .ok_or_else(|| BuildError::missing_field("auto_top_up"))?,
+            overdraft_cap_cents: self
+                .overdraft_cap_cents
+                .ok_or_else(|| BuildError::missing_field("overdraft_cap_cents"))?,
+            overdraft_cap_max_cents: self
+                .overdraft_cap_max_cents
+                .ok_or_else(|| BuildError::missing_field("overdraft_cap_max_cents"))?,
             trial_days: self
                 .trial_days
                 .ok_or_else(|| BuildError::missing_field("trial_days"))?,

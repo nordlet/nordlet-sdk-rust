@@ -625,6 +625,54 @@ impl BankClient {
             .await
     }
 
+    pub async fn securities_import(
+        &self,
+        request: &SecuritiesImportBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SecuritiesImportBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/securities/import",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn securities_list(
+        &self,
+        request: &SecuritiesListBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SecuritiesListBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/securities/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn securities_get(
+        &self,
+        request: &SecuritiesGetBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SecuritiesGetBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/securities/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn feeds_banks_list(
         &self,
         request: &FeedsBanksListBankRequest,

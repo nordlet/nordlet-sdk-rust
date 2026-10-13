@@ -65,12 +65,6 @@ pub struct CreatePartnersRequest {
     #[serde(rename = "eoriCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub eori_code: Option<String>,
-    #[serde(rename = "otherCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub other_code: Option<String>,
-    #[serde(rename = "foreignTaxNumber")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub foreign_tax_number: Option<String>,
     #[serde(rename = "autoDebtReminder")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub auto_debt_reminder: Option<bool>,
@@ -135,8 +129,6 @@ pub struct CreatePartnersRequestBuilder {
     website: Option<String>,
     fax: Option<String>,
     eori_code: Option<String>,
-    other_code: Option<String>,
-    foreign_tax_number: Option<String>,
     auto_debt_reminder: Option<bool>,
     late_interest_percent: Option<String>,
     first_call_date: Option<NaiveDate>,
@@ -273,16 +265,6 @@ impl CreatePartnersRequestBuilder {
         self
     }
 
-    pub fn other_code(mut self, value: impl Into<String>) -> Self {
-        self.other_code = Some(value.into());
-        self
-    }
-
-    pub fn foreign_tax_number(mut self, value: impl Into<String>) -> Self {
-        self.foreign_tax_number = Some(value.into());
-        self
-    }
-
     pub fn auto_debt_reminder(mut self, value: bool) -> Self {
         self.auto_debt_reminder = Some(value);
         self
@@ -362,8 +344,6 @@ impl CreatePartnersRequestBuilder {
             website: self.website,
             fax: self.fax,
             eori_code: self.eori_code,
-            other_code: self.other_code,
-            foreign_tax_number: self.foreign_tax_number,
             auto_debt_reminder: self.auto_debt_reminder,
             late_interest_percent: self.late_interest_percent,
             first_call_date: self.first_call_date,

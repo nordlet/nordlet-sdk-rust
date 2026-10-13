@@ -3474,8 +3474,6 @@ async fn main() {
                 website: None,
                 fax: None,
                 eori_code: None,
-                other_code: None,
-                foreign_tax_number: None,
                 auto_debt_reminder: None,
                 late_interest_percent: None,
                 first_call_date: None,
@@ -3697,22 +3695,6 @@ async fn main() {
 <dl>
 <dd>
 
-**other_code:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**foreign_tax_number:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **auto_debt_reminder:** `Option<bool>` 
     
 </dd>
@@ -3847,8 +3829,6 @@ async fn main() {
                 website: None,
                 fax: None,
                 eori_code: None,
-                other_code: None,
-                foreign_tax_number: None,
                 auto_debt_reminder: None,
                 late_interest_percent: None,
                 first_call_date: None,
@@ -4070,22 +4050,6 @@ async fn main() {
 <dl>
 <dd>
 
-**other_code:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**foreign_tax_number:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
 **auto_debt_reminder:** `Option<bool>` 
     
 </dd>
@@ -4279,8 +4243,6 @@ async fn main() {
                 website: None,
                 fax: None,
                 eori_code: None,
-                other_code: None,
-                foreign_tax_number: None,
                 auto_debt_reminder: None,
                 late_interest_percent: None,
                 first_call_date: None,
@@ -4503,22 +4465,6 @@ async fn main() {
 <dd>
 
 **eori_code:** `Option<Option<String>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**other_code:** `Option<Option<String>>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**foreign_tax_number:** `Option<Option<String>>` 
     
 </dd>
 </dl>
@@ -10694,7 +10640,7 @@ async fn main() {
 <dl>
 <dd>
 
-Send an issued invoice or credit note to the customer over Peppol through the company's own access point (Settings → Compliance → EU; Nordlet supports Recommand, Storecove and e-invoice.be). Without one the call is refused with 422 and the document can only be downloaded with `sales/invoices/peppol-xml`. `status` is `pending` until the receiving access point confirms, then `delivered`; `failed` and `rejected` come with `detail`, and the invoice can then be sent again. Later changes arrive through the access point's webhook and are announced as `sale_invoice.peppol_delivered`, `sale_invoice.peppol_rejected` and `sale_invoice.peppol_failed`.
+Send an issued invoice or credit note to the customer over Peppol through the company's own access point (Account → Compliance → EU; Nordlet supports Recommand, Storecove and e-invoice.be). Without one the call is refused with 422 and the document can only be downloaded with `sales/invoices/peppol-xml`. `status` is `pending` until the receiving access point confirms, then `delivered`; `failed` and `rejected` come with `detail`, and the invoice can then be sent again. Later changes arrive through the access point's webhook and are announced as `sale_invoice.peppol_delivered`, `sale_invoice.peppol_rejected` and `sale_invoice.peppol_failed`.
 </dd>
 </dl>
 </dd>
@@ -12624,6 +12570,751 @@ async fn main() {
 <dd>
 
 **locale:** `Option<ActsPdfSalesRequestLocale>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoice_templates_create</a>(request: InvoiceTemplatesCreateSalesRequest) -> Result&lt;InvoiceTemplatesCreateSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .invoice_templates_create(
+            &InvoiceTemplatesCreateSalesRequest {
+                name: "name".to_string(),
+                document_type: None,
+                partner_id: None,
+                currency: None,
+                payment_term_days: None,
+                vat_scheme: None,
+                vat_country_code: None,
+                agreement_id: None,
+                operation_type_id: None,
+                document_series_id: None,
+                discount_percent: None,
+                issued_by_name: None,
+                issued_by_title: None,
+                received_by_name: None,
+                received_by_title: None,
+                notes: None,
+                supply_type: None,
+                series_label: None,
+                order_number: None,
+                intrastat_transport_mode: None,
+                intrastat_delivery_terms: None,
+                intrastat_region: None,
+                intrastat_nature_of_transaction: None,
+                lines: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**name:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_type:** `Option<InvoiceTemplatesCreateSalesRequestDocumentType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partner_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**currency:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payment_term_days:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_scheme:** `Option<Option<InvoiceTemplatesCreateSalesRequestVatScheme>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_country_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**agreement_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_series_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discount_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_title:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_title:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**supply_type:** `Option<Option<InvoiceTemplatesCreateSalesRequestSupplyType>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**series_label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**order_number:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_transport_mode:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_delivery_terms:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_region:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_nature_of_transaction:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lines:** `Option<Vec<InvoiceTemplatesCreateSalesRequestLinesItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoice_templates_update</a>(request: InvoiceTemplatesUpdateSalesRequest) -> Result&lt;InvoiceTemplatesUpdateSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .invoice_templates_update(
+            &InvoiceTemplatesUpdateSalesRequest {
+                id: "id".to_string(),
+                name: None,
+                document_type: None,
+                partner_id: None,
+                currency: None,
+                payment_term_days: None,
+                vat_scheme: None,
+                vat_country_code: None,
+                agreement_id: None,
+                operation_type_id: None,
+                document_series_id: None,
+                discount_percent: None,
+                issued_by_name: None,
+                issued_by_title: None,
+                received_by_name: None,
+                received_by_title: None,
+                notes: None,
+                supply_type: None,
+                series_label: None,
+                order_number: None,
+                intrastat_transport_mode: None,
+                intrastat_delivery_terms: None,
+                intrastat_region: None,
+                intrastat_nature_of_transaction: None,
+                lines: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_type:** `Option<InvoiceTemplatesUpdateSalesRequestDocumentType>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**partner_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**currency:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payment_term_days:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_scheme:** `Option<Option<InvoiceTemplatesUpdateSalesRequestVatScheme>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**vat_country_code:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**agreement_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**operation_type_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**document_series_id:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discount_percent:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**issued_by_title:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_name:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**received_by_title:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**notes:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**supply_type:** `Option<Option<InvoiceTemplatesUpdateSalesRequestSupplyType>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**series_label:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**order_number:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_transport_mode:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_delivery_terms:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_region:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**intrastat_nature_of_transaction:** `Option<Option<String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**lines:** `Option<Vec<InvoiceTemplatesUpdateSalesRequestLinesItem>>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoice_templates_get</a>(request: InvoiceTemplatesGetSalesRequest) -> Result&lt;InvoiceTemplatesGetSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .invoice_templates_get(
+            &InvoiceTemplatesGetSalesRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoice_templates_delete</a>(request: InvoiceTemplatesDeleteSalesRequest) -> Result&lt;InvoiceTemplatesDeleteSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .invoice_templates_delete(
+            &InvoiceTemplatesDeleteSalesRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.sales.<a href="/src/api/resources/sales/client.rs">invoice_templates_list</a>(request: InvoiceTemplatesListSalesRequest) -> Result&lt;InvoiceTemplatesListSalesResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .sales
+        .invoice_templates_list(
+            &InvoiceTemplatesListSalesRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<InvoiceTemplatesListSalesRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<InvoiceTemplatesListSalesRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>
@@ -22291,7 +22982,7 @@ async fn main() {
 <dl>
 <dd>
 
-Build the working paper for the Form B1 annual return of a financial year - company details, registered office, directors and secretary from Settings → Officers, the members from Settings → Shareholders, the issued share capital and the figures of the financial statements - in the order the CORE screens ask for them. The CRO publishes no file format for the B1, so it is keyed into CORE.
+Build the working paper for the Form B1 annual return of a financial year - company details, registered office, directors and secretary from Account → Officers, the members from Account → Shareholders, the issued share capital and the figures of the financial statements - in the order the CORE screens ask for them. The CRO publishes no file format for the B1, so it is keyed into CORE.
 </dd>
 </dl>
 </dd>
@@ -26644,7 +27335,7 @@ async fn main() {
 <dl>
 <dd>
 
-The rows or codes of each return or registry deposit of the company country that are filled from account balances. Accounts fall into a row by the layout defaults for the standard chart of accounts unless mapped under Settings → Statement rows.
+The rows or codes of each return or registry deposit of the company country that are filled from account balances. Accounts fall into a row by the layout defaults for the standard chart of accounts unless mapped under Account → Statement rows.
 </dd>
 </dl>
 </dd>
@@ -47567,6 +48258,230 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">securities_import</a>(request: SecuritiesImportBankRequest) -> Result&lt;SecuritiesImportBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .securities_import(
+            &SecuritiesImportBankRequest {
+                bank_account_id: "bankAccountId".to_string(),
+                content: "content".to_string(),
+                file_name: None,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**bank_account_id:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**content:** `String` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**file_name:** `Option<String>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">securities_list</a>(request: SecuritiesListBankRequest) -> Result&lt;SecuritiesListBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .securities_list(
+            &SecuritiesListBankRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<SecuritiesListBankRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<SecuritiesListBankRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">securities_get</a>(request: SecuritiesGetBankRequest) -> Result&lt;SecuritiesGetBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .securities_get(
+            &SecuritiesGetBankRequest {
+                id: "id".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">feeds_banks_list</a>(request: FeedsBanksListBankRequest) -> Result&lt;FeedsBanksListBankResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -51875,6 +52790,187 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">account_set_account_type</a>(request: AccountSetAccountTypeBillingRequest) -> Result&lt;AccountSetAccountTypeBillingResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .account_set_account_type(
+            &AccountSetAccountTypeBillingRequest {
+                account_type: AccountSetAccountTypeBillingRequestAccountType::FlatRate,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**account_type:** `AccountSetAccountTypeBillingRequestAccountType` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">account_set_auto_top_up</a>(request: AccountSetAutoTopUpBillingRequest) -> Result&lt;AccountSetAutoTopUpBillingResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .account_set_auto_top_up(
+            &AccountSetAutoTopUpBillingRequest {
+                enabled: true,
+                amount_cents: 1000000,
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**enabled:** `bool` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**amount_cents:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">account_set_overdraft_cap</a>(request: AccountSetOverdraftCapBillingRequest) -> Result&lt;AccountSetOverdraftCapBillingResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .account_set_overdraft_cap(
+            &AccountSetOverdraftCapBillingRequest { cap_cents: 1000000 },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**cap_cents:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">topup_create</a>(request: TopupCreateBillingRequest) -> Result&lt;TopupCreateBillingResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -51903,6 +52999,7 @@ async fn main() {
             &TopupCreateBillingRequest {
                 amount_cents: 1000000,
                 locale: None,
+                return_to: None,
             },
             None,
         )
@@ -51931,6 +53028,196 @@ async fn main() {
 <dd>
 
 **locale:** `Option<TopupCreateBillingRequestLocale>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**return_to:** `Option<TopupCreateBillingRequestReturnTo>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">topup_confirm</a>(request: TopupConfirmBillingRequest) -> Result&lt;TopupConfirmBillingResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .topup_confirm(
+            &TopupConfirmBillingRequest {
+                session_id: "sessionId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**session_id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">flat_rate_create</a>(request: FlatRateCreateBillingRequest) -> Result&lt;FlatRateCreateBillingResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .flat_rate_create(
+            &FlatRateCreateBillingRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**locale:** `Option<FlatRateCreateBillingRequestLocale>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**plan:** `Option<FlatRateCreateBillingRequestPlan>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.billing.<a href="/src/api/resources/billing/client.rs">flat_rate_confirm</a>(request: FlatRateConfirmBillingRequest) -> Result&lt;FlatRateConfirmBillingResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .billing
+        .flat_rate_confirm(
+            &FlatRateConfirmBillingRequest {
+                session_id: "sessionId".to_string(),
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**session_id:** `String` 
     
 </dd>
 </dl>

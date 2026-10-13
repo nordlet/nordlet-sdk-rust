@@ -93,7 +93,7 @@ impl SalesClient {
             .await
     }
 
-    /// Send an issued invoice or credit note to the customer over Peppol through the company's own access point (Settings → Compliance → EU; Nordlet supports Recommand, Storecove and e-invoice.be). Without one the call is refused with 422 and the document can only be downloaded with `sales/invoices/peppol-xml`. `status` is `pending` until the receiving access point confirms, then `delivered`; `failed` and `rejected` come with `detail`, and the invoice can then be sent again. Later changes arrive through the access point's webhook and are announced as `sale_invoice.peppol_delivered`, `sale_invoice.peppol_rejected` and `sale_invoice.peppol_failed`.
+    /// Send an issued invoice or credit note to the customer over Peppol through the company's own access point (Account → Compliance → EU; Nordlet supports Recommand, Storecove and e-invoice.be). Without one the call is refused with 422 and the document can only be downloaded with `sales/invoices/peppol-xml`. `status` is `pending` until the receiving access point confirms, then `delivered`; `failed` and `rejected` come with `detail`, and the invoice can then be sent again. Later changes arrive through the access point's webhook and are announced as `sale_invoice.peppol_delivered`, `sale_invoice.peppol_rejected` and `sale_invoice.peppol_failed`.
     ///
     /// # Arguments
     ///
@@ -499,6 +499,86 @@ impl SalesClient {
             .execute_request(
                 Method::POST,
                 "v1/sales/acts/pdf",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn invoice_templates_create(
+        &self,
+        request: &InvoiceTemplatesCreateSalesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<InvoiceTemplatesCreateSalesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoice-templates/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn invoice_templates_update(
+        &self,
+        request: &InvoiceTemplatesUpdateSalesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<InvoiceTemplatesUpdateSalesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoice-templates/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn invoice_templates_get(
+        &self,
+        request: &InvoiceTemplatesGetSalesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<InvoiceTemplatesGetSalesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoice-templates/get",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn invoice_templates_delete(
+        &self,
+        request: &InvoiceTemplatesDeleteSalesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<InvoiceTemplatesDeleteSalesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoice-templates/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn invoice_templates_list(
+        &self,
+        request: &InvoiceTemplatesListSalesRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<InvoiceTemplatesListSalesResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/sales/invoice-templates/list",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

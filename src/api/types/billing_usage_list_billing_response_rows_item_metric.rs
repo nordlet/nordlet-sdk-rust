@@ -7,6 +7,7 @@ pub enum UsageListBillingResponseRowsItemMetric {
     OcrPage,
     FileStorageBytes,
     DatabaseBytes,
+    SaleInvoice,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -19,6 +20,7 @@ impl Serialize for UsageListBillingResponseRowsItemMetric {
             Self::OcrPage => serializer.serialize_str("ocr_page"),
             Self::FileStorageBytes => serializer.serialize_str("file_storage_bytes"),
             Self::DatabaseBytes => serializer.serialize_str("database_bytes"),
+            Self::SaleInvoice => serializer.serialize_str("sale_invoice"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -32,6 +34,7 @@ impl<'de> Deserialize<'de> for UsageListBillingResponseRowsItemMetric {
             "ocr_page" => Ok(Self::OcrPage),
             "file_storage_bytes" => Ok(Self::FileStorageBytes),
             "database_bytes" => Ok(Self::DatabaseBytes),
+            "sale_invoice" => Ok(Self::SaleInvoice),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -44,6 +47,7 @@ impl fmt::Display for UsageListBillingResponseRowsItemMetric {
             Self::OcrPage => write!(f, "ocr_page"),
             Self::FileStorageBytes => write!(f, "file_storage_bytes"),
             Self::DatabaseBytes => write!(f, "database_bytes"),
+            Self::SaleInvoice => write!(f, "sale_invoice"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

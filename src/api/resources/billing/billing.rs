@@ -45,6 +45,54 @@ impl BillingClient {
             .await
     }
 
+    pub async fn account_set_account_type(
+        &self,
+        request: &AccountSetAccountTypeBillingRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<AccountSetAccountTypeBillingResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/account/set-account-type",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn account_set_auto_top_up(
+        &self,
+        request: &AccountSetAutoTopUpBillingRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<AccountSetAutoTopUpBillingResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/account/set-auto-top-up",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn account_set_overdraft_cap(
+        &self,
+        request: &AccountSetOverdraftCapBillingRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<AccountSetOverdraftCapBillingResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/account/set-overdraft-cap",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn topup_create(
         &self,
         request: &TopupCreateBillingRequest,
@@ -54,6 +102,54 @@ impl BillingClient {
             .execute_request(
                 Method::POST,
                 "v1/billing/topup/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn topup_confirm(
+        &self,
+        request: &TopupConfirmBillingRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<TopupConfirmBillingResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/topup/confirm",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn flat_rate_create(
+        &self,
+        request: &FlatRateCreateBillingRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<FlatRateCreateBillingResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/flat-rate/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    pub async fn flat_rate_confirm(
+        &self,
+        request: &FlatRateConfirmBillingRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<FlatRateConfirmBillingResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/billing/flat-rate/confirm",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

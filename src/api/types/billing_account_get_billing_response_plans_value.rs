@@ -5,12 +5,12 @@ pub struct AccountGetBillingResponsePlansValue {
     #[serde(rename = "monthlyFeeEur")]
     #[serde(default)]
     pub monthly_fee_eur: String,
-    #[serde(rename = "includedRequests")]
+    #[serde(rename = "includedInvoices")]
     #[serde(default)]
-    pub included_requests: i64,
-    #[serde(rename = "requestOverageEur")]
+    pub included_invoices: i64,
+    #[serde(rename = "invoiceOverageEur")]
     #[serde(default)]
-    pub request_overage_eur: String,
+    pub invoice_overage_eur: String,
     #[serde(rename = "includedDatabaseBytes")]
     #[serde(default)]
     #[serde(with = "crate::core::number_serializers")]
@@ -31,8 +31,8 @@ impl AccountGetBillingResponsePlansValue {
 #[non_exhaustive]
 pub struct AccountGetBillingResponsePlansValueBuilder {
     monthly_fee_eur: Option<String>,
-    included_requests: Option<i64>,
-    request_overage_eur: Option<String>,
+    included_invoices: Option<i64>,
+    invoice_overage_eur: Option<String>,
     included_database_bytes: Option<f64>,
     included_file_bytes: Option<f64>,
 }
@@ -43,13 +43,13 @@ impl AccountGetBillingResponsePlansValueBuilder {
         self
     }
 
-    pub fn included_requests(mut self, value: i64) -> Self {
-        self.included_requests = Some(value);
+    pub fn included_invoices(mut self, value: i64) -> Self {
+        self.included_invoices = Some(value);
         self
     }
 
-    pub fn request_overage_eur(mut self, value: impl Into<String>) -> Self {
-        self.request_overage_eur = Some(value.into());
+    pub fn invoice_overage_eur(mut self, value: impl Into<String>) -> Self {
+        self.invoice_overage_eur = Some(value.into());
         self
     }
 
@@ -66,8 +66,8 @@ impl AccountGetBillingResponsePlansValueBuilder {
     /// Consumes the builder and constructs a [`AccountGetBillingResponsePlansValue`].
     /// This method will fail if any of the following fields are not set:
     /// - [`monthly_fee_eur`](AccountGetBillingResponsePlansValueBuilder::monthly_fee_eur)
-    /// - [`included_requests`](AccountGetBillingResponsePlansValueBuilder::included_requests)
-    /// - [`request_overage_eur`](AccountGetBillingResponsePlansValueBuilder::request_overage_eur)
+    /// - [`included_invoices`](AccountGetBillingResponsePlansValueBuilder::included_invoices)
+    /// - [`invoice_overage_eur`](AccountGetBillingResponsePlansValueBuilder::invoice_overage_eur)
     /// - [`included_database_bytes`](AccountGetBillingResponsePlansValueBuilder::included_database_bytes)
     /// - [`included_file_bytes`](AccountGetBillingResponsePlansValueBuilder::included_file_bytes)
     pub fn build(self) -> Result<AccountGetBillingResponsePlansValue, BuildError> {
@@ -75,12 +75,12 @@ impl AccountGetBillingResponsePlansValueBuilder {
             monthly_fee_eur: self
                 .monthly_fee_eur
                 .ok_or_else(|| BuildError::missing_field("monthly_fee_eur"))?,
-            included_requests: self
-                .included_requests
-                .ok_or_else(|| BuildError::missing_field("included_requests"))?,
-            request_overage_eur: self
-                .request_overage_eur
-                .ok_or_else(|| BuildError::missing_field("request_overage_eur"))?,
+            included_invoices: self
+                .included_invoices
+                .ok_or_else(|| BuildError::missing_field("included_invoices"))?,
+            invoice_overage_eur: self
+                .invoice_overage_eur
+                .ok_or_else(|| BuildError::missing_field("invoice_overage_eur"))?,
             included_database_bytes: self
                 .included_database_bytes
                 .ok_or_else(|| BuildError::missing_field("included_database_bytes"))?,

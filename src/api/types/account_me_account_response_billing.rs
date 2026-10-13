@@ -8,6 +8,9 @@ pub struct MeAccountResponseBilling {
     #[serde(rename = "balanceCents")]
     #[serde(default)]
     pub balance_cents: i64,
+    #[serde(rename = "overdraftAllowanceCents")]
+    #[serde(default)]
+    pub overdraft_allowance_cents: i64,
     #[serde(rename = "trialEndsAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
@@ -22,6 +25,14 @@ pub struct MeAccountResponseBilling {
     #[serde(rename = "isPayer")]
     #[serde(default)]
     pub is_payer: bool,
+    #[serde(rename = "planChosen")]
+    #[serde(default)]
+    pub plan_chosen: bool,
+    #[serde(rename = "flatRate")]
+    #[serde(default)]
+    pub flat_rate: bool,
+    #[serde(rename = "accountType")]
+    pub account_type: MeAccountResponseBillingAccountType,
 }
 
 impl MeAccountResponseBilling {
@@ -36,10 +47,14 @@ pub struct MeAccountResponseBillingBuilder {
     status: Option<MeAccountResponseBillingStatus>,
     plan: Option<String>,
     balance_cents: Option<i64>,
+    overdraft_allowance_cents: Option<i64>,
     trial_ends_at: Option<DateTime<FixedOffset>>,
     payer_user_id: Option<String>,
     payer_email: Option<String>,
     is_payer: Option<bool>,
+    plan_chosen: Option<bool>,
+    flat_rate: Option<bool>,
+    account_type: Option<MeAccountResponseBillingAccountType>,
 }
 
 impl MeAccountResponseBillingBuilder {
@@ -55,6 +70,11 @@ impl MeAccountResponseBillingBuilder {
 
     pub fn balance_cents(mut self, value: i64) -> Self {
         self.balance_cents = Some(value);
+        self
+    }
+
+    pub fn overdraft_allowance_cents(mut self, value: i64) -> Self {
+        self.overdraft_allowance_cents = Some(value);
         self
     }
 
@@ -78,14 +98,33 @@ impl MeAccountResponseBillingBuilder {
         self
     }
 
+    pub fn plan_chosen(mut self, value: bool) -> Self {
+        self.plan_chosen = Some(value);
+        self
+    }
+
+    pub fn flat_rate(mut self, value: bool) -> Self {
+        self.flat_rate = Some(value);
+        self
+    }
+
+    pub fn account_type(mut self, value: MeAccountResponseBillingAccountType) -> Self {
+        self.account_type = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`MeAccountResponseBilling`].
     /// This method will fail if any of the following fields are not set:
     /// - [`status`](MeAccountResponseBillingBuilder::status)
     /// - [`plan`](MeAccountResponseBillingBuilder::plan)
     /// - [`balance_cents`](MeAccountResponseBillingBuilder::balance_cents)
+    /// - [`overdraft_allowance_cents`](MeAccountResponseBillingBuilder::overdraft_allowance_cents)
     /// - [`payer_user_id`](MeAccountResponseBillingBuilder::payer_user_id)
     /// - [`payer_email`](MeAccountResponseBillingBuilder::payer_email)
     /// - [`is_payer`](MeAccountResponseBillingBuilder::is_payer)
+    /// - [`plan_chosen`](MeAccountResponseBillingBuilder::plan_chosen)
+    /// - [`flat_rate`](MeAccountResponseBillingBuilder::flat_rate)
+    /// - [`account_type`](MeAccountResponseBillingBuilder::account_type)
     pub fn build(self) -> Result<MeAccountResponseBilling, BuildError> {
         Ok(MeAccountResponseBilling {
             status: self
@@ -95,6 +134,9 @@ impl MeAccountResponseBillingBuilder {
             balance_cents: self
                 .balance_cents
                 .ok_or_else(|| BuildError::missing_field("balance_cents"))?,
+            overdraft_allowance_cents: self
+                .overdraft_allowance_cents
+                .ok_or_else(|| BuildError::missing_field("overdraft_allowance_cents"))?,
             trial_ends_at: self.trial_ends_at,
             payer_user_id: self
                 .payer_user_id
@@ -105,6 +147,15 @@ impl MeAccountResponseBillingBuilder {
             is_payer: self
                 .is_payer
                 .ok_or_else(|| BuildError::missing_field("is_payer"))?,
+            plan_chosen: self
+                .plan_chosen
+                .ok_or_else(|| BuildError::missing_field("plan_chosen"))?,
+            flat_rate: self
+                .flat_rate
+                .ok_or_else(|| BuildError::missing_field("flat_rate"))?,
+            account_type: self
+                .account_type
+                .ok_or_else(|| BuildError::missing_field("account_type"))?,
         })
     }
 }

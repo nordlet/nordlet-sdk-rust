@@ -9,6 +9,9 @@ pub struct AccountGetBillingResponseMonthToDate {
     #[serde(rename = "apiRequests")]
     #[serde(default)]
     pub api_requests: i64,
+    #[serde(rename = "saleInvoices")]
+    #[serde(default)]
+    pub sale_invoices: i64,
     #[serde(rename = "ocrPages")]
     #[serde(default)]
     pub ocr_pages: i64,
@@ -40,6 +43,7 @@ pub struct AccountGetBillingResponseMonthToDateBuilder {
     from: Option<String>,
     to: Option<String>,
     api_requests: Option<i64>,
+    sale_invoices: Option<i64>,
     ocr_pages: Option<i64>,
     file_bytes: Option<f64>,
     database_bytes: Option<f64>,
@@ -60,6 +64,11 @@ impl AccountGetBillingResponseMonthToDateBuilder {
 
     pub fn api_requests(mut self, value: i64) -> Self {
         self.api_requests = Some(value);
+        self
+    }
+
+    pub fn sale_invoices(mut self, value: i64) -> Self {
+        self.sale_invoices = Some(value);
         self
     }
 
@@ -93,6 +102,7 @@ impl AccountGetBillingResponseMonthToDateBuilder {
     /// - [`from`](AccountGetBillingResponseMonthToDateBuilder::from)
     /// - [`to`](AccountGetBillingResponseMonthToDateBuilder::to)
     /// - [`api_requests`](AccountGetBillingResponseMonthToDateBuilder::api_requests)
+    /// - [`sale_invoices`](AccountGetBillingResponseMonthToDateBuilder::sale_invoices)
     /// - [`ocr_pages`](AccountGetBillingResponseMonthToDateBuilder::ocr_pages)
     /// - [`file_bytes`](AccountGetBillingResponseMonthToDateBuilder::file_bytes)
     /// - [`database_bytes`](AccountGetBillingResponseMonthToDateBuilder::database_bytes)
@@ -105,6 +115,9 @@ impl AccountGetBillingResponseMonthToDateBuilder {
             api_requests: self
                 .api_requests
                 .ok_or_else(|| BuildError::missing_field("api_requests"))?,
+            sale_invoices: self
+                .sale_invoices
+                .ok_or_else(|| BuildError::missing_field("sale_invoices"))?,
             ocr_pages: self
                 .ocr_pages
                 .ok_or_else(|| BuildError::missing_field("ocr_pages"))?,

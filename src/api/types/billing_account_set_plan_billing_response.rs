@@ -3,6 +3,8 @@ pub use crate::prelude::*;
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AccountSetPlanBillingResponse {
     pub plan: AccountSetPlanBillingResponsePlan,
+    #[serde(rename = "accountType")]
+    pub account_type: AccountSetPlanBillingResponseAccountType,
     pub status: AccountSetPlanBillingResponseStatus,
     #[serde(rename = "balanceCents")]
     #[serde(default)]
@@ -42,9 +44,21 @@ pub struct AccountSetPlanBillingResponse {
     pub month_to_date: AccountSetPlanBillingResponseMonthToDate,
     #[serde(default)]
     pub plans: HashMap<String, AccountSetPlanBillingResponsePlansValue>,
+    #[serde(rename = "apiRequestEur")]
+    #[serde(default)]
+    pub api_request_eur: String,
     #[serde(rename = "topUp")]
     #[serde(default)]
     pub top_up: AccountSetPlanBillingResponseTopUp,
+    #[serde(rename = "autoTopUp")]
+    #[serde(default)]
+    pub auto_top_up: AccountSetPlanBillingResponseAutoTopUp,
+    #[serde(rename = "overdraftCapCents")]
+    #[serde(default)]
+    pub overdraft_cap_cents: i64,
+    #[serde(rename = "overdraftCapMaxCents")]
+    #[serde(default)]
+    pub overdraft_cap_max_cents: i64,
     #[serde(rename = "trialDays")]
     #[serde(default)]
     pub trial_days: i64,
@@ -60,6 +74,7 @@ impl AccountSetPlanBillingResponse {
 #[non_exhaustive]
 pub struct AccountSetPlanBillingResponseBuilder {
     plan: Option<AccountSetPlanBillingResponsePlan>,
+    account_type: Option<AccountSetPlanBillingResponseAccountType>,
     status: Option<AccountSetPlanBillingResponseStatus>,
     balance_cents: Option<i64>,
     trial_ends_at: Option<DateTime<FixedOffset>>,
@@ -72,13 +87,22 @@ pub struct AccountSetPlanBillingResponseBuilder {
     payment_failed_invoice_url: Option<String>,
     month_to_date: Option<AccountSetPlanBillingResponseMonthToDate>,
     plans: Option<HashMap<String, AccountSetPlanBillingResponsePlansValue>>,
+    api_request_eur: Option<String>,
     top_up: Option<AccountSetPlanBillingResponseTopUp>,
+    auto_top_up: Option<AccountSetPlanBillingResponseAutoTopUp>,
+    overdraft_cap_cents: Option<i64>,
+    overdraft_cap_max_cents: Option<i64>,
     trial_days: Option<i64>,
 }
 
 impl AccountSetPlanBillingResponseBuilder {
     pub fn plan(mut self, value: AccountSetPlanBillingResponsePlan) -> Self {
         self.plan = Some(value);
+        self
+    }
+
+    pub fn account_type(mut self, value: AccountSetPlanBillingResponseAccountType) -> Self {
+        self.account_type = Some(value);
         self
     }
 
@@ -145,8 +169,28 @@ impl AccountSetPlanBillingResponseBuilder {
         self
     }
 
+    pub fn api_request_eur(mut self, value: impl Into<String>) -> Self {
+        self.api_request_eur = Some(value.into());
+        self
+    }
+
     pub fn top_up(mut self, value: AccountSetPlanBillingResponseTopUp) -> Self {
         self.top_up = Some(value);
+        self
+    }
+
+    pub fn auto_top_up(mut self, value: AccountSetPlanBillingResponseAutoTopUp) -> Self {
+        self.auto_top_up = Some(value);
+        self
+    }
+
+    pub fn overdraft_cap_cents(mut self, value: i64) -> Self {
+        self.overdraft_cap_cents = Some(value);
+        self
+    }
+
+    pub fn overdraft_cap_max_cents(mut self, value: i64) -> Self {
+        self.overdraft_cap_max_cents = Some(value);
         self
     }
 
@@ -158,6 +202,7 @@ impl AccountSetPlanBillingResponseBuilder {
     /// Consumes the builder and constructs a [`AccountSetPlanBillingResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`plan`](AccountSetPlanBillingResponseBuilder::plan)
+    /// - [`account_type`](AccountSetPlanBillingResponseBuilder::account_type)
     /// - [`status`](AccountSetPlanBillingResponseBuilder::status)
     /// - [`balance_cents`](AccountSetPlanBillingResponseBuilder::balance_cents)
     /// - [`payments_configured`](AccountSetPlanBillingResponseBuilder::payments_configured)
@@ -165,11 +210,18 @@ impl AccountSetPlanBillingResponseBuilder {
     /// - [`has_subscription`](AccountSetPlanBillingResponseBuilder::has_subscription)
     /// - [`month_to_date`](AccountSetPlanBillingResponseBuilder::month_to_date)
     /// - [`plans`](AccountSetPlanBillingResponseBuilder::plans)
+    /// - [`api_request_eur`](AccountSetPlanBillingResponseBuilder::api_request_eur)
     /// - [`top_up`](AccountSetPlanBillingResponseBuilder::top_up)
+    /// - [`auto_top_up`](AccountSetPlanBillingResponseBuilder::auto_top_up)
+    /// - [`overdraft_cap_cents`](AccountSetPlanBillingResponseBuilder::overdraft_cap_cents)
+    /// - [`overdraft_cap_max_cents`](AccountSetPlanBillingResponseBuilder::overdraft_cap_max_cents)
     /// - [`trial_days`](AccountSetPlanBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<AccountSetPlanBillingResponse, BuildError> {
         Ok(AccountSetPlanBillingResponse {
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
+            account_type: self
+                .account_type
+                .ok_or_else(|| BuildError::missing_field("account_type"))?,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
@@ -196,9 +248,21 @@ impl AccountSetPlanBillingResponseBuilder {
             plans: self
                 .plans
                 .ok_or_else(|| BuildError::missing_field("plans"))?,
+            api_request_eur: self
+                .api_request_eur
+                .ok_or_else(|| BuildError::missing_field("api_request_eur"))?,
             top_up: self
                 .top_up
                 .ok_or_else(|| BuildError::missing_field("top_up"))?,
+            auto_top_up: self
+                .auto_top_up
+                .ok_or_else(|| BuildError::missing_field("auto_top_up"))?,
+            overdraft_cap_cents: self
+                .overdraft_cap_cents
+                .ok_or_else(|| BuildError::missing_field("overdraft_cap_cents"))?,
+            overdraft_cap_max_cents: self
+                .overdraft_cap_max_cents
+                .ok_or_else(|| BuildError::missing_field("overdraft_cap_max_cents"))?,
             trial_days: self
                 .trial_days
                 .ok_or_else(|| BuildError::missing_field("trial_days"))?,
