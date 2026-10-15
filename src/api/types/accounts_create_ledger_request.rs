@@ -1,13 +1,11 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct AccountsCreateLedgerRequest {
     #[serde(default)]
     pub code: String,
     #[serde(default)]
     pub name: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub translations: Option<HashMap<String, AccountsCreateLedgerRequestTranslationsValue>>,
     pub r#type: AccountsCreateLedgerRequestType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -28,7 +26,6 @@ impl AccountsCreateLedgerRequest {
 pub struct AccountsCreateLedgerRequestBuilder {
     code: Option<String>,
     name: Option<String>,
-    translations: Option<HashMap<String, AccountsCreateLedgerRequestTranslationsValue>>,
     r#type: Option<AccountsCreateLedgerRequestType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -42,14 +39,6 @@ impl AccountsCreateLedgerRequestBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
-        self
-    }
-
-    pub fn translations(
-        mut self,
-        value: HashMap<String, AccountsCreateLedgerRequestTranslationsValue>,
-    ) -> Self {
-        self.translations = Some(value);
         self
     }
 
@@ -77,7 +66,6 @@ impl AccountsCreateLedgerRequestBuilder {
         Ok(AccountsCreateLedgerRequest {
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
-            translations: self.translations,
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,

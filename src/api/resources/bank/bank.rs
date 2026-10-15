@@ -262,6 +262,22 @@ impl BankClient {
             .await
     }
 
+    pub async fn import_templates_list_builtin(
+        &self,
+        request: &ImportTemplatesListBuiltinBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ImportTemplatesListBuiltinBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/import-templates/list-builtin",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn import_templates_list(
         &self,
         request: &ImportTemplatesListBankRequest,

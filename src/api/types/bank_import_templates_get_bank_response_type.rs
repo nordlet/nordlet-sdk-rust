@@ -6,6 +6,7 @@ pub enum ImportTemplatesGetBankResponseType {
     Stripe,
     Iso20022,
     BankConnection,
+    Revolut,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -17,6 +18,7 @@ impl Serialize for ImportTemplatesGetBankResponseType {
             Self::Stripe => serializer.serialize_str("stripe"),
             Self::Iso20022 => serializer.serialize_str("iso20022"),
             Self::BankConnection => serializer.serialize_str("bank_connection"),
+            Self::Revolut => serializer.serialize_str("revolut"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -29,6 +31,7 @@ impl<'de> Deserialize<'de> for ImportTemplatesGetBankResponseType {
             "stripe" => Ok(Self::Stripe),
             "iso20022" => Ok(Self::Iso20022),
             "bank_connection" => Ok(Self::BankConnection),
+            "revolut" => Ok(Self::Revolut),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -40,6 +43,7 @@ impl fmt::Display for ImportTemplatesGetBankResponseType {
             Self::Stripe => write!(f, "stripe"),
             Self::Iso20022 => write!(f, "iso20022"),
             Self::BankConnection => write!(f, "bank_connection"),
+            Self::Revolut => write!(f, "revolut"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

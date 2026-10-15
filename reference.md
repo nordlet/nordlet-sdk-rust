@@ -25478,7 +25478,6 @@ async fn main() {
                 code: "code".to_string(),
                 name: "name".to_string(),
                 r#type: AccountsCreateLedgerRequestType::Asset,
-                translations: None,
                 parent_id: None,
                 is_postable: None,
             },
@@ -25509,14 +25508,6 @@ async fn main() {
 <dd>
 
 **name:** `String` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**translations:** `Option<std::collections::HashMap<String, AccountsCreateLedgerRequestTranslationsValue>>` 
     
 </dd>
 </dl>
@@ -25580,7 +25571,6 @@ async fn main() {
             &AccountsUpdateLedgerRequest {
                 id: "id".to_string(),
                 name: None,
-                translations: None,
                 parent_id: None,
                 is_postable: None,
             },
@@ -25611,14 +25601,6 @@ async fn main() {
 <dd>
 
 **name:** `Option<String>` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**translations:** `Option<Option<std::collections::HashMap<String, Option<AccountsUpdateLedgerRequestTranslationsValue>>>>` 
     
 </dd>
 </dl>
@@ -46560,6 +46542,49 @@ async fn main() {
 
 **id:** `String` 
     
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">import_templates_list_builtin</a>(request: ImportTemplatesListBuiltinBankRequest) -> Result&lt;ImportTemplatesListBuiltinBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .import_templates_list_builtin(
+            &ImportTemplatesListBuiltinBankRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
 </dd>
 </dl>
 </dd>

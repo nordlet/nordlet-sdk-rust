@@ -6,6 +6,7 @@ pub enum StatementsImportBankRequestFormat {
     Camt053,
     Mt940,
     StripeCsv,
+    RevolutCsv,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -17,6 +18,7 @@ impl Serialize for StatementsImportBankRequestFormat {
             Self::Camt053 => serializer.serialize_str("camt053"),
             Self::Mt940 => serializer.serialize_str("mt940"),
             Self::StripeCsv => serializer.serialize_str("stripe-csv"),
+            Self::RevolutCsv => serializer.serialize_str("revolut-csv"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -29,6 +31,7 @@ impl<'de> Deserialize<'de> for StatementsImportBankRequestFormat {
             "camt053" => Ok(Self::Camt053),
             "mt940" => Ok(Self::Mt940),
             "stripe-csv" => Ok(Self::StripeCsv),
+            "revolut-csv" => Ok(Self::RevolutCsv),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -40,6 +43,7 @@ impl fmt::Display for StatementsImportBankRequestFormat {
             Self::Camt053 => write!(f, "camt053"),
             Self::Mt940 => write!(f, "mt940"),
             Self::StripeCsv => write!(f, "stripe-csv"),
+            Self::RevolutCsv => write!(f, "revolut-csv"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

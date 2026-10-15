@@ -45,6 +45,9 @@ pub struct ImportTemplatesCreateBankResponse {
     #[serde(rename = "fullRefundLabel")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub full_refund_label: Option<String>,
+    /// Provided by Nordlet for every company; it cannot be changed or deleted
+    #[serde(default)]
+    pub builtin: bool,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
@@ -80,6 +83,7 @@ pub struct ImportTemplatesCreateBankResponseBuilder {
     lender_meta_field: Option<String>,
     partial_refund_label: Option<String>,
     full_refund_label: Option<String>,
+    builtin: Option<bool>,
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
 }
@@ -165,6 +169,11 @@ impl ImportTemplatesCreateBankResponseBuilder {
         self
     }
 
+    pub fn builtin(mut self, value: bool) -> Self {
+        self.builtin = Some(value);
+        self
+    }
+
     pub fn created_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.created_at = Some(value);
         self
@@ -183,6 +192,7 @@ impl ImportTemplatesCreateBankResponseBuilder {
     /// - [`fields`](ImportTemplatesCreateBankResponseBuilder::fields)
     /// - [`meta_fields`](ImportTemplatesCreateBankResponseBuilder::meta_fields)
     /// - [`advance_invoices`](ImportTemplatesCreateBankResponseBuilder::advance_invoices)
+    /// - [`builtin`](ImportTemplatesCreateBankResponseBuilder::builtin)
     /// - [`created_at`](ImportTemplatesCreateBankResponseBuilder::created_at)
     /// - [`updated_at`](ImportTemplatesCreateBankResponseBuilder::updated_at)
     pub fn build(self) -> Result<ImportTemplatesCreateBankResponse, BuildError> {
@@ -211,6 +221,9 @@ impl ImportTemplatesCreateBankResponseBuilder {
             lender_meta_field: self.lender_meta_field,
             partial_refund_label: self.partial_refund_label,
             full_refund_label: self.full_refund_label,
+            builtin: self
+                .builtin
+                .ok_or_else(|| BuildError::missing_field("builtin"))?,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

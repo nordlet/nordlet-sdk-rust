@@ -1,13 +1,11 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct AccountsUpdateLedgerRequest {
     #[serde(default)]
     pub id: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub translations: Option<HashMap<String, Option<AccountsUpdateLedgerRequestTranslationsValue>>>,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub parent_id: Option<String>,
@@ -27,7 +25,6 @@ impl AccountsUpdateLedgerRequest {
 pub struct AccountsUpdateLedgerRequestBuilder {
     id: Option<String>,
     name: Option<String>,
-    translations: Option<HashMap<String, Option<AccountsUpdateLedgerRequestTranslationsValue>>>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
 }
@@ -40,14 +37,6 @@ impl AccountsUpdateLedgerRequestBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
-        self
-    }
-
-    pub fn translations(
-        mut self,
-        value: HashMap<String, Option<AccountsUpdateLedgerRequestTranslationsValue>>,
-    ) -> Self {
-        self.translations = Some(value);
         self
     }
 
@@ -68,7 +57,6 @@ impl AccountsUpdateLedgerRequestBuilder {
         Ok(AccountsUpdateLedgerRequest {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             name: self.name,
-            translations: self.translations,
             parent_id: self.parent_id,
             is_postable: self.is_postable,
         })

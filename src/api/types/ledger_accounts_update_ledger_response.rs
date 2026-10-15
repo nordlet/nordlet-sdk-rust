@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct AccountsUpdateLedgerResponse {
     #[serde(default)]
     pub id: String,
@@ -8,9 +8,10 @@ pub struct AccountsUpdateLedgerResponse {
     pub code: String,
     #[serde(default)]
     pub name: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub translations:
-        Option<HashMap<String, Option<AccountsUpdateLedgerResponseTranslationsValue>>>,
+    /// The name in the language of the Accept-Language header
+    #[serde(rename = "displayName")]
+    #[serde(default)]
+    pub display_name: String,
     pub r#type: AccountsUpdateLedgerResponseType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -36,7 +37,7 @@ pub struct AccountsUpdateLedgerResponseBuilder {
     id: Option<String>,
     code: Option<String>,
     name: Option<String>,
-    translations: Option<HashMap<String, Option<AccountsUpdateLedgerResponseTranslationsValue>>>,
+    display_name: Option<String>,
     r#type: Option<AccountsUpdateLedgerResponseType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -59,11 +60,8 @@ impl AccountsUpdateLedgerResponseBuilder {
         self
     }
 
-    pub fn translations(
-        mut self,
-        value: HashMap<String, Option<AccountsUpdateLedgerResponseTranslationsValue>>,
-    ) -> Self {
-        self.translations = Some(value);
+    pub fn display_name(mut self, value: impl Into<String>) -> Self {
+        self.display_name = Some(value.into());
         self
     }
 
@@ -92,6 +90,7 @@ impl AccountsUpdateLedgerResponseBuilder {
     /// - [`id`](AccountsUpdateLedgerResponseBuilder::id)
     /// - [`code`](AccountsUpdateLedgerResponseBuilder::code)
     /// - [`name`](AccountsUpdateLedgerResponseBuilder::name)
+    /// - [`display_name`](AccountsUpdateLedgerResponseBuilder::display_name)
     /// - [`r#type`](AccountsUpdateLedgerResponseBuilder::r#type)
     /// - [`is_postable`](AccountsUpdateLedgerResponseBuilder::is_postable)
     /// - [`created_at`](AccountsUpdateLedgerResponseBuilder::created_at)
@@ -100,7 +99,9 @@ impl AccountsUpdateLedgerResponseBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
-            translations: self.translations,
+            display_name: self
+                .display_name
+                .ok_or_else(|| BuildError::missing_field("display_name"))?,
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,

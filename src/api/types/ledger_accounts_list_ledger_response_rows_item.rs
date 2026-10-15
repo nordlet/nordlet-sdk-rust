@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct AccountsListLedgerResponseRowsItem {
     #[serde(default)]
     pub id: String,
@@ -8,9 +8,10 @@ pub struct AccountsListLedgerResponseRowsItem {
     pub code: String,
     #[serde(default)]
     pub name: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub translations:
-        Option<HashMap<String, Option<AccountsListLedgerResponseRowsItemTranslationsValue>>>,
+    /// The name in the language of the Accept-Language header
+    #[serde(rename = "displayName")]
+    #[serde(default)]
+    pub display_name: String,
     pub r#type: AccountsListLedgerResponseRowsItemType,
     #[serde(rename = "parentId")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -36,8 +37,7 @@ pub struct AccountsListLedgerResponseRowsItemBuilder {
     id: Option<String>,
     code: Option<String>,
     name: Option<String>,
-    translations:
-        Option<HashMap<String, Option<AccountsListLedgerResponseRowsItemTranslationsValue>>>,
+    display_name: Option<String>,
     r#type: Option<AccountsListLedgerResponseRowsItemType>,
     parent_id: Option<String>,
     is_postable: Option<bool>,
@@ -60,11 +60,8 @@ impl AccountsListLedgerResponseRowsItemBuilder {
         self
     }
 
-    pub fn translations(
-        mut self,
-        value: HashMap<String, Option<AccountsListLedgerResponseRowsItemTranslationsValue>>,
-    ) -> Self {
-        self.translations = Some(value);
+    pub fn display_name(mut self, value: impl Into<String>) -> Self {
+        self.display_name = Some(value.into());
         self
     }
 
@@ -93,6 +90,7 @@ impl AccountsListLedgerResponseRowsItemBuilder {
     /// - [`id`](AccountsListLedgerResponseRowsItemBuilder::id)
     /// - [`code`](AccountsListLedgerResponseRowsItemBuilder::code)
     /// - [`name`](AccountsListLedgerResponseRowsItemBuilder::name)
+    /// - [`display_name`](AccountsListLedgerResponseRowsItemBuilder::display_name)
     /// - [`r#type`](AccountsListLedgerResponseRowsItemBuilder::r#type)
     /// - [`is_postable`](AccountsListLedgerResponseRowsItemBuilder::is_postable)
     /// - [`created_at`](AccountsListLedgerResponseRowsItemBuilder::created_at)
@@ -101,7 +99,9 @@ impl AccountsListLedgerResponseRowsItemBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
-            translations: self.translations,
+            display_name: self
+                .display_name
+                .ok_or_else(|| BuildError::missing_field("display_name"))?,
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,
