@@ -9,6 +9,9 @@ pub struct ConfigsListDeclarationsResponseRowsItemFieldsItem {
     pub multiline: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
+    #[serde(rename = "companyField")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub company_field: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField>,
 }
 
 impl ConfigsListDeclarationsResponseRowsItemFieldsItem {
@@ -24,6 +27,7 @@ pub struct ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
     kind: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemKind>,
     multiline: Option<bool>,
     options: Option<Vec<String>>,
+    company_field: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField>,
 }
 
 impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
@@ -47,6 +51,14 @@ impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
         self
     }
 
+    pub fn company_field(
+        mut self,
+        value: ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField,
+    ) -> Self {
+        self.company_field = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`ConfigsListDeclarationsResponseRowsItemFieldsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`key`](ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder::key)
@@ -57,6 +69,7 @@ impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
             kind: self.kind.ok_or_else(|| BuildError::missing_field("kind"))?,
             multiline: self.multiline,
             options: self.options,
+            company_field: self.company_field,
         })
     }
 }

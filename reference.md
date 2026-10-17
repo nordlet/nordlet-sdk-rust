@@ -24663,6 +24663,21 @@ async fn main() {
 </dd>
 </dl>
 
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**country:** `Option<String>` — List the systems of this country instead of the company country
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
 
 </dd>
 </dl>
@@ -48496,6 +48511,96 @@ async fn main() {
 <dd>
 
 **id:** `String` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bank.<a href="/src/api/resources/bank/client.rs">securities_operations_list</a>(request: SecuritiesOperationsListBankRequest) -> Result&lt;SecuritiesOperationsListBankResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .bank
+        .securities_operations_list(
+            &SecuritiesOperationsListBankRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**page:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `Option<String>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**sort:** `Option<Vec<SecuritiesOperationsListBankRequestSortItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**filter:** `Option<Vec<SecuritiesOperationsListBankRequestFilterItem>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**totals:** `Option<Vec<String>>` — Numeric fields to sum over every row matching the filter (not only the current page)
     
 </dd>
 </dl>

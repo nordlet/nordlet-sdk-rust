@@ -4,6 +4,9 @@ pub use crate::prelude::*;
 pub struct SecuritiesGetBankResponseOperationsItem {
     #[serde(default)]
     pub id: String,
+    #[serde(rename = "bankAccountId")]
+    #[serde(default)]
+    pub bank_account_id: String,
     #[serde(default)]
     pub kind: String,
     #[serde(default)]
@@ -62,6 +65,7 @@ impl SecuritiesGetBankResponseOperationsItem {
 #[non_exhaustive]
 pub struct SecuritiesGetBankResponseOperationsItemBuilder {
     id: Option<String>,
+    bank_account_id: Option<String>,
     kind: Option<String>,
     date: Option<NaiveDate>,
     time: Option<String>,
@@ -87,6 +91,11 @@ pub struct SecuritiesGetBankResponseOperationsItemBuilder {
 impl SecuritiesGetBankResponseOperationsItemBuilder {
     pub fn id(mut self, value: impl Into<String>) -> Self {
         self.id = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_id(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_id = Some(value.into());
         self
     }
 
@@ -193,6 +202,7 @@ impl SecuritiesGetBankResponseOperationsItemBuilder {
     /// Consumes the builder and constructs a [`SecuritiesGetBankResponseOperationsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](SecuritiesGetBankResponseOperationsItemBuilder::id)
+    /// - [`bank_account_id`](SecuritiesGetBankResponseOperationsItemBuilder::bank_account_id)
     /// - [`kind`](SecuritiesGetBankResponseOperationsItemBuilder::kind)
     /// - [`date`](SecuritiesGetBankResponseOperationsItemBuilder::date)
     /// - [`currency`](SecuritiesGetBankResponseOperationsItemBuilder::currency)
@@ -200,6 +210,9 @@ impl SecuritiesGetBankResponseOperationsItemBuilder {
     pub fn build(self) -> Result<SecuritiesGetBankResponseOperationsItem, BuildError> {
         Ok(SecuritiesGetBankResponseOperationsItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+            bank_account_id: self
+                .bank_account_id
+                .ok_or_else(|| BuildError::missing_field("bank_account_id"))?,
             kind: self.kind.ok_or_else(|| BuildError::missing_field("kind"))?,
             date: self.date.ok_or_else(|| BuildError::missing_field("date"))?,
             time: self.time,

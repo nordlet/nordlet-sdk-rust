@@ -689,6 +689,22 @@ impl BankClient {
             .await
     }
 
+    pub async fn securities_operations_list(
+        &self,
+        request: &SecuritiesOperationsListBankRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SecuritiesOperationsListBankResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/bank/securities/operations/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn feeds_banks_list(
         &self,
         request: &FeedsBanksListBankRequest,
