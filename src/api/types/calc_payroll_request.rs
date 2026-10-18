@@ -24,6 +24,8 @@ pub struct CalcPayrollRequest {
     pub benefit_in_kind: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<HashMap<String, String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payments: Option<Vec<CalcPayrollRequestPaymentsItem>>,
 }
 
 impl CalcPayrollRequest {
@@ -43,6 +45,7 @@ pub struct CalcPayrollRequestBuilder {
     fixed_term: Option<bool>,
     benefit_in_kind: Option<String>,
     options: Option<HashMap<String, String>>,
+    payments: Option<Vec<CalcPayrollRequestPaymentsItem>>,
 }
 
 impl CalcPayrollRequestBuilder {
@@ -86,6 +89,11 @@ impl CalcPayrollRequestBuilder {
         self
     }
 
+    pub fn payments(mut self, value: Vec<CalcPayrollRequestPaymentsItem>) -> Self {
+        self.payments = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`CalcPayrollRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`taxable_base`](CalcPayrollRequestBuilder::taxable_base)
@@ -102,6 +110,7 @@ impl CalcPayrollRequestBuilder {
             fixed_term: self.fixed_term,
             benefit_in_kind: self.benefit_in_kind,
             options: self.options,
+            payments: self.payments,
         })
     }
 }

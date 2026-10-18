@@ -11,6 +11,9 @@ pub struct RunsReversePayrollResponseComponentTotalsItem {
     pub rate: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub base: Option<String>,
+    #[serde(rename = "paymentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payment_type: Option<String>,
 }
 
 impl RunsReversePayrollResponseComponentTotalsItem {
@@ -27,6 +30,7 @@ pub struct RunsReversePayrollResponseComponentTotalsItemBuilder {
     amount: Option<String>,
     rate: Option<String>,
     base: Option<String>,
+    payment_type: Option<String>,
 }
 
 impl RunsReversePayrollResponseComponentTotalsItemBuilder {
@@ -55,6 +59,11 @@ impl RunsReversePayrollResponseComponentTotalsItemBuilder {
         self
     }
 
+    pub fn payment_type(mut self, value: impl Into<String>) -> Self {
+        self.payment_type = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`RunsReversePayrollResponseComponentTotalsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`code`](RunsReversePayrollResponseComponentTotalsItemBuilder::code)
@@ -69,6 +78,7 @@ impl RunsReversePayrollResponseComponentTotalsItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("amount"))?,
             rate: self.rate,
             base: self.base,
+            payment_type: self.payment_type,
         })
     }
 }

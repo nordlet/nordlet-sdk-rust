@@ -23,6 +23,9 @@ pub struct LtGpm312ComputeDeclarationsResponseRowsItem {
     #[serde(rename = "gpmWithheld")]
     #[serde(default)]
     pub gpm_withheld: String,
+    #[serde(rename = "gpmRatePercent")]
+    #[serde(default)]
+    pub gpm_rate_percent: String,
 }
 
 impl LtGpm312ComputeDeclarationsResponseRowsItem {
@@ -41,6 +44,7 @@ pub struct LtGpm312ComputeDeclarationsResponseRowsItemBuilder {
     payment_code: Option<String>,
     paid_amount: Option<String>,
     gpm_withheld: Option<String>,
+    gpm_rate_percent: Option<String>,
 }
 
 impl LtGpm312ComputeDeclarationsResponseRowsItemBuilder {
@@ -79,6 +83,11 @@ impl LtGpm312ComputeDeclarationsResponseRowsItemBuilder {
         self
     }
 
+    pub fn gpm_rate_percent(mut self, value: impl Into<String>) -> Self {
+        self.gpm_rate_percent = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`LtGpm312ComputeDeclarationsResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`employee_id`](LtGpm312ComputeDeclarationsResponseRowsItemBuilder::employee_id)
@@ -87,6 +96,7 @@ impl LtGpm312ComputeDeclarationsResponseRowsItemBuilder {
     /// - [`payment_code`](LtGpm312ComputeDeclarationsResponseRowsItemBuilder::payment_code)
     /// - [`paid_amount`](LtGpm312ComputeDeclarationsResponseRowsItemBuilder::paid_amount)
     /// - [`gpm_withheld`](LtGpm312ComputeDeclarationsResponseRowsItemBuilder::gpm_withheld)
+    /// - [`gpm_rate_percent`](LtGpm312ComputeDeclarationsResponseRowsItemBuilder::gpm_rate_percent)
     pub fn build(self) -> Result<LtGpm312ComputeDeclarationsResponseRowsItem, BuildError> {
         Ok(LtGpm312ComputeDeclarationsResponseRowsItem {
             employee_id: self
@@ -108,6 +118,9 @@ impl LtGpm312ComputeDeclarationsResponseRowsItemBuilder {
             gpm_withheld: self
                 .gpm_withheld
                 .ok_or_else(|| BuildError::missing_field("gpm_withheld"))?,
+            gpm_rate_percent: self
+                .gpm_rate_percent
+                .ok_or_else(|| BuildError::missing_field("gpm_rate_percent"))?,
         })
     }
 }

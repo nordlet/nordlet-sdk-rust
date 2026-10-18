@@ -25698,7 +25698,7 @@ async fn main() {
 <dl>
 <dd>
 
-Replaces the seeded chart with the chart template of the company country (the Romanian general chart for a company registered in Romania, the Lithuanian standard chart otherwise) and switches the posting defaults with it. Answers 409 when the company already uses that chart, has journal entries, holds accounts created by hand, or has settings that name an account the new chart does not have.
+Replaces the seeded chart with the chart template of the company country (the Romanian general chart for a company registered in Romania, the Estonian e-arveldaja chart for a company registered in Estonia, the Lithuanian standard chart otherwise) and switches the posting defaults with it. Answers 409 when the company already uses that chart, has journal entries, holds accounts created by hand, or has settings that name an account the new chart does not have.
 </dd>
 </dl>
 </dd>
@@ -34289,6 +34289,49 @@ async fn main() {
 </dl>
 </details>
 
+<details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">payment_types_list</a>(request: PaymentTypesListPayrollRequest) -> Result&lt;PaymentTypesListPayrollResponse, ApiError&gt;</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```rust
+use nordlet::prelude::*;
+
+#[tokio::main]
+async fn main() {
+    let config = ClientConfig {
+        token: Some("<token>".to_string()),
+        ..Default::default()
+    };
+    let client = ApiClient::new(config).expect("Failed to build client");
+    client
+        .payroll
+        .payment_types_list(
+            &PaymentTypesListPayrollRequest {
+                ..Default::default()
+            },
+            None,
+        )
+        .await;
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.payroll.<a href="/src/api/resources/payroll/client.rs">calc</a>(request: CalcPayrollRequest) -> Result&lt;CalcPayrollResponse, ApiError&gt;</code></summary>
 <dl>
 <dd>
@@ -34323,6 +34366,7 @@ async fn main() {
                 fixed_term: None,
                 benefit_in_kind: None,
                 options: None,
+                payments: None,
             },
             None,
         )
@@ -34399,6 +34443,14 @@ async fn main() {
 <dd>
 
 **options:** `Option<std::collections::HashMap<String, String>>` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**payments:** `Option<Vec<CalcPayrollRequestPaymentsItem>>` 
     
 </dd>
 </dl>

@@ -77,6 +77,22 @@ impl PayrollClient {
             .await
     }
 
+    pub async fn payment_types_list(
+        &self,
+        request: &PaymentTypesListPayrollRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<PaymentTypesListPayrollResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/payroll/payment-types/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
     pub async fn calc(
         &self,
         request: &CalcPayrollRequest,

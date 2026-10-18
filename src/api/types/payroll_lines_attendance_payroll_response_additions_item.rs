@@ -8,6 +8,11 @@ pub struct LinesAttendancePayrollResponseAdditionsItem {
     pub amount: String,
     #[serde(default)]
     pub taxable: bool,
+    #[serde(rename = "paymentType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payment_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hours: Option<String>,
 }
 
 impl LinesAttendancePayrollResponseAdditionsItem {
@@ -22,6 +27,8 @@ pub struct LinesAttendancePayrollResponseAdditionsItemBuilder {
     name: Option<String>,
     amount: Option<String>,
     taxable: Option<bool>,
+    payment_type: Option<String>,
+    hours: Option<String>,
 }
 
 impl LinesAttendancePayrollResponseAdditionsItemBuilder {
@@ -40,6 +47,16 @@ impl LinesAttendancePayrollResponseAdditionsItemBuilder {
         self
     }
 
+    pub fn payment_type(mut self, value: impl Into<String>) -> Self {
+        self.payment_type = Some(value.into());
+        self
+    }
+
+    pub fn hours(mut self, value: impl Into<String>) -> Self {
+        self.hours = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`LinesAttendancePayrollResponseAdditionsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`name`](LinesAttendancePayrollResponseAdditionsItemBuilder::name)
@@ -54,6 +71,8 @@ impl LinesAttendancePayrollResponseAdditionsItemBuilder {
             taxable: self
                 .taxable
                 .ok_or_else(|| BuildError::missing_field("taxable"))?,
+            payment_type: self.payment_type,
+            hours: self.hours,
         })
     }
 }
