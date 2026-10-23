@@ -41,6 +41,8 @@ pub struct InvoicesUpdateSalesRequest {
     pub deemed_supplier: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locale: Option<InvoicesUpdateSalesRequestLocale>,
     #[serde(rename = "operationTypeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_type_id: Option<String>,
@@ -95,6 +97,7 @@ pub struct InvoicesUpdateSalesRequestBuilder {
     vat_country_code: Option<String>,
     deemed_supplier: Option<bool>,
     notes: Option<String>,
+    locale: Option<InvoicesUpdateSalesRequestLocale>,
     operation_type_id: Option<String>,
     document_series_id: Option<String>,
     series_label: Option<String>,
@@ -178,6 +181,11 @@ impl InvoicesUpdateSalesRequestBuilder {
         self
     }
 
+    pub fn locale(mut self, value: InvoicesUpdateSalesRequestLocale) -> Self {
+        self.locale = Some(value);
+        self
+    }
+
     pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
         self.operation_type_id = Some(value.into());
         self
@@ -247,6 +255,7 @@ impl InvoicesUpdateSalesRequestBuilder {
             vat_country_code: self.vat_country_code,
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,
+            locale: self.locale,
             operation_type_id: self.operation_type_id,
             document_series_id: self.document_series_id,
             series_label: self.series_label,

@@ -13,6 +13,15 @@ impl DocumentSeriesClient {
         })
     }
 
+    /// Create a numbering series for sale invoices, credit notes, proformas or advance invoices (`documentType`). Numbers run from `nextNumber`, padded to `numberLength` digits, and are written as `prefix`-number or, with `printSeries` false, as the bare number; a series may be bound to an operation type (a default series of an operation type is picked for its documents that name no series) and to a warehouse, which `sales/invoices/issue` takes the goods from. `isDefault` makes it the default of its document type and clears the previous one. Answers 422 when only one end of the allocated range `allocatedFrom`..`allocatedTo` is given or the range is reversed, 409 when the prefix exists for the document type.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn create(
         &self,
         request: &CreateDocumentSeriesRequest,
@@ -29,6 +38,15 @@ impl DocumentSeriesClient {
             .await
     }
 
+    /// Change a document series; fields left out keep their value. `nextNumber` cannot go below its current value (409); `isDefault` clears the previous default of the document type. Answers 422 for an incomplete or reversed allocated range, 409 when the prefix is taken for the document type.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn update(
         &self,
         request: &UpdateDocumentSeriesRequest,
@@ -45,6 +63,15 @@ impl DocumentSeriesClient {
             .await
     }
 
+    /// Return one document series.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn get(
         &self,
         request: &GetDocumentSeriesRequest,
@@ -61,6 +88,15 @@ impl DocumentSeriesClient {
             .await
     }
 
+    /// Delete a document series no sale document uses. Answers 409 when invoices reference it; deactivate it with `isActive` instead.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn delete(
         &self,
         request: &DeleteDocumentSeriesRequest,
@@ -77,6 +113,15 @@ impl DocumentSeriesClient {
             .await
     }
 
+    /// List document series. Filterable by documentType, prefix, operationTypeId and isActive; sortable by prefix, documentType and createdAt.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn list(
         &self,
         request: &ListDocumentSeriesRequest,

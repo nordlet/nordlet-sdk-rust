@@ -55,6 +55,9 @@ pub struct InvoicesCreateSalesRequest {
     #[serde(rename = "documentRef")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document_ref: Option<String>,
+    /// Language of the PDF and of the e-mail the invoice is sent with; unset means the language asked for when the PDF is made
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locale: Option<InvoicesCreateSalesRequestLocale>,
     #[serde(rename = "operationTypeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_type_id: Option<String>,
@@ -113,6 +116,7 @@ pub struct InvoicesCreateSalesRequestBuilder {
     deemed_supplier: Option<bool>,
     notes: Option<String>,
     document_ref: Option<String>,
+    locale: Option<InvoicesCreateSalesRequestLocale>,
     operation_type_id: Option<String>,
     document_series_id: Option<String>,
     series_label: Option<String>,
@@ -216,6 +220,11 @@ impl InvoicesCreateSalesRequestBuilder {
         self
     }
 
+    pub fn locale(mut self, value: InvoicesCreateSalesRequestLocale) -> Self {
+        self.locale = Some(value);
+        self
+    }
+
     pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
         self.operation_type_id = Some(value.into());
         self
@@ -292,6 +301,7 @@ impl InvoicesCreateSalesRequestBuilder {
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,
             document_ref: self.document_ref,
+            locale: self.locale,
             operation_type_id: self.operation_type_id,
             document_series_id: self.document_series_id,
             series_label: self.series_label,

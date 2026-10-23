@@ -13,6 +13,15 @@ impl CatalogClient {
         })
     }
 
+    /// Create a catalog item: a product, a service or a set of other items. `unit` must be `vnt`, a global measurement unit or one of the company's own units (`catalog/units/options`), the sale, purchase and expense account codes must be postable accounts of the chart, and `priceFrom`/`priceTo` and `validFrom`/`validTo` must be in order; otherwise 422. A `set` needs at least one component and none of them may be a set; `components` on any other type is refused with 422. 409 when an active item already carries the `code`. `documentRef` is the storage key of a file uploaded with `files/upload`, which is attached to the item. Emits `item.created`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_create(
         &self,
         request: &ItemsCreateCatalogRequest,
@@ -29,6 +38,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Return one item; a set comes with its components.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_get(
         &self,
         request: &ItemsGetCatalogRequest,
@@ -45,6 +63,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Change the fields of an item; the fields that are nullable in the request can be set to null to clear them. The checks of `catalog/items/create` apply. `components` replaces the whole component list and is accepted only when the item is or becomes a set (422); turning an item into a set needs components and is refused with 409 while the item is itself a component of another set. Turning a set into another type removes its components. 409 when an active item already carries the new `code`. Emits `item.updated`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_update(
         &self,
         request: &ItemsUpdateCatalogRequest,
@@ -61,6 +88,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Soft-delete an item. Refused with 409 while the item is a component of an active set. Emits `item.deleted`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_delete(
         &self,
         request: &ItemsDeleteCatalogRequest,
@@ -77,6 +113,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the active items. Filterable: name, code, barcode, type, vatClassifierCode, groupId, kindId, externalId, manufacturer, department. Sortable: name, code, createdAt, updatedAt, salePriceExclVat; default name ascending. Rows carry no components; `catalog/items/get` returns them.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_list(
         &self,
         request: &ItemsListCatalogRequest,
@@ -93,6 +138,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the files attached to an item, newest first.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_files_list(
         &self,
         request: &ItemsFilesListCatalogRequest,
@@ -109,6 +163,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Create an item kind: a code, a name, the SAF-T item type, whether quantities are accounted for, and a sort order. 409 when the code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_kinds_create(
         &self,
         request: &ItemsKindsCreateCatalogRequest,
@@ -125,6 +188,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Change an item kind. 409 when the new code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_kinds_update(
         &self,
         request: &ItemsKindsUpdateCatalogRequest,
@@ -141,6 +213,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Delete an item kind. Refused with 409 while an active item uses it; soft-deleted items that still carry it are detached.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_kinds_delete(
         &self,
         request: &ItemsKindsDeleteCatalogRequest,
@@ -157,6 +238,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the company's item kinds in sort order, then by code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_kinds_list(
         &self,
         request: &ItemsKindsListCatalogRequest,
@@ -173,6 +263,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Create a unit of measure of the company's own, in addition to the global measurement units (`reference/units/list`). 409 when the code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn units_create(
         &self,
         request: &UnitsCreateCatalogRequest,
@@ -189,6 +288,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Change the code, name or active flag of a company unit. 409 when the new code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn units_update(
         &self,
         request: &UnitsUpdateCatalogRequest,
@@ -205,6 +313,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Delete a company unit of measure.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn units_delete(
         &self,
         request: &UnitsDeleteCatalogRequest,
@@ -221,6 +338,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the company's own units of measure, ordered by code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn units_list(
         &self,
         request: &UnitsListCatalogRequest,
@@ -237,6 +363,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Return the unit codes an item can use: the company's active own units first, then the global measurement units, named in the requested `locale` (Lithuanian for `lt`, English otherwise). A company unit hides a global unit with the same code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn units_options(
         &self,
         request: &UnitsOptionsCatalogRequest,
@@ -253,6 +388,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Create an item group, optionally under `parentId`. 409 when the code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn item_groups_create(
         &self,
         request: &ItemGroupsCreateCatalogRequest,
@@ -269,6 +413,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Change the code, name or parent of an item group; `parentId` null moves it to the top level. 422 when the new parent is the group itself or one of its descendants. 409 when the new code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn item_groups_update(
         &self,
         request: &ItemGroupsUpdateCatalogRequest,
@@ -285,6 +438,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Delete an item group. Refused with 409 while it has child groups or active items assigned.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn item_groups_delete(
         &self,
         request: &ItemGroupsDeleteCatalogRequest,
@@ -301,6 +463,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the company's item groups, ordered by code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn item_groups_list(
         &self,
         request: &ItemGroupsListCatalogRequest,
@@ -317,6 +488,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Create or replace the supplier record of an item for a partner (one per item and partner): supplier code, purchase price excluding VAT, currency (EUR when omitted) and notes. Fields omitted from the request are cleared on an existing record.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_suppliers_upsert(
         &self,
         request: &ItemsSuppliersUpsertCatalogRequest,
@@ -333,6 +513,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the supplier records, optionally for one `itemId` and/or `partnerId`, ordered by partner name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_suppliers_list(
         &self,
         request: &ItemsSuppliersListCatalogRequest,
@@ -349,6 +538,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Delete the supplier record of an item.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn items_suppliers_delete(
         &self,
         request: &ItemsSuppliersDeleteCatalogRequest,
@@ -365,6 +563,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Create a price list (currency EUR and active when omitted). 409 when the code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn price_lists_create(
         &self,
         request: &PriceListsCreateCatalogRequest,
@@ -381,6 +588,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Change a price list. 409 when the new code already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn price_lists_update(
         &self,
         request: &PriceListsUpdateCatalogRequest,
@@ -397,6 +613,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the company's price lists, ordered by code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn price_lists_list(
         &self,
         request: &PriceListsListCatalogRequest,
@@ -413,6 +638,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Set the unit price excluding VAT of up to 500 items on a price list; a price already on the list is replaced and the other items on the list are kept. 422 when an item appears twice in the request. Emits `price_list.updated` with the item ids.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn price_lists_items_set(
         &self,
         request: &PriceListsItemsSetCatalogRequest,
@@ -429,6 +663,15 @@ impl CatalogClient {
             .await
     }
 
+    /// List the prices of a price list with the item name and code, ordered by item name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn price_lists_items_list(
         &self,
         request: &PriceListsItemsListCatalogRequest,
@@ -445,6 +688,15 @@ impl CatalogClient {
             .await
     }
 
+    /// Remove one item from a price list.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn price_lists_items_delete(
         &self,
         request: &PriceListsItemsDeleteCatalogRequest,

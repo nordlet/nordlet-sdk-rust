@@ -13,6 +13,15 @@ impl ReferenceClient {
         })
     }
 
+    /// Fetches the euro exchange rates the Bank of Lithuania web service publishes for `date` (default: the company's current date) and stores them in the rate table shared by all companies, replacing the rates already stored for that date. Answers 404 when no rates are published for the date.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn exchange_rates_sync(
         &self,
         request: &ExchangeRatesSyncReferenceRequest,
@@ -29,6 +38,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the stored euro exchange rates, which are shared by all companies. Filterable by `currencyCode` and `date`; sortable by `date` and `currencyCode`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn exchange_rates_list(
         &self,
         request: &ExchangeRatesListReferenceRequest,
@@ -45,6 +63,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Stores a company exchange rate for `currency` on `date`, in units of the currency per one unit of the company's base currency, replacing the company rate stored for that currency and date. Rate lookups use the company rate when it is dated on or after the latest shared rate on or before the lookup date. Answers 422 when `rate` is not positive.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn exchange_rates_set(
         &self,
         request: &ExchangeRatesSetReferenceRequest,
@@ -61,6 +88,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the company's own exchange rates set with `reference/exchange-rates/set`. Filterable by `currencyCode` and `date`; sortable by `date` and `currencyCode`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn exchange_rates_overrides_list(
         &self,
         request: &ExchangeRatesOverridesListReferenceRequest,
@@ -77,6 +113,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Removes the company's own exchange rate for `currency` on `date`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn exchange_rates_overrides_delete(
         &self,
         request: &ExchangeRatesOverridesDeleteReferenceRequest,
@@ -93,6 +138,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists every country code Nordlet knows with its EU and EEA membership and its name in each supported locale.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn countries_list(
         &self,
         request: &CountriesListReferenceRequest,
@@ -109,6 +163,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the ten Lithuanian counties (apskritys) with their code and ISO code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn lt_counties_list(
         &self,
         request: &LtCountiesListReferenceRequest,
@@ -125,6 +188,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the Lithuanian municipalities (savivaldybės) with the county each belongs to; `countyCode` limits the list to one county.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn lt_municipalities_list(
         &self,
         request: &LtMunicipalitiesListReferenceRequest,
@@ -141,6 +213,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists Lithuanian cities with their municipality; `municipalityCode` limits the list to one municipality and `q` to names that start with the given text (case-insensitive).
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn lt_cities_list(
         &self,
         request: &LtCitiesListReferenceRequest,
@@ -157,6 +238,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the banks of the bank directory shared by all companies. Filterable by `countryCode`, `name`, `bic` and `bankCode`; sortable by `name`, `bic` and `countryCode`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn banks_list(
         &self,
         request: &BanksListReferenceRequest,
@@ -173,6 +263,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Adds a bank to the shared bank directory or, when a bank with the same `countryCode` and `bic` exists, replaces its name, bank code and active flag. Platform administrators only.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn banks_upsert(
         &self,
         request: &BanksUpsertReferenceRequest,
@@ -189,6 +288,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the ten Lithuanian regions (apskritys) with their code and ISO code; the same list as `reference/lt/counties/list`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn lt_regions_list(
         &self,
         request: &LtRegionsListReferenceRequest,
@@ -205,6 +313,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the currencies known to Nordlet with their minor units. Filterable and sortable by `code` and `name`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn currencies_list(
         &self,
         request: &CurrenciesListReferenceRequest,
@@ -221,6 +338,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the company's VAT classifiers (code, country, name and rate). A document line that names a classifier in `vatClassifierCode` takes its rate from it when neither the line nor the item has a rate. Filterable by `code`, `countryCode` and `ratePercent`; sortable by `code` and `ratePercent`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn vat_classifiers_list(
         &self,
         request: &VatClassifiersListReferenceRequest,
@@ -237,6 +363,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Adds VAT classifiers to the company or replaces the country, name and rate of the ones whose `code` already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn vat_classifiers_upsert(
         &self,
         request: &VatClassifiersUpsertReferenceRequest,
@@ -303,6 +438,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Works out the VAT treatment of a supply by this company: the scheme (domestic, intra-EU B2B, reverse charge, OSS, IOSS, marketplace deemed supplier, export, out of scope or SME exempt), the country whose VAT applies, its rates with the company's overrides applied, and the legal basis. The customer comes from `partnerId` (country from the partner's address or VAT number, business status from the VAT number) or from `customerCountryCode` and `customerIsBusiness`; `date` defaults to the company's current date; when `belowDistanceSalesThreshold` is not given, the distance-sales threshold is tracked from the company's ledger. Answers 422 when the partner has neither an address country nor a VAT code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn vat_resolve(
         &self,
         request: &VatResolveReferenceRequest,
@@ -319,6 +463,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the Combined Nomenclature codes of the directory shared by all companies. Filterable by `code`, `name` and `nameLt`; sortable by `code`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn cn_codes_list(
         &self,
         request: &CnCodesListReferenceRequest,
@@ -335,6 +488,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Adds Combined Nomenclature codes to the shared directory or replaces the names and supplementary unit of the codes that exist. Platform administrators only.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn cn_codes_upsert(
         &self,
         request: &CnCodesUpsertReferenceRequest,
@@ -351,6 +513,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the versions of the filing systems, schemas and forms Nordlet's output was checked against, with the date of the check and the source; `country` limits the list to one country.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn compliance_versions_list(
         &self,
         request: &ComplianceVersionsListReferenceRequest,
@@ -367,6 +538,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the Intrastat thresholds stored per year: the reporting and the statistical-value threshold for arrivals and for dispatches.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn intrastat_thresholds_list(
         &self,
         request: &IntrastatThresholdsListReferenceRequest,
@@ -383,6 +563,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the measurement units of the directory shared by all companies, with Lithuanian and English names. Filterable by `code`, `nameLt` and `nameEn`; sortable by `code`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn units_list(
         &self,
         request: &UnitsListReferenceRequest,
@@ -399,6 +588,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Creates a numbering series for a document type, prefix and year; the first number the series hands out is at least `startAt`. Answers 409 when a series with the same document type, prefix and year exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn series_create(
         &self,
         request: &SeriesCreateReferenceRequest,
@@ -415,6 +613,15 @@ impl ReferenceClient {
             .await
     }
 
+    /// Lists the company's numbering series with the next number of each. Filterable and sortable by `documentType`, `prefix` and `year`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn series_list(
         &self,
         request: &SeriesListReferenceRequest,

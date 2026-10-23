@@ -13,6 +13,15 @@ impl LeadsClient {
         })
     }
 
+    /// Creates a lead in status `new`, `contacted`, `qualified` or `lost`. `assignedUserId` must be a member of the company and `sourceId` and `typeId` must exist in it; `countryCode` and `currency` are stored in upper case; `documents` attach uploaded files not yet linked to a record, and `notes` become the lead's first notes with the caller as author. Emits `lead.created`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn create(
         &self,
         request: &CreateLeadsRequest,
@@ -29,6 +38,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Returns one lead with its source and type names.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn get(
         &self,
         request: &GetLeadsRequest,
@@ -45,6 +63,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Changes the given fields of a lead; the clearable fields accept null, `documents` attach more uploaded files, and `countryCode` and `currency` are stored in upper case. A lead that is already converted cannot change `status` (409).
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn update(
         &self,
         request: &UpdateLeadsRequest,
@@ -61,6 +88,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Deletes a lead with its notes and detaches its files, which stay in the company's files without a record.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn delete(
         &self,
         request: &DeleteLeadsRequest,
@@ -77,6 +113,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists leads with their source and type names; filterable by `name`, `contactName`, `email`, `phone`, `status`, `sourceId`, `typeId`, `countryCode`, `assignedUserId`, `partnerId`, `estimatedValue` and `createdAt`, sortable by `name`, `status`, `estimatedValue`, `createdAt` and `updatedAt`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn list(
         &self,
         request: &ListLeadsRequest,
@@ -93,6 +138,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Adds a note to a lead with the caller as author and refreshes the lead's `updatedAt`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn notes_create(
         &self,
         request: &NotesCreateLeadsRequest,
@@ -109,6 +163,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Deletes a lead note.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn notes_delete(
         &self,
         request: &NotesDeleteLeadsRequest,
@@ -125,6 +188,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists the notes of a lead, newest first.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn notes_list(
         &self,
         request: &NotesListLeadsRequest,
@@ -141,6 +213,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists the files attached to a lead, newest first.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn files_list(
         &self,
         request: &FilesListLeadsRequest,
@@ -157,6 +238,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Creates a lead source; a `name` already used by a source of the company is refused with 409.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn sources_create(
         &self,
         request: &SourcesCreateLeadsRequest,
@@ -173,6 +263,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Changes the name or `isActive` flag of a lead source; a name already used by another source of the company is refused with 409.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn sources_update(
         &self,
         request: &SourcesUpdateLeadsRequest,
@@ -189,6 +288,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Deletes a lead source; one still referenced by a lead is refused with 409 and should be deactivated with `leads/sources/update` instead.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn sources_delete(
         &self,
         request: &SourcesDeleteLeadsRequest,
@@ -205,6 +313,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists all lead sources of the company, active and inactive, ordered by name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn sources_list(
         &self,
         request: &SourcesListLeadsRequest,
@@ -221,6 +338,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists the id and name of the active lead sources, ordered by name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn sources_options(
         &self,
         request: &SourcesOptionsLeadsRequest,
@@ -237,6 +363,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Creates a lead type; a `name` already used by a type of the company is refused with 409.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn types_create(
         &self,
         request: &TypesCreateLeadsRequest,
@@ -253,6 +388,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Changes the name or `isActive` flag of a lead type; a name already used by another type of the company is refused with 409.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn types_update(
         &self,
         request: &TypesUpdateLeadsRequest,
@@ -269,6 +413,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Deletes a lead type; one still referenced by a lead is refused with 409 and should be deactivated with `leads/types/update` instead.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn types_delete(
         &self,
         request: &TypesDeleteLeadsRequest,
@@ -285,6 +438,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists all lead types of the company, active and inactive, ordered by name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn types_list(
         &self,
         request: &TypesListLeadsRequest,
@@ -301,6 +463,15 @@ impl LeadsClient {
             .await
     }
 
+    /// Lists the id and name of the active lead types, ordered by name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn types_options(
         &self,
         request: &TypesOptionsLeadsRequest,

@@ -25,6 +25,7 @@ pub enum SubscriptionsCreateWebhooksRequestEventsItem {
     PurchaseInvoiceRegistered,
     PurchaseOrderApproved,
     PurchaseOrderReceived,
+    RecurringInvoiceGenerated,
     RefundLiabilityActual,
     RefundLiabilityTruedUp,
     ReportCompleted,
@@ -86,6 +87,9 @@ impl Serialize for SubscriptionsCreateWebhooksRequestEventsItem {
             }
             Self::PurchaseOrderApproved => serializer.serialize_str("purchase_order.approved"),
             Self::PurchaseOrderReceived => serializer.serialize_str("purchase_order.received"),
+            Self::RecurringInvoiceGenerated => {
+                serializer.serialize_str("recurring_invoice.generated")
+            }
             Self::RefundLiabilityActual => serializer.serialize_str("refund_liability.actual"),
             Self::RefundLiabilityTruedUp => serializer.serialize_str("refund_liability.trued_up"),
             Self::ReportCompleted => serializer.serialize_str("report.completed"),
@@ -148,6 +152,7 @@ impl<'de> Deserialize<'de> for SubscriptionsCreateWebhooksRequestEventsItem {
             "purchase_invoice.registered" => Ok(Self::PurchaseInvoiceRegistered),
             "purchase_order.approved" => Ok(Self::PurchaseOrderApproved),
             "purchase_order.received" => Ok(Self::PurchaseOrderReceived),
+            "recurring_invoice.generated" => Ok(Self::RecurringInvoiceGenerated),
             "refund_liability.actual" => Ok(Self::RefundLiabilityActual),
             "refund_liability.trued_up" => Ok(Self::RefundLiabilityTruedUp),
             "report.completed" => Ok(Self::ReportCompleted),
@@ -201,6 +206,7 @@ impl fmt::Display for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::PurchaseInvoiceRegistered => write!(f, "purchase_invoice.registered"),
             Self::PurchaseOrderApproved => write!(f, "purchase_order.approved"),
             Self::PurchaseOrderReceived => write!(f, "purchase_order.received"),
+            Self::RecurringInvoiceGenerated => write!(f, "recurring_invoice.generated"),
             Self::RefundLiabilityActual => write!(f, "refund_liability.actual"),
             Self::RefundLiabilityTruedUp => write!(f, "refund_liability.trued_up"),
             Self::ReportCompleted => write!(f, "report.completed"),

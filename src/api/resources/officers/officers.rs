@@ -38,6 +38,15 @@ impl OfficersClient {
             .await
     }
 
+    /// Add an officer to the company's register (`officers/list`); `signsAccounts` defaults to true. Refused with 422 when `resignedOn` is before `appointedOn`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn create(
         &self,
         request: &CreateOfficersRequest,
@@ -54,6 +63,15 @@ impl OfficersClient {
             .await
     }
 
+    /// Replace the recorded data of an officer; every field is written as sent, so a field left out is cleared and `signsAccounts` falls back to true. Refused with 422 when `resignedOn` is before `appointedOn`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn update(
         &self,
         request: &UpdateOfficersRequest,
@@ -70,6 +88,15 @@ impl OfficersClient {
             .await
     }
 
+    /// Remove an officer from the company's register.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn delete(
         &self,
         request: &DeleteOfficersRequest,

@@ -13,6 +13,15 @@ impl ConsolidationClient {
         })
     }
 
+    /// Create a consolidation group owned by the calling company; `presentationCurrency` defaults to the company's base currency. Members are added with `consolidation/members/add`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn groups_create(
         &self,
         request: &GroupsCreateConsolidationRequest,
@@ -29,6 +38,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// List the calling company's consolidation groups with their member counts.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn groups_list(
         &self,
         request: &GroupsListConsolidationRequest,
@@ -45,6 +63,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Return one consolidation group with its members, each with its ownership percentage and consolidation method.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn groups_get(
         &self,
         request: &GroupsGetConsolidationRequest,
@@ -61,6 +88,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Rename a consolidation group or change its presentation currency.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn groups_update(
         &self,
         request: &GroupsUpdateConsolidationRequest,
@@ -77,6 +113,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Delete a consolidation group.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn groups_delete(
         &self,
         request: &GroupsDeleteConsolidationRequest,
@@ -93,6 +138,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Add a company to a consolidation group with its ownership percentage and method (`full`, `proportional` or `equity`), or change those of an existing member. Another company can be added only by a signed-in user who is owner, admin or accountant of it; an API key is refused with 403.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn members_add(
         &self,
         request: &MembersAddConsolidationRequest,
@@ -109,6 +163,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Remove a company from a consolidation group.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn members_remove(
         &self,
         request: &MembersRemoveConsolidationRequest,
@@ -175,6 +238,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// List the intercompany links of a group: which partner record of which member company stands for which other member company.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn intercompany_links_list(
         &self,
         request: &IntercompanyLinksListConsolidationRequest,
@@ -191,6 +263,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Remove an intercompany link from a group.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn intercompany_links_remove(
         &self,
         request: &IntercompanyLinksRemoveConsolidationRequest,
@@ -232,6 +313,15 @@ impl ConsolidationClient {
             .await
     }
 
+    /// Consolidated financial statements of a group for a period in its presentation currency, with the consolidated trial balance and cash flow, each member's contribution and the intercompany candidates. Each member's balances are translated at the group owner's exchange rates of `toDate` and taken in full, in proportion to the ownership (`proportional`) or as an equity-method investment (`equity`); a fully consolidated member held below 100 % yields the non-controlling interest, and `eliminations` are amounts added to account codes before the statements are assembled (`balanced` tells whether they net to zero). Refused with 422 when the group has no members.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn report(
         &self,
         request: &ReportConsolidationRequest,

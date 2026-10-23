@@ -13,6 +13,15 @@ impl CalendarClient {
         })
     }
 
+    /// Lists, in due-date order, the filing deadlines Nordlet derives for the company from its country and profile together with the company's own events, between `from` and `to` (default 45 days back to 120 days ahead of the company's current date). Each deadline carries its submissions, whether it can be filed with `calendar/submit`, amended, or built with `calendar/download`, and whether its automation is on; `includeDone: false` leaves out the rows that are completed, submitted or accepted.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn list(
         &self,
         request: &ListCalendarRequest,
@@ -29,6 +38,15 @@ impl CalendarClient {
             .await
     }
 
+    /// Reads one calendar row by `key`: the id of a company event, or `ruleKey:period` for a filing deadline with its submissions.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn get(
         &self,
         request: &GetCalendarRequest,
@@ -95,6 +113,15 @@ impl CalendarClient {
             .await
     }
 
+    /// Creates a company event (kind `custom`) with a title, a due date, notes and a done flag.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn create(
         &self,
         request: &CreateCalendarRequest,
@@ -111,6 +138,15 @@ impl CalendarClient {
             .await
     }
 
+    /// Changes a calendar row by `key`. A company event takes a new title, due date, notes or done flag; a filing deadline (`ruleKey:period`) takes only notes and done, keeps its own title and date, and gets a stored row the first time it is annotated.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn update(
         &self,
         request: &UpdateCalendarRequest,
@@ -127,6 +163,15 @@ impl CalendarClient {
             .await
     }
 
+    /// Deletes a company event by its id, or the stored notes and done mark of a filing deadline by `ruleKey:period`; the deadline itself still comes from the rules.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn delete(
         &self,
         request: &DeleteCalendarRequest,

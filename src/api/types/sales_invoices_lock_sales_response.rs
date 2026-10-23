@@ -112,6 +112,11 @@ pub struct InvoicesLockSalesResponse {
     #[serde(rename = "receivedByTitle")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub received_by_title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub locale: Option<String>,
+    #[serde(rename = "recurringInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub recurring_invoice_id: Option<String>,
     #[serde(rename = "lockedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
@@ -238,6 +243,8 @@ pub struct InvoicesLockSalesResponseBuilder {
     issued_by_title: Option<String>,
     received_by_name: Option<String>,
     received_by_title: Option<String>,
+    locale: Option<String>,
+    recurring_invoice_id: Option<String>,
     locked_at: Option<DateTime<FixedOffset>>,
     locked_by: Option<String>,
     pay_token: Option<String>,
@@ -462,6 +469,16 @@ impl InvoicesLockSalesResponseBuilder {
         self
     }
 
+    pub fn locale(mut self, value: impl Into<String>) -> Self {
+        self.locale = Some(value.into());
+        self
+    }
+
+    pub fn recurring_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.recurring_invoice_id = Some(value.into());
+        self
+    }
+
     pub fn locked_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.locked_at = Some(value);
         self
@@ -648,6 +665,8 @@ impl InvoicesLockSalesResponseBuilder {
             issued_by_title: self.issued_by_title,
             received_by_name: self.received_by_name,
             received_by_title: self.received_by_title,
+            locale: self.locale,
+            recurring_invoice_id: self.recurring_invoice_id,
             locked_at: self.locked_at,
             locked_by: self.locked_by,
             pay_token: self.pay_token,

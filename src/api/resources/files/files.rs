@@ -13,6 +13,15 @@ impl FilesClient {
         })
     }
 
+    /// Store a base64-encoded file of up to 10 MB (413 above that) under an `entity` and optional `entityId`, and return its record with the SHA-256 of the content and its `storageKey`, which other calls take as `documentRef`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn upload(
         &self,
         request: &UploadFilesRequest,
@@ -29,6 +38,15 @@ impl FilesClient {
             .await
     }
 
+    /// Return a file record with its content, base64-encoded.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn get(
         &self,
         request: &GetFilesRequest,
@@ -45,6 +63,15 @@ impl FilesClient {
             .await
     }
 
+    /// List the company's files. Filterable by `entity`, `entityId` and `fileName`; sortable by `createdAt`, `fileName` and `sizeBytes`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn list(
         &self,
         request: &ListFilesRequest,
@@ -61,6 +88,15 @@ impl FilesClient {
             .await
     }
 
+    /// Delete a file record and its stored content.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn delete(
         &self,
         request: &DeleteFilesRequest,

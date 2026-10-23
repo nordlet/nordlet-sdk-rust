@@ -13,6 +13,15 @@ impl HrClient {
         })
     }
 
+    /// Creates a job position with an optional code and name translations, for use in `hr/contracts/create`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn positions_create(
         &self,
         request: &PositionsCreateHrRequest,
@@ -29,6 +38,15 @@ impl HrClient {
             .await
     }
 
+    /// Changes the code, name or translations of a position; a null `translations` removes them.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn positions_update(
         &self,
         request: &PositionsUpdateHrRequest,
@@ -45,6 +63,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists the company's positions; filterable and sortable by `name` and `code`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn positions_list(
         &self,
         request: &PositionsListHrRequest,
@@ -61,6 +88,15 @@ impl HrClient {
             .await
     }
 
+    /// Creates an employee record. `payrollOptions` holds the country-specific settings the payroll engine reads for the person (see `hr/employees/fields`); `applyAllowance` defaults to true and `pensionAccumulation` to false.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_create(
         &self,
         request: &EmployeesCreateHrRequest,
@@ -77,6 +113,15 @@ impl HrClient {
             .await
     }
 
+    /// Changes the given fields of an employee; a null clears the fields that allow it (code, personal code, birth date, contact details, address, IBAN, social insurance number and start, hire date, notes). `status` and `terminationDate` are set here too.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_update(
         &self,
         request: &EmployeesUpdateHrRequest,
@@ -93,6 +138,15 @@ impl HrClient {
             .await
     }
 
+    /// Reads one employee.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_get(
         &self,
         request: &EmployeesGetHrRequest,
@@ -134,6 +188,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists the employees that are not deleted; filterable by `firstName`, `lastName`, `code`, `status` and `email`, sortable by `lastName`, `code` and `createdAt`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_list(
         &self,
         request: &EmployeesListHrRequest,
@@ -150,6 +213,15 @@ impl HrClient {
             .await
     }
 
+    /// Marks the employee deleted; the record stays and no longer appears in lists or payroll runs. `hr/employees/anonymize` also blanks the personal data.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_delete(
         &self,
         request: &EmployeesDeleteHrRequest,
@@ -191,6 +263,15 @@ impl HrClient {
             .await
     }
 
+    /// Creates an employment contract for an employee. A `permanent` contract takes no `endDate` and a `fixed_term` one requires it; the number comes from `contractNo` or, with `agreementId`, from the employee's agreement; `workHours` defaults by `salaryType`. Answers 422 when the end date is before the start, and 409 when the employee already has a contract overlapping the period (end it with `hr/contracts/end` first) or the contract number already exists.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn contracts_create(
         &self,
         request: &ContractsCreateHrRequest,
@@ -207,6 +288,15 @@ impl HrClient {
             .await
     }
 
+    /// Ends a contract on `endDate` with an optional reason. Answers 422 when the end date is before the contract start.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn contracts_end(
         &self,
         request: &ContractsEndHrRequest,
@@ -223,6 +313,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists employment contracts; filterable by `employeeId`, `agreementId`, `status` and `contractNo`, sortable by `startDate` and `contractNo`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn contracts_list(
         &self,
         request: &ContractsListHrRequest,
@@ -239,6 +338,15 @@ impl HrClient {
             .await
     }
 
+    /// Creates or replaces the leave entitlement of an employee for a year; `usedDays` is kept unless given (0 on a new row) and `remainingDays` is the entitled days less the used ones.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn leave_balances_set(
         &self,
         request: &LeaveBalancesSetHrRequest,
@@ -255,6 +363,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists leave balances, narrowed to an employee and/or a year when given, oldest year first.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn leave_balances_list(
         &self,
         request: &LeaveBalancesListHrRequest,
@@ -271,6 +388,15 @@ impl HrClient {
             .await
     }
 
+    /// Records a sick-leave certificate of an employee. Answers 422 when `toDate` is before `fromDate`. `payroll/runs/create` warns when a certificate covers working days of a month that has no timesheet.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn incapacity_certificates_create(
         &self,
         request: &IncapacityCertificatesCreateHrRequest,
@@ -287,6 +413,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists incapacity certificates; filterable by `employeeId` and `number`, sortable by `fromDate` and `number`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn incapacity_certificates_list(
         &self,
         request: &IncapacityCertificatesListHrRequest,
@@ -303,6 +438,15 @@ impl HrClient {
             .await
     }
 
+    /// Adds the company's daily per diem rate for a destination country from `validFrom`; `hr/business-trips/create` takes the latest rate valid on the trip's start date. Answers 409 when a rate for that country already starts on that date.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn per_diem_rates_create(
         &self,
         request: &PerDiemRatesCreateHrRequest,
@@ -319,6 +463,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists per diem rates; filterable by `countryCode`, sortable by `countryCode` and `validFrom`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn per_diem_rates_list(
         &self,
         request: &PerDiemRatesListHrRequest,
@@ -335,6 +488,15 @@ impl HrClient {
             .await
     }
 
+    /// Deletes a per diem rate.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn per_diem_rates_delete(
         &self,
         request: &PerDiemRatesDeleteHrRequest,
@@ -351,6 +513,15 @@ impl HrClient {
             .await
     }
 
+    /// Stores the trip as a draft with `days` counted as calendar days, both ends included, and `perDiemAmount` as the days times the company's rate for the destination valid on the start date (`hr/per-diem-rates/create`). Answers 422 when the trip ends before it starts or no rate covers the destination on that date, and 409 when the employee already has a trip overlapping the dates.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn business_trips_create(
         &self,
         request: &BusinessTripsCreateHrRequest,
@@ -367,6 +538,15 @@ impl HrClient {
             .await
     }
 
+    /// Reads one business trip.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn business_trips_get(
         &self,
         request: &BusinessTripsGetHrRequest,
@@ -383,6 +563,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists business trips; filterable by `employeeId`, `status` and `payrollRunId`, sortable by `startDate`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn business_trips_list(
         &self,
         request: &BusinessTripsListHrRequest,
@@ -399,6 +588,15 @@ impl HrClient {
             .await
     }
 
+    /// Sets the trip's status to `approved`. `payroll/runs/create` without explicit lines adds the per diem of every approved trip ending in the run month as an untaxed addition and sets the trip's `payrollRunId`; reversing or cancelling the run releases the trip again. Answers 409 when the trip is not a draft.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn business_trips_approve(
         &self,
         request: &BusinessTripsApproveHrRequest,
@@ -415,6 +613,15 @@ impl HrClient {
             .await
     }
 
+    /// Deletes a draft trip; answers 409 when the trip is not a draft.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn business_trips_delete(
         &self,
         request: &BusinessTripsDeleteHrRequest,
@@ -431,6 +638,15 @@ impl HrClient {
             .await
     }
 
+    /// Adds an education, qualification, certificate or training record to an employee, optionally linked to one of the company's uploaded files (`fileId`).
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_records_create(
         &self,
         request: &EmployeesRecordsCreateHrRequest,
@@ -447,6 +663,15 @@ impl HrClient {
             .await
     }
 
+    /// Changes the given fields of an employee record; `issuedAt`, `validUntil` and `fileId` can be cleared with null.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_records_update(
         &self,
         request: &EmployeesRecordsUpdateHrRequest,
@@ -463,6 +688,15 @@ impl HrClient {
             .await
     }
 
+    /// Deletes an employee record.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_records_delete(
         &self,
         request: &EmployeesRecordsDeleteHrRequest,
@@ -479,6 +713,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists employee records; filterable by `employeeId`, `type` and `title`, sortable by `createdAt` and `issuedAt`.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_records_list(
         &self,
         request: &EmployeesRecordsListHrRequest,
@@ -495,6 +738,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists the files uploaded against an employee, newest first.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn employees_attachments_list(
         &self,
         request: &EmployeesAttachmentsListHrRequest,
@@ -511,6 +763,15 @@ impl HrClient {
             .await
     }
 
+    /// Builds the timesheet of the month for every employee with a contract in it, or for one employee with `employeeId`, replacing any existing timesheet: the Monday to Friday days within the contract get the contract's daily hours (its weekly hours over five), and for a Lithuanian company the public holidays are `holiday` days with 0 hours. Answers 422 when no contract covers the month.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn timesheets_generate(
         &self,
         request: &TimesheetsGenerateHrRequest,
@@ -527,6 +788,15 @@ impl HrClient {
             .await
     }
 
+    /// Creates or replaces the timesheet of an employee for a month from the given days; `workedDays` and `workedHours` count the `work` and `business_trip` days with hours. Answers 422 for a day outside the month, a day given twice or more than 24 hours in a day. `payroll/runs/create` reads the timesheet for the paid days, the days worked and the business-trip days of the month.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn timesheets_upsert(
         &self,
         request: &TimesheetsUpsertHrRequest,
@@ -543,6 +813,15 @@ impl HrClient {
             .await
     }
 
+    /// Reads the timesheet of an employee for a month.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn timesheets_get(
         &self,
         request: &TimesheetsGetHrRequest,
@@ -559,6 +838,15 @@ impl HrClient {
             .await
     }
 
+    /// Lists the timesheets of a month, ordered by employee name.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn timesheets_list(
         &self,
         request: &TimesheetsListHrRequest,
@@ -575,6 +863,15 @@ impl HrClient {
             .await
     }
 
+    /// Deletes a timesheet.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
     pub async fn timesheets_delete(
         &self,
         request: &TimesheetsDeleteHrRequest,
