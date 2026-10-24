@@ -1,12 +1,13 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct DebtRemindersListPartnersResponseRowsItem {
     #[serde(default)]
     pub id: String,
     #[serde(rename = "partnerId")]
     #[serde(default)]
     pub partner_id: String,
+    pub kind: DebtRemindersListPartnersResponseRowsItemKind,
     #[serde(rename = "sentTo")]
     #[serde(default)]
     pub sent_to: String,
@@ -41,6 +42,7 @@ impl DebtRemindersListPartnersResponseRowsItem {
 pub struct DebtRemindersListPartnersResponseRowsItemBuilder {
     id: Option<String>,
     partner_id: Option<String>,
+    kind: Option<DebtRemindersListPartnersResponseRowsItemKind>,
     sent_to: Option<String>,
     invoice_count: Option<i64>,
     total_due: Option<String>,
@@ -58,6 +60,11 @@ impl DebtRemindersListPartnersResponseRowsItemBuilder {
 
     pub fn partner_id(mut self, value: impl Into<String>) -> Self {
         self.partner_id = Some(value.into());
+        self
+    }
+
+    pub fn kind(mut self, value: DebtRemindersListPartnersResponseRowsItemKind) -> Self {
+        self.kind = Some(value);
         self
     }
 
@@ -100,6 +107,7 @@ impl DebtRemindersListPartnersResponseRowsItemBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](DebtRemindersListPartnersResponseRowsItemBuilder::id)
     /// - [`partner_id`](DebtRemindersListPartnersResponseRowsItemBuilder::partner_id)
+    /// - [`kind`](DebtRemindersListPartnersResponseRowsItemBuilder::kind)
     /// - [`sent_to`](DebtRemindersListPartnersResponseRowsItemBuilder::sent_to)
     /// - [`invoice_count`](DebtRemindersListPartnersResponseRowsItemBuilder::invoice_count)
     /// - [`total_due`](DebtRemindersListPartnersResponseRowsItemBuilder::total_due)
@@ -113,6 +121,7 @@ impl DebtRemindersListPartnersResponseRowsItemBuilder {
             partner_id: self
                 .partner_id
                 .ok_or_else(|| BuildError::missing_field("partner_id"))?,
+            kind: self.kind.ok_or_else(|| BuildError::missing_field("kind"))?,
             sent_to: self
                 .sent_to
                 .ok_or_else(|| BuildError::missing_field("sent_to"))?,

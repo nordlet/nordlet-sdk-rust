@@ -15,6 +15,8 @@ pub struct LoginLinkRequestAccountRequest {
     #[serde(rename = "referralCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub referral_code: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub app: Option<LoginLinkRequestAccountRequestApp>,
 }
 
 impl LoginLinkRequestAccountRequest {
@@ -31,6 +33,7 @@ pub struct LoginLinkRequestAccountRequestBuilder {
     accept_terms: Option<bool>,
     accept_dpa: Option<bool>,
     referral_code: Option<String>,
+    app: Option<LoginLinkRequestAccountRequestApp>,
 }
 
 impl LoginLinkRequestAccountRequestBuilder {
@@ -59,6 +62,11 @@ impl LoginLinkRequestAccountRequestBuilder {
         self
     }
 
+    pub fn app(mut self, value: LoginLinkRequestAccountRequestApp) -> Self {
+        self.app = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`LoginLinkRequestAccountRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`email`](LoginLinkRequestAccountRequestBuilder::email)
@@ -71,6 +79,7 @@ impl LoginLinkRequestAccountRequestBuilder {
             accept_terms: self.accept_terms,
             accept_dpa: self.accept_dpa,
             referral_code: self.referral_code,
+            app: self.app,
         })
     }
 }
