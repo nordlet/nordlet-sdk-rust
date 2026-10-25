@@ -39,6 +39,7 @@ pub enum SubscriptionsCreateWebhooksRequestEventsItem {
     SaleInvoicePeppolFailed,
     SaleInvoicePeppolRejected,
     SaleInvoicePeppolSent,
+    SaleInvoiceQuoteSent,
     SaleInvoiceSent,
     SalesOrderCreated,
     SalesOrderFulfilled,
@@ -111,6 +112,7 @@ impl Serialize for SubscriptionsCreateWebhooksRequestEventsItem {
                 serializer.serialize_str("sale_invoice.peppol_rejected")
             }
             Self::SaleInvoicePeppolSent => serializer.serialize_str("sale_invoice.peppol_sent"),
+            Self::SaleInvoiceQuoteSent => serializer.serialize_str("sale_invoice.quote_sent"),
             Self::SaleInvoiceSent => serializer.serialize_str("sale_invoice.sent"),
             Self::SalesOrderCreated => serializer.serialize_str("sales_order.created"),
             Self::SalesOrderFulfilled => serializer.serialize_str("sales_order.fulfilled"),
@@ -166,6 +168,7 @@ impl<'de> Deserialize<'de> for SubscriptionsCreateWebhooksRequestEventsItem {
             "sale_invoice.peppol_failed" => Ok(Self::SaleInvoicePeppolFailed),
             "sale_invoice.peppol_rejected" => Ok(Self::SaleInvoicePeppolRejected),
             "sale_invoice.peppol_sent" => Ok(Self::SaleInvoicePeppolSent),
+            "sale_invoice.quote_sent" => Ok(Self::SaleInvoiceQuoteSent),
             "sale_invoice.sent" => Ok(Self::SaleInvoiceSent),
             "sales_order.created" => Ok(Self::SalesOrderCreated),
             "sales_order.fulfilled" => Ok(Self::SalesOrderFulfilled),
@@ -220,6 +223,7 @@ impl fmt::Display for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::SaleInvoicePeppolFailed => write!(f, "sale_invoice.peppol_failed"),
             Self::SaleInvoicePeppolRejected => write!(f, "sale_invoice.peppol_rejected"),
             Self::SaleInvoicePeppolSent => write!(f, "sale_invoice.peppol_sent"),
+            Self::SaleInvoiceQuoteSent => write!(f, "sale_invoice.quote_sent"),
             Self::SaleInvoiceSent => write!(f, "sale_invoice.sent"),
             Self::SalesOrderCreated => write!(f, "sales_order.created"),
             Self::SalesOrderFulfilled => write!(f, "sales_order.fulfilled"),

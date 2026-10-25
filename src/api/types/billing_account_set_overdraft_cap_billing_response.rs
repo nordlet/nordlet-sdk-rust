@@ -31,6 +31,12 @@ pub struct AccountSetOverdraftCapBillingResponse {
     #[serde(rename = "hasSubscription")]
     #[serde(default)]
     pub has_subscription: bool,
+    /// When the Stripe subscription ends after `subscription/cancel`; null while it renews
+    #[serde(rename = "subscriptionCancelAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub subscription_cancel_at: Option<DateTime<FixedOffset>>,
     #[serde(rename = "paymentFailedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
@@ -83,6 +89,7 @@ pub struct AccountSetOverdraftCapBillingResponseBuilder {
     payments_configured: Option<bool>,
     has_payment_account: Option<bool>,
     has_subscription: Option<bool>,
+    subscription_cancel_at: Option<DateTime<FixedOffset>>,
     payment_failed_at: Option<DateTime<FixedOffset>>,
     payment_failed_invoice_url: Option<String>,
     month_to_date: Option<AccountSetOverdraftCapBillingResponseMonthToDate>,
@@ -143,6 +150,11 @@ impl AccountSetOverdraftCapBillingResponseBuilder {
 
     pub fn has_subscription(mut self, value: bool) -> Self {
         self.has_subscription = Some(value);
+        self
+    }
+
+    pub fn subscription_cancel_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.subscription_cancel_at = Some(value);
         self
     }
 
@@ -243,6 +255,7 @@ impl AccountSetOverdraftCapBillingResponseBuilder {
             has_subscription: self
                 .has_subscription
                 .ok_or_else(|| BuildError::missing_field("has_subscription"))?,
+            subscription_cancel_at: self.subscription_cancel_at,
             payment_failed_at: self.payment_failed_at,
             payment_failed_invoice_url: self.payment_failed_invoice_url,
             month_to_date: self

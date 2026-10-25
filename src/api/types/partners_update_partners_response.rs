@@ -34,6 +34,12 @@ pub struct UpdatePartnersResponse {
     #[serde(rename = "paymentTermDays")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payment_term_days: Option<i64>,
+    #[serde(rename = "invoiceCurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invoice_currency: Option<String>,
+    #[serde(rename = "invoiceLocale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invoice_locale: Option<String>,
     #[serde(rename = "creditLimit")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credit_limit: Option<String>,
@@ -135,6 +141,8 @@ pub struct UpdatePartnersResponseBuilder {
     is_customer: Option<bool>,
     is_supplier: Option<bool>,
     payment_term_days: Option<i64>,
+    invoice_currency: Option<String>,
+    invoice_locale: Option<String>,
     credit_limit: Option<String>,
     price_list_id: Option<String>,
     group_id: Option<String>,
@@ -226,6 +234,16 @@ impl UpdatePartnersResponseBuilder {
 
     pub fn payment_term_days(mut self, value: i64) -> Self {
         self.payment_term_days = Some(value);
+        self
+    }
+
+    pub fn invoice_currency(mut self, value: impl Into<String>) -> Self {
+        self.invoice_currency = Some(value.into());
+        self
+    }
+
+    pub fn invoice_locale(mut self, value: impl Into<String>) -> Self {
+        self.invoice_locale = Some(value.into());
         self
     }
 
@@ -396,6 +414,8 @@ impl UpdatePartnersResponseBuilder {
                 .is_supplier
                 .ok_or_else(|| BuildError::missing_field("is_supplier"))?,
             payment_term_days: self.payment_term_days,
+            invoice_currency: self.invoice_currency,
+            invoice_locale: self.invoice_locale,
             credit_limit: self.credit_limit,
             price_list_id: self.price_list_id,
             group_id: self.group_id,

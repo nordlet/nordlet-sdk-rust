@@ -58,6 +58,14 @@ pub struct InvoicesCreateSalesRequest {
     /// Language of the PDF and of the e-mail the invoice is sent with; unset means the language asked for when the PDF is made
     #[serde(skip_serializing_if = "Option::is_none")]
     pub locale: Option<InvoicesCreateSalesRequestLocale>,
+    /// Whether the PDF and the e-mail carry the payment link of the company payment link template
+    #[serde(rename = "payLinkEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_link_enabled: Option<bool>,
+    /// Whether automatic debt reminders include this invoice when its partner has them turned on
+    #[serde(rename = "debtRemindersEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub debt_reminders_enabled: Option<bool>,
     #[serde(rename = "operationTypeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_type_id: Option<String>,
@@ -85,6 +93,10 @@ pub struct InvoicesCreateSalesRequest {
     #[serde(rename = "discountPercent")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub discount_percent: Option<String>,
+    /// Sales tax as a percent of the net total, added to the invoice total. It is not posted to the ledger and is left out of VAT and national tax reports. Invoices only.
+    #[serde(rename = "salesTaxPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sales_tax_percent: Option<String>,
     #[serde(default)]
     pub lines: Vec<InvoicesCreateSalesRequestLinesItem>,
 }
@@ -117,6 +129,8 @@ pub struct InvoicesCreateSalesRequestBuilder {
     notes: Option<String>,
     document_ref: Option<String>,
     locale: Option<InvoicesCreateSalesRequestLocale>,
+    pay_link_enabled: Option<bool>,
+    debt_reminders_enabled: Option<bool>,
     operation_type_id: Option<String>,
     document_series_id: Option<String>,
     series_label: Option<String>,
@@ -126,6 +140,7 @@ pub struct InvoicesCreateSalesRequestBuilder {
     received_by_name: Option<String>,
     received_by_title: Option<String>,
     discount_percent: Option<String>,
+    sales_tax_percent: Option<String>,
     lines: Option<Vec<InvoicesCreateSalesRequestLinesItem>>,
 }
 
@@ -225,6 +240,16 @@ impl InvoicesCreateSalesRequestBuilder {
         self
     }
 
+    pub fn pay_link_enabled(mut self, value: bool) -> Self {
+        self.pay_link_enabled = Some(value);
+        self
+    }
+
+    pub fn debt_reminders_enabled(mut self, value: bool) -> Self {
+        self.debt_reminders_enabled = Some(value);
+        self
+    }
+
     pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
         self.operation_type_id = Some(value.into());
         self
@@ -270,6 +295,11 @@ impl InvoicesCreateSalesRequestBuilder {
         self
     }
 
+    pub fn sales_tax_percent(mut self, value: impl Into<String>) -> Self {
+        self.sales_tax_percent = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<InvoicesCreateSalesRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -302,6 +332,8 @@ impl InvoicesCreateSalesRequestBuilder {
             notes: self.notes,
             document_ref: self.document_ref,
             locale: self.locale,
+            pay_link_enabled: self.pay_link_enabled,
+            debt_reminders_enabled: self.debt_reminders_enabled,
             operation_type_id: self.operation_type_id,
             document_series_id: self.document_series_id,
             series_label: self.series_label,
@@ -311,6 +343,7 @@ impl InvoicesCreateSalesRequestBuilder {
             received_by_name: self.received_by_name,
             received_by_title: self.received_by_title,
             discount_percent: self.discount_percent,
+            sales_tax_percent: self.sales_tax_percent,
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,

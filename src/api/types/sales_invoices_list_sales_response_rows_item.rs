@@ -38,6 +38,12 @@ pub struct InvoicesListSalesResponseRowsItem {
     #[serde(rename = "grossTotal")]
     #[serde(default)]
     pub gross_total: String,
+    #[serde(rename = "salesTaxPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sales_tax_percent: Option<String>,
+    #[serde(rename = "salesTaxTotal")]
+    #[serde(default)]
+    pub sales_tax_total: String,
     #[serde(rename = "paidAmount")]
     #[serde(default)]
     pub paid_amount: String,
@@ -128,6 +134,12 @@ pub struct InvoicesListSalesResponseRowsItem {
     #[serde(rename = "payToken")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pay_token: Option<String>,
+    #[serde(rename = "payLinkEnabled")]
+    #[serde(default)]
+    pub pay_link_enabled: bool,
+    #[serde(rename = "debtRemindersEnabled")]
+    #[serde(default)]
+    pub debt_reminders_enabled: bool,
     #[serde(rename = "einvoiceSystem")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub einvoice_system: Option<String>,
@@ -212,6 +224,8 @@ pub struct InvoicesListSalesResponseRowsItemBuilder {
     net_total: Option<String>,
     vat_total: Option<String>,
     gross_total: Option<String>,
+    sales_tax_percent: Option<String>,
+    sales_tax_total: Option<String>,
     paid_amount: Option<String>,
     journal_transaction_id: Option<String>,
     applied_to_invoice_id: Option<String>,
@@ -242,6 +256,8 @@ pub struct InvoicesListSalesResponseRowsItemBuilder {
     locked_at: Option<DateTime<FixedOffset>>,
     locked_by: Option<String>,
     pay_token: Option<String>,
+    pay_link_enabled: Option<bool>,
+    debt_reminders_enabled: Option<bool>,
     einvoice_system: Option<String>,
     einvoice_transport: Option<String>,
     einvoice_message_id: Option<String>,
@@ -333,6 +349,16 @@ impl InvoicesListSalesResponseRowsItemBuilder {
 
     pub fn gross_total(mut self, value: impl Into<String>) -> Self {
         self.gross_total = Some(value.into());
+        self
+    }
+
+    pub fn sales_tax_percent(mut self, value: impl Into<String>) -> Self {
+        self.sales_tax_percent = Some(value.into());
+        self
+    }
+
+    pub fn sales_tax_total(mut self, value: impl Into<String>) -> Self {
+        self.sales_tax_total = Some(value.into());
         self
     }
 
@@ -486,6 +512,16 @@ impl InvoicesListSalesResponseRowsItemBuilder {
         self
     }
 
+    pub fn pay_link_enabled(mut self, value: bool) -> Self {
+        self.pay_link_enabled = Some(value);
+        self
+    }
+
+    pub fn debt_reminders_enabled(mut self, value: bool) -> Self {
+        self.debt_reminders_enabled = Some(value);
+        self
+    }
+
     pub fn einvoice_system(mut self, value: impl Into<String>) -> Self {
         self.einvoice_system = Some(value.into());
         self
@@ -577,9 +613,12 @@ impl InvoicesListSalesResponseRowsItemBuilder {
     /// - [`net_total`](InvoicesListSalesResponseRowsItemBuilder::net_total)
     /// - [`vat_total`](InvoicesListSalesResponseRowsItemBuilder::vat_total)
     /// - [`gross_total`](InvoicesListSalesResponseRowsItemBuilder::gross_total)
+    /// - [`sales_tax_total`](InvoicesListSalesResponseRowsItemBuilder::sales_tax_total)
     /// - [`paid_amount`](InvoicesListSalesResponseRowsItemBuilder::paid_amount)
     /// - [`deemed_supplier`](InvoicesListSalesResponseRowsItemBuilder::deemed_supplier)
     /// - [`discount_percent`](InvoicesListSalesResponseRowsItemBuilder::discount_percent)
+    /// - [`pay_link_enabled`](InvoicesListSalesResponseRowsItemBuilder::pay_link_enabled)
+    /// - [`debt_reminders_enabled`](InvoicesListSalesResponseRowsItemBuilder::debt_reminders_enabled)
     /// - [`created_at`](InvoicesListSalesResponseRowsItemBuilder::created_at)
     /// - [`updated_at`](InvoicesListSalesResponseRowsItemBuilder::updated_at)
     pub fn build(self) -> Result<InvoicesListSalesResponseRowsItem, BuildError> {
@@ -615,6 +654,10 @@ impl InvoicesListSalesResponseRowsItemBuilder {
             gross_total: self
                 .gross_total
                 .ok_or_else(|| BuildError::missing_field("gross_total"))?,
+            sales_tax_percent: self.sales_tax_percent,
+            sales_tax_total: self
+                .sales_tax_total
+                .ok_or_else(|| BuildError::missing_field("sales_tax_total"))?,
             paid_amount: self
                 .paid_amount
                 .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
@@ -651,6 +694,12 @@ impl InvoicesListSalesResponseRowsItemBuilder {
             locked_at: self.locked_at,
             locked_by: self.locked_by,
             pay_token: self.pay_token,
+            pay_link_enabled: self
+                .pay_link_enabled
+                .ok_or_else(|| BuildError::missing_field("pay_link_enabled"))?,
+            debt_reminders_enabled: self
+                .debt_reminders_enabled
+                .ok_or_else(|| BuildError::missing_field("debt_reminders_enabled"))?,
             einvoice_system: self.einvoice_system,
             einvoice_transport: self.einvoice_transport,
             einvoice_message_id: self.einvoice_message_id,

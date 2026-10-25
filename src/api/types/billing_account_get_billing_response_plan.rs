@@ -6,6 +6,7 @@ pub enum AccountGetBillingResponsePlan {
     Starter,
     Business,
     Scale,
+    Invoicing,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -17,6 +18,7 @@ impl Serialize for AccountGetBillingResponsePlan {
             Self::Starter => serializer.serialize_str("starter"),
             Self::Business => serializer.serialize_str("business"),
             Self::Scale => serializer.serialize_str("scale"),
+            Self::Invoicing => serializer.serialize_str("invoicing"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -29,6 +31,7 @@ impl<'de> Deserialize<'de> for AccountGetBillingResponsePlan {
             "starter" => Ok(Self::Starter),
             "business" => Ok(Self::Business),
             "scale" => Ok(Self::Scale),
+            "invoicing" => Ok(Self::Invoicing),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -40,6 +43,7 @@ impl fmt::Display for AccountGetBillingResponsePlan {
             Self::Starter => write!(f, "starter"),
             Self::Business => write!(f, "business"),
             Self::Scale => write!(f, "scale"),
+            Self::Invoicing => write!(f, "invoicing"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

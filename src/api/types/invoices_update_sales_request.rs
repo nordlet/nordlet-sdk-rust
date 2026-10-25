@@ -43,6 +43,12 @@ pub struct InvoicesUpdateSalesRequest {
     pub notes: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub locale: Option<InvoicesUpdateSalesRequestLocale>,
+    #[serde(rename = "payLinkEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_link_enabled: Option<bool>,
+    #[serde(rename = "debtRemindersEnabled")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub debt_reminders_enabled: Option<bool>,
     #[serde(rename = "operationTypeId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub operation_type_id: Option<String>,
@@ -70,6 +76,9 @@ pub struct InvoicesUpdateSalesRequest {
     #[serde(rename = "receivedByTitle")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub received_by_title: Option<String>,
+    #[serde(rename = "salesTaxPercent")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sales_tax_percent: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lines: Option<Vec<InvoicesUpdateSalesRequestLinesItem>>,
 }
@@ -98,6 +107,8 @@ pub struct InvoicesUpdateSalesRequestBuilder {
     deemed_supplier: Option<bool>,
     notes: Option<String>,
     locale: Option<InvoicesUpdateSalesRequestLocale>,
+    pay_link_enabled: Option<bool>,
+    debt_reminders_enabled: Option<bool>,
     operation_type_id: Option<String>,
     document_series_id: Option<String>,
     series_label: Option<String>,
@@ -107,6 +118,7 @@ pub struct InvoicesUpdateSalesRequestBuilder {
     issued_by_title: Option<String>,
     received_by_name: Option<String>,
     received_by_title: Option<String>,
+    sales_tax_percent: Option<String>,
     lines: Option<Vec<InvoicesUpdateSalesRequestLinesItem>>,
 }
 
@@ -186,6 +198,16 @@ impl InvoicesUpdateSalesRequestBuilder {
         self
     }
 
+    pub fn pay_link_enabled(mut self, value: bool) -> Self {
+        self.pay_link_enabled = Some(value);
+        self
+    }
+
+    pub fn debt_reminders_enabled(mut self, value: bool) -> Self {
+        self.debt_reminders_enabled = Some(value);
+        self
+    }
+
     pub fn operation_type_id(mut self, value: impl Into<String>) -> Self {
         self.operation_type_id = Some(value.into());
         self
@@ -231,6 +253,11 @@ impl InvoicesUpdateSalesRequestBuilder {
         self
     }
 
+    pub fn sales_tax_percent(mut self, value: impl Into<String>) -> Self {
+        self.sales_tax_percent = Some(value.into());
+        self
+    }
+
     pub fn lines(mut self, value: Vec<InvoicesUpdateSalesRequestLinesItem>) -> Self {
         self.lines = Some(value);
         self
@@ -256,6 +283,8 @@ impl InvoicesUpdateSalesRequestBuilder {
             deemed_supplier: self.deemed_supplier,
             notes: self.notes,
             locale: self.locale,
+            pay_link_enabled: self.pay_link_enabled,
+            debt_reminders_enabled: self.debt_reminders_enabled,
             operation_type_id: self.operation_type_id,
             document_series_id: self.document_series_id,
             series_label: self.series_label,
@@ -265,6 +294,7 @@ impl InvoicesUpdateSalesRequestBuilder {
             issued_by_title: self.issued_by_title,
             received_by_name: self.received_by_name,
             received_by_title: self.received_by_title,
+            sales_tax_percent: self.sales_tax_percent,
             lines: self.lines,
         })
     }

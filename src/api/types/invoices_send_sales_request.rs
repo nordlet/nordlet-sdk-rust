@@ -8,6 +8,8 @@ pub struct InvoicesSendSalesRequest {
     pub to: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub locale: Option<InvoicesSendSalesRequestLocale>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub quote: Option<bool>,
 }
 
 impl InvoicesSendSalesRequest {
@@ -22,6 +24,7 @@ pub struct InvoicesSendSalesRequestBuilder {
     id: Option<String>,
     to: Option<String>,
     locale: Option<InvoicesSendSalesRequestLocale>,
+    quote: Option<bool>,
 }
 
 impl InvoicesSendSalesRequestBuilder {
@@ -40,6 +43,11 @@ impl InvoicesSendSalesRequestBuilder {
         self
     }
 
+    pub fn quote(mut self, value: bool) -> Self {
+        self.quote = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesSendSalesRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesSendSalesRequestBuilder::id)
@@ -48,6 +56,7 @@ impl InvoicesSendSalesRequestBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             to: self.to,
             locale: self.locale,
+            quote: self.quote,
         })
     }
 }

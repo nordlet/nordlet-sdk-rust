@@ -35,6 +35,14 @@ pub struct UpdatePartnersRequest {
     #[serde(rename = "paymentTermDays")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payment_term_days: Option<i64>,
+    /// Currency a new invoice for this partner starts with when the invoice names none
+    #[serde(rename = "invoiceCurrency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invoice_currency: Option<UpdatePartnersRequestInvoiceCurrency>,
+    /// Language a new invoice for this partner starts with when the invoice names none
+    #[serde(rename = "invoiceLocale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invoice_locale: Option<UpdatePartnersRequestInvoiceLocale>,
     #[serde(rename = "creditLimit")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credit_limit: Option<String>,
@@ -120,6 +128,8 @@ pub struct UpdatePartnersRequestBuilder {
     is_customer: Option<bool>,
     is_supplier: Option<bool>,
     payment_term_days: Option<i64>,
+    invoice_currency: Option<UpdatePartnersRequestInvoiceCurrency>,
+    invoice_locale: Option<UpdatePartnersRequestInvoiceLocale>,
     credit_limit: Option<String>,
     price_list_id: Option<String>,
     group_id: Option<String>,
@@ -207,6 +217,16 @@ impl UpdatePartnersRequestBuilder {
 
     pub fn payment_term_days(mut self, value: i64) -> Self {
         self.payment_term_days = Some(value);
+        self
+    }
+
+    pub fn invoice_currency(mut self, value: UpdatePartnersRequestInvoiceCurrency) -> Self {
+        self.invoice_currency = Some(value);
+        self
+    }
+
+    pub fn invoice_locale(mut self, value: UpdatePartnersRequestInvoiceLocale) -> Self {
+        self.invoice_locale = Some(value);
         self
     }
 
@@ -341,6 +361,8 @@ impl UpdatePartnersRequestBuilder {
             is_customer: self.is_customer,
             is_supplier: self.is_supplier,
             payment_term_days: self.payment_term_days,
+            invoice_currency: self.invoice_currency,
+            invoice_locale: self.invoice_locale,
             credit_limit: self.credit_limit,
             price_list_id: self.price_list_id,
             group_id: self.group_id,

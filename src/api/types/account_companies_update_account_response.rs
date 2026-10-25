@@ -49,6 +49,32 @@ pub struct CompaniesUpdateAccountResponse {
     #[serde(rename = "bankName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_name: Option<String>,
+    #[serde(rename = "bankBic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_bic: Option<String>,
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    #[serde(rename = "bankBranchCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_branch_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// Prefix of the numbers of invoices issued without a document series (SF when none was set)
+    #[serde(rename = "invoicePrefix")]
+    #[serde(default)]
+    pub invoice_prefix: String,
+    /// Number the next invoice issued without a document series gets, before any country-specific format
+    #[serde(rename = "nextInvoiceNumber")]
+    #[serde(default)]
+    pub next_invoice_number: String,
+    #[serde(rename = "defaultInvoiceLocale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_invoice_locale: Option<String>,
+    #[serde(rename = "defaultInvoiceNote")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_invoice_note: Option<String>,
     #[serde(rename = "peppolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub peppol_id: Option<String>,
@@ -126,6 +152,14 @@ pub struct CompaniesUpdateAccountResponseBuilder {
     phone: Option<String>,
     iban: Option<String>,
     bank_name: Option<String>,
+    bank_bic: Option<String>,
+    bank_code: Option<String>,
+    bank_branch_code: Option<String>,
+    bank_account_number: Option<String>,
+    invoice_prefix: Option<String>,
+    next_invoice_number: Option<String>,
+    default_invoice_locale: Option<String>,
+    default_invoice_note: Option<String>,
     peppol_id: Option<String>,
     sepa_creditor_id: Option<String>,
     logo_file_id: Option<String>,
@@ -235,6 +269,46 @@ impl CompaniesUpdateAccountResponseBuilder {
         self
     }
 
+    pub fn bank_bic(mut self, value: impl Into<String>) -> Self {
+        self.bank_bic = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_branch_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_branch_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn invoice_prefix(mut self, value: impl Into<String>) -> Self {
+        self.invoice_prefix = Some(value.into());
+        self
+    }
+
+    pub fn next_invoice_number(mut self, value: impl Into<String>) -> Self {
+        self.next_invoice_number = Some(value.into());
+        self
+    }
+
+    pub fn default_invoice_locale(mut self, value: impl Into<String>) -> Self {
+        self.default_invoice_locale = Some(value.into());
+        self
+    }
+
+    pub fn default_invoice_note(mut self, value: impl Into<String>) -> Self {
+        self.default_invoice_note = Some(value.into());
+        self
+    }
+
     pub fn peppol_id(mut self, value: impl Into<String>) -> Self {
         self.peppol_id = Some(value.into());
         self
@@ -327,6 +401,8 @@ impl CompaniesUpdateAccountResponseBuilder {
     /// - [`base_currency`](CompaniesUpdateAccountResponseBuilder::base_currency)
     /// - [`default_invoice_currency`](CompaniesUpdateAccountResponseBuilder::default_invoice_currency)
     /// - [`status`](CompaniesUpdateAccountResponseBuilder::status)
+    /// - [`invoice_prefix`](CompaniesUpdateAccountResponseBuilder::invoice_prefix)
+    /// - [`next_invoice_number`](CompaniesUpdateAccountResponseBuilder::next_invoice_number)
     /// - [`time_zone`](CompaniesUpdateAccountResponseBuilder::time_zone)
     /// - [`audit_required`](CompaniesUpdateAccountResponseBuilder::audit_required)
     pub fn build(self) -> Result<CompaniesUpdateAccountResponse, BuildError> {
@@ -365,6 +441,18 @@ impl CompaniesUpdateAccountResponseBuilder {
             phone: self.phone,
             iban: self.iban,
             bank_name: self.bank_name,
+            bank_bic: self.bank_bic,
+            bank_code: self.bank_code,
+            bank_branch_code: self.bank_branch_code,
+            bank_account_number: self.bank_account_number,
+            invoice_prefix: self
+                .invoice_prefix
+                .ok_or_else(|| BuildError::missing_field("invoice_prefix"))?,
+            next_invoice_number: self
+                .next_invoice_number
+                .ok_or_else(|| BuildError::missing_field("next_invoice_number"))?,
+            default_invoice_locale: self.default_invoice_locale,
+            default_invoice_note: self.default_invoice_note,
             peppol_id: self.peppol_id,
             sepa_creditor_id: self.sepa_creditor_id,
             logo_file_id: self.logo_file_id,

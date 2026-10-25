@@ -38,6 +38,32 @@ pub struct CompaniesCreateAccountRequest {
     #[serde(rename = "bankName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_name: Option<String>,
+    #[serde(rename = "bankBic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_bic: Option<String>,
+    /// Sort code, routing number, BSB, IFSC or institution number
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    /// Transit number (Canada)
+    #[serde(rename = "bankBranchCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_branch_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// Prefix of the numbers of invoices issued without a document series; SF when not set
+    #[serde(rename = "invoicePrefix")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invoice_prefix: Option<String>,
+    /// Language a new invoice starts with when neither the invoice nor its partner names one
+    #[serde(rename = "defaultInvoiceLocale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_invoice_locale: Option<CompaniesCreateAccountRequestDefaultInvoiceLocale>,
+    /// Note a new invoice, proforma or advance invoice starts with when it names no notes
+    #[serde(rename = "defaultInvoiceNote")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_invoice_note: Option<String>,
     #[serde(rename = "peppolId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub peppol_id: Option<String>,
@@ -111,6 +137,13 @@ pub struct CompaniesCreateAccountRequestBuilder {
     phone: Option<String>,
     iban: Option<String>,
     bank_name: Option<String>,
+    bank_bic: Option<String>,
+    bank_code: Option<String>,
+    bank_branch_code: Option<String>,
+    bank_account_number: Option<String>,
+    invoice_prefix: Option<String>,
+    default_invoice_locale: Option<CompaniesCreateAccountRequestDefaultInvoiceLocale>,
+    default_invoice_note: Option<String>,
     peppol_id: Option<String>,
     sepa_creditor_id: Option<String>,
     default_invoice_currency: Option<String>,
@@ -196,6 +229,44 @@ impl CompaniesCreateAccountRequestBuilder {
 
     pub fn bank_name(mut self, value: impl Into<String>) -> Self {
         self.bank_name = Some(value.into());
+        self
+    }
+
+    pub fn bank_bic(mut self, value: impl Into<String>) -> Self {
+        self.bank_bic = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_branch_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_branch_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn invoice_prefix(mut self, value: impl Into<String>) -> Self {
+        self.invoice_prefix = Some(value.into());
+        self
+    }
+
+    pub fn default_invoice_locale(
+        mut self,
+        value: CompaniesCreateAccountRequestDefaultInvoiceLocale,
+    ) -> Self {
+        self.default_invoice_locale = Some(value);
+        self
+    }
+
+    pub fn default_invoice_note(mut self, value: impl Into<String>) -> Self {
+        self.default_invoice_note = Some(value.into());
         self
     }
 
@@ -293,6 +364,13 @@ impl CompaniesCreateAccountRequestBuilder {
             phone: self.phone,
             iban: self.iban,
             bank_name: self.bank_name,
+            bank_bic: self.bank_bic,
+            bank_code: self.bank_code,
+            bank_branch_code: self.bank_branch_code,
+            bank_account_number: self.bank_account_number,
+            invoice_prefix: self.invoice_prefix,
+            default_invoice_locale: self.default_invoice_locale,
+            default_invoice_note: self.default_invoice_note,
             peppol_id: self.peppol_id,
             sepa_creditor_id: self.sepa_creditor_id,
             default_invoice_currency: self.default_invoice_currency,
