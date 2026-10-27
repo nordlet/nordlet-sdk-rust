@@ -16,6 +16,9 @@ pub struct MeAccountResponseCompaniesItem {
     #[serde(rename = "isSandbox")]
     #[serde(default)]
     pub is_sandbox: bool,
+    #[serde(rename = "cashBasis")]
+    #[serde(default)]
+    pub cash_basis: bool,
     pub status: MeAccountResponseCompaniesItemStatus,
     #[serde(rename = "deletedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -39,6 +42,7 @@ pub struct MeAccountResponseCompaniesItemBuilder {
     vat_code: Option<String>,
     role: Option<String>,
     is_sandbox: Option<bool>,
+    cash_basis: Option<bool>,
     status: Option<MeAccountResponseCompaniesItemStatus>,
     deleted_at: Option<DateTime<FixedOffset>>,
 }
@@ -74,6 +78,11 @@ impl MeAccountResponseCompaniesItemBuilder {
         self
     }
 
+    pub fn cash_basis(mut self, value: bool) -> Self {
+        self.cash_basis = Some(value);
+        self
+    }
+
     pub fn status(mut self, value: MeAccountResponseCompaniesItemStatus) -> Self {
         self.status = Some(value);
         self
@@ -90,6 +99,7 @@ impl MeAccountResponseCompaniesItemBuilder {
     /// - [`name`](MeAccountResponseCompaniesItemBuilder::name)
     /// - [`role`](MeAccountResponseCompaniesItemBuilder::role)
     /// - [`is_sandbox`](MeAccountResponseCompaniesItemBuilder::is_sandbox)
+    /// - [`cash_basis`](MeAccountResponseCompaniesItemBuilder::cash_basis)
     /// - [`status`](MeAccountResponseCompaniesItemBuilder::status)
     pub fn build(self) -> Result<MeAccountResponseCompaniesItem, BuildError> {
         Ok(MeAccountResponseCompaniesItem {
@@ -101,6 +111,9 @@ impl MeAccountResponseCompaniesItemBuilder {
             is_sandbox: self
                 .is_sandbox
                 .ok_or_else(|| BuildError::missing_field("is_sandbox"))?,
+            cash_basis: self
+                .cash_basis
+                .ok_or_else(|| BuildError::missing_field("cash_basis"))?,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

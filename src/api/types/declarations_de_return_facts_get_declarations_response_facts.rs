@@ -69,6 +69,15 @@ pub struct DeReturnFactsGetDeclarationsResponseFacts {
     #[serde(rename = "distanceSales")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub distance_sales: Option<String>,
+    #[serde(rename = "euerEinkunftsart")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub euer_einkunftsart: Option<DeReturnFactsGetDeclarationsResponseFactsEuerEinkunftsart>,
+    #[serde(rename = "euerEntnahmen")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub euer_entnahmen: Option<String>,
+    #[serde(rename = "euerEinlagen")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub euer_einlagen: Option<String>,
 }
 
 impl DeReturnFactsGetDeclarationsResponseFacts {
@@ -105,6 +114,9 @@ pub struct DeReturnFactsGetDeclarationsResponseFactsBuilder {
     representative: Option<DeReturnFactsGetDeclarationsResponseFactsRepresentative>,
     single_transport_tax: Option<String>,
     distance_sales: Option<String>,
+    euer_einkunftsart: Option<DeReturnFactsGetDeclarationsResponseFactsEuerEinkunftsart>,
+    euer_entnahmen: Option<String>,
+    euer_einlagen: Option<String>,
 }
 
 impl DeReturnFactsGetDeclarationsResponseFactsBuilder {
@@ -260,6 +272,24 @@ impl DeReturnFactsGetDeclarationsResponseFactsBuilder {
         self
     }
 
+    pub fn euer_einkunftsart(
+        mut self,
+        value: DeReturnFactsGetDeclarationsResponseFactsEuerEinkunftsart,
+    ) -> Self {
+        self.euer_einkunftsart = Some(value);
+        self
+    }
+
+    pub fn euer_entnahmen(mut self, value: impl Into<String>) -> Self {
+        self.euer_entnahmen = Some(value.into());
+        self
+    }
+
+    pub fn euer_einlagen(mut self, value: impl Into<String>) -> Self {
+        self.euer_einlagen = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`DeReturnFactsGetDeclarationsResponseFacts`].
     pub fn build(self) -> Result<DeReturnFactsGetDeclarationsResponseFacts, BuildError> {
         Ok(DeReturnFactsGetDeclarationsResponseFacts {
@@ -288,6 +318,9 @@ impl DeReturnFactsGetDeclarationsResponseFactsBuilder {
             representative: self.representative,
             single_transport_tax: self.single_transport_tax,
             distance_sales: self.distance_sales,
+            euer_einkunftsart: self.euer_einkunftsart,
+            euer_entnahmen: self.euer_entnahmen,
+            euer_einlagen: self.euer_einlagen,
         })
     }
 }

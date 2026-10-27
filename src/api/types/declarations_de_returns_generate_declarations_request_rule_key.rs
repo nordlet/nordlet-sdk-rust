@@ -10,6 +10,7 @@ pub enum DeReturnsGenerateDeclarationsRequestRuleKey {
     DeAnnualVatReturn,
     DePayrollWithholding,
     DePayrollStatements,
+    DeEuer,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -25,6 +26,7 @@ impl Serialize for DeReturnsGenerateDeclarationsRequestRuleKey {
             Self::DeAnnualVatReturn => serializer.serialize_str("de-annual-vat-return"),
             Self::DePayrollWithholding => serializer.serialize_str("de-payroll-withholding"),
             Self::DePayrollStatements => serializer.serialize_str("de-payroll-statements"),
+            Self::DeEuer => serializer.serialize_str("de-euer"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -41,6 +43,7 @@ impl<'de> Deserialize<'de> for DeReturnsGenerateDeclarationsRequestRuleKey {
             "de-annual-vat-return" => Ok(Self::DeAnnualVatReturn),
             "de-payroll-withholding" => Ok(Self::DePayrollWithholding),
             "de-payroll-statements" => Ok(Self::DePayrollStatements),
+            "de-euer" => Ok(Self::DeEuer),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -56,6 +59,7 @@ impl fmt::Display for DeReturnsGenerateDeclarationsRequestRuleKey {
             Self::DeAnnualVatReturn => write!(f, "de-annual-vat-return"),
             Self::DePayrollWithholding => write!(f, "de-payroll-withholding"),
             Self::DePayrollStatements => write!(f, "de-payroll-statements"),
+            Self::DeEuer => write!(f, "de-euer"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

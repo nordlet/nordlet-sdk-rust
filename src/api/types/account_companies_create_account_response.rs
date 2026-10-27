@@ -16,6 +16,9 @@ pub struct CompaniesCreateAccountResponse {
     #[serde(rename = "isSandbox")]
     #[serde(default)]
     pub is_sandbox: bool,
+    #[serde(rename = "cashBasis")]
+    #[serde(default)]
+    pub cash_basis: bool,
 }
 
 impl CompaniesCreateAccountResponse {
@@ -33,6 +36,7 @@ pub struct CompaniesCreateAccountResponseBuilder {
     vat_code: Option<String>,
     role: Option<String>,
     is_sandbox: Option<bool>,
+    cash_basis: Option<bool>,
 }
 
 impl CompaniesCreateAccountResponseBuilder {
@@ -66,12 +70,18 @@ impl CompaniesCreateAccountResponseBuilder {
         self
     }
 
+    pub fn cash_basis(mut self, value: bool) -> Self {
+        self.cash_basis = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`CompaniesCreateAccountResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](CompaniesCreateAccountResponseBuilder::id)
     /// - [`name`](CompaniesCreateAccountResponseBuilder::name)
     /// - [`role`](CompaniesCreateAccountResponseBuilder::role)
     /// - [`is_sandbox`](CompaniesCreateAccountResponseBuilder::is_sandbox)
+    /// - [`cash_basis`](CompaniesCreateAccountResponseBuilder::cash_basis)
     pub fn build(self) -> Result<CompaniesCreateAccountResponse, BuildError> {
         Ok(CompaniesCreateAccountResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -82,6 +92,9 @@ impl CompaniesCreateAccountResponseBuilder {
             is_sandbox: self
                 .is_sandbox
                 .ok_or_else(|| BuildError::missing_field("is_sandbox"))?,
+            cash_basis: self
+                .cash_basis
+                .ok_or_else(|| BuildError::missing_field("cash_basis"))?,
         })
     }
 }

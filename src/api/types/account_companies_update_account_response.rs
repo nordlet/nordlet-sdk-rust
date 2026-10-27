@@ -20,6 +20,9 @@ pub struct CompaniesUpdateAccountResponse {
     #[serde(rename = "isSandbox")]
     #[serde(default)]
     pub is_sandbox: bool,
+    #[serde(rename = "cashBasis")]
+    #[serde(default)]
+    pub cash_basis: bool,
     #[serde(rename = "countryCode")]
     #[serde(default)]
     pub country_code: String,
@@ -141,6 +144,7 @@ pub struct CompaniesUpdateAccountResponseBuilder {
     sme_exemption_number: Option<String>,
     is_vat_payer: Option<bool>,
     is_sandbox: Option<bool>,
+    cash_basis: Option<bool>,
     country_code: Option<String>,
     chart_template: Option<String>,
     country_chart_template: Option<String>,
@@ -211,6 +215,11 @@ impl CompaniesUpdateAccountResponseBuilder {
 
     pub fn is_sandbox(mut self, value: bool) -> Self {
         self.is_sandbox = Some(value);
+        self
+    }
+
+    pub fn cash_basis(mut self, value: bool) -> Self {
+        self.cash_basis = Some(value);
         self
     }
 
@@ -395,6 +404,7 @@ impl CompaniesUpdateAccountResponseBuilder {
     /// - [`name`](CompaniesUpdateAccountResponseBuilder::name)
     /// - [`is_vat_payer`](CompaniesUpdateAccountResponseBuilder::is_vat_payer)
     /// - [`is_sandbox`](CompaniesUpdateAccountResponseBuilder::is_sandbox)
+    /// - [`cash_basis`](CompaniesUpdateAccountResponseBuilder::cash_basis)
     /// - [`country_code`](CompaniesUpdateAccountResponseBuilder::country_code)
     /// - [`chart_template`](CompaniesUpdateAccountResponseBuilder::chart_template)
     /// - [`country_chart_template`](CompaniesUpdateAccountResponseBuilder::country_chart_template)
@@ -418,6 +428,9 @@ impl CompaniesUpdateAccountResponseBuilder {
             is_sandbox: self
                 .is_sandbox
                 .ok_or_else(|| BuildError::missing_field("is_sandbox"))?,
+            cash_basis: self
+                .cash_basis
+                .ok_or_else(|| BuildError::missing_field("cash_basis"))?,
             country_code: self
                 .country_code
                 .ok_or_else(|| BuildError::missing_field("country_code"))?,

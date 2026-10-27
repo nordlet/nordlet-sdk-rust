@@ -112,6 +112,10 @@ pub struct CompaniesCreateAccountRequest {
     #[serde(rename = "isSandbox")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_sandbox: Option<bool>,
+    /// The company determines its profit on a cash basis (receipts and payments, in Germany the Einnahmenüberschussrechnung of § 4 Abs. 3 EStG); it gets the cash-basis returns in its filing calendar (immutable after creation)
+    #[serde(rename = "cashBasis")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cash_basis: Option<bool>,
 }
 
 impl CompaniesCreateAccountRequest {
@@ -159,6 +163,7 @@ pub struct CompaniesCreateAccountRequestBuilder {
     country_code: Option<CompaniesCreateAccountRequestCountryCode>,
     base_currency: Option<String>,
     is_sandbox: Option<bool>,
+    cash_basis: Option<bool>,
 }
 
 impl CompaniesCreateAccountRequestBuilder {
@@ -345,6 +350,11 @@ impl CompaniesCreateAccountRequestBuilder {
         self
     }
 
+    pub fn cash_basis(mut self, value: bool) -> Self {
+        self.cash_basis = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`CompaniesCreateAccountRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`name`](CompaniesCreateAccountRequestBuilder::name)
@@ -386,6 +396,7 @@ impl CompaniesCreateAccountRequestBuilder {
             country_code: self.country_code,
             base_currency: self.base_currency,
             is_sandbox: self.is_sandbox,
+            cash_basis: self.cash_basis,
         })
     }
 }
