@@ -1,9 +1,10 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct ExportAccountResponseCreditTransactionsItem {
     #[serde(default)]
     pub id: String,
+    pub site: ExportAccountResponseCreditTransactionsItemSite,
     #[serde(default)]
     pub r#type: String,
     #[serde(rename = "amountCents")]
@@ -30,6 +31,7 @@ impl ExportAccountResponseCreditTransactionsItem {
 #[non_exhaustive]
 pub struct ExportAccountResponseCreditTransactionsItemBuilder {
     id: Option<String>,
+    site: Option<ExportAccountResponseCreditTransactionsItemSite>,
     r#type: Option<String>,
     amount_cents: Option<i64>,
     balance_after_cents: Option<i64>,
@@ -40,6 +42,11 @@ pub struct ExportAccountResponseCreditTransactionsItemBuilder {
 impl ExportAccountResponseCreditTransactionsItemBuilder {
     pub fn id(mut self, value: impl Into<String>) -> Self {
         self.id = Some(value.into());
+        self
+    }
+
+    pub fn site(mut self, value: ExportAccountResponseCreditTransactionsItemSite) -> Self {
+        self.site = Some(value);
         self
     }
 
@@ -71,6 +78,7 @@ impl ExportAccountResponseCreditTransactionsItemBuilder {
     /// Consumes the builder and constructs a [`ExportAccountResponseCreditTransactionsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](ExportAccountResponseCreditTransactionsItemBuilder::id)
+    /// - [`site`](ExportAccountResponseCreditTransactionsItemBuilder::site)
     /// - [`r#type`](ExportAccountResponseCreditTransactionsItemBuilder::r#type)
     /// - [`amount_cents`](ExportAccountResponseCreditTransactionsItemBuilder::amount_cents)
     /// - [`balance_after_cents`](ExportAccountResponseCreditTransactionsItemBuilder::balance_after_cents)
@@ -79,6 +87,7 @@ impl ExportAccountResponseCreditTransactionsItemBuilder {
     pub fn build(self) -> Result<ExportAccountResponseCreditTransactionsItem, BuildError> {
         Ok(ExportAccountResponseCreditTransactionsItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             r#type: self
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,

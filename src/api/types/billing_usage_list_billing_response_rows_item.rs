@@ -5,6 +5,7 @@ pub struct UsageListBillingResponseRowsItem {
     #[serde(rename = "companyId")]
     #[serde(default)]
     pub company_id: String,
+    pub site: UsageListBillingResponseRowsItemSite,
     #[serde(default)]
     pub date: NaiveDate,
     pub metric: UsageListBillingResponseRowsItemMetric,
@@ -23,6 +24,7 @@ impl UsageListBillingResponseRowsItem {
 #[non_exhaustive]
 pub struct UsageListBillingResponseRowsItemBuilder {
     company_id: Option<String>,
+    site: Option<UsageListBillingResponseRowsItemSite>,
     date: Option<NaiveDate>,
     metric: Option<UsageListBillingResponseRowsItemMetric>,
     quantity: Option<f64>,
@@ -31,6 +33,11 @@ pub struct UsageListBillingResponseRowsItemBuilder {
 impl UsageListBillingResponseRowsItemBuilder {
     pub fn company_id(mut self, value: impl Into<String>) -> Self {
         self.company_id = Some(value.into());
+        self
+    }
+
+    pub fn site(mut self, value: UsageListBillingResponseRowsItemSite) -> Self {
+        self.site = Some(value);
         self
     }
 
@@ -52,6 +59,7 @@ impl UsageListBillingResponseRowsItemBuilder {
     /// Consumes the builder and constructs a [`UsageListBillingResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`company_id`](UsageListBillingResponseRowsItemBuilder::company_id)
+    /// - [`site`](UsageListBillingResponseRowsItemBuilder::site)
     /// - [`date`](UsageListBillingResponseRowsItemBuilder::date)
     /// - [`metric`](UsageListBillingResponseRowsItemBuilder::metric)
     /// - [`quantity`](UsageListBillingResponseRowsItemBuilder::quantity)
@@ -60,6 +68,7 @@ impl UsageListBillingResponseRowsItemBuilder {
             company_id: self
                 .company_id
                 .ok_or_else(|| BuildError::missing_field("company_id"))?,
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             date: self.date.ok_or_else(|| BuildError::missing_field("date"))?,
             metric: self
                 .metric

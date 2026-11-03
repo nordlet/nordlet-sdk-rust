@@ -2,6 +2,8 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AccountSetOverdraftCapBillingResponse {
+    /// The site whose plan this is, from the `x-nordlet-site` header
+    pub site: AccountSetOverdraftCapBillingResponseSite,
     pub plan: AccountSetOverdraftCapBillingResponsePlan,
     #[serde(rename = "accountType")]
     pub account_type: AccountSetOverdraftCapBillingResponseAccountType,
@@ -79,6 +81,7 @@ impl AccountSetOverdraftCapBillingResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct AccountSetOverdraftCapBillingResponseBuilder {
+    site: Option<AccountSetOverdraftCapBillingResponseSite>,
     plan: Option<AccountSetOverdraftCapBillingResponsePlan>,
     account_type: Option<AccountSetOverdraftCapBillingResponseAccountType>,
     status: Option<AccountSetOverdraftCapBillingResponseStatus>,
@@ -103,6 +106,11 @@ pub struct AccountSetOverdraftCapBillingResponseBuilder {
 }
 
 impl AccountSetOverdraftCapBillingResponseBuilder {
+    pub fn site(mut self, value: AccountSetOverdraftCapBillingResponseSite) -> Self {
+        self.site = Some(value);
+        self
+    }
+
     pub fn plan(mut self, value: AccountSetOverdraftCapBillingResponsePlan) -> Self {
         self.plan = Some(value);
         self
@@ -216,6 +224,7 @@ impl AccountSetOverdraftCapBillingResponseBuilder {
 
     /// Consumes the builder and constructs a [`AccountSetOverdraftCapBillingResponse`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`site`](AccountSetOverdraftCapBillingResponseBuilder::site)
     /// - [`plan`](AccountSetOverdraftCapBillingResponseBuilder::plan)
     /// - [`account_type`](AccountSetOverdraftCapBillingResponseBuilder::account_type)
     /// - [`status`](AccountSetOverdraftCapBillingResponseBuilder::status)
@@ -233,6 +242,7 @@ impl AccountSetOverdraftCapBillingResponseBuilder {
     /// - [`trial_days`](AccountSetOverdraftCapBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<AccountSetOverdraftCapBillingResponse, BuildError> {
         Ok(AccountSetOverdraftCapBillingResponse {
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
             account_type: self
                 .account_type

@@ -16,6 +16,9 @@ pub struct ExportAccountResponse {
     pub sessions: Vec<ExportAccountResponseSessionsItem>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing: Option<ExportAccountResponseBilling>,
+    #[serde(rename = "billingAccounts")]
+    #[serde(default)]
+    pub billing_accounts: Vec<ExportAccountResponseBillingAccountsItem>,
     #[serde(rename = "creditTransactions")]
     #[serde(default)]
     pub credit_transactions: Vec<ExportAccountResponseCreditTransactionsItem>,
@@ -39,6 +42,7 @@ pub struct ExportAccountResponseBuilder {
     memberships: Option<Vec<ExportAccountResponseMembershipsItem>>,
     sessions: Option<Vec<ExportAccountResponseSessionsItem>>,
     billing: Option<ExportAccountResponseBilling>,
+    billing_accounts: Option<Vec<ExportAccountResponseBillingAccountsItem>>,
     credit_transactions: Option<Vec<ExportAccountResponseCreditTransactionsItem>>,
     audit_entries: Option<Vec<ExportAccountResponseAuditEntriesItem>>,
 }
@@ -74,6 +78,14 @@ impl ExportAccountResponseBuilder {
         self
     }
 
+    pub fn billing_accounts(
+        mut self,
+        value: Vec<ExportAccountResponseBillingAccountsItem>,
+    ) -> Self {
+        self.billing_accounts = Some(value);
+        self
+    }
+
     pub fn credit_transactions(
         mut self,
         value: Vec<ExportAccountResponseCreditTransactionsItem>,
@@ -94,6 +106,7 @@ impl ExportAccountResponseBuilder {
     /// - [`consent`](ExportAccountResponseBuilder::consent)
     /// - [`memberships`](ExportAccountResponseBuilder::memberships)
     /// - [`sessions`](ExportAccountResponseBuilder::sessions)
+    /// - [`billing_accounts`](ExportAccountResponseBuilder::billing_accounts)
     /// - [`credit_transactions`](ExportAccountResponseBuilder::credit_transactions)
     /// - [`audit_entries`](ExportAccountResponseBuilder::audit_entries)
     pub fn build(self) -> Result<ExportAccountResponse, BuildError> {
@@ -112,6 +125,9 @@ impl ExportAccountResponseBuilder {
                 .sessions
                 .ok_or_else(|| BuildError::missing_field("sessions"))?,
             billing: self.billing,
+            billing_accounts: self
+                .billing_accounts
+                .ok_or_else(|| BuildError::missing_field("billing_accounts"))?,
             credit_transactions: self
                 .credit_transactions
                 .ok_or_else(|| BuildError::missing_field("credit_transactions"))?,

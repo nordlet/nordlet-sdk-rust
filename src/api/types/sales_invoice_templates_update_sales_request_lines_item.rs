@@ -15,6 +15,9 @@ pub struct InvoiceTemplatesUpdateSalesRequestLinesItem {
     #[serde(rename = "vatRatePercent")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_rate_percent: Option<String>,
+    #[serde(rename = "vatClassifierCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_classifier_code: Option<String>,
     #[serde(rename = "vatExemptionBasis")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_exemption_basis: Option<String>,
@@ -39,6 +42,7 @@ pub struct InvoiceTemplatesUpdateSalesRequestLinesItemBuilder {
     quantity: Option<String>,
     unit_price_excl_vat: Option<String>,
     vat_rate_percent: Option<String>,
+    vat_classifier_code: Option<String>,
     vat_exemption_basis: Option<String>,
     project_id: Option<String>,
     unit: Option<String>,
@@ -70,6 +74,11 @@ impl InvoiceTemplatesUpdateSalesRequestLinesItemBuilder {
         self
     }
 
+    pub fn vat_classifier_code(mut self, value: impl Into<String>) -> Self {
+        self.vat_classifier_code = Some(value.into());
+        self
+    }
+
     pub fn vat_exemption_basis(mut self, value: impl Into<String>) -> Self {
         self.vat_exemption_basis = Some(value.into());
         self
@@ -93,6 +102,7 @@ impl InvoiceTemplatesUpdateSalesRequestLinesItemBuilder {
             quantity: self.quantity,
             unit_price_excl_vat: self.unit_price_excl_vat,
             vat_rate_percent: self.vat_rate_percent,
+            vat_classifier_code: self.vat_classifier_code,
             vat_exemption_basis: self.vat_exemption_basis,
             project_id: self.project_id,
             unit: self.unit,

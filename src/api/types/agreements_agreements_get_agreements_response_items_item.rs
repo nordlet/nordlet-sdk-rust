@@ -17,6 +17,9 @@ pub struct AgreementsGetAgreementsResponseItemsItem {
     #[serde(rename = "vatRatePercent")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_rate_percent: Option<String>,
+    #[serde(rename = "vatClassifierCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_classifier_code: Option<String>,
 }
 
 impl AgreementsGetAgreementsResponseItemsItem {
@@ -34,6 +37,7 @@ pub struct AgreementsGetAgreementsResponseItemsItemBuilder {
     quantity: Option<String>,
     unit_price: Option<String>,
     vat_rate_percent: Option<String>,
+    vat_classifier_code: Option<String>,
 }
 
 impl AgreementsGetAgreementsResponseItemsItemBuilder {
@@ -67,6 +71,11 @@ impl AgreementsGetAgreementsResponseItemsItemBuilder {
         self
     }
 
+    pub fn vat_classifier_code(mut self, value: impl Into<String>) -> Self {
+        self.vat_classifier_code = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`AgreementsGetAgreementsResponseItemsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](AgreementsGetAgreementsResponseItemsItemBuilder::id)
@@ -81,6 +90,7 @@ impl AgreementsGetAgreementsResponseItemsItemBuilder {
             quantity: self.quantity,
             unit_price: self.unit_price,
             vat_rate_percent: self.vat_rate_percent,
+            vat_classifier_code: self.vat_classifier_code,
         })
     }
 }

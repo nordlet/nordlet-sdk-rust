@@ -2,6 +2,8 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AccountSetAccountTypeBillingResponse {
+    /// The site whose plan this is, from the `x-nordlet-site` header
+    pub site: AccountSetAccountTypeBillingResponseSite,
     pub plan: AccountSetAccountTypeBillingResponsePlan,
     #[serde(rename = "accountType")]
     pub account_type: AccountSetAccountTypeBillingResponseAccountType,
@@ -79,6 +81,7 @@ impl AccountSetAccountTypeBillingResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct AccountSetAccountTypeBillingResponseBuilder {
+    site: Option<AccountSetAccountTypeBillingResponseSite>,
     plan: Option<AccountSetAccountTypeBillingResponsePlan>,
     account_type: Option<AccountSetAccountTypeBillingResponseAccountType>,
     status: Option<AccountSetAccountTypeBillingResponseStatus>,
@@ -103,6 +106,11 @@ pub struct AccountSetAccountTypeBillingResponseBuilder {
 }
 
 impl AccountSetAccountTypeBillingResponseBuilder {
+    pub fn site(mut self, value: AccountSetAccountTypeBillingResponseSite) -> Self {
+        self.site = Some(value);
+        self
+    }
+
     pub fn plan(mut self, value: AccountSetAccountTypeBillingResponsePlan) -> Self {
         self.plan = Some(value);
         self
@@ -213,6 +221,7 @@ impl AccountSetAccountTypeBillingResponseBuilder {
 
     /// Consumes the builder and constructs a [`AccountSetAccountTypeBillingResponse`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`site`](AccountSetAccountTypeBillingResponseBuilder::site)
     /// - [`plan`](AccountSetAccountTypeBillingResponseBuilder::plan)
     /// - [`account_type`](AccountSetAccountTypeBillingResponseBuilder::account_type)
     /// - [`status`](AccountSetAccountTypeBillingResponseBuilder::status)
@@ -230,6 +239,7 @@ impl AccountSetAccountTypeBillingResponseBuilder {
     /// - [`trial_days`](AccountSetAccountTypeBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<AccountSetAccountTypeBillingResponse, BuildError> {
         Ok(AccountSetAccountTypeBillingResponse {
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
             account_type: self
                 .account_type

@@ -35,6 +35,7 @@ pub enum InvoicesSendSalesRequestLocale {
     Hi,
     Ru,
     Tr,
+    Uk,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -75,6 +76,7 @@ impl Serialize for InvoicesSendSalesRequestLocale {
             Self::Hi => serializer.serialize_str("hi"),
             Self::Ru => serializer.serialize_str("ru"),
             Self::Tr => serializer.serialize_str("tr"),
+            Self::Uk => serializer.serialize_str("uk"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -116,6 +118,7 @@ impl<'de> Deserialize<'de> for InvoicesSendSalesRequestLocale {
             "hi" => Ok(Self::Hi),
             "ru" => Ok(Self::Ru),
             "tr" => Ok(Self::Tr),
+            "uk" => Ok(Self::Uk),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -156,6 +159,7 @@ impl fmt::Display for InvoicesSendSalesRequestLocale {
             Self::Hi => write!(f, "hi"),
             Self::Ru => write!(f, "ru"),
             Self::Tr => write!(f, "tr"),
+            Self::Uk => write!(f, "uk"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

@@ -2,6 +2,8 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AccountSetAutoTopUpBillingResponse {
+    /// The site whose plan this is, from the `x-nordlet-site` header
+    pub site: AccountSetAutoTopUpBillingResponseSite,
     pub plan: AccountSetAutoTopUpBillingResponsePlan,
     #[serde(rename = "accountType")]
     pub account_type: AccountSetAutoTopUpBillingResponseAccountType,
@@ -79,6 +81,7 @@ impl AccountSetAutoTopUpBillingResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct AccountSetAutoTopUpBillingResponseBuilder {
+    site: Option<AccountSetAutoTopUpBillingResponseSite>,
     plan: Option<AccountSetAutoTopUpBillingResponsePlan>,
     account_type: Option<AccountSetAutoTopUpBillingResponseAccountType>,
     status: Option<AccountSetAutoTopUpBillingResponseStatus>,
@@ -103,6 +106,11 @@ pub struct AccountSetAutoTopUpBillingResponseBuilder {
 }
 
 impl AccountSetAutoTopUpBillingResponseBuilder {
+    pub fn site(mut self, value: AccountSetAutoTopUpBillingResponseSite) -> Self {
+        self.site = Some(value);
+        self
+    }
+
     pub fn plan(mut self, value: AccountSetAutoTopUpBillingResponsePlan) -> Self {
         self.plan = Some(value);
         self
@@ -213,6 +221,7 @@ impl AccountSetAutoTopUpBillingResponseBuilder {
 
     /// Consumes the builder and constructs a [`AccountSetAutoTopUpBillingResponse`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`site`](AccountSetAutoTopUpBillingResponseBuilder::site)
     /// - [`plan`](AccountSetAutoTopUpBillingResponseBuilder::plan)
     /// - [`account_type`](AccountSetAutoTopUpBillingResponseBuilder::account_type)
     /// - [`status`](AccountSetAutoTopUpBillingResponseBuilder::status)
@@ -230,6 +239,7 @@ impl AccountSetAutoTopUpBillingResponseBuilder {
     /// - [`trial_days`](AccountSetAutoTopUpBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<AccountSetAutoTopUpBillingResponse, BuildError> {
         Ok(AccountSetAutoTopUpBillingResponse {
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
             account_type: self
                 .account_type

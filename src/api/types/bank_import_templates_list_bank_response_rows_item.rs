@@ -18,6 +18,9 @@ pub struct ImportTemplatesListBankResponseRowsItem {
     #[serde(rename = "invoiceVatRatePercent")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub invoice_vat_rate_percent: Option<String>,
+    #[serde(rename = "invoiceVatClassifierCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub invoice_vat_classifier_code: Option<String>,
     #[serde(rename = "companyMetaField")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub company_meta_field: Option<String>,
@@ -74,6 +77,7 @@ pub struct ImportTemplatesListBankResponseRowsItemBuilder {
     meta_fields: Option<Vec<String>>,
     invoice_meta_field: Option<String>,
     invoice_vat_rate_percent: Option<String>,
+    invoice_vat_classifier_code: Option<String>,
     company_meta_field: Option<String>,
     invoice_item_id: Option<String>,
     advance_invoices: Option<bool>,
@@ -121,6 +125,11 @@ impl ImportTemplatesListBankResponseRowsItemBuilder {
 
     pub fn invoice_vat_rate_percent(mut self, value: impl Into<String>) -> Self {
         self.invoice_vat_rate_percent = Some(value.into());
+        self
+    }
+
+    pub fn invoice_vat_classifier_code(mut self, value: impl Into<String>) -> Self {
+        self.invoice_vat_classifier_code = Some(value.into());
         self
     }
 
@@ -210,6 +219,7 @@ impl ImportTemplatesListBankResponseRowsItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("meta_fields"))?,
             invoice_meta_field: self.invoice_meta_field,
             invoice_vat_rate_percent: self.invoice_vat_rate_percent,
+            invoice_vat_classifier_code: self.invoice_vat_classifier_code,
             company_meta_field: self.company_meta_field,
             invoice_item_id: self.invoice_item_id,
             advance_invoices: self

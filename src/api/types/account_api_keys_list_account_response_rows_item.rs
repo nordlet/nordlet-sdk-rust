@@ -21,9 +21,6 @@ pub struct ApiKeysListAccountResponseRowsItem {
     #[serde(rename = "replacedByKeyId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub replaced_by_key_id: Option<String>,
-    #[serde(rename = "createdByUserId")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_by_user_id: Option<String>,
     #[serde(rename = "revokedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
@@ -50,7 +47,6 @@ pub struct ApiKeysListAccountResponseRowsItemBuilder {
     last_used_at: Option<DateTime<FixedOffset>>,
     expires_at: Option<DateTime<FixedOffset>>,
     replaced_by_key_id: Option<String>,
-    created_by_user_id: Option<String>,
     revoked_at: Option<DateTime<FixedOffset>>,
     created_at: Option<DateTime<FixedOffset>>,
 }
@@ -86,11 +82,6 @@ impl ApiKeysListAccountResponseRowsItemBuilder {
         self
     }
 
-    pub fn created_by_user_id(mut self, value: impl Into<String>) -> Self {
-        self.created_by_user_id = Some(value.into());
-        self
-    }
-
     pub fn revoked_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.revoked_at = Some(value);
         self
@@ -117,7 +108,6 @@ impl ApiKeysListAccountResponseRowsItemBuilder {
             last_used_at: self.last_used_at,
             expires_at: self.expires_at,
             replaced_by_key_id: self.replaced_by_key_id,
-            created_by_user_id: self.created_by_user_id,
             revoked_at: self.revoked_at,
             created_at: self
                 .created_at

@@ -2,6 +2,8 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct FlatRateConfirmBillingResponse {
+    /// The site whose plan this is, from the `x-nordlet-site` header
+    pub site: FlatRateConfirmBillingResponseSite,
     pub plan: FlatRateConfirmBillingResponsePlan,
     #[serde(rename = "accountType")]
     pub account_type: FlatRateConfirmBillingResponseAccountType,
@@ -79,6 +81,7 @@ impl FlatRateConfirmBillingResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct FlatRateConfirmBillingResponseBuilder {
+    site: Option<FlatRateConfirmBillingResponseSite>,
     plan: Option<FlatRateConfirmBillingResponsePlan>,
     account_type: Option<FlatRateConfirmBillingResponseAccountType>,
     status: Option<FlatRateConfirmBillingResponseStatus>,
@@ -103,6 +106,11 @@ pub struct FlatRateConfirmBillingResponseBuilder {
 }
 
 impl FlatRateConfirmBillingResponseBuilder {
+    pub fn site(mut self, value: FlatRateConfirmBillingResponseSite) -> Self {
+        self.site = Some(value);
+        self
+    }
+
     pub fn plan(mut self, value: FlatRateConfirmBillingResponsePlan) -> Self {
         self.plan = Some(value);
         self
@@ -213,6 +221,7 @@ impl FlatRateConfirmBillingResponseBuilder {
 
     /// Consumes the builder and constructs a [`FlatRateConfirmBillingResponse`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`site`](FlatRateConfirmBillingResponseBuilder::site)
     /// - [`plan`](FlatRateConfirmBillingResponseBuilder::plan)
     /// - [`account_type`](FlatRateConfirmBillingResponseBuilder::account_type)
     /// - [`status`](FlatRateConfirmBillingResponseBuilder::status)
@@ -230,6 +239,7 @@ impl FlatRateConfirmBillingResponseBuilder {
     /// - [`trial_days`](FlatRateConfirmBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<FlatRateConfirmBillingResponse, BuildError> {
         Ok(FlatRateConfirmBillingResponse {
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
             account_type: self
                 .account_type

@@ -2,6 +2,8 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct SubscriptionCancelBillingResponse {
+    /// The site whose plan this is, from the `x-nordlet-site` header
+    pub site: SubscriptionCancelBillingResponseSite,
     pub plan: SubscriptionCancelBillingResponsePlan,
     #[serde(rename = "accountType")]
     pub account_type: SubscriptionCancelBillingResponseAccountType,
@@ -79,6 +81,7 @@ impl SubscriptionCancelBillingResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct SubscriptionCancelBillingResponseBuilder {
+    site: Option<SubscriptionCancelBillingResponseSite>,
     plan: Option<SubscriptionCancelBillingResponsePlan>,
     account_type: Option<SubscriptionCancelBillingResponseAccountType>,
     status: Option<SubscriptionCancelBillingResponseStatus>,
@@ -103,6 +106,11 @@ pub struct SubscriptionCancelBillingResponseBuilder {
 }
 
 impl SubscriptionCancelBillingResponseBuilder {
+    pub fn site(mut self, value: SubscriptionCancelBillingResponseSite) -> Self {
+        self.site = Some(value);
+        self
+    }
+
     pub fn plan(mut self, value: SubscriptionCancelBillingResponsePlan) -> Self {
         self.plan = Some(value);
         self
@@ -213,6 +221,7 @@ impl SubscriptionCancelBillingResponseBuilder {
 
     /// Consumes the builder and constructs a [`SubscriptionCancelBillingResponse`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`site`](SubscriptionCancelBillingResponseBuilder::site)
     /// - [`plan`](SubscriptionCancelBillingResponseBuilder::plan)
     /// - [`account_type`](SubscriptionCancelBillingResponseBuilder::account_type)
     /// - [`status`](SubscriptionCancelBillingResponseBuilder::status)
@@ -230,6 +239,7 @@ impl SubscriptionCancelBillingResponseBuilder {
     /// - [`trial_days`](SubscriptionCancelBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<SubscriptionCancelBillingResponse, BuildError> {
         Ok(SubscriptionCancelBillingResponse {
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
             account_type: self
                 .account_type

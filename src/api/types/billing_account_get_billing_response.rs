@@ -2,6 +2,8 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AccountGetBillingResponse {
+    /// The site whose plan this is, from the `x-nordlet-site` header
+    pub site: AccountGetBillingResponseSite,
     pub plan: AccountGetBillingResponsePlan,
     #[serde(rename = "accountType")]
     pub account_type: AccountGetBillingResponseAccountType,
@@ -79,6 +81,7 @@ impl AccountGetBillingResponse {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct AccountGetBillingResponseBuilder {
+    site: Option<AccountGetBillingResponseSite>,
     plan: Option<AccountGetBillingResponsePlan>,
     account_type: Option<AccountGetBillingResponseAccountType>,
     status: Option<AccountGetBillingResponseStatus>,
@@ -103,6 +106,11 @@ pub struct AccountGetBillingResponseBuilder {
 }
 
 impl AccountGetBillingResponseBuilder {
+    pub fn site(mut self, value: AccountGetBillingResponseSite) -> Self {
+        self.site = Some(value);
+        self
+    }
+
     pub fn plan(mut self, value: AccountGetBillingResponsePlan) -> Self {
         self.plan = Some(value);
         self
@@ -210,6 +218,7 @@ impl AccountGetBillingResponseBuilder {
 
     /// Consumes the builder and constructs a [`AccountGetBillingResponse`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`site`](AccountGetBillingResponseBuilder::site)
     /// - [`plan`](AccountGetBillingResponseBuilder::plan)
     /// - [`account_type`](AccountGetBillingResponseBuilder::account_type)
     /// - [`status`](AccountGetBillingResponseBuilder::status)
@@ -227,6 +236,7 @@ impl AccountGetBillingResponseBuilder {
     /// - [`trial_days`](AccountGetBillingResponseBuilder::trial_days)
     pub fn build(self) -> Result<AccountGetBillingResponse, BuildError> {
         Ok(AccountGetBillingResponse {
+            site: self.site.ok_or_else(|| BuildError::missing_field("site"))?,
             plan: self.plan.ok_or_else(|| BuildError::missing_field("plan"))?,
             account_type: self
                 .account_type

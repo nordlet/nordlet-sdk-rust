@@ -17,6 +17,9 @@ pub struct OrdersFulfillEcommerceResponseLinesItem {
     #[serde(rename = "vatRatePercent")]
     #[serde(default)]
     pub vat_rate_percent: String,
+    #[serde(rename = "vatClassifierCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_classifier_code: Option<String>,
 }
 
 impl OrdersFulfillEcommerceResponseLinesItem {
@@ -34,6 +37,7 @@ pub struct OrdersFulfillEcommerceResponseLinesItemBuilder {
     quantity: Option<String>,
     unit_price_excl_vat: Option<String>,
     vat_rate_percent: Option<String>,
+    vat_classifier_code: Option<String>,
 }
 
 impl OrdersFulfillEcommerceResponseLinesItemBuilder {
@@ -67,6 +71,11 @@ impl OrdersFulfillEcommerceResponseLinesItemBuilder {
         self
     }
 
+    pub fn vat_classifier_code(mut self, value: impl Into<String>) -> Self {
+        self.vat_classifier_code = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`OrdersFulfillEcommerceResponseLinesItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](OrdersFulfillEcommerceResponseLinesItemBuilder::id)
@@ -90,6 +99,7 @@ impl OrdersFulfillEcommerceResponseLinesItemBuilder {
             vat_rate_percent: self
                 .vat_rate_percent
                 .ok_or_else(|| BuildError::missing_field("vat_rate_percent"))?,
+            vat_classifier_code: self.vat_classifier_code,
         })
     }
 }
