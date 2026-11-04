@@ -38,6 +38,12 @@ pub struct OrdersCreatePurchasesRequestLinesItem {
     #[serde(rename = "deferralEndDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deferral_end_date: Option<NaiveDate>,
+    #[serde(rename = "lotNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_number: Option<String>,
+    #[serde(rename = "expiryDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expiry_date: Option<NaiveDate>,
 }
 
 impl OrdersCreatePurchasesRequestLinesItem {
@@ -62,6 +68,8 @@ pub struct OrdersCreatePurchasesRequestLinesItemBuilder {
     account_code: Option<String>,
     deferral_start_date: Option<NaiveDate>,
     deferral_end_date: Option<NaiveDate>,
+    lot_number: Option<String>,
+    expiry_date: Option<NaiveDate>,
 }
 
 impl OrdersCreatePurchasesRequestLinesItemBuilder {
@@ -130,6 +138,16 @@ impl OrdersCreatePurchasesRequestLinesItemBuilder {
         self
     }
 
+    pub fn lot_number(mut self, value: impl Into<String>) -> Self {
+        self.lot_number = Some(value.into());
+        self
+    }
+
+    pub fn expiry_date(mut self, value: NaiveDate) -> Self {
+        self.expiry_date = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`OrdersCreatePurchasesRequestLinesItem`].
     pub fn build(self) -> Result<OrdersCreatePurchasesRequestLinesItem, BuildError> {
         Ok(OrdersCreatePurchasesRequestLinesItem {
@@ -146,6 +164,8 @@ impl OrdersCreatePurchasesRequestLinesItemBuilder {
             account_code: self.account_code,
             deferral_start_date: self.deferral_start_date,
             deferral_end_date: self.deferral_end_date,
+            lot_number: self.lot_number,
+            expiry_date: self.expiry_date,
         })
     }
 }

@@ -35,6 +35,9 @@ pub struct VehiclesUpdateFleetRequest {
     pub insurance_due: Option<NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub status: Option<VehiclesUpdateFleetRequestStatus>,
+    #[serde(rename = "disposalDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub disposal_date: Option<NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
@@ -61,6 +64,7 @@ pub struct VehiclesUpdateFleetRequestBuilder {
     technical_inspection_due: Option<NaiveDate>,
     insurance_due: Option<NaiveDate>,
     status: Option<VehiclesUpdateFleetRequestStatus>,
+    disposal_date: Option<NaiveDate>,
     notes: Option<String>,
 }
 
@@ -130,6 +134,11 @@ impl VehiclesUpdateFleetRequestBuilder {
         self
     }
 
+    pub fn disposal_date(mut self, value: NaiveDate) -> Self {
+        self.disposal_date = Some(value);
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -153,6 +162,7 @@ impl VehiclesUpdateFleetRequestBuilder {
             technical_inspection_due: self.technical_inspection_due,
             insurance_due: self.insurance_due,
             status: self.status,
+            disposal_date: self.disposal_date,
             notes: self.notes,
         })
     }

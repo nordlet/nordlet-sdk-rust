@@ -22,6 +22,9 @@ pub struct MaintenanceListProductionResponseRowsItem {
     pub downtime_hours: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cost: Option<String>,
+    #[serde(rename = "purchaseInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub purchase_invoice_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(rename = "createdAt")]
@@ -48,6 +51,7 @@ pub struct MaintenanceListProductionResponseRowsItemBuilder {
     description: Option<String>,
     downtime_hours: Option<String>,
     cost: Option<String>,
+    purchase_invoice_id: Option<String>,
     notes: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
 }
@@ -98,6 +102,11 @@ impl MaintenanceListProductionResponseRowsItemBuilder {
         self
     }
 
+    pub fn purchase_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.purchase_invoice_id = Some(value.into());
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -135,6 +144,7 @@ impl MaintenanceListProductionResponseRowsItemBuilder {
             description: self.description,
             downtime_hours: self.downtime_hours,
             cost: self.cost,
+            purchase_invoice_id: self.purchase_invoice_id,
             notes: self.notes,
             created_at: self
                 .created_at

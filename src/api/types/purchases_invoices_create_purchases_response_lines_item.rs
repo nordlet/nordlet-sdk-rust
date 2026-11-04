@@ -13,6 +13,12 @@ pub struct InvoicesCreatePurchasesResponseLinesItem {
     pub unit: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "unitFactor")]
+    #[serde(default)]
+    pub unit_factor: String,
+    #[serde(rename = "baseQuantity")]
+    #[serde(default)]
+    pub base_quantity: String,
     #[serde(rename = "unitPriceExclVat")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_price_excl_vat: Option<String>,
@@ -40,6 +46,12 @@ pub struct InvoicesCreatePurchasesResponseLinesItem {
     #[serde(rename = "deferralEndDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub deferral_end_date: Option<NaiveDate>,
+    #[serde(rename = "lotNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lot_number: Option<String>,
+    #[serde(rename = "expiryDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expiry_date: Option<NaiveDate>,
     #[serde(rename = "lineNet")]
     #[serde(default)]
     pub line_net: String,
@@ -68,6 +80,8 @@ pub struct InvoicesCreatePurchasesResponseLinesItemBuilder {
     description: Option<String>,
     unit: Option<String>,
     quantity: Option<String>,
+    unit_factor: Option<String>,
+    base_quantity: Option<String>,
     unit_price_excl_vat: Option<String>,
     unit_price_incl_vat: Option<String>,
     vat_rate_percent: Option<String>,
@@ -77,6 +91,8 @@ pub struct InvoicesCreatePurchasesResponseLinesItemBuilder {
     account_code: Option<String>,
     deferral_start_date: Option<NaiveDate>,
     deferral_end_date: Option<NaiveDate>,
+    lot_number: Option<String>,
+    expiry_date: Option<NaiveDate>,
     line_net: Option<String>,
     line_vat: Option<String>,
     line_gross: Option<String>,
@@ -106,6 +122,16 @@ impl InvoicesCreatePurchasesResponseLinesItemBuilder {
 
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
+        self
+    }
+
+    pub fn unit_factor(mut self, value: impl Into<String>) -> Self {
+        self.unit_factor = Some(value.into());
+        self
+    }
+
+    pub fn base_quantity(mut self, value: impl Into<String>) -> Self {
+        self.base_quantity = Some(value.into());
         self
     }
 
@@ -154,6 +180,16 @@ impl InvoicesCreatePurchasesResponseLinesItemBuilder {
         self
     }
 
+    pub fn lot_number(mut self, value: impl Into<String>) -> Self {
+        self.lot_number = Some(value.into());
+        self
+    }
+
+    pub fn expiry_date(mut self, value: NaiveDate) -> Self {
+        self.expiry_date = Some(value);
+        self
+    }
+
     pub fn line_net(mut self, value: impl Into<String>) -> Self {
         self.line_net = Some(value.into());
         self
@@ -180,6 +216,8 @@ impl InvoicesCreatePurchasesResponseLinesItemBuilder {
     /// - [`description`](InvoicesCreatePurchasesResponseLinesItemBuilder::description)
     /// - [`unit`](InvoicesCreatePurchasesResponseLinesItemBuilder::unit)
     /// - [`quantity`](InvoicesCreatePurchasesResponseLinesItemBuilder::quantity)
+    /// - [`unit_factor`](InvoicesCreatePurchasesResponseLinesItemBuilder::unit_factor)
+    /// - [`base_quantity`](InvoicesCreatePurchasesResponseLinesItemBuilder::base_quantity)
     /// - [`vat_rate_percent`](InvoicesCreatePurchasesResponseLinesItemBuilder::vat_rate_percent)
     /// - [`line_net`](InvoicesCreatePurchasesResponseLinesItemBuilder::line_net)
     /// - [`line_vat`](InvoicesCreatePurchasesResponseLinesItemBuilder::line_vat)
@@ -196,6 +234,12 @@ impl InvoicesCreatePurchasesResponseLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            unit_factor: self
+                .unit_factor
+                .ok_or_else(|| BuildError::missing_field("unit_factor"))?,
+            base_quantity: self
+                .base_quantity
+                .ok_or_else(|| BuildError::missing_field("base_quantity"))?,
             unit_price_excl_vat: self.unit_price_excl_vat,
             unit_price_incl_vat: self.unit_price_incl_vat,
             vat_rate_percent: self
@@ -207,6 +251,8 @@ impl InvoicesCreatePurchasesResponseLinesItemBuilder {
             account_code: self.account_code,
             deferral_start_date: self.deferral_start_date,
             deferral_end_date: self.deferral_end_date,
+            lot_number: self.lot_number,
+            expiry_date: self.expiry_date,
             line_net: self
                 .line_net
                 .ok_or_else(|| BuildError::missing_field("line_net"))?,

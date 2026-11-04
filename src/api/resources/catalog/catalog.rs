@@ -263,7 +263,7 @@ impl CatalogClient {
             .await
     }
 
-    /// Create a unit of measure of the company's own, in addition to the global measurement units (`reference/units/list`). 409 when the code already exists.
+    /// Create a unit of measure of the company's own, in addition to the global measurement units (`reference/units/list`). `rec20Code` is the UN/ECE Recommendation 20 code e-invoices carry for the unit. 409 when the code already exists.
     ///
     /// # Arguments
     ///
@@ -288,7 +288,7 @@ impl CatalogClient {
             .await
     }
 
-    /// Change the code, name or active flag of a company unit. 409 when the new code already exists.
+    /// Change the code, name, UN/ECE Recommendation 20 code or active flag of a company unit. 409 when the new code already exists.
     ///
     /// # Arguments
     ///
@@ -556,6 +556,106 @@ impl CatalogClient {
             .execute_request(
                 Method::POST,
                 "v1/catalog/items/suppliers/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Add an alternative unit to an item: `factor` is how many of the item's own unit one `unitCode` holds (a box of 12 pieces has factor 12). Document lines entered in that unit keep the entered quantity and unit price and move `quantity × factor` of the item's unit in stock and filings. `isDefaultSale` and `isDefaultPurchase` mark the unit the app offers first on sale and purchase documents; setting one clears it on the item's other units. 422 when `unitCode` is the item's own unit or not a known unit; 409 when the item already has that unit.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn items_units_create(
+        &self,
+        request: &ItemsUnitsCreateCatalogRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ItemsUnitsCreateCatalogResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/units/create",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Change the factor, default flags or barcode of an alternative unit. Document lines already entered keep the factor they were saved with; the new factor applies to lines entered or recalculated after the change.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn items_units_update(
+        &self,
+        request: &ItemsUnitsUpdateCatalogRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ItemsUnitsUpdateCatalogResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/units/update",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Delete an alternative unit of an item. Document lines already entered in it keep their unit and factor.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn items_units_delete(
+        &self,
+        request: &ItemsUnitsDeleteCatalogRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ItemsUnitsDeleteCatalogResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/units/delete",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// List the alternative units of an item, ordered by unit code.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn items_units_list(
+        &self,
+        request: &ItemsUnitsListCatalogRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<ItemsUnitsListCatalogResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/catalog/items/units/list",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,

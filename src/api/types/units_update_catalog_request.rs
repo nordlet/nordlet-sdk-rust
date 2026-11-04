@@ -8,6 +8,9 @@ pub struct UnitsUpdateCatalogRequest {
     pub code: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
+    #[serde(rename = "rec20Code")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub rec20_code: Option<String>,
     #[serde(rename = "isActive")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_active: Option<bool>,
@@ -25,6 +28,7 @@ pub struct UnitsUpdateCatalogRequestBuilder {
     id: Option<String>,
     code: Option<String>,
     name: Option<String>,
+    rec20_code: Option<String>,
     is_active: Option<bool>,
 }
 
@@ -44,6 +48,11 @@ impl UnitsUpdateCatalogRequestBuilder {
         self
     }
 
+    pub fn rec20_code(mut self, value: impl Into<String>) -> Self {
+        self.rec20_code = Some(value.into());
+        self
+    }
+
     pub fn is_active(mut self, value: bool) -> Self {
         self.is_active = Some(value);
         self
@@ -57,6 +66,7 @@ impl UnitsUpdateCatalogRequestBuilder {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             code: self.code,
             name: self.name,
+            rec20_code: self.rec20_code,
             is_active: self.is_active,
         })
     }

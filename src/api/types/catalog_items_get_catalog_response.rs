@@ -55,6 +55,9 @@ pub struct ItemsGetCatalogResponse {
     pub translations: Option<HashMap<String, Option<ItemsGetCatalogResponseTranslationsValue>>>,
     #[serde(default)]
     pub components: Vec<ItemsGetCatalogResponseComponentsItem>,
+    #[serde(rename = "alternativeUnits")]
+    #[serde(default)]
+    pub alternative_units: Vec<ItemsGetCatalogResponseAlternativeUnitsItem>,
     #[serde(rename = "kindId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub kind_id: Option<String>,
@@ -175,6 +178,7 @@ pub struct ItemsGetCatalogResponseBuilder {
     document_ref: Option<String>,
     translations: Option<HashMap<String, Option<ItemsGetCatalogResponseTranslationsValue>>>,
     components: Option<Vec<ItemsGetCatalogResponseComponentsItem>>,
+    alternative_units: Option<Vec<ItemsGetCatalogResponseAlternativeUnitsItem>>,
     kind_id: Option<String>,
     sale_account_code: Option<String>,
     purchase_account_code: Option<String>,
@@ -317,6 +321,14 @@ impl ItemsGetCatalogResponseBuilder {
 
     pub fn components(mut self, value: Vec<ItemsGetCatalogResponseComponentsItem>) -> Self {
         self.components = Some(value);
+        self
+    }
+
+    pub fn alternative_units(
+        mut self,
+        value: Vec<ItemsGetCatalogResponseAlternativeUnitsItem>,
+    ) -> Self {
+        self.alternative_units = Some(value);
         self
     }
 
@@ -473,6 +485,7 @@ impl ItemsGetCatalogResponseBuilder {
     /// - [`name`](ItemsGetCatalogResponseBuilder::name)
     /// - [`unit`](ItemsGetCatalogResponseBuilder::unit)
     /// - [`components`](ItemsGetCatalogResponseBuilder::components)
+    /// - [`alternative_units`](ItemsGetCatalogResponseBuilder::alternative_units)
     /// - [`is_free_price`](ItemsGetCatalogResponseBuilder::is_free_price)
     /// - [`is_returnable`](ItemsGetCatalogResponseBuilder::is_returnable)
     /// - [`comment_required`](ItemsGetCatalogResponseBuilder::comment_required)
@@ -508,6 +521,9 @@ impl ItemsGetCatalogResponseBuilder {
             components: self
                 .components
                 .ok_or_else(|| BuildError::missing_field("components"))?,
+            alternative_units: self
+                .alternative_units
+                .ok_or_else(|| BuildError::missing_field("alternative_units"))?,
             kind_id: self.kind_id,
             sale_account_code: self.sale_account_code,
             purchase_account_code: self.purchase_account_code,

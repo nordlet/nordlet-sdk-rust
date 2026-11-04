@@ -198,6 +198,10 @@ pub struct InvoicesListSalesResponseRowsItem {
     #[serde(rename = "partnerName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub partner_name: Option<String>,
+    /// Gross amount of an advance invoice not yet applied or credited; null on other documents
+    #[serde(rename = "advanceUnappliedAmount")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub advance_unapplied_amount: Option<String>,
 }
 
 impl InvoicesListSalesResponseRowsItem {
@@ -274,6 +278,7 @@ pub struct InvoicesListSalesResponseRowsItemBuilder {
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
     partner_name: Option<String>,
+    advance_unapplied_amount: Option<String>,
 }
 
 impl InvoicesListSalesResponseRowsItemBuilder {
@@ -602,6 +607,11 @@ impl InvoicesListSalesResponseRowsItemBuilder {
         self
     }
 
+    pub fn advance_unapplied_amount(mut self, value: impl Into<String>) -> Self {
+        self.advance_unapplied_amount = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesListSalesResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesListSalesResponseRowsItemBuilder::id)
@@ -720,6 +730,7 @@ impl InvoicesListSalesResponseRowsItemBuilder {
                 .updated_at
                 .ok_or_else(|| BuildError::missing_field("updated_at"))?,
             partner_name: self.partner_name,
+            advance_unapplied_amount: self.advance_unapplied_amount,
         })
     }
 }

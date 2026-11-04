@@ -13,6 +13,12 @@ pub struct InvoicesCreateSalesResponseLinesItem {
     pub unit: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "unitFactor")]
+    #[serde(default)]
+    pub unit_factor: String,
+    #[serde(rename = "baseQuantity")]
+    #[serde(default)]
+    pub base_quantity: String,
     #[serde(rename = "unitPriceExclVat")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_price_excl_vat: Option<String>,
@@ -83,6 +89,8 @@ pub struct InvoicesCreateSalesResponseLinesItemBuilder {
     description: Option<String>,
     unit: Option<String>,
     quantity: Option<String>,
+    unit_factor: Option<String>,
+    base_quantity: Option<String>,
     unit_price_excl_vat: Option<String>,
     unit_price_incl_vat: Option<String>,
     vat_rate_percent: Option<String>,
@@ -127,6 +135,16 @@ impl InvoicesCreateSalesResponseLinesItemBuilder {
 
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
+        self
+    }
+
+    pub fn unit_factor(mut self, value: impl Into<String>) -> Self {
+        self.unit_factor = Some(value.into());
+        self
+    }
+
+    pub fn base_quantity(mut self, value: impl Into<String>) -> Self {
+        self.base_quantity = Some(value.into());
         self
     }
 
@@ -232,6 +250,8 @@ impl InvoicesCreateSalesResponseLinesItemBuilder {
     /// - [`description`](InvoicesCreateSalesResponseLinesItemBuilder::description)
     /// - [`unit`](InvoicesCreateSalesResponseLinesItemBuilder::unit)
     /// - [`quantity`](InvoicesCreateSalesResponseLinesItemBuilder::quantity)
+    /// - [`unit_factor`](InvoicesCreateSalesResponseLinesItemBuilder::unit_factor)
+    /// - [`base_quantity`](InvoicesCreateSalesResponseLinesItemBuilder::base_quantity)
     /// - [`vat_rate_percent`](InvoicesCreateSalesResponseLinesItemBuilder::vat_rate_percent)
     /// - [`line_net`](InvoicesCreateSalesResponseLinesItemBuilder::line_net)
     /// - [`line_vat`](InvoicesCreateSalesResponseLinesItemBuilder::line_vat)
@@ -249,6 +269,12 @@ impl InvoicesCreateSalesResponseLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            unit_factor: self
+                .unit_factor
+                .ok_or_else(|| BuildError::missing_field("unit_factor"))?,
+            base_quantity: self
+                .base_quantity
+                .ok_or_else(|| BuildError::missing_field("base_quantity"))?,
             unit_price_excl_vat: self.unit_price_excl_vat,
             unit_price_incl_vat: self.unit_price_incl_vat,
             vat_rate_percent: self

@@ -13,6 +13,12 @@ pub struct OrdersCreatePurchasesResponseLinesItem {
     pub unit: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "unitFactor")]
+    #[serde(default)]
+    pub unit_factor: String,
+    #[serde(rename = "baseQuantity")]
+    #[serde(default)]
+    pub base_quantity: String,
     #[serde(rename = "receivedQty")]
     #[serde(default)]
     pub received_qty: String,
@@ -68,6 +74,8 @@ pub struct OrdersCreatePurchasesResponseLinesItemBuilder {
     description: Option<String>,
     unit: Option<String>,
     quantity: Option<String>,
+    unit_factor: Option<String>,
+    base_quantity: Option<String>,
     received_qty: Option<String>,
     remaining_qty: Option<String>,
     unit_price_excl_vat: Option<String>,
@@ -106,6 +114,16 @@ impl OrdersCreatePurchasesResponseLinesItemBuilder {
 
     pub fn quantity(mut self, value: impl Into<String>) -> Self {
         self.quantity = Some(value.into());
+        self
+    }
+
+    pub fn unit_factor(mut self, value: impl Into<String>) -> Self {
+        self.unit_factor = Some(value.into());
+        self
+    }
+
+    pub fn base_quantity(mut self, value: impl Into<String>) -> Self {
+        self.base_quantity = Some(value.into());
         self
     }
 
@@ -180,6 +198,8 @@ impl OrdersCreatePurchasesResponseLinesItemBuilder {
     /// - [`description`](OrdersCreatePurchasesResponseLinesItemBuilder::description)
     /// - [`unit`](OrdersCreatePurchasesResponseLinesItemBuilder::unit)
     /// - [`quantity`](OrdersCreatePurchasesResponseLinesItemBuilder::quantity)
+    /// - [`unit_factor`](OrdersCreatePurchasesResponseLinesItemBuilder::unit_factor)
+    /// - [`base_quantity`](OrdersCreatePurchasesResponseLinesItemBuilder::base_quantity)
     /// - [`received_qty`](OrdersCreatePurchasesResponseLinesItemBuilder::received_qty)
     /// - [`remaining_qty`](OrdersCreatePurchasesResponseLinesItemBuilder::remaining_qty)
     /// - [`vat_rate_percent`](OrdersCreatePurchasesResponseLinesItemBuilder::vat_rate_percent)
@@ -198,6 +218,12 @@ impl OrdersCreatePurchasesResponseLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            unit_factor: self
+                .unit_factor
+                .ok_or_else(|| BuildError::missing_field("unit_factor"))?,
+            base_quantity: self
+                .base_quantity
+                .ok_or_else(|| BuildError::missing_field("base_quantity"))?,
             received_qty: self
                 .received_qty
                 .ok_or_else(|| BuildError::missing_field("received_qty"))?,

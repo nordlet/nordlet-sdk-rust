@@ -73,6 +73,9 @@ pub struct SubmissionsCreateDeclarationsResponse {
     #[serde(rename = "deliveryError")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_error: Option<String>,
+    #[serde(rename = "confirmationPending")]
+    #[serde(default)]
+    pub confirmation_pending: bool,
     #[serde(rename = "sentSha256")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sent_sha256: Option<String>,
@@ -130,6 +133,7 @@ pub struct SubmissionsCreateDeclarationsResponseBuilder {
     next_check_at: Option<DateTime<FixedOffset>>,
     attempts: Option<i64>,
     delivery_error: Option<String>,
+    confirmation_pending: Option<bool>,
     sent_sha256: Option<String>,
     certificate_fingerprint: Option<String>,
     submitted_by_actor_type: Option<String>,
@@ -260,6 +264,11 @@ impl SubmissionsCreateDeclarationsResponseBuilder {
         self
     }
 
+    pub fn confirmation_pending(mut self, value: bool) -> Self {
+        self.confirmation_pending = Some(value);
+        self
+    }
+
     pub fn sent_sha256(mut self, value: impl Into<String>) -> Self {
         self.sent_sha256 = Some(value.into());
         self
@@ -305,6 +314,7 @@ impl SubmissionsCreateDeclarationsResponseBuilder {
     /// - [`amendment`](SubmissionsCreateDeclarationsResponseBuilder::amendment)
     /// - [`origin`](SubmissionsCreateDeclarationsResponseBuilder::origin)
     /// - [`attempts`](SubmissionsCreateDeclarationsResponseBuilder::attempts)
+    /// - [`confirmation_pending`](SubmissionsCreateDeclarationsResponseBuilder::confirmation_pending)
     /// - [`created_at`](SubmissionsCreateDeclarationsResponseBuilder::created_at)
     /// - [`updated_at`](SubmissionsCreateDeclarationsResponseBuilder::updated_at)
     /// - [`warnings`](SubmissionsCreateDeclarationsResponseBuilder::warnings)
@@ -348,6 +358,9 @@ impl SubmissionsCreateDeclarationsResponseBuilder {
                 .attempts
                 .ok_or_else(|| BuildError::missing_field("attempts"))?,
             delivery_error: self.delivery_error,
+            confirmation_pending: self
+                .confirmation_pending
+                .ok_or_else(|| BuildError::missing_field("confirmation_pending"))?,
             sent_sha256: self.sent_sha256,
             certificate_fingerprint: self.certificate_fingerprint,
             submitted_by_actor_type: self.submitted_by_actor_type,

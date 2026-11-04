@@ -11,6 +11,9 @@ pub struct MaintenanceCreateProductionRequest {
     pub planned_date: NaiveDate,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    #[serde(rename = "purchaseInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub purchase_invoice_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
@@ -28,6 +31,7 @@ pub struct MaintenanceCreateProductionRequestBuilder {
     r#type: Option<MaintenanceCreateProductionRequestType>,
     planned_date: Option<NaiveDate>,
     description: Option<String>,
+    purchase_invoice_id: Option<String>,
     notes: Option<String>,
 }
 
@@ -49,6 +53,11 @@ impl MaintenanceCreateProductionRequestBuilder {
 
     pub fn description(mut self, value: impl Into<String>) -> Self {
         self.description = Some(value.into());
+        self
+    }
+
+    pub fn purchase_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.purchase_invoice_id = Some(value.into());
         self
     }
 
@@ -74,6 +83,7 @@ impl MaintenanceCreateProductionRequestBuilder {
                 .planned_date
                 .ok_or_else(|| BuildError::missing_field("planned_date"))?,
             description: self.description,
+            purchase_invoice_id: self.purchase_invoice_id,
             notes: self.notes,
         })
     }

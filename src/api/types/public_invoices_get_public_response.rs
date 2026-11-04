@@ -42,6 +42,9 @@ pub struct InvoicesGetPublicResponse {
     #[serde(rename = "payUrl")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pay_url: Option<String>,
+    #[serde(rename = "cardPaymentReceived")]
+    #[serde(default)]
+    pub card_payment_received: bool,
     #[serde(default)]
     pub seller: InvoicesGetPublicResponseSeller,
     #[serde(default)]
@@ -75,6 +78,7 @@ pub struct InvoicesGetPublicResponseBuilder {
     paid_on: Option<String>,
     notes: Option<String>,
     pay_url: Option<String>,
+    card_payment_received: Option<bool>,
     seller: Option<InvoicesGetPublicResponseSeller>,
     buyer: Option<InvoicesGetPublicResponseBuyer>,
     lines: Option<Vec<InvoicesGetPublicResponseLinesItem>>,
@@ -161,6 +165,11 @@ impl InvoicesGetPublicResponseBuilder {
         self
     }
 
+    pub fn card_payment_received(mut self, value: bool) -> Self {
+        self.card_payment_received = Some(value);
+        self
+    }
+
     pub fn seller(mut self, value: InvoicesGetPublicResponseSeller) -> Self {
         self.seller = Some(value);
         self
@@ -187,6 +196,7 @@ impl InvoicesGetPublicResponseBuilder {
     /// - [`sales_tax_total`](InvoicesGetPublicResponseBuilder::sales_tax_total)
     /// - [`gross_total`](InvoicesGetPublicResponseBuilder::gross_total)
     /// - [`paid_amount`](InvoicesGetPublicResponseBuilder::paid_amount)
+    /// - [`card_payment_received`](InvoicesGetPublicResponseBuilder::card_payment_received)
     /// - [`seller`](InvoicesGetPublicResponseBuilder::seller)
     /// - [`buyer`](InvoicesGetPublicResponseBuilder::buyer)
     /// - [`lines`](InvoicesGetPublicResponseBuilder::lines)
@@ -226,6 +236,9 @@ impl InvoicesGetPublicResponseBuilder {
             paid_on: self.paid_on,
             notes: self.notes,
             pay_url: self.pay_url,
+            card_payment_received: self
+                .card_payment_received
+                .ok_or_else(|| BuildError::missing_field("card_payment_received"))?,
             seller: self
                 .seller
                 .ok_or_else(|| BuildError::missing_field("seller"))?,

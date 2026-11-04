@@ -13,6 +13,12 @@ pub struct ActsIssueSalesResponseLinesItem {
     pub unit: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "unitFactor")]
+    #[serde(default)]
+    pub unit_factor: String,
+    #[serde(rename = "baseQuantity")]
+    #[serde(default)]
+    pub base_quantity: String,
     #[serde(rename = "unitPriceExclVat")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unit_price_excl_vat: Option<String>,
@@ -38,6 +44,8 @@ pub struct ActsIssueSalesResponseLinesItemBuilder {
     description: Option<String>,
     unit: Option<String>,
     quantity: Option<String>,
+    unit_factor: Option<String>,
+    base_quantity: Option<String>,
     unit_price_excl_vat: Option<String>,
     line_net: Option<String>,
     sort_order: Option<i64>,
@@ -69,6 +77,16 @@ impl ActsIssueSalesResponseLinesItemBuilder {
         self
     }
 
+    pub fn unit_factor(mut self, value: impl Into<String>) -> Self {
+        self.unit_factor = Some(value.into());
+        self
+    }
+
+    pub fn base_quantity(mut self, value: impl Into<String>) -> Self {
+        self.base_quantity = Some(value.into());
+        self
+    }
+
     pub fn unit_price_excl_vat(mut self, value: impl Into<String>) -> Self {
         self.unit_price_excl_vat = Some(value.into());
         self
@@ -90,6 +108,8 @@ impl ActsIssueSalesResponseLinesItemBuilder {
     /// - [`description`](ActsIssueSalesResponseLinesItemBuilder::description)
     /// - [`unit`](ActsIssueSalesResponseLinesItemBuilder::unit)
     /// - [`quantity`](ActsIssueSalesResponseLinesItemBuilder::quantity)
+    /// - [`unit_factor`](ActsIssueSalesResponseLinesItemBuilder::unit_factor)
+    /// - [`base_quantity`](ActsIssueSalesResponseLinesItemBuilder::base_quantity)
     /// - [`sort_order`](ActsIssueSalesResponseLinesItemBuilder::sort_order)
     pub fn build(self) -> Result<ActsIssueSalesResponseLinesItem, BuildError> {
         Ok(ActsIssueSalesResponseLinesItem {
@@ -102,6 +122,12 @@ impl ActsIssueSalesResponseLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            unit_factor: self
+                .unit_factor
+                .ok_or_else(|| BuildError::missing_field("unit_factor"))?,
+            base_quantity: self
+                .base_quantity
+                .ok_or_else(|| BuildError::missing_field("base_quantity"))?,
             unit_price_excl_vat: self.unit_price_excl_vat,
             line_net: self.line_net,
             sort_order: self

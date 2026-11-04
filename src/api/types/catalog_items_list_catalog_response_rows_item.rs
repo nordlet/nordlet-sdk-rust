@@ -56,6 +56,9 @@ pub struct ItemsListCatalogResponseRowsItem {
         Option<HashMap<String, Option<ItemsListCatalogResponseRowsItemTranslationsValue>>>,
     #[serde(default)]
     pub components: Vec<ItemsListCatalogResponseRowsItemComponentsItem>,
+    #[serde(rename = "alternativeUnits")]
+    #[serde(default)]
+    pub alternative_units: Vec<ItemsListCatalogResponseRowsItemAlternativeUnitsItem>,
     #[serde(rename = "kindId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub kind_id: Option<String>,
@@ -177,6 +180,7 @@ pub struct ItemsListCatalogResponseRowsItemBuilder {
     translations:
         Option<HashMap<String, Option<ItemsListCatalogResponseRowsItemTranslationsValue>>>,
     components: Option<Vec<ItemsListCatalogResponseRowsItemComponentsItem>>,
+    alternative_units: Option<Vec<ItemsListCatalogResponseRowsItemAlternativeUnitsItem>>,
     kind_id: Option<String>,
     sale_account_code: Option<String>,
     purchase_account_code: Option<String>,
@@ -322,6 +326,14 @@ impl ItemsListCatalogResponseRowsItemBuilder {
         value: Vec<ItemsListCatalogResponseRowsItemComponentsItem>,
     ) -> Self {
         self.components = Some(value);
+        self
+    }
+
+    pub fn alternative_units(
+        mut self,
+        value: Vec<ItemsListCatalogResponseRowsItemAlternativeUnitsItem>,
+    ) -> Self {
+        self.alternative_units = Some(value);
         self
     }
 
@@ -478,6 +490,7 @@ impl ItemsListCatalogResponseRowsItemBuilder {
     /// - [`name`](ItemsListCatalogResponseRowsItemBuilder::name)
     /// - [`unit`](ItemsListCatalogResponseRowsItemBuilder::unit)
     /// - [`components`](ItemsListCatalogResponseRowsItemBuilder::components)
+    /// - [`alternative_units`](ItemsListCatalogResponseRowsItemBuilder::alternative_units)
     /// - [`is_free_price`](ItemsListCatalogResponseRowsItemBuilder::is_free_price)
     /// - [`is_returnable`](ItemsListCatalogResponseRowsItemBuilder::is_returnable)
     /// - [`comment_required`](ItemsListCatalogResponseRowsItemBuilder::comment_required)
@@ -513,6 +526,9 @@ impl ItemsListCatalogResponseRowsItemBuilder {
             components: self
                 .components
                 .ok_or_else(|| BuildError::missing_field("components"))?,
+            alternative_units: self
+                .alternative_units
+                .ok_or_else(|| BuildError::missing_field("alternative_units"))?,
             kind_id: self.kind_id,
             sale_account_code: self.sale_account_code,
             purchase_account_code: self.purchase_account_code,

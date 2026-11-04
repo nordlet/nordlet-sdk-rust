@@ -55,6 +55,9 @@ pub struct ItemsCreateCatalogResponse {
     pub translations: Option<HashMap<String, Option<ItemsCreateCatalogResponseTranslationsValue>>>,
     #[serde(default)]
     pub components: Vec<ItemsCreateCatalogResponseComponentsItem>,
+    #[serde(rename = "alternativeUnits")]
+    #[serde(default)]
+    pub alternative_units: Vec<ItemsCreateCatalogResponseAlternativeUnitsItem>,
     #[serde(rename = "kindId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub kind_id: Option<String>,
@@ -175,6 +178,7 @@ pub struct ItemsCreateCatalogResponseBuilder {
     document_ref: Option<String>,
     translations: Option<HashMap<String, Option<ItemsCreateCatalogResponseTranslationsValue>>>,
     components: Option<Vec<ItemsCreateCatalogResponseComponentsItem>>,
+    alternative_units: Option<Vec<ItemsCreateCatalogResponseAlternativeUnitsItem>>,
     kind_id: Option<String>,
     sale_account_code: Option<String>,
     purchase_account_code: Option<String>,
@@ -317,6 +321,14 @@ impl ItemsCreateCatalogResponseBuilder {
 
     pub fn components(mut self, value: Vec<ItemsCreateCatalogResponseComponentsItem>) -> Self {
         self.components = Some(value);
+        self
+    }
+
+    pub fn alternative_units(
+        mut self,
+        value: Vec<ItemsCreateCatalogResponseAlternativeUnitsItem>,
+    ) -> Self {
+        self.alternative_units = Some(value);
         self
     }
 
@@ -473,6 +485,7 @@ impl ItemsCreateCatalogResponseBuilder {
     /// - [`name`](ItemsCreateCatalogResponseBuilder::name)
     /// - [`unit`](ItemsCreateCatalogResponseBuilder::unit)
     /// - [`components`](ItemsCreateCatalogResponseBuilder::components)
+    /// - [`alternative_units`](ItemsCreateCatalogResponseBuilder::alternative_units)
     /// - [`is_free_price`](ItemsCreateCatalogResponseBuilder::is_free_price)
     /// - [`is_returnable`](ItemsCreateCatalogResponseBuilder::is_returnable)
     /// - [`comment_required`](ItemsCreateCatalogResponseBuilder::comment_required)
@@ -508,6 +521,9 @@ impl ItemsCreateCatalogResponseBuilder {
             components: self
                 .components
                 .ok_or_else(|| BuildError::missing_field("components"))?,
+            alternative_units: self
+                .alternative_units
+                .ok_or_else(|| BuildError::missing_field("alternative_units"))?,
             kind_id: self.kind_id,
             sale_account_code: self.sale_account_code,
             purchase_account_code: self.purchase_account_code,

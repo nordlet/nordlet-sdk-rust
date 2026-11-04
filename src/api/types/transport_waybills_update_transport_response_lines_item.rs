@@ -13,6 +13,12 @@ pub struct WaybillsUpdateTransportResponseLinesItem {
     pub unit: String,
     #[serde(default)]
     pub quantity: String,
+    #[serde(rename = "unitFactor")]
+    #[serde(default)]
+    pub unit_factor: String,
+    #[serde(rename = "baseQuantity")]
+    #[serde(default)]
+    pub base_quantity: String,
     #[serde(rename = "productCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub product_code: Option<String>,
@@ -35,6 +41,8 @@ pub struct WaybillsUpdateTransportResponseLinesItemBuilder {
     description: Option<String>,
     unit: Option<String>,
     quantity: Option<String>,
+    unit_factor: Option<String>,
+    base_quantity: Option<String>,
     product_code: Option<String>,
     sort_order: Option<i64>,
 }
@@ -65,6 +73,16 @@ impl WaybillsUpdateTransportResponseLinesItemBuilder {
         self
     }
 
+    pub fn unit_factor(mut self, value: impl Into<String>) -> Self {
+        self.unit_factor = Some(value.into());
+        self
+    }
+
+    pub fn base_quantity(mut self, value: impl Into<String>) -> Self {
+        self.base_quantity = Some(value.into());
+        self
+    }
+
     pub fn product_code(mut self, value: impl Into<String>) -> Self {
         self.product_code = Some(value.into());
         self
@@ -81,6 +99,8 @@ impl WaybillsUpdateTransportResponseLinesItemBuilder {
     /// - [`description`](WaybillsUpdateTransportResponseLinesItemBuilder::description)
     /// - [`unit`](WaybillsUpdateTransportResponseLinesItemBuilder::unit)
     /// - [`quantity`](WaybillsUpdateTransportResponseLinesItemBuilder::quantity)
+    /// - [`unit_factor`](WaybillsUpdateTransportResponseLinesItemBuilder::unit_factor)
+    /// - [`base_quantity`](WaybillsUpdateTransportResponseLinesItemBuilder::base_quantity)
     /// - [`sort_order`](WaybillsUpdateTransportResponseLinesItemBuilder::sort_order)
     pub fn build(self) -> Result<WaybillsUpdateTransportResponseLinesItem, BuildError> {
         Ok(WaybillsUpdateTransportResponseLinesItem {
@@ -93,6 +113,12 @@ impl WaybillsUpdateTransportResponseLinesItemBuilder {
             quantity: self
                 .quantity
                 .ok_or_else(|| BuildError::missing_field("quantity"))?,
+            unit_factor: self
+                .unit_factor
+                .ok_or_else(|| BuildError::missing_field("unit_factor"))?,
+            base_quantity: self
+                .base_quantity
+                .ok_or_else(|| BuildError::missing_field("base_quantity"))?,
             product_code: self.product_code,
             sort_order: self
                 .sort_order

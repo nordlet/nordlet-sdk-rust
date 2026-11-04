@@ -34,6 +34,9 @@ pub struct VehiclesGetFleetResponse {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub insurance_due: Option<String>,
     pub status: VehiclesGetFleetResponseStatus,
+    #[serde(rename = "disposalDate")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub disposal_date: Option<NaiveDate>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -69,6 +72,7 @@ pub struct VehiclesGetFleetResponseBuilder {
     technical_inspection_due: Option<String>,
     insurance_due: Option<String>,
     status: Option<VehiclesGetFleetResponseStatus>,
+    disposal_date: Option<NaiveDate>,
     notes: Option<String>,
     documents: Option<Vec<VehiclesGetFleetResponseDocumentsItem>>,
     current_assignment: Option<VehiclesGetFleetResponseCurrentAssignment>,
@@ -141,6 +145,11 @@ impl VehiclesGetFleetResponseBuilder {
         self
     }
 
+    pub fn disposal_date(mut self, value: NaiveDate) -> Self {
+        self.disposal_date = Some(value);
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -193,6 +202,7 @@ impl VehiclesGetFleetResponseBuilder {
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
+            disposal_date: self.disposal_date,
             notes: self.notes,
             documents: self.documents,
             current_assignment: self.current_assignment,
