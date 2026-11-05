@@ -25,6 +25,18 @@ pub struct ExportAccountResponse {
     #[serde(rename = "auditEntries")]
     #[serde(default)]
     pub audit_entries: Vec<ExportAccountResponseAuditEntriesItem>,
+    #[serde(rename = "authEvents")]
+    #[serde(default)]
+    pub auth_events: Vec<ExportAccountResponseAuthEventsItem>,
+    #[serde(rename = "apiKeys")]
+    #[serde(default)]
+    pub api_keys: Vec<ExportAccountResponseApiKeysItem>,
+    #[serde(rename = "oauthGrants")]
+    #[serde(default)]
+    pub oauth_grants: Vec<ExportAccountResponseOauthGrantsItem>,
+    #[serde(rename = "referralPoints")]
+    #[serde(default)]
+    pub referral_points: Vec<ExportAccountResponseReferralPointsItem>,
 }
 
 impl ExportAccountResponse {
@@ -45,6 +57,10 @@ pub struct ExportAccountResponseBuilder {
     billing_accounts: Option<Vec<ExportAccountResponseBillingAccountsItem>>,
     credit_transactions: Option<Vec<ExportAccountResponseCreditTransactionsItem>>,
     audit_entries: Option<Vec<ExportAccountResponseAuditEntriesItem>>,
+    auth_events: Option<Vec<ExportAccountResponseAuthEventsItem>>,
+    api_keys: Option<Vec<ExportAccountResponseApiKeysItem>>,
+    oauth_grants: Option<Vec<ExportAccountResponseOauthGrantsItem>>,
+    referral_points: Option<Vec<ExportAccountResponseReferralPointsItem>>,
 }
 
 impl ExportAccountResponseBuilder {
@@ -99,6 +115,26 @@ impl ExportAccountResponseBuilder {
         self
     }
 
+    pub fn auth_events(mut self, value: Vec<ExportAccountResponseAuthEventsItem>) -> Self {
+        self.auth_events = Some(value);
+        self
+    }
+
+    pub fn api_keys(mut self, value: Vec<ExportAccountResponseApiKeysItem>) -> Self {
+        self.api_keys = Some(value);
+        self
+    }
+
+    pub fn oauth_grants(mut self, value: Vec<ExportAccountResponseOauthGrantsItem>) -> Self {
+        self.oauth_grants = Some(value);
+        self
+    }
+
+    pub fn referral_points(mut self, value: Vec<ExportAccountResponseReferralPointsItem>) -> Self {
+        self.referral_points = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`ExportAccountResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`generated_at`](ExportAccountResponseBuilder::generated_at)
@@ -109,6 +145,10 @@ impl ExportAccountResponseBuilder {
     /// - [`billing_accounts`](ExportAccountResponseBuilder::billing_accounts)
     /// - [`credit_transactions`](ExportAccountResponseBuilder::credit_transactions)
     /// - [`audit_entries`](ExportAccountResponseBuilder::audit_entries)
+    /// - [`auth_events`](ExportAccountResponseBuilder::auth_events)
+    /// - [`api_keys`](ExportAccountResponseBuilder::api_keys)
+    /// - [`oauth_grants`](ExportAccountResponseBuilder::oauth_grants)
+    /// - [`referral_points`](ExportAccountResponseBuilder::referral_points)
     pub fn build(self) -> Result<ExportAccountResponse, BuildError> {
         Ok(ExportAccountResponse {
             generated_at: self
@@ -134,6 +174,18 @@ impl ExportAccountResponseBuilder {
             audit_entries: self
                 .audit_entries
                 .ok_or_else(|| BuildError::missing_field("audit_entries"))?,
+            auth_events: self
+                .auth_events
+                .ok_or_else(|| BuildError::missing_field("auth_events"))?,
+            api_keys: self
+                .api_keys
+                .ok_or_else(|| BuildError::missing_field("api_keys"))?,
+            oauth_grants: self
+                .oauth_grants
+                .ok_or_else(|| BuildError::missing_field("oauth_grants"))?,
+            referral_points: self
+                .referral_points
+                .ok_or_else(|| BuildError::missing_field("referral_points"))?,
         })
     }
 }

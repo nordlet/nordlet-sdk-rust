@@ -6,6 +6,9 @@ pub struct ApiKeysListAccountResponseRowsItem {
     pub id: String,
     #[serde(default)]
     pub name: String,
+    #[serde(rename = "lastFour")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub last_four: Option<String>,
     #[serde(default)]
     pub scopes: Vec<String>,
     #[serde(rename = "lastUsedAt")]
@@ -43,6 +46,7 @@ impl ApiKeysListAccountResponseRowsItem {
 pub struct ApiKeysListAccountResponseRowsItemBuilder {
     id: Option<String>,
     name: Option<String>,
+    last_four: Option<String>,
     scopes: Option<Vec<String>>,
     last_used_at: Option<DateTime<FixedOffset>>,
     expires_at: Option<DateTime<FixedOffset>>,
@@ -59,6 +63,11 @@ impl ApiKeysListAccountResponseRowsItemBuilder {
 
     pub fn name(mut self, value: impl Into<String>) -> Self {
         self.name = Some(value.into());
+        self
+    }
+
+    pub fn last_four(mut self, value: impl Into<String>) -> Self {
+        self.last_four = Some(value.into());
         self
     }
 
@@ -102,6 +111,7 @@ impl ApiKeysListAccountResponseRowsItemBuilder {
         Ok(ApiKeysListAccountResponseRowsItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            last_four: self.last_four,
             scopes: self
                 .scopes
                 .ok_or_else(|| BuildError::missing_field("scopes"))?,

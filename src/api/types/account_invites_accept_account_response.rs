@@ -8,6 +8,9 @@ pub struct InvitesAcceptAccountResponse {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
     pub expires_at: DateTime<FixedOffset>,
+    #[serde(rename = "twoFactorRequired")]
+    #[serde(default)]
+    pub two_factor_required: bool,
     #[serde(default)]
     pub user: InvitesAcceptAccountResponseUser,
 }
@@ -23,6 +26,7 @@ impl InvitesAcceptAccountResponse {
 pub struct InvitesAcceptAccountResponseBuilder {
     token: Option<String>,
     expires_at: Option<DateTime<FixedOffset>>,
+    two_factor_required: Option<bool>,
     user: Option<InvitesAcceptAccountResponseUser>,
 }
 
@@ -37,6 +41,11 @@ impl InvitesAcceptAccountResponseBuilder {
         self
     }
 
+    pub fn two_factor_required(mut self, value: bool) -> Self {
+        self.two_factor_required = Some(value);
+        self
+    }
+
     pub fn user(mut self, value: InvitesAcceptAccountResponseUser) -> Self {
         self.user = Some(value);
         self
@@ -46,6 +55,7 @@ impl InvitesAcceptAccountResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`token`](InvitesAcceptAccountResponseBuilder::token)
     /// - [`expires_at`](InvitesAcceptAccountResponseBuilder::expires_at)
+    /// - [`two_factor_required`](InvitesAcceptAccountResponseBuilder::two_factor_required)
     /// - [`user`](InvitesAcceptAccountResponseBuilder::user)
     pub fn build(self) -> Result<InvitesAcceptAccountResponse, BuildError> {
         Ok(InvitesAcceptAccountResponse {
@@ -55,6 +65,9 @@ impl InvitesAcceptAccountResponseBuilder {
             expires_at: self
                 .expires_at
                 .ok_or_else(|| BuildError::missing_field("expires_at"))?,
+            two_factor_required: self
+                .two_factor_required
+                .ok_or_else(|| BuildError::missing_field("two_factor_required"))?,
             user: self.user.ok_or_else(|| BuildError::missing_field("user"))?,
         })
     }

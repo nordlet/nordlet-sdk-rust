@@ -7,6 +7,7 @@ pub enum ConfigsListDeclarationsResponseRowsItemFieldsItemKind {
     Secret,
     Select,
     Url,
+    Host,
     Certificate,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
@@ -20,6 +21,7 @@ impl Serialize for ConfigsListDeclarationsResponseRowsItemFieldsItemKind {
             Self::Secret => serializer.serialize_str("secret"),
             Self::Select => serializer.serialize_str("select"),
             Self::Url => serializer.serialize_str("url"),
+            Self::Host => serializer.serialize_str("host"),
             Self::Certificate => serializer.serialize_str("certificate"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
@@ -34,6 +36,7 @@ impl<'de> Deserialize<'de> for ConfigsListDeclarationsResponseRowsItemFieldsItem
             "secret" => Ok(Self::Secret),
             "select" => Ok(Self::Select),
             "url" => Ok(Self::Url),
+            "host" => Ok(Self::Host),
             "certificate" => Ok(Self::Certificate),
             _ => Ok(Self::__Unknown(value)),
         }
@@ -47,6 +50,7 @@ impl fmt::Display for ConfigsListDeclarationsResponseRowsItemFieldsItemKind {
             Self::Secret => write!(f, "secret"),
             Self::Select => write!(f, "select"),
             Self::Url => write!(f, "url"),
+            Self::Host => write!(f, "host"),
             Self::Certificate => write!(f, "certificate"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }

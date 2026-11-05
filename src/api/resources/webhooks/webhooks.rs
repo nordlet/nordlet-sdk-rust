@@ -13,7 +13,7 @@ impl WebhooksClient {
         })
     }
 
-    /// Register a webhook endpoint for the given event types (`*` for every event). The URL must be an https address that resolves to a public network (422 otherwise). The signing secret is generated unless `secret` is given, and this call is the only one that returns it.
+    /// Register a webhook endpoint for the given event types (`*` for every event). The URL must be an https address that resolves to a public network (422 otherwise). The signing secret is generated unless `secret` is given (at least 32 characters), and this call is the only one that returns it. Answers 503 when the platform encryption key is not configured.
     ///
     /// # Arguments
     ///
@@ -56,6 +56,31 @@ impl WebhooksClient {
             .execute_request(
                 Method::POST,
                 "v1/webhooks/subscriptions/list",
+                Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
+                None,
+                options,
+            )
+            .await
+    }
+
+    /// Replace the signing secret of a subscription and return the new one; this call is the only one that returns it. The secret is generated unless `secret` is given (at least 32 characters). For 24 hours `x-nordlet-signature-v2` carries two `v1=` values, one with the new secret and one with the previous one, so a receiver can switch secrets without refusing deliveries; `x-nordlet-signature` uses the new secret only. Answers 404 for an unknown subscription and 503 when the platform encryption key is not configured.
+    ///
+    /// # Arguments
+    ///
+    /// * `options` - Additional request options such as headers, timeout, etc.
+    ///
+    /// # Returns
+    ///
+    /// JSON response from the API
+    pub async fn subscriptions_rotate_secret(
+        &self,
+        request: &SubscriptionsRotateSecretWebhooksRequest,
+        options: Option<RequestOptions>,
+    ) -> Result<SubscriptionsRotateSecretWebhooksResponse, ApiError> {
+        self.http_client
+            .execute_request(
+                Method::POST,
+                "v1/webhooks/subscriptions/rotate-secret",
                 Some(serde_json::to_value(request).map_err(ApiError::Serialization)?),
                 None,
                 options,
