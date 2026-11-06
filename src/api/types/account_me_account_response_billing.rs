@@ -28,6 +28,10 @@ pub struct MeAccountResponseBilling {
     #[serde(rename = "planChosen")]
     #[serde(default)]
     pub plan_chosen: bool,
+    /// The payer has no paid plan and has started the free sandbox plan (running or ended)
+    #[serde(rename = "freeSandbox")]
+    #[serde(default)]
+    pub free_sandbox: bool,
     #[serde(rename = "flatRate")]
     #[serde(default)]
     pub flat_rate: bool,
@@ -53,6 +57,7 @@ pub struct MeAccountResponseBillingBuilder {
     payer_email: Option<String>,
     is_payer: Option<bool>,
     plan_chosen: Option<bool>,
+    free_sandbox: Option<bool>,
     flat_rate: Option<bool>,
     account_type: Option<MeAccountResponseBillingAccountType>,
 }
@@ -103,6 +108,11 @@ impl MeAccountResponseBillingBuilder {
         self
     }
 
+    pub fn free_sandbox(mut self, value: bool) -> Self {
+        self.free_sandbox = Some(value);
+        self
+    }
+
     pub fn flat_rate(mut self, value: bool) -> Self {
         self.flat_rate = Some(value);
         self
@@ -123,6 +133,7 @@ impl MeAccountResponseBillingBuilder {
     /// - [`payer_email`](MeAccountResponseBillingBuilder::payer_email)
     /// - [`is_payer`](MeAccountResponseBillingBuilder::is_payer)
     /// - [`plan_chosen`](MeAccountResponseBillingBuilder::plan_chosen)
+    /// - [`free_sandbox`](MeAccountResponseBillingBuilder::free_sandbox)
     /// - [`flat_rate`](MeAccountResponseBillingBuilder::flat_rate)
     /// - [`account_type`](MeAccountResponseBillingBuilder::account_type)
     pub fn build(self) -> Result<MeAccountResponseBilling, BuildError> {
@@ -150,6 +161,9 @@ impl MeAccountResponseBillingBuilder {
             plan_chosen: self
                 .plan_chosen
                 .ok_or_else(|| BuildError::missing_field("plan_chosen"))?,
+            free_sandbox: self
+                .free_sandbox
+                .ok_or_else(|| BuildError::missing_field("free_sandbox"))?,
             flat_rate: self
                 .flat_rate
                 .ok_or_else(|| BuildError::missing_field("flat_rate"))?,

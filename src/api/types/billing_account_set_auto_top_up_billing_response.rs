@@ -16,6 +16,12 @@ pub struct AccountSetAutoTopUpBillingResponse {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset::option")]
     pub trial_ends_at: Option<DateTime<FixedOffset>>,
+    /// When the free sandbox plan was started; it ends at `trialEndsAt`
+    #[serde(rename = "freeSandboxStartedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub free_sandbox_started_at: Option<DateTime<FixedOffset>>,
     #[serde(rename = "firstTopUpAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
@@ -87,6 +93,7 @@ pub struct AccountSetAutoTopUpBillingResponseBuilder {
     status: Option<AccountSetAutoTopUpBillingResponseStatus>,
     balance_cents: Option<i64>,
     trial_ends_at: Option<DateTime<FixedOffset>>,
+    free_sandbox_started_at: Option<DateTime<FixedOffset>>,
     first_top_up_at: Option<DateTime<FixedOffset>>,
     last_charged_date: Option<NaiveDate>,
     payments_configured: Option<bool>,
@@ -133,6 +140,11 @@ impl AccountSetAutoTopUpBillingResponseBuilder {
 
     pub fn trial_ends_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.trial_ends_at = Some(value);
+        self
+    }
+
+    pub fn free_sandbox_started_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.free_sandbox_started_at = Some(value);
         self
     }
 
@@ -251,6 +263,7 @@ impl AccountSetAutoTopUpBillingResponseBuilder {
                 .balance_cents
                 .ok_or_else(|| BuildError::missing_field("balance_cents"))?,
             trial_ends_at: self.trial_ends_at,
+            free_sandbox_started_at: self.free_sandbox_started_at,
             first_top_up_at: self.first_top_up_at,
             last_charged_date: self.last_charged_date,
             payments_configured: self

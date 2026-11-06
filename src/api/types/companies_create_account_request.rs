@@ -108,7 +108,7 @@ pub struct CompaniesCreateAccountRequest {
     #[serde(rename = "baseCurrency")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub base_currency: Option<String>,
-    /// Sandbox companies hold test data and are purged immediately on delete (immutable after creation)
+    /// Sandbox companies hold test data and are purged immediately on delete; `companies/convert-to-live` turns one into a live company
     #[serde(rename = "isSandbox")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_sandbox: Option<bool>,

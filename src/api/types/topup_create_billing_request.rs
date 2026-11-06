@@ -10,6 +10,9 @@ pub struct TopupCreateBillingRequest {
     #[serde(rename = "returnTo")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub return_to: Option<TopupCreateBillingRequestReturnTo>,
+    #[serde(rename = "convertCompanyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub convert_company_id: Option<String>,
 }
 
 impl TopupCreateBillingRequest {
@@ -24,6 +27,7 @@ pub struct TopupCreateBillingRequestBuilder {
     amount_cents: Option<i64>,
     locale: Option<TopupCreateBillingRequestLocale>,
     return_to: Option<TopupCreateBillingRequestReturnTo>,
+    convert_company_id: Option<String>,
 }
 
 impl TopupCreateBillingRequestBuilder {
@@ -42,6 +46,11 @@ impl TopupCreateBillingRequestBuilder {
         self
     }
 
+    pub fn convert_company_id(mut self, value: impl Into<String>) -> Self {
+        self.convert_company_id = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`TopupCreateBillingRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`amount_cents`](TopupCreateBillingRequestBuilder::amount_cents)
@@ -52,6 +61,7 @@ impl TopupCreateBillingRequestBuilder {
                 .ok_or_else(|| BuildError::missing_field("amount_cents"))?,
             locale: self.locale,
             return_to: self.return_to,
+            convert_company_id: self.convert_company_id,
         })
     }
 }

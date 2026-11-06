@@ -6,6 +6,9 @@ pub struct FlatRateCreateBillingRequest {
     pub locale: Option<FlatRateCreateBillingRequestLocale>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub plan: Option<FlatRateCreateBillingRequestPlan>,
+    #[serde(rename = "convertCompanyId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub convert_company_id: Option<String>,
 }
 
 impl FlatRateCreateBillingRequest {
@@ -19,6 +22,7 @@ impl FlatRateCreateBillingRequest {
 pub struct FlatRateCreateBillingRequestBuilder {
     locale: Option<FlatRateCreateBillingRequestLocale>,
     plan: Option<FlatRateCreateBillingRequestPlan>,
+    convert_company_id: Option<String>,
 }
 
 impl FlatRateCreateBillingRequestBuilder {
@@ -32,11 +36,17 @@ impl FlatRateCreateBillingRequestBuilder {
         self
     }
 
+    pub fn convert_company_id(mut self, value: impl Into<String>) -> Self {
+        self.convert_company_id = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`FlatRateCreateBillingRequest`].
     pub fn build(self) -> Result<FlatRateCreateBillingRequest, BuildError> {
         Ok(FlatRateCreateBillingRequest {
             locale: self.locale,
             plan: self.plan,
+            convert_company_id: self.convert_company_id,
         })
     }
 }
