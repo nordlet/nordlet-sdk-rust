@@ -19,6 +19,12 @@ pub struct TransactionsPostBankResponse {
     #[serde(rename = "counterpartyIban")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub counterparty_iban: Option<String>,
+    #[serde(rename = "partnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_id: Option<String>,
+    #[serde(rename = "partnerName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_name: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(rename = "externalId")]
@@ -59,6 +65,8 @@ pub struct TransactionsPostBankResponseBuilder {
     currency: Option<String>,
     counterparty_name: Option<String>,
     counterparty_iban: Option<String>,
+    partner_id: Option<String>,
+    partner_name: Option<String>,
     description: Option<String>,
     external_id: Option<String>,
     status: Option<TransactionsPostBankResponseStatus>,
@@ -102,6 +110,16 @@ impl TransactionsPostBankResponseBuilder {
 
     pub fn counterparty_iban(mut self, value: impl Into<String>) -> Self {
         self.counterparty_iban = Some(value.into());
+        self
+    }
+
+    pub fn partner_id(mut self, value: impl Into<String>) -> Self {
+        self.partner_id = Some(value.into());
+        self
+    }
+
+    pub fn partner_name(mut self, value: impl Into<String>) -> Self {
+        self.partner_name = Some(value.into());
         self
     }
 
@@ -169,6 +187,8 @@ impl TransactionsPostBankResponseBuilder {
                 .ok_or_else(|| BuildError::missing_field("currency"))?,
             counterparty_name: self.counterparty_name,
             counterparty_iban: self.counterparty_iban,
+            partner_id: self.partner_id,
+            partner_name: self.partner_name,
             description: self.description,
             external_id: self.external_id,
             status: self
