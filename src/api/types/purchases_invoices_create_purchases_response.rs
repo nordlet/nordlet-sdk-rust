@@ -40,6 +40,17 @@ pub struct InvoicesCreatePurchasesResponse {
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
+    #[serde(rename = "reversedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub reversed_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "reversalJournalTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversal_journal_transaction_id: Option<String>,
+    #[serde(rename = "reversalReason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversal_reason: Option<String>,
     #[serde(rename = "creditedInvoiceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credited_invoice_id: Option<String>,
@@ -79,6 +90,8 @@ pub struct InvoicesCreatePurchasesResponse {
     pub updated_at: DateTime<FixedOffset>,
     #[serde(default)]
     pub lines: Vec<InvoicesCreatePurchasesResponseLinesItem>,
+    #[serde(default)]
+    pub warnings: Vec<InvoicesCreatePurchasesResponseWarningsItem>,
 }
 
 impl InvoicesCreatePurchasesResponse {
@@ -105,6 +118,9 @@ pub struct InvoicesCreatePurchasesResponseBuilder {
     gross_total: Option<String>,
     paid_amount: Option<String>,
     journal_transaction_id: Option<String>,
+    reversed_at: Option<DateTime<FixedOffset>>,
+    reversal_journal_transaction_id: Option<String>,
+    reversal_reason: Option<String>,
     credited_invoice_id: Option<String>,
     purchase_order_id: Option<String>,
     operation_type_id: Option<String>,
@@ -118,6 +134,7 @@ pub struct InvoicesCreatePurchasesResponseBuilder {
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
     lines: Option<Vec<InvoicesCreatePurchasesResponseLinesItem>>,
+    warnings: Option<Vec<InvoicesCreatePurchasesResponseWarningsItem>>,
 }
 
 impl InvoicesCreatePurchasesResponseBuilder {
@@ -196,6 +213,21 @@ impl InvoicesCreatePurchasesResponseBuilder {
         self
     }
 
+    pub fn reversed_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.reversed_at = Some(value);
+        self
+    }
+
+    pub fn reversal_journal_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.reversal_journal_transaction_id = Some(value.into());
+        self
+    }
+
+    pub fn reversal_reason(mut self, value: impl Into<String>) -> Self {
+        self.reversal_reason = Some(value.into());
+        self
+    }
+
     pub fn credited_invoice_id(mut self, value: impl Into<String>) -> Self {
         self.credited_invoice_id = Some(value.into());
         self
@@ -261,6 +293,11 @@ impl InvoicesCreatePurchasesResponseBuilder {
         self
     }
 
+    pub fn warnings(mut self, value: Vec<InvoicesCreatePurchasesResponseWarningsItem>) -> Self {
+        self.warnings = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesCreatePurchasesResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesCreatePurchasesResponseBuilder::id)
@@ -278,6 +315,7 @@ impl InvoicesCreatePurchasesResponseBuilder {
     /// - [`created_at`](InvoicesCreatePurchasesResponseBuilder::created_at)
     /// - [`updated_at`](InvoicesCreatePurchasesResponseBuilder::updated_at)
     /// - [`lines`](InvoicesCreatePurchasesResponseBuilder::lines)
+    /// - [`warnings`](InvoicesCreatePurchasesResponseBuilder::warnings)
     pub fn build(self) -> Result<InvoicesCreatePurchasesResponse, BuildError> {
         Ok(InvoicesCreatePurchasesResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -317,6 +355,9 @@ impl InvoicesCreatePurchasesResponseBuilder {
                 .paid_amount
                 .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
             journal_transaction_id: self.journal_transaction_id,
+            reversed_at: self.reversed_at,
+            reversal_journal_transaction_id: self.reversal_journal_transaction_id,
+            reversal_reason: self.reversal_reason,
             credited_invoice_id: self.credited_invoice_id,
             purchase_order_id: self.purchase_order_id,
             operation_type_id: self.operation_type_id,
@@ -336,6 +377,9 @@ impl InvoicesCreatePurchasesResponseBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            warnings: self
+                .warnings
+                .ok_or_else(|| BuildError::missing_field("warnings"))?,
         })
     }
 }

@@ -19,6 +19,21 @@ pub struct MeAccountResponseCompaniesItem {
     #[serde(rename = "cashBasis")]
     #[serde(default)]
     pub cash_basis: bool,
+    #[serde(rename = "countryCode")]
+    #[serde(default)]
+    pub country_code: String,
+    #[serde(rename = "baseCurrency")]
+    #[serde(default)]
+    pub base_currency: String,
+    #[serde(rename = "isVatPayer")]
+    #[serde(default)]
+    pub is_vat_payer: bool,
+    #[serde(rename = "vatPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_period: Option<MeAccountResponseCompaniesItemVatPeriod>,
+    #[serde(rename = "fiscalYearEndMonth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_end_month: Option<i64>,
     pub status: MeAccountResponseCompaniesItemStatus,
     #[serde(rename = "deletedAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -43,6 +58,11 @@ pub struct MeAccountResponseCompaniesItemBuilder {
     role: Option<String>,
     is_sandbox: Option<bool>,
     cash_basis: Option<bool>,
+    country_code: Option<String>,
+    base_currency: Option<String>,
+    is_vat_payer: Option<bool>,
+    vat_period: Option<MeAccountResponseCompaniesItemVatPeriod>,
+    fiscal_year_end_month: Option<i64>,
     status: Option<MeAccountResponseCompaniesItemStatus>,
     deleted_at: Option<DateTime<FixedOffset>>,
 }
@@ -83,6 +103,31 @@ impl MeAccountResponseCompaniesItemBuilder {
         self
     }
 
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
+        self
+    }
+
+    pub fn base_currency(mut self, value: impl Into<String>) -> Self {
+        self.base_currency = Some(value.into());
+        self
+    }
+
+    pub fn is_vat_payer(mut self, value: bool) -> Self {
+        self.is_vat_payer = Some(value);
+        self
+    }
+
+    pub fn vat_period(mut self, value: MeAccountResponseCompaniesItemVatPeriod) -> Self {
+        self.vat_period = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_end_month(mut self, value: i64) -> Self {
+        self.fiscal_year_end_month = Some(value);
+        self
+    }
+
     pub fn status(mut self, value: MeAccountResponseCompaniesItemStatus) -> Self {
         self.status = Some(value);
         self
@@ -100,6 +145,9 @@ impl MeAccountResponseCompaniesItemBuilder {
     /// - [`role`](MeAccountResponseCompaniesItemBuilder::role)
     /// - [`is_sandbox`](MeAccountResponseCompaniesItemBuilder::is_sandbox)
     /// - [`cash_basis`](MeAccountResponseCompaniesItemBuilder::cash_basis)
+    /// - [`country_code`](MeAccountResponseCompaniesItemBuilder::country_code)
+    /// - [`base_currency`](MeAccountResponseCompaniesItemBuilder::base_currency)
+    /// - [`is_vat_payer`](MeAccountResponseCompaniesItemBuilder::is_vat_payer)
     /// - [`status`](MeAccountResponseCompaniesItemBuilder::status)
     pub fn build(self) -> Result<MeAccountResponseCompaniesItem, BuildError> {
         Ok(MeAccountResponseCompaniesItem {
@@ -114,6 +162,17 @@ impl MeAccountResponseCompaniesItemBuilder {
             cash_basis: self
                 .cash_basis
                 .ok_or_else(|| BuildError::missing_field("cash_basis"))?,
+            country_code: self
+                .country_code
+                .ok_or_else(|| BuildError::missing_field("country_code"))?,
+            base_currency: self
+                .base_currency
+                .ok_or_else(|| BuildError::missing_field("base_currency"))?,
+            is_vat_payer: self
+                .is_vat_payer
+                .ok_or_else(|| BuildError::missing_field("is_vat_payer"))?,
+            vat_period: self.vat_period,
+            fiscal_year_end_month: self.fiscal_year_end_month,
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,

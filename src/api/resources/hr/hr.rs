@@ -88,7 +88,7 @@ impl HrClient {
             .await
     }
 
-    /// Creates an employee record. `payrollOptions` holds the country-specific settings the payroll engine reads for the person (see `hr/employees/fields`); `applyAllowance` defaults to true and `pensionAccumulation` to false.
+    /// Creates an employee record. `payrollOptions` holds the country-specific settings the payroll engine reads for the person (see `hr/employees/fields`); `applyAllowance` defaults to true and `pensionAccumulation` to false. An `iban` whose check digits fail (ISO 13616) is refused with 422.
     ///
     /// # Arguments
     ///
@@ -113,7 +113,7 @@ impl HrClient {
             .await
     }
 
-    /// Changes the given fields of an employee; a null clears the fields that allow it (code, personal code, birth date, contact details, address, IBAN, social insurance number and start, hire date, notes). `status` and `terminationDate` are set here too.
+    /// Changes the given fields of an employee; a null clears the fields that allow it (code, personal code, birth date, contact details, address, IBAN, social insurance number and start, hire date, notes). `status` and `terminationDate` are set here too. An `iban` whose check digits fail (ISO 13616) is refused with 422.
     ///
     /// # Arguments
     ///

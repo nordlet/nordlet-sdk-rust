@@ -1,5 +1,6 @@
 pub use crate::prelude::*;
 
+/// The company profile field the value is taken from; change it with `account/companies/update`
 #[non_exhaustive]
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField {

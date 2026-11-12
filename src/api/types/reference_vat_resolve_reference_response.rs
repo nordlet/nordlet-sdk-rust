@@ -22,6 +22,9 @@ pub struct VatResolveReferenceResponse {
     pub legal_basis: String,
     #[serde(default)]
     pub notes: Vec<String>,
+    #[serde(rename = "vatTypeCodes")]
+    #[serde(default)]
+    pub vat_type_codes: Vec<String>,
 }
 
 impl VatResolveReferenceResponse {
@@ -41,6 +44,7 @@ pub struct VatResolveReferenceResponseBuilder {
     rates: Option<Vec<VatResolveReferenceResponseRatesItem>>,
     legal_basis: Option<String>,
     notes: Option<Vec<String>>,
+    vat_type_codes: Option<Vec<String>>,
 }
 
 impl VatResolveReferenceResponseBuilder {
@@ -84,6 +88,11 @@ impl VatResolveReferenceResponseBuilder {
         self
     }
 
+    pub fn vat_type_codes(mut self, value: Vec<String>) -> Self {
+        self.vat_type_codes = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`VatResolveReferenceResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`scheme`](VatResolveReferenceResponseBuilder::scheme)
@@ -93,6 +102,7 @@ impl VatResolveReferenceResponseBuilder {
     /// - [`rates`](VatResolveReferenceResponseBuilder::rates)
     /// - [`legal_basis`](VatResolveReferenceResponseBuilder::legal_basis)
     /// - [`notes`](VatResolveReferenceResponseBuilder::notes)
+    /// - [`vat_type_codes`](VatResolveReferenceResponseBuilder::vat_type_codes)
     pub fn build(self) -> Result<VatResolveReferenceResponse, BuildError> {
         Ok(VatResolveReferenceResponse {
             scheme: self
@@ -117,6 +127,9 @@ impl VatResolveReferenceResponseBuilder {
             notes: self
                 .notes
                 .ok_or_else(|| BuildError::missing_field("notes"))?,
+            vat_type_codes: self
+                .vat_type_codes
+                .ok_or_else(|| BuildError::missing_field("vat_type_codes"))?,
         })
     }
 }

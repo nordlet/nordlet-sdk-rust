@@ -204,6 +204,8 @@ pub struct InvoicesIssueSalesResponse {
     #[serde(rename = "vatEvidence")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_evidence: Option<InvoicesIssueSalesResponseVatEvidence>,
+    #[serde(default)]
+    pub warnings: Vec<InvoicesIssueSalesResponseWarningsItem>,
 }
 
 impl InvoicesIssueSalesResponse {
@@ -282,6 +284,7 @@ pub struct InvoicesIssueSalesResponseBuilder {
     advance_applied_amount: Option<String>,
     lines: Option<Vec<InvoicesIssueSalesResponseLinesItem>>,
     vat_evidence: Option<InvoicesIssueSalesResponseVatEvidence>,
+    warnings: Option<Vec<InvoicesIssueSalesResponseWarningsItem>>,
 }
 
 impl InvoicesIssueSalesResponseBuilder {
@@ -620,6 +623,11 @@ impl InvoicesIssueSalesResponseBuilder {
         self
     }
 
+    pub fn warnings(mut self, value: Vec<InvoicesIssueSalesResponseWarningsItem>) -> Self {
+        self.warnings = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesIssueSalesResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesIssueSalesResponseBuilder::id)
@@ -640,6 +648,7 @@ impl InvoicesIssueSalesResponseBuilder {
     /// - [`created_at`](InvoicesIssueSalesResponseBuilder::created_at)
     /// - [`updated_at`](InvoicesIssueSalesResponseBuilder::updated_at)
     /// - [`lines`](InvoicesIssueSalesResponseBuilder::lines)
+    /// - [`warnings`](InvoicesIssueSalesResponseBuilder::warnings)
     pub fn build(self) -> Result<InvoicesIssueSalesResponse, BuildError> {
         Ok(InvoicesIssueSalesResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -743,6 +752,9 @@ impl InvoicesIssueSalesResponseBuilder {
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
             vat_evidence: self.vat_evidence,
+            warnings: self
+                .warnings
+                .ok_or_else(|| BuildError::missing_field("warnings"))?,
         })
     }
 }

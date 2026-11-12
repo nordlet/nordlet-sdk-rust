@@ -34,6 +34,9 @@ pub struct TransactionsListBankResponseRowsItem {
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
+    #[serde(rename = "ignoreReason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ignore_reason: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
@@ -62,6 +65,7 @@ pub struct TransactionsListBankResponseRowsItemBuilder {
     matched_document_type: Option<String>,
     matched_document_id: Option<String>,
     journal_transaction_id: Option<String>,
+    ignore_reason: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
 }
 
@@ -131,6 +135,11 @@ impl TransactionsListBankResponseRowsItemBuilder {
         self
     }
 
+    pub fn ignore_reason(mut self, value: impl Into<String>) -> Self {
+        self.ignore_reason = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.created_at = Some(value);
         self
@@ -168,6 +177,7 @@ impl TransactionsListBankResponseRowsItemBuilder {
             matched_document_type: self.matched_document_type,
             matched_document_id: self.matched_document_id,
             journal_transaction_id: self.journal_transaction_id,
+            ignore_reason: self.ignore_reason,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

@@ -9,6 +9,8 @@ pub struct PeriodsLockLedgerResponse {
     #[serde(default)]
     pub month: i64,
     pub status: PeriodsLockLedgerResponseStatus,
+    #[serde(default)]
+    pub warnings: Vec<PeriodsLockLedgerResponseWarningsItem>,
 }
 
 impl PeriodsLockLedgerResponse {
@@ -24,6 +26,7 @@ pub struct PeriodsLockLedgerResponseBuilder {
     year: Option<i64>,
     month: Option<i64>,
     status: Option<PeriodsLockLedgerResponseStatus>,
+    warnings: Option<Vec<PeriodsLockLedgerResponseWarningsItem>>,
 }
 
 impl PeriodsLockLedgerResponseBuilder {
@@ -47,12 +50,18 @@ impl PeriodsLockLedgerResponseBuilder {
         self
     }
 
+    pub fn warnings(mut self, value: Vec<PeriodsLockLedgerResponseWarningsItem>) -> Self {
+        self.warnings = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`PeriodsLockLedgerResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](PeriodsLockLedgerResponseBuilder::id)
     /// - [`year`](PeriodsLockLedgerResponseBuilder::year)
     /// - [`month`](PeriodsLockLedgerResponseBuilder::month)
     /// - [`status`](PeriodsLockLedgerResponseBuilder::status)
+    /// - [`warnings`](PeriodsLockLedgerResponseBuilder::warnings)
     pub fn build(self) -> Result<PeriodsLockLedgerResponse, BuildError> {
         Ok(PeriodsLockLedgerResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -63,6 +72,9 @@ impl PeriodsLockLedgerResponseBuilder {
             status: self
                 .status
                 .ok_or_else(|| BuildError::missing_field("status"))?,
+            warnings: self
+                .warnings
+                .ok_or_else(|| BuildError::missing_field("warnings"))?,
         })
     }
 }

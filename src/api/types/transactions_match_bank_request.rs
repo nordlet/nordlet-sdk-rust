@@ -13,6 +13,8 @@ pub struct TransactionsMatchBankRequest {
     #[serde(rename = "invoiceAmount")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub invoice_amount: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub remainder: Option<TransactionsMatchBankRequestRemainder>,
 }
 
 impl TransactionsMatchBankRequest {
@@ -28,6 +30,7 @@ pub struct TransactionsMatchBankRequestBuilder {
     document_type: Option<TransactionsMatchBankRequestDocumentType>,
     document_id: Option<String>,
     invoice_amount: Option<String>,
+    remainder: Option<TransactionsMatchBankRequestRemainder>,
 }
 
 impl TransactionsMatchBankRequestBuilder {
@@ -51,6 +54,11 @@ impl TransactionsMatchBankRequestBuilder {
         self
     }
 
+    pub fn remainder(mut self, value: TransactionsMatchBankRequestRemainder) -> Self {
+        self.remainder = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`TransactionsMatchBankRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`transaction_id`](TransactionsMatchBankRequestBuilder::transaction_id)
@@ -68,6 +76,7 @@ impl TransactionsMatchBankRequestBuilder {
                 .document_id
                 .ok_or_else(|| BuildError::missing_field("document_id"))?,
             invoice_amount: self.invoice_amount,
+            remainder: self.remainder,
         })
     }
 }

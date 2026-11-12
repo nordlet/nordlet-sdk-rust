@@ -204,6 +204,8 @@ pub struct InvoicesCreateSalesResponse {
     #[serde(rename = "vatEvidence")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_evidence: Option<InvoicesCreateSalesResponseVatEvidence>,
+    #[serde(default)]
+    pub warnings: Vec<InvoicesCreateSalesResponseWarningsItem>,
 }
 
 impl InvoicesCreateSalesResponse {
@@ -282,6 +284,7 @@ pub struct InvoicesCreateSalesResponseBuilder {
     advance_applied_amount: Option<String>,
     lines: Option<Vec<InvoicesCreateSalesResponseLinesItem>>,
     vat_evidence: Option<InvoicesCreateSalesResponseVatEvidence>,
+    warnings: Option<Vec<InvoicesCreateSalesResponseWarningsItem>>,
 }
 
 impl InvoicesCreateSalesResponseBuilder {
@@ -620,6 +623,11 @@ impl InvoicesCreateSalesResponseBuilder {
         self
     }
 
+    pub fn warnings(mut self, value: Vec<InvoicesCreateSalesResponseWarningsItem>) -> Self {
+        self.warnings = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesCreateSalesResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesCreateSalesResponseBuilder::id)
@@ -640,6 +648,7 @@ impl InvoicesCreateSalesResponseBuilder {
     /// - [`created_at`](InvoicesCreateSalesResponseBuilder::created_at)
     /// - [`updated_at`](InvoicesCreateSalesResponseBuilder::updated_at)
     /// - [`lines`](InvoicesCreateSalesResponseBuilder::lines)
+    /// - [`warnings`](InvoicesCreateSalesResponseBuilder::warnings)
     pub fn build(self) -> Result<InvoicesCreateSalesResponse, BuildError> {
         Ok(InvoicesCreateSalesResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -743,6 +752,9 @@ impl InvoicesCreateSalesResponseBuilder {
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
             vat_evidence: self.vat_evidence,
+            warnings: self
+                .warnings
+                .ok_or_else(|| BuildError::missing_field("warnings"))?,
         })
     }
 }

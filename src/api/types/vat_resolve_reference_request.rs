@@ -15,6 +15,8 @@ pub struct VatResolveReferenceRequest {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub supply_type: Option<VatResolveReferenceRequestSupplyType>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub side: Option<VatResolveReferenceRequestSide>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<NaiveDate>,
     #[serde(rename = "belowDistanceSalesThreshold")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -64,6 +66,7 @@ pub struct VatResolveReferenceRequestBuilder {
     customer_country_code: Option<String>,
     customer_is_business: Option<bool>,
     supply_type: Option<VatResolveReferenceRequestSupplyType>,
+    side: Option<VatResolveReferenceRequestSide>,
     date: Option<NaiveDate>,
     below_distance_sales_threshold: Option<bool>,
     facilitated_by_marketplace: Option<bool>,
@@ -96,6 +99,11 @@ impl VatResolveReferenceRequestBuilder {
 
     pub fn supply_type(mut self, value: VatResolveReferenceRequestSupplyType) -> Self {
         self.supply_type = Some(value);
+        self
+    }
+
+    pub fn side(mut self, value: VatResolveReferenceRequestSide) -> Self {
+        self.side = Some(value);
         self
     }
 
@@ -166,6 +174,7 @@ impl VatResolveReferenceRequestBuilder {
             customer_country_code: self.customer_country_code,
             customer_is_business: self.customer_is_business,
             supply_type: self.supply_type,
+            side: self.side,
             date: self.date,
             below_distance_sales_threshold: self.below_distance_sales_threshold,
             facilitated_by_marketplace: self.facilitated_by_marketplace,

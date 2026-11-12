@@ -49,6 +49,15 @@ pub struct InvoicesCreatePurchasesRequest {
     pub document_ref: Option<String>,
     #[serde(default)]
     pub lines: Vec<InvoicesCreatePurchasesRequestLinesItem>,
+    #[serde(rename = "netTotal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub net_total: Option<String>,
+    #[serde(rename = "vatTotal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_total: Option<String>,
+    #[serde(rename = "grossTotal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub gross_total: Option<String>,
 }
 
 impl InvoicesCreatePurchasesRequest {
@@ -77,6 +86,9 @@ pub struct InvoicesCreatePurchasesRequestBuilder {
     einvoice_number: Option<String>,
     document_ref: Option<String>,
     lines: Option<Vec<InvoicesCreatePurchasesRequestLinesItem>>,
+    net_total: Option<String>,
+    vat_total: Option<String>,
+    gross_total: Option<String>,
 }
 
 impl InvoicesCreatePurchasesRequestBuilder {
@@ -165,6 +177,21 @@ impl InvoicesCreatePurchasesRequestBuilder {
         self
     }
 
+    pub fn net_total(mut self, value: impl Into<String>) -> Self {
+        self.net_total = Some(value.into());
+        self
+    }
+
+    pub fn vat_total(mut self, value: impl Into<String>) -> Self {
+        self.vat_total = Some(value.into());
+        self
+    }
+
+    pub fn gross_total(mut self, value: impl Into<String>) -> Self {
+        self.gross_total = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesCreatePurchasesRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`partner_id`](InvoicesCreatePurchasesRequestBuilder::partner_id)
@@ -198,6 +225,9 @@ impl InvoicesCreatePurchasesRequestBuilder {
             lines: self
                 .lines
                 .ok_or_else(|| BuildError::missing_field("lines"))?,
+            net_total: self.net_total,
+            vat_total: self.vat_total,
+            gross_total: self.gross_total,
         })
     }
 }

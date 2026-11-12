@@ -27,6 +27,9 @@ pub struct JournalTransactionsGetLedgerResponse {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset::option")]
     pub posted_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "reversedByTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversed_by_transaction_id: Option<String>,
     #[serde(default)]
     pub entries: Vec<JournalTransactionsGetLedgerResponseEntriesItem>,
 }
@@ -49,6 +52,7 @@ pub struct JournalTransactionsGetLedgerResponseBuilder {
     status: Option<JournalTransactionsGetLedgerResponseStatus>,
     created_at: Option<DateTime<FixedOffset>>,
     posted_at: Option<DateTime<FixedOffset>>,
+    reversed_by_transaction_id: Option<String>,
     entries: Option<Vec<JournalTransactionsGetLedgerResponseEntriesItem>>,
 }
 
@@ -98,6 +102,11 @@ impl JournalTransactionsGetLedgerResponseBuilder {
         self
     }
 
+    pub fn reversed_by_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.reversed_by_transaction_id = Some(value.into());
+        self
+    }
+
     pub fn entries(mut self, value: Vec<JournalTransactionsGetLedgerResponseEntriesItem>) -> Self {
         self.entries = Some(value);
         self
@@ -125,6 +134,7 @@ impl JournalTransactionsGetLedgerResponseBuilder {
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,
             posted_at: self.posted_at,
+            reversed_by_transaction_id: self.reversed_by_transaction_id,
             entries: self
                 .entries
                 .ok_or_else(|| BuildError::missing_field("entries"))?,

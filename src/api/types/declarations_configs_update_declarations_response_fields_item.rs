@@ -4,11 +4,15 @@ pub use crate::prelude::*;
 pub struct ConfigsUpdateDeclarationsResponseFieldsItem {
     #[serde(default)]
     pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
     pub kind: ConfigsUpdateDeclarationsResponseFieldsItemKind,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub multiline: Option<bool>,
+    /// The allowed values of a `select` field
     #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
+    /// The company profile field the value is taken from; change it with `account/companies/update`
     #[serde(rename = "companyField")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub company_field: Option<ConfigsUpdateDeclarationsResponseFieldsItemCompanyField>,
@@ -24,6 +28,7 @@ impl ConfigsUpdateDeclarationsResponseFieldsItem {
 #[non_exhaustive]
 pub struct ConfigsUpdateDeclarationsResponseFieldsItemBuilder {
     key: Option<String>,
+    label: Option<String>,
     kind: Option<ConfigsUpdateDeclarationsResponseFieldsItemKind>,
     multiline: Option<bool>,
     options: Option<Vec<String>>,
@@ -33,6 +38,11 @@ pub struct ConfigsUpdateDeclarationsResponseFieldsItemBuilder {
 impl ConfigsUpdateDeclarationsResponseFieldsItemBuilder {
     pub fn key(mut self, value: impl Into<String>) -> Self {
         self.key = Some(value.into());
+        self
+    }
+
+    pub fn label(mut self, value: impl Into<String>) -> Self {
+        self.label = Some(value.into());
         self
     }
 
@@ -66,6 +76,7 @@ impl ConfigsUpdateDeclarationsResponseFieldsItemBuilder {
     pub fn build(self) -> Result<ConfigsUpdateDeclarationsResponseFieldsItem, BuildError> {
         Ok(ConfigsUpdateDeclarationsResponseFieldsItem {
             key: self.key.ok_or_else(|| BuildError::missing_field("key"))?,
+            label: self.label,
             kind: self.kind.ok_or_else(|| BuildError::missing_field("kind"))?,
             multiline: self.multiline,
             options: self.options,

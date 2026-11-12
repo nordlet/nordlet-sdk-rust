@@ -43,6 +43,15 @@ pub struct InvoicesUpdatePurchasesRequest {
     pub einvoice_number: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lines: Option<Vec<InvoicesUpdatePurchasesRequestLinesItem>>,
+    #[serde(rename = "netTotal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub net_total: Option<String>,
+    #[serde(rename = "vatTotal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_total: Option<String>,
+    #[serde(rename = "grossTotal")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub gross_total: Option<String>,
 }
 
 impl InvoicesUpdatePurchasesRequest {
@@ -69,6 +78,9 @@ pub struct InvoicesUpdatePurchasesRequestBuilder {
     intrastat_nature_of_transaction: Option<String>,
     einvoice_number: Option<String>,
     lines: Option<Vec<InvoicesUpdatePurchasesRequestLinesItem>>,
+    net_total: Option<String>,
+    vat_total: Option<String>,
+    gross_total: Option<String>,
 }
 
 impl InvoicesUpdatePurchasesRequestBuilder {
@@ -147,6 +159,21 @@ impl InvoicesUpdatePurchasesRequestBuilder {
         self
     }
 
+    pub fn net_total(mut self, value: impl Into<String>) -> Self {
+        self.net_total = Some(value.into());
+        self
+    }
+
+    pub fn vat_total(mut self, value: impl Into<String>) -> Self {
+        self.vat_total = Some(value.into());
+        self
+    }
+
+    pub fn gross_total(mut self, value: impl Into<String>) -> Self {
+        self.gross_total = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesUpdatePurchasesRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](InvoicesUpdatePurchasesRequestBuilder::id)
@@ -167,6 +194,9 @@ impl InvoicesUpdatePurchasesRequestBuilder {
             intrastat_nature_of_transaction: self.intrastat_nature_of_transaction,
             einvoice_number: self.einvoice_number,
             lines: self.lines,
+            net_total: self.net_total,
+            vat_total: self.vat_total,
+            gross_total: self.gross_total,
         })
     }
 }

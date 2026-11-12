@@ -5,6 +5,7 @@ pub use crate::prelude::*;
 pub enum InvoicesGetPurchasesResponseStatus {
     Draft,
     Registered,
+    Reversed,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -15,6 +16,7 @@ impl Serialize for InvoicesGetPurchasesResponseStatus {
         match self {
             Self::Draft => serializer.serialize_str("draft"),
             Self::Registered => serializer.serialize_str("registered"),
+            Self::Reversed => serializer.serialize_str("reversed"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -26,6 +28,7 @@ impl<'de> Deserialize<'de> for InvoicesGetPurchasesResponseStatus {
         match value.as_str() {
             "draft" => Ok(Self::Draft),
             "registered" => Ok(Self::Registered),
+            "reversed" => Ok(Self::Reversed),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -36,6 +39,7 @@ impl fmt::Display for InvoicesGetPurchasesResponseStatus {
         match self {
             Self::Draft => write!(f, "draft"),
             Self::Registered => write!(f, "registered"),
+            Self::Reversed => write!(f, "reversed"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

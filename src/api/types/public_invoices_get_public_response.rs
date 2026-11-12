@@ -45,6 +45,9 @@ pub struct InvoicesGetPublicResponse {
     #[serde(rename = "cardPaymentReceived")]
     #[serde(default)]
     pub card_payment_received: bool,
+    #[serde(rename = "sentWith")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sent_with: Option<String>,
     #[serde(default)]
     pub seller: InvoicesGetPublicResponseSeller,
     #[serde(default)]
@@ -79,6 +82,7 @@ pub struct InvoicesGetPublicResponseBuilder {
     notes: Option<String>,
     pay_url: Option<String>,
     card_payment_received: Option<bool>,
+    sent_with: Option<String>,
     seller: Option<InvoicesGetPublicResponseSeller>,
     buyer: Option<InvoicesGetPublicResponseBuyer>,
     lines: Option<Vec<InvoicesGetPublicResponseLinesItem>>,
@@ -170,6 +174,11 @@ impl InvoicesGetPublicResponseBuilder {
         self
     }
 
+    pub fn sent_with(mut self, value: impl Into<String>) -> Self {
+        self.sent_with = Some(value.into());
+        self
+    }
+
     pub fn seller(mut self, value: InvoicesGetPublicResponseSeller) -> Self {
         self.seller = Some(value);
         self
@@ -239,6 +248,7 @@ impl InvoicesGetPublicResponseBuilder {
             card_payment_received: self
                 .card_payment_received
                 .ok_or_else(|| BuildError::missing_field("card_payment_received"))?,
+            sent_with: self.sent_with,
             seller: self
                 .seller
                 .ok_or_else(|| BuildError::missing_field("seller"))?,

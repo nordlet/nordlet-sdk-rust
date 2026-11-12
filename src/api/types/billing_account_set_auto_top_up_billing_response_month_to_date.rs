@@ -12,9 +12,6 @@ pub struct AccountSetAutoTopUpBillingResponseMonthToDate {
     #[serde(rename = "saleInvoices")]
     #[serde(default)]
     pub sale_invoices: i64,
-    #[serde(rename = "ocrPages")]
-    #[serde(default)]
-    pub ocr_pages: i64,
     #[serde(rename = "fileBytes")]
     #[serde(default)]
     #[serde(with = "crate::core::number_serializers")]
@@ -44,7 +41,6 @@ pub struct AccountSetAutoTopUpBillingResponseMonthToDateBuilder {
     to: Option<String>,
     api_requests: Option<i64>,
     sale_invoices: Option<i64>,
-    ocr_pages: Option<i64>,
     file_bytes: Option<f64>,
     database_bytes: Option<f64>,
     archived_companies: Option<i64>,
@@ -69,11 +65,6 @@ impl AccountSetAutoTopUpBillingResponseMonthToDateBuilder {
 
     pub fn sale_invoices(mut self, value: i64) -> Self {
         self.sale_invoices = Some(value);
-        self
-    }
-
-    pub fn ocr_pages(mut self, value: i64) -> Self {
-        self.ocr_pages = Some(value);
         self
     }
 
@@ -103,7 +94,6 @@ impl AccountSetAutoTopUpBillingResponseMonthToDateBuilder {
     /// - [`to`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::to)
     /// - [`api_requests`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::api_requests)
     /// - [`sale_invoices`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::sale_invoices)
-    /// - [`ocr_pages`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::ocr_pages)
     /// - [`file_bytes`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::file_bytes)
     /// - [`database_bytes`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::database_bytes)
     /// - [`archived_companies`](AccountSetAutoTopUpBillingResponseMonthToDateBuilder::archived_companies)
@@ -118,9 +108,6 @@ impl AccountSetAutoTopUpBillingResponseMonthToDateBuilder {
             sale_invoices: self
                 .sale_invoices
                 .ok_or_else(|| BuildError::missing_field("sale_invoices"))?,
-            ocr_pages: self
-                .ocr_pages
-                .ok_or_else(|| BuildError::missing_field("ocr_pages"))?,
             file_bytes: self
                 .file_bytes
                 .ok_or_else(|| BuildError::missing_field("file_bytes"))?,

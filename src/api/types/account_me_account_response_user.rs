@@ -15,6 +15,9 @@ pub struct MeAccountResponseUser {
     #[serde(rename = "isSuperAdmin")]
     #[serde(default)]
     pub is_super_admin: bool,
+    #[serde(rename = "whiteLabel")]
+    #[serde(default)]
+    pub white_label: bool,
 }
 
 impl MeAccountResponseUser {
@@ -32,6 +35,7 @@ pub struct MeAccountResponseUserBuilder {
     locale: Option<String>,
     plan: Option<String>,
     is_super_admin: Option<bool>,
+    white_label: Option<bool>,
 }
 
 impl MeAccountResponseUserBuilder {
@@ -65,6 +69,11 @@ impl MeAccountResponseUserBuilder {
         self
     }
 
+    pub fn white_label(mut self, value: bool) -> Self {
+        self.white_label = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`MeAccountResponseUser`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](MeAccountResponseUserBuilder::id)
@@ -72,6 +81,7 @@ impl MeAccountResponseUserBuilder {
     /// - [`locale`](MeAccountResponseUserBuilder::locale)
     /// - [`plan`](MeAccountResponseUserBuilder::plan)
     /// - [`is_super_admin`](MeAccountResponseUserBuilder::is_super_admin)
+    /// - [`white_label`](MeAccountResponseUserBuilder::white_label)
     pub fn build(self) -> Result<MeAccountResponseUser, BuildError> {
         Ok(MeAccountResponseUser {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -86,6 +96,9 @@ impl MeAccountResponseUserBuilder {
             is_super_admin: self
                 .is_super_admin
                 .ok_or_else(|| BuildError::missing_field("is_super_admin"))?,
+            white_label: self
+                .white_label
+                .ok_or_else(|| BuildError::missing_field("white_label"))?,
         })
     }
 }

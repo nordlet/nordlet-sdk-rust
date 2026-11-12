@@ -5,6 +5,7 @@ pub use crate::prelude::*;
 pub enum TransactionsMatchBankResponseStatus {
     New,
     Matched,
+    Ignored,
     /// This variant is used for forward compatibility.
     /// If the server sends a value not recognized by the current SDK version,
     /// it will be captured here with the raw string value.
@@ -15,6 +16,7 @@ impl Serialize for TransactionsMatchBankResponseStatus {
         match self {
             Self::New => serializer.serialize_str("new"),
             Self::Matched => serializer.serialize_str("matched"),
+            Self::Ignored => serializer.serialize_str("ignored"),
             Self::__Unknown(val) => serializer.serialize_str(val),
         }
     }
@@ -26,6 +28,7 @@ impl<'de> Deserialize<'de> for TransactionsMatchBankResponseStatus {
         match value.as_str() {
             "new" => Ok(Self::New),
             "matched" => Ok(Self::Matched),
+            "ignored" => Ok(Self::Ignored),
             _ => Ok(Self::__Unknown(value)),
         }
     }
@@ -36,6 +39,7 @@ impl fmt::Display for TransactionsMatchBankResponseStatus {
         match self {
             Self::New => write!(f, "new"),
             Self::Matched => write!(f, "matched"),
+            Self::Ignored => write!(f, "ignored"),
             Self::__Unknown(val) => write!(f, "{}", val),
         }
     }

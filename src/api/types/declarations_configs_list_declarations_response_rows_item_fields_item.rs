@@ -4,11 +4,15 @@ pub use crate::prelude::*;
 pub struct ConfigsListDeclarationsResponseRowsItemFieldsItem {
     #[serde(default)]
     pub key: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
     pub kind: ConfigsListDeclarationsResponseRowsItemFieldsItemKind,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub multiline: Option<bool>,
+    /// The allowed values of a `select` field
     #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
+    /// The company profile field the value is taken from; change it with `account/companies/update`
     #[serde(rename = "companyField")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub company_field: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField>,
@@ -24,6 +28,7 @@ impl ConfigsListDeclarationsResponseRowsItemFieldsItem {
 #[non_exhaustive]
 pub struct ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
     key: Option<String>,
+    label: Option<String>,
     kind: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemKind>,
     multiline: Option<bool>,
     options: Option<Vec<String>>,
@@ -33,6 +38,11 @@ pub struct ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
 impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
     pub fn key(mut self, value: impl Into<String>) -> Self {
         self.key = Some(value.into());
+        self
+    }
+
+    pub fn label(mut self, value: impl Into<String>) -> Self {
+        self.label = Some(value.into());
         self
     }
 
@@ -66,6 +76,7 @@ impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
     pub fn build(self) -> Result<ConfigsListDeclarationsResponseRowsItemFieldsItem, BuildError> {
         Ok(ConfigsListDeclarationsResponseRowsItemFieldsItem {
             key: self.key.ok_or_else(|| BuildError::missing_field("key"))?,
+            label: self.label,
             kind: self.kind.ok_or_else(|| BuildError::missing_field("kind"))?,
             multiline: self.multiline,
             options: self.options,

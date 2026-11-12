@@ -19,6 +19,21 @@ pub struct CompaniesCreateAccountResponse {
     #[serde(rename = "cashBasis")]
     #[serde(default)]
     pub cash_basis: bool,
+    #[serde(rename = "countryCode")]
+    #[serde(default)]
+    pub country_code: String,
+    #[serde(rename = "baseCurrency")]
+    #[serde(default)]
+    pub base_currency: String,
+    #[serde(rename = "isVatPayer")]
+    #[serde(default)]
+    pub is_vat_payer: bool,
+    #[serde(rename = "vatPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_period: Option<CompaniesCreateAccountResponseVatPeriod>,
+    #[serde(rename = "fiscalYearEndMonth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_end_month: Option<i64>,
 }
 
 impl CompaniesCreateAccountResponse {
@@ -37,6 +52,11 @@ pub struct CompaniesCreateAccountResponseBuilder {
     role: Option<String>,
     is_sandbox: Option<bool>,
     cash_basis: Option<bool>,
+    country_code: Option<String>,
+    base_currency: Option<String>,
+    is_vat_payer: Option<bool>,
+    vat_period: Option<CompaniesCreateAccountResponseVatPeriod>,
+    fiscal_year_end_month: Option<i64>,
 }
 
 impl CompaniesCreateAccountResponseBuilder {
@@ -75,6 +95,31 @@ impl CompaniesCreateAccountResponseBuilder {
         self
     }
 
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
+        self
+    }
+
+    pub fn base_currency(mut self, value: impl Into<String>) -> Self {
+        self.base_currency = Some(value.into());
+        self
+    }
+
+    pub fn is_vat_payer(mut self, value: bool) -> Self {
+        self.is_vat_payer = Some(value);
+        self
+    }
+
+    pub fn vat_period(mut self, value: CompaniesCreateAccountResponseVatPeriod) -> Self {
+        self.vat_period = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_end_month(mut self, value: i64) -> Self {
+        self.fiscal_year_end_month = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`CompaniesCreateAccountResponse`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](CompaniesCreateAccountResponseBuilder::id)
@@ -82,6 +127,9 @@ impl CompaniesCreateAccountResponseBuilder {
     /// - [`role`](CompaniesCreateAccountResponseBuilder::role)
     /// - [`is_sandbox`](CompaniesCreateAccountResponseBuilder::is_sandbox)
     /// - [`cash_basis`](CompaniesCreateAccountResponseBuilder::cash_basis)
+    /// - [`country_code`](CompaniesCreateAccountResponseBuilder::country_code)
+    /// - [`base_currency`](CompaniesCreateAccountResponseBuilder::base_currency)
+    /// - [`is_vat_payer`](CompaniesCreateAccountResponseBuilder::is_vat_payer)
     pub fn build(self) -> Result<CompaniesCreateAccountResponse, BuildError> {
         Ok(CompaniesCreateAccountResponse {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -95,6 +143,17 @@ impl CompaniesCreateAccountResponseBuilder {
             cash_basis: self
                 .cash_basis
                 .ok_or_else(|| BuildError::missing_field("cash_basis"))?,
+            country_code: self
+                .country_code
+                .ok_or_else(|| BuildError::missing_field("country_code"))?,
+            base_currency: self
+                .base_currency
+                .ok_or_else(|| BuildError::missing_field("base_currency"))?,
+            is_vat_payer: self
+                .is_vat_payer
+                .ok_or_else(|| BuildError::missing_field("is_vat_payer"))?,
+            vat_period: self.vat_period,
+            fiscal_year_end_month: self.fiscal_year_end_month,
         })
     }
 }
