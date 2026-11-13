@@ -21,6 +21,8 @@ pub enum PostingRulesUpdateLedgerRequestRulesItemKey {
     PosCashSurplus,
     BankFxGain,
     BankFxLoss,
+    BankPaymentDifferenceGain,
+    BankPaymentDifferenceLoss,
     BankFees,
     BankCardPayments,
     BankTopUps,
@@ -70,6 +72,12 @@ impl Serialize for PostingRulesUpdateLedgerRequestRulesItemKey {
             Self::PosCashSurplus => serializer.serialize_str("pos.cashSurplus"),
             Self::BankFxGain => serializer.serialize_str("bank.fxGain"),
             Self::BankFxLoss => serializer.serialize_str("bank.fxLoss"),
+            Self::BankPaymentDifferenceGain => {
+                serializer.serialize_str("bank.paymentDifferenceGain")
+            }
+            Self::BankPaymentDifferenceLoss => {
+                serializer.serialize_str("bank.paymentDifferenceLoss")
+            }
             Self::BankFees => serializer.serialize_str("bank.fees"),
             Self::BankCardPayments => serializer.serialize_str("bank.cardPayments"),
             Self::BankTopUps => serializer.serialize_str("bank.topUps"),
@@ -124,6 +132,8 @@ impl<'de> Deserialize<'de> for PostingRulesUpdateLedgerRequestRulesItemKey {
             "pos.cashSurplus" => Ok(Self::PosCashSurplus),
             "bank.fxGain" => Ok(Self::BankFxGain),
             "bank.fxLoss" => Ok(Self::BankFxLoss),
+            "bank.paymentDifferenceGain" => Ok(Self::BankPaymentDifferenceGain),
+            "bank.paymentDifferenceLoss" => Ok(Self::BankPaymentDifferenceLoss),
             "bank.fees" => Ok(Self::BankFees),
             "bank.cardPayments" => Ok(Self::BankCardPayments),
             "bank.topUps" => Ok(Self::BankTopUps),
@@ -173,6 +183,8 @@ impl fmt::Display for PostingRulesUpdateLedgerRequestRulesItemKey {
             Self::PosCashSurplus => write!(f, "pos.cashSurplus"),
             Self::BankFxGain => write!(f, "bank.fxGain"),
             Self::BankFxLoss => write!(f, "bank.fxLoss"),
+            Self::BankPaymentDifferenceGain => write!(f, "bank.paymentDifferenceGain"),
+            Self::BankPaymentDifferenceLoss => write!(f, "bank.paymentDifferenceLoss"),
             Self::BankFees => write!(f, "bank.fees"),
             Self::BankCardPayments => write!(f, "bank.cardPayments"),
             Self::BankTopUps => write!(f, "bank.topUps"),
