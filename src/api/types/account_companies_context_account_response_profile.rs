@@ -1,0 +1,494 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct CompaniesContextAccountResponseProfile {
+    #[serde(default)]
+    pub id: String,
+    #[serde(default)]
+    pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub code: Option<String>,
+    #[serde(rename = "vatCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_code: Option<String>,
+    #[serde(rename = "smeExemptionNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sme_exemption_number: Option<String>,
+    #[serde(rename = "isVatPayer")]
+    #[serde(default)]
+    pub is_vat_payer: bool,
+    #[serde(rename = "isSandbox")]
+    #[serde(default)]
+    pub is_sandbox: bool,
+    #[serde(rename = "cashBasis")]
+    #[serde(default)]
+    pub cash_basis: bool,
+    #[serde(rename = "countryCode")]
+    #[serde(default)]
+    pub country_code: String,
+    /// Chart of accounts template the company was seeded with
+    #[serde(rename = "chartTemplate")]
+    #[serde(default)]
+    pub chart_template: String,
+    /// Chart of accounts template of the company country
+    #[serde(rename = "countryChartTemplate")]
+    #[serde(default)]
+    pub country_chart_template: String,
+    #[serde(rename = "baseCurrency")]
+    #[serde(default)]
+    pub base_currency: String,
+    #[serde(rename = "defaultInvoiceCurrency")]
+    #[serde(default)]
+    pub default_invoice_currency: String,
+    pub status: CompaniesContextAccountResponseProfileStatus,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub address: Option<CompaniesContextAccountResponseProfileAddress>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub email: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub phone: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub iban: Option<String>,
+    #[serde(rename = "bankName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_name: Option<String>,
+    #[serde(rename = "bankBic")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_bic: Option<String>,
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    #[serde(rename = "bankBranchCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_branch_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// Prefix of the numbers of invoices issued without a document series (SF when none was set)
+    #[serde(rename = "invoicePrefix")]
+    #[serde(default)]
+    pub invoice_prefix: String,
+    /// Number the next invoice issued without a document series gets, before any country-specific format
+    #[serde(rename = "nextInvoiceNumber")]
+    #[serde(default)]
+    pub next_invoice_number: String,
+    #[serde(rename = "defaultInvoiceLocale")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_invoice_locale: Option<String>,
+    #[serde(rename = "defaultInvoiceNote")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_invoice_note: Option<String>,
+    #[serde(rename = "peppolId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub peppol_id: Option<String>,
+    #[serde(rename = "sepaCreditorId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sepa_creditor_id: Option<String>,
+    #[serde(rename = "logoFileId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub logo_file_id: Option<String>,
+    #[serde(rename = "legalForm")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub legal_form: Option<String>,
+    #[serde(rename = "registryName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub registry_name: Option<String>,
+    #[serde(rename = "incorporatedOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub incorporated_on: Option<String>,
+    #[serde(rename = "shareCapital")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub share_capital: Option<String>,
+    #[serde(rename = "accountsKeptBy")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub accounts_kept_by: Option<CompaniesContextAccountResponseProfileAccountsKeptBy>,
+    #[serde(rename = "vatPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_period: Option<CompaniesContextAccountResponseProfileVatPeriod>,
+    #[serde(rename = "fiscalYearEndMonth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_end_month: Option<i64>,
+    #[serde(rename = "timeZone")]
+    #[serde(default)]
+    pub time_zone: String,
+    #[serde(rename = "filingOptions")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filing_options: Option<HashMap<String, Option<String>>>,
+    #[serde(rename = "bookkeeperName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bookkeeper_name: Option<String>,
+    #[serde(rename = "auditorName")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auditor_name: Option<String>,
+    #[serde(rename = "auditorRegistrationNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auditor_registration_number: Option<String>,
+    #[serde(rename = "auditRequired")]
+    #[serde(default)]
+    pub audit_required: bool,
+}
+
+impl CompaniesContextAccountResponseProfile {
+    pub fn builder() -> CompaniesContextAccountResponseProfileBuilder {
+        <CompaniesContextAccountResponseProfileBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct CompaniesContextAccountResponseProfileBuilder {
+    id: Option<String>,
+    name: Option<String>,
+    code: Option<String>,
+    vat_code: Option<String>,
+    sme_exemption_number: Option<String>,
+    is_vat_payer: Option<bool>,
+    is_sandbox: Option<bool>,
+    cash_basis: Option<bool>,
+    country_code: Option<String>,
+    chart_template: Option<String>,
+    country_chart_template: Option<String>,
+    base_currency: Option<String>,
+    default_invoice_currency: Option<String>,
+    status: Option<CompaniesContextAccountResponseProfileStatus>,
+    address: Option<CompaniesContextAccountResponseProfileAddress>,
+    email: Option<String>,
+    phone: Option<String>,
+    iban: Option<String>,
+    bank_name: Option<String>,
+    bank_bic: Option<String>,
+    bank_code: Option<String>,
+    bank_branch_code: Option<String>,
+    bank_account_number: Option<String>,
+    invoice_prefix: Option<String>,
+    next_invoice_number: Option<String>,
+    default_invoice_locale: Option<String>,
+    default_invoice_note: Option<String>,
+    peppol_id: Option<String>,
+    sepa_creditor_id: Option<String>,
+    logo_file_id: Option<String>,
+    legal_form: Option<String>,
+    registry_name: Option<String>,
+    incorporated_on: Option<String>,
+    share_capital: Option<String>,
+    accounts_kept_by: Option<CompaniesContextAccountResponseProfileAccountsKeptBy>,
+    vat_period: Option<CompaniesContextAccountResponseProfileVatPeriod>,
+    fiscal_year_end_month: Option<i64>,
+    time_zone: Option<String>,
+    filing_options: Option<HashMap<String, Option<String>>>,
+    bookkeeper_name: Option<String>,
+    auditor_name: Option<String>,
+    auditor_registration_number: Option<String>,
+    audit_required: Option<bool>,
+}
+
+impl CompaniesContextAccountResponseProfileBuilder {
+    pub fn id(mut self, value: impl Into<String>) -> Self {
+        self.id = Some(value.into());
+        self
+    }
+
+    pub fn name(mut self, value: impl Into<String>) -> Self {
+        self.name = Some(value.into());
+        self
+    }
+
+    pub fn code(mut self, value: impl Into<String>) -> Self {
+        self.code = Some(value.into());
+        self
+    }
+
+    pub fn vat_code(mut self, value: impl Into<String>) -> Self {
+        self.vat_code = Some(value.into());
+        self
+    }
+
+    pub fn sme_exemption_number(mut self, value: impl Into<String>) -> Self {
+        self.sme_exemption_number = Some(value.into());
+        self
+    }
+
+    pub fn is_vat_payer(mut self, value: bool) -> Self {
+        self.is_vat_payer = Some(value);
+        self
+    }
+
+    pub fn is_sandbox(mut self, value: bool) -> Self {
+        self.is_sandbox = Some(value);
+        self
+    }
+
+    pub fn cash_basis(mut self, value: bool) -> Self {
+        self.cash_basis = Some(value);
+        self
+    }
+
+    pub fn country_code(mut self, value: impl Into<String>) -> Self {
+        self.country_code = Some(value.into());
+        self
+    }
+
+    pub fn chart_template(mut self, value: impl Into<String>) -> Self {
+        self.chart_template = Some(value.into());
+        self
+    }
+
+    pub fn country_chart_template(mut self, value: impl Into<String>) -> Self {
+        self.country_chart_template = Some(value.into());
+        self
+    }
+
+    pub fn base_currency(mut self, value: impl Into<String>) -> Self {
+        self.base_currency = Some(value.into());
+        self
+    }
+
+    pub fn default_invoice_currency(mut self, value: impl Into<String>) -> Self {
+        self.default_invoice_currency = Some(value.into());
+        self
+    }
+
+    pub fn status(mut self, value: CompaniesContextAccountResponseProfileStatus) -> Self {
+        self.status = Some(value);
+        self
+    }
+
+    pub fn address(mut self, value: CompaniesContextAccountResponseProfileAddress) -> Self {
+        self.address = Some(value);
+        self
+    }
+
+    pub fn email(mut self, value: impl Into<String>) -> Self {
+        self.email = Some(value.into());
+        self
+    }
+
+    pub fn phone(mut self, value: impl Into<String>) -> Self {
+        self.phone = Some(value.into());
+        self
+    }
+
+    pub fn iban(mut self, value: impl Into<String>) -> Self {
+        self.iban = Some(value.into());
+        self
+    }
+
+    pub fn bank_name(mut self, value: impl Into<String>) -> Self {
+        self.bank_name = Some(value.into());
+        self
+    }
+
+    pub fn bank_bic(mut self, value: impl Into<String>) -> Self {
+        self.bank_bic = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_branch_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_branch_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn invoice_prefix(mut self, value: impl Into<String>) -> Self {
+        self.invoice_prefix = Some(value.into());
+        self
+    }
+
+    pub fn next_invoice_number(mut self, value: impl Into<String>) -> Self {
+        self.next_invoice_number = Some(value.into());
+        self
+    }
+
+    pub fn default_invoice_locale(mut self, value: impl Into<String>) -> Self {
+        self.default_invoice_locale = Some(value.into());
+        self
+    }
+
+    pub fn default_invoice_note(mut self, value: impl Into<String>) -> Self {
+        self.default_invoice_note = Some(value.into());
+        self
+    }
+
+    pub fn peppol_id(mut self, value: impl Into<String>) -> Self {
+        self.peppol_id = Some(value.into());
+        self
+    }
+
+    pub fn sepa_creditor_id(mut self, value: impl Into<String>) -> Self {
+        self.sepa_creditor_id = Some(value.into());
+        self
+    }
+
+    pub fn logo_file_id(mut self, value: impl Into<String>) -> Self {
+        self.logo_file_id = Some(value.into());
+        self
+    }
+
+    pub fn legal_form(mut self, value: impl Into<String>) -> Self {
+        self.legal_form = Some(value.into());
+        self
+    }
+
+    pub fn registry_name(mut self, value: impl Into<String>) -> Self {
+        self.registry_name = Some(value.into());
+        self
+    }
+
+    pub fn incorporated_on(mut self, value: impl Into<String>) -> Self {
+        self.incorporated_on = Some(value.into());
+        self
+    }
+
+    pub fn share_capital(mut self, value: impl Into<String>) -> Self {
+        self.share_capital = Some(value.into());
+        self
+    }
+
+    pub fn accounts_kept_by(
+        mut self,
+        value: CompaniesContextAccountResponseProfileAccountsKeptBy,
+    ) -> Self {
+        self.accounts_kept_by = Some(value);
+        self
+    }
+
+    pub fn vat_period(mut self, value: CompaniesContextAccountResponseProfileVatPeriod) -> Self {
+        self.vat_period = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_end_month(mut self, value: i64) -> Self {
+        self.fiscal_year_end_month = Some(value);
+        self
+    }
+
+    pub fn time_zone(mut self, value: impl Into<String>) -> Self {
+        self.time_zone = Some(value.into());
+        self
+    }
+
+    pub fn filing_options(mut self, value: HashMap<String, Option<String>>) -> Self {
+        self.filing_options = Some(value);
+        self
+    }
+
+    pub fn bookkeeper_name(mut self, value: impl Into<String>) -> Self {
+        self.bookkeeper_name = Some(value.into());
+        self
+    }
+
+    pub fn auditor_name(mut self, value: impl Into<String>) -> Self {
+        self.auditor_name = Some(value.into());
+        self
+    }
+
+    pub fn auditor_registration_number(mut self, value: impl Into<String>) -> Self {
+        self.auditor_registration_number = Some(value.into());
+        self
+    }
+
+    pub fn audit_required(mut self, value: bool) -> Self {
+        self.audit_required = Some(value);
+        self
+    }
+
+    /// Consumes the builder and constructs a [`CompaniesContextAccountResponseProfile`].
+    /// This method will fail if any of the following fields are not set:
+    /// - [`id`](CompaniesContextAccountResponseProfileBuilder::id)
+    /// - [`name`](CompaniesContextAccountResponseProfileBuilder::name)
+    /// - [`is_vat_payer`](CompaniesContextAccountResponseProfileBuilder::is_vat_payer)
+    /// - [`is_sandbox`](CompaniesContextAccountResponseProfileBuilder::is_sandbox)
+    /// - [`cash_basis`](CompaniesContextAccountResponseProfileBuilder::cash_basis)
+    /// - [`country_code`](CompaniesContextAccountResponseProfileBuilder::country_code)
+    /// - [`chart_template`](CompaniesContextAccountResponseProfileBuilder::chart_template)
+    /// - [`country_chart_template`](CompaniesContextAccountResponseProfileBuilder::country_chart_template)
+    /// - [`base_currency`](CompaniesContextAccountResponseProfileBuilder::base_currency)
+    /// - [`default_invoice_currency`](CompaniesContextAccountResponseProfileBuilder::default_invoice_currency)
+    /// - [`status`](CompaniesContextAccountResponseProfileBuilder::status)
+    /// - [`invoice_prefix`](CompaniesContextAccountResponseProfileBuilder::invoice_prefix)
+    /// - [`next_invoice_number`](CompaniesContextAccountResponseProfileBuilder::next_invoice_number)
+    /// - [`time_zone`](CompaniesContextAccountResponseProfileBuilder::time_zone)
+    /// - [`audit_required`](CompaniesContextAccountResponseProfileBuilder::audit_required)
+    pub fn build(self) -> Result<CompaniesContextAccountResponseProfile, BuildError> {
+        Ok(CompaniesContextAccountResponseProfile {
+            id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
+            name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
+            code: self.code,
+            vat_code: self.vat_code,
+            sme_exemption_number: self.sme_exemption_number,
+            is_vat_payer: self
+                .is_vat_payer
+                .ok_or_else(|| BuildError::missing_field("is_vat_payer"))?,
+            is_sandbox: self
+                .is_sandbox
+                .ok_or_else(|| BuildError::missing_field("is_sandbox"))?,
+            cash_basis: self
+                .cash_basis
+                .ok_or_else(|| BuildError::missing_field("cash_basis"))?,
+            country_code: self
+                .country_code
+                .ok_or_else(|| BuildError::missing_field("country_code"))?,
+            chart_template: self
+                .chart_template
+                .ok_or_else(|| BuildError::missing_field("chart_template"))?,
+            country_chart_template: self
+                .country_chart_template
+                .ok_or_else(|| BuildError::missing_field("country_chart_template"))?,
+            base_currency: self
+                .base_currency
+                .ok_or_else(|| BuildError::missing_field("base_currency"))?,
+            default_invoice_currency: self
+                .default_invoice_currency
+                .ok_or_else(|| BuildError::missing_field("default_invoice_currency"))?,
+            status: self
+                .status
+                .ok_or_else(|| BuildError::missing_field("status"))?,
+            address: self.address,
+            email: self.email,
+            phone: self.phone,
+            iban: self.iban,
+            bank_name: self.bank_name,
+            bank_bic: self.bank_bic,
+            bank_code: self.bank_code,
+            bank_branch_code: self.bank_branch_code,
+            bank_account_number: self.bank_account_number,
+            invoice_prefix: self
+                .invoice_prefix
+                .ok_or_else(|| BuildError::missing_field("invoice_prefix"))?,
+            next_invoice_number: self
+                .next_invoice_number
+                .ok_or_else(|| BuildError::missing_field("next_invoice_number"))?,
+            default_invoice_locale: self.default_invoice_locale,
+            default_invoice_note: self.default_invoice_note,
+            peppol_id: self.peppol_id,
+            sepa_creditor_id: self.sepa_creditor_id,
+            logo_file_id: self.logo_file_id,
+            legal_form: self.legal_form,
+            registry_name: self.registry_name,
+            incorporated_on: self.incorporated_on,
+            share_capital: self.share_capital,
+            accounts_kept_by: self.accounts_kept_by,
+            vat_period: self.vat_period,
+            fiscal_year_end_month: self.fiscal_year_end_month,
+            time_zone: self
+                .time_zone
+                .ok_or_else(|| BuildError::missing_field("time_zone"))?,
+            filing_options: self.filing_options,
+            bookkeeper_name: self.bookkeeper_name,
+            auditor_name: self.auditor_name,
+            auditor_registration_number: self.auditor_registration_number,
+            audit_required: self
+                .audit_required
+                .ok_or_else(|| BuildError::missing_field("audit_required"))?,
+        })
+    }
+}

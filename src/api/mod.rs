@@ -18,6 +18,6 @@ pub use resources::{
     InventoryClient, LeadsClient, LedgerClient, MigrationClient, OfficersClient,
     OperationTypesClient, PartnersClient, PayrollClient, PeppolClient, PlatformSellersClient,
     PosClient, ProductionClient, ProjectsClient, PublicClient, PurchasesClient, ReferenceClient,
-    ReportsClient, SalesClient, TransportClient, WebhooksClient,
+    ReportsClient, ReviewClient, SalesClient, TransportClient, WebhooksClient,
 };
 pub use types::*;

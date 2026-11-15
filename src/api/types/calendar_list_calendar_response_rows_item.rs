@@ -33,6 +33,8 @@ pub struct ListCalendarResponseRowsItem {
     #[serde(rename = "canAmend")]
     #[serde(default)]
     pub can_amend: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub correction: Option<ListCalendarResponseRowsItemCorrection>,
     #[serde(rename = "canDownload")]
     #[serde(default)]
     pub can_download: bool,
@@ -63,6 +65,7 @@ pub struct ListCalendarResponseRowsItemBuilder {
     submissions: Option<Vec<ListCalendarResponseRowsItemSubmissionsItem>>,
     can_submit: Option<bool>,
     can_amend: Option<bool>,
+    correction: Option<ListCalendarResponseRowsItemCorrection>,
     can_download: Option<bool>,
     automated: Option<bool>,
 }
@@ -138,6 +141,11 @@ impl ListCalendarResponseRowsItemBuilder {
         self
     }
 
+    pub fn correction(mut self, value: ListCalendarResponseRowsItemCorrection) -> Self {
+        self.correction = Some(value);
+        self
+    }
+
     pub fn can_download(mut self, value: bool) -> Self {
         self.can_download = Some(value);
         self
@@ -186,6 +194,7 @@ impl ListCalendarResponseRowsItemBuilder {
             can_amend: self
                 .can_amend
                 .ok_or_else(|| BuildError::missing_field("can_amend"))?,
+            correction: self.correction,
             can_download: self
                 .can_download
                 .ok_or_else(|| BuildError::missing_field("can_download"))?,

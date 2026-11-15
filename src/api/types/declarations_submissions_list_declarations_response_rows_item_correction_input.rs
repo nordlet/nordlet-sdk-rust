@@ -1,0 +1,65 @@
+pub use crate::prelude::*;
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+pub struct SubmissionsListDeclarationsResponseRowsItemCorrectionInput {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reason: Option<String>,
+    #[serde(rename = "reasonCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reason_code: Option<String>,
+    #[serde(rename = "authorityReference")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub authority_reference: Option<String>,
+    #[serde(rename = "discoveredOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub discovered_on: Option<String>,
+}
+
+impl SubmissionsListDeclarationsResponseRowsItemCorrectionInput {
+    pub fn builder() -> SubmissionsListDeclarationsResponseRowsItemCorrectionInputBuilder {
+        <SubmissionsListDeclarationsResponseRowsItemCorrectionInputBuilder as Default>::default()
+    }
+}
+
+#[derive(Clone, PartialEq, Default, Debug)]
+#[non_exhaustive]
+pub struct SubmissionsListDeclarationsResponseRowsItemCorrectionInputBuilder {
+    reason: Option<String>,
+    reason_code: Option<String>,
+    authority_reference: Option<String>,
+    discovered_on: Option<String>,
+}
+
+impl SubmissionsListDeclarationsResponseRowsItemCorrectionInputBuilder {
+    pub fn reason(mut self, value: impl Into<String>) -> Self {
+        self.reason = Some(value.into());
+        self
+    }
+
+    pub fn reason_code(mut self, value: impl Into<String>) -> Self {
+        self.reason_code = Some(value.into());
+        self
+    }
+
+    pub fn authority_reference(mut self, value: impl Into<String>) -> Self {
+        self.authority_reference = Some(value.into());
+        self
+    }
+
+    pub fn discovered_on(mut self, value: impl Into<String>) -> Self {
+        self.discovered_on = Some(value.into());
+        self
+    }
+
+    /// Consumes the builder and constructs a [`SubmissionsListDeclarationsResponseRowsItemCorrectionInput`].
+    pub fn build(
+        self,
+    ) -> Result<SubmissionsListDeclarationsResponseRowsItemCorrectionInput, BuildError> {
+        Ok(SubmissionsListDeclarationsResponseRowsItemCorrectionInput {
+            reason: self.reason,
+            reason_code: self.reason_code,
+            authority_reference: self.authority_reference,
+            discovered_on: self.discovered_on,
+        })
+    }
+}

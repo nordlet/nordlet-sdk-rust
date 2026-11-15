@@ -6,6 +6,8 @@ pub struct InvoicesCreateSalesResponseWarningsItem {
     pub code: String,
     #[serde(default)]
     pub message: String,
+    #[serde(default)]
+    pub fix: String,
 }
 
 impl InvoicesCreateSalesResponseWarningsItem {
@@ -19,6 +21,7 @@ impl InvoicesCreateSalesResponseWarningsItem {
 pub struct InvoicesCreateSalesResponseWarningsItemBuilder {
     code: Option<String>,
     message: Option<String>,
+    fix: Option<String>,
 }
 
 impl InvoicesCreateSalesResponseWarningsItemBuilder {
@@ -32,16 +35,23 @@ impl InvoicesCreateSalesResponseWarningsItemBuilder {
         self
     }
 
+    pub fn fix(mut self, value: impl Into<String>) -> Self {
+        self.fix = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`InvoicesCreateSalesResponseWarningsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`code`](InvoicesCreateSalesResponseWarningsItemBuilder::code)
     /// - [`message`](InvoicesCreateSalesResponseWarningsItemBuilder::message)
+    /// - [`fix`](InvoicesCreateSalesResponseWarningsItemBuilder::fix)
     pub fn build(self) -> Result<InvoicesCreateSalesResponseWarningsItem, BuildError> {
         Ok(InvoicesCreateSalesResponseWarningsItem {
             code: self.code.ok_or_else(|| BuildError::missing_field("code"))?,
             message: self
                 .message
                 .ok_or_else(|| BuildError::missing_field("message"))?,
+            fix: self.fix.ok_or_else(|| BuildError::missing_field("fix"))?,
         })
     }
 }

@@ -15,6 +15,9 @@ pub struct StockReceiveInventoryRequest {
     #[serde(rename = "unitCost")]
     #[serde(default)]
     pub unit_cost: String,
+    #[serde(rename = "counterAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub counter_account_code: Option<String>,
     #[serde(rename = "lotNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub lot_number: Option<String>,
@@ -39,6 +42,7 @@ pub struct StockReceiveInventoryRequestBuilder {
     date: Option<NaiveDate>,
     quantity: Option<String>,
     unit_cost: Option<String>,
+    counter_account_code: Option<String>,
     lot_number: Option<String>,
     expiry_date: Option<NaiveDate>,
     notes: Option<String>,
@@ -67,6 +71,11 @@ impl StockReceiveInventoryRequestBuilder {
 
     pub fn unit_cost(mut self, value: impl Into<String>) -> Self {
         self.unit_cost = Some(value.into());
+        self
+    }
+
+    pub fn counter_account_code(mut self, value: impl Into<String>) -> Self {
+        self.counter_account_code = Some(value.into());
         self
     }
 
@@ -107,6 +116,7 @@ impl StockReceiveInventoryRequestBuilder {
             unit_cost: self
                 .unit_cost
                 .ok_or_else(|| BuildError::missing_field("unit_cost"))?,
+            counter_account_code: self.counter_account_code,
             lot_number: self.lot_number,
             expiry_date: self.expiry_date,
             notes: self.notes,

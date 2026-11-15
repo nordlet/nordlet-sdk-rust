@@ -17,6 +17,7 @@
 //! - **Officers**
 //! - **PlatformSellers**
 //! - **migration**
+//! - **review**
 //! - **assets**
 //! - **hr**
 //! - **fleet**
@@ -76,6 +77,7 @@ pub mod public;
 pub mod purchases;
 pub mod reference;
 pub mod reports;
+pub mod review;
 pub mod sales;
 pub mod transport;
 pub mod webhooks;
@@ -96,6 +98,7 @@ pub struct ApiClient {
     pub officers: OfficersClient,
     pub platform_sellers: PlatformSellersClient,
     pub migration: MigrationClient,
+    pub review: ReviewClient,
     pub assets: AssetsClient,
     pub hr: HrClient,
     pub fleet: FleetClient,
@@ -139,6 +142,7 @@ impl ApiClient {
             officers: OfficersClient::new(config.clone())?,
             platform_sellers: PlatformSellersClient::new(config.clone())?,
             migration: MigrationClient::new(config.clone())?,
+            review: ReviewClient::new(config.clone())?,
             assets: AssetsClient::new(config.clone())?,
             hr: HrClient::new(config.clone())?,
             fleet: FleetClient::new(config.clone())?,
@@ -199,6 +203,7 @@ pub use public::PublicClient;
 pub use purchases::PurchasesClient;
 pub use reference::ReferenceClient;
 pub use reports::ReportsClient;
+pub use review::ReviewClient;
 pub use sales::SalesClient;
 pub use transport::TransportClient;
 pub use webhooks::WebhooksClient;

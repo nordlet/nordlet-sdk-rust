@@ -11,6 +11,9 @@ pub struct JournalTransactionsCreateLedgerRequestEntriesItem {
     #[serde(rename = "projectId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub project_id: Option<String>,
+    #[serde(rename = "partnerId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub partner_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub debit: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -31,6 +34,7 @@ pub struct JournalTransactionsCreateLedgerRequestEntriesItemBuilder {
     account_code: Option<String>,
     cost_center_id: Option<String>,
     project_id: Option<String>,
+    partner_id: Option<String>,
     debit: Option<String>,
     credit: Option<String>,
     description: Option<String>,
@@ -49,6 +53,11 @@ impl JournalTransactionsCreateLedgerRequestEntriesItemBuilder {
 
     pub fn project_id(mut self, value: impl Into<String>) -> Self {
         self.project_id = Some(value.into());
+        self
+    }
+
+    pub fn partner_id(mut self, value: impl Into<String>) -> Self {
+        self.partner_id = Some(value.into());
         self
     }
 
@@ -77,6 +86,7 @@ impl JournalTransactionsCreateLedgerRequestEntriesItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("account_code"))?,
             cost_center_id: self.cost_center_id,
             project_id: self.project_id,
+            partner_id: self.partner_id,
             debit: self.debit,
             credit: self.credit,
             description: self.description,

@@ -102,6 +102,8 @@ pub struct FindOrCreatePartnersRequest {
     #[serde(rename = "legalCountryClass")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub legal_country_class: Option<FindOrCreatePartnersRequestLegalCountryClass>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub iban: Option<String>,
 }
 
 impl FindOrCreatePartnersRequest {
@@ -149,6 +151,7 @@ pub struct FindOrCreatePartnersRequestBuilder {
     is_group_member: Option<bool>,
     is_active: Option<bool>,
     legal_country_class: Option<FindOrCreatePartnersRequestLegalCountryClass>,
+    iban: Option<String>,
 }
 
 impl FindOrCreatePartnersRequestBuilder {
@@ -338,6 +341,11 @@ impl FindOrCreatePartnersRequestBuilder {
         self
     }
 
+    pub fn iban(mut self, value: impl Into<String>) -> Self {
+        self.iban = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`FindOrCreatePartnersRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`name`](FindOrCreatePartnersRequestBuilder::name)
@@ -379,6 +387,7 @@ impl FindOrCreatePartnersRequestBuilder {
             is_group_member: self.is_group_member,
             is_active: self.is_active,
             legal_country_class: self.legal_country_class,
+            iban: self.iban,
         })
     }
 }

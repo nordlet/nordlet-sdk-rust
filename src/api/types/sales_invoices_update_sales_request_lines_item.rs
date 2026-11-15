@@ -31,6 +31,10 @@ pub struct InvoicesUpdateSalesRequestLinesItem {
     pub project_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub recognition: Option<InvoicesUpdateSalesRequestLinesItemRecognition>,
+    /// A fixed asset sold on this line: the line net is booked to the assets.disposalProceeds posting rule account and `assets/assets/dispose` takes the proceeds from the issued invoice. Only on an invoice (422), only for an asset that is not disposed, and not with revenue recognition over time.
+    #[serde(rename = "assetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub asset_id: Option<String>,
     #[serde(rename = "vatExemptionBasis")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_exemption_basis: Option<String>,
@@ -62,6 +66,7 @@ pub struct InvoicesUpdateSalesRequestLinesItemBuilder {
     cost_center_id: Option<String>,
     project_id: Option<String>,
     recognition: Option<InvoicesUpdateSalesRequestLinesItemRecognition>,
+    asset_id: Option<String>,
     vat_exemption_basis: Option<String>,
     standalone_selling_price: Option<String>,
     refund_estimate_percent: Option<String>,
@@ -123,6 +128,11 @@ impl InvoicesUpdateSalesRequestLinesItemBuilder {
         self
     }
 
+    pub fn asset_id(mut self, value: impl Into<String>) -> Self {
+        self.asset_id = Some(value.into());
+        self
+    }
+
     pub fn vat_exemption_basis(mut self, value: impl Into<String>) -> Self {
         self.vat_exemption_basis = Some(value.into());
         self
@@ -152,6 +162,7 @@ impl InvoicesUpdateSalesRequestLinesItemBuilder {
             cost_center_id: self.cost_center_id,
             project_id: self.project_id,
             recognition: self.recognition,
+            asset_id: self.asset_id,
             vat_exemption_basis: self.vat_exemption_basis,
             standalone_selling_price: self.standalone_selling_price,
             refund_estimate_percent: self.refund_estimate_percent,

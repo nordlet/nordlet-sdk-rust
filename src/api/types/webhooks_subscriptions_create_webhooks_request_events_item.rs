@@ -14,6 +14,7 @@ pub enum SubscriptionsCreateWebhooksRequestEventsItem {
     ItemCreated,
     ItemDeleted,
     ItemUpdated,
+    JournalTransactionReversed,
     LeadConverted,
     LeadCreated,
     PartnerInquiryCreated,
@@ -23,6 +24,7 @@ pub enum SubscriptionsCreateWebhooksRequestEventsItem {
     PriceListUpdated,
     PurchaseInvoicePaid,
     PurchaseInvoiceRegistered,
+    PurchaseInvoiceReversed,
     PurchaseOrderApproved,
     PurchaseOrderReceived,
     RecurringInvoiceGenerated,
@@ -40,6 +42,7 @@ pub enum SubscriptionsCreateWebhooksRequestEventsItem {
     SaleInvoicePeppolRejected,
     SaleInvoicePeppolSent,
     SaleInvoiceQuoteSent,
+    SaleInvoiceReversed,
     SaleInvoiceSent,
     SalesOrderCreated,
     SalesOrderFulfilled,
@@ -75,6 +78,9 @@ impl Serialize for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::ItemCreated => serializer.serialize_str("item.created"),
             Self::ItemDeleted => serializer.serialize_str("item.deleted"),
             Self::ItemUpdated => serializer.serialize_str("item.updated"),
+            Self::JournalTransactionReversed => {
+                serializer.serialize_str("journal_transaction.reversed")
+            }
             Self::LeadConverted => serializer.serialize_str("lead.converted"),
             Self::LeadCreated => serializer.serialize_str("lead.created"),
             Self::PartnerInquiryCreated => serializer.serialize_str("partner_inquiry.created"),
@@ -86,6 +92,7 @@ impl Serialize for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::PurchaseInvoiceRegistered => {
                 serializer.serialize_str("purchase_invoice.registered")
             }
+            Self::PurchaseInvoiceReversed => serializer.serialize_str("purchase_invoice.reversed"),
             Self::PurchaseOrderApproved => serializer.serialize_str("purchase_order.approved"),
             Self::PurchaseOrderReceived => serializer.serialize_str("purchase_order.received"),
             Self::RecurringInvoiceGenerated => {
@@ -113,6 +120,7 @@ impl Serialize for SubscriptionsCreateWebhooksRequestEventsItem {
             }
             Self::SaleInvoicePeppolSent => serializer.serialize_str("sale_invoice.peppol_sent"),
             Self::SaleInvoiceQuoteSent => serializer.serialize_str("sale_invoice.quote_sent"),
+            Self::SaleInvoiceReversed => serializer.serialize_str("sale_invoice.reversed"),
             Self::SaleInvoiceSent => serializer.serialize_str("sale_invoice.sent"),
             Self::SalesOrderCreated => serializer.serialize_str("sales_order.created"),
             Self::SalesOrderFulfilled => serializer.serialize_str("sales_order.fulfilled"),
@@ -143,6 +151,7 @@ impl<'de> Deserialize<'de> for SubscriptionsCreateWebhooksRequestEventsItem {
             "item.created" => Ok(Self::ItemCreated),
             "item.deleted" => Ok(Self::ItemDeleted),
             "item.updated" => Ok(Self::ItemUpdated),
+            "journal_transaction.reversed" => Ok(Self::JournalTransactionReversed),
             "lead.converted" => Ok(Self::LeadConverted),
             "lead.created" => Ok(Self::LeadCreated),
             "partner_inquiry.created" => Ok(Self::PartnerInquiryCreated),
@@ -152,6 +161,7 @@ impl<'de> Deserialize<'de> for SubscriptionsCreateWebhooksRequestEventsItem {
             "price_list.updated" => Ok(Self::PriceListUpdated),
             "purchase_invoice.paid" => Ok(Self::PurchaseInvoicePaid),
             "purchase_invoice.registered" => Ok(Self::PurchaseInvoiceRegistered),
+            "purchase_invoice.reversed" => Ok(Self::PurchaseInvoiceReversed),
             "purchase_order.approved" => Ok(Self::PurchaseOrderApproved),
             "purchase_order.received" => Ok(Self::PurchaseOrderReceived),
             "recurring_invoice.generated" => Ok(Self::RecurringInvoiceGenerated),
@@ -169,6 +179,7 @@ impl<'de> Deserialize<'de> for SubscriptionsCreateWebhooksRequestEventsItem {
             "sale_invoice.peppol_rejected" => Ok(Self::SaleInvoicePeppolRejected),
             "sale_invoice.peppol_sent" => Ok(Self::SaleInvoicePeppolSent),
             "sale_invoice.quote_sent" => Ok(Self::SaleInvoiceQuoteSent),
+            "sale_invoice.reversed" => Ok(Self::SaleInvoiceReversed),
             "sale_invoice.sent" => Ok(Self::SaleInvoiceSent),
             "sales_order.created" => Ok(Self::SalesOrderCreated),
             "sales_order.fulfilled" => Ok(Self::SalesOrderFulfilled),
@@ -198,6 +209,7 @@ impl fmt::Display for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::ItemCreated => write!(f, "item.created"),
             Self::ItemDeleted => write!(f, "item.deleted"),
             Self::ItemUpdated => write!(f, "item.updated"),
+            Self::JournalTransactionReversed => write!(f, "journal_transaction.reversed"),
             Self::LeadConverted => write!(f, "lead.converted"),
             Self::LeadCreated => write!(f, "lead.created"),
             Self::PartnerInquiryCreated => write!(f, "partner_inquiry.created"),
@@ -207,6 +219,7 @@ impl fmt::Display for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::PriceListUpdated => write!(f, "price_list.updated"),
             Self::PurchaseInvoicePaid => write!(f, "purchase_invoice.paid"),
             Self::PurchaseInvoiceRegistered => write!(f, "purchase_invoice.registered"),
+            Self::PurchaseInvoiceReversed => write!(f, "purchase_invoice.reversed"),
             Self::PurchaseOrderApproved => write!(f, "purchase_order.approved"),
             Self::PurchaseOrderReceived => write!(f, "purchase_order.received"),
             Self::RecurringInvoiceGenerated => write!(f, "recurring_invoice.generated"),
@@ -224,6 +237,7 @@ impl fmt::Display for SubscriptionsCreateWebhooksRequestEventsItem {
             Self::SaleInvoicePeppolRejected => write!(f, "sale_invoice.peppol_rejected"),
             Self::SaleInvoicePeppolSent => write!(f, "sale_invoice.peppol_sent"),
             Self::SaleInvoiceQuoteSent => write!(f, "sale_invoice.quote_sent"),
+            Self::SaleInvoiceReversed => write!(f, "sale_invoice.reversed"),
             Self::SaleInvoiceSent => write!(f, "sale_invoice.sent"),
             Self::SalesOrderCreated => write!(f, "sales_order.created"),
             Self::SalesOrderFulfilled => write!(f, "sales_order.fulfilled"),

@@ -13,6 +13,12 @@ pub struct RunsApprovePayrollRequest {
     #[serde(rename = "payableAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payable_account_code: Option<String>,
+    #[serde(rename = "incomeTaxAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub income_tax_account_code: Option<String>,
+    #[serde(rename = "socialContributionsAccountCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub social_contributions_account_code: Option<String>,
     #[serde(rename = "gpmAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub gpm_account_code: Option<String>,
@@ -40,6 +46,8 @@ pub struct RunsApprovePayrollRequestBuilder {
     wage_account_code: Option<String>,
     employer_account_code: Option<String>,
     payable_account_code: Option<String>,
+    income_tax_account_code: Option<String>,
+    social_contributions_account_code: Option<String>,
     gpm_account_code: Option<String>,
     sodra_account_code: Option<String>,
     employer_social_account_code: Option<String>,
@@ -64,6 +72,16 @@ impl RunsApprovePayrollRequestBuilder {
 
     pub fn payable_account_code(mut self, value: impl Into<String>) -> Self {
         self.payable_account_code = Some(value.into());
+        self
+    }
+
+    pub fn income_tax_account_code(mut self, value: impl Into<String>) -> Self {
+        self.income_tax_account_code = Some(value.into());
+        self
+    }
+
+    pub fn social_contributions_account_code(mut self, value: impl Into<String>) -> Self {
+        self.social_contributions_account_code = Some(value.into());
         self
     }
 
@@ -96,6 +114,8 @@ impl RunsApprovePayrollRequestBuilder {
             wage_account_code: self.wage_account_code,
             employer_account_code: self.employer_account_code,
             payable_account_code: self.payable_account_code,
+            income_tax_account_code: self.income_tax_account_code,
+            social_contributions_account_code: self.social_contributions_account_code,
             gpm_account_code: self.gpm_account_code,
             sodra_account_code: self.sodra_account_code,
             employer_social_account_code: self.employer_social_account_code,

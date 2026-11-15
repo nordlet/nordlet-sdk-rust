@@ -50,6 +50,17 @@ pub struct InvoicesIssueSalesResponse {
     #[serde(rename = "journalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub journal_transaction_id: Option<String>,
+    #[serde(rename = "reversedAt")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
+    #[serde(with = "crate::core::flexible_datetime::offset::option")]
+    pub reversed_at: Option<DateTime<FixedOffset>>,
+    #[serde(rename = "reversalJournalTransactionId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversal_journal_transaction_id: Option<String>,
+    #[serde(rename = "reversalReason")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub reversal_reason: Option<String>,
     #[serde(rename = "appliedToInvoiceId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub applied_to_invoice_id: Option<String>,
@@ -236,6 +247,9 @@ pub struct InvoicesIssueSalesResponseBuilder {
     sales_tax_total: Option<String>,
     paid_amount: Option<String>,
     journal_transaction_id: Option<String>,
+    reversed_at: Option<DateTime<FixedOffset>>,
+    reversal_journal_transaction_id: Option<String>,
+    reversal_reason: Option<String>,
     applied_to_invoice_id: Option<String>,
     credited_invoice_id: Option<String>,
     credited_invoice_reference: Option<String>,
@@ -380,6 +394,21 @@ impl InvoicesIssueSalesResponseBuilder {
 
     pub fn journal_transaction_id(mut self, value: impl Into<String>) -> Self {
         self.journal_transaction_id = Some(value.into());
+        self
+    }
+
+    pub fn reversed_at(mut self, value: DateTime<FixedOffset>) -> Self {
+        self.reversed_at = Some(value);
+        self
+    }
+
+    pub fn reversal_journal_transaction_id(mut self, value: impl Into<String>) -> Self {
+        self.reversal_journal_transaction_id = Some(value.into());
+        self
+    }
+
+    pub fn reversal_reason(mut self, value: impl Into<String>) -> Self {
+        self.reversal_reason = Some(value.into());
         self
     }
 
@@ -690,6 +719,9 @@ impl InvoicesIssueSalesResponseBuilder {
                 .paid_amount
                 .ok_or_else(|| BuildError::missing_field("paid_amount"))?,
             journal_transaction_id: self.journal_transaction_id,
+            reversed_at: self.reversed_at,
+            reversal_journal_transaction_id: self.reversal_journal_transaction_id,
+            reversal_reason: self.reversal_reason,
             applied_to_invoice_id: self.applied_to_invoice_id,
             credited_invoice_id: self.credited_invoice_id,
             credited_invoice_reference: self.credited_invoice_reference,

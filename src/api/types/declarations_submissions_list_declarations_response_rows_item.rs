@@ -36,6 +36,12 @@ pub struct SubmissionsListDeclarationsResponseRowsItem {
     pub document_key: Option<String>,
     #[serde(default)]
     pub amendment: i64,
+    #[serde(rename = "authorityRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub authority_ref: Option<String>,
+    #[serde(rename = "correctionInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub correction_input: Option<SubmissionsListDeclarationsResponseRowsItemCorrectionInput>,
     #[serde(default)]
     pub origin: String,
     #[serde(rename = "transportSystem")]
@@ -96,6 +102,11 @@ pub struct SubmissionsListDeclarationsResponseRowsItem {
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
     pub updated_at: DateTime<FixedOffset>,
+    #[serde(rename = "canAmend")]
+    #[serde(default)]
+    pub can_amend: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub correction: Option<SubmissionsListDeclarationsResponseRowsItemCorrection>,
 }
 
 impl SubmissionsListDeclarationsResponseRowsItem {
@@ -121,6 +132,8 @@ pub struct SubmissionsListDeclarationsResponseRowsItemBuilder {
     period: Option<String>,
     document_key: Option<String>,
     amendment: Option<i64>,
+    authority_ref: Option<String>,
+    correction_input: Option<SubmissionsListDeclarationsResponseRowsItemCorrectionInput>,
     origin: Option<String>,
     transport_system: Option<String>,
     environment: Option<SubmissionsListDeclarationsResponseRowsItemEnvironment>,
@@ -138,6 +151,8 @@ pub struct SubmissionsListDeclarationsResponseRowsItemBuilder {
     submitted_by_actor_id: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
     updated_at: Option<DateTime<FixedOffset>>,
+    can_amend: Option<bool>,
+    correction: Option<SubmissionsListDeclarationsResponseRowsItemCorrection>,
 }
 
 impl SubmissionsListDeclarationsResponseRowsItemBuilder {
@@ -208,6 +223,19 @@ impl SubmissionsListDeclarationsResponseRowsItemBuilder {
 
     pub fn amendment(mut self, value: i64) -> Self {
         self.amendment = Some(value);
+        self
+    }
+
+    pub fn authority_ref(mut self, value: impl Into<String>) -> Self {
+        self.authority_ref = Some(value.into());
+        self
+    }
+
+    pub fn correction_input(
+        mut self,
+        value: SubmissionsListDeclarationsResponseRowsItemCorrectionInput,
+    ) -> Self {
+        self.correction_input = Some(value);
         self
     }
 
@@ -299,6 +327,19 @@ impl SubmissionsListDeclarationsResponseRowsItemBuilder {
         self
     }
 
+    pub fn can_amend(mut self, value: bool) -> Self {
+        self.can_amend = Some(value);
+        self
+    }
+
+    pub fn correction(
+        mut self,
+        value: SubmissionsListDeclarationsResponseRowsItemCorrection,
+    ) -> Self {
+        self.correction = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`SubmissionsListDeclarationsResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](SubmissionsListDeclarationsResponseRowsItemBuilder::id)
@@ -312,6 +353,7 @@ impl SubmissionsListDeclarationsResponseRowsItemBuilder {
     /// - [`confirmation_pending`](SubmissionsListDeclarationsResponseRowsItemBuilder::confirmation_pending)
     /// - [`created_at`](SubmissionsListDeclarationsResponseRowsItemBuilder::created_at)
     /// - [`updated_at`](SubmissionsListDeclarationsResponseRowsItemBuilder::updated_at)
+    /// - [`can_amend`](SubmissionsListDeclarationsResponseRowsItemBuilder::can_amend)
     pub fn build(self) -> Result<SubmissionsListDeclarationsResponseRowsItem, BuildError> {
         Ok(SubmissionsListDeclarationsResponseRowsItem {
             id: self.id.ok_or_else(|| BuildError::missing_field("id"))?,
@@ -338,6 +380,8 @@ impl SubmissionsListDeclarationsResponseRowsItemBuilder {
             amendment: self
                 .amendment
                 .ok_or_else(|| BuildError::missing_field("amendment"))?,
+            authority_ref: self.authority_ref,
+            correction_input: self.correction_input,
             origin: self
                 .origin
                 .ok_or_else(|| BuildError::missing_field("origin"))?,
@@ -365,6 +409,10 @@ impl SubmissionsListDeclarationsResponseRowsItemBuilder {
             updated_at: self
                 .updated_at
                 .ok_or_else(|| BuildError::missing_field("updated_at"))?,
+            can_amend: self
+                .can_amend
+                .ok_or_else(|| BuildError::missing_field("can_amend"))?,
+            correction: self.correction,
         })
     }
 }

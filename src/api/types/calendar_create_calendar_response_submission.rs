@@ -36,6 +36,12 @@ pub struct CreateCalendarResponseSubmission {
     pub document_key: Option<String>,
     #[serde(default)]
     pub amendment: i64,
+    #[serde(rename = "authorityRef")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub authority_ref: Option<String>,
+    #[serde(rename = "correctionInput")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub correction_input: Option<CreateCalendarResponseSubmissionCorrectionInput>,
     #[serde(default)]
     pub origin: String,
     #[serde(rename = "transportSystem")]
@@ -121,6 +127,8 @@ pub struct CreateCalendarResponseSubmissionBuilder {
     period: Option<String>,
     document_key: Option<String>,
     amendment: Option<i64>,
+    authority_ref: Option<String>,
+    correction_input: Option<CreateCalendarResponseSubmissionCorrectionInput>,
     origin: Option<String>,
     transport_system: Option<String>,
     environment: Option<CreateCalendarResponseSubmissionEnvironment>,
@@ -208,6 +216,19 @@ impl CreateCalendarResponseSubmissionBuilder {
 
     pub fn amendment(mut self, value: i64) -> Self {
         self.amendment = Some(value);
+        self
+    }
+
+    pub fn authority_ref(mut self, value: impl Into<String>) -> Self {
+        self.authority_ref = Some(value.into());
+        self
+    }
+
+    pub fn correction_input(
+        mut self,
+        value: CreateCalendarResponseSubmissionCorrectionInput,
+    ) -> Self {
+        self.correction_input = Some(value);
         self
     }
 
@@ -335,6 +356,8 @@ impl CreateCalendarResponseSubmissionBuilder {
             amendment: self
                 .amendment
                 .ok_or_else(|| BuildError::missing_field("amendment"))?,
+            authority_ref: self.authority_ref,
+            correction_input: self.correction_input,
             origin: self
                 .origin
                 .ok_or_else(|| BuildError::missing_field("origin"))?,

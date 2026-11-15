@@ -73,6 +73,9 @@ pub struct AssetsDisposeAssetsResponse {
     #[serde(rename = "disposalJournalTransactionId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub disposal_journal_transaction_id: Option<String>,
+    #[serde(rename = "disposalSaleInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub disposal_sale_invoice_id: Option<String>,
     #[serde(rename = "createdAt")]
     #[serde(default)]
     #[serde(with = "crate::core::flexible_datetime::offset")]
@@ -114,6 +117,7 @@ pub struct AssetsDisposeAssetsResponseBuilder {
     disposal_reason: Option<AssetsDisposeAssetsResponseDisposalReason>,
     disposal_proceeds: Option<String>,
     disposal_journal_transaction_id: Option<String>,
+    disposal_sale_invoice_id: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
 }
 
@@ -251,6 +255,11 @@ impl AssetsDisposeAssetsResponseBuilder {
         self
     }
 
+    pub fn disposal_sale_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.disposal_sale_invoice_id = Some(value.into());
+        self
+    }
+
     pub fn created_at(mut self, value: DateTime<FixedOffset>) -> Self {
         self.created_at = Some(value);
         self
@@ -332,6 +341,7 @@ impl AssetsDisposeAssetsResponseBuilder {
             disposal_reason: self.disposal_reason,
             disposal_proceeds: self.disposal_proceeds,
             disposal_journal_transaction_id: self.disposal_journal_transaction_id,
+            disposal_sale_invoice_id: self.disposal_sale_invoice_id,
             created_at: self
                 .created_at
                 .ok_or_else(|| BuildError::missing_field("created_at"))?,

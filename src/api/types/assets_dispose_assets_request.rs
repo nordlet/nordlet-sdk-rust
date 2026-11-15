@@ -10,6 +10,10 @@ pub struct AssetsDisposeAssetsRequest {
     /// Sale price excluding VAT; 0 when scrapped or written off
     #[serde(skip_serializing_if = "Option::is_none")]
     pub proceeds: Option<String>,
+    /// The issued sales invoice that sold the asset
+    #[serde(rename = "saleInvoiceId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sale_invoice_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
 }
@@ -27,6 +31,7 @@ pub struct AssetsDisposeAssetsRequestBuilder {
     date: Option<NaiveDate>,
     reason: Option<AssetsDisposeAssetsRequestReason>,
     proceeds: Option<String>,
+    sale_invoice_id: Option<String>,
     notes: Option<String>,
 }
 
@@ -51,6 +56,11 @@ impl AssetsDisposeAssetsRequestBuilder {
         self
     }
 
+    pub fn sale_invoice_id(mut self, value: impl Into<String>) -> Self {
+        self.sale_invoice_id = Some(value.into());
+        self
+    }
+
     pub fn notes(mut self, value: impl Into<String>) -> Self {
         self.notes = Some(value.into());
         self
@@ -69,6 +79,7 @@ impl AssetsDisposeAssetsRequestBuilder {
                 .reason
                 .ok_or_else(|| BuildError::missing_field("reason"))?,
             proceeds: self.proceeds,
+            sale_invoice_id: self.sale_invoice_id,
             notes: self.notes,
         })
     }

@@ -34,6 +34,9 @@ pub struct InvoicesUnlockSalesResponseLinesItem {
     #[serde(rename = "vatExemptionBasis")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_exemption_basis: Option<String>,
+    #[serde(rename = "assetId")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub asset_id: Option<String>,
     #[serde(rename = "costCenterId")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cost_center_id: Option<String>,
@@ -96,6 +99,7 @@ pub struct InvoicesUnlockSalesResponseLinesItemBuilder {
     vat_rate_percent: Option<String>,
     vat_classifier_code: Option<String>,
     vat_exemption_basis: Option<String>,
+    asset_id: Option<String>,
     cost_center_id: Option<String>,
     project_id: Option<String>,
     line_net: Option<String>,
@@ -170,6 +174,11 @@ impl InvoicesUnlockSalesResponseLinesItemBuilder {
 
     pub fn vat_exemption_basis(mut self, value: impl Into<String>) -> Self {
         self.vat_exemption_basis = Some(value.into());
+        self
+    }
+
+    pub fn asset_id(mut self, value: impl Into<String>) -> Self {
+        self.asset_id = Some(value.into());
         self
     }
 
@@ -282,6 +291,7 @@ impl InvoicesUnlockSalesResponseLinesItemBuilder {
                 .ok_or_else(|| BuildError::missing_field("vat_rate_percent"))?,
             vat_classifier_code: self.vat_classifier_code,
             vat_exemption_basis: self.vat_exemption_basis,
+            asset_id: self.asset_id,
             cost_center_id: self.cost_center_id,
             project_id: self.project_id,
             line_net: self
