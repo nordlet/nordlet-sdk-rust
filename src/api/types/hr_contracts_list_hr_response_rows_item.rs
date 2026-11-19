@@ -37,6 +37,8 @@ pub struct ContractsListHrResponseRowsItem {
     pub base_salary: String,
     #[serde(rename = "salaryType")]
     pub salary_type: ContractsListHrResponseRowsItemSalaryType,
+    #[serde(rename = "payFrequency")]
+    pub pay_frequency: ContractsListHrResponseRowsItemPayFrequency,
     #[serde(rename = "workHours")]
     #[serde(default)]
     pub work_hours: String,
@@ -73,6 +75,7 @@ pub struct ContractsListHrResponseRowsItemBuilder {
     end_reason: Option<String>,
     base_salary: Option<String>,
     salary_type: Option<ContractsListHrResponseRowsItemSalaryType>,
+    pay_frequency: Option<ContractsListHrResponseRowsItemPayFrequency>,
     work_hours: Option<String>,
     work_hours_unit: Option<ContractsListHrResponseRowsItemWorkHoursUnit>,
     status: Option<ContractsListHrResponseRowsItemStatus>,
@@ -146,6 +149,11 @@ impl ContractsListHrResponseRowsItemBuilder {
         self
     }
 
+    pub fn pay_frequency(mut self, value: ContractsListHrResponseRowsItemPayFrequency) -> Self {
+        self.pay_frequency = Some(value);
+        self
+    }
+
     pub fn work_hours(mut self, value: impl Into<String>) -> Self {
         self.work_hours = Some(value.into());
         self
@@ -180,6 +188,7 @@ impl ContractsListHrResponseRowsItemBuilder {
     /// - [`start_date`](ContractsListHrResponseRowsItemBuilder::start_date)
     /// - [`base_salary`](ContractsListHrResponseRowsItemBuilder::base_salary)
     /// - [`salary_type`](ContractsListHrResponseRowsItemBuilder::salary_type)
+    /// - [`pay_frequency`](ContractsListHrResponseRowsItemBuilder::pay_frequency)
     /// - [`work_hours`](ContractsListHrResponseRowsItemBuilder::work_hours)
     /// - [`work_hours_unit`](ContractsListHrResponseRowsItemBuilder::work_hours_unit)
     /// - [`status`](ContractsListHrResponseRowsItemBuilder::status)
@@ -211,6 +220,9 @@ impl ContractsListHrResponseRowsItemBuilder {
             salary_type: self
                 .salary_type
                 .ok_or_else(|| BuildError::missing_field("salary_type"))?,
+            pay_frequency: self
+                .pay_frequency
+                .ok_or_else(|| BuildError::missing_field("pay_frequency"))?,
             work_hours: self
                 .work_hours
                 .ok_or_else(|| BuildError::missing_field("work_hours"))?,

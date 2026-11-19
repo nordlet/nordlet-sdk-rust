@@ -8,6 +8,19 @@ pub struct RunsCreatePayrollResponse {
     pub year: i64,
     #[serde(default)]
     pub month: i64,
+    pub frequency: RunsCreatePayrollResponseFrequency,
+    #[serde(rename = "periodStart")]
+    #[serde(default)]
+    pub period_start: String,
+    #[serde(rename = "periodEnd")]
+    #[serde(default)]
+    pub period_end: String,
+    #[serde(rename = "taxYear")]
+    #[serde(default)]
+    pub tax_year: i64,
+    #[serde(rename = "taxPeriod")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tax_period: Option<i64>,
     #[serde(rename = "countryCode")]
     #[serde(default)]
     pub country_code: String,
@@ -82,6 +95,11 @@ pub struct RunsCreatePayrollResponseBuilder {
     id: Option<String>,
     year: Option<i64>,
     month: Option<i64>,
+    frequency: Option<RunsCreatePayrollResponseFrequency>,
+    period_start: Option<String>,
+    period_end: Option<String>,
+    tax_year: Option<i64>,
+    tax_period: Option<i64>,
     country_code: Option<String>,
     pay_date: Option<NaiveDate>,
     status: Option<RunsCreatePayrollResponseStatus>,
@@ -117,6 +135,31 @@ impl RunsCreatePayrollResponseBuilder {
 
     pub fn month(mut self, value: i64) -> Self {
         self.month = Some(value);
+        self
+    }
+
+    pub fn frequency(mut self, value: RunsCreatePayrollResponseFrequency) -> Self {
+        self.frequency = Some(value);
+        self
+    }
+
+    pub fn period_start(mut self, value: impl Into<String>) -> Self {
+        self.period_start = Some(value.into());
+        self
+    }
+
+    pub fn period_end(mut self, value: impl Into<String>) -> Self {
+        self.period_end = Some(value.into());
+        self
+    }
+
+    pub fn tax_year(mut self, value: i64) -> Self {
+        self.tax_year = Some(value);
+        self
+    }
+
+    pub fn tax_period(mut self, value: i64) -> Self {
+        self.tax_period = Some(value);
         self
     }
 
@@ -228,6 +271,10 @@ impl RunsCreatePayrollResponseBuilder {
     /// - [`id`](RunsCreatePayrollResponseBuilder::id)
     /// - [`year`](RunsCreatePayrollResponseBuilder::year)
     /// - [`month`](RunsCreatePayrollResponseBuilder::month)
+    /// - [`frequency`](RunsCreatePayrollResponseBuilder::frequency)
+    /// - [`period_start`](RunsCreatePayrollResponseBuilder::period_start)
+    /// - [`period_end`](RunsCreatePayrollResponseBuilder::period_end)
+    /// - [`tax_year`](RunsCreatePayrollResponseBuilder::tax_year)
     /// - [`country_code`](RunsCreatePayrollResponseBuilder::country_code)
     /// - [`status`](RunsCreatePayrollResponseBuilder::status)
     /// - [`gross_total`](RunsCreatePayrollResponseBuilder::gross_total)
@@ -248,6 +295,19 @@ impl RunsCreatePayrollResponseBuilder {
             month: self
                 .month
                 .ok_or_else(|| BuildError::missing_field("month"))?,
+            frequency: self
+                .frequency
+                .ok_or_else(|| BuildError::missing_field("frequency"))?,
+            period_start: self
+                .period_start
+                .ok_or_else(|| BuildError::missing_field("period_start"))?,
+            period_end: self
+                .period_end
+                .ok_or_else(|| BuildError::missing_field("period_end"))?,
+            tax_year: self
+                .tax_year
+                .ok_or_else(|| BuildError::missing_field("tax_year"))?,
+            tax_period: self.tax_period,
             country_code: self
                 .country_code
                 .ok_or_else(|| BuildError::missing_field("country_code"))?,

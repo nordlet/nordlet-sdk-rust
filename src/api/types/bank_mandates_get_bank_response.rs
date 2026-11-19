@@ -16,10 +16,20 @@ pub struct MandatesGetBankResponse {
     #[serde(rename = "debtorName")]
     #[serde(default)]
     pub debtor_name: String,
-    #[serde(default)]
-    pub iban: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub iban: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bic: Option<String>,
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// Checking or savings account; a US ACH file needs it
+    #[serde(rename = "accountType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub account_type: Option<MandatesGetBankResponseAccountType>,
     #[serde(rename = "signatureDate")]
     #[serde(default)]
     pub signature_date: NaiveDate,
@@ -30,8 +40,14 @@ pub struct MandatesGetBankResponse {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last_collection_date: Option<NaiveDate>,
     #[serde(rename = "expiresOn")]
-    #[serde(default)]
-    pub expires_on: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expires_on: Option<String>,
+    #[serde(rename = "lodgedOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub lodged_on: Option<String>,
+    #[serde(rename = "cancellationLodgedOn")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cancellation_lodged_on: Option<String>,
     #[serde(rename = "cancelledAt")]
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default)]
@@ -63,10 +79,15 @@ pub struct MandatesGetBankResponseBuilder {
     debtor_name: Option<String>,
     iban: Option<String>,
     bic: Option<String>,
+    bank_code: Option<String>,
+    bank_account_number: Option<String>,
+    account_type: Option<MandatesGetBankResponseAccountType>,
     signature_date: Option<NaiveDate>,
     collections_count: Option<i64>,
     last_collection_date: Option<NaiveDate>,
     expires_on: Option<String>,
+    lodged_on: Option<String>,
+    cancellation_lodged_on: Option<String>,
     cancelled_at: Option<DateTime<FixedOffset>>,
     notes: Option<String>,
     created_at: Option<DateTime<FixedOffset>>,
@@ -118,6 +139,21 @@ impl MandatesGetBankResponseBuilder {
         self
     }
 
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn account_type(mut self, value: MandatesGetBankResponseAccountType) -> Self {
+        self.account_type = Some(value);
+        self
+    }
+
     pub fn signature_date(mut self, value: NaiveDate) -> Self {
         self.signature_date = Some(value);
         self
@@ -135,6 +171,16 @@ impl MandatesGetBankResponseBuilder {
 
     pub fn expires_on(mut self, value: impl Into<String>) -> Self {
         self.expires_on = Some(value.into());
+        self
+    }
+
+    pub fn lodged_on(mut self, value: impl Into<String>) -> Self {
+        self.lodged_on = Some(value.into());
+        self
+    }
+
+    pub fn cancellation_lodged_on(mut self, value: impl Into<String>) -> Self {
+        self.cancellation_lodged_on = Some(value.into());
         self
     }
 
@@ -162,10 +208,8 @@ impl MandatesGetBankResponseBuilder {
     /// - [`sequence_type`](MandatesGetBankResponseBuilder::sequence_type)
     /// - [`status`](MandatesGetBankResponseBuilder::status)
     /// - [`debtor_name`](MandatesGetBankResponseBuilder::debtor_name)
-    /// - [`iban`](MandatesGetBankResponseBuilder::iban)
     /// - [`signature_date`](MandatesGetBankResponseBuilder::signature_date)
     /// - [`collections_count`](MandatesGetBankResponseBuilder::collections_count)
-    /// - [`expires_on`](MandatesGetBankResponseBuilder::expires_on)
     /// - [`created_at`](MandatesGetBankResponseBuilder::created_at)
     pub fn build(self) -> Result<MandatesGetBankResponse, BuildError> {
         Ok(MandatesGetBankResponse {
@@ -188,8 +232,11 @@ impl MandatesGetBankResponseBuilder {
             debtor_name: self
                 .debtor_name
                 .ok_or_else(|| BuildError::missing_field("debtor_name"))?,
-            iban: self.iban.ok_or_else(|| BuildError::missing_field("iban"))?,
+            iban: self.iban,
             bic: self.bic,
+            bank_code: self.bank_code,
+            bank_account_number: self.bank_account_number,
+            account_type: self.account_type,
             signature_date: self
                 .signature_date
                 .ok_or_else(|| BuildError::missing_field("signature_date"))?,
@@ -197,9 +244,9 @@ impl MandatesGetBankResponseBuilder {
                 .collections_count
                 .ok_or_else(|| BuildError::missing_field("collections_count"))?,
             last_collection_date: self.last_collection_date,
-            expires_on: self
-                .expires_on
-                .ok_or_else(|| BuildError::missing_field("expires_on"))?,
+            expires_on: self.expires_on,
+            lodged_on: self.lodged_on,
+            cancellation_lodged_on: self.cancellation_lodged_on,
             cancelled_at: self.cancelled_at,
             notes: self.notes,
             created_at: self

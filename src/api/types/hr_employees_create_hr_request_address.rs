@@ -12,6 +12,9 @@ pub struct EmployeesCreateHrRequestAddress {
     #[serde(rename = "countryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub country_code: Option<String>,
+    /// ISO 3166-2 code of the state, province or UK nation, such as US-CA or GB-SCT
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subdivision: Option<String>,
 }
 
 impl EmployeesCreateHrRequestAddress {
@@ -27,6 +30,7 @@ pub struct EmployeesCreateHrRequestAddressBuilder {
     city: Option<String>,
     postal_code: Option<String>,
     country_code: Option<String>,
+    subdivision: Option<String>,
 }
 
 impl EmployeesCreateHrRequestAddressBuilder {
@@ -50,6 +54,11 @@ impl EmployeesCreateHrRequestAddressBuilder {
         self
     }
 
+    pub fn subdivision(mut self, value: impl Into<String>) -> Self {
+        self.subdivision = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`EmployeesCreateHrRequestAddress`].
     pub fn build(self) -> Result<EmployeesCreateHrRequestAddress, BuildError> {
         Ok(EmployeesCreateHrRequestAddress {
@@ -57,6 +66,7 @@ impl EmployeesCreateHrRequestAddressBuilder {
             city: self.city,
             postal_code: self.postal_code,
             country_code: self.country_code,
+            subdivision: self.subdivision,
         })
     }
 }

@@ -9,6 +9,15 @@ pub struct AccountsListBankResponseRowsItem {
     pub r#type: AccountsListBankResponseRowsItemType,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    #[serde(rename = "paymentFileSettings")]
+    #[serde(default)]
+    pub payment_file_settings: AccountsListBankResponseRowsItemPaymentFileSettings,
     #[serde(default)]
     pub currency: String,
     #[serde(rename = "accountCode")]
@@ -36,6 +45,9 @@ pub struct AccountsListBankResponseRowsItemBuilder {
     name: Option<String>,
     r#type: Option<AccountsListBankResponseRowsItemType>,
     iban: Option<String>,
+    bank_code: Option<String>,
+    bank_account_number: Option<String>,
+    payment_file_settings: Option<AccountsListBankResponseRowsItemPaymentFileSettings>,
     currency: Option<String>,
     account_code: Option<String>,
     is_active: Option<bool>,
@@ -60,6 +72,24 @@ impl AccountsListBankResponseRowsItemBuilder {
 
     pub fn iban(mut self, value: impl Into<String>) -> Self {
         self.iban = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn payment_file_settings(
+        mut self,
+        value: AccountsListBankResponseRowsItemPaymentFileSettings,
+    ) -> Self {
+        self.payment_file_settings = Some(value);
         self
     }
 
@@ -88,6 +118,7 @@ impl AccountsListBankResponseRowsItemBuilder {
     /// - [`id`](AccountsListBankResponseRowsItemBuilder::id)
     /// - [`name`](AccountsListBankResponseRowsItemBuilder::name)
     /// - [`r#type`](AccountsListBankResponseRowsItemBuilder::r#type)
+    /// - [`payment_file_settings`](AccountsListBankResponseRowsItemBuilder::payment_file_settings)
     /// - [`currency`](AccountsListBankResponseRowsItemBuilder::currency)
     /// - [`account_code`](AccountsListBankResponseRowsItemBuilder::account_code)
     /// - [`is_active`](AccountsListBankResponseRowsItemBuilder::is_active)
@@ -100,6 +131,11 @@ impl AccountsListBankResponseRowsItemBuilder {
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,
             iban: self.iban,
+            bank_code: self.bank_code,
+            bank_account_number: self.bank_account_number,
+            payment_file_settings: self
+                .payment_file_settings
+                .ok_or_else(|| BuildError::missing_field("payment_file_settings"))?,
             currency: self
                 .currency
                 .ok_or_else(|| BuildError::missing_field("currency"))?,

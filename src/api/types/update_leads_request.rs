@@ -29,6 +29,7 @@ pub struct UpdateLeadsRequest {
     #[serde(rename = "estimatedValue")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub estimated_value: Option<String>,
+    /// Defaults to the company's base currency
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]

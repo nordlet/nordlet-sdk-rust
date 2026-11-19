@@ -2,10 +2,15 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct RunsCreatePayrollRequest {
-    #[serde(default)]
-    pub year: i64,
-    #[serde(default)]
-    pub month: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub frequency: Option<RunsCreatePayrollRequestFrequency>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub year: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub month: Option<i64>,
+    #[serde(rename = "periodStart")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub period_start: Option<NaiveDate>,
     #[serde(rename = "includeNatura")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub include_natura: Option<bool>,
@@ -30,8 +35,10 @@ impl RunsCreatePayrollRequest {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct RunsCreatePayrollRequestBuilder {
+    frequency: Option<RunsCreatePayrollRequestFrequency>,
     year: Option<i64>,
     month: Option<i64>,
+    period_start: Option<NaiveDate>,
     include_natura: Option<bool>,
     gross_overrides: Option<Vec<RunsCreatePayrollRequestGrossOverridesItem>>,
     lines: Option<Vec<RunsCreatePayrollRequestLinesItem>>,
@@ -40,6 +47,11 @@ pub struct RunsCreatePayrollRequestBuilder {
 }
 
 impl RunsCreatePayrollRequestBuilder {
+    pub fn frequency(mut self, value: RunsCreatePayrollRequestFrequency) -> Self {
+        self.frequency = Some(value);
+        self
+    }
+
     pub fn year(mut self, value: i64) -> Self {
         self.year = Some(value);
         self
@@ -47,6 +59,11 @@ impl RunsCreatePayrollRequestBuilder {
 
     pub fn month(mut self, value: i64) -> Self {
         self.month = Some(value);
+        self
+    }
+
+    pub fn period_start(mut self, value: NaiveDate) -> Self {
+        self.period_start = Some(value);
         self
     }
 
@@ -79,15 +96,12 @@ impl RunsCreatePayrollRequestBuilder {
     }
 
     /// Consumes the builder and constructs a [`RunsCreatePayrollRequest`].
-    /// This method will fail if any of the following fields are not set:
-    /// - [`year`](RunsCreatePayrollRequestBuilder::year)
-    /// - [`month`](RunsCreatePayrollRequestBuilder::month)
     pub fn build(self) -> Result<RunsCreatePayrollRequest, BuildError> {
         Ok(RunsCreatePayrollRequest {
-            year: self.year.ok_or_else(|| BuildError::missing_field("year"))?,
-            month: self
-                .month
-                .ok_or_else(|| BuildError::missing_field("month"))?,
+            frequency: self.frequency,
+            year: self.year,
+            month: self.month,
+            period_start: self.period_start,
             include_natura: self.include_natura,
             gross_overrides: self.gross_overrides,
             lines: self.lines,

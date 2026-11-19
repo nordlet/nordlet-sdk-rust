@@ -37,6 +37,8 @@ pub struct ContractsCreateHrResponse {
     pub base_salary: String,
     #[serde(rename = "salaryType")]
     pub salary_type: ContractsCreateHrResponseSalaryType,
+    #[serde(rename = "payFrequency")]
+    pub pay_frequency: ContractsCreateHrResponsePayFrequency,
     #[serde(rename = "workHours")]
     #[serde(default)]
     pub work_hours: String,
@@ -73,6 +75,7 @@ pub struct ContractsCreateHrResponseBuilder {
     end_reason: Option<String>,
     base_salary: Option<String>,
     salary_type: Option<ContractsCreateHrResponseSalaryType>,
+    pay_frequency: Option<ContractsCreateHrResponsePayFrequency>,
     work_hours: Option<String>,
     work_hours_unit: Option<ContractsCreateHrResponseWorkHoursUnit>,
     status: Option<ContractsCreateHrResponseStatus>,
@@ -146,6 +149,11 @@ impl ContractsCreateHrResponseBuilder {
         self
     }
 
+    pub fn pay_frequency(mut self, value: ContractsCreateHrResponsePayFrequency) -> Self {
+        self.pay_frequency = Some(value);
+        self
+    }
+
     pub fn work_hours(mut self, value: impl Into<String>) -> Self {
         self.work_hours = Some(value.into());
         self
@@ -180,6 +188,7 @@ impl ContractsCreateHrResponseBuilder {
     /// - [`start_date`](ContractsCreateHrResponseBuilder::start_date)
     /// - [`base_salary`](ContractsCreateHrResponseBuilder::base_salary)
     /// - [`salary_type`](ContractsCreateHrResponseBuilder::salary_type)
+    /// - [`pay_frequency`](ContractsCreateHrResponseBuilder::pay_frequency)
     /// - [`work_hours`](ContractsCreateHrResponseBuilder::work_hours)
     /// - [`work_hours_unit`](ContractsCreateHrResponseBuilder::work_hours_unit)
     /// - [`status`](ContractsCreateHrResponseBuilder::status)
@@ -211,6 +220,9 @@ impl ContractsCreateHrResponseBuilder {
             salary_type: self
                 .salary_type
                 .ok_or_else(|| BuildError::missing_field("salary_type"))?,
+            pay_frequency: self
+                .pay_frequency
+                .ok_or_else(|| BuildError::missing_field("pay_frequency"))?,
             work_hours: self
                 .work_hours
                 .ok_or_else(|| BuildError::missing_field("work_hours"))?,

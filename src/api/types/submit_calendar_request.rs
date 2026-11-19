@@ -1,6 +1,6 @@
 pub use crate::prelude::*;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 pub struct SubmitCalendarRequest {
     #[serde(default)]
     pub key: String,
@@ -11,6 +11,9 @@ pub struct SubmitCalendarRequest {
     #[serde(rename = "documentKeys")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document_keys: Option<Vec<String>>,
+    /// Facts of the browser the user files from, which HMRC requires with every VAT (MTD) API call: `navigator.userAgent`, a UUID the browser keeps for the device, every screen (width, height, scaling factor, colour depth in bits), the window size in pixels and the time zone as `UTC±hh:mm`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub device: Option<SubmitCalendarRequestDevice>,
 }
 
 impl SubmitCalendarRequest {
@@ -26,6 +29,7 @@ pub struct SubmitCalendarRequestBuilder {
     amend: Option<bool>,
     correction: Option<SubmitCalendarRequestCorrection>,
     document_keys: Option<Vec<String>>,
+    device: Option<SubmitCalendarRequestDevice>,
 }
 
 impl SubmitCalendarRequestBuilder {
@@ -49,6 +53,11 @@ impl SubmitCalendarRequestBuilder {
         self
     }
 
+    pub fn device(mut self, value: SubmitCalendarRequestDevice) -> Self {
+        self.device = Some(value);
+        self
+    }
+
     /// Consumes the builder and constructs a [`SubmitCalendarRequest`].
     /// This method will fail if any of the following fields are not set:
     /// - [`key`](SubmitCalendarRequestBuilder::key)
@@ -58,6 +67,7 @@ impl SubmitCalendarRequestBuilder {
             amend: self.amend,
             correction: self.correction,
             document_keys: self.document_keys,
+            device: self.device,
         })
     }
 }

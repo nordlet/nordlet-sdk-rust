@@ -16,6 +16,9 @@ pub struct ListPartnersResponseRowsItemAddress {
     #[serde(rename = "countryCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub country_code: Option<String>,
+    /// ISO 3166-2 code of the state, province or UK nation, such as US-CA or GB-SCT
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subdivision: Option<String>,
 }
 
 impl ListPartnersResponseRowsItemAddress {
@@ -33,6 +36,7 @@ pub struct ListPartnersResponseRowsItemAddressBuilder {
     county: Option<String>,
     postal_code: Option<String>,
     country_code: Option<String>,
+    subdivision: Option<String>,
 }
 
 impl ListPartnersResponseRowsItemAddressBuilder {
@@ -66,6 +70,11 @@ impl ListPartnersResponseRowsItemAddressBuilder {
         self
     }
 
+    pub fn subdivision(mut self, value: impl Into<String>) -> Self {
+        self.subdivision = Some(value.into());
+        self
+    }
+
     /// Consumes the builder and constructs a [`ListPartnersResponseRowsItemAddress`].
     pub fn build(self) -> Result<ListPartnersResponseRowsItemAddress, BuildError> {
         Ok(ListPartnersResponseRowsItemAddress {
@@ -75,6 +84,7 @@ impl ListPartnersResponseRowsItemAddressBuilder {
             county: self.county,
             postal_code: self.postal_code,
             country_code: self.country_code,
+            subdivision: self.subdivision,
         })
     }
 }

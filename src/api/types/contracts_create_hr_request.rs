@@ -34,6 +34,9 @@ pub struct ContractsCreateHrRequest {
     #[serde(rename = "salaryType")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub salary_type: Option<ContractsCreateHrRequestSalaryType>,
+    #[serde(rename = "payFrequency")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay_frequency: Option<ContractsCreateHrRequestPayFrequency>,
     #[serde(rename = "workHours")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub work_hours: Option<String>,
@@ -61,6 +64,7 @@ pub struct ContractsCreateHrRequestBuilder {
     end_date: Option<NaiveDate>,
     base_salary: Option<String>,
     salary_type: Option<ContractsCreateHrRequestSalaryType>,
+    pay_frequency: Option<ContractsCreateHrRequestPayFrequency>,
     work_hours: Option<String>,
     notes: Option<String>,
 }
@@ -121,6 +125,11 @@ impl ContractsCreateHrRequestBuilder {
         self
     }
 
+    pub fn pay_frequency(mut self, value: ContractsCreateHrRequestPayFrequency) -> Self {
+        self.pay_frequency = Some(value);
+        self
+    }
+
     pub fn work_hours(mut self, value: impl Into<String>) -> Self {
         self.work_hours = Some(value.into());
         self
@@ -155,6 +164,7 @@ impl ContractsCreateHrRequestBuilder {
                 .base_salary
                 .ok_or_else(|| BuildError::missing_field("base_salary"))?,
             salary_type: self.salary_type,
+            pay_frequency: self.pay_frequency,
             work_hours: self.work_hours,
             notes: self.notes,
         })

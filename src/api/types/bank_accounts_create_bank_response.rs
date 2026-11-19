@@ -9,6 +9,15 @@ pub struct AccountsCreateBankResponse {
     pub r#type: AccountsCreateBankResponseType,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    #[serde(rename = "paymentFileSettings")]
+    #[serde(default)]
+    pub payment_file_settings: AccountsCreateBankResponsePaymentFileSettings,
     #[serde(default)]
     pub currency: String,
     #[serde(rename = "accountCode")]
@@ -36,6 +45,9 @@ pub struct AccountsCreateBankResponseBuilder {
     name: Option<String>,
     r#type: Option<AccountsCreateBankResponseType>,
     iban: Option<String>,
+    bank_code: Option<String>,
+    bank_account_number: Option<String>,
+    payment_file_settings: Option<AccountsCreateBankResponsePaymentFileSettings>,
     currency: Option<String>,
     account_code: Option<String>,
     is_active: Option<bool>,
@@ -60,6 +72,24 @@ impl AccountsCreateBankResponseBuilder {
 
     pub fn iban(mut self, value: impl Into<String>) -> Self {
         self.iban = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn payment_file_settings(
+        mut self,
+        value: AccountsCreateBankResponsePaymentFileSettings,
+    ) -> Self {
+        self.payment_file_settings = Some(value);
         self
     }
 
@@ -88,6 +118,7 @@ impl AccountsCreateBankResponseBuilder {
     /// - [`id`](AccountsCreateBankResponseBuilder::id)
     /// - [`name`](AccountsCreateBankResponseBuilder::name)
     /// - [`r#type`](AccountsCreateBankResponseBuilder::r#type)
+    /// - [`payment_file_settings`](AccountsCreateBankResponseBuilder::payment_file_settings)
     /// - [`currency`](AccountsCreateBankResponseBuilder::currency)
     /// - [`account_code`](AccountsCreateBankResponseBuilder::account_code)
     /// - [`is_active`](AccountsCreateBankResponseBuilder::is_active)
@@ -100,6 +131,11 @@ impl AccountsCreateBankResponseBuilder {
                 .r#type
                 .ok_or_else(|| BuildError::missing_field("r#type"))?,
             iban: self.iban,
+            bank_code: self.bank_code,
+            bank_account_number: self.bank_account_number,
+            payment_file_settings: self
+                .payment_file_settings
+                .ok_or_else(|| BuildError::missing_field("payment_file_settings"))?,
             currency: self
                 .currency
                 .ok_or_else(|| BuildError::missing_field("currency"))?,

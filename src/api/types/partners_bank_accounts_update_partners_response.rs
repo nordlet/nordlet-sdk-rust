@@ -7,8 +7,18 @@ pub struct BankAccountsUpdatePartnersResponse {
     #[serde(rename = "partnerId")]
     #[serde(default)]
     pub partner_id: String,
-    #[serde(default)]
-    pub iban: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub iban: Option<String>,
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// Checking or savings account; a US ACH file needs it
+    #[serde(rename = "accountType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub account_type: Option<BankAccountsUpdatePartnersResponseAccountType>,
     #[serde(rename = "bankName")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_name: Option<String>,
@@ -37,6 +47,9 @@ pub struct BankAccountsUpdatePartnersResponseBuilder {
     id: Option<String>,
     partner_id: Option<String>,
     iban: Option<String>,
+    bank_code: Option<String>,
+    bank_account_number: Option<String>,
+    account_type: Option<BankAccountsUpdatePartnersResponseAccountType>,
     bank_name: Option<String>,
     bic: Option<String>,
     currency: Option<String>,
@@ -57,6 +70,21 @@ impl BankAccountsUpdatePartnersResponseBuilder {
 
     pub fn iban(mut self, value: impl Into<String>) -> Self {
         self.iban = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn account_type(mut self, value: BankAccountsUpdatePartnersResponseAccountType) -> Self {
+        self.account_type = Some(value);
         self
     }
 
@@ -89,7 +117,6 @@ impl BankAccountsUpdatePartnersResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](BankAccountsUpdatePartnersResponseBuilder::id)
     /// - [`partner_id`](BankAccountsUpdatePartnersResponseBuilder::partner_id)
-    /// - [`iban`](BankAccountsUpdatePartnersResponseBuilder::iban)
     /// - [`currency`](BankAccountsUpdatePartnersResponseBuilder::currency)
     /// - [`is_default`](BankAccountsUpdatePartnersResponseBuilder::is_default)
     /// - [`created_at`](BankAccountsUpdatePartnersResponseBuilder::created_at)
@@ -99,7 +126,10 @@ impl BankAccountsUpdatePartnersResponseBuilder {
             partner_id: self
                 .partner_id
                 .ok_or_else(|| BuildError::missing_field("partner_id"))?,
-            iban: self.iban.ok_or_else(|| BuildError::missing_field("iban"))?,
+            iban: self.iban,
+            bank_code: self.bank_code,
+            bank_account_number: self.bank_account_number,
+            account_type: self.account_type,
             bank_name: self.bank_name,
             bic: self.bic,
             currency: self

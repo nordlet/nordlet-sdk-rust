@@ -19,6 +19,7 @@ pub struct InsurancePoliciesCreateAgreementsRequest {
     pub to_date: NaiveDate,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub premium: Option<String>,
+    /// Defaults to the company's base currency
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]

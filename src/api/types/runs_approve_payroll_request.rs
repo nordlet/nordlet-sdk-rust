@@ -19,12 +19,6 @@ pub struct RunsApprovePayrollRequest {
     #[serde(rename = "socialContributionsAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub social_contributions_account_code: Option<String>,
-    #[serde(rename = "gpmAccountCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub gpm_account_code: Option<String>,
-    #[serde(rename = "sodraAccountCode")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub sodra_account_code: Option<String>,
     #[serde(rename = "employerSocialAccountCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub employer_social_account_code: Option<String>,
@@ -48,8 +42,6 @@ pub struct RunsApprovePayrollRequestBuilder {
     payable_account_code: Option<String>,
     income_tax_account_code: Option<String>,
     social_contributions_account_code: Option<String>,
-    gpm_account_code: Option<String>,
-    sodra_account_code: Option<String>,
     employer_social_account_code: Option<String>,
     deduction_account_code: Option<String>,
 }
@@ -85,16 +77,6 @@ impl RunsApprovePayrollRequestBuilder {
         self
     }
 
-    pub fn gpm_account_code(mut self, value: impl Into<String>) -> Self {
-        self.gpm_account_code = Some(value.into());
-        self
-    }
-
-    pub fn sodra_account_code(mut self, value: impl Into<String>) -> Self {
-        self.sodra_account_code = Some(value.into());
-        self
-    }
-
     pub fn employer_social_account_code(mut self, value: impl Into<String>) -> Self {
         self.employer_social_account_code = Some(value.into());
         self
@@ -116,8 +98,6 @@ impl RunsApprovePayrollRequestBuilder {
             payable_account_code: self.payable_account_code,
             income_tax_account_code: self.income_tax_account_code,
             social_contributions_account_code: self.social_contributions_account_code,
-            gpm_account_code: self.gpm_account_code,
-            sodra_account_code: self.sodra_account_code,
             employer_social_account_code: self.employer_social_account_code,
             deduction_account_code: self.deduction_account_code,
         })

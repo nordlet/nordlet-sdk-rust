@@ -12,10 +12,10 @@ pub struct ConfigsListDeclarationsResponseRowsItemFieldsItem {
     /// The allowed values of a `select` field
     #[serde(skip_serializing_if = "Option::is_none")]
     pub options: Option<Vec<String>>,
-    /// The company profile field the value is taken from; change it with `account/companies/update`
+    /// The company profile field the value is taken from: `code`, `vatCode`, or `identifiers.<key>` for an entry of `identifiers`; change it with `account/companies/update`
     #[serde(rename = "companyField")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub company_field: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField>,
+    pub company_field: Option<String>,
 }
 
 impl ConfigsListDeclarationsResponseRowsItemFieldsItem {
@@ -32,7 +32,7 @@ pub struct ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
     kind: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemKind>,
     multiline: Option<bool>,
     options: Option<Vec<String>>,
-    company_field: Option<ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField>,
+    company_field: Option<String>,
 }
 
 impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
@@ -61,11 +61,8 @@ impl ConfigsListDeclarationsResponseRowsItemFieldsItemBuilder {
         self
     }
 
-    pub fn company_field(
-        mut self,
-        value: ConfigsListDeclarationsResponseRowsItemFieldsItemCompanyField,
-    ) -> Self {
-        self.company_field = Some(value);
+    pub fn company_field(mut self, value: impl Into<String>) -> Self {
+        self.company_field = Some(value.into());
         self
     }
 

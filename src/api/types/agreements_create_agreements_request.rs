@@ -34,6 +34,7 @@ pub struct AgreementsCreateAgreementsRequest {
     #[serde(rename = "billingPeriod")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_period: Option<AgreementsCreateAgreementsRequestBillingPeriod>,
+    /// Defaults to the company's base currency
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]

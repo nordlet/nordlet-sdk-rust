@@ -8,6 +8,18 @@ pub struct AccountsCreateBankRequest {
     pub r#type: Option<AccountsCreateBankRequestType>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
+    /// Sort code, routing number or other national bank code, for an account without an IBAN
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    /// Account number, for an account without an IBAN
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// What the bank gave the company for payment files from this account: the Bacs service user number for a UK account, the ACH Immediate Origin and Company Identification for a US account
+    #[serde(rename = "paymentFileSettings")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub payment_file_settings: Option<AccountsCreateBankRequestPaymentFileSettings>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<String>,
     #[serde(rename = "accountCode")]
@@ -30,6 +42,9 @@ pub struct AccountsCreateBankRequestBuilder {
     name: Option<String>,
     r#type: Option<AccountsCreateBankRequestType>,
     iban: Option<String>,
+    bank_code: Option<String>,
+    bank_account_number: Option<String>,
+    payment_file_settings: Option<AccountsCreateBankRequestPaymentFileSettings>,
     currency: Option<String>,
     account_code: Option<String>,
     document_ref: Option<String>,
@@ -48,6 +63,24 @@ impl AccountsCreateBankRequestBuilder {
 
     pub fn iban(mut self, value: impl Into<String>) -> Self {
         self.iban = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn payment_file_settings(
+        mut self,
+        value: AccountsCreateBankRequestPaymentFileSettings,
+    ) -> Self {
+        self.payment_file_settings = Some(value);
         self
     }
 
@@ -74,6 +107,9 @@ impl AccountsCreateBankRequestBuilder {
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             r#type: self.r#type,
             iban: self.iban,
+            bank_code: self.bank_code,
+            bank_account_number: self.bank_account_number,
+            payment_file_settings: self.payment_file_settings,
             currency: self.currency,
             account_code: self.account_code,
             document_ref: self.document_ref,

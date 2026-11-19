@@ -12,15 +12,34 @@ pub struct CompaniesUpdateAccountRequest {
     #[serde(rename = "smeExemptionNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sme_exemption_number: Option<String>,
+    /// Registration numbers of the company other than `code` and `vatCode`, by key: `utr` (GB, Corporation Tax Unique Taxpayer Reference (UTR), 10 digits); `taxOfficeNumber` (GB, PAYE tax office number, 3 digits); `taxOfficeReference` (GB, PAYE tax office reference, 1 to 10 letters, digits or punctuation, not starting with a space); `accountsOfficeReference` (GB, Accounts Office reference, 13 characters: 3 digits, P, a letter, 7 digits and a digit or X); `ein` (US, Employer Identification Number (EIN), 9 digits whose first two are a prefix the IRS assigns); `deBusinessLicense` (US, Delaware business license number); `deWithholdingAccount` (US, Delaware withholding account number, 9 digits, the federal EIN); `deUnemploymentAccount` (US, Delaware unemployment insurance account number); `deUnemploymentRate` (US, Delaware unemployment insurance tax rate (%), a percentage from 0 to 100 with at most 4 decimals); `deEntityFileNumber` (US, Delaware Division of Corporations file number (formed in Delaware)); `deForeignEntityFileNumber` (US, Delaware Division of Corporations file number (formed in another state))
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub identifiers: Option<HashMap<String, Option<String>>>,
     #[serde(rename = "isVatPayer")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_vat_payer: Option<bool>,
     #[serde(rename = "vatPeriod")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_period: Option<CompaniesUpdateAccountRequestVatPeriod>,
+    /// A month in which a VAT period ends, for VAT periods that do not follow the calendar quarters
+    #[serde(rename = "vatPeriodEndMonth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_period_end_month: Option<i64>,
     #[serde(rename = "fiscalYearEndMonth")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub fiscal_year_end_month: Option<i64>,
+    /// Day of `fiscalYearEndMonth` the fiscal year ends on; the last day of the month when omitted
+    #[serde(rename = "fiscalYearEndDay")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_end_day: Option<i64>,
+    /// For a 52-53-week fiscal year: the weekday it always ends on, 0 Sunday to 6 Saturday
+    #[serde(rename = "fiscalYearWeekday")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_weekday: Option<i64>,
+    /// With `fiscalYearWeekday`: `last` ends the year on the last such weekday of `fiscalYearEndMonth`, `nearest` on the one nearest the last day of that month
+    #[serde(rename = "fiscalYearWeekRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_week_rule: Option<CompaniesUpdateAccountRequestFiscalYearWeekRule>,
     #[serde(rename = "timeZone")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub time_zone: Option<String>,
@@ -117,9 +136,14 @@ pub struct CompaniesUpdateAccountRequestBuilder {
     code: Option<String>,
     vat_code: Option<String>,
     sme_exemption_number: Option<String>,
+    identifiers: Option<HashMap<String, Option<String>>>,
     is_vat_payer: Option<bool>,
     vat_period: Option<CompaniesUpdateAccountRequestVatPeriod>,
+    vat_period_end_month: Option<i64>,
     fiscal_year_end_month: Option<i64>,
+    fiscal_year_end_day: Option<i64>,
+    fiscal_year_weekday: Option<i64>,
+    fiscal_year_week_rule: Option<CompaniesUpdateAccountRequestFiscalYearWeekRule>,
     time_zone: Option<String>,
     filing_options: Option<HashMap<String, Option<String>>>,
     address: Option<CompaniesUpdateAccountRequestAddress>,
@@ -170,6 +194,11 @@ impl CompaniesUpdateAccountRequestBuilder {
         self
     }
 
+    pub fn identifiers(mut self, value: HashMap<String, Option<String>>) -> Self {
+        self.identifiers = Some(value);
+        self
+    }
+
     pub fn is_vat_payer(mut self, value: bool) -> Self {
         self.is_vat_payer = Some(value);
         self
@@ -180,8 +209,31 @@ impl CompaniesUpdateAccountRequestBuilder {
         self
     }
 
+    pub fn vat_period_end_month(mut self, value: i64) -> Self {
+        self.vat_period_end_month = Some(value);
+        self
+    }
+
     pub fn fiscal_year_end_month(mut self, value: i64) -> Self {
         self.fiscal_year_end_month = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_end_day(mut self, value: i64) -> Self {
+        self.fiscal_year_end_day = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_weekday(mut self, value: i64) -> Self {
+        self.fiscal_year_weekday = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_week_rule(
+        mut self,
+        value: CompaniesUpdateAccountRequestFiscalYearWeekRule,
+    ) -> Self {
+        self.fiscal_year_week_rule = Some(value);
         self
     }
 
@@ -330,9 +382,14 @@ impl CompaniesUpdateAccountRequestBuilder {
             code: self.code,
             vat_code: self.vat_code,
             sme_exemption_number: self.sme_exemption_number,
+            identifiers: self.identifiers,
             is_vat_payer: self.is_vat_payer,
             vat_period: self.vat_period,
+            vat_period_end_month: self.vat_period_end_month,
             fiscal_year_end_month: self.fiscal_year_end_month,
+            fiscal_year_end_day: self.fiscal_year_end_day,
+            fiscal_year_weekday: self.fiscal_year_weekday,
+            fiscal_year_week_rule: self.fiscal_year_week_rule,
             time_zone: self.time_zone,
             filing_options: self.filing_options,
             address: self.address,

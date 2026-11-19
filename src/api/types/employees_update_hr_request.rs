@@ -24,6 +24,18 @@ pub struct EmployeesUpdateHrRequest {
     pub address: Option<EmployeesUpdateHrRequestAddress>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<String>,
+    /// Sort code, routing number or other national bank code, for an account without an IBAN
+    #[serde(rename = "bankCode")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_code: Option<String>,
+    /// Account number, for an account without an IBAN
+    #[serde(rename = "bankAccountNumber")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_number: Option<String>,
+    /// Checking or savings account; a US ACH file needs it
+    #[serde(rename = "bankAccountType")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bank_account_type: Option<EmployeesUpdateHrRequestBankAccountType>,
     #[serde(rename = "socialInsuranceNo")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub social_insurance_no: Option<String>,
@@ -76,6 +88,9 @@ pub struct EmployeesUpdateHrRequestBuilder {
     phone: Option<String>,
     address: Option<EmployeesUpdateHrRequestAddress>,
     iban: Option<String>,
+    bank_code: Option<String>,
+    bank_account_number: Option<String>,
+    bank_account_type: Option<EmployeesUpdateHrRequestBankAccountType>,
     social_insurance_no: Option<String>,
     social_insurance_start: Option<NaiveDate>,
     hire_date: Option<NaiveDate>,
@@ -133,6 +148,21 @@ impl EmployeesUpdateHrRequestBuilder {
 
     pub fn iban(mut self, value: impl Into<String>) -> Self {
         self.iban = Some(value.into());
+        self
+    }
+
+    pub fn bank_code(mut self, value: impl Into<String>) -> Self {
+        self.bank_code = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_number(mut self, value: impl Into<String>) -> Self {
+        self.bank_account_number = Some(value.into());
+        self
+    }
+
+    pub fn bank_account_type(mut self, value: EmployeesUpdateHrRequestBankAccountType) -> Self {
+        self.bank_account_type = Some(value);
         self
     }
 
@@ -210,6 +240,9 @@ impl EmployeesUpdateHrRequestBuilder {
             phone: self.phone,
             address: self.address,
             iban: self.iban,
+            bank_code: self.bank_code,
+            bank_account_number: self.bank_account_number,
+            bank_account_type: self.bank_account_type,
             social_insurance_no: self.social_insurance_no,
             social_insurance_start: self.social_insurance_start,
             hire_date: self.hire_date,

@@ -26,6 +26,10 @@ pub struct UpdatePartnersRequest {
     #[serde(rename = "birthDate")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub birth_date: Option<NaiveDate>,
+    /// Whether the partner acts as a business for VAT; when not set, a partner with a VAT code is a business. Regulation (EU) 282/2011 art. 18 lets a customer without a VAT number be treated as a business on other proof
+    #[serde(rename = "isBusiness")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_business: Option<bool>,
     #[serde(rename = "isCustomer")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_customer: Option<bool>,
@@ -125,6 +129,7 @@ pub struct UpdatePartnersRequestBuilder {
     phone: Option<String>,
     self_employment_cert_no: Option<String>,
     birth_date: Option<NaiveDate>,
+    is_business: Option<bool>,
     is_customer: Option<bool>,
     is_supplier: Option<bool>,
     payment_term_days: Option<i64>,
@@ -202,6 +207,11 @@ impl UpdatePartnersRequestBuilder {
 
     pub fn birth_date(mut self, value: NaiveDate) -> Self {
         self.birth_date = Some(value);
+        self
+    }
+
+    pub fn is_business(mut self, value: bool) -> Self {
+        self.is_business = Some(value);
         self
     }
 
@@ -358,6 +368,7 @@ impl UpdatePartnersRequestBuilder {
             phone: self.phone,
             self_employment_cert_no: self.self_employment_cert_no,
             birth_date: self.birth_date,
+            is_business: self.is_business,
             is_customer: self.is_customer,
             is_supplier: self.is_supplier,
             payment_term_days: self.payment_term_days,

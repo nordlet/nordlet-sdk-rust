@@ -26,7 +26,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-nordlet = "0.6.11"
+nordlet = "0.7.0"
 ```
 
 Or install via cargo:

@@ -2,6 +2,9 @@ pub use crate::prelude::*;
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, Eq, Hash)]
 pub struct ExchangeRatesListReferenceResponseRowsItem {
+    #[serde(rename = "baseCurrency")]
+    #[serde(default)]
+    pub base_currency: String,
     #[serde(rename = "currencyCode")]
     #[serde(default)]
     pub currency_code: String,
@@ -20,12 +23,18 @@ impl ExchangeRatesListReferenceResponseRowsItem {
 #[derive(Clone, PartialEq, Default, Debug)]
 #[non_exhaustive]
 pub struct ExchangeRatesListReferenceResponseRowsItemBuilder {
+    base_currency: Option<String>,
     currency_code: Option<String>,
     date: Option<NaiveDate>,
     rate: Option<String>,
 }
 
 impl ExchangeRatesListReferenceResponseRowsItemBuilder {
+    pub fn base_currency(mut self, value: impl Into<String>) -> Self {
+        self.base_currency = Some(value.into());
+        self
+    }
+
     pub fn currency_code(mut self, value: impl Into<String>) -> Self {
         self.currency_code = Some(value.into());
         self
@@ -43,11 +52,15 @@ impl ExchangeRatesListReferenceResponseRowsItemBuilder {
 
     /// Consumes the builder and constructs a [`ExchangeRatesListReferenceResponseRowsItem`].
     /// This method will fail if any of the following fields are not set:
+    /// - [`base_currency`](ExchangeRatesListReferenceResponseRowsItemBuilder::base_currency)
     /// - [`currency_code`](ExchangeRatesListReferenceResponseRowsItemBuilder::currency_code)
     /// - [`date`](ExchangeRatesListReferenceResponseRowsItemBuilder::date)
     /// - [`rate`](ExchangeRatesListReferenceResponseRowsItemBuilder::rate)
     pub fn build(self) -> Result<ExchangeRatesListReferenceResponseRowsItem, BuildError> {
         Ok(ExchangeRatesListReferenceResponseRowsItem {
+            base_currency: self
+                .base_currency
+                .ok_or_else(|| BuildError::missing_field("base_currency"))?,
             currency_code: self
                 .currency_code
                 .ok_or_else(|| BuildError::missing_field("currency_code"))?,

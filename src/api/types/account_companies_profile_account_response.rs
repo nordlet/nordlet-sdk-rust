@@ -11,6 +11,8 @@ pub struct CompaniesProfileAccountResponse {
     #[serde(rename = "vatCode")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_code: Option<String>,
+    #[serde(default)]
+    pub identifiers: HashMap<String, String>,
     #[serde(rename = "smeExemptionNumber")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sme_exemption_number: Option<String>,
@@ -30,10 +32,10 @@ pub struct CompaniesProfileAccountResponse {
     #[serde(rename = "chartTemplate")]
     #[serde(default)]
     pub chart_template: String,
-    /// Chart of accounts template of the company country
+    /// Chart of accounts template of the company country; null when Nordlet has no chart for it
     #[serde(rename = "countryChartTemplate")]
-    #[serde(default)]
-    pub country_chart_template: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub country_chart_template: Option<String>,
     #[serde(rename = "baseCurrency")]
     #[serde(default)]
     pub base_currency: String,
@@ -105,9 +107,21 @@ pub struct CompaniesProfileAccountResponse {
     #[serde(rename = "vatPeriod")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub vat_period: Option<CompaniesProfileAccountResponseVatPeriod>,
+    #[serde(rename = "vatPeriodEndMonth")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub vat_period_end_month: Option<i64>,
     #[serde(rename = "fiscalYearEndMonth")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub fiscal_year_end_month: Option<i64>,
+    #[serde(rename = "fiscalYearEndDay")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_end_day: Option<i64>,
+    #[serde(rename = "fiscalYearWeekday")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_weekday: Option<i64>,
+    #[serde(rename = "fiscalYearWeekRule")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fiscal_year_week_rule: Option<CompaniesProfileAccountResponseFiscalYearWeekRule>,
     #[serde(rename = "timeZone")]
     #[serde(default)]
     pub time_zone: String,
@@ -141,6 +155,7 @@ pub struct CompaniesProfileAccountResponseBuilder {
     name: Option<String>,
     code: Option<String>,
     vat_code: Option<String>,
+    identifiers: Option<HashMap<String, String>>,
     sme_exemption_number: Option<String>,
     is_vat_payer: Option<bool>,
     is_sandbox: Option<bool>,
@@ -173,7 +188,11 @@ pub struct CompaniesProfileAccountResponseBuilder {
     share_capital: Option<String>,
     accounts_kept_by: Option<CompaniesProfileAccountResponseAccountsKeptBy>,
     vat_period: Option<CompaniesProfileAccountResponseVatPeriod>,
+    vat_period_end_month: Option<i64>,
     fiscal_year_end_month: Option<i64>,
+    fiscal_year_end_day: Option<i64>,
+    fiscal_year_weekday: Option<i64>,
+    fiscal_year_week_rule: Option<CompaniesProfileAccountResponseFiscalYearWeekRule>,
     time_zone: Option<String>,
     filing_options: Option<HashMap<String, Option<String>>>,
     bookkeeper_name: Option<String>,
@@ -200,6 +219,11 @@ impl CompaniesProfileAccountResponseBuilder {
 
     pub fn vat_code(mut self, value: impl Into<String>) -> Self {
         self.vat_code = Some(value.into());
+        self
+    }
+
+    pub fn identifiers(mut self, value: HashMap<String, String>) -> Self {
+        self.identifiers = Some(value);
         self
     }
 
@@ -366,8 +390,31 @@ impl CompaniesProfileAccountResponseBuilder {
         self
     }
 
+    pub fn vat_period_end_month(mut self, value: i64) -> Self {
+        self.vat_period_end_month = Some(value);
+        self
+    }
+
     pub fn fiscal_year_end_month(mut self, value: i64) -> Self {
         self.fiscal_year_end_month = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_end_day(mut self, value: i64) -> Self {
+        self.fiscal_year_end_day = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_weekday(mut self, value: i64) -> Self {
+        self.fiscal_year_weekday = Some(value);
+        self
+    }
+
+    pub fn fiscal_year_week_rule(
+        mut self,
+        value: CompaniesProfileAccountResponseFiscalYearWeekRule,
+    ) -> Self {
+        self.fiscal_year_week_rule = Some(value);
         self
     }
 
@@ -405,12 +452,12 @@ impl CompaniesProfileAccountResponseBuilder {
     /// This method will fail if any of the following fields are not set:
     /// - [`id`](CompaniesProfileAccountResponseBuilder::id)
     /// - [`name`](CompaniesProfileAccountResponseBuilder::name)
+    /// - [`identifiers`](CompaniesProfileAccountResponseBuilder::identifiers)
     /// - [`is_vat_payer`](CompaniesProfileAccountResponseBuilder::is_vat_payer)
     /// - [`is_sandbox`](CompaniesProfileAccountResponseBuilder::is_sandbox)
     /// - [`cash_basis`](CompaniesProfileAccountResponseBuilder::cash_basis)
     /// - [`country_code`](CompaniesProfileAccountResponseBuilder::country_code)
     /// - [`chart_template`](CompaniesProfileAccountResponseBuilder::chart_template)
-    /// - [`country_chart_template`](CompaniesProfileAccountResponseBuilder::country_chart_template)
     /// - [`base_currency`](CompaniesProfileAccountResponseBuilder::base_currency)
     /// - [`default_invoice_currency`](CompaniesProfileAccountResponseBuilder::default_invoice_currency)
     /// - [`status`](CompaniesProfileAccountResponseBuilder::status)
@@ -424,6 +471,9 @@ impl CompaniesProfileAccountResponseBuilder {
             name: self.name.ok_or_else(|| BuildError::missing_field("name"))?,
             code: self.code,
             vat_code: self.vat_code,
+            identifiers: self
+                .identifiers
+                .ok_or_else(|| BuildError::missing_field("identifiers"))?,
             sme_exemption_number: self.sme_exemption_number,
             is_vat_payer: self
                 .is_vat_payer
@@ -440,9 +490,7 @@ impl CompaniesProfileAccountResponseBuilder {
             chart_template: self
                 .chart_template
                 .ok_or_else(|| BuildError::missing_field("chart_template"))?,
-            country_chart_template: self
-                .country_chart_template
-                .ok_or_else(|| BuildError::missing_field("country_chart_template"))?,
+            country_chart_template: self.country_chart_template,
             base_currency: self
                 .base_currency
                 .ok_or_else(|| BuildError::missing_field("base_currency"))?,
@@ -478,7 +526,11 @@ impl CompaniesProfileAccountResponseBuilder {
             share_capital: self.share_capital,
             accounts_kept_by: self.accounts_kept_by,
             vat_period: self.vat_period,
+            vat_period_end_month: self.vat_period_end_month,
             fiscal_year_end_month: self.fiscal_year_end_month,
+            fiscal_year_end_day: self.fiscal_year_end_day,
+            fiscal_year_weekday: self.fiscal_year_weekday,
+            fiscal_year_week_rule: self.fiscal_year_week_rule,
             time_zone: self
                 .time_zone
                 .ok_or_else(|| BuildError::missing_field("time_zone"))?,
